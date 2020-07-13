@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Detect Information Loss - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Detect_Information_Loss","wgTitle":"Detect Information Loss","wgCurRevisionId":17391,"wgRevisionId":17391,"wgArticleId":449,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Detect_Information_Loss","wgRelevantArticleId":449,"wgRequestId":"a9a554ce5b162fa6e96658ac","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Suppose you are given some images by a colleague, or have some images of your own, and you suspect that they may have been damaged by compression artifacts or brightness/contrast adjustment. Worse, you may have some images that you suspect might have been captured in such a way that information was missed or lost at the image capture stage due to bad detector settings. How can you detect these problems in an image?"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Detect Information Loss"/>
+
+	<meta property="og:description" content="Suppose you are given some images by a colleague, or have some images of your own, and you suspect that they may have been damaged by compression artifacts or brightness/contrast adjustment. Worse, you may have some images that you suspect might have been captured in such a way that information was missed or lost at the image capture stage due to bad detector settings. How can you detect these problems in an image?"/>
+
+	<meta property="og:url" content="http://imagej.net/Detect_Information_Loss"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Detect_Information_Loss rootpage-Detect_Information_Loss skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="DetectInformationLoss.html#bodyContent">Skip to content</a>, 			<a href="DetectInformationLoss.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="DetectInformationLoss.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="DetectInformationLoss.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Detect_Information_Loss&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Detect_Information_Loss&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Detect_Information_Loss&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Detect Information Loss</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>Suppose you are given some images by a colleague, or have some images of your own, and you suspect that they may have been damaged by compression artifacts or brightness/contrast adjustment. Worse, you may have some images that you suspect might have been captured in such a way that information was missed or lost at the image capture stage due to bad detector settings. How can you detect these problems in an image?
+</p><p>Lets open a sample image and check it out:
+</p><p>In Fiji, do "File - Open Sample Images - FluorescentCells.tiff, to open a three colour channel "pretty" image of some fixed and stained cells grown on glass. 
+Click the image then press "i" to see info about the image. The slider under the image is to change between the three colour channels, and you can see the colour of the border and the writing at the top of the image in the information bar change colour accordingly (the meta data of which channel is what colour was stored in the tiff file, but your images may or may not have that meta data!)
+</p><p><a href="http://imagej.net/File:OpenFluoCells.png" class="image"><img alt="OpenFluoCells.png" src="../_images/d/df/OpenFluoCells.png" width="300" height="378" /></a>
+</p><p>To Begin with, we should split the three color channel images into separate windows so we can inspect them and manipulate them separately: Select the FluorescentCells.tif image window and do menu item: "Image-Color-Split Channels".
+</p><p><a href="http://imagej.net/File:SplitColourChannels.png" class="image"><img alt="SplitColourChannels.png" src="../_images/5/50/SplitColourChannels.png" width="300" height="297" /></a>
+</p>
+<ol>
+<li>
+<b><a href="http://en.wikipedia.org/wiki/Lossy_data_compression" class="extiw" title="wikipedia:Lossy data compression">Lossy Compression</a>:</b> First, we can interrogate the red or green channel, and see if there are any <a href="http://en.wikipedia.org/wiki/Lossy_data_compression" class="extiw" title="wikipedia:Lossy data compression">lossy compression</a> artifacts visible by eye: Click the magnifying glass icon in the Fiji main window and left click to zoom in to an area of interest (left click zooms in, right click zooms out again). 
+
+You should see something like the image below. Can you see that there are square shaped artifacts in the image which are 8x8 pixels? These are lossy JPEG compression artifacts. The image intensity data is messed up... so you would not want to quantify intensity data from an image like that. Some areas have been given all the same intensity (which is unlikely to be true) and some have ugly repetitive patterns, which are clearly false. Never use lossy JPEG or other lossy compression to store scientific data. Lossy compression is good for making movies etc smaller in file size, but bad for measurements afterwards. Images in PDF files of published research articles are usually lossy compressed, so its hard or impossible to repeat the image processing they did because the image data is messed up. This is a big problem in scientific publication in biological sciences, and we need to fix it: We need an online image database where data is published for others to down load and analyse, as is required by scientific publishing in other fields, eg x-ray crystallography for protein 3D structure and DNA/genome etc. sequencing. I don't know why biological imaging thinks its so special...
+
+<a href="http://imagej.net/File:LossyJPEGCompressionArtifacts1.png" class="image"><img alt="LossyJPEGCompressionArtifacts1.png" src="../_images/1/16/LossyJPEGCompressionArtifacts1.png" width="300" height="292" /></a>
+</li>
+<li>
+<b>Intensity Saturation or Clipping or <a href="http://en.wikipedia.org/wiki/Overexposure" class="extiw" title="wikipedia:Overexposure">Over Exposure:</a></b> Next we can have a look to see of the image has been acquired or manipulated in such a way that the highest intensity information has been lost, due to detector <a href="http://en.wikipedia.org/wiki/Charge-coupled_device" class="extiw" title="wikipedia:Charge-coupled device">CCD</a>, <a href="http://en.wikipedia.org/wiki/Photomultiplier" class="extiw" title="wikipedia:Photomultiplier">PMT</a>, etc. saturation / over exposure, such that the intensity scale of the information is clipped off at the top, like a mountain with the peak removed... so you can't tell how high it was. 
+
+<p>The easiest way to detect intensity saturation is to look at the intensity distribution histogram of the image. This is simply a histogram showing how many pixels in the image have which intensity. If there are too many pixels (or even any!) pixels that have an intensity value at the maximum of the scale, then there is lost intensity information. For an 8 bit scale image, which has intensity values from 0 to 255, the pixels with a value of 255 might really be 255, or they might all have different higher values, like 450, or 11,345 but you have no way of knowing. The information is <b>LOST</b>, and gone <b>FOREVER</b>. No amount of clever image processing can really get it back&#160;:-(
+</p>
+<p>
+To make an intensity histogram from an image, in the Fiji menus select "Analyze-Histogram". Then click the "Log" button in the histogram window to see the histogram in logarithmic scale (this is handy for fluorescence images that are often mostly black). You can see in the last "bin" (the 255 intensity bin) that there are 108 pixels that have intensity of 255... but are they really 255 or more than that... you have no idea. Worse still, it is often true that you are most interested in the brightest objects... but these are the ones that the true intensity information has been lost for  &#160;:-O
+</p>
+<p><a href="http://imagej.net/File:SaturatedDAPIHistogram.png" class="image"><img alt="SaturatedDAPIHistogram.png" src="../_images/3/39/SaturatedDAPIHistogram.png" width="300" height="368" /></a>
+</p>
+</li>
+<li>
+<p>
+<b>Incorrect Detector Offset</b> is a problem that occurs during image acquisition. The electronics that convert the signal that the detector produces when photons hit it must be turned into a number. This is usually an integer (whole number) from 0-255 (8bit) or 0-4095 (12 bit) or some larger scale (14 or even 16 or 32 bit). The electronics don't know by default what signal from the detector is equivalent to zero photons hitting the detector, so the user has to tell the electronics that. This setting is called the detector offset. This is how you set zero photons from the sample to zero intensity in the digital image. If you get this offset wrong, either of 2 things happen: The offset could be too high or too low. If the offset is too high, then the image has a constant non zero background where it should be zero. That means zero signal is not zero in the image, but some number above zero. In this case if you try to measure intensity, the number is wrong since you need to first subtract the value of that non zero background. After the background subtraction, the intensity values are now more likely to be linearly proportional to the amount of light that hit the detector. In the other situation, where the offset was too low, you clipped off the lower intensity values that the detector could actually see for the darker pixels, to all zero in the image. That's lost information again&#160;:-(
+</p>
+<p> 
+Where offset is too high, you are wasting the dynamic range of your detector. Where offset is too low, you have clipped off the lower intensities (which are usually not interesting, but they might be sometimes) and lost information. In both cases the intensity of the digital image is not as close to linear proportionality with the amount of light hitting the detector as it could be. That is obviously bad for image quantification since it's the main assumption (which is usually not as true as you think it is, but thats another long story).
+</p>
+<p>
+How can you tell if there is an offset problem in an image? Simply look at the intensity histogram ("Analyze-Histogram"). In the too high offset case look for empty or very small numbers in the low end of the intensity scale. That means there are no or too few pixels with values close to zero. See the green channel of FluorescentCells.tif for an example of that, look at the image below. For the too low offset case, there is no easy way to tell if that happened. Getting the detector offset wrong makes quantitative analysis very difficult or impossible, for instance in the case of auto thresholding a 2 channel image for <a href="http://imagej.net/ColocalizationAnalysis" class="mw-redirect" title="ColocalizationAnalysis">Colocalization Analysis</a>.
+</p>
+<p><a href="http://imagej.net/File:OffsetProblem.png" class="image"><img alt="OffsetProblem.png" src="../_images/3/3b/OffsetProblem.png" width="700" height="428" /></a>
+</p>
+</li>
+</ol>
+<p><br />
+Questions you should ask before quantifying information from images:
+</p>
+<ul><li>Q) Has there been lossy compression?</li>
+<li>Q) Is the intensity information saturated / clipped / overexposed?</li>
+<li>Q) Is there a problem with uniform background / detector offset?</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064953
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.030 seconds
+Preprocessor visited node count: 1/1000000
+Preprocessor generated node count: 4/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 1/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Detect_Information_Loss&amp;oldid=17391">http://imagej.net/index.php?title=Detect_Information_Loss&amp;oldid=17391</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 September 2015, at 13:53.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Detect_Information_Loss&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Detect+Information+Loss" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Detect+Information+Loss" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Detect_Information_Loss" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Detect_Information_Loss" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Detect_Information_Loss&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Detect_Information_Loss&amp;oldid=17391" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Detect_Information_Loss&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":185});});</script>
+		</body>
+		</html>
+		

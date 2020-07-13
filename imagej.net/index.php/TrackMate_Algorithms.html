@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>TrackMate Algorithms - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"TrackMate_Algorithms","wgTitle":"TrackMate Algorithms","wgCurRevisionId":40574,"wgRevisionId":40574,"wgArticleId":1491,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"TrackMate_Algorithms","wgRelevantArticleId":1491,"wgRequestId":"ebbcd18d8d9481928fbcc512","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This page documents the current components of TrackMate. TrackMate has a modular design, meaning that it is made of different modules that each have a specific role. Developers can build their own module and re-used the other ones and the GUI to achieve a quick development. The module types are (in the order you meet them when executing the plugin):"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="TrackMate Algorithms"/>
+
+	<meta property="og:description" content="This page documents the current components of TrackMate. TrackMate has a modular design, meaning that it is made of different modules that each have a specific role. Developers can build their own module and re-used the other ones and the GUI to achieve a quick development. The module types are (in the order you meet them when executing the plugin):"/>
+
+	<meta property="og:url" content="http://imagej.net/TrackMate_Algorithms"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-TrackMate_Algorithms rootpage-TrackMate_Algorithms skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="TrackMate_Algorithms.html#bodyContent">Skip to content</a>, 			<a href="TrackMate_Algorithms.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="TrackMate_Algorithms.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/TrackMate_Algorithms" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:TrackMate_Algorithms&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=TrackMate_Algorithms&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=TrackMate_Algorithms&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>TrackMate Algorithms</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><br />
+This page documents the current components of <a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a>. TrackMate has a modular design, meaning that it is made of different modules that each have a specific role. Developers can build their own module and re-used the other ones and the GUI to achieve a quick development. The module types are (in the order you meet them when executing the plugin):
+</p>
+<ol><li> <b>Spot detectors</b>. Taking your image data, they detect spots in them.</li>
+<li> <b>Spot analyzers</b>. Each spot can receive a wide range of features, calculated from their location, radius and the image data. For instance: max intensity in spot, rough morphology, etc... They are then used to filter out spurious spots and retain only good ones for the subsequent tracking step.</li>
+<li> <b>Views</b>. Display the segmentation and tracking results overlaid on your image data.</li>
+<li> <b>Spot trackers</b>. Take the filtered spots and link them together to build tracks.</li>
+<li> <b>Track analyzers</b>. Like for spot analyzers, but operate on whole track. Can be used to report track mean velocity, displacement, etc... They are also used to filter spurious tracks.</li>
+<li> <b>Actions</b>. Miscellaneous actions you can take on the complete result of the tracking process. It can be used to copy the track overlay to another image, launch a 3D viewer, export the results to a simple format, generate a track stack, etc...</li></ol>
+<p>We describe here the best we can the current modules that are shipped with TrackMate.
+</p><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="TrackMate_Algorithms.html#Spot_detectors"><span class="tocnumber">1</span> <span class="toctext">Spot detectors</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="TrackMate_Algorithms.html#Spot_features_generated_by_the_spot_detectors"><span class="tocnumber">1.1</span> <span class="toctext">Spot features generated by the spot detectors</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="TrackMate_Algorithms.html#Difference_of_Gaussian_particle_detection_.28DoG_segmenter.29"><span class="tocnumber">1.2</span> <span class="toctext">Difference of Gaussian particle detection (DoG segmenter)</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="TrackMate_Algorithms.html#Spot_analyzers"><span class="tocnumber">2</span> <span class="toctext">Spot analyzers</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="TrackMate_Algorithms.html#Mean.2C_Median.2C_Min.2C_Max.2C_Total_intensity_and_its_Standard_Deviation"><span class="tocnumber">2.1</span> <span class="toctext">Mean, Median, Min, Max, Total intensity and its Standard Deviation</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="TrackMate_Algorithms.html#Contrast_.26_Signal.2FNoise_ratio"><span class="tocnumber">2.2</span> <span class="toctext">Contrast &amp; Signal/Noise ratio</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="TrackMate_Algorithms.html#Estimated_diameter"><span class="tocnumber">2.3</span> <span class="toctext">Estimated diameter</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="TrackMate_Algorithms.html#Track_analyzers."><span class="tocnumber">3</span> <span class="toctext">Track analyzers.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="TrackMate_Algorithms.html#Units."><span class="tocnumber">3.1</span> <span class="toctext">Units.</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="TrackMate_Algorithms.html#Track_branching_analyzer."><span class="tocnumber">3.2</span> <span class="toctext">Track branching analyzer.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-11"><a href="TrackMate_Algorithms.html#Number_of_spots_in_track."><span class="tocnumber">3.2.1</span> <span class="toctext">Number of spots in track.</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="TrackMate_Algorithms.html#Number_of_gaps."><span class="tocnumber">3.2.2</span> <span class="toctext">Number of gaps.</span></a></li>
+<li class="toclevel-3 tocsection-13"><a href="TrackMate_Algorithms.html#Longest_gap."><span class="tocnumber">3.2.3</span> <span class="toctext">Longest gap.</span></a></li>
+<li class="toclevel-3 tocsection-14"><a href="TrackMate_Algorithms.html#Number_of_split_events."><span class="tocnumber">3.2.4</span> <span class="toctext">Number of split events.</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="TrackMate_Algorithms.html#Number_of_merge_event."><span class="tocnumber">3.2.5</span> <span class="toctext">Number of merge event.</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="TrackMate_Algorithms.html#Complex_points."><span class="tocnumber">3.2.6</span> <span class="toctext">Complex points.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-17"><a href="TrackMate_Algorithms.html#Track_duration_analyzer."><span class="tocnumber">3.3</span> <span class="toctext">Track duration analyzer.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-18"><a href="TrackMate_Algorithms.html#Duration_of_track."><span class="tocnumber">3.3.1</span> <span class="toctext">Duration of track.</span></a></li>
+<li class="toclevel-3 tocsection-19"><a href="TrackMate_Algorithms.html#Track_start."><span class="tocnumber">3.3.2</span> <span class="toctext">Track start.</span></a></li>
+<li class="toclevel-3 tocsection-20"><a href="TrackMate_Algorithms.html#Track_stop."><span class="tocnumber">3.3.3</span> <span class="toctext">Track stop.</span></a></li>
+<li class="toclevel-3 tocsection-21"><a href="TrackMate_Algorithms.html#Track_displacement."><span class="tocnumber">3.3.4</span> <span class="toctext">Track displacement.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-22"><a href="TrackMate_Algorithms.html#Track_index."><span class="tocnumber">3.4</span> <span class="toctext">Track index.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-23"><a href="TrackMate_Algorithms.html#Track_index._2"><span class="tocnumber">3.4.1</span> <span class="toctext">Track index.</span></a></li>
+<li class="toclevel-3 tocsection-24"><a href="TrackMate_Algorithms.html#Track_ID."><span class="tocnumber">3.4.2</span> <span class="toctext">Track ID.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-25"><a href="TrackMate_Algorithms.html#Track_location."><span class="tocnumber">3.5</span> <span class="toctext">Track location.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-26"><a href="TrackMate_Algorithms.html#X_Location_.28mean.29."><span class="tocnumber">3.5.1</span> <span class="toctext">X Location (mean).</span></a></li>
+<li class="toclevel-3 tocsection-27"><a href="TrackMate_Algorithms.html#Y_Location_.28mean.29."><span class="tocnumber">3.5.2</span> <span class="toctext">Y Location (mean).</span></a></li>
+<li class="toclevel-3 tocsection-28"><a href="TrackMate_Algorithms.html#Z_Location_.28mean.29."><span class="tocnumber">3.5.3</span> <span class="toctext">Z Location (mean).</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-29"><a href="TrackMate_Algorithms.html#Track_Velocity."><span class="tocnumber">3.6</span> <span class="toctext">Track Velocity.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-30"><a href="TrackMate_Algorithms.html#Mean_velocity."><span class="tocnumber">3.6.1</span> <span class="toctext">Mean velocity.</span></a></li>
+<li class="toclevel-3 tocsection-31"><a href="TrackMate_Algorithms.html#Maximal_velocity.2C_Minimal_velocity.2C_Median_velocity_and_Velocity_standard_deviation."><span class="tocnumber">3.6.2</span> <span class="toctext">Maximal velocity, Minimal velocity, Median velocity and Velocity standard deviation.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-32"><a href="TrackMate_Algorithms.html#Track_spot_quality."><span class="tocnumber">3.7</span> <span class="toctext">Track spot quality.</span></a></li>
+<li class="toclevel-2 tocsection-33"><a href="TrackMate_Algorithms.html#Linear_track_analysis."><span class="tocnumber">3.8</span> <span class="toctext">Linear track analysis.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-34"><a href="TrackMate_Algorithms.html#Total_distance_traveled."><span class="tocnumber">3.8.1</span> <span class="toctext">Total distance traveled.</span></a></li>
+<li class="toclevel-3 tocsection-35"><a href="TrackMate_Algorithms.html#Max_distance_traveled."><span class="tocnumber">3.8.2</span> <span class="toctext">Max distance traveled.</span></a></li>
+<li class="toclevel-3 tocsection-36"><a href="TrackMate_Algorithms.html#Confinement_ratio."><span class="tocnumber">3.8.3</span> <span class="toctext">Confinement ratio.</span></a></li>
+<li class="toclevel-3 tocsection-37"><a href="TrackMate_Algorithms.html#Mean_straight_line_speed."><span class="tocnumber">3.8.4</span> <span class="toctext">Mean straight line speed.</span></a></li>
+<li class="toclevel-3 tocsection-38"><a href="TrackMate_Algorithms.html#Linearity_of_forward_progression."><span class="tocnumber">3.8.5</span> <span class="toctext">Linearity of forward progression.</span></a></li>
+<li class="toclevel-3 tocsection-39"><a href="TrackMate_Algorithms.html#Mean_directional_change."><span class="tocnumber">3.8.6</span> <span class="toctext">Mean directional change.</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-40"><a href="TrackMate_Algorithms.html#Spot_trackers"><span class="tocnumber">4</span> <span class="toctext">Spot trackers</span></a>
+<ul>
+<li class="toclevel-2 tocsection-41"><a href="TrackMate_Algorithms.html#LAP_trackers"><span class="tocnumber">4.1</span> <span class="toctext">LAP trackers</span></a>
+<ul>
+<li class="toclevel-3 tocsection-42"><a href="TrackMate_Algorithms.html#Cost_matrix_for_frame-to-frame_linking"><span class="tocnumber">4.1.1</span> <span class="toctext">Cost matrix for frame-to-frame linking</span></a></li>
+<li class="toclevel-3 tocsection-43"><a href="TrackMate_Algorithms.html#Solving_LAP"><span class="tocnumber">4.1.2</span> <span class="toctext">Solving LAP</span></a></li>
+<li class="toclevel-3 tocsection-44"><a href="TrackMate_Algorithms.html#Calculating_linking_costs"><span class="tocnumber">4.1.3</span> <span class="toctext">Calculating linking costs</span></a></li>
+<li class="toclevel-3 tocsection-45"><a href="TrackMate_Algorithms.html#Calculating_non-linking_costs"><span class="tocnumber">4.1.4</span> <span class="toctext">Calculating non-linking costs</span></a></li>
+<li class="toclevel-3 tocsection-46"><a href="TrackMate_Algorithms.html#Cost_calculation_.26_Brownian_motion"><span class="tocnumber">4.1.5</span> <span class="toctext">Cost calculation &amp; Brownian motion</span></a></li>
+<li class="toclevel-3 tocsection-47"><a href="TrackMate_Algorithms.html#Track_segment_linking"><span class="tocnumber">4.1.6</span> <span class="toctext">Track segment linking</span></a></li>
+<li class="toclevel-3 tocsection-48"><a href="TrackMate_Algorithms.html#Main_differences_with_the_Jaqaman_paper.5B2.5D"><span class="tocnumber">4.1.7</span> <span class="toctext">Main differences with the Jaqaman paper<sup>&#91;2&#93;</sup></span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-49"><a href="TrackMate_Algorithms.html#Linear_motion_tracker."><span class="tocnumber">4.2</span> <span class="toctext">Linear motion tracker.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-50"><a href="TrackMate_Algorithms.html#Principle."><span class="tocnumber">4.2.1</span> <span class="toctext">Principle.</span></a></li>
+<li class="toclevel-3 tocsection-51"><a href="TrackMate_Algorithms.html#Implementation"><span class="tocnumber">4.2.2</span> <span class="toctext">Implementation</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-52"><a href="TrackMate_Algorithms.html#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Spot_detectors">Spot detectors</span></h2>
+<h3><span class="mw-headline" id="Spot_features_generated_by_the_spot_detectors">Spot features generated by the spot detectors</span></h3>
+<p>Behind this barbaric name stand the part responsible for spot detection in your image. The algorithm currently implemented are very generic and naive. They will most likely fail for complicated case such as touching objects, very weak SNR, etc... The 3 of them present are all based on Laplacian of Gaussian filtering, which we describe below.
+</p><p>All detectors must at least provide the following common spot features:
+</p>
+<ul><li> X, Y, and Z: the spot coordinates in space. Coordinates are expressed in physical units (μm, ...).</li>
+<li> R the spot radius, also in physical units. The current detectors only set this radius value to be the one specified by the user. More advanced detectors - yet to be implemented - could retrieve each spot radius from the raw image. </li>
+<li> Quality: The implementation varies greatly from detector to detector, but this value reflects the quality of automated detection. It must be a positive real number, large values indicating good confidence in detection result for the target spot. This sole feature is then used in the initial filtering step, where spots with a quality lower that a specified threshold are purely and simply discarded. </li></ul>
+<p>The two other time features - T and Frame number - are set by TrackMate itself when performing detection on all the timepoints of the target raw data. T is expressed in physical units, and the Frame number - starting from 0 - is simply the frame the spot was found in.
+</p>
+<h3><span class="mw-headline" id="Difference_of_Gaussian_particle_detection_.28DoG_segmenter.29">Difference of Gaussian particle detection (DoG segmenter)</span></h3>
+<p>Given d an approximate expected particle diameter, determined upon inspection, two gaussian filters are produced with standard deviation σ₁ and σ₂:
+</p>
+<ul><li> σ₁ = 1 / (1 + √2 ) ×  d</li>
+<li> σ₂ = √2 × σ₁</li></ul>
+<p>The image is filtered using these two gaussians, and the result of the second filter (largest sigma) is subtracted from the result of the first filter (smallest sigma). This yields a smoothed image with sharp local maximas at particle locations. A detection spot is then created for each of these maximas, and an arbitrary quality feature is assigned to the new spot by taking the smoothed image value at the maximum. If two spots are found to be closer than the expected radius d/2, the one with the lowest quality is discarded.
+</p><p>To improve the localization accuracy, and extra step is taken to yield a sub-pixel localization of the spots. The position of each spot is recalculated using a simple parabolic interpolation scheme, as in <sup id="cite_ref-Lowe_1-0" class="reference"><a href="TrackMate_Algorithms.html#cite_note-Lowe-1">&#91;1&#93;</a></sup>. The quality feature is also interpolated using this scheme. 
+</p><p>A large number of spurious spots are created by finding local maximas. There spurious spots are discarded inn extra step, by applying a threshold on the quality feature computed during segmentation. The value of this threshold is set manually, to match the SNR of the input image. Thresholded spots are then retained for subsequent particle-linking.
+</p>
+<h2><span class="mw-headline" id="Spot_analyzers">Spot analyzers</span></h2>
+<p>Spot features, such as 'Max intensity', 'Estimated diameter', etc., are calculated for all spots just after the initial filtering step. They are then used to select spots, based on filters set to retain only spots with a given feature below or above a specified threshold.
+By the way initial filtering is a good way to limit spot feature calculation time on spots you know to be spurious. With the current features, this not such a reason to do it: most feature analyzer are cheap computationally. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Mean.2C_Median.2C_Min.2C_Max.2C_Total_intensity_and_its_Standard_Deviation">Mean, Median, Min, Max, Total intensity and its Standard Deviation</span></h3>
+<p>The plain statistical estimates are simply calculated from all the values for pixels within the physical radius from the spot center. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Contrast_.26_Signal.2FNoise_ratio">Contrast &amp; Signal/Noise ratio</span></h3>
+<p>This contrast followed  <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Michelson_contrast#Formula">Michelson contrast</a> definition: <code>C = (I_in - I_out) / (I_in + I_out)</code> where <code>I_in</code> is the mean intensity inside the spot volume (using the physical radius), and <code>I_out</code> is the mean intensity in a ring ranging from its radius to twice its radius. 
+</p><p>The spots's SNR is computed a <code>(I_in - I_out) / std_in</code> where <code>std_in</code> is the standard deviation computed within the spot. 
+</p><p>These two values depend greatly on the correctness of the radius of each spot. Negative values might be caused by incorrect radius.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Estimated_diameter">Estimated diameter</span></h3>
+<p>This feature estimates an optimal diameter for each spot, based on contrast calculation. 
+</p><p>The mean pixel intensity is calculated in 20 concentric, tangent rings, centered at the target spot location, and with radiuses ranging from a 10th of the spot radius to twice its radius. The contrast at a given radius is defined as the difference between the mean intensity of a ring with inner radius the radius sought, and the previous ring. 
+</p><p>The estimated diameter is then defined as the radius that maximizes this contrast. A quadratic interpolation is performed to improve diameter accuracy. 
+</p><p><br />
+</p><p><br />
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Track_analyzers.">Track analyzers.</span></h2>
+<p>Track features are generated by the track analyzers documented in this section. 
+Of course such features are only available after the tracking step, and just before the track filtering step. 
+Since in TrackMate a track must have at least two spots, it is not possible to define track features for a track that would contain a single spot. 
+</p>
+<h3><span class="mw-headline" id="Units.">Units.</span></h3>
+<p>Like for all features values and everywhere in TrackMate, the units of the features are <b>physical units</b>, given by the image calibration. 
+</p><p>So if your image as <code>microns</code> as physical units for the pixel size, and <code>seconds</code> as units of the frame interval, any velocity reported by TrackMate computed on this image will be in units of <code>microns/s</code>. 
+</p>
+<h3><span class="mw-headline" id="Track_branching_analyzer.">Track branching analyzer.</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/features/track/TrackBranchingAnalyzer.java">code on github</a>
+</p><p>This analyzer focuses on the structure of tracks. It yields the following feature, that are all unitless. 
+</p>
+<h4><span class="mw-headline" id="Number_of_spots_in_track.">Number of spots in track.</span></h4>
+<p>Simply the number of spots that can be found in the tracks, regardless of branching, gaps, <i>etc.</i>
+</p>
+<h4><span class="mw-headline" id="Number_of_gaps.">Number of gaps.</span></h4>
+<p>The number of gap. A gap is a link between two spots that span more than one frame. In tracking it would correspond to bridging over a missed detection.
+</p>
+<h4><span class="mw-headline" id="Longest_gap.">Longest gap.</span></h4>
+<p>The size of the longest gap. That is: the number of frames that are skipped over by the longest gap in the track.
+For instance, a gap between a spot in frame 2 and a spot in frame 4 would generate a gap of size 1 (the frame 3).
+</p>
+<h4><span class="mw-headline" id="Number_of_split_events.">Number of split events.</span></h4>
+<p>The number of split events in a track. A split event is when a track divides in at least two branches, forward in time. For instance, a spot links to one spot in a previous frame and two spots in the next frame. This corresponds to <i>e.g.</i> cell division.
+</p>
+<h4><span class="mw-headline" id="Number_of_merge_event.">Number of merge event.</span></h4>
+<p>This is the opposed event: a spot would merge at least two branches, and would link to one spot in the next frame and at least two spots in the previous frame. This corresponds to object fusion.
+</p>
+<h4><span class="mw-headline" id="Complex_points.">Complex points.</span></h4>
+<p>Complex events are the rest: When a spot link to more than one spot in the previous frame and more than one spot in the next frame.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Track_duration_analyzer.">Track duration analyzer.</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/features/track/TrackDurationAnalyzer.java">code on github</a>
+</p><p>This feature analyzer focuses on the track "location" in time and it's displacement. 
+</p>
+<h4><span class="mw-headline" id="Duration_of_track.">Duration of track.</span></h4>
+<p>Measure the time in physical units (seconds, etc.) between the first spot of the track in time, and the last spot of the track in time.
+</p>
+<h4><span class="mw-headline" id="Track_start.">Track start.</span></h4>
+<p>Measure at what time (in physical units) the first spot of the track occurs.
+</p>
+<h4><span class="mw-headline" id="Track_stop.">Track stop.</span></h4>
+<p>Same thing for the last spot of the track in time.
+</p>
+<h4><span class="mw-headline" id="Track_displacement.">Track displacement.</span></h4>
+<p>Measure the distance (still in physical units) between the last spot of the track and the first spot of the track in time. 
+</p><p>Careful: This is different from the track excursion. The value reported here simply measure the length of a straight line that extends between the first spot to the last spot.  If the track makes a gigantic excursion but comes back exactly at its starting point, the track displacement will still be 0.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Track_index.">Track index.</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/features/track/TrackIndexAnalyzer.java">code on github</a>
+</p><p>This analyzer simply assign an integer number to tracks. It can be the track ID or the track index.
+</p>
+<h4><span class="mw-headline" id="Track_index._2">Track index.</span></h4>
+<p>The track index is simply an integer number that goes from 0 to the number of tracks minus one, over all the tracks visible or not.
+</p>
+<h4><span class="mw-headline" id="Track_ID.">Track ID.</span></h4>
+<p>The track ID is an integer number that does not necessarily start from 0. It is used internally to identify uniquely a track in a TrackMate session. The absolute value of the track ID is meaningless. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Track_location.">Track location.</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/features/track/TrackLocationAnalyzer.java">code on github</a>
+</p><p>This analyzer yields feature values about the spatial location of tracks. This location is in physical units, and is defined by taking the mean of the location of spots that compose the track, 
+</p>
+<h4><span class="mw-headline" id="X_Location_.28mean.29.">X Location (mean).</span></h4>
+<p>The mean of the X position of all the spots in the track.
+</p>
+<h4><span class="mw-headline" id="Y_Location_.28mean.29.">Y Location (mean).</span></h4>
+<p>Same thing for the Y location. 
+</p>
+<h4><span class="mw-headline" id="Z_Location_.28mean.29.">Z Location (mean).</span></h4>
+<p>Guess what?
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Track_Velocity.">Track Velocity.</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/features/track/TrackSpeedStatisticsAnalyzer.java">code on github</a>
+</p><p>Feature values related to velocity. 
+Normally velocity values given by this analyzer are calculated using the <b>link velocity</b>. The link velocity (or velocity) is defined for a single link between two spots (distance between the two spots divided by the time difference). The feature values are built upon this link feature, and is also referred in TrackMate (somewhat incorrectly) as the instantaneous velocity. 
+</p>
+<h4><span class="mw-headline" id="Mean_velocity.">Mean velocity.</span></h4>
+<p>The mean of the link velocity over all the links of the track.
+</p>
+<h4><span class="mw-headline" id="Maximal_velocity.2C_Minimal_velocity.2C_Median_velocity_and_Velocity_standard_deviation.">Maximal velocity, Minimal velocity, Median velocity and Velocity standard deviation.</span></h4>
+<p>Same thing, but taking the max, min, median and standard deviation respectively. 
+All these feature values take the link velocities of a track as a distribution they summarize. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Track_spot_quality.">Track spot quality.</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/features/track/TrackSpotQualityFeatureAnalyzer.java">code on github</a>
+</p><p>This feature analyzer simply takes the mean, max, min, median and standard deviation of the distribution of the <b>Quality</b> values of all the spots in a track. In this respect, it is similar to the previous analyzer (Track velocity) that does the same for link velocity. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Linear_track_analysis.">Linear track analysis.</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/tinevez/TrackMate-TrackAnalysis/blob/master/src/main/java/fiji/plugin/trackmate/features/track/LinearTrackDescriptor.java">code on github</a>
+</p><p>This feature analyzer comes from a TrackMate extra. It is available as a jar that you should download separately and drop into the jars folder of you Fiji installation. Check <a href="http://imagej.net/TrackMate#Extensions" title="TrackMate">TrackMate#Extensions</a> to get it.
+</p><p>It was written to add track descriptor that would help characterize the track motility type. 
+The features calculated there will help you determine whether a tracked object moves 'efficiently' or has an apparently random motion, etc. I simply took some of the feature described in the following paper:
+</p><p><i>Methods for cell and particle tracking.</i>, Meijering E, Dzyubachyk O, Smal I., Methods Enzymol. <b>2012</b>;504:183-200. <a rel="nofollow" class="external text" href="https://www.sciencedirect.com/science/article/pii/B9780123918574000094">link to paper</a>.
+</p><p>Please note that the feature values listed in this paragraph are only properly defined bor <b>linear tracks</b>, that is tracks with no fusion nor split events.
+</p><p><br />
+</p>
+<div class="MediaTransformError" style="width: 637px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+</p>
+<h4><span class="mw-headline" id="Total_distance_traveled.">Total distance traveled.</span></h4>
+<p>This feature value reports the full distance the particle traveled throughout the track. 
+It is computed by taking the sum of the link distance (distance from the source spot to the target spot of the link, for all links). 
+</p><p>It really report how much the particle 'walked'. For instance, if a particle travels along a equilateral triangle of size 10 µm, going back to its starting point, this feature will return 30 µm. While the <b>Track displacement</b> feature described above will return 0 µm.
+</p>
+<center>
+<pre> <img class="mwe-math-fallback-image-inline tex" alt="&#10;    \text{ total distance travelled } = \sum_{i} d_{i,i+1}&#10;  " src="../_images/math/2/e/9/2e9c1c351fd1c52acf5758adea041185.png" />
+</pre>
+</center>
+<p>where <i>di,i+1</i> is the distance from one spot to the next spot in the track.
+</p>
+<h4><span class="mw-headline" id="Max_distance_traveled.">Max distance traveled.</span></h4>
+<p>This feature reports the distance to the furthest point of the track, with respect to the first spot in time of the track. 
+To get this value we simply computes the straight-line distance between each spot of the track to the first spot of the track, and returns the largest distance.
+</p><p>This distance is a "straight-line" distance. In our example above with the particle that walks over a triangle, this feature value would be 10 µm.
+</p>
+<center>
+<pre> <img class="mwe-math-fallback-image-inline tex" alt="&#10;    \text{max distance traveled} = \text{Max}_{i,j} ( d_{ij} )&#10;  " src="../_images/math/8/9/b/89bf1d55ba4fb8383ea783725c0c68bf.png" />
+</pre>
+</center>
+<p>where <i>dij</i> is the distance from any spot <i>i</i> to any spot <i>j</i> in the track.
+</p>
+<h4><span class="mw-headline" id="Confinement_ratio.">Confinement ratio.</span></h4>
+<p>The confinement ratio tells how "efficient" was a track displacement in getting far away from its starting point.
+It is defined as the net-displacement divided by the total-distance. The net-displacement is given by the <b>Track displacement</b> feature, and the total distance is given by the <b>Total distance traveled</b> feature.
+</p>
+<center>
+<pre> <img class="mwe-math-fallback-image-inline tex" alt="&#10;    \text{confinement ratio} = \frac{ \text{net distance} }{ \text{ total distance travelled } }&#10;  " src="../_images/math/b/4/b/b4b67959bd0fe548741670626fbe8d81.png" />
+</pre>
+</center>
+<p>It is a unitless value that ranges from 0 to 1. Values close to 0 indicate a confined movement, where the particle would stay close to its starting point. Values close to 1 indicate that the particle travels along a line with a constant orientation.
+</p><p>Sometimes this value is called differently in other papers. For instance in <a rel="nofollow" class="external text" href="http://jcb.rupress.org/content/jcb/217/9/3031.full.pdf">De Pascalis <i>et al.</i>, 2018</a>, is called <b>persistence</b>.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Mean_straight_line_speed.">Mean straight line speed.</span></h4>
+<p>The mean straight line speed is the defined as the net displacement (<i>Track displacement</i> feature) divided by the track total time. 
+</p>
+<center>
+<pre> <img class="mwe-math-fallback-image-inline tex" alt="&#10;    \text{mean straight line speed} = \frac{ \text{net distance} }{ \text{ total track time } }&#10;  " src="../_images/math/3/5/9/359868ceecc0d4e0ce3b235bc270f7ee.png" />
+</pre>
+</center>
+<p><br />
+It is the speed that would have an object that moves at constant speed along a straight line from the first spot to the last spot of the track.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Linearity_of_forward_progression.">Linearity of forward progression.</span></h4>
+<p>This value is simply the ratio between the <b>mean straight line speed</b> and the <b>track mean speed</b>.
+</p><p><br />
+</p>
+<center>
+<pre> <img class="mwe-math-fallback-image-inline tex" alt="&#10;    \text{linearity of forward progression} = \frac{ \text{mean straight line speed} }{ \text{ mean speed } }&#10;  " src="../_images/math/6/f/e/6fe8ac67749facfb2574b707a5f05a94.png" />
+</pre>
+</center>
+<p>If the track is linear and if the time interval between two spots is always the same, then this value is equal to the <i>confinement ration</i> value.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Mean_directional_change.">Mean directional change.</span></h4>
+<p>This value measure the angle between two succeeding links, averaged over all the links of a track.
+</p>
+<center>
+<pre> <img class="mwe-math-fallback-image-inline tex" alt="&#10;    \text{ mean directional change } = \frac{1}{N} \sum \alpha_{i,i+1}&#10;  " src="../_images/math/d/d/c/ddc021e96858a1923e13b3c9acc63455.png" />
+</pre>
+</center>
+<p>where <i>αi,i+1</i> is the angle between two succeeding links, in radians.
+</p>
+<h2><span class="mw-headline" id="Spot_trackers">Spot trackers</span></h2>
+<h3><span class="mw-headline" id="LAP_trackers">LAP trackers</span></h3>
+<p>The Linear Assignment Problem (LAP) trackers implemented here follow a stripped down version of 
+the renowned  method contributed by Jaqaman and colleagues<sup id="cite_ref-Jaqaman_2-0" class="reference"><a href="TrackMate_Algorithms.html#cite_note-Jaqaman-2">&#91;2&#93;</a></sup>. We repeat here the ideas found in the reference paper, then stresses the differences with the nominal implementation. 
+</p><p>In TrackMate, the LAP framework backs up two instances of a tracker (four if you count the old ones, prior to v2.5.z):
+</p>
+<ul><li> the Simple LAP tracker;</li>
+<li> the LAP tracker.</li></ul>
+<p>The first one is simply a simplified version of the second: it has less settings and only deal with particle that do not divide nor merge, and ignores any feature penalty (see below). 
+</p><p>All the linking costs for these two trackers are based on the particle-to-particle square distance. If this tracker had to be summarized in one sentence, it would be the following: <b>The Simple LAP tracker and the LAP tracker are well suited for particle undergoing Brownian motion.</b> Of course, they will be fine for a non-Brownian motion as long as the particles are not too dense. 
+</p><p>Particle-linking happens in two step: track segments creation from frame-to-frame particle linking, then track segments linking to achieve gap closing. The mathematical formulation used for both steps is linear assignment problem (LAP): a cost matrix is assembled contained all possible assignment costs. Actual assignments are retrieved by solving this matrix for minimal total cost. We describe first how cost matrices are arranged, then how individual costs are calculated.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Cost_matrix_for_frame-to-frame_linking">Cost matrix for frame-to-frame linking</span></h4>
+<p>In the first step, two consecutive frames are inspected for linking. Each spot of the first frame is offered to link to any other spot in the next frame, or not to link.  This takes the shape of a (<i>n</i>+<i>m</i>) x (<i>n</i>+<i>m</i>) matrix (n is the number of spots in the frame t, m is the number of spots in the frame t+1), that can be divided in 4 quadrants. 
+</p>
+<ul><li> The top-left quadrant (size <i>n</i> x <i>m</i>) contains the costs for linking a spot <i>i</i> in the frame <i>t</i> to any spot <i>j</i> in the frame 't+1<i>.</i></li></ul>
+<ul><li> The top-right quadrant (size <i>n</i> x <i>n</i>) contains the costs for a spot <i>i</i> in the frame <i>t</i> not to create a link with next frame (yielding a segment stop).</li></ul>
+<ul><li> The bottom-left quadrant (size <i>m</i> x <i>m</i>) contains the costs for a spot <i>j</i> in the frame <i>t+1</i> not to have any link with previous frame (yielding a segment start).</li></ul>
+<ul><li> The bottom-right quadrant (size <i>m</i> x <i>n</i>) is the auxiliary block mathematically required by the LAP formalism. A detailed explanation for its existence is given in the supplementary note 3 of <sup id="cite_ref-Jaqaman_2-1" class="reference"><a href="TrackMate_Algorithms.html#cite_note-Jaqaman-2">&#91;2&#93;</a></sup>. This quadrant is built by taking the transpose of the top-left quadrant, and replacing all non-blocking costs by the minimal cost.</li></ul>
+<p><br />
+</p>
+<h4><span class="mw-headline" id="Solving_LAP">Solving LAP</span></h4>
+<p>To solve this LAP, we rely on the Munkres &amp; Kuhn algorithm<sup id="cite_ref-3" class="reference"><a href="TrackMate_Algorithms.html#cite_note-3">&#91;3&#93;</a></sup>, that solves the problem in polynomial time (<i>O(n<sup>3</sup>)</i>). The algorithm returns the assignment list that minimizes the sum of their costs. 
+</p><p>The frame-to-frame linking described above is repeated first for all frame pairs. This yields a series of non-branching track segments. A track segment may be start or stop because of a missing detection, or because of a merge or split event, which is not taken into account at this stage. A second step where track segments are offered to link between each other (and not only spots) is need, and described further down.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Calculating_linking_costs">Calculating linking costs</span></h4>
+<p>In calculating costs, we deviate slightly from the original paper from  Jaqaman <i>et al.</i><sup id="cite_ref-Jaqaman_2-2" class="reference"><a href="TrackMate_Algorithms.html#cite_note-Jaqaman-2">&#91;2&#93;</a></sup>. In the paper, costs depend solely on the spot-to-spot distance, possibly weighted by the difference in spot intensity. Here, we offer to the user to tune costs by adding penalties on spot features, as explained below.
+</p><p>The user is asked for a maximal allowed linking distance (entered in physical units), and for a series of spot features, alongside with penalty weights. These parameters are used to tune the cost matrices. For two spots that may link, the linking cost is calculated as follow:
+</p>
+<ol><li> The distance between the two spots D is calculated </li>
+<li> If the spots are separated by more than the max allowed distance, the link is forbidden, and the cost is set to <a rel="nofollow" class="external text" href="http://docs.oracle.com/javase/6/docs/api/java/lang/Double.html#POSITIVE_INFINITY">infinity</a> (<i>i.e</i> the blocking value). If not, </li>
+<li> For each feature in the map, a penalty p is calculated as <br /><img class="mwe-math-fallback-image-inline tex" alt=" p = 3 \times W \times \frac{ | f_1-f_2|}{f_1+f_2} " src="../_images/math/e/8/0/e80e54b97c6e2e6e67696df3397d2b40.png" /><br />where W is the factor associated to the feature in the map. This expression is such that:
+<ul><li> there is no penalty if the 2 feature values f1 and f2 are the same; </li>
+<li> with a factor of 1, the penalty is 1 is one value is the double of the other; </li>
+<li> the penalty is 2 if one is 5 times the other one. </li></ul></li>
+<li> All penalties are summed, to form P = (1 + ∑ p ) </li>
+<li> The cost is set to the square of the product: C = ( D × P )²</li></ol>
+<p>If the user feeds no penalty, the costs are simply the distances squared.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Calculating_non-linking_costs">Calculating non-linking costs</span></h4>
+<p>The top-right and bottom-left quadrant of the frame-to-frame linking matrix contain costs associated with track segment termination or initiation (a spot is not linking to a spot in the next or previous frame). Each of these two blocks is a square matrix with blocking value everywhere, except along the diagonal for which an alternative cost is computed. Following Jaqaman<sup id="cite_ref-Jaqaman_2-3" class="reference"><a href="TrackMate_Algorithms.html#cite_note-Jaqaman-2">&#91;2&#93;</a></sup>, this cost is set to be
+</p><p>Calt = 1.05 × max( C )
+</p><p>where C is the costs of the top-left quadrant.
+</p>
+<h4><span class="mw-headline" id="Cost_calculation_.26_Brownian_motion">Cost calculation &amp; Brownian motion</span></h4>
+<p>Without penalties and with a maximal linking allowed distance, the returned solution is the one that minimizes the sum of squared distances. This actually corresponds to the case where the motion of spots is governed by <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Brownian_motion">Brownian motion</a>. See for instance Crocker and Grier<sup id="cite_ref-4" class="reference"><a href="TrackMate_Algorithms.html#cite_note-4">&#91;4&#93;</a></sup>.
+</p><p>By adding feature penalties, we aim at favoring linking particles that "resemble" each other. In brute single particle linking problems, spots are generally all the same, and they only differ by position. However, there is a variety of problems for which these feature penalties can add robustness to the tracking process.
+</p><p>For instance, we originally developed <a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a> for semi-automated lineaging of <i>C.elegans</i> embryos, using a strain fluorescent in the nucleus. Cells that are dividing have a fluorescence distribution which is very different from non-dividing cells, and this can be exploited for robust tracking.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Track_segment_linking">Track segment linking</span></h4>
+<p>In a second step, the track segments built above are offered to link between each other. Jaqaman and colleagues proposes to exploit again the LAP framework for this step. A new cost matrix is generated, but this time the following events are considered:
+</p>
+<ul><li> The end of a track segment is offered to link to any other track segment start. This corresponds to <u>gap-closing</u> events, where a link is created typically over two spots separated by a missed detection.</li></ul>
+<ul><li> The start of a track segment is offered to link to the spots in the central part (not start, not end) of any other track segment. This corresponds to <u>splitting</u> events, where a track branches in two sub-tracks.</li></ul>
+<ul><li> The end of a track segment is offered to link to the spots in the central part of any other track segment. This corresponds to <u>merging</u> events, where two tracks merges into one. I yet did not meet this case in Life-Sciences.</li></ul>
+<ul><li> A spot part of any track segment is offered not to create any link. </li></ul>
+<p>The second cost matrix has a shape that resembles the first cost matrix, calculated for frame-to-frame linking, and which is best described in the original article. 
+</p><p>As before, we modified the way costs are calculated, and re-used the feature penalties framework described above. Also, the user must provide on top a maximal time-difference to link, over which linking will be provided. Careful: this maximal time is expressed in physical units and not in number of frames. 
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Main_differences_with_the_Jaqaman_paper.5B2.5D">Main differences with the Jaqaman paper<sup id="cite_ref-Jaqaman_2-4" class="reference"><a href="TrackMate_Algorithms.html#cite_note-Jaqaman-2">&#91;2&#93;</a></sup></span></h4>
+<p>The nominal implementation of the paper remains the one developed under <a href="http://imagej.net/Category:Matlab" title="Category:Matlab">Matlab</a> by Khuloud Jaqaman <i>et al.</i> and published in Nature Methods. The software is called u-track and can be found on <a rel="nofollow" class="external text" href="http://www.utsouthwestern.edu/labs/jaqaman/software/">Khuloud Jaqaman homepage</a>. 
+</p><p>TrackMate was initially developed to simplify <i>C.elegans</i> lineaging. It therefore just bundles a stripped down version of this framework. 
+</p><p>The notable differences are:
+</p>
+<ol><li> The LAP framework is generic: Jaqaman and colleagues proposed a framework to approximate  multiple-hypothesis tracking solutions using linear assignment problems. One just need to provide the link cost matrix. <b>TrackMate</b> properly implements the LAP framework, but the cost matrix calculation - which is specific to each problem - is much more simpler than in <b>u-track</b>. <br /> For instance, in TrackMate all link costs are based on the square distance between two spots (weighted or not by feature differences, see above), which make it tailored for Brownian motion. In <b>u-track</b>, the user is proposed with different motion types, including a linear motion whose parameters are determined on the fly. See for instance CD36 tracking, in the supplementary note 7 of the paper<sup id="cite_ref-Jaqaman_2-5" class="reference"><a href="TrackMate_Algorithms.html#cite_note-Jaqaman-2">&#91;2&#93;</a></sup>.</li>
+<li> In <b>u-track</b>, merging and splitting of tracks are used to describe two particles that temporally overlap spatially. These events' costs are weighted by the two particle intensities to properly catch the apparent increase in intensity due to the overlap. In <b>TrackMate</b>, we use splitting events to describe cell divisions, as we developed it initially to deal with <i>C.elegans</i> lineages. However is seems than Jaqaman and colleagues used it the same way to investigate CD36 dissociation and re-association. </li>
+<li> In <b>TrackMate</b>, distance and time cutoffs are specified manually by the user. In <b>u-track</b> they are derived for each particle automatically, providing self adaptation.</li></ol>
+<h3><span class="mw-headline" id="Linear_motion_tracker.">Linear motion tracker.</span></h3>
+<p>Starting from TrackMate v2.7.z, we shipped a new tracker that can deal specifically with linear motion, or particle moving with a roughly constant velocity. This velocity does not need to be the same for all particles. You can find it in TrackMate tracker selection under the name <b>Linear motion LAP tracker</b>.
+</p><p>Though it deals with a completely different motion model compared to the LAP trackers in TrackMate, it reuses the Jaqaman LAP framework, and it is similar to a tracker proposed in the Jaqaman paper as well: See the CD36 tracking, in the supplementary note 7 of the paper<sup id="cite_ref-Jaqaman_2-6" class="reference"><a href="TrackMate_Algorithms.html#cite_note-Jaqaman-2">&#91;2&#93;</a></sup>. But again, the version in TrackMate is simplified compared to what you can find in <b>u-track</b>.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Principle.">Principle.</span></h4>
+<p>The linear motion tracker relies on the <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Kalman_filter">Kalman filter</a> to <i>predict</i> the most probable position of a particle undergoing constant velocity movement.
+</p><p>Tracks are initiated from the first two frames, using the classical LAP framework with the Jaqaman cost matrix (see above), using the square distance as cost. The user can set what is the maximal distance allowed for the initial search with the <b>Initial search radius</b> setting. 
+</p><p>Each track initiated from a pair of spots is used to create an instance of a Kalman filter. There are as many Kalman filters as tracks. In the next frames, each Kalman filter is used to generate a prediction of the most probable position of the particle. All these predictions are stored. 
+</p><p>Then, all the predicted positions are linked against the actual spot positions in the frame, using again the Jaqaman LAP framework, with the square distance as costs. The user can set how far can be an actual position from a predicted position for linking with the <b>Search radius</b> setting.
+</p><p><a href="http://imagej.net/File:TrackMate_KalmanTrackerPrinciple.png" class="image"><img alt="TrackMate KalmanTrackerPrinciple.png" src="../_images/e/e8/TrackMate_KalmanTrackerPrinciple.png" width="600" height="438" /></a>
+</p><p>Now of course, after linking, some Kalman filters might not get linked to a found spot. This event is called an occlusion: the predicted position did not correspond to an actual measurement (spot). The good thing with Kalman filters is that they are fine with this, and are still able to make a prediction for the next frame even with a missing detection. If the number of successive occlusions is too large, the track is considered terminated. The user can set the maximal number of successive occlusions allowed before a track is terminated with the <b>Max frame gap</b> setting.
+</p><p>Conversely, some spots might not get linked to a track. They will be used to initiate a new track in the next frame, as for the tracker initiation described above. 
+</p><p>It is important to note here that the cost functions we use is the square distance, like for the Brownian motion, but from the predicted positions to the actual detections. Because the prediction positions are made assuming constant velocity, we are indeed dealing with an adequate cost function for linear motion. But since we are linking predicted positions to measured positions with the square distance cost function, we do as if the predicted positions deviate from actual particle position with an error that follows the gaussian distribution. This is a reasonable assumption and this is why this tracker will be robust.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Implementation">Implementation</span></h4>
+<p>The code can be found on <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master//src/main/java/fiji/plugin/trackmate/tracking/kalman/KalmanTracker.java">on GitHub</a>. We now repeat the section above in pseudo-language. When you see the word <b>link</b> below, this means:
+</p>
+<ol><li> Take all the source detections in frame t and the target detections in frame t+1.</li>
+<li> Compute the costs for all possible physical assignment (potential links) between source and target  detections and store them in the cost matrix.</li>
+<li> Solve the LAP associated to this matrix.</li>
+<li> Create a link for each assignment found.</li></ol>
+<p>The particle linking algorithm would read as follow:
+</p>
+<ul><li> Initialization:</li></ul>
+<ol><li> Link all the detections of frame 0 to the detections of frame 1, just based on the square distance costs (for instance).</li>
+<li> From each of the <i>m</i> links newly created, compute a velocity. This velocity is enough to initialize <i>m</i> Kalman filters.</li>
+<li> Initialize <i>m</i> tracks with the found detections and links, and store the associated Kalman filters.</li></ol>
+<ul><li> Track elongation:</li></ul>
+<ol><li> For each Kalman filter, run the prediction step. This will generate m predicted positions. </li>
+<li> Link the m predicted positions to the n detections in frame 2, based on square distance. </li>
+<li> Target detection that have been linked to a predicted position are added to the corresponding track. </li>
+<li> The accepted target detection is used to run the update step of the Kalman filter.</li>
+<li> Loop to next frame.</li></ol>
+<ul><li> Track termination:</li></ul>
+<ol><li> Some of the <i>m</i> predicted position might not find an actual detection to link to. In that case, we have an occlusion. The algorithm must decide whether it has to terminate the track or to bridge over a gap.</li>
+<li> If the number of successive occlusions for a Kalman filter is below a certain limit (typically 2 to 10), the track is not terminated, and the filter goes back to the track elongation step. Hopefully, from the new prediction a target particle will be found, and the detection in frame t will be linked to a detection in frame <i>t</i>+2 (or <i>t</i>+3 etc).</li>
+<li> Otherwise, the track is terminated and the Kalman filter object is dropped.</li></ol>
+<ul><li> Track initiation:</li></ul>
+<ol><li> Conversely, some detections in frame <i>t</i>+1 might not be linked to a predicted position. In this case, these orphan detections are stored to initiate a new track. But for this, other orphans detections are needed in frame <i>t</i>+2.</li>
+<li> This step is identical to the initiation step, but for subsequent frames. It requires to store orphan detections in current and previous frames. </li>
+<li> In frame <i>t</i>+2, priority must be given to detections linked to the predicted positions by the Kalman filters over orphan detections of frame <i>t</i>+1. So when you deal with frame <i>t</i>+2, you perform first the track elongation step, get a list of orphan detections in frame <i>t</i>+2, and then combine it to the orphan detections in frame <i>t</i>+1 to initiate new Kalman filters.</li></ol>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ol class="references">
+<li id="cite_note-Lowe-1"><span class="mw-cite-backlink"><a href="TrackMate_Algorithms.html#cite_ref-Lowe_1-0">↑</a></span> <span class="reference-text">David G. Lowe, <a rel="nofollow" class="external text" href="http://www.cs.ubc.ca/~lowe/papers/ijcv04.pdf">"Distinctive image features from scale-invariant keypoints"</a>, International Journal of Computer Vision, 60, 2 (2004), pp. 91-110.</span>
+</li>
+<li id="cite_note-Jaqaman-2"><span class="mw-cite-backlink">↑ <sup><a href="TrackMate_Algorithms.html#cite_ref-Jaqaman_2-0">2.0</a></sup> <sup><a href="TrackMate_Algorithms.html#cite_ref-Jaqaman_2-1">2.1</a></sup> <sup><a href="TrackMate_Algorithms.html#cite_ref-Jaqaman_2-2">2.2</a></sup> <sup><a href="TrackMate_Algorithms.html#cite_ref-Jaqaman_2-3">2.3</a></sup> <sup><a href="TrackMate_Algorithms.html#cite_ref-Jaqaman_2-4">2.4</a></sup> <sup><a href="TrackMate_Algorithms.html#cite_ref-Jaqaman_2-5">2.5</a></sup> <sup><a href="TrackMate_Algorithms.html#cite_ref-Jaqaman_2-6">2.6</a></sup></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v5/n8/full/nmeth.1237.html">Jaqaman et al., "Robust single-particle tracking in live-cell time-lapse sequences", Nat Methods. 2008 Aug;5(8):695-702.</a></span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="TrackMate_Algorithms.html#cite_ref-3">↑</a></span> <span class="reference-text">J. Munkres, "Algorithms for the Assignment and Transportation Problems", Journal of the Society for Industrial and Applied Mathematics, 5(1):32–38, 1957 March</span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="TrackMate_Algorithms.html#cite_ref-4">↑</a></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://physics.nyu.edu/grierlab/methods3c/methods3c.pdf">Crocker and Grier. "Methods of Digital Video Microscopy for Colloidal Studies." J Colloid Interf Sci (1996) vol. 179 (1) pp. 298-310</a></span>
+</li>
+</ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074014
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.060 seconds
+Real time usage: 0.064 seconds
+Preprocessor visited node count: 399/1000000
+Preprocessor generated node count: 914/1000000
+Post‐expand include size: 329/2097152 bytes
+Template argument size: 155/2097152 bytes
+Highest expansion depth: 4/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.667      1 - Template:GitHub
+100.00%    5.667      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=TrackMate_Algorithms&amp;oldid=40574">http://imagej.net/index.php?title=TrackMate_Algorithms&amp;oldid=40574</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 25 September 2019, at 03:11.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=TrackMate_Algorithms&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=TrackMate+Algorithms" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=TrackMate+Algorithms" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/TrackMate_Algorithms" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/TrackMate_Algorithms" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=TrackMate_Algorithms&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=TrackMate_Algorithms&amp;oldid=40574" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=TrackMate_Algorithms&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":217});});</script>
+		</body>
+		</html>
+		

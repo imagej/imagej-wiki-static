@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Stack Manipulation - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Stack_Manipulation","wgTitle":"Stack Manipulation","wgCurRevisionId":32641,"wgRevisionId":32641,"wgArticleId":257,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Stack_Manipulation","wgRelevantArticleId":257,"wgRequestId":"f46324ddbe370d340cfd2431","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This package regroups various &quot;small&quot; plugins dedicated to the manipulation of stacks, allowing to sort them, combine them, etc...&#10;As they are more of a utility package, they all can be found in the  Image &amp;#160;&amp;#8250;  Stacks &amp;#160;&amp;#8250;  Tools menu, next to the ones provided by bare ImageJ."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Stack Manipulation"/>
+
+	<meta property="og:description" content="This package regroups various &quot;small&quot; plugins dedicated to the manipulation of stacks, allowing to sort them, combine them, etc...&#10;As they are more of a utility package, they all can be found in the  Image &amp;#160;&amp;#8250;  Stacks &amp;#160;&amp;#8250;  Tools menu, next to the ones provided by bare ImageJ."/>
+
+	<meta property="og:url" content="http://imagej.net/Stack_Manipulation"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Stack_Manipulation rootpage-Stack_Manipulation skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Substack_Maker.html#bodyContent">Skip to content</a>, 			<a href="Substack_Maker.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Substack_Maker.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Substack_Maker.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Stack_Manipulation&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Stack_Manipulation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Stack_Manipulation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Stack Manipulation</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Stack Manipulation<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Stack_Manipulation">https://imagej.net/Stack_Manipulation</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Stack_Manipulation/releases/tag/Stack_Manipulation-2.0.2">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Stack_Manipulation~2.0.2~~~kw,versionexpand">2.0.2</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 23:08:20 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>, Tony Collins, Patrick Kelly, J. Anthony Parker, <a href="http://imagej.net/Wayne_Rasband" title="Wayne Rasband">Wayne Rasband</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> Tony Collins, Patrick Kelly, J. Anthony Parker, <a href="http://imagej.net/Wayne_Rasband" title="Wayne Rasband">Wayne Rasband</a>, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Substack_Maker.html#Content_and_purpose"><span class="tocnumber">1</span> <span class="toctext">Content and purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Substack_Maker.html#Author_and_licenses"><span class="tocnumber">2</span> <span class="toctext">Author and licenses</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Substack_Maker.html#DeInterleave"><span class="tocnumber">2.1</span> <span class="toctext">DeInterleave</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Substack_Maker.html#Stack_Splitter"><span class="tocnumber">2.2</span> <span class="toctext">Stack Splitter</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Substack_Maker.html#Stack_Sorter"><span class="tocnumber">2.3</span> <span class="toctext">Stack Sorter</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Substack_Maker.html#Interleave"><span class="tocnumber">2.4</span> <span class="toctext">Interleave</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Substack_Maker.html#Slice_Remover"><span class="tocnumber">2.5</span> <span class="toctext">Slice Remover</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Substack_Maker.html#Slice_Keeper"><span class="tocnumber">2.6</span> <span class="toctext">Slice Keeper</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Content_and_purpose">Content and purpose</span></h2>
+<p>This package regroups various "small" plugins dedicated to the manipulation of stacks, allowing to sort them, combine them, etc...
+As they are more of a utility package, they all can be found in the <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Tools</span></em></span> menu, next to the ones provided by bare ImageJ.
+</p><p>What they do is pretty much summarized by the following diagram, taken from the <a href="http://imagej.net/MBF_ImageJ" class="mw-redirect" title="MBF ImageJ">MBF ImageJ</a> webpage.
+</p>
+<div class="MediaTransformError" style="width: 480px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+</p>
+<ul><li> The <b>Grouped ZProjector</b> acts a bit like the <b>Substack Maker</b>, for it allows to reduce the number of frame within a stack. But rather than taking a slice every certain step, it combines a group of slices and project them on a single slice. The size of the groups is configurable, and must be a divisor of the total number of slice.</li></ul>
+<p><br />
+</p>
+<ul><li> The <b>Slice Keeper</b> does the opposite that of <b>Slice Remover</b>. Instead of removing every nth slice in a stack, it creates a new stack by only keeping every nth slice from the original stack.</li></ul>
+<p><br />
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Author_and_licenses">Author and licenses</span></h2>
+<p>We list here the authors for each part of this package, with corresponding licenses when relevant.
+</p>
+<h3><span class="mw-headline" id="DeInterleave">DeInterleave</span></h3>
+<p>By Tony Collins.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Stack_Splitter">Stack Splitter</span></h3>
+<p>By <a rel="nofollow" class="external text" href="mailto:phkelly_at_ucsd.edu">Patrick Kelly</a>, <a rel="nofollow" class="external text" href="mailto:gjoss_at_rna.bio.mq.edu.au">Greg Joss</a> &amp; 
+<a rel="nofollow" class="external text" href="mailto:rcunning@acm.org">Bob Cunningham</a>.
+Last revision: 30 April 2003.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Stack_Sorter">Stack Sorter</span></h3>
+<p>Taken from <b>Bob Dougherty</b> Stack_Sorter plugin (<a rel="nofollow" class="external text" href="http://www.optinav.com/Stack-Sorter.htm">optinav website</a>). Version 10: 11/18/2005.
+</p><p>License:
+</p><p><i>
+Copyright (c) 2002, 2005, OptiNav, Inc.
+All rights reserved.
+</p><p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+</p>
+<ul><li> Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
+<li> Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the * Neither the name of OptiNav, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li></ul>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</i>
+</p><p><br />
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Interleave">Interleave</span></h3>
+<p>By Tony Collins.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Slice_Remover">Slice Remover</span></h3>
+<p>This command lets you remove multiple slices in one go. You can specify a start slice, and end slice and an increment (i.e. start=1, end=5, increment=2 will remove the slices 1, 3 and 5). Warning: The Slice Remover treats hyperstacks as if they were converted via <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Hyperstacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Hyperstack to Stack</span></em></span> first.
+</p><p>Original code by <a href="http://imagej.net/Wayne_Rasband" title="Wayne Rasband">Wayne Rasband</a>.
+</p>
+<h3><span class="mw-headline" id="Slice_Keeper">Slice Keeper</span></h3>
+<p>By Tony Collins, initially part of his wonderful <a href="http://imagej.net/MBF_Plugin_Collection" title="MBF Plugin Collection">MBF Plugin Collection</a> package. Tony mentioned credit should go to <a href="http://imagej.net/Wayne_Rasband" title="Wayne Rasband">Wayne Rasband</a>, for the initial code is his work.
+</p><p><br />
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073528
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.128 seconds
+Real time usage: 0.128 seconds
+Preprocessor visited node count: 3322/1000000
+Preprocessor generated node count: 5314/1000000
+Post‐expand include size: 6519/2097152 bytes
+Template argument size: 1655/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   99.952      1 - -total
+ 93.72%   93.675      1 - Template:ComponentStats:sc.fiji:Stack_Manipulation
+ 92.56%   92.512      1 - Template:Component
+ 78.59%   78.552     12 - Template:Person
+  5.12%    5.115      2 - Template:Bc
+  1.78%    1.784      1 - Template:GitHub
+  1.71%    1.709      4 - Template:Arrow
+  1.42%    1.423      1 - Template:Project
+  1.21%    1.211      1 - Template:Maven
+  1.01%    1.005      1 - Template:DevStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Stack_Manipulation&amp;oldid=32641">http://imagej.net/index.php?title=Stack_Manipulation&amp;oldid=32641</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 3 June 2017, at 21:39.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Stack_Manipulation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Stack+Manipulation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Stack+Manipulation" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Stack_Manipulation" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Stack_Manipulation" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Stack_Manipulation&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Stack_Manipulation&amp;oldid=32641" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Stack_Manipulation&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":273});});</script>
+		</body>
+		</html>
+		

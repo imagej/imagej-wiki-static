@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Profiling Java Code - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Profiling_Java_Code","wgTitle":"Profiling Java Code","wgCurRevisionId":17036,"wgRevisionId":17036,"wgArticleId":954,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Development"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Profiling_Java_Code","wgRelevantArticleId":954,"wgRequestId":"86a4c0cafda3bf7ab279e9a7","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="If your Java code seems to have bottlenecks that make it run slow, you need to profile the code. There are a couple of options you have for that."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Profiling Java Code"/>
+
+	<meta property="og:description" content="If your Java code seems to have bottlenecks that make it run slow, you need to profile the code. There are a couple of options you have for that."/>
+
+	<meta property="og:url" content="http://imagej.net/Profiling_Java_Code"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Profiling_Java_Code rootpage-Profiling_Java_Code skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Profiling_Java_Code.html#bodyContent">Skip to content</a>, 			<a href="Profiling_Java_Code.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Profiling_Java_Code.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Profiling_Java_Code" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Profiling_Java_Code&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Profiling_Java_Code&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Profiling_Java_Code&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Profiling Java Code</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>If your Java code seems to have bottlenecks that make it run slow, you need to <i>profile</i> the code. There are a couple of options you have for that.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Profiling_Java_Code.html#JProfiler"><span class="tocnumber">1</span> <span class="toctext">JProfiler</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Profiling_Java_Code.html#HPROF"><span class="tocnumber">2</span> <span class="toctext">HPROF</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Profiling_Java_Code.html#Java_Mission_Control"><span class="tocnumber">3</span> <span class="toctext">Java Mission Control</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Profiling_Java_Code.html#VisualVM"><span class="tocnumber">4</span> <span class="toctext">VisualVM</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Profiling_Java_Code.html#OProfile"><span class="tocnumber">5</span> <span class="toctext">OProfile</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="Profiling_Java_Code.html#Start_the_profiler"><span class="tocnumber">5.1</span> <span class="toctext">Start the profiler</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Profiling_Java_Code.html#Start_Fiji_with_support_for_profiling"><span class="tocnumber">5.2</span> <span class="toctext">Start Fiji with support for profiling</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Profiling_Java_Code.html#Stop_the_profiler"><span class="tocnumber">5.3</span> <span class="toctext">Stop the profiler</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Profiling_Java_Code.html#Getting_at_the_profiling_data"><span class="tocnumber">5.4</span> <span class="toctext">Getting at the profiling data</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Profiling_Java_Code.html#Further_reading"><span class="tocnumber">5.5</span> <span class="toctext">Further reading</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="Profiling_Java_Code.html#Shark_.28for_MacOSX.29"><span class="tocnumber">6</span> <span class="toctext">Shark (for MacOSX)</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="Profiling_Java_Code.html#Memory_profiling"><span class="tocnumber">7</span> <span class="toctext">Memory profiling</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="Profiling_Java_Code.html#Javassist-based"><span class="tocnumber">7.1</span> <span class="toctext">Javassist-based</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="Profiling_Java_Code.html#Using_JVisualVM"><span class="tocnumber">7.2</span> <span class="toctext">Using JVisualVM</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="JProfiler">JProfiler</span></h2>
+<p><a rel="nofollow" class="external text" href="http://www.ej-technologies.com/products/jprofiler/overview.html">JProfiler</a> is a commercial program, but you can evaluate a trial version.
+</p>
+<h2><span class="mw-headline" id="HPROF">HPROF</span></h2>
+<p>Use <a rel="nofollow" class="external text" href="http://java.sun.com/developer/technicalArticles/Programming/HPROF.html">HPROF</a>, a profiler included in Sun's Java since version 1.5.
+</p>
+<h2><span class="mw-headline" id="Java_Mission_Control">Java Mission Control</span></h2>
+<p>Starting with Java 1.7 update 40, Oracle bundles <a rel="nofollow" class="external text" href="http://www.oracle.com/technetwork/java/javaseproducts/mission-control/index.html">Java Mission Control</a> with their JREs/JDKs. This provides incredibly powerful monitoring/profiling capabilities, but it is notably lacking from OpenJDK.
+</p><p>The most important part of Java Mission Control to enable efficient profiling is the <i>Flight Recorder</i>. The flight recorder has to be enabled explicitly at startup:
+</p>
+<pre class="brush:bash">
+java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder [...]
+</pre>
+<p>The easiest way to use the flight recorder to profile a certain code path, say, from Eclipse, is to write a JUnit test (make sure that the time it runs is dominated by the code paths you want to profile!) and then add a run configuration for it whose JVM arguments include:
+</p>
+<pre class="brush:bash">
+-Dscijava.log.level=error \
+-XX:+UnlockCommercialFeatures -XX:+FlightRecorder \
+-XX:StartFlightRecording=name=MyRecording,duration=999s,filename=/tmp/a1.jfr,settings=profile
+</pre>
+<p>(Of course you want to avoid copying this blindly and adjust in particular the <b>duration</b> and the <b>filename</b> parameters.)
+</p><p>After the JUnit test finishes, call <i>Java Mission Control</i> via the <code>jmc</code> executable (it lives in the JDK's <i>bin/</i> directory), <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open File</span></em></span> the <i>.jfr</i> file, click on the <i>Code</i> button in the center of the Mission Control window, select the <i>Hot Methods</i> tab of the big panel (confusingly, the tabs are at the bottom) and inspect the stack traces.
+</p>
+<h2><span class="mw-headline" id="VisualVM">VisualVM</span></h2>
+<p>Use <a rel="nofollow" class="external text" href="http://download.oracle.com/docs/cd/E17409_01/javase/6/docs/technotes/guides/visualvm/index.html">VisualVM</a> (a tutorial can be found <a rel="nofollow" class="external text" href="http://java.dzone.com/articles/profile-your-applications-java">here</a>), which is a graphical alternative to HPROF, available in Sun's Java since version 6 update 7.
+</p><p>See also <a rel="nofollow" class="external text" href="http://rejeev.blogspot.com/2009/04/analyzing-memory-leak-in-java.html">Rejeev Divakaran's detailed instructions on memory profiling with VisualVM</a>.
+</p>
+<h2><span class="mw-headline" id="OProfile">OProfile</span></h2>
+<p>If you are on Linux, you can use <a rel="nofollow" class="external text" href="http://oprofile.sourceforge.net/news/">OProfile</a>, a low-overhead profiler which uses a kernel module to minimize its impact.
+</p><p>You need to <a rel="nofollow" class="external text" href="http://oprofile.sourceforge.net/doc/setup-jit.html#setup-jit-jvm">recompile OProfile</a> for Java support (at least on Ubuntu, there is no precompiled OProfile package with Java support). On Linux, you can use this shell script to compile and install it:
+</p>
+<pre class="brush:bash">
+sudo apt-get install libpopt-dev binutils-dev checkinstall &amp;&amp; 
+git clone git://oprofile.git.sourceforge.net/gitroot/oprofile/oprofile &amp;&amp; 
+cd oprofile &amp;&amp; 
+./autogen.sh &amp;&amp; 
+./configure --with-kernel-support \
+        --with-java=/path/to/fiji/java/linux-amd64/jdk1.6.0_24/ &amp;&amp;
+make &amp;&amp; 
+sudo checkinstall
+</pre>
+<p>You should make sure that the path to the JDK is correct. (But you do not need to use <i>checkinstall</i>, but it will make it easy to remove the package once you do not want it anymore.)
+</p>
+<h3><span class="mw-headline" id="Start_the_profiler">Start the profiler</span></h3>
+<pre class="brush:bash">
+sudo opcontrol --start --no-vmlinux
+</pre>
+<p>Recent versions of OProfile require that a user account <i>oprofile</i> with default group <i>oprofile</i> exist before starting the OProfile daemon. On current Ubuntu systems, you can make one by calling <b>sudo adduser oprofile</b> (Ubuntu creates a default group of the same name for each new user account). If you do not have such an account, you will get something like <i>anon (tgid:10014 range:0x100000-0x103000)</i> in the report.
+</p>
+<h3><span class="mw-headline" id="Start_Fiji_with_support_for_profiling">Start Fiji with support for profiling</span></h3>
+<pre>fiji -agentpath:/usr/local/lib/oprofile/libjvmti_oprofile.so --
+</pre>
+<h3><span class="mw-headline" id="Stop_the_profiler">Stop the profiler</span></h3>
+<pre class="brush:bash">
+sudo opcontrol --stop
+</pre>
+<h3><span class="mw-headline" id="Getting_at_the_profiling_data">Getting at the profiling data</span></h3>
+<pre class="brush:bash">
+sudo opcontrol --dump &amp;&amp; 
+opreport -l image:\*/fiji
+</pre>
+<p>If you get entries like <i>"anon (tgid:10014 range:0x100000-0x103000)</i> you probably did not create a user account <i>oprofile</i> in a group <i>oprofile</i> before starting the OProfile daemon.
+</p><p>To get information about source files and line numbers, also pass the <i>-g</i> option to <i>opreport</i>.
+</p>
+<h3><span class="mw-headline" id="Further_reading">Further reading</span></h3>
+<p>See the <a rel="nofollow" class="external text" href="http://oprofile.sourceforge.net/doc/">OProfile manual</a> for more information.
+</p>
+<h2><span class="mw-headline" id="Shark_.28for_MacOSX.29">Shark (for MacOSX)</span></h2>
+<p>You might find <a rel="nofollow" class="external text" href="http://developer.apple.com/tools/sharkoptimize.html">Shark 4</a> useful if you're on MacOSX.
+</p>
+<h1><span class="mw-headline" id="Memory_profiling">Memory profiling</span></h1>
+<p>Even if Java's memory management prevents most memory issues (unaligned writes, access to uninitialized/released memory), there is a chance of memory leaks: constant accumulation of objects over time, most likely because there are stale references to them.
+</p><p>Note: <i>heap</i> is Java speak for <i>memory</i>.
+</p>
+<h2><span class="mw-headline" id="Javassist-based">Javassist-based</span></h2>
+<p>A quite versatile method is to use (and possibly modify) the class <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji-compat/blob/master/src/main/java/fiji/MemoryProfiler.java">fiji.MemoryProfiler</a> in <i>fiji-compat.jar</i>.
+</p><p>This memory profiler instruments all method entries and exists using javassist. At each exit, it reports the relative memory usage, the total memory usage, and the exit point of the current method. Call it like this:
+</p>
+<pre class="brush:bash">
+./fiji --main-class fiji.MemoryProfiler fiji.Main
+</pre>
+<p>Since the memory profiling slows down execution dramatically due to the synchronous output to stderr, you may want to limit the classes to be instrumented by setting the environment variable <i>MEMORY_PROFILE_ONLY</i> to a space-delimited list of classes.
+</p><p>If you want to instrument any class handled by <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-legacy/">imagej-legacy</a>, you need to use the slightly more complicated command line:
+</p>
+<pre class="brush:bash">
+./fiji -Dpatch.ij1=false --cp jars/javassist.jar --cp jars/fiji-compat.jar \
+	--cp jars/ij.jar --main-class fiji.MemoryProfiler -- ij.ImageJ
+</pre>
+<h2><span class="mw-headline" id="Using_JVisualVM">Using JVisualVM</span></h2>
+<p>JDK6 and newer come with a quite useful tool called <i>jvisualvm</i>. It is in the <i>bin/</i> directory of the Java Development Kit (it does not come with the JRE, also known as <i>Java Runtime Environment</i>).
+</p><p>JVisualVM lets you attach to any local Java process and inspect the state. The most useful parts for memory profiling are the <i>Memory</i> section in the <i>Monitor</i> tab, showing the overall heap usage (where you can also make a Heap Dump which produces a double-clickable list of objects and their references), and the <i>Memory</i> button on the <i>Sampler</i> tab, which opens kind of a live version of the Heap Dump.
+</p><p>When looking at a Heap Dump, make sure you click on the <i>Classes</i> button in the top row. This shows the list of classes that currently have referenced instances in the Java Virtual Machine. Double-clicking on the class name will open a detailed list of instances of that class, and when clicking on one item in that list, the upper right panel will show that instance's fields while the lower right panel will show the objects holding references to that particular instance.
+</p><p>Note: at no time will JVisualVM stop the virtual machine it is attached to, so if the issues you experience are time-sensitive, you definitely want to put stop-gaps into the code to be able to look at things closely.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073135
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.020 seconds
+Real time usage: 0.020 seconds
+Preprocessor visited node count: 234/1000000
+Preprocessor generated node count: 1130/1000000
+Post‐expand include size: 593/2097152 bytes
+Template argument size: 148/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    8.690      1 - -total
+ 61.78%    5.369      1 - Template:Bc
+ 30.05%    2.611      2 - Template:GitHub
+ 15.65%    1.360      1 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Profiling_Java_Code&amp;oldid=17036">http://imagej.net/index.php?title=Profiling_Java_Code&amp;oldid=17036</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 September 2015, at 16:25.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Profiling_Java_Code&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Profiling+Java+Code" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Profiling+Java+Code" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Profiling_Java_Code" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Profiling_Java_Code" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Profiling_Java_Code&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Profiling_Java_Code&amp;oldid=17036" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Profiling_Java_Code&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":237});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Pinpoint regressions with Git - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Pinpoint_regressions_with_Git","wgTitle":"Pinpoint regressions with Git","wgCurRevisionId":29392,"wgRevisionId":29392,"wgArticleId":15,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Git"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Pinpoint_regressions_with_Git","wgRelevantArticleId":15,"wgRequestId":"5a8f6180475ebe8bac775eb2","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="So you found a regression?  I.e. you know that the version worked perfectly that you had yesterday of, say, the ImageJ Ops library, but today it crashes?"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Pinpoint regressions with Git"/>
+
+	<meta property="og:description" content="So you found a regression?  I.e. you know that the version worked perfectly that you had yesterday of, say, the ImageJ Ops library, but today it crashes?"/>
+
+	<meta property="og:url" content="http://imagej.net/Pinpoint_regressions_with_Git"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Pinpoint_regressions_with_Git rootpage-Pinpoint_regressions_with_Git skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Pinpoint_regressions_with_Git.html#bodyContent">Skip to content</a>, 			<a href="Pinpoint_regressions_with_Git.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Pinpoint_regressions_with_Git.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Pinpoint_regressions_with_Git" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Pinpoint_regressions_with_Git&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Pinpoint_regressions_with_Git&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Pinpoint_regressions_with_Git&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Pinpoint regressions with Git</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Git Tutorials
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">Git for dummies</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/EGit" title="EGit">Git in Eclipse (EGit)</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_mini_howto" title="Git mini howto">Git mini howto</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_workshop" title="Git workshop">Git workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">Git Conflicts</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">Git topic branches</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Notes" title="Git Notes">Git Notes</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git reflogs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_submodule_tutorial" title="Git submodule tutorial">Git submodule tutorial</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Pinpoint regressions with Git</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_publish_a_Git_repository" title="How to publish a Git repository">How to publish a Git repository</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_extract_a_subproject" title="How to extract a subproject">How to extract a subproject</a>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Pinpoint_regressions_with_Git.html#How_to_bisect_with_Git"><span class="tocnumber">1</span> <span class="toctext">How to bisect with Git</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Pinpoint_regressions_with_Git.html#How_to_find_which_commit_introduced_a_regression"><span class="tocnumber">1.1</span> <span class="toctext">How to find which commit introduced a regression</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Pinpoint_regressions_with_Git.html#How_to_forward_port_a_fix"><span class="tocnumber">1.2</span> <span class="toctext">How to forward port a fix</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="Pinpoint_regressions_with_Git.html#See_also"><span class="tocnumber">2</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="How_to_bisect_with_Git">How to bisect with Git</span></h1>
+<h2><span class="mw-headline" id="How_to_find_which_commit_introduced_a_regression">How to find which commit introduced a regression</span></h2>
+<p>So you found a regression?  I.e. you know that the version worked perfectly that you had yesterday of, say, the <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a> library, but today it crashes?
+</p><p>Git-bisect to the rescue!
+</p>
+<pre class="brush:bash">
+git bisect start
+git bisect bad HEAD
+git bisect good HEAD@{yesterday}
+</pre>
+<p>This will start the bisection process, i.e. it will try to find a revision that is as much "in the middle" between the bad commit(s) and the good commit(s) (you will mark more and more commits as good or bad in the process, and by inference, the ancestors of good commits will be considered good, and the offspring of bad commits will be considered bad, too), and let you test that.
+</p><p>In our case, let's just run the unit tests:
+</p>
+<pre class="brush:bash">
+mvn clean test
+</pre>
+<p>If the test is undecided (e.g.: it does not compile, so you do not know if the unit test in question passes), mark it with
+</p>
+<pre class="brush:bash">
+git bisect skip
+</pre>
+<p>otherwise, mark it as "bad" or "good".
+</p><p>Sooner or later (usually rather sooner), Git will tell you which commit is the culprit.  You can look at the corresponding patch with
+</p>
+<pre class="brush:bash">
+git show &lt;commit name&gt;
+</pre>
+<p>where the commit name is that 40-digit hex string Git told you was the first bad commit.  Usually you end the bisection process then and there:
+</p>
+<pre class="brush:bash">
+git bisect reset
+</pre>
+<p>This will bring you back to the revision and branch you were on before starting the bisection.
+</p>
+<h2><span class="mw-headline" id="How_to_forward_port_a_fix">How to forward port a fix</span></h2>
+<p>If there is an obvious flaw in the patch, just try to patch it.  You have to move to the first bad revision first:
+</p>
+<pre class="brush:bash">
+git checkout &lt;commit name&gt;
+</pre>
+<p>(This will warn you that you are not on any branch, but that is okay.)  Then just apply the fix you have in mind, and commit (after making sure that it worked, of course&#160;;-).  Now, tag it with a temporary label:
+</p>
+<pre class="brush:bash">
+git tag my-fix
+</pre>
+<p>and go back to the branch you came from:
+</p>
+<pre class="brush:bash">
+git checkout master
+</pre>
+<p>If you are unsure which branch you came from, look at the <a href="http://imagej.net/Git_reflogs" title="Git reflogs">reflog</a> first.
+</p><p>Now you can cherry-pick (or forward-port) your patch:
+</p>
+<pre class="brush:bash">
+git cherry-pick my-fix
+</pre>
+<p>If there are conflicts, resolve them and commit ("git commit fiji.cxx").
+</p><p>After that, you can get rid of the now-obsolete tag:
+</p>
+<pre class="brush:bash">
+git tag -d my-fix
+</pre>
+<p>Note: instead of using a temporary tag, you can use the <a href="http://imagej.net/Git_reflogs" title="Git reflogs">reflog</a> of the HEAD ref (<code>git cherry-pick HEAD@{1}</code>), but if you are not familiar with the concept, tags are probably easier to handle.
+</p>
+<h1><span class="mw-headline" id="See_also">See also</span></h1>
+<ul><li> <a rel="nofollow" class="external text" href="http://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git#Binary-Search">Binary search tutorial</a> in the Git book</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073123
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.012 seconds
+Real time usage: 0.014 seconds
+Preprocessor visited node count: 186/1000000
+Preprocessor generated node count: 390/1000000
+Post‐expand include size: 1508/2097152 bytes
+Template argument size: 691/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.088      1 - Template:GitMenu
+100.00%    5.088      1 - -total
+ 79.38%    4.039      1 - Template:Menu
+ 45.46%    2.313     12 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Pinpoint_regressions_with_Git&amp;oldid=29392">http://imagej.net/index.php?title=Pinpoint_regressions_with_Git&amp;oldid=29392</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:43.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Pinpoint_regressions_with_Git&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Git" title="Category:Git">Git</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Pinpoint+regressions+with+Git" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Pinpoint+regressions+with+Git" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Pinpoint_regressions_with_Git" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Pinpoint_regressions_with_Git" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Pinpoint_regressions_with_Git&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Pinpoint_regressions_with_Git&amp;oldid=29392" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Pinpoint_regressions_with_Git&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":194});});</script>
+		</body>
+		</html>
+		

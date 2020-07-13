@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>2012-12-11 - Hiding generics in SCIFIO - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"2012-12-11_-_Hiding_generics_in_SCIFIO","wgTitle":"2012-12-11 - Hiding generics in SCIFIO","wgCurRevisionId":11802,"wgRevisionId":11802,"wgArticleId":2316,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["News","ImageJ2"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"2012-12-11_-_Hiding_generics_in_SCIFIO","wgRelevantArticleId":2316,"wgRequestId":"02d100640da5a570282e55d5","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The use of generic types makes a lot of sense in SCIFIO: you have an interface-driven design, intended to be flexible and extensible, yet each Format implementation is tightly linked with concrete implementations of the other SCIFIO components. Using generics ensures type safety of operations within these components, so that each interacts only with objects they know how to handle (e.g. it wouldn't make sense to provide an APNG Reader with an OME-TIFF Metadata object)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="2012-12-11 - Hiding generics in SCIFIO"/>
+
+	<meta property="og:description" content="The use of generic types makes a lot of sense in SCIFIO: you have an interface-driven design, intended to be flexible and extensible, yet each Format implementation is tightly linked with concrete implementations of the other SCIFIO components. Using generics ensures type safety of operations within these components, so that each interacts only with objects they know how to handle (e.g. it wouldn't make sense to provide an APNG Reader with an OME-TIFF Metadata object)."/>
+
+	<meta property="og:url" content="http://imagej.net/2012-12-11_-_Hiding_generics_in_SCIFIO"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-2012-12-11_-_Hiding_generics_in_SCIFIO rootpage-2012-12-11_-_Hiding_generics_in_SCIFIO skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="2012-12-11_-_Hiding_generics_in_SCIFIO.html#bodyContent">Skip to content</a>, 			<a href="2012-12-11_-_Hiding_generics_in_SCIFIO.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="2012-12-11_-_Hiding_generics_in_SCIFIO.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/2012-12-11_-_Hiding_generics_in_SCIFIO" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:2012-12-11_-_Hiding_generics_in_SCIFIO&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=2012-12-11_-_Hiding_generics_in_SCIFIO&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=2012-12-11_-_Hiding_generics_in_SCIFIO&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>2012-12-11 - Hiding generics in SCIFIO</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="2012-12-11_-_Hiding_generics_in_SCIFIO.html#Generics_in_SCIFIO"><span class="tocnumber">1</span> <span class="toctext">Generics in SCIFIO</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="2012-12-11_-_Hiding_generics_in_SCIFIO.html#Two_scenarios"><span class="tocnumber">2</span> <span class="toctext">Two scenarios</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="2012-12-11_-_Hiding_generics_in_SCIFIO.html#Hiding_generics"><span class="tocnumber">3</span> <span class="toctext">Hiding generics</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="2012-12-11_-_Hiding_generics_in_SCIFIO.html#The_problem_with_type_narrowing"><span class="tocnumber">4</span> <span class="toctext">The problem with type narrowing</span></a></li>
+</ul>
+</div>
+
+<h3><span class="mw-headline" id="Generics_in_SCIFIO">Generics in SCIFIO</span></h3>
+<p>The use of generic types makes a lot of sense in SCIFIO: you have an interface-driven design, intended to be flexible and extensible, yet each <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/blog-generics/components/scifio-devel/src/ome/scifio/Format.java">Format</a> implementation is tightly linked with concrete implementations of the other SCIFIO components. Using generics ensures type safety of operations within these components, so that each interacts only with objects they know how to handle (e.g. it wouldn't make sense to provide an APNG <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/blog-generics/components/scifio-devel/src/ome/scifio/Reader.java">Reader</a> with an OME-TIFF <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/blog-generics/components/scifio-devel/src/ome/scifio/Metadata.java">Metadata</a> object).
+</p>
+<h3><span class="mw-headline" id="Two_scenarios">Two scenarios</span></h3>
+<p>There are essentially two use cases in SCIFIO.
+</p>
+<ul><li> General algorithms. In this case, the developer is writing general image IO algorithms that will operate on a variety of image formats. In this case, there are no known concrete instances.</li>
+<li> Specific algorithms. The developer is coding against a specific, known image format(s). The concrete type can be instantiated.</li></ul>
+<p>In the second case, there are no generics to worry about. In the first case, if generics were present in all levels of the SCIFIO interfaces, you would either have to use raw types or wildcards in any declarations, and may need to cast in many method calls. The generics are working against you, because you literally can't know what types to code against.
+</p>
+<h3><span class="mw-headline" id="Hiding_generics">Hiding generics</span></h3>
+<p>To shield developers from generic wildcards, raw types, and casting, we split the component interfaces in SCIFIO. Each component has a base interface (e.g. <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/blog-generics/components/scifio-devel/src/ome/scifio/Reader.java">Reader</a>) and a typed subclass (<a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/blog-generics/components/scifio-devel/src/ome/scifio/TypedReader.java">TypedReader</a>). Base interfaces reference the base interfaces of other components, and typed interfaces referenced other typed interfaces (and propagate generic parameters up to the concrete implementations, where they disappear again).
+</p><p>So if you want to use SCIFIO components in a general way, you can use the base interfaces and won't have to fight with generics to find the proper syntax. If you know what formats you're going to be using, you have the benefit of methods accepting and returning those known types. In either case, generics are providing compile-time safety.
+</p>
+<h3><span class="mw-headline" id="The_problem_with_type_narrowing">The problem with type narrowing</span></h3>
+<p>The base/typed interface split is nice because return types can naturally be narrowed as you descend the class hierarchy and learn more about what types are present. However, method parameters cannot be narrowed this way: the general base interface implies methods will work with any implementation of their parameters (e.g. <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/blog-generics/components/scifio-devel/src/ome/scifio/Writer.java#L92">Writer#setMetadata</a>). When you get to the <code>TypedWriter</code>, which has access to a generic Metadata parameter <code>M</code>, you can't just declare <code>setMetadata(M)</code> if <code>M extends Metadata</code>. That method would have the same type erasure as in the base interface.
+</p><p>To avoid creating differently named method signatures, we followed the base/typed pattern for any SCIFIO class that appeared as a generic parameter, and created: <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/blog-generics/components/scifio-devel/src/ome/scifio/TypedMetadata.java">TypedMetadata</a>and <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/blog-generics/components/scifio-devel/src/ome/scifio/DataPlane.java">DataPlane</a>. Although these typed classes extend base classes that are used with parallel signatures, they provide a different point for erasure and allow the happy inclusion of parameterized methods, like <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/blog-generics/components/scifio-devel/src/ome/scifio/DataPlane.java">TypedWriter#setMetadata</a>.
+</p><p>This does mean that when you are programming with concrete implementations, you may see some extra (less specific) method signatures in the API that will throw <code>IllegalArgumentExceptions</code> if given incorrect parameters. But we think it's worth it to avoid code like this:
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:Terrifying-generics.jpg" class="image"><img alt="" src="../_images/0/02/Terrifying-generics.jpg" width="700" height="379" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Terrifying-generics.jpg" class="internal" title="Enlarge"></a></div><b>The Evolution of SCIFIO:</b> Generics can be terrifying.</div></div></div></div>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064315
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.031 seconds
+Preprocessor visited node count: 249/1000000
+Preprocessor generated node count: 896/1000000
+Post‐expand include size: 2701/2097152 bytes
+Template argument size: 1309/2097152 bytes
+Highest expansion depth: 4/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    6.442      1 - -total
+ 88.98%    5.732      9 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-12-11_-_Hiding_generics_in_SCIFIO&amp;oldid=11802">http://imagej.net/index.php?title=2012-12-11_-_Hiding_generics_in_SCIFIO&amp;oldid=11802</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 9 August 2014, at 16:07.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=2012-12-11_-_Hiding_generics_in_SCIFIO&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:News" title="Category:News">News</a></li><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=2012-12-11+-+Hiding+generics+in+SCIFIO" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=2012-12-11+-+Hiding+generics+in+SCIFIO" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/2012-12-11_-_Hiding_generics_in_SCIFIO" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/2012-12-11_-_Hiding_generics_in_SCIFIO" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=2012-12-11_-_Hiding_generics_in_SCIFIO&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=2012-12-11_-_Hiding_generics_in_SCIFIO&amp;oldid=11802" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=2012-12-11_-_Hiding_generics_in_SCIFIO&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":181});});</script>
+		</body>
+		</html>
+		

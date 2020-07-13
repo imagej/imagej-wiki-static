@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>MorphoLibJ - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"MorphoLibJ","wgTitle":"MorphoLibJ","wgCurRevisionId":44245,"wgRevisionId":44245,"wgArticleId":3250,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Analysis","Filtering","Segmentation","Mathematical morphology","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"MorphoLibJ","wgRelevantArticleId":3250,"wgRequestId":"eea8828b1637b174fa6dd49e","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="MorphoLibJ is a collection of mathematical morphology methods and plugins for ImageJ, created at INRA-IJPB Modeling and Digital Imaging lab."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="MorphoLibJ"/>
+
+	<meta property="og:description" content="MorphoLibJ is a collection of mathematical morphology methods and plugins for ImageJ, created at INRA-IJPB Modeling and Digital Imaging lab."/>
+
+	<meta property="og:url" content="http://imagej.net/MorphoLibJ"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-MorphoLibJ rootpage-MorphoLibJ skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="MorphoLibJ.html#bodyContent">Skip to content</a>, 			<a href="MorphoLibJ.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="MorphoLibJ.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/MorphoLibJ" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:MorphoLibJ&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=MorphoLibJ&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=MorphoLibJ&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>MorphoLibJ</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>MorphoLibJ (IJPB-plugins)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/dlegland">David Legland</a>, <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> Update site
+</th>
+<td> <a href="http://imagej.net/Following_an_update_site" title="Following an update site">IJPB-plugins</a>
+</td></tr>
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/dlegland">David Legland</a>, <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/ijpb/MorphoLibJ/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> July 3<sup>rd</sup>, 2014
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> July 23<sup>rd</sup>, 2019 (<strong class="selflink">MorphoLibJ</strong> v1.4.1)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a>, <a href="http://imagej.net/Category:Filtering" title="Category:Filtering">Filtering</a>, <a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a>, <a href="http://imagej.net/Category:Mathematical_morphology" title="Category:Mathematical morphology">Mathematical morphology</a>
+</td></tr>
+
+</table>
+<p>MorphoLibJ is a collection of <a href="http://en.wikipedia.org/wiki/Mathematical_morphology" class="extiw" title="wikipedia:Mathematical morphology">mathematical morphology</a> methods and <b>plugins</b> for ImageJ, created at <a rel="nofollow" class="external text" href="http://www-ijpb.versailles.inra.fr/en/bc/equipes/modelisation-imagerie/">INRA-IJPB Modeling and Digital Imaging lab</a>.
+</p><p>The library implements several functionalities that were missing in ImageJ, and that were not or only partially covered by other plugins. Namely:
+</p>
+<ul><li> <b>Morphological filtering</b> for 2D/3D and binary or grey level images: erosion &amp; dilation, closing &amp; opening, morphological gradient &amp; Laplacian, top-hat...</li></ul>
+<ul><li> <b>Morphological reconstruction</b>, for 2D/3D and binary or grey level images, allowing fast detection of regional or extended extrema, removing of borders, hole filling, attribute filtering...</li></ul>
+<ul><li> <b>Watershed segmentation</b> + GUI, making it possible to segment 2D/3D images of (for instance) cell tissues.</li></ul>
+<ul><li> <b>2D/3D measurements</b>: photometric (intensity) and morphometric measurements such as volume, surface area, inertia ellipse/ellipsoid...</li></ul>
+<ul><li> <b>Binary / label images utilities</b> for removing or keeping largest connected component, perform size opening, fill holes, kill borders...</li></ul>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="MorphoLibJ.html#Morphological_filters"><span class="tocnumber">1</span> <span class="toctext">Morphological filters</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="MorphoLibJ.html#Principles"><span class="tocnumber">1.1</span> <span class="toctext">Principles</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="MorphoLibJ.html#Grayscale_morphological_filters"><span class="tocnumber">1.2</span> <span class="toctext">Grayscale morphological filters</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="MorphoLibJ.html#Grayscale_erosion_and_dilation"><span class="tocnumber">1.2.1</span> <span class="toctext">Grayscale erosion and dilation</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="MorphoLibJ.html#Opening_and_closing"><span class="tocnumber">1.2.2</span> <span class="toctext">Opening and closing</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="MorphoLibJ.html#Morphological_gradients"><span class="tocnumber">1.2.3</span> <span class="toctext">Morphological gradients</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="MorphoLibJ.html#Top-hats"><span class="tocnumber">1.2.4</span> <span class="toctext">Top-hats</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-8"><a href="MorphoLibJ.html#Directional_filters"><span class="tocnumber">1.3</span> <span class="toctext">Directional filters</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="MorphoLibJ.html#Plugin_Usage"><span class="tocnumber">1.4</span> <span class="toctext">Plugin Usage</span></a>
+<ul>
+<li class="toclevel-3 tocsection-10"><a href="MorphoLibJ.html#Planar_images"><span class="tocnumber">1.4.1</span> <span class="toctext">Planar images</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="MorphoLibJ.html#3D_images"><span class="tocnumber">1.4.2</span> <span class="toctext">3D images</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="MorphoLibJ.html#Directional_Filters_2"><span class="tocnumber">1.4.3</span> <span class="toctext">Directional Filters</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="MorphoLibJ.html#Connected_components_operators"><span class="tocnumber">2</span> <span class="toctext">Connected components operators</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="MorphoLibJ.html#Morphological_reconstruction"><span class="tocnumber">2.1</span> <span class="toctext">Morphological reconstruction</span></a>
+<ul>
+<li class="toclevel-3 tocsection-15"><a href="MorphoLibJ.html#Principle"><span class="tocnumber">2.1.1</span> <span class="toctext">Principle</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="MorphoLibJ.html#Applications_to_binary_images"><span class="tocnumber">2.1.2</span> <span class="toctext">Applications to binary images</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="MorphoLibJ.html#Applications_to_grey_level_images"><span class="tocnumber">2.1.3</span> <span class="toctext">Applications to grey level images</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="MorphoLibJ.html#Usage"><span class="tocnumber">2.1.4</span> <span class="toctext">Usage</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-19"><a href="MorphoLibJ.html#Regional_and_extended_extrema"><span class="tocnumber">2.2</span> <span class="toctext">Regional and extended extrema</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="MorphoLibJ.html#Attribute_filtering"><span class="tocnumber">2.3</span> <span class="toctext">Attribute filtering</span></a>
+<ul>
+<li class="toclevel-3 tocsection-21"><a href="MorphoLibJ.html#Application_to_binary_images"><span class="tocnumber">2.3.1</span> <span class="toctext">Application to binary images</span></a></li>
+<li class="toclevel-3 tocsection-22"><a href="MorphoLibJ.html#Application_to_grayscale_images"><span class="tocnumber">2.3.2</span> <span class="toctext">Application to grayscale images</span></a></li>
+<li class="toclevel-3 tocsection-23"><a href="MorphoLibJ.html#Usage_2"><span class="tocnumber">2.3.3</span> <span class="toctext">Usage</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-24"><a href="MorphoLibJ.html#Watershed_segmentation"><span class="tocnumber">3</span> <span class="toctext">Watershed segmentation</span></a></li>
+<li class="toclevel-1 tocsection-25"><a href="MorphoLibJ.html#Measurements"><span class="tocnumber">4</span> <span class="toctext">Measurements</span></a>
+<ul>
+<li class="toclevel-2 tocsection-26"><a href="MorphoLibJ.html#Region_analysis"><span class="tocnumber">4.1</span> <span class="toctext">Region analysis</span></a>
+<ul>
+<li class="toclevel-3 tocsection-27"><a href="MorphoLibJ.html#Intrinsic_volumes"><span class="tocnumber">4.1.1</span> <span class="toctext">Intrinsic volumes</span></a>
+<ul>
+<li class="toclevel-4 tocsection-28"><a href="MorphoLibJ.html#Estimation_from_2D_or_3D_images"><span class="tocnumber">4.1.1.1</span> <span class="toctext">Estimation from 2D or 3D images</span></a></li>
+<li class="toclevel-4 tocsection-29"><a href="MorphoLibJ.html#Euler_number"><span class="tocnumber">4.1.1.2</span> <span class="toctext">Euler number</span></a></li>
+<li class="toclevel-4 tocsection-30"><a href="MorphoLibJ.html#Shape_factors"><span class="tocnumber">4.1.1.3</span> <span class="toctext">Shape factors</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-31"><a href="MorphoLibJ.html#Inertia_ellipse_and_ellipsoid"><span class="tocnumber">4.1.2</span> <span class="toctext">Inertia ellipse and ellipsoid</span></a></li>
+<li class="toclevel-3 tocsection-32"><a href="MorphoLibJ.html#Geodesic_measurements"><span class="tocnumber">4.1.3</span> <span class="toctext">Geodesic measurements</span></a></li>
+<li class="toclevel-3 tocsection-33"><a href="MorphoLibJ.html#Plugins"><span class="tocnumber">4.1.4</span> <span class="toctext">Plugins</span></a>
+<ul>
+<li class="toclevel-4 tocsection-34"><a href="MorphoLibJ.html#Global_geometry"><span class="tocnumber">4.1.4.1</span> <span class="toctext">Global geometry</span></a></li>
+<li class="toclevel-4 tocsection-35"><a href="MorphoLibJ.html#Largest_inscribed_circle_or_ball"><span class="tocnumber">4.1.4.2</span> <span class="toctext">Largest inscribed circle or ball</span></a></li>
+<li class="toclevel-4 tocsection-36"><a href="MorphoLibJ.html#Geodesic_diameter"><span class="tocnumber">4.1.4.3</span> <span class="toctext">Geodesic diameter</span></a></li>
+<li class="toclevel-4 tocsection-37"><a href="MorphoLibJ.html#Analyze_Regions_3D"><span class="tocnumber">4.1.4.4</span> <span class="toctext">Analyze Regions 3D</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-38"><a href="MorphoLibJ.html#Intensity_measurements"><span class="tocnumber">4.2</span> <span class="toctext">Intensity measurements</span></a></li>
+<li class="toclevel-2 tocsection-39"><a href="MorphoLibJ.html#Label_Overlap_Measures"><span class="tocnumber">4.3</span> <span class="toctext">Label Overlap Measures</span></a></li>
+<li class="toclevel-2 tocsection-40"><a href="MorphoLibJ.html#Spatial_organization"><span class="tocnumber">4.4</span> <span class="toctext">Spatial organization</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-41"><a href="MorphoLibJ.html#Binary_and_label_image_utilities"><span class="tocnumber">5</span> <span class="toctext">Binary and label image utilities</span></a>
+<ul>
+<li class="toclevel-2 tocsection-42"><a href="MorphoLibJ.html#Distances_for_binary_images"><span class="tocnumber">5.1</span> <span class="toctext">Distances for binary images</span></a>
+<ul>
+<li class="toclevel-3 tocsection-43"><a href="MorphoLibJ.html#Distance_transform"><span class="tocnumber">5.1.1</span> <span class="toctext">Distance transform</span></a></li>
+<li class="toclevel-3 tocsection-44"><a href="MorphoLibJ.html#Geodesic_distance_transform"><span class="tocnumber">5.1.2</span> <span class="toctext">Geodesic distance transform</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-45"><a href="MorphoLibJ.html#Label_images"><span class="tocnumber">5.2</span> <span class="toctext">Label images</span></a>
+<ul>
+<li class="toclevel-3 tocsection-46"><a href="MorphoLibJ.html#Connected_component_labeling"><span class="tocnumber">5.2.1</span> <span class="toctext">Connected component labeling</span></a></li>
+<li class="toclevel-3 tocsection-47"><a href="MorphoLibJ.html#Label_image_representation"><span class="tocnumber">5.2.2</span> <span class="toctext">Label image representation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-48"><a href="MorphoLibJ.html#Region_and_labels_selection"><span class="tocnumber">5.3</span> <span class="toctext">Region and labels selection</span></a>
+<ul>
+<li class="toclevel-3 tocsection-49"><a href="MorphoLibJ.html#Binary_images"><span class="tocnumber">5.3.1</span> <span class="toctext">Binary images</span></a></li>
+<li class="toclevel-3 tocsection-50"><a href="MorphoLibJ.html#Label_images_2"><span class="tocnumber">5.3.2</span> <span class="toctext">Label images</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-51"><a href="MorphoLibJ.html#Label_Edition_plugin"><span class="tocnumber">5.4</span> <span class="toctext">Label Edition plugin</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-52"><a href="MorphoLibJ.html#Library_interoperability"><span class="tocnumber">6</span> <span class="toctext">Library interoperability</span></a>
+<ul>
+<li class="toclevel-2 tocsection-53"><a href="MorphoLibJ.html#Library_organization"><span class="tocnumber">6.1</span> <span class="toctext">Library organization</span></a></li>
+<li class="toclevel-2 tocsection-54"><a href="MorphoLibJ.html#Scripting_MorphoLibJ"><span class="tocnumber">6.2</span> <span class="toctext">Scripting MorphoLibJ</span></a>
+<ul>
+<li class="toclevel-3 tocsection-55"><a href="MorphoLibJ.html#Segmentation_pipeline_prototype"><span class="tocnumber">6.2.1</span> <span class="toctext">Segmentation pipeline prototype</span></a></li>
+<li class="toclevel-3 tocsection-56"><a href="MorphoLibJ.html#Label_visualization_in_3D_viewer"><span class="tocnumber">6.2.2</span> <span class="toctext">Label visualization in 3D viewer</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-57"><a href="MorphoLibJ.html#Documentation"><span class="tocnumber">7</span> <span class="toctext">Documentation</span></a></li>
+<li class="toclevel-1 tocsection-58"><a href="MorphoLibJ.html#Installation"><span class="tocnumber">8</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-59"><a href="MorphoLibJ.html#Citation"><span class="tocnumber">9</span> <span class="toctext">Citation</span></a></li>
+<li class="toclevel-1 tocsection-60"><a href="MorphoLibJ.html#References"><span class="tocnumber">10</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-61"><a href="MorphoLibJ.html#License"><span class="tocnumber">11</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Morphological_filters">Morphological filters</span></h2>
+<p>Morphological filters are very common filters that can be combined together to provide a large variety of solutions. They are local filters, in the sense that they consider the neighborhood of each pixel/voxel.
+</p><p>Morphological filters are defined according to a <b>structuring element</b> of a given size and
+shape. Common structuring element include squares, discrete disks and octogons. Linear structuring element of various orientations may also be used to assess local orientation of the
+structures.
+</p>
+<h3><span class="mw-headline" id="Principles">Principles</span></h3>
+<p>The original idea was to define a methodology to describe shapes by using another shape as test probe (Serra, 1982<sup id="cite_ref-Serra1982_1-0" class="reference"><a href="MorphoLibJ.html#cite_note-Serra1982-1">&#91;1&#93;</a></sup>; Serra <i>et al.</i>, 1992<sup id="cite_ref-Serra1992_2-0" class="reference"><a href="MorphoLibJ.html#cite_note-Serra1992-2">&#91;2&#93;</a></sup>). The most basic morphological filters are the <b>morphological dilation</b> and the <b>morphological erosion</b>. The principle of morphological dilation is to test for each point of the plane, if the structuring element centered on this point <b>intersects</b> the structure of interest (see figure below). It results in a set larger than the original set. 
+The principle of morphological erosion is to test for each point of the plane if the structuring element centred on this point <b>is contained</b> within the original set. It results in a set smaller than original set.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:Principle-of-morphological-dilation-and-erosion.png" class="image"><img alt="" src="../_images/f/f2/Principle-of-morphological-dilation-and-erosion.png" width="700" height="223" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Principle-of-morphological-dilation-and-erosion.png" class="internal" title="Enlarge"></a></div>Principle of morphological dilation and erosion on a binary set, using a disk-shaped structuring element.</div></div></div></div>
+<p>Morphological dilation and erosion change the size and the resulting set. It may also change its topology: after a dilation, components may merge and holes be filled. After an erosion, components may disappear, or components be separated into several parts.
+</p>
+<h3><span class="mw-headline" id="Grayscale_morphological_filters">Grayscale morphological filters</span></h3>
+<h4><span class="mw-headline" id="Grayscale_erosion_and_dilation">Grayscale erosion and dilation</span></h4>
+<p>Morphological erosion and dilation may also be applied on grayscale images. In that case, the morphological dilation computes for each pixel the maximum within its neighborhood (defined by the structuring element), whereas the morphological erosion considers the minimum value within the neighborhood.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:MorphoLibJ-grains-dilation-erosion.png" class="image"><img alt="" src="../_images/d/da/MorphoLibJ-grains-dilation-erosion.png" width="700" height="236" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-grains-dilation-erosion.png" class="internal" title="Enlarge"></a></div>Some examples of morphological filters on a grey level image. From left to right: original image, result of dilation with a square structuring element, and result of erosion with the same structuring element.</div></div></div></div>
+<p>Applying a  dilation or an erosion changes the size of the structures in the image: the grains in the result of the dilated image are larger. Morphological erosion can also be used on binary images to help separating touching particles.
+</p>
+<h4><span class="mw-headline" id="Opening_and_closing">Opening and closing</span></h4>
+<p>Morphological dilation and erosion are often used in combination. For example, the result of a dilation followed by an erosion is called a <b>morphological closing</b>, and removes dark structures smaller than the structuring element. It can also connect bright structures that were separated by a thin dark space.
+</p><p>In a symmetric way, the result of an erosion followed by a dilation is called a <b>morphological opening</b>, and removes bright structures smaller than the structuring element.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:482px;"><a href="http://imagej.net/File:MorphoLibJ-grains-closing-opening.png" class="image"><img alt="" src="../_images/2/2e/MorphoLibJ-grains-closing-opening.png" width="480" height="242" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-grains-closing-opening.png" class="internal" title="Enlarge"></a></div>Some examples of composed morphological filters. From left to right: morphological closing, and morphological opening.</div></div></div></div>
+<p>Note that even if opening and closing better preserve the size of the structures in the original image, the shape is slightly altered. For example, the result of morphological closing on the figure above creates artificial connections between grains. Choosing the best size for the structuring element is often a compromise between noise removal and preservation of structure shape.
+</p>
+<h4><span class="mw-headline" id="Morphological_gradients">Morphological gradients</span></h4>
+<p>More complicated combinations of elementary operations can be used. The <b>morphological gradient</b>, computed as the difference of the result of a morphological dilation with the
+result of a morphological erosion, reveals the <b>boundaries</b> of the structures within the image. The <b>morphological Laplacian</b> is defined as half the sum of a morphological
+dilation and a morphological erosion with the same structuring element, minus the original
+image. It results in enhancing the edges of the image.
+</p>
+<h4><span class="mw-headline" id="Top-hats">Top-hats</span></h4>
+<p>The <b>white top-hat</b> first computes a morphological opening (resulting in removing bright structures smaller than structuring elements), and removes the result from the original image. When applied with a large structuring element, the result is an homogenization of the background, making bright structures easier to segment. Similarly, the <b>dark top-hat</b> can be used to enhance dark structures observed on an non-homogeneous background.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:MorphoLibJ-grains-gradient-Laplacian-whiteTopHat.png" class="image"><img alt="" src="../_images/8/8e/MorphoLibJ-grains-gradient-Laplacian-whiteTopHat.png" width="700" height="236" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-grains-gradient-Laplacian-whiteTopHat.png" class="internal" title="Enlarge"></a></div>More examples of composed morphological filters. From left to right: morphological gradient, morphological Laplacian, morphological white top-hat.</div></div></div></div>
+<h3><span class="mw-headline" id="Directional_filters">Directional filters</span></h3>
+<p>For images containing very thin curvilinear structures (for example blood vessels, cell wall sections...), the application of common filters may be difficult due to the small size of the structures. Even for small structuring elements, the application of a morphological opening or closing let the structure disappear. Moreover, it may be difficult to preserve the whole thickness of the structure.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:MorphoLibJ-directional-filtering-example.png" class="image"><img alt="" src="../_images/7/73/MorphoLibJ-directional-filtering-example.png" width="700" height="193" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-directional-filtering-example.png" class="internal" title="Enlarge"></a></div>Filtering of a thin structure. (a) Original image representing apple cells observed with confocal microscopy. The application of a Gaussian filter (b) or median filter (c) results in noise reduction, but also in a loss of the signal along the cell walls. The directional filtering (d) better preserves the thickness of the structure.</div></div></div></div>
+<p>An alternative is to apply directional filtering. The principle is to consider an oriented structuring element such as a line segment of a given length, and to perform morphological operations for various orientations of the structuring element (Soille <i>et al.</i>, 2001<sup id="cite_ref-Soille2001_3-0" class="reference"><a href="MorphoLibJ.html#cite_note-Soille2001-3">&#91;3&#93;</a></sup>; Heneghan <i>et al.</i>, 2002<sup id="cite_ref-Heneghan2002_4-0" class="reference"><a href="MorphoLibJ.html#cite_note-Heneghan2002-4">&#91;4&#93;</a></sup>; Hendriks <i>et al.</i>, 2003<sup id="cite_ref-Hendriks2003_5-0" class="reference"><a href="MorphoLibJ.html#cite_note-Hendriks2003-5">&#91;5&#93;</a></sup>). For example, applying a median filter or a morphological opening with horizontal direction results in the enhancement of horizontal parts of bright structures. Similarly, using a vertical structuring element results in the enhancement of the vertical portions of the structures.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:MorphoLibJ-directional-filtering-principle.png" class="image"><img alt="" src="../_images/8/8a/MorphoLibJ-directional-filtering-principle.png" width="700" height="192" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-directional-filtering-principle.png" class="internal" title="Enlarge"></a></div>Principle of directional filtering of a thin structure. (a) and (b): result of median filter using an horizontal and a vertical linear structuring element. (c) and (d): combination of the results obtained from two directions (horizontal and vertical) and four directions (by adding diagonal directions).</div></div></div></div>
+<p>The results of oriented filters for each direction can be combined by computing the maximum value over all orientations. The figure above shows the results obtained when combining two or four directions. Here, 32 orientations of line with length 25 were used. This results in the enhancement of the image while preserving the thickness of the bright structures.
+</p><p>Similar results may be obtained for enhancing dark curvilinear structures, by using morphological closing or median filters, and combining the results by computing the minimum over all directions.
+</p>
+<h3><span class="mw-headline" id="Plugin_Usage">Plugin Usage</span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:552px;"><a href="http://imagej.net/File:MorphoLibJ-mosaic-filters.png" class="image"><img alt="" src="../_images/a/ae/MorphoLibJ-mosaic-filters.png" width="550" height="228" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-mosaic-filters.png" class="internal" title="Enlarge"></a></div>MorphoLibJ filter examples: DAPI stained nuclei image and the result of applying different morphological filters with an octagon of radius 5 as structuring element.</div></div></div>
+<p>The collection of morphological filters is available in the <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ</span></em></span> menu. Filters are <b>implemented both for 2D and 3D images</b>, and work for binary, gray level or color (RGB) images.
+</p>
+<h4><span class="mw-headline" id="Planar_images">Planar images</span></h4>
+<p>Morphological filters for planar images are available <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Morphological filters</span></em></span>. The dialog let the user choose the structuring element shape, radius, and eventually preview the result. The following list of operations can be chosen:
+</p>
+<ul><li> <b>erosion</b> keeps the minimum value within the neighborhood defined by the structuring element.</li></ul>
+<ul><li> <b>dilation</b> keeps the maximum value within the neighborhood defined by the structuring element.</li></ul>
+<ul><li> <b>closing</b> consists in the succession of a dilation with an erosion. Morphological closing makes dark structures smaller than the structuring element disappear.</li></ul>
+<ul><li> <b>opening</b> consists in the succession of an erosion with a dilation. Morphological opening makes bright structures smaller than the structuring element disappear.</li></ul>
+<ul><li> <b>morphological gradient</b> is defined as the difference of a morphological dilation and a morphological erosion with the same structuring element, and enhances edges of the original images.</li></ul>
+<ul><li> <b>morphological Laplacian</b> is defined as half the sum of a morphological dilation and a morphological erosion with the same structuring element, minus the original image, and enhances edges of the image.</li></ul>
+<ul><li> <b>black top-hat</b> consists in subtracting the original image from the result of a morphological closing, and results in the enhancement of dark structures smaller than structuring element.</li></ul>
+<ul><li> <b>white top-hat</b> consists in subtracting the result of a morphological opening from the original image, and results in the enhancement of bright structures smaller than structuring element.</li></ul>
+<p>The following structuring elements can be used for 2D images:
+</p>
+<ul><li> disk </li>
+<li> square</li>
+<li> octagon</li>
+<li> diamond</li>
+<li> line with angle of 0, 90, 45 or 135 degrees</li></ul>
+<h4><span class="mw-headline" id="3D_images">3D images</span></h4>
+<p>Morphological filters for 3D images are available under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Morphological filters (3D)</span></em></span>. The dialog let the user choose the structuring element shape and radius. The same list of operations as for planar images is provided. Planar structuring elements can be used (the operation is simply repeated on each slice), as well as a cubic or spherical structuring element. For most structuring elements, the size can be chosen for each direction.
+</p>
+<h4><span class="mw-headline" id="Directional_Filters_2">Directional Filters</span></h4>
+<p>Directional filtering is available from <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Directional Filtering</span></em></span>. It requires a planar image. 
+</p><p>The parameters are:
+</p>
+<ul><li> <b>Type</b>: to specify how to combine the results for each oriented filter</li>
+<li> <b>Operation</b>: the operation to apply using each oriented structuring element</li>
+<li> <b>Line Length</b>: the approximated length of the structuring element. </li>
+<li> <b>Direction Number</b>: the number of oriented structuring elements to consider. To be increased if the length of line is large.</li></ul>
+<h2><span class="mw-headline" id="Connected_components_operators">Connected components operators</span></h2>
+<p>The “classical” morphological filters presented in the previous section transform an input image by using the values of pixels or voxels located in a close neighborhood, defined by the structuring element. Such filters can be seen as “local”, as the result in a given position does not depend on image values located at a sufficient distance. 
+</p><p>Connected components operators are more general as they propagate information within the image based on connectivity between pixels or voxels. More details can be found in the review of Breen <i>et al.</i> (1996)<sup id="cite_ref-Breen1996_6-0" class="reference"><a href="MorphoLibJ.html#cite_note-Breen1996-6">&#91;6&#93;</a></sup>. Connected components operators encompass powerful operators, such as <b>morphological reconstruction</b> that allows to reconstruct a marker image by constraining it to a mask. An extension of morphological reconstruction is the detection of <b>extended minima and maxima</b>, that can be useful as marker detection for segmentation. Finally, <b>attribute opening and filtering</b> algorithms can filter images based on size or range properties, with better preservation of edges than classical filtering. 
+</p>
+<h3><span class="mw-headline" id="Morphological_reconstruction">Morphological reconstruction</span></h3>
+<p>The morphological reconstruction is at the basis of many useful algorithms, such as border removing, hole filling, or detection of regional minima or maxima in grayscale images.
+</p>
+<h4><span class="mw-headline" id="Principle">Principle</span></h4>
+<p>The principle of geodesic reconstruction is to repeat <b>conditional dilations or erosions</b> until idempotence. Conditional dilation is the result of a dilation, combined with a mask image using a logical operation. Conditional dilations are repeated until no more modification occur (idempotence condition).
+</p><p>The following figure shows several steps of a geodesic reconstruction by dilation on a pair of binary images. The mask image is shown in gray, and the marker image is shown in black on the first image. The reconstructed images at each step are shown in black. The markers propagates within the mask until they fill the chosen regions.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:752px;"><a href="http://imagej.net/File:MorphoLibJ-geodesic-reconstruction.png" class="image"><img alt="" src="../_images/8/8d/MorphoLibJ-geodesic-reconstruction.png" width="750" height="149" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-geodesic-reconstruction.png" class="internal" title="Enlarge"></a></div>Principle of the geodesic reconstruction algorithm. From left to right: original image in gray with marker superimposed in black, and result of conditional dilations with increasing sizes.</div></div></div></div>
+<h4><span class="mw-headline" id="Applications_to_binary_images">Applications to binary images</span></h4>
+<p>By choosing the marker image, several operations may be automatized. For example, computing geodesic reconstruction with image of borders, and combining with original image will <b>remove particles or regions touching the borders</b>. In a similar way, computing geodesic reconstruction by using the border of the complement of the image makes it possible to <b>fill holes</b> that may appear in particles.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:MorphoLibJ-kill-borders-fill-holes.png" class="image"><img alt="" src="../_images/b/b0/MorphoLibJ-kill-borders-fill-holes.png" width="400" height="129" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-kill-borders-fill-holes.png" class="internal" title="Enlarge"></a></div>Some applications of geodesic reconstruction. From left to right: original image, result of kill borders, result of fill holes.</div></div></div></div>
+<h4><span class="mw-headline" id="Applications_to_grey_level_images">Applications to grey level images</span></h4>
+<p>Geodesic reconstructions can be applied to grey level images. By manually choosing binary markers such that they overlay specific structures, and after applying a geodesic reconstruction by dilation, it is possible to obtain a grey level image containing only the chosen structures. The <b>border kill</b> operation can also be applied on grey level images, making possible to rapidly remove structures touching the image borders.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:MorphoLibJ-grains-markers-reconstruction-by-dilation-border-kill.png" class="image"><img alt="" src="../_images/b/b8/MorphoLibJ-grains-markers-reconstruction-by-dilation-border-kill.png" width="700" height="236" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-grains-markers-reconstruction-by-dilation-border-kill.png" class="internal" title="Enlarge"></a></div>Some applications of geodesic reconstruction on grey level images. From left to right: original image with superimposed markers, result of geodesic reconstruction by dilation, result of border kill operation.</div></div></div></div>
+<h4><span class="mw-headline" id="Usage">Usage</span></h4>
+<p>The geodesic reconstruction algorithm is often used within other operators. In MorphoLibJ, it is however provided as a plugin to allow its inclusion in user-designed macros or plugins:
+</p>
+<ul><li> <b>Geodesic Reconstruction</b>: compute the geodesic reconstruction by erosion or dilation using a marker image and a mask image, and a specified connectivity.</li>
+<li> <b>Interactive Geodesic Reconstruction</b>: compute the geodesic reconstruction by erosion or dilation taking the current 2D image as mask image, creating the marker image out of user-defined ROIs (for example with the point selection tool).and using a specified connectivity. The plugin allows previewing the result. </li>
+<li> <b>Geodesic Reconstruction 3D</b>: compute the geodesic reconstruction by erosion or dilation on a 3D image.</li>
+<li> <b>Interactive Geodesic Reconstruction 3D</b>: compute the geodesic reconstruction by erosion or dilation on using the current 3D image as mask and creating the marker image from the user-defined point selections.</li></ul>
+<p>The kill borders and fill holes operations are also provided as plugins. Both work for 2D and 3D images of 8, 16 or 32 bits.
+</p>
+<ul><li> <b>Kill Borders</b>: remove the particles touching the border of a binary or grayscale image.</li>
+<li> <b>Fill Holes</b> remove holes inside particles in binary images, or remove dark regions surrounded by bright crests in grayscale images.</li></ul>
+<h3><span class="mw-headline" id="Regional_and_extended_extrema">Regional and extended extrema</span></h3>
+<p><b>Regional minima</b> are defined as connected regions of elements (pixels or voxels) with the same value, and whose neighboring elements all have values greater than that of the region. Similarly, <b>regional maxima</b> are regions of connected pixels or voxels with same value, whose neighbors all have smaller value.
+</p><p>One problem arising with regional minima or maxima is that they are very sensitive to noise. It is often more convenient to use so-called extended extrema. The principle is to define a tolerance value for filtering the extrema. For example, <b>extended maxima</b> are defined as a connected region containing elements such that the difference of the value of each element within the region with the maximal value within the region is lower than the tolerance, and such that the neighbors of the regions all have values smaller than the maximum within the region minus the tolerance. This definition allows the identification of larger extrema, that better takes into account the noise within the image. The <b>extended minima</b> are defined in a similar way, and are efficiently used as pre-processing step for watershed segmentation.
+</p><p>Both extended maxima and minima are computed using the geodesic reconstruction algorithm. More details can be found in the book of Soille (2003).
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:MorphoLibJ-grains-regional-and-extended-maxima.png" class="image"><img alt="" src="../_images/e/eb/MorphoLibJ-grains-regional-and-extended-maxima.png" width="700" height="236" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-grains-regional-and-extended-maxima.png" class="internal" title="Enlarge"></a></div>Regional and extended maxima on a grey-level image. Left: original image. Middle: result of regional maxima. Right: result of extended maxima.</div></div></div></div>
+<p>The following operations are available in the <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ</span></em></span> menu:
+</p>
+<ul><li> <b>Regional Min / Max</b>: compute regional minima or extrema in grey level or binary image, with specified connectivity.</li>
+<li> <b>Regional Min / Max 3D</b>: compute regional minima or extrema in 3D grey level or binary image, with specified connectivity.</li>
+<li> <b>Extended Min / Max</b>: compute extended minima or extrema in grey level image, with specified connectivity.</li>
+<li> <b>Extended Min / Max 3D</b>: compute extended minima or extrema in 3D grey level or binary image, with specified connectivity.</li>
+<li> <b>Impose Min / Max</b>: impose minima or maxima on a grey level image.</li>
+<li> <b>Impose Min / Max 3D</b>: impose minima or maxima on a 3D grey level image.</li></ul>
+<h3><span class="mw-headline" id="Attribute_filtering">Attribute filtering</span></h3>
+<p>Attribute filters aim at removing components of an image based on a certain size criterion, rather than on intensity. The most common and useful criterion is the number of pixels/voxels (i.e., the area or volume). For example, a morphological size opening operation with a threshold value of 20 will remove all blobs containing fewer than 20 voxels. The length of the diagonal of the bounding box can also be of interest to discriminate elongated versus round component shapes.
+</p>
+<h4><span class="mw-headline" id="Application_to_binary_images">Application to binary images</span></h4>
+<p>When applied to a binary image, attribute opening consists in identifying each connected component, computing the attribute measurement of each component, and retain only the connected components whose measurement is above a specified value. This kind of processing is often used to clean-up segmentation results.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:523px;"><div class="MediaTransformError" style="width: 521px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-binary-area-opening.png" class="internal" title="Enlarge"></a></div>Example of area opening on a binary image. Left: original binary image. Middle: identification of connected components. Right: only the connected components with a sufficient size (defined by the area), have been retained.</div></div></div></div>
+<h4><span class="mw-headline" id="Application_to_grayscale_images">Application to grayscale images</span></h4>
+<p>When applied to a grayscale image, attribute opening consists in generating a series of binary images by thresholding at each distinct gray level in the image. The binary attribute opening described above is then applied independently to each binary image and the grayscale output is computed as the union of the binary results. The final output is a grayscale image whose bright structures with the attribute below a given value have disappeared. A great advantage of this filter is that the contours of the structures area better preserved than opening with a structuring element.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:MorphoLibJ-grayscale-area-opening.png" class="image"><img alt="" src="../_images/5/53/MorphoLibJ-grayscale-area-opening.png" width="700" height="223" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-grayscale-area-opening.png" class="internal" title="Enlarge"></a></div>Example of area opening on a grayscale image. Left: original grayscale image of a leaf (image courtesy of Eric Biot, INRA Versailles). Middle: grayscale size opening making bright spots disappear. Right: comparison with morphological closing with square structuring element of radius 1: bright spots are removed, but some veins also disappear.</div></div></div></div>
+<p>As for classical morphological filters, grayscale attribute closing or tophat can be defined. Grayscale attribute closing consists in removing dark connected components whose size is smaller than a specified value. White [resp. Black] Attribute Top-Hat considers the difference of the attribute opening [resp. closing] with the original image, and can help identifying bright [resp. dark] structures with small size.
+</p>
+<h4><span class="mw-headline" id="Usage_2">Usage</span></h4>
+<p>So far, the following attribute filtering plugins are available within MorphoLibJ (under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ</span></em></span>):
+</p>
+<ul><li> <b>Gray Scale Attribute Filtering</b>: opens a dialog to perform between attribute opening, closing, and black or white top-hat on a planar (2D) grayscale image. Two size criteria can be used: the area (number of pixels), or the diameter (length of the diagonal of the bounding box).</li></ul>
+<ul><li> <b>Gray Scale Attribute Filtering 3D</b>: opens a dialog to perform between attribute opening, closing, and black or white top-hat on a 3D grayscale image. The size criterion is the number of voxels.</li></ul>
+<h2><span class="mw-headline" id="Watershed_segmentation">Watershed segmentation</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="http://imagej.net/File:Classic-Watershed-lines-blur-blobs.png" class="image"><img alt="" src="../_images/0/0a/Classic-Watershed-lines-blur-blobs.png" width="200" height="198" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Classic-Watershed-lines-blur-blobs.png" class="internal" title="Enlarge"></a></div>Overlay of watershed lines on blurred blobs.</div></div></div> The watershed algorithm assimilates the grey level image to a digital elevation model, and aims at detecting the different catchment basins. In the grey-level image, the catchment basins correspond to dark regions surrounded by bright structures (the "crests"). It is a very popular technique specially used to segment touching objects. The MorphoLibJ suite contains several implementations of the algorithm and plugins that make use of it:
+<ul><li> <a href="http://imagej.net/Classic_Watershed" title="Classic Watershed">Classic Watershed</a>, plugin implementing the original watershed algorithm by Pierre Soille and Luc M. Vincent (1990)<sup id="cite_ref-Soille1990_7-0" class="reference"><a href="MorphoLibJ.html#cite_note-Soille1990-7">&#91;7&#93;</a></sup> to segment 2D/3D grayscale images.</li>
+<li> <a href="http://imagej.net/Marker-controlled_Watershed" title="Marker-controlled Watershed">Marker-controlled Watershed</a>, a plugin to perform watershed in 2D/3D images by flooding from specific seed points or markers by Meyer and Beucher (1990)<sup id="cite_ref-Meyer1990_8-0" class="reference"><a href="MorphoLibJ.html#cite_note-Meyer1990-8">&#91;8&#93;</a></sup>.</li>
+<li> <a href="http://imagej.net/Interactive_Marker-controlled_Watershed" title="Interactive Marker-controlled Watershed">Interactive Marker-controlled Watershed</a>, a plugin to perform watershed in 2D/3D images by flooding from specific seed points or markers introduced interactively by the user.</li>
+<li> <a href="http://imagej.net/Morphological_Segmentation" title="Morphological Segmentation">Morphological Segmentation</a>, a plugin with a graphical user interface to segment 2D/3D images based on morphological operations and the watershed algorithm.</li>
+<li> <a href="http://imagej.net/Distance_Transform_Watershed" title="Distance Transform Watershed">Distance Transform Watershed</a>, two plugins (2D and 3D) that work on binary images and allow to separate touching objects by combining the distance transform and watershed methods.</li></ul>
+<h2><span class="mw-headline" id="Measurements">Measurements</span></h2>
+<p><strong class="selflink">MorphoLibJ</strong> contains several tools for quantifying the size, the shape, or the spatial organization, from <b>binary or label</b> 2D and 3D images. The aim is to facilitate the management of label images, contrary to the built-in “Analyze Particles...” function that operates directly on a grayscale image. 
+</p>
+<h3><span class="mw-headline" id="Region_analysis">Region analysis</span></h3>
+<p>This section describes the methods implemented in MorphoLibJ for describing individual regions, represented as label images (one label for each region). We first define and describe the implemented features, then we present the plugins that integrate them.
+</p>
+<h4><span class="mw-headline" id="Intrinsic_volumes">Intrinsic volumes</span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:MorphoLibJ-Euler-number.png" class="image"><img alt="" src="../_images/e/e2/MorphoLibJ-Euler-number.png" width="400" height="143" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-Euler-number.png" class="internal" title="Enlarge"></a></div>Illustration of Euler Number definition. Left: three particles with Euler numbers equal to 1, 0 and -1, respectively. Right: example of a 3D particle with an Euler number equal to -1, corresponding to the subtraction of 1 connected components minus two handles.</div></div></div>The intrinsic volumes are a set of features with interesting mathematical properties that are commonly used for describing individual particles as well as binary microstructrues. In the planar case, they correspond to the area, the perimeter and the Euler number. The Euler number is a topological characteristic that equals the number of connected components minus the number of holes.
+<p>For 3D particles, intrinsic volumes correspond to the volume, the surface area, the mean breadth (a quantity proportional to the integral of the mean curvature over the surface) and the Euler number. In 3D the Euler number equals the number of connected components minus the number of "handles" or "tunnels" through the structure, plus the number of bubbles within the particles (Serra, 1982<sup id="cite_ref-Serra1982_1-1" class="reference"><a href="MorphoLibJ.html#cite_note-Serra1982-1">&#91;1&#93;</a></sup>; Ohser <i>et al.</i>, 2009<sup id="cite_ref-Osher2009_9-0" class="reference"><a href="MorphoLibJ.html#cite_note-Osher2009-9">&#91;9&#93;</a></sup>).
+</p>
+<h5><span class="mw-headline" id="Estimation_from_2D_or_3D_images">Estimation from 2D or 3D images</span></h5>
+<p>In image analysis, the <b>estimation of area</b> of 2D particles and of <b>volume of 3D particles</b> simply consists in counting the number of pixels or voxels that constitute it, weighted by the area of an individual pixel or the volume of an individual voxel. 
+</p><p>The implemented method for <b>perimeter measurement</b> aims at providing a better estimate of the perimeter than traditional boundary pixel count. The principle is to consider a set of lines with various orientations, and to count the number of intersections with the region(s) of interest (see figure on the right). The number of intersections is proportional to the perimeter (Serra, 1982<sup id="cite_ref-Serra1982_1-2" class="reference"><a href="MorphoLibJ.html#cite_note-Serra1982-1">&#91;1&#93;</a></sup>; Legland <i>et al.</i>, 2007<sup id="cite_ref-Legland2007_10-0" class="reference"><a href="MorphoLibJ.html#cite_note-Legland2007-10">&#91;10&#93;</a></sup>;  Ohser <i>et al.</i>, 2009<sup id="cite_ref-Osher2009_9-1" class="reference"><a href="MorphoLibJ.html#cite_note-Osher2009-9">&#91;9&#93;</a></sup>). By averaging over all possible directions, the estimate is unbiased.
+</p><p>Perimeter can be estimated using either two directions (horizontal and vertical), or four directions (by adding the diagonals). Restricting the number of directions introduces an estimation bias, with known theoretical bounds (Moran, 1966<sup id="cite_ref-Moran1966_11-0" class="reference"><a href="MorphoLibJ.html#cite_note-Moran1966-11">&#91;11&#93;</a></sup>;  Legland <i>et al.</i>, 2007<sup id="cite_ref-Legland2007_10-1" class="reference"><a href="MorphoLibJ.html#cite_note-Legland2007-10">&#91;10&#93;</a></sup>), that is usually better than boundary pixel count (Lehmann <i>et al.</i>, 2012<sup id="cite_ref-Lehmann2012_12-0" class="reference"><a href="MorphoLibJ.html#cite_note-Lehmann2012-12">&#91;12&#93;</a></sup>).
+</p><p>The <b>estimation of surface area</b> follows the same principle. The number of directions is typically chosen equal to 3 (the three main axes in image), or 13 (by considering also diagonals). As for perimeter estimation, surface area estimation in usually biased, but is usually more precise than measuring the surface area of the polygonal mesh reconstructed from binary images (Lehmann <i>et al.</i>, 2012<sup id="cite_ref-Lehmann2012_12-1" class="reference"><a href="MorphoLibJ.html#cite_note-Lehmann2012-12">&#91;12&#93;</a></sup>).
+</p>
+<h5><span class="mw-headline" id="Euler_number">Euler number</span></h5>
+<p>The measurement of Euler number depends on the choice of the connectivity. For planar images, typical choices are the 4-connectivity, corresponding to the orthogonal neighbors, and the 8-connectivity, that also considers the diagonal neighbors. In 3D, the 6-connectivity considers the neighbors in the three main directions within the image, whereas the 26 connectivity also considers the diagonals. Other connectivities have been proposed but are not implemented in MorphoLibJ (Ohser <i>et al.</i>, 2009<sup id="cite_ref-Osher2009_9-2" class="reference"><a href="MorphoLibJ.html#cite_note-Osher2009-9">&#91;9&#93;</a></sup>).
+</p><p>In the current implementation in MorphoLibJ, the Euler number is not taken into account for intersection of particles with image borders. This may result in non-integer result if the particle(s) of interest touches the image border.
+</p>
+<h5><span class="mw-headline" id="Shape_factors">Shape factors</span></h5>
+<p>Intrinsic volumes characterize the size of the particles, from different points of view. Several indices are sometimes used to describe the shape of the particles, independently of their size.
+</p><p>In 2D, the <b>isoperimetric deficit index</b> (or "shape factor", or "circularity") is defined as the ratio of area over the square of the perimeter, normalized such that the value for a disk equals one:
+</p>
+<dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><img class="mwe-math-fallback-image-inline tex" alt="circularity=4\pi\frac{A}{P^{2}}" src="../_images/math/2/8/5/285a52b9033260e63547a45990183f59.png" /></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl>
+<p>While values of circularity range theoretically within the interval <img class="mwe-math-fallback-image-inline tex" alt="[0;1]" src="../_images/math/b/8/b/b8b4326ebb88870f8cc97ab3f59a0867.png" />, the measurements errors of the perimeter may produce circularity values above 1 (Lehmann <i>et al.</i>, 2012<sup id="cite_ref-Lehmann2012_12-2" class="reference"><a href="MorphoLibJ.html#cite_note-Lehmann2012-12">&#91;12&#93;</a></sup>). The MorphoLibJ library also considers the inverse of the circularity, referred to as "elongation index". The values of elongation range from 1 for round particles and increase for elongated particles.
+</p>
+<dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><img class="mwe-math-fallback-image-inline tex" alt="elongation&#9;=&#9;\frac{P^{2}}{4\pi\cdot A}" src="../_images/math/b/1/6/b16eecf8051f2d0fdd3e0e6764dcea41.png" /></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl>
+<p>In 3D, the <b>sphericity index</b> can be defined as the ratio of the squared volume over the cube of the surface area, normalized such that the value for a ball equals one:
+</p>
+<dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><dl><dd><img class="mwe-math-fallback-image-inline tex" alt="sphericity&#9;=&#9;36\pi\frac{V^{2}}{S^{3}}" src="../_images/math/c/d/4/cd4cdc4e9e7cc7fadbb110220d06ff7a.png" /></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl></dd></dl>
+<h4><span class="mw-headline" id="Inertia_ellipse_and_ellipsoid">Inertia ellipse and ellipsoid</span></h4>
+<p>A binary particle may be described mathematically by its moments which corresponds to an integral of its indicator function, with various degrees along the directions. The first moment corresponds to the area or to the volume of the particle. The normalization of the first-order indicator functions leads to the 2D or 3D centroid of the particle. The second order moments can be used to compute the equivalent inertia ellipse or ellipsoid.
+</p>
+<h4><span class="mw-headline" id="Geodesic_measurements">Geodesic measurements</span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:MorphoLibJ-perimiter-geodesic-diameter-computation.png" class="image"><img alt="" src="../_images/2/2f/MorphoLibJ-perimiter-geodesic-diameter-computation.png" width="400" height="187" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-perimiter-geodesic-diameter-computation.png" class="internal" title="Enlarge"></a></div>Computation of perimeter and geodesic diameter. Left: principle of perimeter estimation by counting intersections with set of lines. Right: illustration of the geodesic diameter measured on a non convex particle.</div></div></div>For particles with complex shapes, the geodesic diameter may be of interest. It corresponds of the largest geodesic distance between two points within a region, the geodesic distance being the length of the shortest path joining the two points while staying inside the region (Lantuejoul <i>et al.</i>, 1981<sup id="cite_ref-Lantuejoul1981_13-0" class="reference"><a href="MorphoLibJ.html#cite_note-Lantuejoul1981-13">&#91;13&#93;</a></sup>).
+<h4><span class="mw-headline" id="Plugins">Plugins</span></h4>
+<p>Most MorphoLibJ plugins consider the current image as input, that must be either binary (only one region is considered), or label (typically the result of a connected components labeling, see <a href="http://imagej.net/MorphoLibJ#Utilities_for_binary_images" title="MorphoLibJ">Utilities for binary images</a>). The output is a results table (ImageJ <a rel="nofollow" class="external text" href="https://imagej.nih.gov/ij/docs/guide/146-22.html">Results table</a>) containing one row for each label actually present within the image. The spatial calibration of the image is taken into account in all measurements. All plugins can be found under the <span><em><span style="border-bottom:1px dotted #ccc;">Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze</span></em></span> menu.
+</p>
+<h5><span class="mw-headline" id="Global_geometry">Global geometry</span></h5>
+<p>The <b>global geometry</b> of particles in 2D images can be characterized with the Analyze Regions plugin (under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze Regions</span></em></span>). For 2D particles, the area, the perimeter and derived features are implemented. The columns of the results table are:
+</p>
+<ul><li> <b>Label</b>: the label of the particle measured on the current line (it can be different from the row number if some labels do no exist in original image).</li>
+<li> <b>Area</b>: the number of pixels within each region, multiplied by the area of each pixel.</li>
+<li> <b>Perimeter</b>: an estimate of the perimeter, using the <a href="http://en.wikipedia.org/wiki/Crofton_formula" class="extiw" title="wikipedia:Crofton formula">Crofton formula</a>.</li>
+<li> <b>Circularity</b> the normalized ratio of area by the square of the perimeter: <img class="mwe-math-fallback-image-inline tex" alt="4\pi\cdot A/p^{2}" src="../_images/math/9/f/4/9f450e07b9ae774124cbb648a1ab7dc9.png" />. The value should be comprised between 0 (very elongated) and 1 (close to circular). Values superior to 1 may appear due to discretization effect.</li>
+<li> <b>Elongation</b>: the normalized ratio of the square of the perimeter by the area&#160;: <img class="mwe-math-fallback-image-inline tex" alt="p^{2}/\left(4\pi\cdot A\right)" src="../_images/math/d/6/e/d6ed72e1d97dec5bd626d90db5f015e0.png" />, corresponding to the inverse of the circularity. The values range from 1 (round), and increase with elongation of the particle.</li></ul>
+<h5><span class="mw-headline" id="Largest_inscribed_circle_or_ball">Largest inscribed circle or ball</span></h5>
+<p>This plugin computes for each label the largest disk that can be enclosed within the corresponding particle. The plugin opens a dialog that allows to choose the label image to characterize, the choice of the method for computing distance, and eventually the image on which overlaid circles can be drawn. The output of the plugin includes the following information:
+</p>
+<ul><li> <b>Label</b>: the label of the particle measured on the current line.</li>
+<li> <b>xi</b>: the x-coordinate of the inscribed circle.</li>
+<li> <b>yi</b>: the y-coordinate of the inscribed circle.</li>
+<li> <b>radius</b>: the radius of the inscribed circle.</li></ul>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Longest-geodesic-path-DRIVE.png" class="image"><img alt="" src="../_images/c/c0/Longest-geodesic-path-DRIVE.png" width="300" height="310" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Longest-geodesic-path-DRIVE.png" class="internal" title="Enlarge"></a></div>Computation of the geodesic diameter on a segmented image from the DRIVE database (Staal <i>et al</i>., 2004<sup id="cite_ref-Staal2004_14-0" class="reference"><a href="MorphoLibJ.html#cite_note-Staal2004-14">&#91;14&#93;</a></sup>). Each connected component was associated to a label, then the longest geodesic path within each connected component was computed and displayed as red overlay.</div></div></div>
+<h5><span class="mw-headline" id="Geodesic_diameter">Geodesic diameter</span></h5>
+<p>This plugin computes several geodesic measures for each particle in a label image. The result of the plugin comprises the following features:
+</p>
+<ul><li> <b>Label</b>: the label of the particle measured on the current line.</li>
+<li> <b>Geod. Diam.</b>: the value of the geodesic diameter.</li>
+<li> <b>Radius</b>: the radius of the largest inscribed circle, which is computed during the algorithm.</li>
+<li> <b>Geod. Elong.</b>: the ratio of geodesic diameter over the diameter of the largest inscribed circle. The values range from 1 for nearly round particles and increases for elongated particles.</li>
+<li> <b>xi, yi</b>: coordinates of the largest inscribed circle.</li>
+<li> <b>x1, y1</b>: coordinates of one of the geodesic extremities of the particle.</li>
+<li> <b>x2, y2</b>: coordinates of another geodesic extremity of the particle.</li></ul>
+<h5><span class="mw-headline" id="Analyze_Regions_3D">Analyze Regions 3D</span></h5>
+<p>The plugin calculating these measurements is found under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze Regions 3D</span></em></span>. The results are provided in an ImageJ Results table, whose name contains the name of the original image.
+</p>
+<ul><li> <b>Label</b>: the label of the particle measured on the current line (it can be different from the row number if some labels do no exist in original image).</li>
+<li> <b>Bounding box</b>: the minimal and maximal coordinates in each direction for each label.</li>
+<li> <b>Volume</b>: computes the number of voxels comprising the particle, multiplied by the volume of an individual voxel.</li>
+<li> <b>Surface area</b>: the surface area computed using a discretized version of the <a href="http://en.wikipedia.org/wiki/Crofton_formula" class="extiw" title="wikipedia:Crofton formula">Crofton formula</a>, that computes intersections with line grids of various orientations (currently either 3 or 13).</li>
+<li> <b>Sphericity index</b>: defined as <img class="mwe-math-fallback-image-inline tex" alt="36\pi V^{2}/S^{3}" src="../_images/math/2/a/f/2af82c5e13f58e5299893e6662837395.png" />.</li>
+<li> <b>Inertia ellipse / ellipsoid</b>: returns the centroid (center of gravity) as well as the size and the orientation of the inertia ellipse or ellipsoid of each particle. Radii are sorted in decreasing order. Angles are given in degrees, and correspond to the azimut ("yaw"), the elevation ("pitch"), and the roll around the main axis.</li></ul>
+<h3><span class="mw-headline" id="Intensity_measurements">Intensity measurements</span></h3>
+<p>Other measurements are provided for pairs of grayscale and label 2D or 3D images (<span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Intensity Measurements 2D/3D</span></em></span>). The label image can correspond to a segmented particle, or to a more generic region of interest. 
+</p><p>The plugin calculates the <b>mean</b>, <b>standard deviation</b>, <b>maximum</b>, <b>minimum</b>, <b>median</b>, <b>mode</b>, <b>skewness</b> and <b>kurtosis</b> of the intensity value distribution of each labeled region in the grayscale image. The results are displayed as well in an ImageJ <i>ResultsTable</i>.
+</p>
+<h3><span class="mw-headline" id="Label_Overlap_Measures">Label Overlap Measures</span></h3>
+<p>Given two label images, there are different measures that allow us to evaluate the overlap
+agreement (or error) between the labels. Following Tustison &amp; Gee (2009)<sup id="cite_ref-Tustison2009_15-0" class="reference"><a href="MorphoLibJ.html#cite_note-Tustison2009-15">&#91;15&#93;</a></sup>, and given a
+source image <img class="mwe-math-fallback-image-inline tex" alt="S" src="../_images/math/5/d/b/5dbc98dcc983a70728bd082d1a47546e.png" /> and a target image <img class="mwe-math-fallback-image-inline tex" alt="T" src="../_images/math/b/9/e/b9ece18c950afbfa6b0fdbfa4ff731d3.png" />, this plugin (under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Label Overlap Measures</span></em></span>) provides the following overlap measurements in two different result tables (one with the total values for all labels and one with values for individual labels):
+</p>
+<ul><li> Target Overlap for each individual labeled region <img class="mwe-math-fallback-image-inline tex" alt="r" src="../_images/math/4/b/4/4b43b0aee35624cd95b910189b3dc231.png" />:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="TO_{r}=\frac{|S_{r}\cap T_{r}|}{|T_{r}|}" src="../_images/math/c/1/b/c1b7d0a8576def32af42f7efd21be978.png" /></dd></dl>
+<ul><li> Total Overlap (for all regions):</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="TO=\frac{\sum_{r}{|S_{r}\cap T_{r}|}}{\sum_{r}{|T_{r}|}}" src="../_images/math/1/4/7/147ab9837e958cd4e9403aedbdc7cef9.png" /></dd></dl>
+<ul><li> <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard Index</a> or Union Overlap for each individual labeled region <img class="mwe-math-fallback-image-inline tex" alt="r" src="../_images/math/4/b/4/4b43b0aee35624cd95b910189b3dc231.png" />:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="UO_{r}=\frac{|S_{r}\cap T_{r}|}{|S_{r}\cup T_{r}|}" src="../_images/math/9/9/c/99c8505e6afa44fda6a149c632f7dc7d.png" /></dd></dl>
+<ul><li> <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard Index</a> or Union Overlap for all regions:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="UO=\frac{\sum_{r}|S_{r}\cap T_{r}|}{\sum_{r}|S_{r}\cup T_{r}|}" src="../_images/math/2/0/0/20021606784991b2e2a8ed10cfd2efe6.png" /></dd></dl>
+<ul><li> <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient">Dice Coefficient</a> or Mean Overlap for each individual labeled region <img class="mwe-math-fallback-image-inline tex" alt="r" src="../_images/math/4/b/4/4b43b0aee35624cd95b910189b3dc231.png" />:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="MO_{r}=2\frac{|S_{r}\cap T_{r}|}{|S_{r}|+|T_{r}|}" src="../_images/math/7/d/1/7d113e624b4b0db0a28c8d3c3ba1fa5c.png" /></dd></dl>
+<ul><li> <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient">Dice Coefficient</a> or Mean Overlap for all regions:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="MO=2\frac{\sum_{r}|S_{r}\cap T_{r}|}{\sum_{r}\left(|S_{r}|+|T_{r}|\right)}" src="../_images/math/7/a/5/7a542c7dd7bcd4c8e1b5a5c1f076a3cd.png" /></dd></dl>
+<ul><li> Volume Similarity for each individual labeled region <img class="mwe-math-fallback-image-inline tex" alt="r" src="../_images/math/4/b/4/4b43b0aee35624cd95b910189b3dc231.png" />:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="VS_{r}=2\frac{|S_{r}|-|T_{r}|}{|S_{r}|+|T_{r}|}" src="../_images/math/d/2/4/d243a7cd157411591e92a81b09332acf.png" /></dd></dl>
+<ul><li> Volume Similarity for all regions:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="VS=2\frac{\sum_{r}\left(|S_{r}|-|T_{r}|\right)}{\sum_{r}\left(|S_{r}|+|T_{r}|\right)}" src="../_images/math/4/2/d/42d17a99e128e00642cb8737d445d0a8.png" /></dd></dl>
+<ul><li> False Negative Error for each individual labeled region <img class="mwe-math-fallback-image-inline tex" alt="r" src="../_images/math/4/b/4/4b43b0aee35624cd95b910189b3dc231.png" />:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="FN_{r}=\frac{|T_{r}\setminus S_{r}|}{|T_{r}|}" src="../_images/math/c/0/a/c0a4954b0f4126ca03a074d99666856c.png" /></dd></dl>
+<ul><li> False Negative Error for all regions:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="FN=\frac{\sum_{r}|T_{r}\setminus S_{r}|}{\sum_{r}|T_{r}|}" src="../_images/math/0/4/f/04fa46f86443ba8b13dc553d691f3c41.png" /></dd></dl>
+<ul><li> False Positive Error for each individual labeled region <img class="mwe-math-fallback-image-inline tex" alt="r" src="../_images/math/4/b/4/4b43b0aee35624cd95b910189b3dc231.png" />:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="FP_{r}=\frac{|S_{r}\setminus T_{r}|}{|S_{r}|}" src="../_images/math/1/4/8/148269767133f4a48034953bcfe25f9b.png" /></dd></dl>
+<ul><li> False Positive Error for all regions:</li></ul>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="FP=\frac{\sum_{r}|S{}_{r}\setminus T{}_{r}|}{\sum_{r}|S_{r}|}" src="../_images/math/4/4/1/441c52504a5008cdbbfc0892e3e6d887.png" /></dd></dl>
+<h3><span class="mw-headline" id="Spatial_organization">Spatial organization</span></h3>
+<p>The region adjacency graph plugin gives access to the neighborhood relationship between adjacent regions. This can be particularly informative for exploring collections of cells within cellular tissues (Florindo <i>et al.</i>, 2016<sup id="cite_ref-Florindo2016_16-0" class="reference"><a href="MorphoLibJ.html#cite_note-Florindo2016-16">&#91;16&#93;</a></sup>).
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:502px;"><a href="http://imagej.net/File:MorphoLibJ-region-adjacency-graph.png" class="image"><img alt="" src="../_images/d/d3/MorphoLibJ-region-adjacency-graph.png" width="500" height="162" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-region-adjacency-graph.png" class="internal" title="Enlarge"></a></div>Computation of the Region Adjacency Graph on a microscopy image of plant tissue. Left: original image. Middle: result of watershed segmentation. Right: overlay of edges representing adjacent regions.</div></div></div></div>
+<p>The plugin (under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Region Adjacency Graph</span></em></span>) works for both 2D and 3D images, and requires a label image as input. A typical input is the result of a watershed segmentation (see <a href="http://imagej.net/MorphoLibJ#Watershed_segmentation" title="MorphoLibJ">Watershed Segmentation</a>), eventually followed by <a href="http://imagej.net/MorphoLibJ#Label_Edition_plugin" title="MorphoLibJ">manual edition of the labels</a>. The output of the plugin is a results table with as many rows as the number of pairs of adjacent regions, containing the labels of the two adjacent regions.
+</p>
+<h2><span class="mw-headline" id="Binary_and_label_image_utilities">Binary and label image utilities</span></h2>
+<p>The MorphoLibJ library provides several utility functions for the processing and the management of binary and label images. All methods of this section are available as plugins under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Binary Images</span></em></span> or <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Label Images</span></em></span>.
+</p>
+<h3><span class="mw-headline" id="Distances_for_binary_images">Distances for binary images</span></h3>
+<h4><span class="mw-headline" id="Distance_transform">Distance transform</span></h4>
+<p>When analyzing images, it is often necessary to compute distances to a particular structure or position. A convenient operator for binary images is the <b>distance transform</b>. Its principle is to compute, for each foreground pixel, the distance to the nearest background pixel. The result is commonly referred to as <b>Distance Map</b>.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:MorphoLibJ-distance-transform-on-binary-leaf.png" class="image"><img alt="" src="../_images/0/01/MorphoLibJ-distance-transform-on-binary-leaf.png" width="700" height="267" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-distance-transform-on-binary-leaf.png" class="internal" title="Enlarge"></a></div>Binary image, and result of computation of the distance transform.</div></div></div></div>
+<p>Several methods exist for computing distance maps. The MorphoLibJ library implements distance transforms based on chamfer distances, that approximate Euclidean distances but are simpler to compute.
+</p>
+<ul><li> <b>Chamfer Distance Map</b> computes an approximate distance map from a binary image between each foreground pixel to the nearest background pixel.</li>
+<li> <b>Chamfer Distance Map 3D</b> computes an approximate distance map from a 3D binary image between each foreground voxel to the nearest background voxel.</li></ul>
+<h4><span class="mw-headline" id="Geodesic_distance_transform">Geodesic distance transform</span></h4>
+<p>In some cases it may be useful to restrict the propagation of distances to a specific region or mask. For example, one may be interested in the distance between two points in a vasculature network, while staying within the network. The <b>geodesic distance transform</b> consists in computing the distance from a given binary marker, while constraining the propagation of the distance within a binary mask. An illustration is given in the figure below:
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:502px;"><a href="http://imagej.net/File:MorphoLibJ-geodesic-distance-example.png" class="image"><img alt="" src="../_images/c/c5/MorphoLibJ-geodesic-distance-example.png" width="500" height="258" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-geodesic-distance-example.png" class="internal" title="Enlarge"></a></div>Computation of the geodesic distance map on a binary image from the DRIVE database (Staal <i>et al.</i>, 2004<sup id="cite_ref-Staal2004_14-1" class="reference"><a href="MorphoLibJ.html#cite_note-Staal2004-14">&#91;14&#93;</a></sup>). Left: original image with marker superimposed in red. Right: result of geodesic distance map, hot colors correspond to large distances, cold colors correspond to small distances.</div></div></div></div>
+<ul><li> <b>Geodesic Distance Map</b> computes the geodesic distance between each foreground pixel of a binary mask image to the closest pixel of a marker image, while staying within the particle represented by the mask image.</li>
+<li> <b>Interactive Geodesic Distance Map</b> computes the geodesic distance between each foreground pixel of a the currently selected image (considered the mask image) to the closest pixel of a marker image defined by the user ROIs, while staying within the particle represented by the mask image.</li></ul>
+<h3><span class="mw-headline" id="Label_images">Label images</span></h3>
+<p>When several structures or components are present within an image, it may be more convenient to work with label images. Each pixel or voxel of a label image corresponds to the integer index of the particle it belongs to. The value 0 is assumed to correspond to the background. The number of labels that can be represented depends on the image type: 255 for byte images, 65535 for short images...
+</p><p>Label images can be represented either using shades of gray, or using color maps to better distinguish the different regions. 
+</p>
+<h4><span class="mw-headline" id="Connected_component_labeling">Connected component labeling</span></h4>
+<p>The different structures within a binary images can be labeled by using a connected component labeling algorithm. Each label will correspond to a set of connected pixels or voxels. 
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:412px;"><div class="MediaTransformError" style="width: 410px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-grains-binary-label-distance.png" class="internal" title="Enlarge"></a></div>Binary image, result of connected components labeling, and computation of distance map on the complement of binary image.</div></div></div>
+<p>Different connectivities may be chosen. For planar images, the most current ones are the 4-connectivity, that consider only orthogonal neighbors of a given pixel, and the 8-connectivity, that also considers the diagonals. For 3D images, the 6-connectivity considers only orthogonal neighbors in the three main directions, whereas the 26-connectivity considers all the direct neighbors of a given voxel.
+</p>
+<ul><li> <b>Connected Components Labeling</b> transforms the binary image into a label image by assigning a specific number (label) to each connected component.</li></ul>
+<h4><span class="mw-headline" id="Label_image_representation">Label image representation</span></h4>
+<p>Several plugins allow to control the appearance of label images. It is possible to choose a given color map, or to transform a label image into a color image. In both cases, the background color can be specified, and the color order can be shuffled to facilitate the discrimination of neighbor regions with similar labels.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:277px;"><div class="MediaTransformError" style="width: 275px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-grains-labels-assign-measure.png" class="internal" title="Enlarge"></a></div>Assign result of a measurement to a label image. In this example, the elongation is represented using a color code, between dark purple (circular) to yellow (very elongated).</div></div></div></div>
+<ul><li> <b>Assign Measure To Label</b> combines a label image with a results table, and creates a new image for which each pixel/voxel is assigned the measurement value corresponding to the label it belongs to.</li>
+<li> <b>Set Label Map</b> allows to choose the color map used to display a label image. In particular, shuffling the color map and/or choosing a specific color for background allows better visualization that only grey levels.</li>
+<li> <b>Label To RGB</b> converts a label image to true RGB image. Similar to ImageJ native conversion, but this plugin avoids confusion between background pixels and regions with low labels.</li></ul>
+<h3><span class="mw-headline" id="Region_and_labels_selection">Region and labels selection</span></h3>
+<p>The MorphoLibJ library offers several tools for automatically select binary regions or labels based on size or position criteria.
+</p>
+<h4><span class="mw-headline" id="Binary_images">Binary images</span></h4>
+<ul><li> <b>Keep / Remove Largest Region</b> identifies the largest connected component, and keeps it or removes it.</li>
+<li> <b>Size Opening</b> computes the size (area in 2D, volume in 3D) of each connected component, and remove all particles whose size is below the value specified by the user.</li></ul>
+<p>Algorithms work for both 2D or 3D images. Default connectivity 4 (resp. 6) is used for 2D (resp. 3D) images.
+</p>
+<h4><span class="mw-headline" id="Label_images_2">Label images</span></h4>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:547px;"><div class="MediaTransformError" style="width: 545px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-grains-binary-label-remove-border-largest-size-opening.png" class="internal" title="Enlarge"></a></div>MorphoLibJ utilities for label images. From left to right: original label image, remove border labels, remove largest region, apply size opening for keeping only regions with at least 150 pixels.</div></div></div></div>
+<ul><li> <b>Remove Border Labels</b> is similar to "kill borders" function, but operates faster as no morphological reconstruction is required.</li>
+<li> <b>Select Label(s)</b> enters a set of labels, and creates a new label image containing only the selected labels.</li>
+<li> <b>Crop Label</b> creates a new binary image containing only the label specified by the user. The size of the new image is fitted to the region.</li>
+<li> <b>Replace/Remove Label(s)</b> replaces the value of a region by another value. Can be used to “clear” a label, by replacing its value by 0, or to merge to adjacent regions.</li>
+<li> <b>Label Boundaries</b> creates a new binary image containing value 255 for pixels/voxels having a neighbour with a different value.</li>
+<li> <b>Keep / Remove Largest Label</b> identifies the largest label, and keeps it or removes it.</li>
+<li> <b>Label Size Opening</b> computes the size (area in 2D, volume in 3D) of each region, and removes all labels whose size is below the value specified by the user.</li></ul>
+<h3><span class="mw-headline" id="Label_Edition_plugin">Label Edition plugin</span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:502px;"><a href="http://imagej.net/File:Label-Edition-plugin.png" class="image"><img alt="" src="../_images/7/7c/Label-Edition-plugin.png" width="500" height="223" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Label-Edition-plugin.png" class="internal" title="Enlarge"></a></div>Label Edition plugin overview.</div></div></div>To ease the processing of label images, <strong class="selflink">MorphoLibJ</strong> provides the Label Edition plugin (available under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Labels </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Label Edition</span></em></span>). This plugin contains a graphical user interface (GUI) where the users can perform the following set of editing tasks:
+<ul><li> Manually merge labels after their selection using the point selection tool (in 2D and 3D).</li>
+<li> Apply morphological erosion, dilation, opening and closing with a square/cube of radius 1 as structuring element.</li>
+<li> Remove labels by area or volume (size opening operation), largest size, manual selection or border location.</li></ul>
+<p>All operations are performed “in place”, i.e., the input image gets directly modified. However, the initial status of the label image can be recovered by clicking on “Reset”.
+</p>
+<h2><span class="mw-headline" id="Library_interoperability">Library interoperability</span></h2>
+<p>A key design concept of MorphoLibJ was the modularity of the implementation to facilitate its reusability.
+Three layers with different programming abstraction can be identified:
+</p>
+<ul><li> For final users, plugins provide graphical display and intuitive tuning of parameters. Such plugins can easily be incorporated into a macro:</li></ul>
+<pre class="brush:java">
+// Calls the Regional Min/Max plugin on current ImagePlus instance
+run("Regional Min &amp; Max", "operation=[Regional Maxima] connectivity=4");
+</pre>
+<ul><li> For plugin developers, operators are available through collections of static methods, making it possible to apply most operations with a single line of code. Example:</li></ul>
+<pre class="brush:java">
+// Computes regional maxima using the 4-connectivity
+ImageProcessor maxima = MinimaAndMaxima.regionalMaxima(image, 4);
+</pre>
+<ul><li> For core developers, algorithms are implementations of abstract interfaces, making it possible to choose or develop the most appropriate one, and to monitor execution events. For example:</li></ul>
+<pre class="brush:java">
+// choose and setup the appropriate algorithm
+RegionalExtremaAlgo algo = new RegionalExtremaByFlooding();
+algo.setExtremaType(ExtremaType.MAXIMA);
+algo.setConnectivity(4);
+// add algorithm monitoring
+algo.addAlgoListener(new DefaultAlgoListener());
+// compute result on a given ImageProcessor
+ImageProcessor result = algo.applyTo(image);
+</pre>
+<p>In total, the library provides nearly two hundred classes and interfaces.
+</p>
+<h3><span class="mw-headline" id="Library_organization">Library organization</span></h3>
+<p>The library follows a logic structure of folders divided by topics aiming at their re-usability from other plugins or scripts, among others:
+</p>
+<ul><li> <code>inra.ijpb.data</code> contains generic data structures for manipulating 2D or 3D images</li>
+<li> <code>inra.ijpb.binary</code> contains the set of utilities for working on binary images (connected component labeling, distance transform, geodesic distance transform...)</li>
+<li> <code>inra.ijpb.label</code> contains the utilities for label images (cropping, size opening, remove border labels, etc)</li>
+<li> <code>inra.ijpb.measure</code> contains the tools for geometric and grey level characterization of 2D or 3D images</li>
+<li> <code>inra.ijpb.morphology</code> contains the collection of mathematical morphology operators</li>
+<li> <code>inra.ijpb.watershed</code> contains the classes implementing the different versions of the watershed algorithm</li>
+<li> <code>inra.ijpb.plugins</code> contains the set of plugins that is accessible from ImageJ/Fiji Plugins menu</li></ul>
+<p>All major methods have a general class with <b>static methods</b> that allow calling the methods on 2D and 3D images in a transparent way.
+</p>
+<h3><span class="mw-headline" id="Scripting_MorphoLibJ">Scripting MorphoLibJ</span></h3>
+<p>One advantage of this organization of the library and the use of public static methods is that it allows very easy and fast prototyping of morphological algorithms and pipelines.
+</p>
+<h4><span class="mw-headline" id="Segmentation_pipeline_prototype">Segmentation pipeline prototype</span></h4>
+<p>Let's see an example in a complete <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">Beanshell script</a> that takes the active 2D or 3D image and finds a reasonable segmentation combining a set of morphological operations (gradient, extended minima and watershed):
+</p>
+<pre class="brush:java">
+#@ ImagePlus(label="Input image",description="Image to segment") imp
+#@ Integer(label="Gradient radius",description="Radius of the morphological gradient",value=2) radius
+#@ Integer(label="Tolerance",description="Local extrema dynamic",value=3) tolerance
+#@ String(label="Connectivity",description="Local connectivity", choices={"6","26"}) strConn
+#@ Boolean(label="Calculate dams",description="Flag to use dams in watershed",value=true) dams
+#@OUTPUT ImagePlus resultImage
+  
+// ImageJ imports
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+// MorphoLibJ imports
+import inra.ijpb.binary.BinaryImages;
+import inra.ijpb.morphology.MinimaAndMaxima3D;
+import inra.ijpb.morphology.Morphology;
+import inra.ijpb.morphology.Strel3D;
+import inra.ijpb.watershed.Watershed;
+import inra.ijpb.data.image.Images3D;
+
+// convert connectivity string to int
+conn = Integer.parseInt( strConn );
+
+image = null;
+if( radius&#160;!= 0 )
+{
+	// create structuring element (cube of radius 'radius')
+	strel = Strel3D.Shape.CUBE.fromRadius( radius );
+	// apply morphological gradient to input image
+	image = Morphology.gradient( imp.getImageStack(), strel );
+
+}
+else
+	image = imp.getImageStack();
+// find regional minima on gradient image with dynamic value of 'tolerance' and 'conn'-connectivity
+regionalMinima = MinimaAndMaxima3D.extendedMinima( image, tolerance, conn );
+// impose minima on gradient image
+imposedMinima = MinimaAndMaxima3D.imposeMinima( image, regionalMinima, conn );
+// label minima using connected components (32-bit output)
+labeledMinima = BinaryImages.componentsLabeling( regionalMinima, conn, 32 );
+// apply marker-based watershed using the labeled minima on the minima-imposed 
+// gradient image (the last value indicates the use of dams in the output)
+resultStack = Watershed.computeWatershed( imposedMinima, labeledMinima, conn, dams );
+   
+// create image with watershed result
+resultImage = new ImagePlus( "watershed", resultStack );
+// assign right calibration
+resultImage.setCalibration( imp.getCalibration() );
+// optimize display range
+Images3D.optimizeDisplayRange( resultImage );
+// set same slice as input
+resultImage.setSlice( imp.getCurrentSlice() );
+</pre>
+<h4><span class="mw-headline" id="Label_visualization_in_3D_viewer">Label visualization in 3D viewer</span></h4>
+<p>Making use of MorphoLibJ's label methods and the <a href="http://imagej.net/3D_Viewer" title="3D Viewer">ImageJ 3D Viewer</a>'s visualization tools it is quite simple to create a script to display each label of an image as 3D surfaces of the corresponding colors provided by the image look-up table:
+</p>
+<pre class="brush:java">
+#@ ImagePlus imp
+
+import inra.ijpb.label.LabelImages;
+import ij3d.Image3DUniverse;
+import ij3d.ContentConstants;
+import org.scijava.vecmath.Color3f;
+import ij.IJ;
+import isosurface.SmoothControl;
+
+// set to true to display messages in log window
+verbose = false;
+
+// set display range to 0-255 so the displayed colors
+// correspond to the LUT values
+imp.setDisplayRange( 0, 255 );
+imp.updateAndDraw();
+
+// calculate array of all labels in image
+labels = LabelImages.findAllLabels( imp );
+
+// create 3d universe
+univ = new Image3DUniverse();
+univ.show();
+
+// read LUT from input image
+lut = imp.getLuts()[0];
+
+// add all labels different from zero (background)
+// to 3d universe
+for( i=0; i&lt;labels.length; i++ )
+{	
+	if( labels[ i ] &gt; 0 )
+	{
+		labelToKeep = new int[ 1 ];
+		labelToKeep[ 0 ] = labels[ i ];
+		if( verbose )
+			IJ.log( "Reconstructing label " + labels[ i ] + "..." );
+		// create new image containing only that label
+		labelImp = LabelImages.keepLabels( imp, labelToKeep );
+		// convert image to 8-bit
+		IJ.run( labelImp, "8-bit", "" );
+		
+		// use LUT label color
+		color = new Color3f( new java.awt.Color( lut.getRed( labels[ i ] ),
+			lut.getGreen( labels[ i ] ),
+			lut.getBlue( labels[ i ] ) ) );
+			
+		if ( verbose )
+			IJ.log( "RGB( " + lut.getRed( labels[ i ] ) +", " 
+				+ lut.getGreen( labels[ i ] )
+				+ ", " + lut.getBlue( labels[ i ] ) + ")" );
+
+		channels = new boolean[3];
+		channels[ 0 ] = false;
+		channels[ 1 ] = false;
+		channels[ 2 ] = false;
+		
+		// add label image with corresponding color as an isosurface
+		univ.addContent( labelImp, color, "label-"+labels[i], 0, channels, 2, ContentConstants.SURFACE);
+	}
+}
+
+// launch smooth control
+sc = new SmoothControl( univ );
+</pre>
+<p>At the end of the script a dialog is shown to smooth the surfaces at will. Each label is added to the 3D scene independently with the nanme "label-X" where X is its label value.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:752px;"><a href="http://imagej.net/File:MorphoLibJ-visualize-labels-in-3d-viewer.png" class="image"><img alt="" src="../_images/9/9e/MorphoLibJ-visualize-labels-in-3d-viewer.png" width="750" height="211" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-visualize-labels-in-3d-viewer.png" class="internal" title="Enlarge"></a></div>From left to right: input label image, script output, smoothed label surfaces and example of individually translated surfaces in the 3D viewer.</div></div></div></div>
+<h2><span class="mw-headline" id="Documentation">Documentation</span></h2>
+<p>Each <a rel="nofollow" class="external text" href="https://github.com/ijpb/MorphoLibJ/releases">released version of MorphoLibJ</a> comes with a <a rel="nofollow" class="external text" href="https://github.com/ijpb/MorphoLibJ/releases/download/v1.4.0/MorphoLibJ-manual-v1.4.0.pdf">User Manual in PDF format</a>.
+</p><p>The main source code directory is on GitHub under <a rel="nofollow" class="external text" href="http://github.com/ijpb/MorphoLibJ/tree/master/src/main/java/inra/ijpb">src/main/java/inra/ijpb</a>.
+</p><p>You can browse the <a rel="nofollow" class="external text" href="http://ijpb.github.io/MorphoLibJ/javadoc/">javadoc</a> for more information about its API.
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<ul><li> In <a href="http://imagej.net/ImageJ_1.x" class="mw-redirect" title="ImageJ 1.x">ImageJ 1.x</a>, download the <a rel="nofollow" class="external text" href="https://github.com/ijpb/MorphoLibJ/releases">latest released jar</a> into the <i>plugins</i> folder.</li>
+<li> In <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> (including <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a>), you just need to <a href="http://imagej.net/How_to_follow_a_3rd_party_update_site#Add_update_sites" class="mw-redirect" title="How to follow a 3rd party update site"> add</a> the IJPB-plugins site to your list of update sites:
+<ol><li> Select <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update...</span></em></span> from the menu to start the <a href="http://imagej.net/Updater" title="Updater">updater</a>.</li>
+<li> Click on <i>Manage update sites</i>. This brings up a dialog where you can activate additional update sites.</li>
+<li> Activate the IJPB-plugins update site and close the dialog. Now you should see an additional jar file for download.</li>
+<li> Click <i>Apply changes</i> and restart ImageJ.</li></ol></li></ul>
+<h2><span class="mw-headline" id="Citation">Citation</span></h2>
+<p>Please note that <strong class="selflink">MorphoLibJ</strong> is based on a publication. If you use it successfully for your research please be so kind to cite our work:
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=MorphoLibJ%3A+integrated+library+and+plugins+for+mathematical+morphology+with+ImageJ&amp;rft.aulast=Legland&amp;rft.aufirst=D.&amp;rft.date=2016&amp;rft.volume=32%2822%29&amp;rft.pages=3532-3534&amp;rft.pub=Oxford+Univ+Press&amp;rft_id=info:doi/10.1093%2Fbioinformatics%2Fbtw413&amp;rft_id=info:pmid/27412086&amp;rft_id=https%3A%2F%2Fdoi.org%2F10.1093%2Fbioinformatics%2Fbtw413"><cite id="CITEREFLeglandArganda-CarrerasAndrey2016">Legland, D.; Arganda-Carreras, I.&#32;&amp; Andrey, P.&#32;(2016),&#32;"<a rel="nofollow" class="external text" href="https://doi.org/10.1093/bioinformatics/btw413">MorphoLibJ: integrated library and plugins for mathematical morphology with ImageJ</a>",&#32;<i>Bioinformatics</i>&#32;(Oxford Univ Press)&#32;<b>32(22)</b>:  3532-3534, PMID 27412086, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1093%2Fbioinformatics%2Fbtw413">10.1093/bioinformatics/btw413</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="https://doi.org/10.1093/bioinformatics/btw413">https://doi.org/10.1093/bioinformatics/btw413</a>&gt;</span></cite></span> (<a rel="nofollow" class="external text" href="http://scholar.google.com/scholar?cluster=15755915495942198773">on Google Scholar</a>).</li></ul>
+<p><strong class="selflink">MorphoLibJ</strong>'s code repository has its own <a rel="nofollow" class="external text" href="https://zenodo.org/badge/latestdoi/21349/ijpb/MorphoLibJ">DOI</a>.
+</p>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ol class="references">
+<li id="cite_note-Serra1982-1"><span class="mw-cite-backlink">↑ <sup><a href="MorphoLibJ.html#cite_ref-Serra1982_1-0">1.0</a></sup> <sup><a href="MorphoLibJ.html#cite_ref-Serra1982_1-1">1.1</a></sup> <sup><a href="MorphoLibJ.html#cite_ref-Serra1982_1-2">1.2</a></sup></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Image+Analysis+and+Mathematical+Morphology.+Volume+1&amp;rft.aulast=Serra%2C+Jean&amp;rft.date=1982&amp;rft.pub=Academic+Press&amp;rft_id=info:doi/10.1002%2Fcyto.990040213"><cite id="CITEREFSerra.2C_Jean1982">Serra, Jean&#32;(1982),&#32;<i><a rel="nofollow" class="external text" href="http://dx.doi.org/10.1002%2Fcyto.990040213">Image Analysis and Mathematical Morphology. Volume 1</a></i>, Academic Press<span class="printonly">, DOI 10.1002/cyto.990040213</span></cite></span>
+</span>
+</li>
+<li id="cite_note-Serra1992-2"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Serra1992_2-0">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=An+overview+of+morphological+filtering&amp;rft.aulast=Serra%2C+Jean+and+Vincent%2C+Luc&amp;rft.date=1992&amp;rft.volume=11&amp;rft.issue=1&amp;rft.pages=47-108&amp;rft.pub=Springer&amp;rft_id=info:doi/10.1007%2FBF01189221"><cite id="CITEREFSerra.2C_Jean_and_Vincent.2C_Luc1992">Serra, Jean and Vincent, Luc&#32;(1992),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1007%2FBF01189221">An overview of morphological filtering</a>",&#32;<i>Circuits, Systems and Signal Processing</i>&#32;(Springer)&#32;<b>11</b>&#xa0;(1):  47-108<span class="printonly">, DOI 10.1007/BF01189221</span></cite></span>
+</span>
+</li>
+<li id="cite_note-Soille2001-3"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Soille2001_3-0">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Directional+morphological+filtering&amp;rft.aulast=Soille%2C+Pierre+and+Talbot%2C+Hugues&amp;rft.date=2001&amp;rft.volume=23&amp;rft.issue=11&amp;rft.pages=1313-1329&amp;rft.pub=IEEE&amp;rft_id=info:doi/10.1109%2F34.969120"><cite id="CITEREFSoille.2C_Pierre_and_Talbot.2C_Hugues2001">Soille, Pierre and Talbot, Hugues&#32;(2001),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109%2F34.969120">Directional morphological filtering</a>",&#32;<i>IEEE Transactions on Pattern Analysis and Machine Intelligence</i>&#32;(IEEE)&#32;<b>23</b>&#xa0;(11):  1313-1329<span class="printonly">, DOI 10.1109/34.969120</span></cite></span>
+</span>
+</li>
+<li id="cite_note-Heneghan2002-4"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Heneghan2002_4-0">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Characterization+of+changes+in+blood+vessel+width+and+tortuosity+in+retinopathy+of+prematurity+using+image+analysis&amp;rft.aulast=Conor+Heneghan+and+John+Flynn+and+Michael+O+Keefe+and+Mark+Cahill&amp;rft.date=2002&amp;rft.volume=6&amp;rft.issue=4&amp;rft.pages=407-429&amp;rft.pub=Elsevier&amp;rft_id=info:doi/10.1016%2FS1361-8415%2802%2900058-0"><cite id="CITEREFConor_Heneghan_and_John_Flynn_and_Michael_O_Keefe_and_Mark_Cahill2002">Conor Heneghan and John Flynn and Michael O Keefe and Mark Cahill&#32;(2002),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1016%2FS1361-8415%2802%2900058-0">Characterization of changes in blood vessel width and tortuosity in retinopathy of prematurity using image analysis</a>",&#32;<i>Medical Image Analysis</i>&#32;(Elsevier)&#32;<b>6</b>&#xa0;(4):  407-429<span class="printonly">, DOI 10.1016/S1361-8415(02)00058-0</span></cite></span>
+</span>
+</li>
+<li id="cite_note-Hendriks2003-5"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Hendriks2003_5-0">↑</a></span> <span class="reference-text"><cite style="font-style:normal">Hendriks, CL Luengo and van Vliet, Lucas J&#32;(2003). "Discrete Morphology with Line Structuring Elements".&#32;<i>International Conference on Computer Analysis of Images and Patterns</i>: 722-729. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1007/978-3-540-45179-2_88">10.1007/978-3-540-45179-2_88</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.btitle=International+Conference+on+Computer+Analysis+of+Images+and+Patterns&amp;rft.atitle=Discrete+Morphology+with+Line+Structuring+Elements&amp;rft.au=Hendriks%2C+CL+Luengo+and+van+Vliet%2C+Lucas+J&amp;rft.date=2003&amp;rft.pages=722-729&amp;rft_id=info:doi/10.1007%2F978-3-540-45179-2_88"><span style="display: none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Breen1996-6"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Breen1996_6-0">↑</a></span> <span class="reference-text"><cite style="font-style:normal">Edmond J. Breen and Ronald Jones&#32;(Nov. 1996). "<a rel="nofollow" class="external text" href="http://www.sciencedirect.com/science/article/pii/S1077314296900661">Attribute Opening, Thinnings, and Granulometries</a>".&#32;<b>64</b>: 377--389. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1006/cviu.1996.0066">10.1006/cviu.1996.0066</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.btitle=&amp;rft.atitle=Attribute+Opening%2C+Thinnings%2C+and+Granulometries&amp;rft.au=Edmond+J.+Breen+and+Ronald+Jones&amp;rft.date=1996&amp;rft.pages=377--389&amp;rft.series=64&amp;rft_id=info:doi/10.1006%2Fcviu.1996.0066&amp;rft_id=http%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS1077314296900661"><span style="display: none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Soille1990-7"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Soille1990_7-0">↑</a></span> <span class="reference-text"><cite style="font-style:normal">Soille, Pierre and Vincent, Luc M&#32;(1990). "<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1117/12.24211">Determining watersheds in digital pictures via flooding simulations</a>".&#32;<i>Proc. SPIE</i>&#32;<b>1360</b>: 240-250. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1117/12.24211">10.1117/12.24211</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.btitle=Proc.+SPIE&amp;rft.atitle=Determining+watersheds+in+digital+pictures+via+flooding+simulations&amp;rft.au=Soille%2C+Pierre+and+Vincent%2C+Luc+M&amp;rft.date=1990&amp;rft.pages=240-250&amp;rft.series=1360&amp;rft_id=info:doi/10.1117%2F12.24211&amp;rft_id=http%3A%2F%2Fdx.doi.org%2F10.1117%2F12.24211"><span style="display: none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Meyer1990-8"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Meyer1990_8-0">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Morphological+segmentation&amp;rft.aulast=F.+Meyer+and+S.+Beucher&amp;rft.date=1990&amp;rft.volume=1&amp;rft.issue=1&amp;rft.pages=21-46&amp;rft_id=info:doi/10.1016%2F1047-3203%2890%2990014-M&amp;rft_id=http%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2F104732039090014M"><cite id="CITEREFF._Meyer_and_S._Beucher1990">F. Meyer and S. Beucher&#32;(1990),&#32;"<a rel="nofollow" class="external text" href="http://www.sciencedirect.com/science/article/pii/104732039090014M">Morphological segmentation</a>",&#32;<i>Journal of Visual Communication and Image Representation</i>&#32;<b>1</b>&#xa0;(1):  21-46, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1016%2F1047-3203%2890%2990014-M">10.1016/1047-3203(90)90014-M</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://www.sciencedirect.com/science/article/pii/104732039090014M">http://www.sciencedirect.com/science/article/pii/104732039090014M</a>&gt;</span></cite></span>
+</span>
+</li>
+<li id="cite_note-Osher2009-9"><span class="mw-cite-backlink">↑ <sup><a href="MorphoLibJ.html#cite_ref-Osher2009_9-0">9.0</a></sup> <sup><a href="MorphoLibJ.html#cite_ref-Osher2009_9-1">9.1</a></sup> <sup><a href="MorphoLibJ.html#cite_ref-Osher2009_9-2">9.2</a></sup></span> <span class="reference-text"><cite style="font-style:normal">Joachim Ohser and Katja Schladitz&#32;(2009). "<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1002/9783527628308.ch4">Image Processing</a>".&#32;<i>3D Images of Materials Structures: processing and analysis</i>, Wiley-VCH Verlag GmbH &amp; Co. KGaA. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1002/9783527628308.ch4">10.1002/9783527628308.ch4</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.btitle=3D+Images+of+Materials+Structures%3A+processing+and+analysis&amp;rft.atitle=Image+Processing&amp;rft.au=Joachim+Ohser+and+Katja+Schladitz&amp;rft.date=2009&amp;rft.pub=Wiley-VCH+Verlag+GmbH+%26+Co.+KGaA&amp;rft_id=info:doi/10.1002%2F9783527628308.ch4&amp;rft_id=http%3A%2F%2Fdx.doi.org%2F10.1002%2F9783527628308.ch4"><span style="display: none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Legland2007-10"><span class="mw-cite-backlink">↑ <sup><a href="MorphoLibJ.html#cite_ref-Legland2007_10-0">10.0</a></sup> <sup><a href="MorphoLibJ.html#cite_ref-Legland2007_10-1">10.1</a></sup></span> <span class="reference-text">
+<cite style="font-style:normal">Legland, David and Kiêu, Kiên and Devaux, Marie-Françoise&#32;(June 2007). "<a rel="nofollow" class="external text" href="http://www.ias-iss.org/ojs/IAS/article/view/811">Computation of Minkowski measures on 2D and 3D binary images</a>".&#32;<b>26</b>: 83-92. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.5566/ias.v26.p83-92">10.5566/ias.v26.p83-92</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.btitle=&amp;rft.atitle=Computation+of+Minkowski+measures+on+2D+and+3D+binary+images&amp;rft.au=Legland%2C+David+and+Ki%C3%AAu%2C+Ki%C3%AAn+and+Devaux%2C+Marie-Fran%C3%A7oise&amp;rft.date=2007&amp;rft.pages=83-92&amp;rft.series=26&amp;rft_id=info:doi/10.5566%2Fias.v26.p83-92&amp;rft_id=http%3A%2F%2Fwww.ias-iss.org%2Fojs%2FIAS%2Farticle%2Fview%2F811"><span style="display: none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Moran1966-11"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Moran1966_11-0">↑</a></span> <span class="reference-text">
+<cite style="font-style:normal">Moran, PAP&#32;(1966). "Measuring the length of a curve".&#32;<b>53</b>: 359-364. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1093/biomet/53.3-4.359">10.1093/biomet/53.3-4.359</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.btitle=&amp;rft.atitle=Measuring+the+length+of+a+curve&amp;rft.au=Moran%2C+PAP&amp;rft.date=1966&amp;rft.pages=359-364&amp;rft.series=53&amp;rft_id=info:doi/10.1093%2Fbiomet%2F53.3-4.359"><span style="display: none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Lehmann2012-12"><span class="mw-cite-backlink">↑ <sup><a href="MorphoLibJ.html#cite_ref-Lehmann2012_12-0">12.0</a></sup> <sup><a href="MorphoLibJ.html#cite_ref-Lehmann2012_12-1">12.1</a></sup> <sup><a href="MorphoLibJ.html#cite_ref-Lehmann2012_12-2">12.2</a></sup></span> <span class="reference-text">
+<span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Efficient+N-Dimensional+surface+estimation+using+%5B%5Bwikipedia%3ACrofton+formula%7CCrofton+formula%5D%5D+and+run-length+encoding&amp;rft.aulast=Lehmann%2C+Gaetan+and+Legland%2C+David&amp;rft.date=2012&amp;rft.pages=1-11&amp;rft_id=http%3A%2F%2Fhdl.handle.net%2F10380%2F3342"><cite id="CITEREFLehmann.2C_Gaetan_and_Legland.2C_David2012">Lehmann, Gaetan and Legland, David&#32;(2012),&#32;"<a rel="nofollow" class="external text" href="http://hdl.handle.net/10380/3342">Efficient N-Dimensional surface estimation using </a><a href="http://en.wikipedia.org/wiki/Crofton_formula" class="extiw" title="wikipedia:Crofton formula">Crofton formula</a><a rel="nofollow" class="external text" href="http://hdl.handle.net/10380/3342"> and run-length encoding</a>",&#32;<i>Insight Journal</i>:  1-11<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://hdl.handle.net/10380/3342">http://hdl.handle.net/10380/3342</a>&gt;</span></cite></span>
+</span>
+</li>
+<li id="cite_note-Lantuejoul1981-13"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Lantuejoul1981_13-0">↑</a></span> <span class="reference-text"><cite style="font-style:normal">Lantuejoul, C. and Beucher, S.&#32;(Jan. 1981). "<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1111/j.1365-2818.1981.tb01197.x">On the use of geodesic metric in image analysis</a>".&#32;<b>121</b>: 39-40. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1111/j.1365-2818.1981.tb01197.x">10.1111/j.1365-2818.1981.tb01197.x</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.btitle=&amp;rft.atitle=On+the+use+of+geodesic+metric+in+image+analysis&amp;rft.au=Lantuejoul%2C+C.+and+Beucher%2C+S.&amp;rft.date=1981&amp;rft.pages=39-40&amp;rft.series=121&amp;rft_id=info:doi/10.1111%2Fj.1365-2818.1981.tb01197.x&amp;rft_id=http%3A%2F%2Fdx.doi.org%2F10.1111%2Fj.1365-2818.1981.tb01197.x"><span style="display: none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Staal2004-14"><span class="mw-cite-backlink">↑ <sup><a href="MorphoLibJ.html#cite_ref-Staal2004_14-0">14.0</a></sup> <sup><a href="MorphoLibJ.html#cite_ref-Staal2004_14-1">14.1</a></sup></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Ridge+based+vessel+segmentation+in+color+images+of+the+retina&amp;rft.aulast=J.J.+Staal+and+M.D.+Abramoff+and+M.+Niemeijer+and+M.A.+Viergever+and+B.+van+Ginneken&amp;rft.date=2004&amp;rft.volume=23&amp;rft.pages=501-509&amp;rft_id=info:doi/10.1109%2FTMI.2004.825627"><cite id="CITEREFJ.J._Staal_and_M.D._Abramoff_and_M._Niemeijer_and_M.A._Viergever_and_B._van_Ginneken2004">J.J. Staal and M.D. Abramoff and M. Niemeijer and M.A. Viergever and B. van Ginneken&#32;(2004),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109%2FTMI.2004.825627">Ridge based vessel segmentation in color images of the retina</a>",&#32;<i>IEEE Transactions on Medical Imaging</i>&#32;<b>23</b>:  501-509<span class="printonly">, DOI 10.1109/TMI.2004.825627</span></cite></span>
+</span>
+</li>
+<li id="cite_note-Tustison2009-15"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Tustison2009_15-0">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Introducing+Dice%2C+Jaccard%2C+and+other+label+overlap+measures+to+ITK&amp;rft.aulast=Tustison%2C+NJ+and+Gee%2C+JC&amp;rft.date=2009&amp;rft.issue=July-December&amp;rft.pages=1-4&amp;rft_id=info:doi/10.1007%2FBF01189221"><cite id="CITEREFTustison.2C_NJ_and_Gee.2C_JC2009">Tustison, NJ and Gee, JC&#32;(2009),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1007%2FBF01189221">Introducing Dice, Jaccard, and other label overlap measures to ITK</a>",&#32;<i>The Insight Journal</i>&#32;(no. July-December):  1-4<span class="printonly">, DOI 10.1007/BF01189221</span></cite></span>
+</span>
+</li>
+<li id="cite_note-Florindo2016-16"><span class="mw-cite-backlink"><a href="MorphoLibJ.html#cite_ref-Florindo2016_16-0">↑</a></span> <span class="reference-text"><cite style="font-style:normal">Joao Batista Florindo and Odemir Martinez Bruno and Davi Rodrigo Rossatto and Rosana Marta Kolb and Maria Cecilia Gomez and Gabriel Landini&#32;(2016). "<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1139/cjb-2015-0075">Identifying plant species using architectural features in leaf microscopy images</a>".&#32;<b>94</b>: 15-21. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1139/cjb-2015-0075">10.1139/cjb-2015-0075</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.btitle=&amp;rft.atitle=Identifying+plant+species+using+architectural+features+in+leaf+microscopy+images&amp;rft.au=Joao+Batista+Florindo+and+Odemir+Martinez+Bruno+and+Davi+Rodrigo+Rossatto+and+Rosana+Marta+Kolb+and+Maria+Cecilia+Gomez+and+Gabriel+Landini&amp;rft.date=2016&amp;rft.pages=15-21&amp;rft.series=94&amp;rft_id=info:doi/10.1139%2Fcjb-2015-0075&amp;rft_id=http%3A%2F%2Fdx.doi.org%2F10.1139%2Fcjb-2015-0075"><span style="display: none;">&#160;</span></span></span>
+</li>
+</ol>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is <b>free software</b>; you can redistribute it and/or modify it under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073016
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.288 seconds
+Real time usage: 0.303 seconds
+Preprocessor visited node count: 6871/1000000
+Preprocessor generated node count: 26906/1000000
+Post‐expand include size: 57073/2097152 bytes
+Template argument size: 19918/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  214.014      1 - -total
+ 35.82%   76.666      9 - Template:Citation/core
+ 27.85%   59.606      7 - Template:Cite_journal
+ 14.27%   30.535      8 - Template:Cite_conference
+ 13.47%   28.819     16 - Template:Bc
+ 11.72%   25.072      1 - Template:Publication
+  8.15%   17.443      1 - Template:Citation
+  6.52%   13.945      1 - Template:Infobox
+  5.44%   11.653      1 - Template:Cite_book
+  4.50%    9.639     34 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=MorphoLibJ&amp;oldid=44245">http://imagej.net/index.php?title=MorphoLibJ&amp;oldid=44245</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 1 April 2020, at 01:34.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=MorphoLibJ&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li><li><a href="http://imagej.net/Category:Filtering" title="Category:Filtering">Filtering</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Mathematical_morphology" title="Category:Mathematical morphology">Mathematical morphology</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=MorphoLibJ" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=MorphoLibJ" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/MorphoLibJ" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/MorphoLibJ" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=MorphoLibJ&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=MorphoLibJ&amp;oldid=44245" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=MorphoLibJ&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":482});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Analyze Skeleton 2D time series - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Analyze_Skeleton_2D_time_series","wgTitle":"Analyze Skeleton 2D time series","wgCurRevisionId":2354,"wgRevisionId":2354,"wgArticleId":557,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Jython","Scripting","Analysis","Skeleton"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Analyze_Skeleton_2D_time_series","wgRelevantArticleId":557,"wgRequestId":"b7eb5b2670ff24776d51c2d0","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This is a Python script that can be run from Fiji (is just imageJ - batteries incuded),&#10;using the builtin Jython interpreter &#10;Jython is a java implementation of Python which runs natively on the Java Virtual machine.&#10;You can use all java classes and imagej classes from it, which is nice.&#10;For more info on Jython scripting in Fiji look at Jython_Scripting"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Analyze Skeleton 2D time series"/>
+
+	<meta property="og:description" content="This is a Python script that can be run from Fiji (is just imageJ - batteries incuded),&#10;using the builtin Jython interpreter &#10;Jython is a java implementation of Python which runs natively on the Java Virtual machine.&#10;You can use all java classes and imagej classes from it, which is nice.&#10;For more info on Jython scripting in Fiji look at Jython_Scripting"/>
+
+	<meta property="og:url" content="http://imagej.net/Analyze_Skeleton_2D_time_series"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Analyze_Skeleton_2D_time_series rootpage-Analyze_Skeleton_2D_time_series skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Analyze_Skeleton_2D_time_series.html#bodyContent">Skip to content</a>, 			<a href="Analyze_Skeleton_2D_time_series.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Analyze_Skeleton_2D_time_series.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Analyze_Skeleton_2D_time_series" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Analyze_Skeleton_2D_time_series&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Analyze_Skeleton_2D_time_series&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Analyze_Skeleton_2D_time_series&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Analyze Skeleton 2D time series</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Analyze_Skeleton_2D_time_series.html#Introduction:"><span class="tocnumber">1</span> <span class="toctext">Introduction:</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Analyze_Skeleton_2D_time_series.html#Purpose_of_this_script:"><span class="tocnumber">2</span> <span class="toctext">Purpose of this script:</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Analyze_Skeleton_2D_time_series.html#Solution:"><span class="tocnumber">3</span> <span class="toctext">Solution:</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Analyze_Skeleton_2D_time_series.html#How_to_use_this_script:"><span class="tocnumber">4</span> <span class="toctext">How to use this script:</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Analyze_Skeleton_2D_time_series.html#Code:"><span class="tocnumber">5</span> <span class="toctext">Code:</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction:">Introduction:</span></h2>
+<p>This is a Python script that can be run from Fiji (is just imageJ - batteries incuded),
+using the builtin Jython interpreter 
+Jython is a java implementation of Python which runs natively on the Java Virtual machine.
+You can use all java classes and imagej classes from it, which is nice.
+For more info on Jython scripting in Fiji look at <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Jython_Scripting</a>
+</p><p>Thanks to Albert Cardona for tips on how to do this. 
+</p>
+<h2><span class="mw-headline" id="Purpose_of_this_script:">Purpose of this script:</span></h2>
+<p>There is a limitation in the <a href="http://imagej.net/AnalyzeSkeleton" title="AnalyzeSkeleton"> Analyze Skeleton 2D/3D plugin</a>
+where it can not handle a 2D time series stack as such.
+It just treats it as a z series, meaning that the results are not as expected since it treats the data as a single 3D dataset instead of as many 2D time points.
+</p>
+<h2><span class="mw-headline" id="Solution:">Solution:</span></h2>
+<p>To get around this limitation, we can run the "Analyze Skeleton (2D/3D)" command on each individual frame of the time series, since the plugin "Analyze Skeleton (2D/3D)" works as expected on single frames! We need to output the results for each frame, in a sensible readable manner (save as .xls) and make a tagged results image "movie" by converting all the single frame tagged result images into a stack.
+</p>
+<h2><span class="mw-headline" id="How_to_use_this_script:">How to use this script:</span></h2>
+<p>1) Install the script by putting it in the Fiji plugins directory,
+then run menu command Plugins - Scripting - Refresh Jythion Scripts.
+The script name will then appear in the plugins menu (at the bottom)
+</p><p>2) open a movie dataset in Fiji - check image metadata (Bat Cochlea Volume sample image works)
+check that it is a 2D movie not a 3D z stack:
+select the mobie image window, then do menu item Image - Properties
+You might need to change it from a z stack to a time series by changing the numbers there.
+You can also set the pixel size here if it is wrong in the first instance,
+so your results are calibrated in micrometers etc. instead of pixels (i hope thats true)
+</p><p>3) Segment objects from the background, for instance using one of the auto threshold methods,
+such that you have an 8 bit binary image comtaining zeros for background and 255 for objects.
+</p><p>4) Skeletonize each frame of the movie using the menu command Process - Bnary - Skeletonize
+Click yes when it asks you if you want to do all the frames/slices in the movie.
+</p><p>5) Run the script:
+with the skeletonized movie selected run the script by choosing it from the plugins menu.
+NOTE!!! You MUST change the line in the script:
+IJ.saveAs("Measurements", ("/Users/dan/Desktop/Results" + str(i) + ".xls") )
+so that the path to where you want the results .xls files to be written!!!
+On windows it might need to be something like:
+IJ.saveAs("Measurements", ("C:\\Some Folder\\Whatever name want" + str(i) + ".xls") )
+</p><p>6) Save the result tagged image movie: TaggedMovie (as a a tiff for example) and the
+results summary which is in the Log window. 
+The results for each frame were already saved in the last step!
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Code:">Code:</span></h2>
+<pre class="brush:python">
+#!/usr/bin/env python
+
+from ij import IJ, ImagePlus
+from java.lang import Runtime, Runnable
+
+# the current image
+imp = IJ.getImage()
+stack = imp.getStack()
+
+# for all the frames in the movie, run  "Analyze Skeleton (2D/3D)" (maybe later in multiple threads)
+for i in range(1, imp.getNFrames() + 1):  # remember a python range (1, 10) is the numbers 1 to 9&#160;!
+#getNFrames not getNSlices since input data is a 2D time series stack NOT a 3D stack.
+  slice = ImagePlus(str(i), stack.getProcessor(i))
+  # Execute plugin exactly on this slice i
+  IJ.run(slice, "Analyze Skeleton (2D/3D)", "")
+  #Save the results for this frame as a .xls file
+  IJ.saveAs("Measurements", ("/Users/dan/Desktop/Results" + str(i) + ".xls") )
+
+
+# turn all the output tagged images into a stack - seems to be in the right order even though all the output frames have the same name
+IJ.run("Images to Stack", "name=TaggedMovie title=Tagged use")
+
+IJ.log("Done!")
+
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064515
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.012 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 21/1000000
+Preprocessor generated node count: 44/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Analyze_Skeleton_2D_time_series&amp;oldid=2354">http://imagej.net/index.php?title=Analyze_Skeleton_2D_time_series&amp;oldid=2354</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 30 September 2009, at 10:24.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Analyze_Skeleton_2D_time_series&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Jython" title="Category:Jython">Jython</a></li><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li><li><a href="http://imagej.net/Category:Skeleton" title="Category:Skeleton">Skeleton</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Analyze+Skeleton+2D+time+series" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Analyze+Skeleton+2D+time+series" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Analyze_Skeleton_2D_time_series" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Analyze_Skeleton_2D_time_series" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Analyze_Skeleton_2D_time_series&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Analyze_Skeleton_2D_time_series&amp;oldid=2354" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Analyze_Skeleton_2D_time_series&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":231});});</script>
+		</body>
+		</html>
+		

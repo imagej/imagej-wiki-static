@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>T-functions - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"T-functions","wgTitle":"T-functions","wgCurRevisionId":29342,"wgRevisionId":29342,"wgArticleId":1890,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Cookbook","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"T-functions","wgRelevantArticleId":1890,"wgRequestId":"d162498c81bfd44808930408","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Often, during acquisition of a time-course, the fluorophore may bleach and the intensity of the image is reduced. This can make it harder to discern events at the end of the sequence. A stretch in contrast at the first time point may not be adequate 100 time points later. The process of bleaching and decrease in image intensity can be fitted with a mono-exponential decay, although it often follows a bi-exponential. A mono-exponential decay is described by the equation:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="T-functions"/>
+
+	<meta property="og:description" content="Often, during acquisition of a time-course, the fluorophore may bleach and the intensity of the image is reduced. This can make it harder to discern events at the end of the sequence. A stretch in contrast at the first time point may not be adequate 100 time points later. The process of bleaching and decrease in image intensity can be fitted with a mono-exponential decay, although it often follows a bi-exponential. A mono-exponential decay is described by the equation:"/>
+
+	<meta property="og:url" content="http://imagej.net/T-functions"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-T-functions rootpage-T-functions skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="T-functions.html#bodyContent">Skip to content</a>, 			<a href="T-functions.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="T-functions.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/T-functions" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:T-functions&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=T-functions&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=T-functions&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>T-functions</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Cookbook Topics
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Cookbook" title="Cookbook">Introduction and Installation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Annotating_Images" title="Annotating Images">Annotating Images</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Color_Image_Processing" title="Color Image Processing">Color Image Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Intensity_Processing" title="Image Intensity Processing">Image Intensity Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Importing_Image_Files" title="Importing Image Files">Importing Image Files</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Particle_Analysis" title="Particle Analysis">Particle Analysis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Saving_and_Exporting" title="Saving and Exporting">Saving and Exporting</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Stack-slice_Manipulations" title="Stack-slice Manipulations">Stack-slice Manipulations</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">T-functions</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Z-functions" title="Z-functions">Z-functions</a>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="T-functions.html#Correcting_for_bleaching"><span class="tocnumber">1</span> <span class="toctext">Correcting for bleaching</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="T-functions.html#F.C3.B7F0"><span class="tocnumber">2</span> <span class="toctext">F÷F0</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="T-functions.html#Delta-F"><span class="tocnumber">3</span> <span class="toctext">Delta-F</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="T-functions.html#Surface_plotting"><span class="tocnumber">4</span> <span class="toctext">Surface plotting</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="T-functions.html#.E2.80.9CAnalyze.2FSurface_plot.E2.80.9D_settings"><span class="tocnumber">4.1</span> <span class="toctext">“Analyze/Surface plot” settings</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="T-functions.html#SurfaceJ_settings"><span class="tocnumber">4.2</span> <span class="toctext">SurfaceJ settings</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Correcting_for_bleaching">Correcting for bleaching</span></h2>
+<p>Often, during acquisition of a time-course, the fluorophore may bleach and the intensity of the image is reduced. This can make it harder to discern events at the end of the sequence. A stretch in contrast at the first time point may not be adequate 100 time points later. The process of bleaching and decrease in image intensity can be fitted with a mono-exponential decay, although it often follows a bi-exponential. A mono-exponential decay is described by the equation:
+</p><p><b>Corrected intensity = (Intensity at time <i>t</i>) <i>÷</i> exp<sup>-k×<i>t</i></sup></b> where k = decay constant
+</p><p><a href="http://imagej.net/File:Bleach_correction_window.png" class="image"><img alt="Bleach correction window.png" src="../_images/3/35/Bleach_correction_window.png" width="252" height="112" /></a>
+</p><p>If you know the decay constant <i>k</i>, you can use the plugin "<i>Image/Adjust/Bleach Correction</i>" with the exponential fitting method. It may be worth performing a background subtraction prior to running the plugin. Note that the plugin is expecting the k value to be "per-slice" rather than per-second, per-minute, etc.
+</p><p>Raw time course
+</p>
+<div class="MediaTransformError" style="width: 293px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Bleach corrected time course
+</p>
+<div class="MediaTransformError" style="width: 287px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The k value can be calculated in ImageJ by:
+</p>
+<ol><li> Make sure the <i>"Edit/Options/Profile Plot Options"</i> setting "Do not save x-values" is off.</li>
+<li> Select a region of the cell or the whole image and plot the decay using the menu command <i>"Image/Stacks/Plot Z-axis Profile"</i>.</li>
+<li> Click the <i>Copy</i> button of the plot window.</li>
+<li> Open the curve fitting dialog <i>"Analyze/Tools/Curve Fitting"</i>.</li>
+<li> Delete the default data and paste in your copied data.</li>
+<li> Select "Exponential" from the option list and click the "Fit" button.</li>
+<li> In the <i>Log</i> window, scroll down to find the value labeled as "b", this is your <i>k</i> value.</li></ol>
+<p>Since bleaching is often not mono-exponential, quantification of fluorescence intensities after bleach correction is not possible. This plugin should only be used to enhance time-course movies for presentation rather than quantification.
+</p>
+<div class="floatright"><div class="MediaTransformError" style="width: 212px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>
+<p>Another way to compensate for bleaching is to use the menu item “<i>Process/Enhance Contrast</i>”. This method is quicker to implement than the proper bleach correction above and can be useful for correcting for fluorophore bleaching during a movie if the intensity of the fluorophore is changing only because of bleaching. Check the “Process Entire Stack” option and the plugin will scan through the stack applying brightness and contrast adjustment selected on each slice based on each slice’s histogram. The intensity values are adjusted so that quantitative intensity measurements are no longer possible. 
+</p><p>Again, use this function to enhance movies for presentation, not quantification.
+</p>
+<h2><span class="mw-headline" id="F.C3.B7F0">F÷F0</span></h2>
+<div class="MediaTransformError" style="width: 218px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<div class="MediaTransformError" style="width: 218px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>There are several drawbacks with the use of single wavelength fluorescent probes; some include uneven fluorescence intensity (F) due to cell thickness and cell to cell variation in loading. These can be largely corrected by normalizing fluorescence against resting fluorescence i.e. F0. This does not correct for bleaching and dye loss during the experiment.
+</p><p>First ensure the image is properly background corrected:
+</p>
+<ol><li> Generate an “F0” image by averaging the first few frames of the stack. This can be done with the “<i>Image/Stacks/Z-project</i>" menu item (Fiji assumes stacks to be z-series rather than t-series), using the “<i>Average Intensity</i>” drop-down box option. Select “Start slice” as 1 and “Stop slice” as 5-10 depending on how many frames you wish to average. Rename the new z-projected image (“<i>Image/Rename</i>”) “Fzero”.</li>
+<li> Open the “Image Calculator” via “<i>Process/Image Calculator</i>”. Set Image 1 as the original stack, image 2 as "Fzero", and the operation as divide. Select "32-bit Result" and "Create New Window".</li>
+<li> Rename this result window (“<i>Image/Rename</i>”) FdivF0.</li>
+<li> The maximum and minimum intensity in the stack can be determined with the <i>Analyze Histogram</i> plugin, using the stack histogram option.</li>
+<li> Using the Brightness and Contrast dialog, set the maximum and minimum to these values.</li>
+<li> Convert the 32-bit stack to 8-bit (“<i>Image/Type/8-bit”</i>).</li>
+<li> The Images in FdivF0 will probably have a noisy background between the cells and will need to be cleaned up. Using your original stack, create a mask of the cells. This is done by first thresholding the original stack (“<i>Image/Adjust/Threshold</i>”). Hit the Auto button and then adjust the sliders until cells are all highlighted red. Then click “<i>Apply</i>”. Check the tick box: “black foreground, white background”. You should now have a white and black image with your cells black and background white. If you have white cells and black background, invert the image with “<i>Edit/Invert</i>”.</li>
+<li> Use the Image calculator “<i>Process/Image calculator</i>” to subtract this black and white stack from your FdivF0 stack. </li>
+<li> Pseudocolor to taste.</li></ol>
+<p>The F divided by F0 steps are automated in the <i>"F_div_F0"</i> macro. This will return the FdivF0 stack and a thresholded FdivF0 stack. 
+</p>
+<h2><span class="mw-headline" id="Delta-F">Delta-F</span></h2>
+<div class="MediaTransformError" style="width: 215px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><b>Raw</b>
+</p>
+<div class="MediaTransformError" style="width: 215px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><b>Delta-F up</b>
+</p><p>Rapid frame-to-frame changes in intensity (e.g. calcium “puffs” or TMRE “depolarizations”) can best be illustrated by subtracting each frame from the previous/next. Use the plugin "<i>Delta F up</i>".
+</p><p>For increases in intensity (e.g. a calcium “puff”) the calculation is [Frame<sub>(n+1)</sub>-Frame<sub>n</sub>]. Use the plugin "<i>Delta F down</i>".
+</p><p>For drops in intensity (e.g. TMRE plus irradiation induced mitochondrial depolarisations) the calculation is [Frame<sub>n</sub> - Frame<sub>(n+1)</sub>]. 
+</p><p>Note: The plugin generates a second result stack. For large memory consuming stacks, run the plugin with the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⎇</span> Alt</kbd> key down. If the plugin is run with the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⎇</span> Alt</kbd> key down, the calculation is made on the original stack. This plugin may also be useful to clean up time courses prior to motion tracking.
+</p>
+<h2><span class="mw-headline" id="Surface_plotting">Surface plotting</span></h2>
+<div class="MediaTransformError" style="width: 600px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Surface plots can be generated in many ways: notably via the menu command “<i>Analyze/Surface plot</i>” or via the plugins “<i>SurfaceJ</i>” and <i>"Interactive 3D Surface Plot</i>". These functions will surface-plot movies as well as single frame images. Ensure the features you’re interested in are “Contrast stretched” optimally. This can be done using a “Max intensity projection” on the stack. Get the max and min pixel intensities and apply these to the stack. Remember, do not perform intensity analysis on images that have had their contrast stretched.
+</p>
+<h3><span class="mw-headline" id=".E2.80.9CAnalyze.2FSurface_plot.E2.80.9D_settings">“Analyze/Surface plot” settings</span></h3>
+<p>When this function is selected, a dialog will appear. Try the settings below first and play with them to optimize the surface plot. The LUT of the final surface plot is taken from the LUT of the image.
+</p><p><a href="http://imagej.net/File:Analyze_surface.png" class="image"><img alt="Analyze surface.png" src="../_images/5/54/Analyze_surface.png" width="212" height="243" /></a>
+</p>
+<h3><span class="mw-headline" id="SurfaceJ_settings">SurfaceJ settings</span></h3>
+<p>You can surface plot either a single frame or a movie. Surface rendering is a slow process so it is best to pick a frame from the movie that shows the features you’re trying to demonstrate. Duplicate this (<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">D</kbd>) and use it as a test image to get the best settings for surface plotting your movie. 
+</p><p>Select the image to be rendered with the “<i>Source image(s)</i>” drop down box.
+</p><p>The options with three text-entry boxes along side represent x, y and z values.
+</p><p>“<i>Rotate(°):</i>” value of -20 in the first (<i>x</i>-axis) box gives a good 3D effect. Play with this.
+</p><p>“<i>Scale</i>”. Set to 0.5 to render more quickly when adjusting the settings and set to 2 or more for the final surface plotting.
+</p><p>“<i>Aspect </i>/:” Surface plot can be stretched in “height” by increasing the z-axis aspect (i.e. the third) box. A value of 1 is usually OK if you’ve stretched the contrast properly. This will not affect the pseudocolor of the peaks which is determined by the pixel intensity.
+</p><p>“<i>Index LUT</i>”: by default the plot will have the “spectrum” LUT. Change this drop-down box to “<i>Load custom</i>” and you’ll be prompted to locate a desired LUT when you start the surface-plot.
+</p><p>“<i>Gaussian Smoothing</i>” value of 2-4. This slows rendering down but gives smoother surface plot.
+</p><p>“<i>Render surface plot</i>”: starts surface plotting.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073535
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.084 seconds
+Real time usage: 0.089 seconds
+Preprocessor visited node count: 1192/1000000
+Preprocessor generated node count: 6156/1000000
+Post‐expand include size: 9212/2097152 bytes
+Template argument size: 1316/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   49.449      1 - -total
+ 88.54%   43.781      4 - Template:Key
+ 75.59%   37.379      4 - Template:Key_press/core
+ 10.53%    5.206      1 - Template:CookbookMenu
+  8.25%    4.078      1 - Template:Menu
+  5.27%    2.605      4 - Template:Linear-gradient
+  4.74%    2.345      4 - Template:Box-shadow
+  4.69%    2.318     11 - Template:MenuItem
+  2.67%    1.319      4 - Template:Border-radius
+  2.03%    1.005      3 - Template:Unicode
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=T-functions&amp;oldid=29342">http://imagej.net/index.php?title=T-functions&amp;oldid=29342</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:14.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=T-functions&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Cookbook" title="Category:Cookbook">Cookbook</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=T-functions" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=T-functions" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/T-functions" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/T-functions" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=T-functions&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=T-functions&amp;oldid=29342" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=T-functions&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":285});});</script>
+		</body>
+		</html>
+		

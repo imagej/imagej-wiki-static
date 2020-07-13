@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>How to write your own detection algorithm for TrackMate - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"How_to_write_your_own_detection_algorithm_for_TrackMate","wgTitle":"How to write your own detection algorithm for TrackMate","wgCurRevisionId":17809,"wgRevisionId":17809,"wgArticleId":2146,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"How_to_write_your_own_detection_algorithm_for_TrackMate","wgRelevantArticleId":2146,"wgRequestId":"01003c94a59ff8c27cad749f","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Welcome to the most useful and also unfortunately the hardest part in this tutorial series on how to extend TrackMate with custom modules."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="How to write your own detection algorithm for TrackMate"/>
+
+	<meta property="og:description" content="Welcome to the most useful and also unfortunately the hardest part in this tutorial series on how to extend TrackMate with custom modules."/>
+
+	<meta property="og:url" content="http://imagej.net/How_to_write_your_own_detection_algorithm_for_TrackMate"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-How_to_write_your_own_detection_algorithm_for_TrackMate rootpage-How_to_write_your_own_detection_algorithm_for_TrackMate skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#bodyContent">Skip to content</a>, 			<a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/How_to_write_your_own_detection_algorithm_for_TrackMate" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:How_to_write_your_own_detection_algorithm_for_TrackMate&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=How_to_write_your_own_detection_algorithm_for_TrackMate&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=How_to_write_your_own_detection_algorithm_for_TrackMate&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>How to write your own detection algorithm for TrackMate</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="width: 22em; font-size: 90%; text-align: left; float: right; border: 1px dashed #a0a0a0;">
+<tr>
+<th colspan="2" style="font-size: 130%;"> Extending TrackMate
+</th></tr>
+<tr>
+<td>
+<ul><li> <a href="http://imagej.net/How_to_write_your_own_edge_feature_analyzer_algorithm_for_TrackMate" title="How to write your own edge feature analyzer algorithm for TrackMate">How to write your own edge feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" title="How to write your own track feature analyzer algorithm for TrackMate">How to write your own track feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_spot_feature_analyzer_algorithm_for_TrackMate" title="How to write your own spot feature analyzer algorithm for TrackMate">How to write your own spot feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_viewer_for_TrackMate" title="How to write your own viewer for TrackMate">How to write your own viewer for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_custom_actions_for_TrackMate" title="How to write custom actions for TrackMate">How to write custom actions for TrackMate</a></li>
+<li> <strong class="selflink">How to write your own detection algorithm for TrackMate</strong></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_particle-linking_algorithm_for_TrackMate" title="How to write your own particle-linking algorithm for TrackMate">How to write your own particle-linking algorithm for TrackMate</a></li></ul>
+</td></tr></table><a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a> can be extended with new modules covering about everything it does, thanks to several nice features of <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a>. These tutorials explain how to do so. They are best read in order.
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Introduction."><span class="tocnumber">1</span> <span class="toctext">Introduction.</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#The_SpotDetector_interface."><span class="tocnumber">2</span> <span class="toctext">The SpotDetector interface.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#A_detector_instance_operates_on_a_single_frame."><span class="tocnumber">2.1</span> <span class="toctext">A detector instance operates on a single frame.</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#A_SpotDetector_can_be_multithreaded."><span class="tocnumber">2.2</span> <span class="toctext">A SpotDetector <i>can be</i> multithreaded.</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Detection_results_are_represented_by_Spots."><span class="tocnumber">2.3</span> <span class="toctext">Detection results are represented by Spots.</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#A_dummy_detector_that_returns_spiraling_spots."><span class="tocnumber">2.4</span> <span class="toctext">A dummy detector that returns spiraling spots.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#The_type_parameter_.3C_T_extends_RealType.3C_T_.3E_.26_NativeType.3C_T_.3E.3E"><span class="tocnumber">2.4.1</span> <span class="toctext">The type parameter &lt; T extends RealType&lt; T &gt; &amp; NativeType&lt; T &gt;&gt;</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#The_constructor."><span class="tocnumber">2.4.2</span> <span class="toctext">The constructor.</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#The_Algorithm_methods."><span class="tocnumber">2.4.3</span> <span class="toctext">The Algorithm methods.</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#The_OutputAlgorithm_method."><span class="tocnumber">2.4.4</span> <span class="toctext">The OutputAlgorithm method.</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#The_Benchmark_method."><span class="tocnumber">2.4.5</span> <span class="toctext">The Benchmark method.</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#The_code_itself."><span class="tocnumber">2.4.6</span> <span class="toctext">The code itself.</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#The_SpotDetectorFactory_interface."><span class="tocnumber">3</span> <span class="toctext">The SpotDetectorFactory interface.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Getting_the_raw_image_data."><span class="tocnumber">3.1</span> <span class="toctext">Getting the raw image data.</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Getting_detection_parameters_through_a_configuration_panel."><span class="tocnumber">3.2</span> <span class="toctext">Getting detection parameters through a configuration panel.</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Checking_the_validity_of_parameters."><span class="tocnumber">3.3</span> <span class="toctext">Checking the validity of parameters.</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Saving_to_and_loading_from_XML."><span class="tocnumber">3.4</span> <span class="toctext">Saving to and loading from XML.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-18"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Marshalling."><span class="tocnumber">3.4.1</span> <span class="toctext">Marshalling.</span></a></li>
+<li class="toclevel-3 tocsection-19"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Unmarshalling."><span class="tocnumber">3.4.2</span> <span class="toctext">Unmarshalling.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-20"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Instantiating_spot_detectors."><span class="tocnumber">3.5</span> <span class="toctext">Instantiating spot detectors.</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#The_code_for_the_dummy_spiral_generator_factory."><span class="tocnumber">3.6</span> <span class="toctext">The code for the dummy spiral generator factory.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-22"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#Wrapping_up"><span class="tocnumber">4</span> <span class="toctext">Wrapping up</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction.">Introduction.</span></h2>
+<p>Welcome to the most useful and also unfortunately the hardest part in this tutorial series on how to extend <a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a> with custom modules. 
+</p><p>The detection algorithms in TrackMate are basic: they are all based or approximated from the <a href="http://en.wikipedia.org/wiki/Blob_detection#The_Laplacian_of_Gaussian" class="extiw" title="wikipedia:Blob detection">Laplacian of Gaussian</a> technique. They work well even in the presence of noise for round or spherical and well separated objects. As soon as you move away from these requirements, you will feel the need to implement your own custom detector. 
+</p><p>This is the subject of this tutorial, which I promised to be rather difficult. Not because implementing a custom detection algorithm is difficult. It <i>is</i> difficult, even very difficult if you are not familiar with the <a href="http://imagej.net/ImgLib2" title="ImgLib2">ImgLib2</a>  library. But we will skip this difficulty here by not making a true detector, but just a dummy one that returns detections irrespective of the image content. This involved task is left to your Java and ImgLib2 skills. 
+</p><p>No, this tutorial will be difficult because contrary to the previous ones, we need to do a lot of work even for just a dummy detector. The reason for this comes from our desire to have a nice and tidy integration in TrackMate. The custom detector we will write will be a first-class citizen of TrackMate, and this means several things: Not only it must be able to provide a proper detection, but it must also
+</p>
+<ul><li> offer the user some configuration options, in a nice GUI;</li>
+<li> check that the user entered meaningful detection parameters;</li>
+<li> enable the saving and loading of these parameters to XML.</li></ul>
+<p>We did not have to care when implementing a <a href="http://imagej.net/How_to_write_custom_actions_for_TrackMate" title="How to write custom actions for TrackMate">custom action</a>, but now we do.
+</p><p>Let's get started with the easiest part, the detection algorithm.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="The_SpotDetector_interface.">The <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/SpotDetector.java">SpotDetector</a> interface.</span></h2>
+<h3><span class="mw-headline" id="A_detector_instance_operates_on_a_single_frame.">A detector instance operates on a single frame.</span></h3>
+<p>The detection part itself is implemented in a class that implements the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/SpotDetector.java">SpotDetector</a> interface. Browsing there, you will see that it is just a specialization of an output algorithm from <a href="http://imagej.net/ImgLib2" title="ImgLib2">ImgLib2</a>. We are required to spit out a <code>List&lt;Spot&gt;</code> that represents the list of detection (one <code>Spot</code> per detection) for a <b>single frame</b>. 
+</p><p>This is important: <u>an instance of your detector is supposed to work on a single frame</u>. TrackMate will generate as many instances of the detector per frame it has to operate on. This facilitates development, but also multithreading: TrackMate fires one detector per thread it has access to, and this is done without you having to worry about it. TrackMate will bundle the outputs of all detectors in a thread-safe manner.
+</p><p>It is the work of the detector factory to provide each instance with the data required to segment a specific frame. But we will see how this is done below. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="A_SpotDetector_can_be_multithreaded.">A SpotDetector <i>can be</i> <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/algorithms/core/src/main/java/net/imglib2/algorithm/MultiThreaded.java">multithreaded</a>.</span></h3>
+<p>So TrackMate offers you a turnkey multithreaded solution: If you have a computer with 12 cores 
+and 50 frames to segment, TrackMate will fire 12 SpotDetectors at once and process them concurrently. 
+</p><p>But let's say that you have 24 cores and only 6 frames to segment. You can exploit this situation by letting your concrete instance of SpotDetector implement the ImgLib2 <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/algorithms/core/src/main/java/net/imglib2/algorithm/MultiThreaded.java">MultiThreaded</a> interface. In that case, TrackMate will still fire 6 SpotDetector instances (one for each frame), but will allocate 4 threads to each instance, and get an extra kick in speed. 
+</p><p>Of course, you have to devise a clever multithreading strategy to operate concurrently on a single frame. For instance, you could divide the image into several blocks and process them in parallel. Or delegate to sub-algorithms that are multithreaded; check for instance the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/LogDetector.java">LogDetector</a> code.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Detection_results_are_represented_by_Spots.">Detection results are represented by <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/Spot.java">Spots</a>.</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/Spot.java">Spots</a> are used to represent detection results: one detection = one spot. By convention, a detection algorithm must provide <i>at least</i> the following numerical feature to each spot:
+</p>
+<ul><li> The X, Y, Z coordinates, obviously. What is not that obvious is that TrackMate uses only image coordinates. This means that if your image has a physical calibration in µm (<i>e.g.</i> 0.2 µm/pixels in X,Y), the spot coordinates must be in µm<sup id="cite_ref-1" class="reference"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#cite_note-1">&#91;1&#93;</a></sup>. If you have just a 2D image, use 0 for the Z position, but it must not be omitted.</li>
+<li> A quality value, that reflects the quality of the detection itself. It must be a real, positive number, that reflects how confident your detection algorithm is that the found detection is not spurious. The larger the more confident.</li>
+<li> The spot radius, representing in physical units, the approximate size of the image structure that was detected. TrackMate default detectors do not have an automatic size detection feature, so they ask the user what is the most likely size of the structures they should detect, tune themselves to this size, and set all the radius of the detections to be the one entered by the user.</li></ul>
+<p>Any omission will trigger errors at runtime. 
+</p><p><br />
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="A_dummy_detector_that_returns_spiraling_spots.">A dummy detector that returns spiraling spots.</span></h3>
+<p>For this tutorial we will build a dummy detector, that actually fully ignores the image content and just create spots that seem to spiral out from the center of the image. A real detector would require you to hone your <a href="http://imagej.net/ImgLib2" title="ImgLib2">ImgLib2</a> skills; check the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/LogDetector.java">LogDetector</a> code for an example. 
+</p><p>Below is the source code for the dummy detector. You can also find it <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate-examples/blob/master/src/main/java/plugin/trackmate/examples/detector/SpiralDummyDetector.java">online</a>. Let's comment a bit on this:
+</p>
+<h4><span class="mw-headline" id="The_type_parameter_.3C_T_extends_RealType.3C_T_.3E_.26_NativeType.3C_T_.3E.3E">The type parameter <code>&lt; T extends RealType&lt; T &gt; &amp; NativeType&lt; T &gt;&gt;</code></span></h4>
+<p>Instances of SpotDetector are parametrized with a generic type <code>T</code> that must extends <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/core/src/main/java/net/imglib2/type/numeric/RealType.java">RealType</a> and <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/core/src/main/java/net/imglib2/type/NativeType.java">NativeType</a>. These are the bounds for all the scalar types based on native types, such us <code>float</code>, <code>int</code>, <code>byte</code>, etc... 
+</p><p>This is the type of the image data we are to operate on.
+</p>
+<h4><span class="mw-headline" id="The_constructor.">The constructor.</span></h4>
+<p>Since the <a rel="nofollow" class="external free" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/SpotDetector.java">https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/SpotDetector.java</a> SpotDetector] interface gives little constraint on inputs, all of them must be provided at construction time in the constructor. Keep in mind that we have one instance per frame, so we must know what frame we are to process. 
+</p><p>Normal detectors would be fed with a reference to the image data <i>for this very single frame</i>. Here we do not care for image content, so it is not there. But we will speak of this more when discussing the factory. 
+</p><p>Because TrackMate can also be tuned to operate only on a ROI, the instance receives an <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/core/src/main/java/net/imglib2/Interval.java">Interval</a> that represent the bounding box <b>in pixel coordinates</b> of the ROI the user selected. Here, we just use it to center the spirals. 
+</p><p>Because we must store the <i>physical coordinates'</i> in the spots we create, we need a calibration array to convert pixel coordinates to physical ones. That is the role of the <code>double[]calibration </code> array, and it contains the pixel sizes along X, Y and Z.
+</p>
+<h4><span class="mw-headline" id="The_Algorithm_methods.">The <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/algorithms/core/src/main/java/net/imglib2/algorithm/Algorithm.java">Algorithm</a> methods.</span></h4>
+<p><code>checkInput()</code> checks that the parameters passed are OK prior to processing, and returns <code>false</code> if they are not. <code>process()</code> does all the hard work, and return <code>false</code> if something goes wrong. 
+</p><p>If any of these two methods returns <code>false</code>, you are expected to document what went wrong in an error message that can be retrieved through <code>getErrorMessage()</code>.
+</p>
+<h4><span class="mw-headline" id="The_OutputAlgorithm_method.">The <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/algorithms/core/src/main/java/net/imglib2/algorithm/OutputAlgorithm.java">OutputAlgorithm</a> method.</span></h4>
+<p>This one just asks us to return the results as a list of spots. It must be a field of your instance, that is ideally instantiated and built in the <code>precess()</code> method. The <code>getResult()</code> method exposes this list. 
+</p>
+<h4><span class="mw-headline" id="The_Benchmark_method.">The <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/algorithms/core/src/main/java/net/imglib2/algorithm/Benchmark.java">Benchmark</a> method.</span></h4>
+<p>Well, we just want to know how much time it took. Note that all of these are the usual suspects of an ImgLib2 generic algorithm, so they should not confuse you.
+</p>
+<h4><span class="mw-headline" id="The_code_itself.">The code itself.</span></h4>
+<pre class="brush:java">
+package plugin.trackmate.examples.detector;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.imglib2.Interval;
+import net.imglib2.type.NativeType;
+import net.imglib2.type.numeric.RealType;
+import fiji.plugin.trackmate.Spot;
+import fiji.plugin.trackmate.detection.SpotDetector;
+
+public class SpiralDummyDetector&lt; T extends RealType&lt; T &gt; &amp; NativeType&lt; T &gt;&gt; implements SpotDetector&lt; T &gt;
+{
+
+	private static final double RADIAL_SPEED = 3d; // pixels per frame
+
+	// radians per frame
+	private static final double ANGULAR_SPEED = Math.PI / 10;
+
+	// in image units
+	private static final double SPOT_RADIUS = 1d;
+
+	/** The width if the ROI. */
+	private final long width;
+
+	/** The height if the ROI. */
+	private final long height;
+
+	/** The X coordinates of the ROI. */
+	private final long xstart;
+
+	/** The Y coordinates of the ROI. */
+	private final long ystart;
+
+	/** The pixel sizes in the 3 dimensions. */
+	private final double[] calibration;
+
+	/** The frame we operate in. */
+	private final int frame;
+
+	/** Holder for the results of detection. */
+	private List&lt; Spot &gt; spots;
+
+	/** Error message holder. */
+	private String errorMessage;
+
+	/** Holder for the processing time. */
+	private long processingTime;
+
+	/*
+	 * CONSTRUCTOR
+	 */
+
+	public SpiralDummyDetector( final Interval interval, final double[] calibration, final int frame )
+	{
+		// Take the ROI box from the interval parameter.
+		this.width = interval.dimension( 0 );
+		this.height = interval.dimension( 1 );
+		this.xstart = interval.min( 0 );
+		this.ystart = interval.min( 1 );
+		// We will need the calibration to convert to physical units.
+		this.calibration = calibration;
+		// We need to know what frame we are in.
+		this.frame = frame;
+	}
+
+	/*
+	 * METHODS
+	 */
+
+	@Override
+	public List&lt; Spot &gt; getResult()
+	{
+		return spots;
+	}
+
+	@Override
+	public boolean checkInput()
+	{
+		// Nothing to test, it's all good.
+		return true;
+	}
+
+	@Override
+	public boolean process()
+	{
+		final long start = System.currentTimeMillis();
+		spots = new ArrayList&lt; Spot &gt;();
+
+		/*
+		 * This dummy detector creates spots that spiral out from the center of
+		 * the specified ROI. It spits a new spiral every 10 frames.
+		 */
+
+		final int x0 = ( int ) ( width / 2 + xstart );
+		final int y0 = ( int ) ( height / 2 + ystart );
+
+		int t = frame;
+		int nspiral = 0;
+		while ( t &gt;= 0 )
+		{
+			final double r = t * RADIAL_SPEED;
+			final double phi0 = nspiral * Math.PI / 4;
+			final double phi = t * ANGULAR_SPEED + phi0;
+
+			// Spot in pixel coordinates.
+			final double x = x0 + r * Math.cos( phi );
+			final double y = y0 + r * Math.sin( phi );
+
+			// But we want to create spots in image coordinates:
+			final double xpos = x * calibration[ 0 ];
+			final double ypos = y * calibration[ 1 ];
+			final double zpos = 0d;
+
+			// Create the spot.
+			final Spot spot = new Spot( xpos, ypos, zpos, SPOT_RADIUS, 1d / ( nspiral + 1d ) );
+			spots.add( spot );
+
+			// Loop to another spiral.
+			t = t - 10;
+			nspiral++;
+		}
+
+		final long end = System.currentTimeMillis();
+		this.processingTime = end - start;
+		return true;
+	}
+
+	@Override
+	public String getErrorMessage()
+	{
+		/*
+		 * If something wrong happens while you #checkInput() or #process(),
+		 * state it in the errorMessage field.
+		 */
+		return errorMessage;
+	}
+
+	@Override
+	public long getProcessingTime()
+	{
+		return processingTime;
+	}
+
+}
+</pre>
+<p>And that's about it. 
+</p><p>Now for something completely different, we move to the factory class that instantiates this detector.
+</p><p><br />
+</p><p><br />
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="The_SpotDetectorFactory_interface.">The <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/SpotDetectorFactory.java">SpotDetectorFactory</a> interface.</span></h2>
+<p>The SpotDetectorFactory concrete implementation is the class that needs to be annotated with the <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> annotation. For instance:
+</p>
+<pre class="brush:java">
+@Plugin( type = SpotDetectorFactory.class )
+public class SpiralDummyDetectorFactory&lt; T extends RealType&lt; T &gt; &amp; NativeType&lt; T &gt;&gt; implements SpotDetectorFactory&lt; T &gt;
+</pre>
+<p>Note that we have to deal with the same type parameter than for the SpotDetector instance. 
+</p><p>I will skip all the TrackMateModule methods we have seen over and over in this tutorial series. There is nothing new here, they all have the same role. The difficult and interestings parts are linked to what we introduced above. Basically we need to provide a logic for passing the raw image data, for saving/loading to XML, for querying the user for parameters, and checking them.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Getting_the_raw_image_data.">Getting the raw image data.</span></h3>
+<p>Since the TrackMateModule concrete implementation must have a blank constructor, there must be another way to pass required arguments to factories. For SpotDetector factories, this role is played by the <code>setTarget</code> method:
+</p>
+<pre class="brush:java">
+	@Override
+	public boolean setTarget( final ImgPlus&lt; T &gt; img, final Map&lt; String, Object &gt; settings )
+</pre>
+<p>The raw image data is returned as an <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/meta/src/main/java/net/imglib2/meta/ImgPlus.java">ImgPlus</a>, that can be seen as the <a href="http://imagej.net/ImgLib2" title="ImgLib2">ImgLib2</a> equivalent of ImageJ1 <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/ImagePlus.java">ImagePlus</a>. It contains the pixel data for all available dimensions (all X, Y, Z, C, T if any), plus the spatial calibration we need to operate in physical units. The concrete factory must be able to extract from this ImgPlus the data useful for the SpotDetectors it will instantiate, keeping in mind that each SpotDetector operates on one frame. 
+</p><p>The second argument is the settings map for this specific detector. It takes the shape of a map with string keys and object values, that can be cast to whatever relevant class. The concrete factory must be able to check that all the required parameters are there, and have a valid class, and to feed to the SpotDetector instances. We will see below that the user provides them through a configuration panel. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Getting_detection_parameters_through_a_configuration_panel.">Getting detection parameters through a configuration panel.</span></h3>
+<p>For a proper TrackMate integration, we need to provide a means for users to tune the detector they chose. And since TrackMate was built first to be used through a GUI, we need to create a GUI element for this task: a configuration panel. The class that does that in TrackMate is <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/gui/ConfigurationPanel.java">ConfigurationPanel</a>. It is an abstract class that extends JPanel, and that adds two methods to display a settings map and return it. 
+</p><p>Each SpotDetectorFactory has its own configuration panel, which must be instantiated and returned through:
+</p>
+<pre class="brush:java">
+@Override
+public ConfigurationPanel getDetectorConfigurationPanel( final Settings settings, final Model model )
+</pre>
+<p>The GUI panel has access to the model and settings objects, and can therefore display some relevant information.
+</p><p>This is a difficult part because you have to write a GUI element. GUIs are excruciating long and painfully hard to write, at least if you want to get them right. Check the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/gui/panels/detector/LogDetectorConfigurationPanel.java">configuration panel of the LOG detector</a> for an example.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Checking_the_validity_of_parameters.">Checking the validity of parameters.</span></h3>
+<p>There is a layer of methods that allows checking for the parameter validity. Normally you don't need to, since you write the configuration panel for the detector you also develop, but I have found this to be useful to find errors early. Parameter checking is done after user edition, loading and saving.
+</p><p>Three methods are at play: 
+</p>
+<pre class="brush:java">
+public Map&lt; String, Object &gt; getDefaultSettings();
+
+public boolean checkSettings( final Map&lt; String, Object &gt; settings );
+
+public String getErrorMessage();
+</pre>
+<p>The <code>getDefaultSettings()</code> method return a new settings map initialized with default values. It must contain all the required parameter keys, and nothing more. The <code>checkSettings()</code> method does the actual parameter checking. It must check that all the required parameters are there, that they have the right class, and that there is no spurious mapping in the map. Should any of these defects be found, it returns <code>false</code>. Finally, <code>getErrorMessage()</code> should return a meaningful error message if the check failed. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Saving_to_and_loading_from_XML.">Saving to and loading from XML.</span></h3>
+<p>TrackMate tries to save as much information as possible when saving to XML. The save file should contain at the very least the tracking results, but it should also include the parameters that help creating these results. The detection algorithm parameters should therefore be included. 
+</p><p>You have to provide the means to save and load this parameters, since they are specific to the detector you write. This is done through the two methods: 
+</p>
+<pre class="brush:java">
+public boolean marshall( final Map&lt; String, Object &gt; settings, final Element element );
+
+public boolean unmarshall( final Element element, final Map&lt; String, Object &gt; settings );
+</pre>
+<h4><span class="mw-headline" id="Marshalling.">Marshalling.</span></h4>
+<p>Marshalling is the action of serializing a java object to XML. TrackMate relies on the <a rel="nofollow" class="external text" href="http://www.jdom.org/">JDom library</a> to do so, and it greatly simplifies the task.
+</p><p>The settings map that the <code>marshall</code> method receives is the settings map to save. You can safely assume it has been successfully checked. The element parameter is a <a rel="nofollow" class="external text" href="http://www.jdom.org/docs/apidocs/org/jdom2/Element.html">JDom element</a>, and it must contain eveything you want to save from the detector, as attribute or child elements. Here is what you must put in it:
+</p>
+<ul><li> You must at the very least set an attribute that has for key <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/DetectorKeys.java#L14"><code>"DETECTOR_NAME"</code></a> and value the SpotDetectorFactory key (the one you get with the <code>getKey()</code>) method<sup id="cite_ref-2" class="reference"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#cite_note-2">&#91;2&#93;</a></sup>. This will be used in turn when loading from XML, to retrieve the right detector you used. </li></ul>
+<ul><li> If something goes wrong when saving, then the <code>marshall</code> method must return <code>false</code>, and you must provide a meaningful error message for the <code>getErrorMessage()</code> method.</li></ul>
+<ul><li> Everything else is pretty much up to you. There is a <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/io/IOUtils.java#L383">helper method in IOUtils</a> that you can use to serialize single parameters. Check the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/LogDetectorFactory.java#L161">LogDetectorFactory marshall method</a> for an example. </li></ul>
+<h4><span class="mw-headline" id="Unmarshalling.">Unmarshalling.</span></h4>
+<p>Unmarshalling is just the other way around. You get a map that you must first clear, then build from the JDom element specified. You can safely assume that the XML element you get was built from the <code>marshall</code> method of the same SpotDetectorFactory. TrackMate makes sure the right <code>unmarshall</code> method is called. 
+</p><p>There are a few help methods around to help you with reading from XML. For instance, check all the <code>read*Attribute</code> of the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/io/IOUtils.java">IOUtils</a> class. It is also a good idea to call the <code>checkSettings</code> method with the map you just built.
+</p><p>Check again the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/detection/LogDetectorFactory.java#L173">LogDetectorFactory unmarshall method</a> for an example.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Instantiating_spot_detectors.">Instantiating spot detectors.</span></h3>
+<p>And finally, the method that gives its name to this factory:
+</p>
+<pre class="brush:java">
+public SpotDetector&lt; T &gt; getDetector( final Interval interval, final int frame )
+</pre>
+<p>This will be called repeatedly by TrackMate to generate as many SpotDetector instances as there is frames in the raw data to segment. The two parameters specify the ROI the user wants to operate on as an <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib/blob/master/core/src/main/java/net/imglib2/Interval.java">Imglib2 interval</a>, and the target frame. So you need to process and bundle:
+</p>
+<ul><li> this interval and this frame;</li>
+<li> the raw image data and settings map  received from the <code>setTarget</code> method</li></ul>
+<p>in the parameters required to instantiate a new SpotDetector. 
+</p><p>Because the dummy example we use in this tutorial is not such an enlightenment, I copy here the code from the LogDetectorFactory. It shows how to extract parameters from a settings map, and how to access the relevant data frame in a possibly 5D image:
+</p>
+<pre class="brush:java">
+	@Override
+	public SpotDetector&lt; T &gt; getDetector( final Interval interval, final int frame )
+	{
+		final double radius = ( Double ) settings.get( KEY_RADIUS );
+		final double threshold = ( Double ) settings.get( KEY_THRESHOLD );
+		final boolean doMedian = ( Boolean ) settings.get( KEY_DO_MEDIAN_FILTERING );
+		final boolean doSubpixel = ( Boolean ) settings.get( KEY_DO_SUBPIXEL_LOCALIZATION );
+		final double[] calibration = TMUtils.getSpatialCalibration( img );
+
+		RandomAccessible&lt; T &gt; imFrame;
+		final int cDim = TMUtils.findCAxisIndex( img );
+		if ( cDim &lt; 0 )
+		{
+			imFrame = img;
+		}
+		else
+		{
+			// In ImgLib2, dimensions are 0-based.
+			final int channel = ( Integer ) settings.get( KEY_TARGET_CHANNEL ) - 1;
+			imFrame = Views.hyperSlice( img, cDim, channel );
+		}
+
+		int timeDim = TMUtils.findTAxisIndex( img );
+		if ( timeDim &gt;= 0 )
+		{
+			if ( cDim &gt;= 0 &amp;&amp; timeDim &gt; cDim )
+			{
+				timeDim--;
+			}
+			imFrame = Views.hyperSlice( imFrame, timeDim, frame );
+		}
+		final LogDetector&lt; T &gt; detector = new LogDetector&lt; T &gt;( imFrame, interval, calibration, radius, threshold, doSubpixel, doMedian );
+		detector.setNumThreads( 1 ); // in TrackMate context, we use 1 thread
+		// per detector but multiple detectors
+		return detector;
+	}
+</pre>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="The_code_for_the_dummy_spiral_generator_factory.">The code for the dummy spiral generator factory.</span></h3>
+<p>And here is the full code for this tutorial example. It is the ultimate simplification of a SpotDetectorFactory, and was careful to strip anything useful by first ignoring the image content, second by not using any parameter. You can also find it <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate-examples/blob/master/src/main/java/plugin/trackmate/examples/detector/SpiralDummyDetectorFactory.java">online</a>.
+</p>
+<pre class="brush:java">
+package plugin.trackmate.examples.detector;
+
+import ij.ImageJ;
+import ij.ImagePlus;
+
+import java.util.Collections;
+import java.util.Map;
+
+import javax.swing.ImageIcon;
+
+import net.imglib2.Interval;
+import net.imglib2.meta.ImgPlus;
+import net.imglib2.type.NativeType;
+import net.imglib2.type.numeric.RealType;
+
+import org.jdom2.Element;
+import org.scijava.plugin.Plugin;
+
+import fiji.plugin.trackmate.Model;
+import fiji.plugin.trackmate.Settings;
+import fiji.plugin.trackmate.TrackMatePlugIn_;
+import fiji.plugin.trackmate.detection.SpotDetector;
+import fiji.plugin.trackmate.detection.SpotDetectorFactory;
+import fiji.plugin.trackmate.gui.ConfigurationPanel;
+import fiji.plugin.trackmate.util.TMUtils;
+
+@Plugin( type = SpotDetectorFactory.class )
+public class SpiralDummyDetectorFactory&lt; T extends RealType&lt; T &gt; &amp; NativeType&lt; T &gt;&gt; implements SpotDetectorFactory&lt; T &gt;
+{
+
+	static final String INFO_TEXT = "&lt;html&gt;This is a dummy detector that creates spirals made of spots emerging from the center of the ROI. The actual image content is not used.&lt;/html&gt;";
+
+	private static final String KEY = "DUMMY_DETECTOR_SPIRAL";
+
+	static final String NAME = "Dummy detector in spirals";
+
+	private double[] calibration;
+
+	private String errorMessage;
+
+	@Override
+	public String getInfoText()
+	{
+		return INFO_TEXT;
+	}
+
+	@Override
+	public ImageIcon getIcon()
+	{
+		return null;
+	}
+
+	@Override
+	public String getKey()
+	{
+		return KEY;
+	}
+
+	@Override
+	public String getName()
+	{
+		return NAME;
+	}
+
+	@Override
+	public SpotDetector&lt; T &gt; getDetector( final Interval interval, final int frame )
+	{
+		return new SpiralDummyDetector&lt; T &gt;( interval, calibration, frame );
+	}
+
+	@Override
+	public boolean setTarget( final ImgPlus&lt; T &gt; img, final Map&lt; String, Object &gt; settings )
+	{
+		/*
+		 * Well, we do not care for the image at all. We just need to get the
+		 * physical calibration and there is a helper method for that.
+		 */
+		this.calibration = TMUtils.getSpatialCalibration( img );
+		// True means that the settings map is OK.
+		return true;
+	}
+
+	@Override
+	public String getErrorMessage()
+	{
+		/*
+		 * If something is not right when calling #setTarget (i.e. the settings
+		 * maps is not right), this is how we get an error message.
+		 */
+		return errorMessage;
+	}
+
+	@Override
+	public boolean marshall( final Map&lt; String, Object &gt; settings, final Element element )
+	{
+		/*
+		 * This where you save the settings map to a JDom element. Since we do
+		 * not have parameters, we have nothing to do.
+		 */
+		return true;
+	}
+
+	@Override
+	public boolean unmarshall( final Element element, final Map&lt; String, Object &gt; settings )
+	{
+		/*
+		 * The same goes for loading: there is nothing to load.
+		 */
+		return true;
+	}
+
+	@Override
+	public ConfigurationPanel getDetectorConfigurationPanel( final Settings settings, final Model model )
+	{
+		// We return a simple configuration panel.
+		return new DummyDetectorSpiralConfigurationPanel();
+	}
+
+	@Override
+	public Map&lt; String, Object &gt; getDefaultSettings()
+	{
+		/*
+		 * We just have to return a new empty map.
+		 */
+		return Collections.emptyMap();
+	}
+
+	@Override
+	public boolean checkSettings( final Map&lt; String, Object &gt; settings )
+	{
+		/*
+		 * Since we have no settings, we just have to test that we received the
+		 * empty map. Otherwise we generate an error.
+		 */
+		if ( settings.isEmpty() ) { return true; }
+		errorMessage = "Expected the settings map to be empty, but it was not: " + settings + '\n';
+		return false;
+	}
+}
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Wrapping_up">Wrapping up</span></h2>
+<p>Ouf! That was a lot of information and a lot of coding for a single piece of functionality. But all of these painful methods make your detector a first-class citizen of TrackMate. "Native" detectors use the exact same logic.
+</p><p>Here is what our dummy example looks. To maximize your user experience, I let it run on a 512 x 512 x 200 frames image, and tracked them.
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 256px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p><a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a> (<a href="http://imagej.net/index.php?title=User_talk:JeanYvesTinevez&amp;action=edit&amp;redlink=1" class="new" title="User talk:JeanYvesTinevez (page does not exist)">talk</a>) 08:28, 3 April 2014 (CDT)
+</p><p><br />
+</p><p><br />
+</p><p>_____
+</p>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#cite_ref-1">↑</a></span> <span class="reference-text">The reason behind this is that TrackMate wants to break free of the source data. Keeping all the coordinates in physical units allow exchanging  results without having to keep a reference to the original image.</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="How_to_write_your_own_detection_algorithm_for_TrackMate.html#cite_ref-2">↑</a></span> <span class="reference-text">Careful, this will not be mandatory in TrackMate v2.3.0</span>
+</li>
+</ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072458
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.064 seconds
+Real time usage: 0.063 seconds
+Preprocessor visited node count: 874/1000000
+Preprocessor generated node count: 5047/1000000
+Post‐expand include size: 7920/2097152 bytes
+Template argument size: 3617/2097152 bytes
+Highest expansion depth: 4/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   27.207      1 - -total
+ 47.56%   12.941     27 - Template:GitHub
+ 25.60%    6.965      1 - Template:Person
+  3.30%    0.899      1 - Template:ExtendingTrackMateTutorials
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=How_to_write_your_own_detection_algorithm_for_TrackMate&amp;oldid=17809">http://imagej.net/index.php?title=How_to_write_your_own_detection_algorithm_for_TrackMate&amp;oldid=17809</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 8 October 2015, at 13:23.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=How_to_write_your_own_detection_algorithm_for_TrackMate&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=How+to+write+your+own+detection+algorithm+for+TrackMate" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=How+to+write+your+own+detection+algorithm+for+TrackMate" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/How_to_write_your_own_detection_algorithm_for_TrackMate" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/How_to_write_your_own_detection_algorithm_for_TrackMate" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=How_to_write_your_own_detection_algorithm_for_TrackMate&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=How_to_write_your_own_detection_algorithm_for_TrackMate&amp;oldid=17809" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=How_to_write_your_own_detection_algorithm_for_TrackMate&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":226});});</script>
+		</body>
+		</html>
+		

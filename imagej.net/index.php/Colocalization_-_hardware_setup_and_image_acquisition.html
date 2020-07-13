@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Colocalization - hardware setup and image acquisition - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Colocalization_-_hardware_setup_and_image_acquisition","wgTitle":"Colocalization - hardware setup and image acquisition","wgCurRevisionId":10019,"wgRevisionId":10019,"wgArticleId":1367,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Colocalization","Tutorials","Color processing"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Colocalization_-_hardware_setup_and_image_acquisition","wgRelevantArticleId":1367,"wgRequestId":"a0260eba09cfda5d72967cf0","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="These notes primarily concern the pixel intensity correlation based colocalization methods, where one looks for intensity correlation in different colour channels of individual pixels. Sometimes it is more useful to look for object-based colocalization, where objects are segmented out of images, then objects in different colour channels are tested for spatial overlap:  colocalization. In the object-based case, one attempts to acquire images suitable for segmentation. The following principles apply in the case of pixel-based colocalization, but most of the precautions underlined here are general."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Colocalization - hardware setup and image acquisition"/>
+
+	<meta property="og:description" content="These notes primarily concern the pixel intensity correlation based colocalization methods, where one looks for intensity correlation in different colour channels of individual pixels. Sometimes it is more useful to look for object-based colocalization, where objects are segmented out of images, then objects in different colour channels are tested for spatial overlap:  colocalization. In the object-based case, one attempts to acquire images suitable for segmentation. The following principles apply in the case of pixel-based colocalization, but most of the precautions underlined here are general."/>
+
+	<meta property="og:url" content="http://imagej.net/Colocalization_-_hardware_setup_and_image_acquisition"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Colocalization_-_hardware_setup_and_image_acquisition rootpage-Colocalization_-_hardware_setup_and_image_acquisition skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Colocalization_-_hardware_setup_and_image_acquisition.html#bodyContent">Skip to content</a>, 			<a href="Colocalization_-_hardware_setup_and_image_acquisition.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Colocalization_-_hardware_setup_and_image_acquisition.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Colocalization_-_hardware_setup_and_image_acquisition" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Colocalization_-_hardware_setup_and_image_acquisition&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Colocalization_-_hardware_setup_and_image_acquisition&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Colocalization_-_hardware_setup_and_image_acquisition&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Colocalization - hardware setup and image acquisition</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Foreword"><span class="tocnumber">1</span> <span class="toctext">Foreword</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Introduction"><span class="tocnumber">2</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Precautions_during_image_analysis"><span class="tocnumber">3</span> <span class="toctext">Precautions during image analysis</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Blur"><span class="tocnumber">3.1</span> <span class="toctext">Blur</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Background"><span class="tocnumber">3.2</span> <span class="toctext">Background</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Noise"><span class="tocnumber">3.3</span> <span class="toctext">Noise</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Cross_talk_and_Bleed_through"><span class="tocnumber">3.4</span> <span class="toctext">Cross talk and Bleed through</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Poor_Spatial_Sampling"><span class="tocnumber">3.5</span> <span class="toctext">Poor Spatial Sampling</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Detector_Saturation"><span class="tocnumber">3.6</span> <span class="toctext">Detector Saturation</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Chromatic_Shift"><span class="tocnumber">3.7</span> <span class="toctext">Chromatic Shift</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Conclusion"><span class="tocnumber">3.8</span> <span class="toctext">Conclusion</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="Colocalization_-_hardware_setup_and_image_acquisition.html#Further_reading"><span class="tocnumber">4</span> <span class="toctext">Further reading</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Foreword">Foreword</span></h2>
+<p>These notes primarily concern the <b>pixel intensity correlation based</b> colocalization methods, where one looks for intensity correlation in different colour channels of individual pixels. Sometimes it is more useful to look for <b>object-based</b> colocalization, where objects are segmented out of images, then objects in different colour channels are tested for spatial overlap:  colocalization. In the <b>object-based</b> case, one attempts to acquire images suitable for segmentation. The following principles apply in the case of pixel-based colocalization, but most of the precautions underlined here are general.
+</p>
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>How can we properly define colocalization? One could suggest:
+</p>
+<dl><dd></dd>
+<dd><i>Degree of overlap between two colour channels in one image, which can be characterised by</i></dd></dl>
+<ul><li> <i>colocalisation coefficients (single global statistics regarding the whole image)</i></li>
+<li> <i>colocalisation maps (identification of colocalised pixels over the image, spatially)</i></li></ul>
+<p><br />Estimating colocalisation by looking for yellow colour in images where the green and red images have been colour merged is a bad idea because:
+</p>
+<ol><li> This is a subjective estimate,&#160;depending on how bright the two original images are, and as such is sensitive to manipulation of brightness and contrast of the original images and also incorrect image acquisition (especially saturated/out of detector range images).</li>
+<li> A significant proportion of people are colour blind, and can't tell the difference between red and green anyway.&#160;</li>
+<li> When 2 channel colour merge images are displayed on a computer screen they look different to when they are printed. Green looks brighter than red, and red brighter than blue, because of the way our eyes work. Different printers and different computer screens will give different looking representations of the same 2 channel colour merge image, so it is impossible to be objective about what you see and compre it with what someone else sees.&#160;</li>
+<li> There are simple and quick objective methods to estimate colocalisation, so don't be lazy. You can use them to get hard objective statistics describing the colocalisation in your images, and its easy to do.</li>
+<li> Our brains find color contrast that is not even really there. In the following illusion (Fig. 1), there are only really 3 colors. The "blue"and "green" are exactly the same color: Do not trust your eyes - measure it. </li></ol>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Spirals.png" class="image"><img alt="" src="../_images/8/80/Spirals.png" width="300" height="300" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Spirals.png" class="internal" title="Enlarge"></a></div><b>Figure 1</b>: The <i>spirals</i> color illusion</div></div></div>
+<p><br />
+</p><p>What we need are objective quantitative methods to estimate/measure colocalisation in 2 colour channel images. These will output colocalisation coefficients that should be:
+</p>
+<ul><li> sensitive to colocalization between one colour channel and the other;</li>
+<li> insensitive to the presence of a non-relevant background;</li>
+<li> insensitive to relative variation of intensities between channels.</li></ul>
+<p><br />
+</p><p>But... in order to do quantitative analysis on images, they muse be acquired in the correct way, such that they contain the information that you are tring to measure! You must also understand the limitations of your microscope and the digital imaging process.&#160;
+</p>
+<h2><span class="mw-headline" id="Precautions_during_image_analysis">Precautions during image analysis</span></h2>
+<p>There are various problems that need to be understood and overcome while collecting images at the microscope. No clever analysis can save crappy images (aka. The "crap in - crap out" principle). If you lose or don't collect information that the microscope could have seen during imaging, it is lost forever. We list here a few of these dangers. Being modest, we should make it clear that some of the difficulties are actually unavoidable and must be lived with, but understood all the same.&#160;
+</p>
+<h3><span class="mw-headline" id="Blur">Blur</span></h3>
+<div class="floatright"><div class="MediaTransformError" style="width: 120px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>
+<pre><i>Definition:</i> The Fourier spectrum of the 
+image lacks proper high frequencies. 
+</pre>
+<pre><i>Definition 2:</i> The small features/edges of the 
+real object are not well represented in the image 
+</pre>
+<p>This phenomenon will artificially enlarge the size of your objects, making them look bigger. The problem with this is that two non colocalizing objects might appear to colocalize in the image because of the blur. This gives false-positive results.
+</p><p>Possible origins of blur are:
+</p>
+<ul><li> optical system is dirty (objective, sample)</li>
+<li> optical system is misaligned (pinhole, optical components)</li>
+<li> wrong immersion oil / coverslip thickness / immersion medium</li>
+<li> similarly: objective lens correction collars not ajusted</li>
+<li> mechanical drift or moving sample - most apparent with slow imaging</li>
+<li> imaging too deep into the sample ( &lt; 5 µm with oil, &gt; 5 µm with water, &gt; 50 µm with 2-photons system, and you will see sherical abberation due to refractive index mismatch between the objective lens immersion medium and sample)</li>
+<li> widefield microscope system (or on a confocal microscope - optimal pinhole size of 1 Airy Unit not set)</li>
+<li> colorshift: if you don't know what it is, always use apochromat objectives - these correct for chromatic aberrations (blue bends better than red)</li>
+<li> Inadequate spatial sampling. If your pixels are too big to correctly sample the smallest features visible, you will not see those features.&#160;</li></ul>
+<p><br /> Some things we can't do anything about (hey, that's the <i>light</i> microscopy facility, hum?):
+</p>
+<ul><li> Diffraction: The spatial resolution of the conventional widefield or confocal (as typically used - noise limited) light microscope is limited by diffraction, and is dependent on the wavelength of the light (shorter is better) and the numerical aperture (NA) of the objective lens (higher is better). XY resolution is better than resolution in Z direction (about 3x better for a high NA objective. Spatial sampling should be done so that there are not less than and not too many more than 2.3 pixels across the resolution limit (according to Nyqvist). For a high NA lens (say a 63x 1.4 oil immersion) this means the pixels in XY should be about 80-100 nm, and in Z about 250 nm. Also see Sampling below.</li></ul>
+<p><br />
+If the blurring of you images is too much, you might want to consider <a href="http://imagej.net/Deconvolution" title="Deconvolution">deconvolution</a>. Have a look at 
+<a rel="nofollow" class="external text" href="http://support.svi.nl/wiki/BlurAndNoiseAffectColocalization">this page</a> from SVI (the guys that provides <a href="http://imagej.net/index.php?title=Huygens&amp;action=edit&amp;redlink=1" class="new" title="Huygens (page does not exist)">Huygens</a> software to see how it can help.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Background">Background</span></h3>
+<div class="floatright"><div class="MediaTransformError" style="width: 120px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>
+<pre><i>Definition:</i> Unspecific signal. 
+</pre>
+<p>The presence of a high background will generate a huge amount of artificial, irrelevant colocalization. You are not interested in unspecific colocalization - your reviewers might only be mildly happy if you spend a lot of time analysing background. You do not want background to affect your analysis results.
+</p><p>Hopefully our colocalisation analysis methods will be insensitive to small differences in background, but thats no reason not to get it as low as is possible. Having bright real signal and low background improves the "dynamic range" of the information, and thats a very good thing for quantitative analysis.&#160;<br />
+</p><p>At the microscope, you must decide what parts of your image are background and not interesting. Then you can set the microscope to give the background very low or zero intensity values in the images.&#160;
+</p><p><br />
+</p><p>Getting rid of high background? Consider:
+</p>
+<ul><li> autofluorescence of the sample / medium / immersion medium (<i>e.g.</i> phenol red)</li>
+<li> staining protocol (bad unspecific antibodies ...)</li>
+<li> leaking of excitation light in the emission range, because of inadequate fluorescence filter design</li>
+<li> too low "offset" on a PMT detector in a confocal microscope.&#160;</li></ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Noise">Noise</span></h3>
+<pre><i>Definition:</i> Uncertainty of signal. 
+</pre>
+<p>Colocalisation in a pixel might be false, coming from noise, and thus, not be real.&#160;
+For correlation based statistical approaches to colocalisation analysis, increasing noise lowers the apparent colocalisation. Hence, for noisy images, an attempt must be made to suppress or remove the noise in order to get closer to the true noise free correlation. Constrained iterative deconvolution can act as a smart noise filter that increases contrast and suppresses noise, so widefield and confocal image data should be deconvolved before colocalisation analysis. 
+</p><p>Types of Noise:
+</p>
+<ul><li> dark noise / dark current. False signal with Poisson distribution from thermally generated electrons in the detector. CCD/EMCCD/sCMOS: increases with temperature, so we use cooled cameras, then there is nothing much to do as the noise is then very small and only seen in very long exposures. PMT/Confocal: cooled PMTs help, eg. Leica SP5</li>
+<li> Read noise / digitizer noise / electronic noise from the system (Confocal PMTs get over it with a PMT voltage above about 400). EMCCDs are very sensitive because they amplify a small signal over and above the dark noise and read noise so you can measure it. sCMOS cameras have a very low read noise of an eletron ot two, several times less than a CCD camera. &#160;</li>
+<li> Photon shot noise. This is intrinsic statistical noise in the signal coming from fluorescence photons. It follows a Poisson distribution over time, as photons arrive whenever they like at the detector. It's magnitude is the square root of the number of incident photons measured. So we can increase the "photon signal" to "photon signal noise" ratio by increasing the exposure time or pixel dwell time and collecting more photons, but this contradicts one of the rules to avoid a blurry image - when the sample is moving, and might cause photo bleaching of the dye. On a single point scan confocal microscope it gives a better signal, more photons detected, to do more line scan averages with a pixel dwell time much less than 10 microseconds, than to do one slower scan with more than about 10 microseconds pixel dwell time (this is for complicated photophysics reasons to do with dye dark states, eg triplet state population build up.)</li>
+<li> Amplification noise. The more gain, the more noise. This noise is Gaussian shaped. A solution would be to use lower gains (on a confocal dont use a PMT voltage over about 800, turn the laser power up a bit instead if you can, or do more line scan averaging). On A CCD (especially EM CCD) don't have the gain too high or you will add noise to your image. </li></ul>
+<p>One must have a signal strong enough to allow a good enough signal:noise ratio, or be able to deal with a weak signal and separate it from the noise, using eg iterative deconvolution!
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Cross_talk_and_Bleed_through">Cross talk and Bleed through</span></h3>
+<pre><i>Definition 1:</i> Fluorophores do not match 
+optical components (excitation / emission filters, 
+lasers, dichroics). 
+</pre>
+<pre><i>Definition 2:</i> You detect emission from the wrong 
+dye, and falsely believe it comes from the right dye. 
+</pre>
+<p>So... this one is <i>the</i> very worst and most dangerous problem in colocalization experiments. It can be explained with the following spectra:
+</p>
+<div class="MediaTransformError" style="width: 500px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />In this picture, the detection setup is configured so as to measure emitted light from the second fluorophore. The problem is that in this detection channel, some of the light emitted by the first fluorophore is also collected and integrated to the channel 2 signal. This is called <b>bleed-through</b>. When you are going to compute colocalization of this channel with the first one, there will be a part of the signal that will colocalize with it whatever it is, since signal coming from the first fluorophore is present in both channels. That is, you generated false-positive result.
+</p><p>You could avoid this by selectively only exciting fluorophore number one, and acquire the first image, then excite the fluorophore number 2 and acquire the second image (sequential imaging). But on these spectra, you can see that the excitation curves also overlap, and that the excitation wavelength hits both dyes efficiently. The two fluorophores will both be excited at this wavelength; a process called <b>cross-talk</b>. Your last hope is that there is a laser line that hits the first excitation spectrum without touching the other, and reciprocally for the second one.
+</p><p>Dye choice is critical here. Avoid DAPI and GFP, since DAPI emission is very broad, and bleeds through into GFP detection. Better to choose a far red nulclear/DMA stain like Draq-5 for use with GFP. Choose dyes by looking at their excitation and emission spectra, and pick dyes that match your microscope fluorescence filters and laser excitation lines (eg. look at the <a rel="nofollow" class="external text" href="http://www.invitrogen.com/site/us/en/home/support/Research-Tools/Fluorescence-SpectraViewer.html">Invitrogen Molecular Probles Java Spectra Browser</a> for doing that). Choose dydters that are well spectrally separated it at all possible. Different microscopes in the LMF have different choices of excitation filter and laser line wavelengths, and different possibilities for emission filters. Choose your dyes carefully.&#160;
+</p><p><br />
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Poor_Spatial_Sampling">Poor Spatial Sampling</span></h3>
+<pre><i>Definition:</i> The pixel size does not allow
+for a highly spatially resolved colocalisation
+analysis. 
+</pre>
+<pre><i>Definition 2: </i>Pixels are too big. Close but
+separate objects which do not colocalise, appear
+to colocalise. 
+</pre>
+<p>As a general rule, you should have each object you image sampled over many pixels. When this is not the case, a colocalization statement cannot be reliable made, as the assumptions of the method no longer hold.&#160;
+</p><p>Let's suppose that you have two objects each with different colour, and you would like to assess if they colocalize in space. If we assume that they don't colcocalise, if the colocalization procedure you are using is working, it should give you a negative result. Consider one molecule of each dye. They are sitting close to each other, but they are not colocalized (in the same place). Now, if the pixel size is so big that these two molecules are imaged on the same pixel, the procedure tells you that they are colocalized. Once again, you are producing false-positive results.
+</p>
+<div class="MediaTransformError" style="width: 500px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br /> Also remember: since we are doing light microscopy, two objects closer and smaller than the diffraction limit will appear colocalized whatever you do. Particular care must be taken in the case of Z-stack, where the resolution in the Z axis is generally lower than in the XY plane. In order to get around the diffraction limit, and to confirm your colocalisation result, you can do other methods too, such as FRET or FLIM, and immuno precipitation or cellular cofractionation.&#160;
+</p>
+<h3><span class="mw-headline" id="Detector_Saturation">Detector Saturation</span></h3>
+<p>The problem with "saturated pixels" occurs mainly when we use pixel-based colocalization (<i>i.e.</i> when we are interested in intensity correlation over space). It is possible to derive the quantitative error made with saturation. See <a href="http://imagej.net/index.php?title=Colocalization/ErrorDueToSaturation&amp;action=edit&amp;redlink=1" class="new" title="Colocalization/ErrorDueToSaturation (page does not exist)">here</a>. If pixels/images are saturated (that is having pixels with an intensity level at the top of the range, ie 255 for 8 bit data) then they are missing information about the real spatial intensity distribution in the sample. This is the most important data in your analysis, as you are usually most interested in the brightest objects - right?! That means its a really bad idea to throw that information away when you collect the images.
+</p>
+<h3><span class="mw-headline" id="Chromatic_Shift">Chromatic Shift</span></h3>
+<p>If the microscope has poor quality or non chromatically corrected objective lenses and / or has other alignment problems, then images of the same object in different colour channels will appear in different places. Even expensive lenses have a little residual chromatic shift. This is very bad, as it means that, especially for smaller objects, you miss some of the real colocalisation. The microscope should be checked with multi colour 1 or 0.5 micron bead samples before imaging to see if there is a significant problem. Images can be corrected for x y and z chromatic shift if a bead image has been taken under identical conditions.
+</p><p>For more details and possible chromatic shift measurement and correction strategies see <a href="http://imagej.net/Chromatic_shift_origins_measurement_and_correction" title="Chromatic shift origins measurement and correction">Chromatic_shift_origins_measurement_and_correction</a>
+</p>
+<h3><span class="mw-headline" id="Conclusion">Conclusion</span></h3>
+<p><b>Think about your biological experiment, dyes and imaging, and be careful throughout. Collect image data that is suitable for quantification.</b> For example, Tetraspeck fluorescent beads with 3-4 colors and different sizes (small enough to check shifts) make great positive controls. 
+</p><p>Also, for a review of the hardware part, read <i>Zucker, 2006, Cytometry</i>.
+</p>
+<pre><b>Credits</b>
+From Jan Peychl notes. 
+The two animated gifs are from the Huygens Software wiki page. 
+</pre>
+<h1><span class="mw-headline" id="Further_reading">Further reading</span></h1>
+<p><a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed/10818693">The 39 steps: a cautionary tale of quantitative 3-D fluorescence microscopy</a> by J. Pawley.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064833
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.032 seconds
+Real time usage: 0.033 seconds
+Preprocessor visited node count: 46/1000000
+Preprocessor generated node count: 52/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Colocalization_-_hardware_setup_and_image_acquisition&amp;oldid=10019">http://imagej.net/index.php?title=Colocalization_-_hardware_setup_and_image_acquisition&amp;oldid=10019</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 15 March 2014, at 14:59.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Colocalization_-_hardware_setup_and_image_acquisition&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Colocalization" title="Category:Colocalization">Colocalization</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Color_processing" title="Category:Color processing">Color processing</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Colocalization+-+hardware+setup+and+image+acquisition" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Colocalization+-+hardware+setup+and+image+acquisition" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Colocalization_-_hardware_setup_and_image_acquisition" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Colocalization_-_hardware_setup_and_image_acquisition" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Colocalization_-_hardware_setup_and_image_acquisition&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Colocalization_-_hardware_setup_and_image_acquisition&amp;oldid=10019" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Colocalization_-_hardware_setup_and_image_acquisition&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":228});});</script>
+		</body>
+		</html>
+		

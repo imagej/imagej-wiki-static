@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Developing Fiji - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Developing_Fiji","wgTitle":"Developing Fiji","wgCurRevisionId":32934,"wgRevisionId":32934,"wgArticleId":125,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Outdated","Development","Fiji"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Developing_Fiji","wgRelevantArticleId":125,"wgRequestId":"002603fce65eb546c0a0d794","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Fiji is a community effort.  So we are happy whenever we see new people developing Fiji!"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Developing Fiji"/>
+
+	<meta property="og:description" content="Fiji is a community effort.  So we are happy whenever we see new people developing Fiji!"/>
+
+	<meta property="og:url" content="http://imagej.net/Developing_Fiji"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Developing_Fiji rootpage-Developing_Fiji skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Developing_Fiji.html#bodyContent">Skip to content</a>, 			<a href="Developing_Fiji.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Developing_Fiji.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Developing_Fiji" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Developing_Fiji&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Developing_Fiji&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Developing_Fiji&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Developing Fiji</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  <img alt="Fiji-icon.png" src="../_images/a/ae/Fiji-icon.png" width="48" height="48" /> <span style="color: darkcyan; font-size: 1.2em; font-weight: bold">F</span>iji <span style="color: darkcyan; font-size: 1.2em; font-weight: bold">I</span>s <span style="color: darkcyan; font-size: 1.2em; font-weight: bold">J</span>ust <span style="color: darkcyan; font-size: 1.2em; font-weight: bold">I</span>mageJ
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Fiji" title="Fiji">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_Fiji" title="Using Fiji">Using Fiji</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Featured_Fiji_Projects" title="Featured Fiji Projects">Featured Fiji Projects</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Fiji/Publications" title="Fiji/Publications">Fiji Publications</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Links" title="Links">Links</a>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Developing Fiji
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Downloading_and_Building_Fiji_From_Source" title="Downloading and Building Fiji From Source">Building Fiji from source</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Developing Fiji</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Fiji/Contribution_requirements" title="Fiji/Contribution requirements">Contribution requirements</a>
+</td></tr></table>
+</td></tr></table>
+<div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This section is out of date, potentially misleading or invalid. Be careful with any instructions here. When in doubt, <a href="http://imagej.net/Help" title="Help">ask for help from the community</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+Fiji is a community effort.  So we are happy whenever we see new people developing Fiji!
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Developing_Fiji.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Developing_Fiji.html#Getting_started"><span class="tocnumber">2</span> <span class="toctext">Getting started</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Developing_Fiji.html#Building_Fiji"><span class="tocnumber">3</span> <span class="toctext">Building Fiji</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Developing_Fiji.html#Testing"><span class="tocnumber">4</span> <span class="toctext">Testing</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Developing_Fiji.html#Discussing_code"><span class="tocnumber">5</span> <span class="toctext">Discussing code</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Developing_Fiji.html#Contributing"><span class="tocnumber">6</span> <span class="toctext">Contributing</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Developing_Fiji.html#Providing_documentation"><span class="tocnumber">7</span> <span class="toctext">Providing documentation</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Developing_Fiji.html#Further_reading_for_developers"><span class="tocnumber">8</span> <span class="toctext">Further reading for developers</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>The purpose of this tutorial is to get you started hacking on <a rel="nofollow" class="external text" href="https://github.com/fiji/">Fiji's source code</a> (i.e., the core Fiji plugins). If you need to develop a <i>new plugin</i> for ImageJ, you do not actually need Fiji's source. Rather, see these resources:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="https://github.com/imagej/example-legacy-plugin/">example-legacy-plugin</a> project template</li>
+<li> <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">Introduction into Developing Plugins</a> tutorial</li>
+<li> <a rel="nofollow" class="external text" href="https://www.youtube.com/watch?v=Ac-6gJ2eRb0">Developing ImageJ 1.x plugins with NetBeans</a> screencast</li></ul>
+<p>See also <a href="http://imagej.net/Developing_Fiji_in_Eclipse" class="mw-redirect" title="Developing Fiji in Eclipse">Developing Fiji in Eclipse</a> for a tutorial specific to the Eclipse IDE.
+</p>
+<h2><span class="mw-headline" id="Getting_started">Getting started</span></h2>
+<p>First, you have to <a href="http://imagej.net/Downloading_and_Building_Fiji_From_Source" title="Downloading and Building Fiji From Source">download and build Fiji</a>. If you do not know Git yet, we have a <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">concise introduction</a> for you.
+</p>
+<h2><span class="mw-headline" id="Building_Fiji">Building Fiji</span></h2>
+<p>Fiji is organized into a set of <a href="http://imagej.net/Maven" title="Maven">Maven</a> projects. For convenience and speed, there is <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a>'s minimal Maven-lookalike <a href="http://imagej.net/MiniMaven" title="MiniMaven">MiniMaven</a> to build Fiji, but it is recommended to use an <a href="http://imagej.net/IDEs" title="IDEs">Integrated Development Environment</a>, or at least real Maven.
+</p><p>For details, please see <a href="http://imagej.net/Downloading_and_Building_Fiji_From_Source" title="Downloading and Building Fiji From Source">Downloading and Building Fiji From Source</a>.
+See also the <a href="http://imagej.net/Supported_Compilers" title="Supported Compilers">Supported Compilers</a> page for more information.
+</p>
+<h2><span class="mw-headline" id="Testing">Testing</span></h2>
+<p>It is strongly recommended to write regression tests (also known as <i>unit tests</i>). It is <a href="http://imagej.net/Fiji_contribution_requirements#Regression_tests" class="mw-redirect" title="Fiji contribution requirements">easy</a>.
+</p><p>Furthermore, it is highly recommended to write and run unit tests in an <a href="http://imagej.net/IDEs" title="IDEs">Integrated Development Environment</a> for efficient debugging.
+</p><p>You may also want to measure the code coverage of your tests - one way is described in the page <a href="http://imagej.net/Code_Coverage_in_Fiji" title="Code Coverage in Fiji">Code Coverage in Fiji</a>.
+</p><p>At some point, you might want to debug whatever you wrote.  There's a small <a href="http://imagej.net/Debugging_intro" class="mw-redirect" title="Debugging intro">Debugging intro</a> page.
+</p>
+<h2><span class="mw-headline" id="Discussing_code">Discussing code</span></h2>
+<p>When you want to propose and/or discuss changes to some source code, the preferred way is to <a href="http://imagej.net/Contributing" title="Contributing">submit a PR on GitHub</a>.
+</p>
+<h2><span class="mw-headline" id="Contributing">Contributing</span></h2>
+<p>Please have a look at the excellent <i><a href="http://imagej.net/How_to_contribute_to_an_existing_plugin_or_library" title="How to contribute to an existing plugin or library">How to contribute to an existing plugin or library</a></i> tutorial.
+</p>
+<h2><span class="mw-headline" id="Providing_documentation">Providing documentation</span></h2>
+<p>A plugin wants to be used. Therefore you want to give users some information about it, and most likely also a tutorial how to use it.
+</p><p>If you have an account on this Wiki, you can easily create new tutorials with the <a href="http://imagej.net/Tutorial_Maker" title="Tutorial Maker">Tutorial Maker</a>.
+</p>
+<h2><span class="mw-headline" id="Further_reading_for_developers">Further reading for developers</span></h2>
+<ul><li><a href="http://imagej.net/Overview_of_Fiji%27s_source_code" title="Overview of Fiji's source code">Overview of Fiji's source code</a></li>
+<li><a href="http://imagej.net/Description_of_ImageJ%27s_plugin_architecture" title="Description of ImageJ's plugin architecture">Description of ImageJ's plugin architecture</a></li>
+<li><a href="http://imagej.net/Tips_for_developers" title="Tips for developers">Tips for developers</a></li>
+<li><a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImageJ1-javadoc/lastStableBuild/artifact/target/site/apidocs/">ImageJ1 Javadoc ZIP</a> (for offline usage)</li>
+<li><a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImageJ-daily/lastStableBuild/artifact/target/site/apidocs/">ImageJ2 Javadoc ZIP</a> (for offline usage)</li>
+<li><a href="http://imagej.net/Developers_HowTo" title="Developers HowTo">Developers HowTo</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.imagingbook.com/index.php?id=102">ImageJ plugin writing tutorial</a></li>
+<li><a rel="nofollow" class="external text" href="http://albert.rierol.net/imagej_programming_tutorials.html">ImageJ programming tutorials</a></li>
+<li><a href="http://imagej.net/Uploading_plugins" title="Uploading plugins">Uploading plugins</a></li>
+<li><a href="http://imagej.net/Developing_Fiji_in_Eclipse" class="mw-redirect" title="Developing Fiji in Eclipse">Developing Fiji in Eclipse</a></li>
+<li><a href="http://imagej.net/Git" title="Git">Git</a></li>
+<li><a href="http://imagej.net/Project_ideas" title="Project ideas">Project ideas</a></li>
+<li><a href="http://imagej.net/Code_Coverage_in_Fiji" title="Code Coverage in Fiji">Code Coverage in Fiji</a></li>
+<li><a href="http://imagej.net/Debugging_intro" class="mw-redirect" title="Debugging intro">Introduction to debugging</a></li>
+<li><a href="http://imagej.net/Profiling_Java_Code" title="Profiling Java Code">Profiling Java Code</a></li>
+<li><a href="http://imagej.net/Tips_for_C%2B%2B_developers" title="Tips for C++ developers">Tips for C++ developers</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064957
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.044 seconds
+Preprocessor visited node count: 188/1000000
+Preprocessor generated node count: 992/1000000
+Post‐expand include size: 4795/2097152 bytes
+Template argument size: 1780/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   13.963      1 - -total
+ 62.95%    8.790      1 - Template:FijiMenu
+ 44.14%    6.163      1 - Template:Menu
+ 23.73%    3.313      1 - Template:Outdated
+ 17.94%    2.505      1 - Template:Warning
+ 16.97%    2.370      1 - Template:Submenu
+ 13.86%    1.935      8 - Template:MenuItem
+ 11.95%    1.669      1 - Template:GitHub
+ 11.95%    1.668      1 - Template:Ambox
+ 10.30%    1.438      1 - Template:Project
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Developing_Fiji&amp;oldid=32934">http://imagej.net/index.php?title=Developing_Fiji&amp;oldid=32934</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 6 June 2017, at 15:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Developing_Fiji&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Outdated" title="Category:Outdated">Outdated</a></li><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li><li><a href="http://imagej.net/Category:Fiji" title="Category:Fiji">Fiji</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Developing+Fiji" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Developing+Fiji" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Developing_Fiji" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Developing_Fiji" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Developing_Fiji&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Developing_Fiji&amp;oldid=32934" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Developing_Fiji&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":249});});</script>
+		</body>
+		</html>
+		

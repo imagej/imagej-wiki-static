@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Scripting the Trainable Weka Segmentation - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Scripting_the_Trainable_Weka_Segmentation","wgTitle":"Scripting the Trainable Weka Segmentation","wgCurRevisionId":41164,"wgRevisionId":41164,"wgArticleId":1675,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Scripting","Segmentation","Machine Learning"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Scripting_the_Trainable_Weka_Segmentation","wgRelevantArticleId":1675,"wgRequestId":"dd377ee6513d778f48845f2a","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Scripting is one of the reasons Fiji is so powerful, and the Trainable Weka Segmentation library (that includes the  Trainable Weka Segmentation plugin) is one of the best examples for scriptable Fiji components."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Scripting the Trainable Weka Segmentation"/>
+
+	<meta property="og:description" content="Scripting is one of the reasons Fiji is so powerful, and the Trainable Weka Segmentation library (that includes the  Trainable Weka Segmentation plugin) is one of the best examples for scriptable Fiji components."/>
+
+	<meta property="og:url" content="http://imagej.net/Scripting_the_Trainable_Weka_Segmentation"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Scripting_the_Trainable_Weka_Segmentation rootpage-Scripting_the_Trainable_Weka_Segmentation skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Scripting_the_Trainable_Segmentation.html#bodyContent">Skip to content</a>, 			<a href="Scripting_the_Trainable_Segmentation.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Scripting_the_Trainable_Segmentation.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Scripting_the_Trainable_Segmentation.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Scripting_the_Trainable_Weka_Segmentation&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Scripting_the_Trainable_Weka_Segmentation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Scripting_the_Trainable_Weka_Segmentation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Scripting the Trainable Weka Segmentation</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Scripting</a> is one of the reasons Fiji is so powerful, and the Trainable Weka Segmentation library (that includes the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation"> Trainable Weka Segmentation plugin</a>) is one of the best examples for scriptable Fiji components.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Scripting_the_Trainable_Segmentation.html#Getting_started"><span class="tocnumber">1</span> <span class="toctext">Getting started</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Scripting_the_Trainable_Segmentation.html#Initialization"><span class="tocnumber">1.1</span> <span class="toctext">Initialization</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Scripting_the_Trainable_Segmentation.html#Adding_training_samples"><span class="tocnumber">1.2</span> <span class="toctext">Adding training samples</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Scripting_the_Trainable_Segmentation.html#Training_classifier"><span class="tocnumber">1.3</span> <span class="toctext">Training classifier</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Scripting_the_Trainable_Segmentation.html#Applying_classifier_.28getting_results.29"><span class="tocnumber">1.4</span> <span class="toctext">Applying classifier (getting results)</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Scripting_the_Trainable_Segmentation.html#Use_same_label_colors_as_in_the_GUI"><span class="tocnumber">1.5</span> <span class="toctext">Use same label colors as in the GUI</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Scripting_the_Trainable_Segmentation.html#Save.2FLoad_operations"><span class="tocnumber">1.6</span> <span class="toctext">Save/Load operations</span></a>
+<ul>
+<li class="toclevel-3 tocsection-8"><a href="Scripting_the_Trainable_Segmentation.html#Testing_mode"><span class="tocnumber">1.6.1</span> <span class="toctext">Testing mode</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-9"><a href="Scripting_the_Trainable_Segmentation.html#Setting_the_classifier"><span class="tocnumber">1.7</span> <span class="toctext">Setting the classifier</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="Scripting_the_Trainable_Segmentation.html#Example:_apply_classifier_to_all_images_in_folder"><span class="tocnumber">2</span> <span class="toctext">Example: apply classifier to all images in folder</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Scripting_the_Trainable_Segmentation.html#Example:_apply_classifier_to_all_images_in_folder_by_tiles"><span class="tocnumber">3</span> <span class="toctext">Example: apply classifier to all images in folder <b>by tiles</b></span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="Scripting_the_Trainable_Segmentation.html#Example:_define_your_own_features"><span class="tocnumber">4</span> <span class="toctext">Example: define your own features</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="Scripting_the_Trainable_Segmentation.html#Example:_define_training_samples_with_binary_labels"><span class="tocnumber">5</span> <span class="toctext">Example: define training samples with binary labels</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="Scripting_the_Trainable_Segmentation.html#Example:_color-based_segmentation_using_clustering"><span class="tocnumber">6</span> <span class="toctext">Example: color-based segmentation using clustering</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Getting_started">Getting started</span></h1>
+<p>The first thing you need to start scripting the Trainable Weka Segmentation is to know which methods you can use. For that, please have a look at the <b><a rel="nofollow" class="external text" href="http://javadoc.imagej.net/Fiji/trainableSegmentation/package-tree.html">API</a> of the Trainable Weka Segmentation</b> library, which is available <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/Fiji/trainableSegmentation/package-tree.html">here</a>.
+</p><p>Let's go through the basic commands with examples written in <b>Beanshell</b>:
+</p>
+<h3><span class="mw-headline" id="Initialization">Initialization</span></h3>
+<p>In order to include all the library methods, the easiest (but not elegant) way of doing it is importing the whole library:
+</p>
+<pre class="brush:java">
+import trainableSegmentation.*;
+</pre>
+<p>Now we are ready to play. We can open our input image and assign it to a WekaSegmentation object or segmentator:
+</p>
+<pre class="brush:java">
+// input train image
+input  = IJ.openImage( "input-grayscale-or-color-image.tif" );
+// create Weka Segmentation object
+segmentator = new WekaSegmentation( input );
+</pre>
+<p>As it is now, the segmentator has default parameters and default classifier. That means that it will use the same features that are set by default in the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation"> Trainable Weka Segmentation plugin</a>, 2 classes (named "class 1" and "class 2") and a random forest classifier with 200 trees and 2 random features per node. 
+If we are fine with that, we can now add some labels for our training data and train the classifier based on them.
+</p>
+<h3><span class="mw-headline" id="Adding_training_samples">Adding training samples</span></h3>
+<p>There are different ways of adding labels to our data:
+</p><p>1) we can add any type of ROI to any of the existing classes using "addExample":
+</p>
+<pre class="brush:java">
+// add pixels to first class (0) from ROI in slice # 1
+segmentator.addExample( 0, new Roi( 10, 10, 50, 50 ), 1 );
+// add pixels to second class (1) from ROI in slice # 1
+segmentator.addExample( 1, new Roi( 400, 400, 30, 30 ), 1 );
+</pre>
+<p>2) add the labels from a binary image, where white pixels belong to one class and black pixels belong to the other class. There are a few methods to do this, for example:
+</p>
+<pre class="brush:java">
+// open binary label image
+labels  = IJ.openImage( "binary-labels.tif" );
+// for the first slice, add white pixels as labels for class 2 and 
+// black pixels as labels for class 1
+segmentator.addBinaryData( labels, 0, "class 2", "class 1" );
+</pre>
+<p>3) You can also add samples from a new input image and its corresponding labels:
+</p>
+<pre class="brush:java">
+// open new input image
+input2  = IJ.openImage( "input-image-2.tif" );
+// open corresponding binary label image
+labels2  = IJ.openImage( "binary-labels-2.tif" );
+// for all slices in input2, add white pixels as labels for class 2 and 
+// black pixels as labels for class 1
+segmentator.addBinaryData( input2, labels2, "class 2", "class 1" );
+</pre>
+<p>4) If you want to balance the number of samples for each class you can do it in a similar way using this other method:
+</p>
+<pre class="brush:java">
+numSamples = 1000;
+// for all slices in input2, add 1000 white pixels as labels for class 2 and 
+// 1000 black pixels as labels for class 1
+segmentator.addRandomBalancedBinaryData( input2, labels2, "class 2", "class 1" , numSamples);
+</pre>
+<p>5) You can use all methods available in the <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/Fiji/trainableSegmentation/package-tree.html">API</a> to add labels from a binary image in many differente ways. Please, have a look at them and decided which one fits better your needs.
+</p>
+<h3><span class="mw-headline" id="Training_classifier">Training classifier</span></h3>
+<p>Once we have training samples for both classes, we are ready to train the classifier of our segmentator:
+</p>
+<pre class="brush:java">
+segmentator.trainClassifier();
+</pre>
+<h3><span class="mw-headline" id="Applying_classifier_.28getting_results.29">Applying classifier (getting results)</span></h3>
+<p>Once the classifier is trained (it will be displayed in the Log window), we can apply it to the entire training image and obtain a result in the form of a labeled image or a probability map for each class:
+</p>
+<pre class="brush:java">
+// apply classifier to current training image and get label result 
+// (set parameter to true to get probabilities)
+segmentator.applyClassifier( false );
+// get result (float image)
+result = segmentator.getClassifiedImage();
+</pre>
+<p>Of course, we might be interested on <b>applying the trained classifier to a complete new 2D image or stack</b>. In that case we use:
+</p>
+<pre class="brush:java">
+// open test image
+testImage = IJ.openImage( "test-image.tif" );
+// get result (labels float image)
+result = segmentator.applyClassifier( testImage );
+</pre>
+<h3><span class="mw-headline" id="Use_same_label_colors_as_in_the_GUI">Use same label colors as in the GUI</span></h3>
+<p>If you like the lookup table used in the plugin GUI, you can set it to your result labels programmatically as well:
+</p>
+<pre class="brush:java">
+import trainableSegmentation.utils.Utils;
+// apply classifier and get results as labels (same as before)
+result = segmentator.applyClassifier( image, 0, false );
+
+// assign same LUT as in GUI
+result.setLut( Utils.getGoldenAngleLUT() );           
+</pre>
+<h3><span class="mw-headline" id="Save.2FLoad_operations">Save/Load operations</span></h3>
+<p>If the classifier you trained is good enough for your purposes, you may want to save it into a file:
+</p>
+<pre class="brush:java">
+// save classifier into a file (.model)
+segmentator.saveClassifier( "my-cool-trained-classifier.model" );
+</pre>
+<p>... and load it later in another script to apply it on new images:
+</p>
+<pre class="brush:java">
+// load classifier from file
+segmentator.loadClassifier( "my-cool-trained-classifier.model" );
+</pre>
+<p>You may also want to save the training data into a file you can open later in WEKA:
+</p>
+<pre class="brush:java">
+// save data into a ARFF file
+segmentator.saveData( "my-traces-data.arff" );
+</pre>
+<p>... or load a file with traces information into the segmentator to use it as part of the training:
+</p>
+<pre class="brush:java">
+// load training data from ARFF file
+segmentator.loadTrainingData( "my-traces-data.arff" );
+</pre>
+<h4><span class="mw-headline" id="Testing_mode">Testing mode</span></h4>
+<p>Since Trainable Weka Segmentation v3.2.8, a classifier can be loaded into a WekaSegmentation object created without a training image, that is, for testing purposes only:
+</p>
+<pre class="brush:java">
+// create testing segmentator
+segmentator = new WekaSegmentation();
+// load classifier from file
+segmentator.loadClassifier( "my-cool-trained-classifier.model" );
+</pre>
+<p>And the apply it to any test image as we did above (see "Applying classifier" section).
+</p>
+<h3><span class="mw-headline" id="Setting_the_classifier">Setting the classifier</span></h3>
+<p>By default, the classifier is a multi-threaded implementation of a random forest. You can change it to any other classifier available in the <a rel="nofollow" class="external text" href="http://weka.sourceforge.net/doc.dev/weka/classifiers/Classifier.html">WEKA API</a>. For example, we can use SMO:
+</p>
+<pre class="brush:java">
+import weka.classifiers.functions.SMO;
+// create new SMO classifier (default parameters)
+classifier = new SMO();
+// assign classifier to segmentator
+segmentator.setClassifier( classifier );
+</pre>
+<p>We might also want to use the default random forest but tune its parameters. In that case, we can write something like this:
+</p>
+<pre class="brush:java">
+import hr.irb.fastRandomForest.FastRandomForest;
+// create random forest classifier
+rf = new FastRandomForest();
+// set number of trees in the forest
+rf.setNumTrees( 100 );        
+// set number of features per tree (0 for automatic selection)
+rf.setNumFeatures( 0 );
+// set random seed
+rf.setSeed( (new java.util.Random()).nextInt() );
+ 
+// set classifier
+segmentator.setClassifier( rf );
+</pre>
+<h1><span class="mw-headline" id="Example:_apply_classifier_to_all_images_in_folder">Example: apply classifier to all images in folder</span></h1>
+<p>Very frequently we might end up having to process a large number of images using a classifier that we interactively trained with the GUI of the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> plugin. The following <a href="http://imagej.net/Beanshell" class="mw-redirect" title="Beanshell">Beanshell</a> script shows how to load a classifier from file, apply it to all images contained in a folder and save the results in another folder defined by the user:
+</p>
+<pre class="brush:java">
+#@ File(label="Input directory", description="Select the directory with input images", style="directory") inputDir
+#@ File(label="Output directory", description="Select the output directory", style="directory") outputDir
+#@ File(label="Weka model", description="Select the Weka model to apply") modelPath
+#@ String(label="Result mode",choices={"Labels","Probabilities"}) resultMode
+
+import trainableSegmentation.WekaSegmentation;
+import trainableSegmentation.utils.Utils;
+import ij.io.FileSaver;
+import ij.IJ;
+import ij.ImagePlus;
+ 
+// starting time
+startTime = System.currentTimeMillis();
+ 
+// caculate probabilities?
+getProbs = resultMode.equals( "Probabilities" );
+
+// create segmentator
+segmentator = new WekaSegmentation();
+// load classifier
+segmentator.loadClassifier( modelPath.getCanonicalPath() );
+ 
+// get list of input images
+listOfFiles = inputDir.listFiles();
+for ( i = 0; i &lt; listOfFiles.length; i++ )
+{
+    // process only files (do not go into sub-folders)
+    if( listOfFiles[ i ].isFile() )
+    {
+        // try to read file as image
+        image = IJ.openImage( listOfFiles[i].getCanonicalPath() );
+        if( image&#160;!= null )
+        {                   
+            // apply classifier and get results (0 indicates number of threads is auto-detected)
+            result = segmentator.applyClassifier( image, 0, getProbs );
+
+            if(&#160;!getProbs )
+            	// assign same LUT as in GUI
+            	result.setLut( Utils.getGoldenAngleLUT() );
+            
+            // save result as TIFF in output folder
+            outputFileName = listOfFiles[ i ].getName().replaceFirst("[.][^.]+$", "") + ".tif";
+            new FileSaver( result ).saveAsTiff( outputDir.getPath() + File.separator + outputFileName );
+ 
+            // force garbage collection (important for large images)
+            result = null; 
+            image = null;
+            System.gc();
+        }
+    }
+}
+// print elapsed time
+estimatedTime = System.currentTimeMillis() - startTime;
+IJ.log( "** Finished processing folder in " + estimatedTime + " ms **" );
+</pre>
+<h1><span class="mw-headline" id="Example:_apply_classifier_to_all_images_in_folder_by_tiles">Example: apply classifier to all images in folder <b>by tiles</b></span></h1>
+<p>In some cases, we may have to apply a saved classifier to very large images, which together with a large number of image features may fill the RAM of our machine. To prevent running into out-of-memory exceptions, the following <a href="http://imagej.net/Beanshell" class="mw-redirect" title="Beanshell">Beanshell</a> script shows how to load a classifier from file, apply it to all images contained in a folder by subdividing them into smaller pieces, and save the results in another folder defined by the user:
+</p>
+<pre class="brush:java">
+#@ File(label="Input directory", description="Select the directory with input images", style="directory") inputDir
+#@ File(label="Output directory", description="Select the output directory", style="directory") outputDir
+#@ File(label="Weka model", description="Select the Weka model to apply") modelPath
+#@ String(label="Result mode",choices={"Labels","Probabilities"}) resultMode
+#@ Integer(label="Number of tiles in X:", description="Number of image subdivisions in the X direction", value=3) xTiles
+#@ Integer(label="Number of tiles in Y:", description="Number of image subdivisions in the Y direction", value=3) yTiles
+#@ Integer(label="Number of tiles in Z (set to 0 for 2D processing):", description="Number of image subdivisions in the Z direction (ignored when using 2D images)", value=3) zTiles
+ 
+import trainableSegmentation.WekaSegmentation;
+import trainableSegmentation.utils.Utils;
+import ij.io.FileSaver;
+import ij.IJ;
+import ij.ImagePlus;
+  
+// starting time
+startTime = System.currentTimeMillis();
+  
+// caculate probabilities?
+getProbs = resultMode.equals( "Probabilities" );
+ 
+// create segmentator
+segmentator = new WekaSegmentation( zTiles &gt; 0 );
+// load classifier
+segmentator.loadClassifier( modelPath.getCanonicalPath() );
+  
+// get list of input images
+listOfFiles = inputDir.listFiles();
+for ( i = 0; i &lt; listOfFiles.length; i++ )
+{
+    // process only files (do not go into sub-folders)
+    if( listOfFiles[ i ].isFile() )
+    {
+        // try to read file as image
+        image = IJ.openImage( listOfFiles[i].getCanonicalPath() );
+        if( image&#160;!= null )
+        {
+        	tilesPerDim = new int[ 2 ];
+        	if( image.getNSlices() &gt; 1 )
+        	{
+        		tilesPerDim = new int[ 3 ];
+        		tilesPerDim[ 2 ] = zTiles;
+        	}
+        	tilesPerDim[ 0 ] = xTiles;
+        	tilesPerDim[ 1 ] = yTiles;
+        	
+            // apply classifier and get results (0 indicates number of threads is auto-detected)
+            result = segmentator.applyClassifier( image, tilesPerDim, 0, getProbs );
+
+			if(&#160;!getProbs )
+            	// assign same LUT as in GUI
+            	result.setLut( Utils.getGoldenAngleLUT() );
+             
+            // save result as TIFF in output folder
+            outputFileName = listOfFiles[ i ].getName().replaceFirst("[.][^.]+$", "") + ".tif";
+            new FileSaver( result ).saveAsTiff( outputDir.getPath() + File.separator + outputFileName );
+  
+            // force garbage collection (important for large images)
+            result = null; 
+            image = null;
+            System.gc();
+        }
+    }
+}
+// print elapsed time
+estimatedTime = System.currentTimeMillis() - startTime;
+IJ.log( "** Finished processing folder in " + estimatedTime + " ms **" );
+System.gc();
+</pre>
+<h1><span class="mw-headline" id="Example:_define_your_own_features">Example: define your own features</span></h1>
+<p>Although Trainable Segmentation provides a large set of predefined image features, it might happen that you need to define your own features for a specific problem. You can do that with a simple set of instructions. Here is a little <a href="http://imagej.net/Beanshell" class="mw-redirect" title="Beanshell">Beanshell</a> script that makes two features from the Clown example and uses them to train a classifier (see the inline comments for more information): 
+</p>
+<pre class="brush:java">
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.gui.Roi;
+import ij.gui.PolygonRoi;
+import ij.plugin.Duplicator;
+import ij.process.FloatPolygon;
+import ij.process.StackConverter;
+import trainableSegmentation.FeatureStack;
+import trainableSegmentation.FeatureStackArray;
+import trainableSegmentation.WekaSegmentation;
+import trainableSegmentation.utils.Utils;
+  
+image = IJ.openImage(System.getProperty("ij.dir") + "/samples/clown.jpg");
+if (image.getStackSize() &gt; 1)
+	new StackConverter(image).convertToGray32();
+else
+    image.setProcessor(image.getProcessor().convertToFloat());
+  
+duplicator = new Duplicator();
+  
+// process the image into different stacks, one per feature:   
+smoothed = duplicator.run(image);
+IJ.run(smoothed, "Gaussian Blur...", "radius=20");
+   
+medianed = duplicator.run(image);
+IJ.run(medianed, "Median...", "radius=10");
+  
+// add new feature here (1/2)
+  
+// the FeatureStackArray contains a FeatureStack for every slice in our original image
+featuresArray = new FeatureStackArray(image.getStackSize());
+  
+// turn the list of stacks into FeatureStack instances, one per original
+// slice. Each FeatureStack contains exactly one slice per feature.
+for ( slice = 1; slice &lt;= image.getStackSize(); slice++) {
+	stack = new ImageStack(image.getWidth(), image.getHeight());
+	stack.addSlice("smoothed", smoothed.getStack().getProcessor(slice));
+	stack.addSlice("medianed", medianed.getStack().getProcessor(slice));
+      
+	// add new feature here (2/2) and do not forget to add it with a
+	// unique slice label!
+
+	// create empty feature stack
+	features = new FeatureStack( stack.getWidth(), stack.getHeight(), false );
+	// set my features to the feature stack
+	features.setStack( stack );
+	// put my feature stack into the array
+	featuresArray.set(features, slice - 1);
+	featuresArray.setEnabledFeatures(features.getEnabledFeatures());
+}
+  
+wekaSegmentation = new WekaSegmentation(image);
+wekaSegmentation.setFeatureStackArray(featuresArray);
+  
+// set examples for class 1 (= foreground) and 0 (= background))
+void addExample(int classNum, int slice, float[] xArray, float[] yArray) {
+        polygon = new FloatPolygon(xArray, yArray);
+        roi = new PolygonRoi(polygon, Roi.FREELINE);
+        IJ.log("roi: " + roi);
+        wekaSegmentation.addExample(classNum, roi, slice);
+}
+  
+/*
+ * generate these with the macro:
+		getSelectionCoordinates(x, y);
+		print('new float [] {'); Array.print(x); print('},");
+		print('new float [] {'); Array.print(y); print('}");
+ */
+addExample(1, 1,
+        new float [] { 82,85,85,86,87,87,87,88,88,88,88,88,88,88,88,86,86,84,83,82,81,
+          80,80,78,76,75,74,74,73,72,71,70,70,68,65,63,62,60,58,57,55,55,
+          54,53,51,50,49,49,49,51,52,53,54,55,55,56,56},
+        new float [] { 141,137,136,134,133,132,130,129,128,127,126,125,124,123,122,121,
+          120,119,118,118,116,116,115,115,114,114,113,112,111,111,111,111,
+          110,110,110,110,111,112,113,114,114,115,116,117,118,119,119,120, 
+         121,123,125,126,128,128,129,129,130
+} );
+addExample(0, 1,
+        new float [] { 167,165,163,161,158,157,157,157,157,157,157,157,158 },
+        new float [] { 30,29,29,29,29,29,28,26,25,24,23,22,21 }
+);
+  
+// train classifier
+if (!wekaSegmentation.trainClassifier())
+	throw new RuntimeException("Uh oh! No training today.");
+// apply classifier to image
+output = wekaSegmentation.applyClassifier(image);
+// set same LUT as in the plugin GUI
+output.setLut( Utils.getGoldenAngleLUT() );
+output.show();
+</pre>
+<h1><span class="mw-headline" id="Example:_define_training_samples_with_binary_labels">Example: define training samples with binary labels</span></h1>
+<p>Here is a simple script in <b>Beanshell</b> doing the following:
+</p>
+<ol><li> It takes one image (2D or stack) as training input image and a binary image as the corresponding labels.</li>
+<li> Train a classifier (in this case a random forest, but it can be changed) based on randomly selected pixels of the training image. The number of samples (pixels to use for training) is also a parameter, and it will be the same for each class.</li>
+<li> Apply the trained classifier to a test image (2D or stack).</li></ol>
+<pre class="brush:java">
+#@ ImagePlus(label="Training image", description="Stack or a single 2D image") image
+#@ ImagePlus(label="Label image", description="Image of same size as training image containing binary class labels") labels
+#@ ImagePlus(label="Test image", description="Stack or a single 2D image") testImage
+#@ Integer(label="Num. of samples", description="Number of training samples per class and slice",value=2000) nSamplesToUse
+#@OUTPUT ImagePlus prob
+import ij.IJ;
+import trainableSegmentation.WekaSegmentation;
+import hr.irb.fastRandomForest.FastRandomForest;
+
+// starting time
+ startTime = System.currentTimeMillis();
+   
+// create Weka segmentator
+seg = new WekaSegmentation(image);
+
+// Classifier
+// In this case we use a Fast Random Forest
+rf = new FastRandomForest();
+// Number of trees in the forest
+rf.setNumTrees(100);
+         
+// Number of features per tree
+rf.setNumFeatures(0);  
+// Seed  
+rf.setSeed( (new java.util.Random()).nextInt() );    
+// set classifier  
+seg.setClassifier(rf);    
+// Parameters   
+// membrane patch size  
+seg.setMembranePatchSize(11);  
+// maximum filter radius
+seg.setMaximumSigma(16.0f);
+  
+// Selected attributes (image features)
+enableFeatures = new boolean[]{
+            true,   /* Gaussian_blur */
+            true,   /* Sobel_filter */
+            true,   /* Hessian */
+            true,   /* Difference_of_gaussians */
+            true,   /* Membrane_projections */
+            false,  /* Variance */
+            false,  /* Mean */
+            false,  /* Minimum */
+            false,  /* Maximum */
+            false,  /* Median */
+            false,  /* Anisotropic_diffusion */
+            false,  /* Bilateral */
+            false,  /* Lipschitz */
+            false,  /* Kuwahara */
+            false,  /* Gabor */
+            false,  /* Derivatives */
+            false,  /* Laplacian */
+            false,  /* Structure */
+            false,  /* Entropy */
+            false   /* Neighbors */
+};
+   
+// Enable features in the segmentator
+seg.setEnabledFeatures( enableFeatures );
+   
+// Add labeled samples in a balanced and random way
+seg.addRandomBalancedBinaryData(image, labels, "class 2", "class 1", nSamplesToUse);
+   
+// Train classifier
+seg.trainClassifier();
+
+// Apply trained classifier to test image and get probabilities
+prob = seg.applyClassifier( testImage, 0, true );
+// Set output title
+prob.setTitle( "Probability maps of " + testImage.getTitle() );
+// Print elapsed time
+estimatedTime = System.currentTimeMillis() - startTime;
+IJ.log( "** Finished script in " + estimatedTime + " ms **" );
+</pre>
+<h1><span class="mw-headline" id="Example:_color-based_segmentation_using_clustering">Example: color-based segmentation using clustering</span></h1>
+<p>The following <a href="http://imagej.net/Beanshell" class="mw-redirect" title="Beanshell">Beanshell</a> script shows how to segment a 2D color image or stack in an automatic fashion using the <a href="http://en.wikipedia.org/wiki/CIELAB" class="extiw" title="wikipedia:CIELAB">CIELab color space</a> and two possible clustering schemes: <a href="http://en.wikipedia.org/wiki/K-means" class="extiw" title="wikipedia:K-means">k-means</a> and <a href="http://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm" class="extiw" title="wikipedia:Expectation–maximization algorithm">expectation maximization</a>  (note: if you do not have Weka's ClassificationViaClustering classifier installed, check <a href="http://imagej.net/Trainable_Weka_Segmentation_-_How_to_install_new_classifiers" title="Trainable Weka Segmentation - How to install new classifiers">how to install new classifiers via Weka's package manager</a>).
+</p>
+<pre class="brush:java">
+#@ ImagePlus image
+#@ int(label="Num. of clusters", description="Number of expected clusters", value=5) numClusters
+#@ int(label="Num. of samples", description="Number of training samples per cluster", value=1000) numSamples
+#@ String(label="Clustering method",choices={"SimpleKMeans","EM"}) clusteringChoice
+#@OUTPUT ImagePlus output
+import ij.IJ;
+import ij.ImageStack;
+import ij.ImagePlus;
+import ij.process.ColorSpaceConverter;
+import ij.process.ByteProcessor;
+import trainableSegmentation.FeatureStack;
+import trainableSegmentation.FeatureStackArray;
+import trainableSegmentation.WekaSegmentation;
+import weka.clusterers.EM;
+import weka.clusterers.SimpleKMeans;
+import weka.core.WekaPackageManager;
+import weka.core.WekaPackageClassLoaderManager;
+
+// Load WEKA local learning schemes (from user installed packages)
+WekaPackageManager.loadPackages( false );
+
+if( image.getType()&#160;!= ImagePlus.COLOR_RGB )
+{
+	IJ.error( "Color segmentation by clustering",
+		"Error: input image needs to be a color 2D image or stack!" );
+	return null;
+}
+
+// Color space converter to pass from RGB to Lab
+converter = new ColorSpaceConverter();
+
+// Initialize segmentator with the same number of classes as
+// expected number of clusters
+wekaSegmentation = new WekaSegmentation( image );
+for( i=2; i&lt;numClusters; i++ )
+	wekaSegmentation.addClass();
+
+// Initialize array of feature stacks (one per slice)
+featuresArray = new FeatureStackArray( image.getStackSize() );
+
+for ( slice = 1; slice &lt;= image.getStackSize(); slice++ )
+{
+	// RGB to Lab conversion
+	stack = new ImageStack( image.getWidth(), image.getHeight() );
+    lab = converter.RGBToLab( new ImagePlus( "RGB", image.getStack().getProcessor( slice ) ));
+ 		
+ 	stack.addSlice("a", lab.getStack().getProcessor( 2 ) );
+    stack.addSlice("b", lab.getStack().getProcessor( 3 ) );
+
+    // Create empty feature stack
+    features = new FeatureStack( stack.getWidth(), stack.getHeight(), false );
+    // Set a and b features to the feature stack
+    features.setStack( stack );
+    // Put feature stack into the array
+    featuresArray.set(features, slice - 1);
+
+	// Create uniform labels of each cluster/class.
+	// (this information is not used by the clusterer but
+	// needed by WEKA).
+	pixels = new byte[ image.getWidth() * image.getHeight() ];
+	for( i=0; i&lt;pixels.length; i++)
+		pixels [ i ] = (byte) ( i&#160;% numClusters + 1 );
+	labels = new ByteProcessor( image.getWidth(), image.getHeight(), pixels );
+
+	// Add randomly chosen training data in a balanced way
+	wekaSegmentation.addRandomBalancedLabeledData( labels, features, numSamples );
+}
+
+// Set ClassificationViaClustering classifier to perform clustering
+classifier = WekaPackageClassLoaderManager.objectForName( "weka.classifiers.meta.ClassificationViaClustering" );
+
+// Set clusterer as selected by user
+clusterer = null;
+if( clusteringChoice.equals( "SimpleKMeans" ) )
+	clusterer = new SimpleKMeans();
+else
+	clusterer = new EM();
+clusterer.setSeed( (new Random()).nextInt() );
+clusterer.setNumClusters( numClusters );
+classifier.setClusterer( clusterer );
+wekaSegmentation.setClassifier( classifier );
+
+// Train classifier and therefore clusterer
+if (!wekaSegmentation.trainClassifier())
+	throw new RuntimeException("Uh oh! No training today.");
+
+// Apply classifier based on a,b features to whole image
+wekaSegmentation.setFeatureStackArray( featuresArray );
+output = wekaSegmentation.applyClassifier( image, featuresArray, 0, false );
+output.setDisplayRange( 0, numClusters-1 );
+</pre>
+<p>This can be a very useful approach to segment images where the elements contain very distinct colors. Let's see an example using a <a rel="nofollow" class="external text" href="https://commons.wikimedia.org/wiki/File:Emphysema_H_and_E.jpg">public image</a> of hematoxylin and eosin (H&amp;E) stained lung tissue:
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 528px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p>Once the image is open, we can call the script and a dialog will pop up:
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 356px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p>Here we can select the number of expected clusters, the number of samples per cluster used for training and the clustering method. The default values of 5 clusters, 1000 samples and “SimpleKMeans” involve that 5000 pixels will be used for training (<img class="mwe-math-fallback-image-inline tex" alt="5\times1000=5000" src="../_images/math/8/f/5/8f548e67aa7da7de5f2f6efd3ab0f72a.png" />) a k-means classifier and the resulting image will be an integer image containing labels in the range of [0-4].
+</p><p>This would be a possible output of the script with 3 clusters, 2000 samples and “SimpleKMeans”:
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 544px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p>The actual label values may vary between different executions of the same clustering due to its random seed initialization. In any case, the blood cells (originally in red), the cell nuclei (in blue-purple), other cell bodies (in pink) and the extracellular space get usually a very reasonable segmentation.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073343
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.032 seconds
+Real time usage: 0.034 seconds
+Preprocessor visited node count: 250/1000000
+Preprocessor generated node count: 520/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Scripting_the_Trainable_Weka_Segmentation&amp;oldid=41164">http://imagej.net/index.php?title=Scripting_the_Trainable_Weka_Segmentation&amp;oldid=41164</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 23 January 2020, at 05:22.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Scripting_the_Trainable_Weka_Segmentation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Machine_Learning" title="Category:Machine Learning">Machine Learning</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Scripting+the+Trainable+Weka+Segmentation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Scripting+the+Trainable+Weka+Segmentation" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Scripting_the_Trainable_Weka_Segmentation" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Scripting_the_Trainable_Weka_Segmentation" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Scripting_the_Trainable_Weka_Segmentation&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Scripting_the_Trainable_Weka_Segmentation&amp;oldid=41164" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Scripting_the_Trainable_Weka_Segmentation&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":184});});</script>
+		</body>
+		</html>
+		

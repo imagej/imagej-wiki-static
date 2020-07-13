@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Particle Analysis - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Particle_Analysis","wgTitle":"Particle Analysis","wgCurRevisionId":41303,"wgRevisionId":41303,"wgArticleId":1852,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Cookbook","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Particle_Analysis","wgRelevantArticleId":1852,"wgRequestId":"f85fd42c0642e798004ce50b","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Automatic particle counting can be done if the image does not have too many individual particles touching. Manual particle counting can be done using the Multi-point Tool."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Particle Analysis"/>
+
+	<meta property="og:description" content="Automatic particle counting can be done if the image does not have too many individual particles touching. Manual particle counting can be done using the Multi-point Tool."/>
+
+	<meta property="og:url" content="http://imagej.net/Particle_Analysis"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Particle_Analysis rootpage-Particle_Analysis skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Particle_Analysis.html#bodyContent">Skip to content</a>, 			<a href="Particle_Analysis.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Particle_Analysis.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Particle_Analysis" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Particle_Analysis&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Particle_Analysis&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Particle_Analysis&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Particle Analysis</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Cookbook Topics
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Cookbook" title="Cookbook">Introduction and Installation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Annotating_Images" title="Annotating Images">Annotating Images</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Color_Image_Processing" title="Color Image Processing">Color Image Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Intensity_Processing" title="Image Intensity Processing">Image Intensity Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Importing_Image_Files" title="Importing Image Files">Importing Image Files</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Particle Analysis</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Saving_and_Exporting" title="Saving and Exporting">Saving and Exporting</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Stack-slice_Manipulations" title="Stack-slice Manipulations">Stack-slice Manipulations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/T-functions" title="T-functions">T-functions</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Z-functions" title="Z-functions">Z-functions</a>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Particle_Analysis.html#Automatic_Particle_counting"><span class="tocnumber">1</span> <span class="toctext">Automatic Particle counting</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Particle_Analysis.html#Setting_a_threshold"><span class="tocnumber">1.1</span> <span class="toctext">Setting a threshold</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Particle_Analysis.html#Watershed_separation"><span class="tocnumber">1.2</span> <span class="toctext">Watershed separation</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Particle_Analysis.html#Analyze_Particles"><span class="tocnumber">1.3</span> <span class="toctext">Analyze Particles</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Particle_Analysis.html#Nucleus_Counter"><span class="tocnumber">1.4</span> <span class="toctext">Nucleus Counter</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="Particle_Analysis.html#Manual_Counting"><span class="tocnumber">2</span> <span class="toctext">Manual Counting</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Particle_Analysis.html#Particle_tracking"><span class="tocnumber">3</span> <span class="toctext">Particle tracking</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Automatic_Particle_counting">Automatic Particle counting</span></h2>
+<p>Automatic particle counting can be done if the image does not have too many individual particles touching. Manual particle counting can be done using the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-19.html#sec:Multi-point-Tool">Multi-point Tool</a>.
+</p><p><a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>, or the ability to distinguish an object from its background, can be a difficult issue to deal with. Once this has been done, however, the object can then be analyzed.
+</p><p><b>RAW    Threshold    Watershed    “AnalyzeParticles”</b>
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 607px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<h3><span class="mw-headline" id="Setting_a_threshold">Setting a threshold</span></h3>
+<p><b>5.1.1.1 Manual thresholding</b>
+</p><p>Automatic particle analysis requires a “binary”, black and white, image. A threshold range is set to tell the objects of interest apart from the background. All pixels in the image whose values lie under the threshold are converted to black and all pixels with values above the threshold are converted to white, or vice-versa.
+</p>
+<table style="border-spacing:0;">
+<tr>
+<td style="border:none;padding:0in;"> <div class="thumb tleft"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Black_white_threshold.png" class="image"><img alt="Black white threshold.png" src="../_images/9/94/Black_white_threshold.png" width="300" height="277" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Black_white_threshold.png" class="internal" title="Enlarge"></a></div></div></div></div>
+</td>
+<td style="border:none;padding:0in;"> There are several ways to set thresholds. Monochrome images are most simply thresholded via the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Threshold</span></em></span>. The threshold can be set using the slider bars. The pixels within the threshold range are displayed in red. When you are satisfied with the threshold settings, you can then hit <i>Apply</i>. This will permanently apply the threshold settings and convert the image to binary. You have different options for setting a manual threshold. The drop-down menu set to <i>Default</i> allows you to choose between <i>Default</i> and 15 other threshold techniques. The drop-down menu set to <i>Red</i> allows you to choose between a red on white color scheme, a black on white color scheme, or an over and under color scheme. The <i>Dark Background</i> box will flip the foreground color with the background color. You can also choose to check the Stack histogram box to produce a histogram for an entire stack.
+</td></tr></table>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Color_thresholding_manual_threshold2.png" class="image"><img alt="Color thresholding manual threshold2.png" src="../_images/b/b2/Color_thresholding_manual_threshold2.png" width="300" height="169" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Color_thresholding_manual_threshold2.png" class="internal" title="Enlarge"></a></div></div></div></div> For color images, setting the threshold is done with the command sequence <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Color Threshold...</span></em></span>. The <i>Thresholding method</i> option allows you to choose a thresholding techniqe other than the default. The <i>Threshold color</i> option allows you to choose between Red, White, Black, or B&amp;W as the thresholding color. The <i>Color space</i> option allows you to choose between HSB, RGB, Lab, and YUV. The background of the thresholded image can be made light or dark. The image can be converted to a binary image via the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Type </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> 8-bit</span></em></span>.
+<p><b>Automatic thresholding</b>
+</p><p>There are many algorithms you can use to calculate the threshold without introducing user-bias. An evaluation of over 40 of these can be found in this paper: 
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Survey+over+image+thresholding+techniques+and+quantitative+performance+evaluation.&amp;rft.aulast=Sezgin&amp;rft.aufirst=M.&amp;rft.date=2004&amp;rft.volume=13%281%29&amp;rft.pages=146-168"><cite id="CITEREFSezginSankur2004">Sezgin, M.&#32;&amp;&#32;Sankur, B.&#32;(2004),&#32;"Survey over image thresholding techniques and quantitative performance evaluation.",&#32;<i>Journal of Electronic imaging</i>&#32;<b>13(1)</b>:  146-168</cite></span> (<a rel="nofollow" class="external text" href="http://scholar.google.com/scholar?cluster=15528858675306988745">on Google Scholar</a>).</li></ul>
+<p>Fiji has several plugins found in the menu <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Threshold</span></em></span> for automatic calculation of an image threshold. These include Otsu's thresholding, maximum entropy threshold, and mixture modelling thresholding. For a complete list of the methods available with Fiji see the Plugins section located in the Documentation section under the Content tab at the top of this page. 
+</p>
+<div class="MediaTransformError" style="width: 552px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Watershed_separation">Watershed separation</span></h3>
+<p>Overlapping objects in a binary image can be separated using the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Binary </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Watershed</span></em></span>.
+</p><p>First convert the image to binary by thresholding. The black pixels are then replaced with grey pixels of an intensity proportional to their distance from a white pixel. Black pixels closer to the edge are lighter than black pixels that are more central. This is the Euclidian distance map (EDM) of the black area. From this the centers of the objects are calculated. These are the ultimate eroded points (UEPs) of each black area meaning they are equidistant from each edge. These points are then dilated until they touch another black pixel. This meeting point is where a watershed line is drawn.
+</p>
+<h3><span class="mw-headline" id="Analyze_Particles">Analyze Particles</span></h3>
+To analyze the particles in a segmented image, use the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze particles...</span></em></span>. This will provide you with information about each particle in the image.<div class="thumb tright"><div class="thumbinner" style="width:278px;"><div class="MediaTransformError" style="width: 276px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Analyze_particles_screenshot.png" class="internal" title="Enlarge"></a></div></div></div></div>.
+<p><br />
+Set the minimum size and maximum pixel area size to exclude anything that is not an object of interest in the image. Roundness values between 0.0 and 1.0 can also be selected to help exclude unwanted objects. Select the <i>Show: Outlines</i> option to display an image of the detected objects. The <i>Show</i> drop-down menu also allows the user to show Nothing, Bare Outlines, Ellipses, Masks, Count Masks, Overlay Outlines, and Overlay Masks. The user can choose whether to <i>Display results</i>, <i>Clear Results</i>, <i>Summarize</i>, <i>Add to Manager</i>, <i>Exclude on edges</i>, <i>Include holes</i>, <i>Record starts</i>, and/or <i>In situ Show</i>.
+</p><p>The particle analysis can be automated via plugins or macros once the correct threshold value and particle size range has been determined for your objects of interest.
+</p>
+<h3><span class="mw-headline" id="Nucleus_Counter">Nucleus Counter</span></h3>
+<p>This plugin automates many of the steps discussed above.
+</p>
+<ol><li> Enter the size range to be counted<div class="floatright"><div class="MediaTransformError" style="width: 224px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>.</li>
+<li> Select the automatic thresholding method. This can be either <i>Current</i>, <i>Otsu</i>, Maximum Entropy<i>, </i>Mixture Modelling<i> or </i>k-means<i> clustering. </i>Current<i> uses the threshold that has been set manually, see above.</i></li>
+<li> Perform a background correction.</li>
+<li> Use a <i>Smooth</i> filter.</li>
+<li> Perform a watershed separation.</li>
+<li> Add the particles to the ROI manager.</li>
+<li> Say yes to a summary.</li></ol>
+<p>Other options can easily be added on request.
+</p><p>The count, area, and average size are returned as a text window and the outlined particles are overlaid on a duplicate of the original image.
+</p>
+<div class="MediaTransformError" style="width: 222px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Manual_Counting">Manual Counting</span></h2>
+<p>You can use the built-in <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-19.html#sec:Multi-point-Tool">Multi-point Tool</a> to manually count particles.
+</p>
+<h2><span class="mw-headline" id="Particle_tracking">Particle tracking</span></h2>
+<p><b>Particle Tracker</b>
+Particle Tracker is a 2D feature point-tracking plugin for the automated detection and analysis of particle trajectories as recorded by video imaging in cell biology. The algorithm is decsribed in Sbalzarini and Koumoutsakos (2005[1]). 
+</p><p><b>TrackMate</b> 
+Use the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Tracking </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> TrackMate</span></em></span>. This plugin allows you to perform single particle tracking of spot-like structures. For more in-depth information, see the <a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate tutorial and explanation</a>.
+</p><p><b>Manual Tracking</b>
+Use the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Tracking </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Manual Tracking</span></em></span>. This tool allows you to keep track of the movement of a cell.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073113
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.068 seconds
+Real time usage: 0.074 seconds
+Preprocessor visited node count: 981/1000000
+Preprocessor generated node count: 7040/1000000
+Post‐expand include size: 8070/2097152 bytes
+Template argument size: 1893/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   37.951      1 - -total
+ 42.50%   16.130      1 - Template:Citation
+ 40.02%   15.188      8 - Template:Bc
+ 34.51%   13.097      1 - Template:Citation/core
+ 12.72%    4.827      1 - Template:CookbookMenu
+ 12.12%    4.600     15 - Template:Arrow
+ 10.04%    3.809      1 - Template:Menu
+  5.67%    2.151     11 - Template:MenuItem
+  3.14%    1.193      1 - Template:Link
+  2.29%    0.870      1 - Template:Scholar
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Particle_Analysis&amp;oldid=41303">http://imagej.net/index.php?title=Particle_Analysis&amp;oldid=41303</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Particle_Analysis&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Cookbook" title="Category:Cookbook">Cookbook</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Particle+Analysis" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Particle+Analysis" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Particle_Analysis" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Particle_Analysis" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Particle_Analysis&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Particle_Analysis&amp;oldid=41303" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Particle_Analysis&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":254});});</script>
+		</body>
+		</html>
+		

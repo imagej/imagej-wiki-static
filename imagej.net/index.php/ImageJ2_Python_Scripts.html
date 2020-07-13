@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>ImageJ2 Python Scripts - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"ImageJ2_Python_Scripts","wgTitle":"ImageJ2 Python Scripts","wgCurRevisionId":29322,"wgRevisionId":29322,"wgArticleId":5305,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Scripting","ImageJ2","Ops","SciJava"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"ImageJ2_Python_Scripts","wgRelevantArticleId":5305,"wgRequestId":"09733607b4afb988488a0a26","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This page is a primer of ImageJ2 only Python scripts. It means that the examples included here avoid IJ1 as much as possible, unless it's really necessary."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="ImageJ2 Python Scripts"/>
+
+	<meta property="og:description" content="This page is a primer of ImageJ2 only Python scripts. It means that the examples included here avoid IJ1 as much as possible, unless it's really necessary."/>
+
+	<meta property="og:url" content="http://imagej.net/ImageJ2_Python_Scripts"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-ImageJ2_Python_Scripts rootpage-ImageJ2_Python_Scripts skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="ImageJ2_Python_Scripts.html#bodyContent">Skip to content</a>, 			<a href="ImageJ2_Python_Scripts.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="ImageJ2_Python_Scripts.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/ImageJ2_Python_Scripts" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:ImageJ2_Python_Scripts&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=ImageJ2_Python_Scripts&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=ImageJ2_Python_Scripts&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>ImageJ2 Python Scripts</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="ImageJ2_Python_Scripts.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="ImageJ2_Python_Scripts.html#Scripts"><span class="tocnumber">2</span> <span class="toctext">Scripts</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="ImageJ2_Python_Scripts.html#Stack_Projection"><span class="tocnumber">2.1</span> <span class="toctext">Stack Projection</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="ImageJ2_Python_Scripts.html#Apply_Threshold"><span class="tocnumber">2.2</span> <span class="toctext">Apply Threshold</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="ImageJ2_Python_Scripts.html#Crop_an_image"><span class="tocnumber">2.3</span> <span class="toctext">Crop an image</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="ImageJ2_Python_Scripts.html#Rotate_all_the_frames_of_a_stack"><span class="tocnumber">2.4</span> <span class="toctext">Rotate all the frames of a stack</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="ImageJ2_Python_Scripts.html#Subtract_a_stack_to_its_first_image"><span class="tocnumber">2.5</span> <span class="toctext">Subtract a stack to its first image</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="ImageJ2_Python_Scripts.html#Apply_DOG_Filter"><span class="tocnumber">2.6</span> <span class="toctext">Apply DOG Filter</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="ImageJ2_Python_Scripts.html#Apply_a_mask"><span class="tocnumber">2.7</span> <span class="toctext">Apply a mask</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="ImageJ2_Python_Scripts.html#Retrieve_objects.2Fparticles_from_a_mask"><span class="tocnumber">2.8</span> <span class="toctext">Retrieve objects/particles from a mask</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="ImageJ2_Python_Scripts.html#Manual_Simple_Registration_on_Stack"><span class="tocnumber">2.9</span> <span class="toctext">Manual Simple Registration on Stack</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="ImageJ2_Python_Scripts.html#Resources"><span class="tocnumber">3</span> <span class="toctext">Resources</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>This page is a primer of <b>ImageJ2 only</b> Python scripts. It means that the examples included here avoid IJ1 as much as possible, unless it's really necessary.
+</p><p>Note that all the scripts of this page are links from <a rel="nofollow" class="external free" href="https://github.com/imagej/imagej-scripting/tree/master/src/main/resources/script_templates/ImageJ2">https://github.com/imagej/imagej-scripting/tree/master/src/main/resources/script_templates/ImageJ2</a>.
+</p>
+<h1><span class="mw-headline" id="Scripts">Scripts</span></h1>
+<h2><span class="mw-headline" id="Stack_Projection">Stack Projection</span></h2>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Projection.py">Projection.py</a></b>
+</p>
+<pre class="brush:python">#@ Dataset data
+#@ String(label="Dimension to Project", choices={"X", "Y", "Z", "TIME", "CHANNEL"}) projected_dimension
+#@ String(label="Projection Type", choices={"Max","Mean","Median","Min", "StdDev", "Sum"}) projection_type
+#@OUTPUT Dataset output
+#@ OpService ops
+#@ DatasetService ds
+
+# Do a projection of a stack. The projection is done along a specified axis.
+# The commin use case of this script is to do a maximum Z projection.
+
+from net.imagej.axis import Axes
+from net.imagej.ops import Ops
+
+# Select which dimension to project
+dim = data.dimensionIndex(getattr(Axes, projected_dimension))
+
+if dim == -1:
+    raise Exception("%s dimension not found."&#160;% projected_dimension)
+
+if data.dimension(dim) &lt; 2:
+    raise Exception("%s dimension has only one frame."&#160;% projected_dimension)
+
+# Write the output dimensions
+new_dimensions = [data.dimension(d) for d in range(0, data.numDimensions()) if d&#160;!= dim]
+
+# Create the output image
+projected = ops.create().img(new_dimensions)
+
+# Create the op and run it
+proj_op = ops.op(getattr(Ops.Stats, projection_type), data)
+ops.transform().project(projected, data, proj_op, dim)
+
+# Create the output Dataset
+output = ds.create(projected)
+</pre>
+<h2><span class="mw-headline" id="Apply_Threshold">Apply Threshold</span></h2>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Apply_Threshold.py">Apply_Threshold.py</a></b>
+</p>
+<pre class="brush:python"></pre>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Apply_Threshold_Fast.py">Apply_Threshold_Fast.py</a></b>
+</p>
+<pre class="brush:python">#@ String(label="Threshold Method", required=true, choices={'otsu', 'huang'}) method_threshold
+#@ Dataset data
+#@OUTPUT Dataset output
+#@ OpService ops
+#@ DatasetService ds
+
+# Apply an automatic threshold from a given method.
+thresholded = ops.run("threshold.%s"&#160;% method_threshold, data)
+
+# Create output
+output = ds.create(thresholded)
+</pre>
+<h2><span class="mw-headline" id="Crop_an_image">Crop an image</span></h2>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Crop.py">Crop.py</a></b>
+</p>
+<pre class="brush:python">#@ Dataset data
+#@OUTPUT Dataset output
+#@ DatasetService ds
+#@ OpService ops
+
+from net.imagej.axis import Axes
+from net.imglib2.util import Intervals
+
+# This function helps to crop a Dataset along an arbitrary number of Axes.
+# Intervals to crop are specified easily as a Python dict.
+
+
+def get_axis(axis_type):
+    return {
+        'X': Axes.X,
+        'Y': Axes.Y,
+        'Z': Axes.Z,
+        'TIME': Axes.TIME,
+        'CHANNEL': Axes.CHANNEL,
+    }.get(axis_type, Axes.Z)
+
+def crop(ops, data, intervals):
+    """Crop along a one or more axis.
+
+    Parameters
+    ----------
+    intervals&#160;: Dict specifying which axis to crop and with what intervals.
+                Example&#160;:
+                intervals = {'X'&#160;: [0, 50],
+                             'Y'&#160;: [0, 50]}
+    """
+
+    intervals_start = [data.min(d) for d in range(0, data.numDimensions())]
+    intervals_end = [data.max(d) for d in range(0, data.numDimensions())]
+
+    for axis_type, interval in intervals.items():
+        index = data.dimensionIndex(get_axis(axis_type))
+        intervals_start[index] = interval[0]
+        intervals_end[index] = interval[1]
+
+    intervals = Intervals.createMinMax(*intervals_start + intervals_end)
+
+    output = ops.run("transform.crop", data, intervals, True)
+
+    return output
+
+
+# Define the intervals to be cropped
+intervals = {'X': [0, 5],
+    'Y': [0, 5]}
+
+# Crop the Dataset
+output = crop(ops, data, intervals)
+
+# Create output Dataset
+output = ds.create(output)
+</pre>
+<h2><span class="mw-headline" id="Rotate_all_the_frames_of_a_stack">Rotate all the frames of a stack</span></h2>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Rotate_Stack.py">Rotate_Stack.py</a></b>
+</p>
+<pre class="brush:python">#@ Float(label="Rotation angle (in degree)", required=true, value=90, stepSize=0.1) angle
+#@ Dataset data
+#@OUTPUT Dataset output
+#@ OpService ops
+#@ DatasetService ds
+
+# This script rotates all the frame of a stack along the TIME axis to a given angle.
+# I found this script over complicated for what it is supposed to do. I hope a simpler way to do this kind of
+# transformation will be avaiable one day. At that time the script would have to be updated.
+
+import math
+from net.imagej.axis import Axes
+from net.imglib2.interpolation.randomaccess import LanczosInterpolatorFactory
+from net.imglib2.realtransform import AffineTransform2D
+from net.imglib2.realtransform import RealViews
+from net.imglib2.util import Intervals
+from net.imglib2.view import Views
+
+
+def get_axis(axis_type):
+    return {
+        'X': Axes.X,
+        'Y': Axes.Y,
+        'Z': Axes.Z,
+        'TIME': Axes.TIME,
+        'CHANNEL': Axes.CHANNEL,
+    }.get(axis_type, Axes.Z)
+
+
+def crop_along_one_axis(ops, data, intervals, axis_type):
+    """Crop along a single axis using Views.
+
+    Parameters
+    ----------
+    intervals&#160;: List with two values specifying the start and the end of the interval.
+    axis_type&#160;: Along which axis to crop. Can be ["X", "Y", "Z", "TIME", "CHANNEL"]
+    """
+
+    axis = get_axis(axis_type)
+    interval_start = [data.min(d) if d&#160;!= data.dimensionIndex(axis) else intervals[0] for d in range(0, data.numDimensions())]
+    interval_end = [data.max(d) if d&#160;!= data.dimensionIndex(axis) else intervals[1] for d in range(0, data.numDimensions())]
+
+    interval = interval_start + interval_end
+    interval = Intervals.createMinMax(*interval)
+
+    output = ops.run("transform.crop", data, interval, True)
+
+    return output
+
+
+# Get the center of the images so we do the rotation according to it
+center = [int(round((data.max(d) / 2 + 1))) for d in range(2)]
+
+# Convert angles to radians
+angle_rad = angle * math.pi / 180
+
+# Build the affine transformation
+affine = AffineTransform2D()
+affine.translate([-p for p in center])
+affine.rotate(angle_rad)
+affine.translate(center)
+
+# Get the interpolator
+interpolator = LanczosInterpolatorFactory()
+
+# Iterate over all frame in the stack
+axis = Axes.TIME
+output = []
+for d in range(data.dimension(axis)):
+
+    # Get the current frame
+    frame = crop_along_one_axis(ops, data, [d, d], "TIME")
+
+    # Get the interpolate view of the frame
+    extended = ops.run("transform.extendZeroView", frame)
+    interpolant = ops.run("transform.interpolateView", extended, interpolator)
+
+    # Apply the transformation to it
+    rotated = RealViews.affine(interpolant, affine)
+
+    # Set the intervals
+    rotated = ops.transform().offsetView(rotated, frame)
+
+    output.append(rotated)
+
+output = Views.stack(output)
+
+# Create output Dataset
+output = ds.create(output)
+</pre>
+<h2><span class="mw-headline" id="Subtract_a_stack_to_its_first_image">Subtract a stack to its first image</span></h2>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Subtract_First_Image_Stack.py">Subtract_First_Image_Stack.py</a></b>
+</p>
+<pre class="brush:python">#@ Dataset data
+#@OUTPUT Dataset output
+#@ OpService ops
+#@ DatasetService ds
+
+# Subtract the first frame of a stack to all the frames of the given stack along the TIME axis.
+# It removes the static elements from a stack. Usefull when you are studying moving objects.
+
+from net.imglib2.util import Intervals
+from net.imagej.axis import Axes
+
+# Convert input
+converted = ops.convert().float32(data)
+
+# Get the first frame (TODO: find a more convenient way&#160;!)
+t_dim = data.dimensionIndex(Axes.TIME)
+interval_start = []
+interval_end = []
+for d in range(0, data.numDimensions()):
+    if d&#160;!= t_dim:
+        interval_start.append(0)
+        interval_end.append(data.dimension(d) - 1)
+    else:
+        interval_start.append(0)
+        interval_end.append(0)
+
+intervals = interval_start + interval_end
+intervals = Intervals.createMinMax(*intervals)
+
+first_frame = ops.transform().crop(converted, intervals)
+
+# Allocate output memory (wait for hybrid CF version of slice)
+subtracted = ops.create().img(converted)
+
+# Create the op
+sub_op =  ops.op("math.subtract", first_frame, first_frame)
+
+# Setup the fixed axis
+fixed_axis = [d for d in range(0, data.numDimensions()) if d&#160;!= t_dim]
+
+# Run the op
+ops.slice(subtracted, converted, sub_op, fixed_axis)
+
+# Clip image to the input type
+clipped = ops.create().img(subtracted, data.getImgPlus().firstElement())
+clip_op = ops.op("convert.clip", data.getImgPlus().firstElement(), subtracted.firstElement())
+ops.convert().imageType(clipped, subtracted, clip_op)
+
+# Create output Dataset
+output = ds.create(clipped)
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Apply_DOG_Filter">Apply DOG Filter</span></h2>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Apply_DOG_Filtering.py">Apply_DOG_Filtering.py</a></b>
+</p>
+<pre class="brush:python">#@ Dataset data
+#@ Float(label="Sigma 1 (pixel)", required=true, value=4.2, stepSize=0.1) sigma1
+#@ Float(label="Sigma 2 (pixel)", required=true, value=1.25, stepSize=0.1) sigma2
+#@OUTPUT Dataset output
+#@ OpService ops
+#@ DatasetService ds
+
+# Run a DOG filter on all the frames along the TIME axis.
+# After the filtering step the image is clipped to match the input type.
+
+from net.imagej.axis import Axes
+
+# Convert data to float 32
+converted = ops.convert().float32(data.getImgPlus())
+
+# Allocate output memory (wait for hybrid CF version of slice)
+dog = ops.create().img(converted)
+
+# Create the op
+dog_op = ops.op("filter.dog", converted, sigma1, sigma2)
+
+# Setup the fixed axis
+t_dim = data.dimensionIndex(Axes.TIME)
+fixed_axis = [d for d in range(0, data.numDimensions()) if d&#160;!= t_dim]
+
+# Run the op
+ops.slice(dog, converted, dog_op, fixed_axis)
+
+# Clip image to the input type
+clipped = ops.create().img(dog, data.getImgPlus().firstElement())
+clip_op = ops.op("convert.clip", data.getImgPlus().firstElement(), dog.firstElement())
+ops.convert().imageType(clipped, dog, clip_op)
+
+# Create output Dataset
+output = ds.create(clipped)
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Apply_a_mask">Apply a mask</span></h2>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Apply_Mask.py">Apply_Mask.py</a></b>
+</p>
+<pre class="brush:python">#@ Dataset data
+#@ Dataset mask
+#@OUTPUT Dataset output
+
+# Given a mask (binary image) and a raw image, remove background pixel from raw by
+# keeping only those in the mask (different from 0).
+
+# Note&#160;: As specified by @stelfrich on Gitter, the particular case when foreground pixel
+# are 1 and background pixels are 0 can be simpler to write with a multiplication of the two
+# images.
+
+from net.imglib2.util import Intervals
+
+# Check dimensions are the same for 'data' and 'mask'
+
+if not Intervals.equalDimensions(data, mask):
+    raise Exception("Dimensions from input dataset does not match.")
+
+# Create the cursors
+output = data.duplicate()
+targetCursor = output.localizingCursor()
+dataRA = data.randomAccess()
+maskRA = mask.randomAccess()
+
+# Iterate over each pixels of the datasets
+while targetCursor.hasNext():
+    targetCursor.fwd()
+    dataRA.setPosition(targetCursor)
+    maskRA.setPosition(targetCursor)
+
+    if maskRA.get().get() == 0:
+        targetCursor.get().set(0)
+    else:
+        targetCursor.get().set(dataRA.get())
+</pre>
+<h2><span class="mw-headline" id="Retrieve_objects.2Fparticles_from_a_mask">Retrieve objects/particles from a mask</span></h2>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Particles_From_Mask.py">Particles_From_Mask.py</a></b>
+</p>
+<pre class="brush:python">#@ ImageJ ij
+#@ Dataset data
+#@ Dataset mask
+
+# This script identify all the particles from a mask and create label regions over which you can iterate.
+# The second part of the script display all the detected regions into the IJ1 RoiManager.
+
+
+from ij.gui import PointRoi
+from ij.plugin.frame import RoiManager
+from net.imglib2.algorithm.labeling.ConnectedComponents import StructuringElement
+from net.imglib2.roi.labeling import LabelRegions
+
+
+def get_roi_manager(new=False):
+    rm = RoiManager.getInstance()
+    if not rm:
+        rm = RoiManager()
+    if new:
+        rm.runCommand("Reset")
+    return rm
+
+
+# Identify particles
+img = mask.getImgPlus()
+labeled_img = ij.op().run("cca", img, StructuringElement.EIGHT_CONNECTED)
+
+# Create label regions from particles
+regions = LabelRegions(labeled_img)
+region_labels = list(regions.getExistingLabels())
+
+print("%i regions/particles detected"&#160;% len(region_labels))
+
+# Now use IJ1 RoiManager to display the detected regions
+rm = get_roi_manager(new=True)
+
+for label in region_labels:
+
+    region = regions.getLabelRegion(label)
+
+  	# Get the center of mass of the region
+    center = region.getCenterOfMass()
+    x = center.getDoublePosition(0)
+    y = center.getDoublePosition(1)
+
+    roi = PointRoi(x, y)
+    if center.numDimensions() &gt;= 3:
+        z = center.getDoublePosition(2)
+        roi.setPosition(int(z))
+
+    rm.addRoi(roi)
+
+    # You can also iterate over the `data` pixel by LabelRegion
+
+    cursor = region.localizingCursor()
+    dataRA = data.randomAccess()
+    while cursor.hasNext():
+        cursor.fwd()
+        dataRA.setPosition(cursor)
+
+        x = cursor.getDoublePosition(0)
+        y = cursor.getDoublePosition(1)
+
+        # Pixel of `data`
+        pixel = dataRA.get()
+
+        # Do whatever you want here
+        # print(x, y, pixel)
+</pre>
+<h2><span class="mw-headline" id="Manual_Simple_Registration_on_Stack">Manual Simple Registration on Stack</span></h2>
+<p><b><a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-scripting/blob/master/src/main/resources/script_templates/ImageJ2/Manual_Registration.py">Manual_Registration.py</a></b>
+</p>
+<pre class="brush:python">#@ Dataset ds
+#@OUTPUT Dataset output
+#@ OpService ops
+#@ LogService log
+#@ DatasetService datasetService
+
+# This script translates individual slices in a stack according to single
+# point ROIs (defined in the IJ1 ROIManager). If slices exist in between specified ROIs,
+# a linear translation from one ROI to the next is applied.
+# 1. Add point ROIs to the RoiManager; either one per slice or only in slices of
+# interest. (Be carefull to set the correct Z/T position when adding the ROI.)
+# 2. Run the script.
+
+from net.imglib2.util import Intervals
+from net.imglib2.view import Views
+
+from ij.plugin.frame import RoiManager
+
+# Initialize some variables
+img = ds.getImgPlus()
+rois = RoiManager.getInstance().getRoisAsArray()
+
+images = []
+
+total_x_shift = 0
+total_y_shift = 0
+
+# Iterate over regions of interest
+for j, (start_roi, end_roi) in enumerate(zip(rois[:-1], rois[1:])):
+
+	# Get Z or T positions defined by the position of the ROIs
+	z_start = start_roi.getPosition()
+	z_end = end_roi.getPosition()
+
+	# Get X positions
+	x_start = start_roi.getContainedPoints()[0].x
+	x_end = end_roi.getContainedPoints()[0].x
+
+	# Get Y positions
+	y_start = start_roi.getContainedPoints()[0].y
+	y_end = end_roi.getContainedPoints()[0].y
+
+	# Calculate the linear translation for each frame in the Z/T axis
+	x_shift = float(x_end - x_start) / (z_end - z_start)
+	y_shift = float(y_end - y_start) / (z_end - z_start)
+
+	# Iterate over each frame in Z/T
+	for i, z in enumerate(range(z_start, z_end)):
+
+		log.info("Processing frame&#160;%i/%i for ROIs #%i and #%i (%i total detected ROIs)"&#160;% (z_start + i, z_end, j, j + 1, len(rois)))
+
+		# Compute the translation
+		dx = int(x_shift + total_x_shift) * -1
+		dy = int(y_shift + total_y_shift) * -1
+
+		total_x_shift += x_shift
+		total_y_shift += y_shift
+
+		# Get only the frame cooresponding to the actual Z/T position
+		intervals = Intervals.createMinMax(0, 0, z, ds.getWidth() - 1, ds.getHeight() - 1, z)
+		single_frame = ops.transform().crop(img, intervals)
+
+		# Pad the frame so the outisde of the image dimensions values are set to 0
+		padded_frame = ops.transform().extendZero(single_frame)
+
+		# Do the translation
+		translated_frame = ops.transform().translate(padded_frame, [dx, dy])
+
+		# Cleanup
+		interval2d = Intervals.createMinMax(0, 0, ds.getWidth() - 1, ds.getHeight() - 1)
+		translated_frame = Views.interval(translated_frame, interval2d)
+		translated_frame = ops.transform().dropSingletonDimensions(translated_frame)
+
+		images.append(translated_frame)
+
+images = ops.run("transform.stackView", [images])
+output = datasetService.create(images)
+</pre>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Resources">Resources</span></h1>
+<ul><li> <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Jython Scripting</a></li>
+<li> <a href="http://imagej.net/Jython_Scripting_Examples" title="Jython Scripting Examples">Jython Examples</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072539
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.116 seconds
+Real time usage: 18.410 seconds
+Preprocessor visited node count: 934/1000000
+Preprocessor generated node count: 1976/1000000
+Post‐expand include size: 15849/2097152 bytes
+Template argument size: 9048/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00% 18384.062      1 - -total
+ 99.91% 18366.706     10 - Template:GitHubEmbed
+  0.08%   14.820      1 - Template:Learn
+  0.07%   13.033      1 - Template:Menu
+  0.07%   12.120     10 - Template:GitHub
+  0.06%   11.593      4 - Template:Submenu
+  0.03%    5.941     39 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=ImageJ2_Python_Scripts&amp;oldid=29322">http://imagej.net/index.php?title=ImageJ2_Python_Scripts&amp;oldid=29322</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:12.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=ImageJ2_Python_Scripts&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li><li><a href="http://imagej.net/Category:Ops" title="Category:Ops">Ops</a></li><li><a href="http://imagej.net/Category:SciJava" title="Category:SciJava">SciJava</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=ImageJ2+Python+Scripts" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=ImageJ2+Python+Scripts" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/ImageJ2_Python_Scripts" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/ImageJ2_Python_Scripts" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=ImageJ2_Python_Scripts&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=ImageJ2_Python_Scripts&amp;oldid=29322" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=ImageJ2_Python_Scripts&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":18625});});</script>
+		</body>
+		</html>
+		

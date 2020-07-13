@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Deconvolution - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Deconvolution","wgTitle":"Deconvolution","wgCurRevisionId":29345,"wgRevisionId":29345,"wgArticleId":1898,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Cookbook","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Deconvolution","wgRelevantArticleId":1898,"wgRequestId":"37610d5be8bbce45528cced3","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Deconvolution corrects the systematic error of blur (loss of contrast in smaller features)  in optical systems such as fluorescence microscopy images."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Deconvolution"/>
+
+	<meta property="og:description" content="Deconvolution corrects the systematic error of blur (loss of contrast in smaller features)  in optical systems such as fluorescence microscopy images."/>
+
+	<meta property="og:url" content="http://imagej.net/Deconvolution"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Deconvolution rootpage-Deconvolution skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Deconvolution.html#bodyContent">Skip to content</a>, 			<a href="Deconvolution.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Deconvolution.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Deconvolution" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Deconvolution&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Deconvolution&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Deconvolution&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Deconvolution</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> <span style="font-size: larger"> See <a href="http://imagej.net/Category:Deconvolution" title="Category:Deconvolution">Category:Deconvolution</a> for pages about deconvolution.</span> </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br /> 
+</p>
+<table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Cookbook Topics
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Cookbook" title="Cookbook">Introduction and Installation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Annotating_Images" title="Annotating Images">Annotating Images</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Color_Image_Processing" title="Color Image Processing">Color Image Processing</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Deconvolution</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Intensity_Processing" title="Image Intensity Processing">Image Intensity Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Importing_Image_Files" title="Importing Image Files">Importing Image Files</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Particle_Analysis" title="Particle Analysis">Particle Analysis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Saving_and_Exporting" title="Saving and Exporting">Saving and Exporting</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Stack-slice_Manipulations" title="Stack-slice Manipulations">Stack-slice Manipulations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/T-functions" title="T-functions">T-functions</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Z-functions" title="Z-functions">Z-functions</a>
+</td></tr></table>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Deconvolution</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p><a href="http://en.wikipedia.org/wiki/Deconvolution" class="extiw" title="wikipedia:Deconvolution">Deconvolution</a> corrects the systematic error of blur (loss of contrast in smaller features)  in optical systems such as fluorescence microscopy images.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Deconvolution.html#The_problem.2C_and_the_solution"><span class="tocnumber">1</span> <span class="toctext">The problem, and the solution</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Deconvolution.html#Introduction_to_the_practical_method"><span class="tocnumber">2</span> <span class="toctext">Introduction to the practical method</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Deconvolution.html#Generating_a_PSF_image_stack"><span class="tocnumber">3</span> <span class="toctext">Generating a PSF image stack</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Deconvolution.html#Constrained_Iterative_Deconvolution"><span class="tocnumber">4</span> <span class="toctext">Constrained Iterative Deconvolution</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Deconvolution.html#An_interactive_Convolution_.2F_Deconvolution_.2F_Contrast_Restoration_demo_in_ImageJ"><span class="tocnumber">5</span> <span class="toctext">An interactive Convolution / Deconvolution / Contrast Restoration demo in ImageJ</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Deconvolution.html#Video_presentations"><span class="tocnumber">6</span> <span class="toctext">Video presentations</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="The_problem.2C_and_the_solution">The problem, and the solution</span></h2>
+<p>Any optical image forming system, such as a microscope objective lens, has the nasty property of killing more and more contrast of smaller and smaller features, up to the resolution (diffraction) limit, after which there is no contrast (and thus no resolution). Large features are bright, but small features appear less contrasted and dimmer than they should. This is a systematic error, characterized by the Point Spread Function (PSF) of the optical system, which makes the image intensity information non-quantitative. If we can measure the PSF, or guess it, we can correct the raw image for it. Since it's possible to correct such a systematic error, we should! 
+</p><p>Image contrast restoration by deconvolution is a way to correct the systematic error of contrast loss in an image recording system, such as a microscope objective lens or telescope mirror or lens. We try to reverse the effects of blur in the recorded image, caused by convolution (blur, smearing, loss of contrast of small features) of the real image due to the imaging point spread function (PSF). 
+</p><p>Image contrast restoration by deconvolution is an important systematic error correction step for quantitative measurement of image pixel intensities in analysis workflows. If we don't correct this systematic error, the results of the image intensity analysis could be very much more wrong than if we correct the images before analysis. It's the same as zeroing a scale before weighing something.
+</p>
+<h2><span class="mw-headline" id="Introduction_to_the_practical_method">Introduction to the practical method</span></h2>
+<p>Two plugins from Bob Dougherty can be used together to perform this systematic error correction in a 2D or 3D image. Other plugins are also available. The Diffraction-PSF-3D plugin generates a z-stack of the theoretical point-spread function (PSF). Alternatively, an empirical, measured PSF could be used. The Iterative Deconvolution 3D plugin uses a PSF image z-stack to correct the image contrast vs. feature size in your sample image z-stack. The image below is a single slice taken from a stack before and after deconvolution using these plugins. 
+</p>
+<div class="MediaTransformError" style="width: 515px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><i>See the plugins' homepages for more details:</i> <a rel="nofollow" class="external text" href="http://www.optinav.info/Diffraction-PSF-3D.htm">Diffraction PSF 3D</a> &amp; <a rel="nofollow" class="external text" href="http://www.optinav.info/Iterative-Deconvolve-3D.htm">Iterative Deconvolution 3D</a>
+</p>
+<h2><span class="mw-headline" id="Generating_a_PSF_image_stack">Generating a PSF image stack</span></h2>
+<p>The Diffraction PSF 3D plugin can be used to generate theoretical PSFs assuming they arise only from diffraction. These PSFs may be used with other deconvolution plugins later.
+</p><p>To use, run the "Diffraction PSF 3D" plugin. A dialog will appear; most of the fields are self explanatory. The width, height and depth values are for the PSF image, not your image stack. The desired values will need to be empirically determined. Try to match the parameters used to capture the raw image.
+</p><p><a href="http://imagej.net/File:Diffraction_psf_window1.png" class="image"><img alt="Diffraction psf window1.png" src="../_images/6/6a/Diffraction_psf_window1.png" width="377" height="317" /></a>
+</p>
+<h2><span class="mw-headline" id="Constrained_Iterative_Deconvolution">Constrained Iterative Deconvolution</span></h2>
+<p>Non negative constrained (non linear), iterative deconvolution algorithms greatly outperform simple inverse filters and Wiener filters on noisy real life fluorescence microscopy (and other) image data.
+</p><p>Run the Iterative Deconvolve 3D plugin, then select the image and PSF. For a 2D image, use a 2D (single plane) PSF. For 3D images, use a 3D PSF (z stack). Start with the default values and set iterations to 10 initially. Be careful not to run out of memory when processing large 3D images. Crop them if they are too large.
+</p><p><a href="http://imagej.net/File:Iterative_deconvolve_window.png" class="image"><img alt="Iterative deconvolve window.png" src="../_images/b/b0/Iterative_deconvolve_window.png" width="411" height="272" /></a>
+</p>
+<h2><span class="mw-headline" id="An_interactive_Convolution_.2F_Deconvolution_.2F_Contrast_Restoration_demo_in_ImageJ">An interactive Convolution / Deconvolution / Contrast Restoration demo in ImageJ</span></h2>
+<p>For an educational interactive ImageJ javascript demo of convolution, inverse filtering and image contrast restoration by iterative constrained deconvolution (using the above plugins), see this <a rel="nofollow" class="external text" href="https://github.com/chalkie666/imagejMacros/blob/master/DeconvolutionDemos/Convolution_Deconvolution_Demo.js">Convolution / Deconvolution / Contrast Restoration demo script</a> 
+</p>
+<h2><span class="mw-headline" id="Video_presentations">Video presentations</span></h2>
+<div style="float: left; padding-right: 1em"><iframe src="https://player.vimeo.com/video/140098821?color=b80013&title=0&byline=0&portrait=0" width="425" height="355" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><p style="font-size: small; margin-top: 0"><a href="https://vimeo.com/140098821">Flexible deconvolution using ImageJ Ops (Brian Northan)</a></span></p> by <a href="http://imagej.net/User:Bnorthan" title="User:Bnorthan">Brian Northan</a>, (<a rel="nofollow" class="external text" href="https://imagej.github.io/presentations/2015-09-04-imagej2-deconvolution/">slides</a>)</div>
+<div style="float: left"><iframe src="https://player.vimeo.com/video/140098826?color=b80013&title=0&byline=0&portrait=0" width="425" height="355" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><p style="font-size: small; margin-top: 0"><a href="https://vimeo.com/140098826">Real-time multi-view deconvolution of time-lapse data on the GPU (Bene Schmid)</a></span></p> by <a href="http://imagej.net/User:Bene" title="User:Bene">Benjamin Schmid</a></div>
+<div style="clear:left;"></div>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064944
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.072 seconds
+Real time usage: 0.077 seconds
+Preprocessor visited node count: 512/1000000
+Preprocessor generated node count: 4204/1000000
+Post‐expand include size: 12318/2097152 bytes
+Template argument size: 6485/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   32.013      1 - -total
+ 44.82%   14.348      2 - Template:Menu
+ 38.29%   12.257      1 - Template:Learn
+ 31.13%    9.967      4 - Template:Submenu
+ 22.72%    7.272     50 - Template:MenuItem
+ 21.42%    6.858      2 - Template:Person
+ 14.61%    4.678      1 - Template:CookbookMenu
+ 14.24%    4.559      1 - Template:BigNotice
+ 11.50%    3.683      1 - Template:Notice
+  8.80%    2.818      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Deconvolution&amp;oldid=29345">http://imagej.net/index.php?title=Deconvolution&amp;oldid=29345</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:14.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Deconvolution&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Cookbook" title="Category:Cookbook">Cookbook</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Deconvolution" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Deconvolution" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Deconvolution" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Deconvolution" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Deconvolution&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Deconvolution&amp;oldid=29345" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Deconvolution&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":283});});</script>
+		</body>
+		</html>
+		

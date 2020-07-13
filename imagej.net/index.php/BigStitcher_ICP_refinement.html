@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>BigStitcher ICP refinement - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"BigStitcher_ICP_refinement","wgTitle":"BigStitcher ICP refinement","wgCurRevisionId":37476,"wgRevisionId":37476,"wgArticleId":10370,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"BigStitcher_ICP_refinement","wgRelevantArticleId":10370,"wgRequestId":"b2c607b873ec1689f0f62367","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The default stitching pipeline of BigStitcher will calculate a translational alignment of your images. In some cases, however, there might also be more complex transformations (such as rotations between tiles or scaling between channels due to chromatic aberrations) between the images. To account for such affine transformations between the images, we offer the possibility to Refine the Alignment using the ICP (Iterative Closest Point) algorithm combined with global optimization."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="BigStitcher ICP refinement"/>
+
+	<meta property="og:description" content="The default stitching pipeline of BigStitcher will calculate a translational alignment of your images. In some cases, however, there might also be more complex transformations (such as rotations between tiles or scaling between channels due to chromatic aberrations) between the images. To account for such affine transformations between the images, we offer the possibility to Refine the Alignment using the ICP (Iterative Closest Point) algorithm combined with global optimization."/>
+
+	<meta property="og:url" content="http://imagej.net/BigStitcher_ICP_refinement"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-BigStitcher_ICP_refinement rootpage-BigStitcher_ICP_refinement skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="BigStitcher_ICP_refinement.html#bodyContent">Skip to content</a>, 			<a href="BigStitcher_ICP_refinement.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="BigStitcher_ICP_refinement.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/BigStitcher_ICP_refinement" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:BigStitcher_ICP_refinement&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=BigStitcher_ICP_refinement&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=BigStitcher_ICP_refinement&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>BigStitcher ICP refinement</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>The default stitching pipeline of BigStitcher will calculate a <b>translational alignment</b> of your images. In some cases, however, there might also be more complex transformations (such as rotations between tiles or scaling between channels due to <b>chromatic aberrations</b>) between the images. To account for such <b>affine transformations</b> between the images, we offer the possibility to <b>Refine the Alignment</b> using the <b>ICP (Iterative Closest Point)</b> algorithm combined with global optimization.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> The ICP algorithm assumes that the images are already roughly aligned. You should therefore use it as a <b>last step</b> after stitching your dataset. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Simple_refinement">Simple refinement</span></h2>
+<p>The ICP refinement can be found in the main (right-click) menu of the Stiching mode under <span><em><span style="border-bottom:1px dotted #ccc;">Registration Refinement (optional)</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Refine with ICP</span></em></span>:
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_icp_01.png" class="image"><img alt="BigStitcher icp 01.png" src="../_images/3/3a/BigStitcher_icp_01.png" width="700" height="363" /></a></div></div>
+<p>ICP is an interest-point-based algorithm, meaning that we have to first detect interest points in the sample before aligning the images. In <b>simple mode</b>, we do this automatically, with a just a few adjustable parameters.
+</p><p>In the sub-menu, you can set the 3 main parameters:
+</p>
+<ul><li> <b>Downsampling</b>: By how much to downsample the images for interest point detection. Higher downsampling greatly reduces compute times but too high settings might reduce the quality of the results. We suggest to start with high downsampling and only decrease it if you are not happy with the results.</li>
+<li> <b>Threshold</b>: Intensity threshold for the points to be detected. The threshold should be low enough to detect enough interest points but a too low setting will lead to spurious detections that might throw off the alignment.</li>
+<li> <b>Adjustment</b>: By how much the algorithm is allowed to move the images. Typically, the images should already be roughly aligned at this point, so we advise to stick to low settings.</li></ul>
+<p>The current selection is displayed in <b>red</b>, other options in <b>gray</b>. Click on a preset or hover over it with the cursor for a short time to select it.
+</p><p>Finally, you can start the refinement by clicking:
+</p>
+<ul><li> <b>Simple (tile registration)</b>: will try to refine the alignment of the tiles of you data (multiple channels are transformed the same way) </li>
+<li> <b>Simple (chromatic aberration)</b>: will try to correct chromatic aberrations by transforming channels (all tiles of one channel will be transformed the same way).</li>
+<li> <b>Simple (all together)</b>: will try to both refine the tile alignment and correct chromatic aberrations in one step. If you have multiple illuminations (and have not selected one of them yet), they will also be aligned.</li></ul>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> For <b>chromatic aberration correction</b>, it is necessary to detect the same interest points in all channels, so only use that if your sample has autofluorescent structures visible in all channels or you added fiducial beads that fluoresce in all channels </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Expert_refinement">Expert refinement</span></h2>
+<p>Click <b>Expert...</b> in the <b>Refine with ICP</b> menu to bring up advanced options.
+</p><p>First, if you did not detect any interest points yet, you will be taken to the <a href="http://imagej.net/BigStitcher_Interest_points" title="BigStitcher Interest points">interest point detection</a> immediately.
+</p><p>Once you have detected interest points, a dialog with expert options will pop up. In this dialog, you can set the following parameters:
+</p>
+<ul><li> <b>Interest Points</b>: the interest points to use</li>
+<li> <b>ICP maximum error</b>: the maximum allowed error for point matching. Increasing this value leads to a coarser alignment.</li>
+<li> <b>Transformation Model</b>: The type of transformation to compute (Translation, Rigid or Affine).</li>
+<li> <b>Regularize Model</b>: check to compute transformations of another type simultaneously and return a weighted average</li>
+<li> <b>Group Channels:</b> Whether to groups channels (i.e. transform them together) or not. You can also select <b>Only channel ...</b>, in which case the tiles of the other channels will be un-grouped (overriding the following option). </li>
+<li> <b>Group Tiles:</b> Whether to groups tiles (i.e. transform them together) or not.</li>
+<li> <b>Group Illuminations:</b> Whether to groups illuminations (i.e. transform them together) or not.</li></ul>
+<p><br />
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_icp_02.png" class="image"><img alt="BigStitcher icp 02.png" src="../_images/5/53/BigStitcher_icp_02.png" width="500" height="485" /></a></div></div>
+<p>If you opted for <b>Regularization</b> of the transform in the previous dialog, you will be asked for the type of the second transformation model to estimate and a <b>lambda</b> (<img class="mwe-math-fallback-image-inline tex" alt="\in[0,1]" src="../_images/math/f/6/8/f688a07dbc957d51711a57c647554943.png" />), i.e. how much weight you want to give to the regularizing model in the final averaged result.
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_regularize_model.png" class="image"><img alt="BigStitcher regularize model.png" src="../_images/d/da/BigStitcher_regularize_model.png" width="400" height="256" /></a></div></div>
+<p>Go back to the <a href="http://imagej.net/BigStitcher#Documentation" title="BigStitcher">main page</a>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064616
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.038 seconds
+Preprocessor visited node count: 144/1000000
+Preprocessor generated node count: 823/1000000
+Post‐expand include size: 2115/2097152 bytes
+Template argument size: 910/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    7.764      1 - -total
+ 56.80%    4.410      2 - Template:Notice
+ 43.82%    3.402      2 - Template:Ambox
+ 40.78%    3.166      1 - Template:Bc
+ 12.85%    0.998      1 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=BigStitcher_ICP_refinement&amp;oldid=37476">http://imagej.net/index.php?title=BigStitcher_ICP_refinement&amp;oldid=37476</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 28 March 2018, at 09:34.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=BigStitcher_ICP_refinement&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=BigStitcher+ICP+refinement" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=BigStitcher+ICP+refinement" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/BigStitcher_ICP_refinement" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/BigStitcher_ICP_refinement" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=BigStitcher_ICP_refinement&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=BigStitcher_ICP_refinement&amp;oldid=37476" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=BigStitcher_ICP_refinement&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":184});});</script>
+		</body>
+		</html>
+		

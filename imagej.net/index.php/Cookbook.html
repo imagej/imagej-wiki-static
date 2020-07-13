@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Cookbook - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Cookbook","wgTitle":"Cookbook","wgCurRevisionId":29329,"wgRevisionId":29329,"wgArticleId":252,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Cookbook","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Cookbook","wgRelevantArticleId":252,"wgRequestId":"ebd3494d5a81d44de3c58daa","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This book is an analysis-oriented introduction and user guide to ImageJ. It is inspired by the defunct MBF &quot;ImageJ for microscopy&quot; manual which went offline in November 2012, and it describes many of the same plugins from that distribution."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Cookbook"/>
+
+	<meta property="og:description" content="This book is an analysis-oriented introduction and user guide to ImageJ. It is inspired by the defunct MBF &quot;ImageJ for microscopy&quot; manual which went offline in November 2012, and it describes many of the same plugins from that distribution."/>
+
+	<meta property="og:url" content="http://imagej.net/Cookbook"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Cookbook rootpage-Cookbook skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Cookbook.html#bodyContent">Skip to content</a>, 			<a href="Cookbook.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Cookbook.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Cookbook" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Cookbook&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Cookbook&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Cookbook&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Cookbook</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Cookbook Topics
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Introduction and Installation</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Annotating_Images" title="Annotating Images">Annotating Images</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Color_Image_Processing" title="Color Image Processing">Color Image Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Intensity_Processing" title="Image Intensity Processing">Image Intensity Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Importing_Image_Files" title="Importing Image Files">Importing Image Files</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Particle_Analysis" title="Particle Analysis">Particle Analysis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Saving_and_Exporting" title="Saving and Exporting">Saving and Exporting</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Stack-slice_Manipulations" title="Stack-slice Manipulations">Stack-slice Manipulations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/T-functions" title="T-functions">T-functions</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Z-functions" title="Z-functions">Z-functions</a>
+</td></tr></table>
+<p>This book is an analysis-oriented introduction and user guide to ImageJ. It is inspired by the defunct <a href="http://imagej.net/MBF_Plugin_Collection" title="MBF Plugin Collection">MBF "ImageJ for microscopy" manual</a> which went offline in November 2012, and it describes many of the same plugins from that distribution.
+</p><p>Cooks call them <i>recipes</i>, biologists <i>protocols</i>, and programmers call them <i>HOWTOs</i>.  No matter how you refer to them, you'll find the book topics in the sidebar to the right!
+</p><p>Like the rest of this wiki, this Cookbook is a community project. Please feel welcome to edit and expand the material here!
+</p>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Cookbook.html#Installing_ImageJ"><span class="tocnumber">1</span> <span class="toctext">Installing ImageJ</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Cookbook.html#Installing_the_Cookbook_plugins"><span class="tocnumber">2</span> <span class="toctext">Installing the Cookbook plugins</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Cookbook.html#Source"><span class="tocnumber">3</span> <span class="toctext">Source</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Cookbook.html#Credits"><span class="tocnumber">4</span> <span class="toctext">Credits</span></a></li>
+</ul>
+</div>
+</div>
+<h2><span class="mw-headline" id="Installing_ImageJ">Installing ImageJ</span></h2>
+<p>The Cookbook is based on the <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a> distribution of ImageJ.
+</p>
+<table class="wikitable nicetable">
+<tr>
+<th colspan="3" style="font-size: large"> <div class="MediaTransformError" style="width: 41px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> ~ Download Fiji for your OS ~ <div class="MediaTransformError" style="width: 41px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</th></tr>
+<tr>
+<td style="text-align: center; vertical-align: top; width: 128px"> <a href="https://downloads.imagej.net/fiji/latest/fiji-win64.zip" rel="nofollow"><img alt="Windows (64-bit)" src="../_images/2/29/Win.png" width="129" height="128" /></a><br /><a rel="nofollow" class="external text" href="https://downloads.imagej.net/fiji/latest/fiji-win64.zip"><b>64-bit</b></a>
+</td>
+<td style="text-align: center; vertical-align: top; width: 128px"> <a href="https://downloads.imagej.net/fiji/latest/fiji-macosx.zip" rel="nofollow"><img alt="macOS" src="../_images/2/22/Osx.png" width="105" height="128" /></a><br /><a rel="nofollow" class="external text" href="https://downloads.imagej.net/fiji/latest/fiji-macosx.zip"><b>macOS</b></a>
+</td>
+<td style="text-align: center; vertical-align: top; width: 128px"> <a href="https://downloads.imagej.net/fiji/latest/fiji-linux64.zip" rel="nofollow"><img alt="Linux (64-bit)" src="../_images/a/af/Tux.png" width="128" height="128" /></a><br /><a rel="nofollow" class="external text" href="https://downloads.imagej.net/fiji/latest/fiji-linux64.zip"><b>64-bit</b></a>
+</td></tr>
+<tr>
+<th colspan="3"> Other downloads
+</th></tr>
+<tr>
+<td style="text-align: center"> <a href="https://downloads.imagej.net/fiji/latest/fiji-win32.zip" rel="nofollow"><img alt="Windows (32-bit)" src="../_images/2/29/Win.png" width="24" height="24" /></a> <a rel="nofollow" class="external text" href="https://downloads.imagej.net/fiji/latest/fiji-win32.zip">32-bit</a>
+</td>
+<td style="text-align: center">  <a href="https://downloads.imagej.net/fiji/latest/fiji-nojre.zip" rel="nofollow"><img alt="All platforms (no JRE)" src="../_images/a/ae/Fiji-icon.png" width="24" height="24" /></a> <a rel="nofollow" class="external text" href="https://downloads.imagej.net/fiji/latest/fiji-nojre.zip">No JRE</a>
+</td>
+<td style="text-align: center">  <a href="https://downloads.imagej.net/fiji/latest/fiji-linux32.zip" rel="nofollow"><img alt="Linux (32-bit)" src="../_images/a/af/Tux.png" width="24" height="24" /></a> <a rel="nofollow" class="external text" href="https://downloads.imagej.net/fiji/latest/fiji-linux32.zip">32-bit</a>
+</td></tr></table>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Installing_the_Cookbook_plugins">Installing the Cookbook plugins</span></h2>
+<table style="font-size:17px; margin-left: 25px;">
+<tr>
+<td>From the Fiji menu, select <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update...</span></em></span>
+</td>
+<td style="padding:0 50px 0 0"><div class="thumb tright"><div class="thumbinner" style="width:152px;"><a href="http://imagej.net/File:1_Update_Fiji.png" class="image"><img alt="1 Update Fiji.png" src="../_images/9/9d/1_Update_Fiji.png" width="150" height="233" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:1_Update_Fiji.png" class="internal" title="Enlarge"></a></div></div></div></div>
+</td></tr>
+<tr>
+<td>Click the <b>Manage update sites</b> button
+</td>
+<td style="padding-left: 50px"><div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/File:2_Manage_update_sites.png" class="image"><img alt="2 Manage update sites.png" src="../_images/5/57/2_Manage_update_sites.png" width="250" height="181" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:2_Manage_update_sites.png" class="internal" title="Enlarge"></a></div></div></div></div>
+</td></tr>
+<tr>
+<td>Check the <b>Cookbook</b> update site
+</td>
+<td><div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/File:3_Enable_cookbook.png" class="image"><img alt="3 Enable cookbook.png" src="../_images/c/cf/3_Enable_cookbook.png" width="250" height="164" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:3_Enable_cookbook.png" class="internal" title="Enlarge"></a></div></div></div></div>
+</td></tr>
+<tr>
+<td colspan="2" style="padding:65px 0 65px 0">Close the <b>Manage update sites</b> dialog
+</td></tr>
+<tr>
+<td>Click <b>Apply changes</b> to download the Cookbook plugins
+</td>
+<td><div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/File:4_Apply_changes.png" class="image"><img alt="4 Apply changes.png" src="../_images/4/44/4_Apply_changes.png" width="250" height="178" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:4_Apply_changes.png" class="internal" title="Enlarge"></a></div></div></div></div>
+</td></tr>
+<tr>
+<td colspan="2" style="padding:65px 0 65px 0">Restart Fiji to complete the plugin installation
+</td></tr>
+<tr>
+<td>Enjoy your new plugins from the <b>Cookbook</b> menu!
+</td>
+<td><div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/File:5_Use_the_Cookbook.png" class="image"><img alt="5 Use the Cookbook.png" src="../_images/f/f5/5_Use_the_Cookbook.png" width="250" height="64" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:5_Use_the_Cookbook.png" class="internal" title="Enlarge"></a></div></div></div></div>
+</td></tr></table>
+<h2><span class="mw-headline" id="Source">Source</span></h2>
+<p>The source code is <a rel="nofollow" class="external text" href="https://github.com/fiji/cookbook/">on GitHub</a>.
+</p>
+<h2><span class="mw-headline" id="Credits">Credits</span></h2>
+<p>The Cookbook pages themselves were adapted from the defunct <a href="http://imagej.net/MBF_Plugin_Collection" title="MBF Plugin Collection">MBF "ImageJ for microscopy" manual</a>, originally created by Tony Collins.
+</p><p>The Cookbook technical writer team includes:
+</p>
+<ul><li> <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a> (technical oversight and maintenance)</li>
+<li> <a href="http://imagej.net/User:Apal4" title="User:Apal4">Aparna Pal</a> (January 2014 - May 2015)</li>
+<li> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a> (June 2013 - November 2014)</li>
+<li> <a href="http://imagej.net/User:Khildebrand" title="User:Khildebrand">Katie Hildebrand</a> (June 2013 - December 2013)</li>
+<li> <a href="http://imagej.net/User:Amacall" title="User:Amacall">Amanda MacAllister</a> (June 2013 - December 2013)</li>
+<li> <a href="http://imagej.net/User:Ruizhi" title="User:Ruizhi">Ruizhi "Ray" Liao</a> (November 2013 - December 2013)</li>
+<li> <a href="http://imagej.net/User:Gtcwildfire" title="User:Gtcwildfire">Gabby Campagnola</a> (June 2013 - August 2013)</li></ul>
+<p>The plugins featured in the Cookbook were collated from various sources and have various authors and licenses.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064920
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.072 seconds
+Real time usage: 0.077 seconds
+Preprocessor visited node count: 738/1000000
+Preprocessor generated node count: 4278/1000000
+Post‐expand include size: 3925/2097152 bytes
+Template argument size: 825/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   35.034      1 - -total
+ 54.45%   19.076      7 - Template:Person
+ 17.09%    5.986      1 - Template:CookbookMenu
+ 13.62%    4.771      1 - Template:Menu
+ 10.31%    3.613      1 - Template:Bc
+  7.47%    2.618     11 - Template:MenuItem
+  6.25%    2.189      1 - Template:TOC
+  5.35%    1.874      1 - Template:GitHub
+  3.25%    1.137      1 - Template:Arrow
+  2.59%    0.909      1 - Template:DownloadFiji
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Cookbook&amp;oldid=29329">http://imagej.net/index.php?title=Cookbook&amp;oldid=29329</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:14.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Cookbook&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Cookbook" title="Category:Cookbook">Cookbook</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Cookbook" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Cookbook" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Cookbook" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Cookbook" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Cookbook&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Cookbook&amp;oldid=29329" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Cookbook&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":313});});</script>
+		</body>
+		</html>
+		

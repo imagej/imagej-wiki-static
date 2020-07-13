@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Balloon - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Balloon","wgTitle":"Balloon","wgCurRevisionId":32339,"wgRevisionId":32339,"wgArticleId":1509,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Segmentation","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Balloon","wgRelevantArticleId":1509,"wgRequestId":"adc49fa5cfe2ad658569834f","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="A plugin&amp;#91;1&amp;#93; that allows the segmentation off cell wall boundaries from microscopy images and to extract cell architectures . It uses a physical “balloon inflation” algorithm for finding the cell boundaries from 8bits images. Features include:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Balloon"/>
+
+	<meta property="og:description" content="A plugin&amp;#91;1&amp;#93; that allows the segmentation off cell wall boundaries from microscopy images and to extract cell architectures . It uses a physical “balloon inflation” algorithm for finding the cell boundaries from 8bits images. Features include:"/>
+
+	<meta property="og:url" content="http://imagej.net/Balloon"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Balloon rootpage-Balloon skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Balloon.html#bodyContent">Skip to content</a>, 			<a href="Balloon.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Balloon.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Balloon" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Balloon&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Balloon&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Balloon&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Balloon</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Balloon Segmentation<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Balloon">https://imagej.net/Balloon</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/BalloonSegmentation/releases/tag/BalloonSegmentation_-3.0.1">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv2" class="mw-redirect" title="GPLv2">GPLv2</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~BalloonSegmentation_~3.0.1~~~kw,versionexpand">3.0.1</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 22:31:27 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Minimal
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> Lionel Dupuy, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Dupuy" title="User:Dupuy">Lionel Dupuy</a>, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, Youcefhd13
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="Balloon.html#Balloon_Segmentation_for_multicellular_images"><span class="tocnumber">1</span> <span class="toctext">Balloon Segmentation for multicellular images</span></a>
+<ul>
+<li class="toclevel-2 tocsection-1"><a href="Balloon.html#Introduction"><span class="tocnumber">1.1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-2 tocsection-2"><a href="Balloon.html#Segmentation_process"><span class="tocnumber">1.2</span> <span class="toctext">Segmentation process</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="Balloon.html#Pre-processing_of_the_image"><span class="tocnumber">1.2.1</span> <span class="toctext">Pre-processing of the image</span></a></li>
+<li class="toclevel-3 tocsection-4"><a href="Balloon.html#Segmentation_Stage"><span class="tocnumber">1.2.2</span> <span class="toctext">Segmentation Stage</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-5"><a href="Balloon.html#Input_parameters"><span class="tocnumber">1.3</span> <span class="toctext">Input parameters</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Balloon.html#TODOS"><span class="tocnumber">1.4</span> <span class="toctext">TODOS</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Balloon.html#Publication"><span class="tocnumber">2</span> <span class="toctext">Publication</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Balloon_Segmentation_for_multicellular_images">Balloon Segmentation for multicellular images</span></h2>
+<h3><span class="mw-headline" id="Introduction">Introduction</span></h3>
+<p>A plugin<sup id="cite_ref-1" class="reference"><a href="Balloon.html#cite_note-1">&#91;1&#93;</a></sup> that allows the segmentation off cell wall boundaries from microscopy images and to extract cell architectures . It uses a physical “balloon inflation” algorithm for finding the cell boundaries from 8bits images. Features include:
+</p>
+<ul><li> Extraction of lists of individual cell shapes</li>
+<li> The determination of the cells being in contact each other</li>
+<li> All previous segmentation steps are automatic, but it is possible to make manual modifications at each step;</li>
+<li> Settings are saved in properties files for different types of images to be segmented</li></ul>
+<p><a href="http://imagej.net/File:Plugin_screencapture.jpg" class="image"><img alt="Plugin screencapture.jpg" src="../_images/7/7d/Plugin_screencapture.jpg" width="700" height="394" /></a>
+</p>
+<h3><span class="mw-headline" id="Segmentation_process">Segmentation process</span></h3>
+<h5><span class="mw-headline" id="Pre-processing_of_the_image">Pre-processing of the image</span></h5>
+<p>1. Image filtering: a smooth image is very important for the algorithm to work because. Different filters can be found in Fiji. Classically, a Gaussian filter can be used to process the image
+</p><p>2. Background subtraction: It is often useful to reduce long-range modulations of the background intensity. This can be achieved with Fiji’s background subtraction function.
+</p><p>3. Enhance contrast: it is generally useful to find the right setting for the balloon inflation to normalized the range of pixel intensity. This can be done using the enhance contrast function of Fiji.
+</p>
+<h5><span class="mw-headline" id="Segmentation_Stage">Segmentation Stage</span></h5>
+<p>1. Find image boundaries: this stage is compulsory, even if a pixel limit of 0 can be set if boundaries are those of the image. The function is based on a watershed algorithm to find the boundaries of the tissue to be segmented. It is used for example in the automatic sampling of cell interior point (3.b) or to stop balloons from expanding outside the region.
+</p><p>2. Find cell centres: the algorithm needs to be initiated with a seed placed inside each cell of interest. There are three options to carry out this step:
+</p><p>a. select the cells manually with the mouse by pressing the edit button and choosing one of the options add / move / delete points.
+</p><p>b. use the automatic sampling algorithm provided by the plugin. It uses the path between a of pair point to determine if they are contained within the same cell (in which case one of them is removed). This decision is based on the indicator h*l. h is the peak of image intensity along the path and l is the distance between the points. Therefore, if the value entered is too small, more than one point will be allowed to be in the same cell. If the value is too large, some cells won’t be detected. Running the algorithm several time can improve the results and find cells that were not detected in the first instance
+</p><p>c. import points from a file. The file is simply be a list of X Y values separated by a tabulation, one set of coordinate per line and saved with the .tab extension. You can download the text file of the cell center for fig. 2 here.
+</p><p>4. Inflate the balloon: Inflation of the balloons is achieved by specifying a pressure inside balloons (equivalent to pixel intensity) and pressing the inflate button. This operation is interactive can be repeated until the balloon occupies the area of the cell. Inflation consist of a first step where pressure is added into the balloon and to triger expansion, and a fitting stage where pressure in the balloon is removed and forces are derived from the laplacian of the image.
+</p><p>5. Visualize the results. The results of the segmentation (cell centres, neighbouring cells ...) can be visualized using the show button. The report option prints the geometrical properties of balloons either as ROI or as a result table.
+</p>
+<h3><span class="mw-headline" id="Input_parameters">Input parameters</span></h3>
+<p>The plugin is started with a set of predefined parameter values. e.g. initial number of balloon verticies, number of neighbours to check for contact, default values in the interface etc... The values are specified in the BalloonSegmentation.properties file, in the same folder than the plugin, and are read once at the start of the plugin. This file can be edited with any text editor, and it is recommended to keep a copy of the settings obtained for a specific type of image for further reuse. In future version of the plugin, such parameters will have to be controlled through the user interface
+</p>
+<h3><span class="mw-headline" id="TODOS">TODOS</span></h3>
+<p>The plugin is still work in progress. Things to be done includes use of threading, connection with a particle search algorithm to automate selection of seeds, improved interface etc... Any comments to improve the plugin are much welcome.
+</p>
+<h2><span class="mw-headline" id="Publication">Publication</span></h2>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="Balloon.html#cite_ref-1">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Integrated+genetic+and+computation+methods+for+in+planta+cytometry&amp;rft.aulast=Federici+Fern%C3%A1n%2C+Dupuy+Lionel%2C+Laplaze+Laurent%2C+Heisler+Marcus%2C+Haseloff+Jim.&amp;rft.date=2012&amp;rft.volume=advance+online+publication&amp;rft_id=http%3A%2F%2Fwww.nature.com%2Fnmeth%2Fjournal%2Fvaop%2Fncurrent%2Ffull%2Fnmeth.1940.html"><cite id="CITEREFFederici_Fern.C3.A1n.2C_Dupuy_Lionel.2C_Laplaze_Laurent.2C_Heisler_Marcus.2C_Haseloff_Jim.2012">Federici Fernán, Dupuy Lionel, Laplaze Laurent, Heisler Marcus, Haseloff Jim.&#32;(2012),&#32;"<a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/vaop/ncurrent/full/nmeth.1940.html">Integrated genetic and computation methods for in planta cytometry</a>",&#32;<i>Nature Methods</i>&#32;<b>advance online publication</b><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://www.nature.com/nmeth/journal/vaop/ncurrent/full/nmeth.1940.html">http://www.nature.com/nmeth/journal/vaop/ncurrent/full/nmeth.1940.html</a>&gt;</span></cite></span>
+</span>
+</li>
+</ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064553
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.096 seconds
+Real time usage: 0.099 seconds
+Preprocessor visited node count: 2093/1000000
+Preprocessor generated node count: 10882/1000000
+Post‐expand include size: 8949/2097152 bytes
+Template argument size: 3202/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   71.058      1 - -total
+ 72.75%   51.694      1 - Template:ComponentStats:sc.fiji:BalloonSegmentation
+ 69.68%   49.512      1 - Template:Component
+ 51.57%   36.648      6 - Template:Person
+ 23.09%   16.409      1 - Template:Cite_journal
+ 18.84%   13.390      1 - Template:Citation/core
+  2.56%    1.819      1 - Template:GitHub
+  2.02%    1.432      1 - Template:Project
+  1.80%    1.279      1 - Template:Maven
+  1.63%    1.161      1 - Template:SupportStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Balloon&amp;oldid=32339">http://imagej.net/index.php?title=Balloon&amp;oldid=32339</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 2 June 2017, at 21:50.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Balloon&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Balloon" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Balloon" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Balloon" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Balloon" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Balloon&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Balloon&amp;oldid=32339" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Balloon&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":302});});</script>
+		</body>
+		</html>
+		

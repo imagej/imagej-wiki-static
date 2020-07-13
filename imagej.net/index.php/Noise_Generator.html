@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Noise Generator - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Noise_Generator","wgTitle":"Noise Generator","wgCurRevisionId":18175,"wgRevisionId":18175,"wgArticleId":2748,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Noise_Generator","wgRelevantArticleId":2748,"wgRequestId":"3c3a109db8b7382a89f58ef9","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="It is well know that in every image acquisition process exist a noise level always present by different sources. Each noise has its particular characteristics and the behavior on image acquisition plays an importanto role to quantify the reliability on further image manipulations such as registration and tissue segmentation."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Noise Generator"/>
+
+	<meta property="og:description" content="It is well know that in every image acquisition process exist a noise level always present by different sources. Each noise has its particular characteristics and the behavior on image acquisition plays an importanto role to quantify the reliability on further image manipulations such as registration and tissue segmentation."/>
+
+	<meta property="og:url" content="http://imagej.net/Noise_Generator"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Noise_Generator rootpage-Noise_Generator skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Noise_Generator.html#bodyContent">Skip to content</a>, 			<a href="Noise_Generator.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Noise_Generator.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Noise_Generator" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Noise_Generator&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Noise_Generator&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Noise_Generator&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Noise Generator</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Noise Generator PlugIn (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Acsenrafilho" title="User:Acsenrafilho">Antonio Carlos da S. Senra Filho</a> (<a rel="nofollow" class="external autonumber" href="mailto:acsenrafilho@gmail.com">[1]</a>)
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Acsenrafilho" title="User:Acsenrafilho">Antonio Carlos da S. Senra Filho</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/CSIM-Toolkits/ImageJ/tree/master/plugins/NoiseGenerator/">GitHub CSIM-ImageJ Noise Generator repository</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> February 08<sup>th</sup>, 2015
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> February 08<sup>th</sup>, 2015
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> experimental, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a>, <a href="http://imagej.net/index.php?title=Category:Noise&amp;action=edit&amp;redlink=1" class="new" title="Category:Noise (page does not exist)">Image</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Noise_Generator">Noise Generator</span></h2>
+<p>It is well know that in every image acquisition process exist a noise level always present by different sources. Each noise has its particular characteristics and the behavior on image acquisition plays an importanto role to quantify the reliability on further image manipulations such as registration and tissue segmentation.
+</p><p><b>Update notes:</b>
+</p>
+<ul><li><i>Feb-08-2015</i>: Available to produce additive noise on 2D images with some specific noise probability distributions. It is produced in the majority the MRI and complex noise distributions.</li></ul>
+<h2><span class="mw-headline" id="Noise_Distributions">Noise Distributions</span></h2>
+<h2><span class="mw-headline" id="How_to_use">How to use</span></h2>
+<p>We try to implement a simple PlugIn in order to produce additive noise on a set of different noise probability distributions. In this case, only click on the PlugIn ImageJ menu and hit the Noise Generator PlugIn. 
+</p><p>A window will pop up where you can choose what noise you want to add and the its intensity. The intensity is relative to a percentage (0-100%), which 0% does nothing in the image. For any other value between 0-100%, our PlugIn calculate the maximum contrast for each pixel depth (8-bits and 32-bits gray images) selected in the same Noise Generator window, and with this measure it could be estimated the noise intensity based on the maximum pixel contrast.
+</p><p><span style="color:#ff0000"> NOTE: </span> <b>The majority of noises takes no more than some milliseconds to be calculated (depending the image size). However, for the case of <img class="mwe-math-fallback-image-inline tex" alt="1/f^\beta" src="../_images/math/6/8/c/68c34d3259343004f5be1c83b0c71507.png" /> noises the time consuming is much higher because of the 2D Fourier Transforms used for these kinds of noises.</b>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073044
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.026 seconds
+Preprocessor visited node count: 140/1000000
+Preprocessor generated node count: 3920/1000000
+Post‐expand include size: 1762/2097152 bytes
+Template argument size: 989/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   12.322      1 - Template:Infobox
+100.00%   12.322      1 - -total
+ 58.03%    7.150      2 - Template:Person
+ 14.22%    1.752      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Noise_Generator&amp;oldid=18175">http://imagej.net/index.php?title=Noise_Generator&amp;oldid=18175</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 21 October 2015, at 12:02.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Noise_Generator&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Noise+Generator" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Noise+Generator" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Noise_Generator" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Noise_Generator" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Noise_Generator&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Noise_Generator&amp;oldid=18175" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Noise_Generator&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":220});});</script>
+		</body>
+		</html>
+		

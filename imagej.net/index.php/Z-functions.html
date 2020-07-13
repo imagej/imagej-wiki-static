@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Z-functions - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Z-functions","wgTitle":"Z-functions","wgCurRevisionId":29336,"wgRevisionId":29336,"wgArticleId":1861,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Cookbook","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Z-functions","wgRelevantArticleId":1861,"wgRequestId":"7fbe5734e999969eeaa5b660","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="A z-series is generally difficult to represent as a 2-D image for publication purposes. A montage will allow the 3-D dataset to be visualized in 2-D, but results in each frame being very small. There are several ways to &quot;flatten” the 3D stack."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Z-functions"/>
+
+	<meta property="og:description" content="A z-series is generally difficult to represent as a 2-D image for publication purposes. A montage will allow the 3-D dataset to be visualized in 2-D, but results in each frame being very small. There are several ways to &quot;flatten” the 3D stack."/>
+
+	<meta property="og:url" content="http://imagej.net/Z-functions"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Z-functions rootpage-Z-functions skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Z-functions.html#bodyContent">Skip to content</a>, 			<a href="Z-functions.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Z-functions.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Z-functions" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Z-functions&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Z-functions&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Z-functions&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Z-functions</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Cookbook Topics
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Cookbook" title="Cookbook">Introduction and Installation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Annotating_Images" title="Annotating Images">Annotating Images</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Color_Image_Processing" title="Color Image Processing">Color Image Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Intensity_Processing" title="Image Intensity Processing">Image Intensity Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Importing_Image_Files" title="Importing Image Files">Importing Image Files</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Particle_Analysis" title="Particle Analysis">Particle Analysis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Saving_and_Exporting" title="Saving and Exporting">Saving and Exporting</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Stack-slice_Manipulations" title="Stack-slice Manipulations">Stack-slice Manipulations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/T-functions" title="T-functions">T-functions</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Z-functions</strong>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Z-functions.html#Stack-Projections"><span class="tocnumber">1</span> <span class="toctext">Stack-Projections</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Z-functions.html#Maximum_Intensity_Z-projection"><span class="tocnumber">1.1</span> <span class="toctext">Maximum Intensity Z-projection</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Z-functions.html#Grouped_Z_Projector"><span class="tocnumber">1.2</span> <span class="toctext">Grouped Z Projector</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Z-functions.html#Sobel_Filter_Based_Focusing"><span class="tocnumber">1.3</span> <span class="toctext">Sobel Filter Based Focusing</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Z-functions.html#Wavelet-transform_Based_Focusing"><span class="tocnumber">1.4</span> <span class="toctext">Wavelet-transform Based Focusing</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="Z-functions.html#Depth_Coding"><span class="tocnumber">2</span> <span class="toctext">Depth Coding</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Z-functions.html#3D_Project"><span class="tocnumber">3</span> <span class="toctext">3D Project</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Z-functions.html#Volume_Viewer"><span class="tocnumber">4</span> <span class="toctext">Volume Viewer</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Z-functions.html#3D_Viewer"><span class="tocnumber">5</span> <span class="toctext">3D Viewer</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Z-functions.html#Other_Volume_Rendering_Methods"><span class="tocnumber">6</span> <span class="toctext">Other Volume Rendering Methods</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Z-functions.html#Surface_Render"><span class="tocnumber">7</span> <span class="toctext">Surface Render</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="Z-functions.html#Stack_Reslice"><span class="tocnumber">8</span> <span class="toctext">Stack Reslice</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="Z-functions.html#Orthogonal_Views"><span class="tocnumber">9</span> <span class="toctext">Orthogonal Views</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="Z-functions.html#Stack_Slicer"><span class="tocnumber">9.1</span> <span class="toctext">Stack Slicer</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="Z-functions.html#Stereo_Pairs_and_Anaglyphs"><span class="tocnumber">10</span> <span class="toctext">Stereo Pairs and Anaglyphs</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="Z-functions.html#Volume-rendered_anaglyphs"><span class="tocnumber">10.1</span> <span class="toctext">Volume-rendered anaglyphs</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Z-functions.html#Surface-rendered_anaglyphs"><span class="tocnumber">10.2</span> <span class="toctext">Surface-rendered anaglyphs</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Stack-Projections">Stack-Projections</span></h2>
+<p>A z-series is generally difficult to represent as a 2-D image for publication purposes. A montage will allow the 3-D dataset to be visualized in 2-D, but results in each frame being very small. There are several ways to "flatten” the 3D stack.
+</p>
+<h3><span class="mw-headline" id="Maximum_Intensity_Z-projection">Maximum Intensity Z-projection</span></h3>
+<p>Z Project is a method of analyzing a stack by applying different projection methods to the pixels within the stack. This process may be used to highlight specific data from the stack and is accessed using <i>"Image/Stacks/Z Project…"</i>
+</p><p>When Z Project opens, it prompts for a start and stop slice, which will determine the range of the stack that will be included in the z projection. The default for these values is the endpoint slices of the stack. 
+</p>
+<div class="floatright"><a href="http://imagej.net/File:Z_project_window.png" class="image" title="Prompt for Z Project."><img alt="Prompt for Z Project." src="../_images/d/d4/Z_project_window.png" width="175" height="124" /></a></div>
+<p>There are six different projection types to choose from: average intensity, maximum intensity, minimum intensity, sum slices, standard deviation, and median. The appropriate projection type will vary depending on the type of data being represented. As seen below, by applying a z transform to an MRI stack using different projection methods, the results can be very different. In the case of the MRI stack, maximum intensity is a preferable method to view the external head rendering while other methods of projection may be used to examine the internal brain components. These remaining methods also have their distinguishing characteristics, as seen by the median projection which gives the clearest rendering with the trade-off of less of filtering out more of the image in the projection.
+</p><p><a href="http://imagej.net/File:Z_project_types.png" class="image"><img alt="Z project types.png" src="../_images/3/37/Z_project_types.png" width="425" height="314" /></a>
+</p><p>The six projection methods clockwise from top left: average intensity, maximum intensity, minimum intensity, median, standard deviation, and sum slices.
+</p>
+<h3><span class="mw-headline" id="Grouped_Z_Projector">Grouped Z Projector</span></h3>
+<p>The Grouped Z Project tool ("<i>Image/Stacks/Tools/Grouped Z Project...</i>") works similarly to Z Project in terms of projection methods. This plugin uses the maximum intensity, average intensity, or sum slices projection method to apply a z projection to a stack of images. Unlike the standard Z Project, this plugin prompts for a group size that must be a factor of the total number of slices in the stack.
+</p><p>The plugin will then apply the selected projection method to subgroups with this number of slices, starting with the first slice. The result of running this plugin is a new stack where each slice is a a projection of a subset of the original stack. This is a useful plugin for analyzing large stacks where the change from slice to slice is still relevant, but not all slices need to be examined individually. If group size is set to equal the number of slices in the stack, Grouped Z Project will evaluate the stack in the same manner as Z Project.
+</p><p><a href="http://imagej.net/File:Grouped_z_stack.png" class="image"><img alt="Grouped z stack.png" src="../_images/6/60/Grouped_z_stack.png" width="377" height="245" /></a>
+</p><p>Grouped Z Project applied to two halves of a stack, resulting in the two slices shown.
+</p>
+<h3><span class="mw-headline" id="Sobel_Filter_Based_Focusing">Sobel Filter Based Focusing</span></h3>
+<p>The Stack Focuser plugin uses a Sobel edge filter to calculate “best focus”. Try “3” for the kernel value in the first instance. The result is a "height map" showing the focused images. This plugin only works on 8- or 16-bit images. It can result in a “pixelly” image.
+</p>
+<div class="MediaTransformError" style="width: 285px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Result of the Stack Focuser plugin with '3' as the kernel value.
+</p>
+<h3><span class="mw-headline" id="Wavelet-transform_Based_Focusing">Wavelet-transform Based Focusing</span></h3>
+<p>Authors: Daniel Sage, Jesse Berent, Brigitte Forster, Dimitri Van De Ville, Biomedical Imaging Group, Swiss Federal Institute of Technology Lausanne (EPFL), Switzerland, <a rel="nofollow" class="external free" href="http://bigwww.epfl.ch/demo/edf/index.html">http://bigwww.epfl.ch/demo/edf/index.html</a>.
+</p><p>This is a superior but slower, algorithm compared to the Sobel-filter focusing. The "<i>Extended Depth of Field</i>” plugin uses a wavelet transform (a more sophisticated transform compared to the Fourier transform) to calculate “best focus”. Run the plugin and check "Show 3D View". This plugin will work with RGB images. A more detailed description of the wavelet transform extended depth of field plugin can be found at the authors' website. A topology image is also generated. Please cite the authors' papers below if you publish work using this plugin.
+</p>
+<div class="MediaTransformError" style="width: 371px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>For more information see the following papers:
+</p><p>B. Forster, D. Van De Ville, J. Berent, D. Sage, M. Unser , "<a rel="nofollow" class="external text" href="http://bigwww.epfl.ch/preprints/forster0401p.html">Extended Depth-of-Focus for Multi-Channel Microscopy Images: A Complex Wavelet Approach</a>" Proceedings of the Second 2004 IEEE International Symposium on Biomedical Imaging: From Nano to Macro (ISBI'04), Arlington VA, USA, April 15-18, 2004, in press.
+</p><p>J. Berent, B. Forster, D. Van De Ville, D. Sage, M. Unser, "<a rel="nofollow" class="external text" href="http://bigwww.epfl.ch/publications/berent0301.html">Extended Depth-of-Focus for Color Images in Bright-Field microscopy</a>" Proceedings from the Autumn Meeting of the Swiss Society of Pharmacology and Toxicology, October 27-28, 2003, Basel, Switzerland.
+</p>
+<h2><span class="mw-headline" id="Depth_Coding">Depth Coding</span></h2>
+<p>One method of preserving some z-information in a 2D image is to 'depth-encode' the stack. A monochrome 3D image can be colored so that the color represents the z-depth. Any subsequent projection will retain this z-encoding. An 8-bit stack can be depth encoded with the menu command "<i>Image/Hyperstacks/Temporal-Color Code</i>". From there you will be able to choose a LUT as well as the start and end slices from the stack.
+</p><p>Another option is to use the plugin <i>Z Code Stack</i> for the results shown below.
+</p><p>Original stack:
+</p>
+<div class="MediaTransformError" style="width: 608px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Z coded stack:
+</p>
+<div class="MediaTransformError" style="width: 608px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Maximum Intensity Projections of each:
+</p>
+<div class="MediaTransformError" style="width: 353px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="3D_Project">3D Project</span></h2>
+<p>3D project (<i>"Image/Stacks/3D Project"</i>) creates a 3D rendering from a stack and rotates the resulting object through a range of angles. When using this plugin, you will be prompted for a variety of initial specifications. Based on these values, the program will generate a stack depicting a 360 degree rotation of the 3D projection. There are three projection methods available: nearest point, brightest point, and mean value. 
+</p><p><a href="http://imagej.net/File:3d_project_window.png" class="image"><img alt="3d project window.png" src="../_images/4/4d/3d_project_window.png" width="225" height="293" /></a>
+</p><p>The prompt seen when running 3D project.
+</p><p>The 3D project plugin will prompt for the slice interval between slices. Depending on the image properties, this could refer to a particular measurement between slices, such as millimeters, or will default to the number of pixels if a measurement system is not specified. Based on the selection of the slice interval, you can influence the overall shape of the 3D rendering by stretching or compressing the image in the z direction. 
+</p><p>Selection of the initial angle corresponds to the starting orientation of the volume while the total rotation will determine what views of the volume are rendered, as well as the number of slices in the final stack. Also impacting the number of slices included is the rotation angle increment, which determines how much the volume is rotated between two consecutive slices.
+</p><p>The interpolation tool is relevant for images where the spacing between slices is greater than 1.0 pixels. In this case, interpolation uses z-scaling to eliminate the gaps for the final 3D rendering. If the slice spacing is less than 1.0 pixels, the option will be ignored.
+</p><p>Opacity, transparency, and depth cues may also be specified.
+</p>
+<div class="MediaTransformError" style="width: 387px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>At left, an image with surface depth cues at 100% and interior depth cues at 50%. The image on the right has surface depth cues at 100% and interior depth cues at 50%.
+</p><p><br />
+Try these initial settings:
+</p>
+<ol><li> Projection Method: Use <i>"Brightest point</i>" method.</li>
+<li> Slice Spacing: This determines your aspect ratio of the stack. Biorad stacks are internally calibrated and this value should be correct unless you set the wrong objective in the Biorad software during acquisition.</li>
+<li> Interpolate: Used when slice spacing &gt; 0. Check this option although it will slow down the renderer. For a large data set, it may be worthwhile having this "off" initially while you're selecting the settings.</li></ol>
+<h2><span class="mw-headline" id="Volume_Viewer">Volume Viewer</span></h2>
+<p>The Volume Viewer (in the plugins menu) provides 3D rendering of a stack as well as slices of the XY, YZ, and XZ planes. Volume Viewer also offers more detailed interpolation and viewing methods than some of the other 3D rendering techniques.
+</p><p>The different display modes contain many options with which you can view the rendering: 'Slice', 'Slice &amp; Borders', 'Max Projection', 'Projection', and 'Volume'.
+</p><p><a href="http://imagej.net/File:Volume_viewer_display_modes.png" class="image"><img alt="Volume viewer display modes.png" src="../_images/2/23/Volume_viewer_display_modes.png" width="399" height="91" /></a>
+</p><p>Display modes from left to right: slice, slice &amp; borders, max projection, projection, volume.
+</p><p><br />
+For all display modes, the position may manually be updated by holding the ‘Shift’ key and moving the displayed image with the mouse. Orientation may also be updated by adjusting the rotation values at the bottom of Volume Viewer: these values represent the degree of rotation along each axis and may be changed to provide a more concise orientation. When using the mouse to rotate the object, these values update automatically. The XY, YZ, or XZ planes can also be viewed at any time by using the buttons at the bottom of the viewer.
+</p><p>Beyond the display modes, the image may also be analyzed in different ways through the selection of an interpolation method. These are of especial importance for the ‘Slice’, ‘Slice &amp; Borders’, and ‘Volume’ modes. The methods available are ‘Nearest Neighbor’, ‘Trilinear’, ‘Tricubic Smooth’, and ‘Tricubic Sharp’.
+</p><p><a href="http://imagej.net/File:Volume_viewer_interpolation_methods.png" class="image"><img alt="Volume viewer interpolation methods.png" src="../_images/e/eb/Volume_viewer_interpolation_methods.png" width="279" height="274" /></a>
+</p><p>Interpolation methods clockwise from top left: nearest neighbor, trilinear, tricubic sharp, tricubic smooth.
+</p><p><br />
+The z-Aspect may be used to either stretch or compress data along the Z-axis while the X and Y axes dimensions remain unchanged. The sampling value can be used to control how many samples are utilized to blend the rendering’s values. Typically, higher sampling values will result in better quality results, though the tradeoff is a slightly slower processing time.
+</p>
+<h2><span class="mw-headline" id="3D_Viewer">3D Viewer</span></h2>
+<p>This plugin is found in the plugins folder. The 3D Viewer uses a stack of images to visualize it in 3D space as a volume, a surface, or orthoslices. When the plugin is run, you will have the option to choose a name for the new image as well as the display method: volume, orthoslice, surface, surface plot 2D, or multiorthoslices. Color, threshold, sampling factor, channels, and starting time point may also be selected. The starting time point is used when inserting the rendering into a movie: the rendering will be present starting at the time point specified. At this time point, modification of the image is possible within the viewer. Many of these variables may be updated in the viewer once the rendering is generated.
+</p><p><a href="http://imagej.net/File:3d_viewer_window.png" class="image"><img alt="3d viewer window.png" src="../_images/b/bc/3d_viewer_window.png" width="201" height="246" /></a>
+</p><p>The window seen when 3D Viewer is opened.
+</p><p><br />
+To use the 3D Viewer, an 8-bit or RGB image is required. If used on another type of stack, the plugin will have a prompt for you to choose to convert to these types.
+</p><p>The current display mode may be changed by clicking <i>"Edit/Display As"</i>. This will let you choose from 'Volume', 'Orthoslice', 'Multi-orthoslice', 'Surface', and 'Surface Plot 2D'. When using the 'Orthoslice' mode, you can right click on the viewer and select 'Adjust Slices' to update the placement of the x, y, and z coordinates. You can also press the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">X</kbd>, <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Y</kbd>, or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Z</kbd> keys in combination with arrow keys to move the slices.  
+</p><p><a href="http://imagej.net/File:3d_viewer_volume.png" class="image"><img alt="3d viewer volume.png" src="../_images/8/85/3d_viewer_volume.png" width="263" height="286" /></a>
+</p><p>Example of the type of volume seen in 3D viewer.
+</p><p><br />
+The “Edit” menu supplies some more options to change the color and transparency of the rendering. <i>"Edit/Change Color"</i> can be used to edit the color of the rendering, including an option to apply to all time points. <i>"Edit/Change Transparency"</i> may be used for a straightforward way to edit the transparency for all types of displays. <i>"Edit/Change Channels"</i> provides the option to select or deselect any combination of the red, green, and blue channels. <i>"Edit/Adjust Threshold"</i> can be used for both the 'Volume' and the 'Surface' viewing options.
+</p><p><i>"Edit/Transformation/Set Transform"</i> can give more control over the placement of the rendering by specifying rotation origin and rotation axis. You can also use the 3x4 matrix in "Set Transform" to specify the x, y, and z axes of the transformed coordinate system in the first three columns and the vector from the old origin to the new origin in the fourth column.
+</p>
+<h2><span class="mw-headline" id="Other_Volume_Rendering_Methods">Other Volume Rendering Methods</span></h2>
+<p>3D reconstruction methods where the object will appear semitransparent include <i>360° 3D-project</i> and <i>Rocking 3D-project</i>. <i>360° 3D-project</i> produces a stack with a 360° rotation of the z-transform. The results will look similar to those generated with the <i>Grouped Z Projector</i> plugin. If you want the stack to just rock back and forth, use the <i>Rocking 3D-project</i> macro.
+</p>
+<h2><span class="mw-headline" id="Surface_Render">Surface Render</span></h2>
+<p>VolumeJ is a 3D reconstruction method where the object surface will appear opaque, giving a more "solid" look to the object.
+</p>
+<div style="background:#ffd; padding: 10px 10px 0 10px; border: 1px solid black;">
+<p>NB: VolumeJ's interactive rendering option is currently not working. Other modes should work.
+</p>
+</div>
+<p><a href="http://imagej.net/File:Volumej.png" class="image"><img alt="Volumej.png" src="../_images/f/fa/Volumej.png" width="348" height="269" /></a>
+</p>
+<ol><li> Select the volume stack to render.</li>
+<li> Select the classifier (i.e. rendering algorithm). Choose 'Gradient no index' for grayscale stacks; choose 'Ramp + index' for RGB stacks.</li>
+<li> Set the classifier threshold as the intensity of the "surface" of the object. This can be determined using the <i>"Image/Adjust/Threshold"</i> command.</li>
+<li> Set the classifier deviation. Low values tend to result in sharper edges while higher values may be unfocused. A good compromise is 1-2.</li>
+<li> Set the rotation angle (try -20 in the first box to rotate the volume backwards slightly).</li>
+<li> Ensure that the aspect ratio is correct: VolumeJ should pick up the spatial calibration of the stack if it is present.</li>
+<li> Set the scale as 0.5 for faster preliminary renderings. Set it to 1 or 2 for the final rendering.</li>
+<li> Click on the <i>"Render"</i> button to start rendering.</li>
+<li> Click on <i>"Stop renderer"</i> if you've made a mistake.</li></ol>
+<h2><span class="mw-headline" id="Stack_Reslice">Stack Reslice</span></h2>
+<p>This generates a “side-view” of a stack along a user defined line. Select part of a stack to be axially sectioned using the line ROI tool from the toolbar. Select the menu item “<i>Image/Stacks/Reslice</i>" after drawing a straight line or rectangle onto an open stack.
+</p>
+<div class="MediaTransformError" style="width: 526px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Stack resliced along a vertical axis.
+</p><p>From this point, you can generate a new stack by reconstructing the slices along the selection. If you drew a line, the new stack will be from the angle of this new line, as if it "cut" through the stack. You’ll also be able to specify the number of slices to include in the stack and the spacing between the slices. Since you will be specifying both values, it is up to you to determine how many slices are needed to represent the region of interest in a substack. If you drew a rectangle over the initial stack, you won’t be able to specify the number of slices, though you can still control the spacing. The application will then create a new stack depicting the region of interest chosen with the rectangle.
+</p><p>The <i>Dynamic Reslice</i> plugin is used the same way as "<i>Image/Stacks/Reslice</i>". This plugin will dynamically update the slice generated as the ROI is changed on the original image.
+</p>
+<h2><span class="mw-headline" id="Orthogonal_Views">Orthogonal Views</span></h2>
+<p>A straightforward method to visualize 3D renderings is through orthogonal views, accessed via "<i>Image/Stacks/Orthogonal Views</i>". This method may be used with a stack to display the XZ and YZ planes at a given point in the 3D image. When Orthogonal Views is opened, windows containing the two planes will dock alongside the original stack, with the intersection of the yellow lines on the stack indicating the point in the stack that is being analyzed. The views in the XZ and YZ planes will update automatically, either as the stack is set to a different slice or the lines are manually adjusted on any of the three windows. 
+</p><p><a href="http://imagej.net/File:Orthogonal_views_example.png" class="image"><img alt="Orthogonal views example.png" src="../_images/6/68/Orthogonal_views_example.png" width="292" height="350" /></a>
+</p><p>Example of image seen with orthogonal views.
+</p>
+<h3><span class="mw-headline" id="Stack_Slicer">Stack Slicer</span></h3>
+<p>This plugin is an alternative to the orthogonal views option. After making a point selection on the original stack, you can run the plugin to generate images of the XZ and YZ planes intersecting with this point. By selecting the rotate YZ option, the image of the YZ plane will rotate 90 degrees counterclockwise. 
+</p><p>When running the plugin, it is possible to adjust the aspect ratio of the three axes. The stack is initially assumed to contain cubic voxels, or, a 1:1:1 ratio. These numbers may be modified to change dimensions of the XZ and YZ plane images. The gap between the Z planes may also be updated from its initial value of 1 pixel.
+</p>
+<h2><span class="mw-headline" id="Stereo_Pairs_and_Anaglyphs">Stereo Pairs and Anaglyphs</span></h2>
+<p>To create an anaglyph of two images, you can use the Two Shot Anaglyph plugin. This plugin may be used with two RGB Color images of the same dimensions to make a stereo image.
+</p>
+<h3><span class="mw-headline" id="Volume-rendered_anaglyphs">Volume-rendered anaglyphs</span></h3>
+<p>This is an adaptation of the methods described at <a rel="nofollow" class="external free" href="http://imagej.nih.gov/nih-image/more-docs/confocals.html">http://imagej.nih.gov/nih-image/more-docs/confocals.html</a>.
+</p><p>This plugin can use your stack to create a side by side stereo pair, a red-cyan anaglyph, a red-green anaglyph, or a rotation movie based on user specifications. The plugin will let you specify which of the stereo pair projections you want as well as the angle of rotation between the pairs. Typical values are 6-9°.
+</p>
+<div class="MediaTransformError" style="width: 566px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Stereo pair
+</p>
+<div class="MediaTransformError" style="width: 585px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Red-green anaglyph at left, red-cyan anaglyph on the right.
+</p>
+<h3><span class="mw-headline" id="Surface-rendered_anaglyphs">Surface-rendered anaglyphs</span></h3>
+<p>Surface stereo pairs for a stack are simply made with VolumeJ's stereo pair button. This generates a stereo pair with a 5° difference.
+</p><p>These two images can be merged to form an anaglyph using either the menu command <i>"Image/Color/Merge channels"</i> or the plugin <i>"Colour merge"</i>.
+</p><p>The "left eye" needs to be red; the "right eye" green or cyan.
+</p><p>Surface rendered anaglyph movies can be constructed using VolumeJ following an approach from Harvey Karten and Joel Sheffield.
+</p>
+<ol><li> Surface render your z-series with a "Cine frame increment" of 6-9°.</li>
+<li> Duplicate the surface rendered movie.</li>
+<li> Delete the top slice from the original movie.</li>
+<li> Delete the last slice from the duplicate movie.</li>
+<li> Merge the stacks using the menu command <i>"Image/Color/RGB merge"</i>.</li>
+<li> Assign the duplicate stack as red and the original stack as green. For Red-Green anaglyphs, set blue to be none. For red-cyan anaglyphs, set the blue channel to be the same as green.</li></ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074442
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.112 seconds
+Real time usage: 0.119 seconds
+Preprocessor visited node count: 1710/1000000
+Preprocessor generated node count: 6168/1000000
+Post‐expand include size: 6961/2097152 bytes
+Template argument size: 1138/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   62.725      1 - -total
+ 89.32%   56.028      3 - Template:Key
+ 78.65%   49.335      3 - Template:Key_press/core
+  9.97%    6.253      1 - Template:CookbookMenu
+  7.36%    4.616      1 - Template:Menu
+  4.19%    2.631     11 - Template:MenuItem
+  3.68%    2.306      3 - Template:Linear-gradient
+  3.10%    1.946      3 - Template:Box-shadow
+  1.83%    1.145      3 - Template:Border-radius
+  0.70%    0.437      3 - Template:Linear-gradient/legacy
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Z-functions&amp;oldid=29336">http://imagej.net/index.php?title=Z-functions&amp;oldid=29336</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:14.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Z-functions&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Cookbook" title="Category:Cookbook">Cookbook</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Z-functions" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Z-functions" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Z-functions" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Z-functions" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Z-functions&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Z-functions&amp;oldid=29336" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Z-functions&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":382});});</script>
+		</body>
+		</html>
+		

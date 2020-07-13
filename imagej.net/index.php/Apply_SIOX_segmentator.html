@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>SIOX: Simple Interactive Object Extraction - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"SIOX:_Simple_Interactive_Object_Extraction","wgTitle":"SIOX: Simple Interactive Object Extraction","wgCurRevisionId":41320,"wgRevisionId":41320,"wgArticleId":690,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Segmentation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"SIOX:_Simple_Interactive_Object_Extraction","wgRelevantArticleId":690,"wgRequestId":"4e9365e94a008b4818cf88ee","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This is a Fiji plugin based on the SIOX project to segment color images.  SIOX stands for Simple Interactive Object Extraction, a method for extracting foreground from still images with very little user interaction. SIOX is fast, noise robust and can therefore also be used for the segmentation of videos. It avoids many of the drawbacks of graph-based segmentation methods but performs about equally well on different benchmarks. SIOX is open and free (Apache License) and the authors have intentionally not patented any part of the technology. As a result, it has been integrated into several open-source image manipulation programs over the past years. SIOX is the underlying algorithm of the foreground extraction tool in the GNU Image Manipulation Program (GIMP) and is part of the tracer tool in Inkscape. SIOX originates from E-Chalk where an instructor standing in front of an electronic chalkboard is segmented. Variants of SIOX are being used for robotic vision and for improving 3D time-of-flight camera segmentation."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="SIOX: Simple Interactive Object Extraction"/>
+
+	<meta property="og:description" content="This is a Fiji plugin based on the SIOX project to segment color images.  SIOX stands for Simple Interactive Object Extraction, a method for extracting foreground from still images with very little user interaction. SIOX is fast, noise robust and can therefore also be used for the segmentation of videos. It avoids many of the drawbacks of graph-based segmentation methods but performs about equally well on different benchmarks. SIOX is open and free (Apache License) and the authors have intentionally not patented any part of the technology. As a result, it has been integrated into several open-source image manipulation programs over the past years. SIOX is the underlying algorithm of the foreground extraction tool in the GNU Image Manipulation Program (GIMP) and is part of the tracer tool in Inkscape. SIOX originates from E-Chalk where an instructor standing in front of an electronic chalkboard is segmented. Variants of SIOX are being used for robotic vision and for improving 3D time-of-flight camera segmentation."/>
+
+	<meta property="og:url" content="http://imagej.net/SIOX:_Simple_Interactive_Object_Extraction"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-SIOX_Simple_Interactive_Object_Extraction rootpage-SIOX_Simple_Interactive_Object_Extraction skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Apply_SIOX_segmentator.html#bodyContent">Skip to content</a>, 			<a href="Apply_SIOX_segmentator.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Apply_SIOX_segmentator.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Apply_SIOX_segmentator.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:SIOX:_Simple_Interactive_Object_Extraction&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=SIOX:_Simple_Interactive_Object_Extraction&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=SIOX:_Simple_Interactive_Object_Extraction&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>SIOX: Simple Interactive Object Extraction</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Siox Segmentation<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Siox_Segmentation">https://imagej.net/Siox_Segmentation</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Siox_Segmentation/releases/tag/Siox_Segmentation-1.0.5">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a rel="nofollow" class="external text" href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache Software License, Version 2.0</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Siox_Segmentation~1.0.5~~~kw,versionexpand">1.0.5</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 23:06:22 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a>, Gerald Friedland, Kristian Jantz, Lars Knipping
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div style="float: left"><div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Embryos775x581.png" class="image"><img alt="" src="../_images/3/37/Embryos775x581.png" width="300" height="225" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Embryos775x581.png" class="internal" title="Enlarge"></a></div>Embryos original sample</div></div></div></div><div style="float: left"><div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:SIOX_result_embryos775x581.png" class="image"><img alt="" src="../_images/4/4c/SIOX_result_embryos775x581.png" width="300" height="225" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:SIOX_result_embryos775x581.png" class="internal" title="Enlarge"></a></div>SIOX segmentation result</div></div></div></div><div style="clear:left;"></div>
+<p><br />
+</p><p>This is a Fiji plugin based on the <a rel="nofollow" class="external text" href="http://www.siox.org">SIOX project</a> <b>to segment color images</b>.  <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> stands for <i>Simple Interactive Object Extraction</i>, a method for <b>extracting foreground from still images</b> with very little user interaction. <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> is fast, noise robust and can therefore also be used for the segmentation of videos. It avoids many of the drawbacks of graph-based segmentation methods but performs about equally well on different benchmarks. <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> is open and free (Apache License) and the authors have intentionally not patented any part of the technology. As a result, it has been integrated into several open-source image manipulation programs over the past years. <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> is the underlying algorithm of the foreground extraction tool in the GNU Image Manipulation Program (<a rel="nofollow" class="external text" href="http://www.gimp.org/">GIMP</a>) and is part of the tracer tool in <a rel="nofollow" class="external text" href="http://www.inkscape.org/">Inkscape</a>. <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> originates from <a rel="nofollow" class="external text" href="http://www.echalk.de/">E-Chalk</a> where an instructor standing in front of an electronic chalkboard is segmented. Variants of <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> are being used for robotic vision and for improving 3D time-of-flight camera segmentation.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Apply_SIOX_segmentator.html#Quick_Start"><span class="tocnumber">1</span> <span class="toctext">Quick Start</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Apply_SIOX_segmentator.html#User_Manual"><span class="tocnumber">2</span> <span class="toctext">User Manual</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Apply_SIOX_segmentator.html#Initial_Segmentation"><span class="tocnumber">2.1</span> <span class="toctext">Initial Segmentation</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Apply_SIOX_segmentator.html#Detail_Refinement_Brush"><span class="tocnumber">2.2</span> <span class="toctext">Detail Refinement Brush</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Apply_SIOX_segmentator.html#Reset_or_Create_mask"><span class="tocnumber">2.3</span> <span class="toctext">Reset or Create mask</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Apply_SIOX_segmentator.html#Save_segmentator"><span class="tocnumber">2.4</span> <span class="toctext">Save segmentator</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Apply_SIOX_segmentator.html#Apply_SIOX_segmentator"><span class="tocnumber">2.5</span> <span class="toctext">Apply SIOX segmentator</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Apply_SIOX_segmentator.html#API_documentation"><span class="tocnumber">3</span> <span class="toctext">API documentation</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Apply_SIOX_segmentator.html#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Apply_SIOX_segmentator.html#ImageJ_version"><span class="tocnumber">5</span> <span class="toctext">ImageJ version</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Apply_SIOX_segmentator.html#Licenses"><span class="tocnumber">6</span> <span class="toctext">Licenses</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="Apply_SIOX_segmentator.html#See_also"><span class="tocnumber">7</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Quick_Start">Quick Start</span></h2>
+<dl><dt><b>Premises:</b></dt>
+<dd>In order to call the plugin, you need to have at least one <b>RGB color image</b> open. </dd></dl>
+<p>After clicking on <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> SIOX: Simple Interactive Object Extraction</span></em></span>, the image will be embedded into the plugin GUI.
+</p>
+<dl><dt><b>Step 1:</b> Initial Segmentation.</dt>
+<dd>Paint the regions of interest (ROIs) corresponding to the foreground and background. Select any of the ROI tools and mark the areas you consider foreground and background. To segment multiple objects, select "Allow multiple foreground components"</dd></dl>
+<dl><dt><b>Step 2:</b> Detail Refinement Brush.</dt>
+<dd>Select new ROIs to be added or subtracted from the current segmentation. Press "Refine" to add/subtract those areas based on the previous result.</dd></dl>
+<dl><dt><b>Step 3:</b> Reset or Create mask.</dt>
+<dd>Click the "Reset" button to restart the process or click on the "Create mask" button to create a binary image. Please, note that the binary image polarity will follow the option set in <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Binary </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options</span></em></span>.</dd></dl>
+<table>
+<tr>
+<td style="vertical-align:top"><div class="thumb tright"><div class="thumbinner" style="width:442px;"><a href="http://imagej.net/File:Screenshot-SIOX_Segmentation.png" class="image"><img alt="" src="../_images/2/2b/Screenshot-SIOX_Segmentation.png" width="440" height="248" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-SIOX_Segmentation.png" class="internal" title="Enlarge"></a></div>SIOX segmentation Graphical User Interface applied to Leaf sample</div></div></div>
+</td>
+<td style="vertical-align:top"><div class="thumb tright"><div class="thumbinner" style="width:282px;"><a href="http://imagej.net/File:SIOX-Mask.png" class="image"><img alt="" src="../_images/4/45/SIOX-Mask.png" width="280" height="261" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:SIOX-Mask.png" class="internal" title="Enlarge"></a></div>Resulting mask of Leaf sample after SIOX segmentation</div></div></div>
+</td></tr></table>
+<h2><span class="mw-headline" id="User_Manual">User Manual</span></h2>
+<p><a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> is a plugin designed to segment 2D color images. If the image is not RGB color, it can be converted to RGB using the command <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Type </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> RGB Color</span></em></span>. However, the <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> algorithm makes uses color information, so it is expected to work better on real RGB images.
+</p><p>When calling the plugin, the image will be embedded into the <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> graphical user interface (GUI). This GUI has 3 section (panels): Initial Segmentation, Detail Refinement Brush and the Mask/Reset buttons.
+</p>
+<h3><span class="mw-headline" id="Initial_Segmentation">Initial Segmentation</span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/File:SIOX-Initial-Segmentation.png" class="image"><img alt="" src="../_images/c/c0/SIOX-Initial-Segmentation.png" width="250" height="131" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:SIOX-Initial-Segmentation.png" class="internal" title="Enlarge"></a></div>SIOX initial segmentation panel</div></div></div>
+<p>This is the <b>first step</b> of the procedure where one defines the ROIs that correspond to typical areas of  foreground or background. 
+</p>
+<dl><dt><b>Defining foreground and background</b></dt></dl>
+<dl><dd>The radio buttons <i>Foreground</i> and  <i>Background</i> switch between the two ROI types. When the foreground ROIs are being defined, the background ROIs are shown in translucent <b>red</b>. Similarly, when defining the background ROIs, the foreground ROIs are shown in translucent <b>green</b>.</dd></dl>
+<dl><dd>The ROIs can be defined with any of the Selection Tools:</dd></dl>
+<dl><dd><div class="MediaTransformError" style="width: 323px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></dd></dl>
+<dl><dd><b>TIP</b>: Multiple ROIs can be selected with any of the selection tools by pressing the SHIFT key and clicking on different parts of the image.</dd></dl>
+<dl><dt><b>Multiple objects</b></dt></dl>
+<dl><dd>For segmenting <b>multiple objects</b>, check <i>Allow multiple foreground components</i>. This option tells <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> to look for several objects in the image. If you introduce multiple foreground ROIs, this option will be then assumed.</dd></dl>
+<dl><dt><b>Smoothing</b></dt></dl>
+<dl><dd>The <i>Smoothing</i> slider defines the sharpness of the resulting contours. For example, when segmenting the default sample "Leaf (36K)", reducing the smoothing provides more accurate borders.</dd></dl>
+<dl><dt><b>Segmentation</b></dt></dl>
+<div class="thumb tright"><div class="thumbinner" style="width:363px;"><a href="http://imagej.net/File:SIOX_Segmentation_GUI_step1.png" class="image"><img alt="" src="../_images/7/75/SIOX_Segmentation_GUI_step1.png" width="361" height="203" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:SIOX_Segmentation_GUI_step1.png" class="internal" title="Enlarge"></a></div>Example of SIOX result after initial segmentation</div></div></div>
+<dl><dd>In order to proceed with the initial segmentation, click on <i>Segment</i>. </dd></dl>
+<dl><dd>Remember that <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> needs at least one foreground component (ROI) to produce the segmentation, the background ROI is optional.</dd></dl>
+<dl><dd>After a few seconds (depending on the image size), the result will be shown (darkened background and foreground area(s) in the original colors).</dd></dl>
+<dl><dd>Following this, the initial segmentation panel is disabled. If the results are not satisfactory, press <i>Reset</i> to restart the process. Otherwise, continue to the next refinement step.</dd></dl>
+<h3><span class="mw-headline" id="Detail_Refinement_Brush">Detail Refinement Brush</span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:SIOX-Detail-Refinement-Brush.png" class="image"><img alt="" src="../_images/4/48/SIOX-Detail-Refinement-Brush.png" width="300" height="135" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:SIOX-Detail-Refinement-Brush.png" class="internal" title="Enlarge"></a></div>SIOX detail refinement brush panel</div></div></div>
+<p>This is the <b>second step</b> in the <a href="http://imagej.net/SIOX" class="mw-redirect" title="SIOX">SIOX</a> segmentation process. 
+</p><p>At this point, the method can be called again to refine the results obtained so far to subtract or add new areas to the background or foreground components <b>as many times needed</b>.
+</p><p>The <i>Add</i> mode only modifies pixels formerly classified as background, while the <i>Subtract</i> mode only modifies those formerly classified as foreground.
+</p><p><b>Note</b>: this step is optional. If you are already satisfied with the result, proceed to create the binary mask.
+</p><p>Clicking on <i>subtract</i> or <i>add</i> selects the ROIs to be added or subtracted. The <b>sliders represent the threshold for the add and subtract refinement</b>, deciding at which confidence level to stop at.  Increasing the subtraction slider relaxes the threshold value to set an area as background, while decreasing the addition slider relaxes the threshold value to set an area as foreground.
+</p><p>Finally, by clicking on <i>Refine</i>, the segmentation is recalculated for the selected areas and the result will be displayed as before (darkened background and full color foreground). Repeat this step until you are completely satisfied.
+</p>
+<h3><span class="mw-headline" id="Reset_or_Create_mask">Reset or Create mask</span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:235px;"><div class="MediaTransformError" style="width: 233px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:SIOX-Reset-Create-mask.png" class="internal" title="Enlarge"></a></div>SIOX Reset/Create mask panel</div></div></div>
+<p>This panel is enabled during any of the other segmentation steps.
+</p>
+<dl><dt><b>Reset</b></dt></dl>
+<dl><dd>Resets the image including the internal status of the confidence matrix (foreground, background and refinement areas). The <b>initial ROIs are reloaded</b> so they can be reused.</dd></dl>
+<dl><dt><b>Create mask</b></dt></dl>
+<dl><dd>Creates a binary (0-255) image based on the current state of the segmentation process. The background color (black or white) is defined in <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Binary </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options...</span></em></span> This button can be pressed during any of the previous steps.</dd></dl>
+<h3><span class="mw-headline" id="Save_segmentator">Save segmentator</span></h3>
+<p>You can save the segmentation information into a file by clicking on the "Save segmentator" button. This can be used later to a different image or stack of images by clicking on <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Apply SIOX segmentator</span></em></span> (see next section).
+</p>
+<h3><span class="mw-headline" id="Apply_SIOX_segmentator">Apply SIOX segmentator</span></h3>
+<p>You can apply a previously saved SIOX segmentator to any open image or set of images (stack). 
+</p><p><b>Step 1</b>: Click on the image or stack to segment.
+</p><p><b>Step 2</b>: Click on <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Apply SIOX segmentator</span></em></span>, and the following dialog will pop up:
+</p>
+<div class="thumb tleft"><div class="thumbinner" style="width:602px;"><a href="http://imagej.net/File:Screenshot-Load-SIOX-segmentator.png" class="image"><img alt="" src="../_images/a/ae/Screenshot-Load-SIOX-segmentator.png" width="600" height="123" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-Load-SIOX-segmentator.png" class="internal" title="Enlarge"></a></div>Apply SIOX segmentator input dialog</div></div></div><div style="clear:both"></div>
+<p><b>Step 3</b>: Select the siox segmentator file (or just drag and drop it) and click "OK".
+</p><p>The segmentator will be applied to the selected image or stack and the result will pop up.
+</p>
+<div class="thumb tleft"><div class="thumbinner" style="width:1016px;"><div class="MediaTransformError" style="width: 1014px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Combined-SIOX-Stacks.gif" class="internal" title="Enlarge"></a></div>Results of applying the previously calculated SIOX segmentator to a stack of transformed versions of the Leaf sample</div></div></div>
+<div style="clear:both"></div>
+<p><b>Note</b>: when applying a saved segmentator there is no information about the size of the expected foreground components so the largest component will be used as reference. The multiple component option will be consistent with what it was used during the segmentator calculation.
+</p>
+<h2><span class="mw-headline" id="API_documentation">API documentation</span></h2>
+<p>The latest documentation of the package can be found here:
+</p>
+<ul><li> For the SIOX plugin: <a rel="nofollow" class="external free" href="https://fiji.sc/javadoc/siox/package-summary.html">https://fiji.sc/javadoc/siox/package-summary.html</a> </li>
+<li> For the SIOX library: <a rel="nofollow" class="external free" href="https://fiji.sc/javadoc/org/siox/package-summary.html">https://fiji.sc/javadoc/org/siox/package-summary.html</a></li></ul>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<p>Most Comprehensive Work:
+</p>
+<ul><li> G. Friedland: Adaptive Audio and Video Processing for Electronic Chalkboard Lectures, <a rel="nofollow" class="external text" href="http://www.diss.fu-berlin.de/2006/514/indexe.html">PhD thesis</a>, Department of Computer Science, Freie Universitaet Berlin, October 2006. </li></ul>
+<p>Still Image Approach:
+</p>
+<ul><li> G. Friedland, K. Jantz, T. Lenz, F. Wiesel, R. Rojas: Object Cut and Paste in Images and Videos, International Journal of Semantic Computing Vol 1, No 2, pp. 221-247, World Scientific, USA, June 2007.</li>
+<li> G. Friedland, K. Jantz, L. Knipping, R. Rojas: Image Segmentation by Uniform Color Clustering -- Approach and Benchmark Results, <a rel="nofollow" class="external text" href="http://www.siox.org/downloads/tr-b-05-07.pdf">Technical Report B-05-07</a>, Department of Computer Science, Freie Universitaet Berlin, June 2005 (PDF, 18MB).</li>
+<li> G. Friedland, K. Jantz, R. Rojas: SIOX: Simple Interactive Object Extraction in Still Images, Proceedings of the IEEE International Symposium on Multimedia (ISM2005), pp. 253-259, Irvine (California), December, 2005. <a rel="nofollow" class="external text" href="http://csdl.computer.org/dl/proceedings/ism/2005/2489/00/24890253.pdf">Download PDF</a> from IEEE Computer Society Digital Library.</li>
+<li> G. Friedland, K. Jantz, T. Lenz, R. Rojas: Extending the SIOX Algorithm: Alternative Clustering Methods, Sub-pixel Accurate Object Extraction from Still Images, and Generic Video Segmentation, <a rel="nofollow" class="external text" href="http://www.siox.org/downloads/tr-b-06-06.pdf">Technical Report B-06-06</a>, Department of Computer Science, Freie Universitaet Berlin, January 2006 (PDF, 10MB).</li>
+<li> G. Friedland, K. Jantz, T. Lenz, F. Wiesel, R. Rojas: A Practical Approach to Boundary-Accurate Multi-Object Extraction from Still Images and Videos, to appear in Proceedings of the IEEE International Symposium on Multimedia (ISM2006), San Diego (California), December, 2006.</li></ul>
+<h2><span class="mw-headline" id="ImageJ_version">ImageJ version</span></h2>
+<p>Thanks to <a href="http://imagej.net/Wayne_Rasband" title="Wayne Rasband">Wayne Rasband</a>, there is an <a rel="nofollow" class="external text" href="https://imagej.net/plugins/siox/index.html">ImageJ</a> version of this plugin without Fiji dependencies:
+</p><p><a rel="nofollow" class="external free" href="https://imagej.net/plugins/siox/index.html">https://imagej.net/plugins/siox/index.html</a>
+</p>
+<h2><span class="mw-headline" id="Licenses">Licenses</span></h2>
+<p>The <a rel="nofollow" class="external text" href="https://fiji.sc/cgi-bin/gitweb.cgi?p=fiji.git;a=tree;f=src-plugins/Siox_Segmentation/org;h=902e7e0379b36f7f03b512552fb899861d866fa9;hb=d451306e290fb55a31052cbfc5426eaa70df17d6">SIOX Java library</a> developed by <a rel="nofollow" class="external text" href="http://www.gerald-friedland.org/">Gerald Friedland</a>, <a rel="nofollow" class="external text" href="http://www.inf.fu-berlin.de/~jantz">Kristian Jantz</a> and <a rel="nofollow" class="external text" href="http://www.inf.fu-berlin.de/~knipping">Lars Knipping</a> is licensed under the <b>Apache License</b>, Version 2.0 (the "License"): <a rel="nofollow" class="external free" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+</p><p>The Fiji plugin GUI, developed by <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>, <a rel="nofollow" class="external text" href="http://fly.mpi-cbg.de/~saalfeld/">Stephan Saalfeld</a> and <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a> is free software; you can redistribute it and/or modify it under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> Original SIOX project: <a rel="nofollow" class="external free" href="http://www.siox.org/">http://www.siox.org/</a></li>
+<li> SIOX project FAQs: <a rel="nofollow" class="external free" href="http://www.siox.org/faq.html">http://www.siox.org/faq.html</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064527
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.132 seconds
+Real time usage: 0.137 seconds
+Preprocessor visited node count: 3268/1000000
+Preprocessor generated node count: 5581/1000000
+Post‐expand include size: 9108/2097152 bytes
+Template argument size: 2211/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   90.321      1 - -total
+ 77.33%   69.842      1 - Template:ComponentStats:sc.fiji:Siox_Segmentation
+ 75.51%   68.202      1 - Template:Component
+ 66.44%   60.007     13 - Template:Person
+ 13.44%   12.136      6 - Template:Bc
+  4.23%    3.817     12 - Template:Arrow
+  1.87%    1.693      1 - Template:GitHub
+  1.73%    1.566      2 - Template:-
+  1.59%    1.436      1 - Template:Project
+  1.35%    1.224      1 - Template:Maven
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=SIOX:_Simple_Interactive_Object_Extraction&amp;oldid=41320">http://imagej.net/index.php?title=SIOX:_Simple_Interactive_Object_Extraction&amp;oldid=41320</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=SIOX:_Simple_Interactive_Object_Extraction&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=SIOX%3A+Simple+Interactive+Object+Extraction" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=SIOX%3A+Simple+Interactive+Object+Extraction" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/SIOX:_Simple_Interactive_Object_Extraction" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/SIOX:_Simple_Interactive_Object_Extraction" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=SIOX:_Simple_Interactive_Object_Extraction&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=SIOX:_Simple_Interactive_Object_Extraction&amp;oldid=41320" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=SIOX:_Simple_Interactive_Object_Extraction&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":285});});</script>
+		</body>
+		</html>
+		

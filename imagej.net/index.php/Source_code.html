@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Source code - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Source_code","wgTitle":"Source code","wgCurRevisionId":38637,"wgRevisionId":38637,"wgArticleId":2228,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Development"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Source_code","wgRelevantArticleId":2228,"wgRequestId":"bf06f11911f9c0b2c84b5f93","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The source code of ImageJ is very modular; i.e., it is organized into well-separated projects. This separation offers many advantages for efficient software development and it is well worth investing a little bit of time to understand."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Source code"/>
+
+	<meta property="og:description" content="The source code of ImageJ is very modular; i.e., it is organized into well-separated projects. This separation offers many advantages for efficient software development and it is well worth investing a little bit of time to understand."/>
+
+	<meta property="og:url" content="http://imagej.net/Source_code"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Source_code rootpage-Source_code skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Source_code.html#bodyContent">Skip to content</a>, 			<a href="Source_code.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Source_code.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Source_code" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Source_code&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Source_code&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Source_code&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Source code</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Development
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Development" title="Development">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Philosophy" title="Philosophy">Philosophy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Architecture" title="Architecture">Architecture</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Source code</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Project_management" title="Project management">Project management</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Coding_style" title="Coding style">Coding style</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging" title="Debugging">Debugging</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tools
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git" title="Git">Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Maven" title="Maven">Maven</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/IDEs" title="IDEs">IDEs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Travis" title="Travis">Travis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/AppVeyor" title="AppVeyor">AppVeyor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Dotfiles" title="Dotfiles">Dotfiles</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Guides
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Writing_plugins" title="Writing plugins">Writing plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_contribute_to_an_existing_plugin_or_library" title="How to contribute to an existing plugin or library">Contributing to a plugin</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Distribution" title="Distribution">Distributing your plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Development_Lifecycle" title="Development Lifecycle">Development lifecycle</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Building_a_POM" title="Building a POM">Building a POM</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImageJ_in_Eclipse" title="Developing ImageJ in Eclipse">Developing with Eclipse</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging_Exercises" title="Debugging Exercises">Hands-on debugging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_ops" title="Adding new ops">Adding new ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_formats" title="Adding new formats">Adding new formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_using_native_libraries" title="Developing using native libraries">Using native libraries</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_developers" title="Tips for developers">Tips for developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_C%2B%2B_developers" title="Tips for C++ developers">Tips for C++ developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">ImageJ 1.x plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Versioning" title="Versioning">Versioning</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Logging" title="Logging">Logging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Uber-JAR" title="Uber-JAR">Uber-JARs</a>
+</td></tr></table>
+</td></tr></table>
+<p>The source code of ImageJ is very modular; i.e., it is organized into <a href="http://imagej.net/Architecture#Modularity" title="Architecture">well-separated</a> projects. This separation offers many advantages for efficient software development and it is well worth investing a little bit of time to understand.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Source_code.html#Where_is_the_code.3F"><span class="tocnumber">1</span> <span class="toctext">Where is the code?</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Source_code.html#What_is_the_license.3F"><span class="tocnumber">2</span> <span class="toctext">What is the license?</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Source_code.html#Building_from_source"><span class="tocnumber">3</span> <span class="toctext">Building from source</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Source_code.html#Javadocs"><span class="tocnumber">4</span> <span class="toctext">Javadocs</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Source_code.html#Running_ImageJ1_unit_tests"><span class="tocnumber">5</span> <span class="toctext">Running ImageJ1 unit tests</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Where_is_the_code.3F">Where is the code?</span></h2>
+<div style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> You can search the source code at <a rel="nofollow" class="external free" href="http://search.imagej.net/">http://search.imagej.net/</a> using the GitHub button!</div>
+<ul><li> All source code is on <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>. </li>
+<li> Each project exists in its own GitHub organization. </li>
+<li> Each organization contains multiple source code repositories.</li>
+<li> Each repository corresponds to one Java library (.jar file).</li></ul>
+<table class="wikitable nicetable">
+<tr>
+<td> <b>Logo</b>
+</td>
+<td> <b>Organization</b>
+</td>
+<td> <b>Purpose</b>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/File:Scijava-icon.png" class="image"><img alt="Scijava-icon.png" src="../_images/9/93/Scijava-icon.png" width="28" height="28" /></a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/scijava">SciJava</a>
+</td>
+<td> Common utilities, plugin infrastructure, scripting, the context
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/File:Imagej2-icon.png" class="image"><img alt="Imagej2-icon.png" src="../_images/d/d1/Imagej2-icon.png" width="28" height="28" /></a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imagej">ImageJ</a>
+</td>
+<td> A general-purpose image processing application
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/File:Imglib2-icon.png" class="image"><img alt="Imglib2-icon.png" src="../_images/0/0a/Imglib2-icon.png" width="28" height="28" /></a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imglib">ImgLib2</a>
+</td>
+<td> Generic multi-dimensional data processing
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/File:Scifio-icon.png" class="image"><img alt="Scifio-icon.png" src="../_images/a/a6/Scifio-icon.png" width="28" height="33" /></a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/scifio">SCIFIO</a>
+</td>
+<td> Extensible image file I/O
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/File:Fiji-icon.png" class="image"><img alt="Fiji-icon.png" src="../_images/a/ae/Fiji-icon.png" width="28" height="28" /></a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji">Fiji</a>
+</td>
+<td> A "batteries-included" distribution of ImageJ
+</td></tr></table>
+<p>See the <a href="http://imagej.net/Architecture" title="Architecture">Architecture</a> page for more information about the relationship between these projects.
+</p>
+<h2><span class="mw-headline" id="What_is_the_license.3F">What is the license?</span></h2>
+<p>Most is <a href="http://imagej.net/BSD-2" class="mw-redirect" title="BSD-2">BSD-2</a> (permissive); some is <a href="http://imagej.net/GPL" title="GPL">GPL</a> (copyleft). See the <a href="http://imagej.net/Licensing" title="Licensing">Licensing</a> page.
+</p>
+<h2><span class="mw-headline" id="Building_from_source">Building from source</span></h2>
+<p>Virtually all of these repositories have a top-level <code>pom.xml</code> file, identifying them as <a href="http://imagej.net/Maven" title="Maven">Maven</a> projects.
+</p><p>To build a Maven project:
+</p>
+<ol><li> <a rel="nofollow" class="external text" href="http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">Install Maven</a>.</li>
+<li> Clone the source repository of interest.</li>
+<li> Type <code>mvn</code> from the top-level directory.</li></ol>
+<p>Advanced instructions for building, or modifying, the source code are available for specific development environments:
+</p>
+<table>
+<tr>
+<td style="padding: 10px; text-align: center"> <a href="http://imagej.net/Eclipse" title="Eclipse"><img alt="Eclipse-luna.png" src="../_images/6/6b/Eclipse-luna.png" width="84" height="109" /></a>
+</td>
+<td style="padding: 10px; text-align: center"> <a href="http://imagej.net/NetBeans" title="NetBeans"><img alt="Netbeans.png" src="../_images/c/c3/Netbeans.png" width="100" height="101" /></a>
+</td>
+<td style="padding: 10px; text-align: center"> <a href="http://imagej.net/IntelliJ_IDEA" title="IntelliJ IDEA"><img alt="Intellij-idea.png" src="../_images/1/1b/Intellij-idea.png" width="73" height="90" /></a>
+</td>
+<td style="padding: 10px; text-align: center"> <a href="http://imagej.net/Command_Line" title="Command Line"><img alt="Command-line.png" src="../_images/4/4a/Command-line.png" width="97" height="88" /></a>
+</td></tr></table>
+<p>Note that these tutorials are targeted towards <a href="http://imagej.net/ImageJ" title="ImageJ">ImageJ</a>, but would apply to any Maven-based project.
+</p>
+<h2><span class="mw-headline" id="Javadocs">Javadocs</span></h2>
+<p>Javadoc for all ImageJ-related projects can be found online:
+</p>
+<div style="font-family: monospace;font-size: large; background-color: khaki; padding: 0.5em 0 0.5em 3em;"><a rel="nofollow" class="external free" href="http://javadoc.scijava.org/">http://javadoc.scijava.org/</a></div>
+<p><br />
+You can also search the javadocs at <a rel="nofollow" class="external free" href="http://search.imagej.net/">http://search.imagej.net/</a> using the Javadoc button.
+</p>
+<h2><span class="mw-headline" id="Running_ImageJ1_unit_tests">Running ImageJ1 unit tests</span></h2>
+<p>We have written a substantial number of unit tests to exercise <a href="http://imagej.net/ImageJ_1.x" class="mw-redirect" title="ImageJ 1.x">ImageJ 1.x</a> functionality. See the <a href="http://imagej.net/Unit_tests_for_ImageJ1" title="Unit tests for ImageJ1">Unit tests for ImageJ1</a> page for more information.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073446
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.060 seconds
+Real time usage: 0.059 seconds
+Preprocessor visited node count: 324/1000000
+Preprocessor generated node count: 1014/1000000
+Post‐expand include size: 8539/2097152 bytes
+Template argument size: 3919/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   18.273      1 - -total
+ 66.53%   12.157      1 - Template:DevelopMenu
+ 58.04%   10.606      1 - Template:Menu
+ 51.21%    9.357      3 - Template:Submenu
+ 25.84%    4.722     31 - Template:MenuItem
+ 16.30%    2.978      1 - Template:Tip
+ 11.69%    2.137      1 - Template:JavadocSection
+  7.67%    1.401      1 - Template:BigLink
+  6.05%    1.106      1 - Template:Box-shadow
+  4.35%    0.794      1 - Template:Border-radius
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Source_code&amp;oldid=38637">http://imagej.net/index.php?title=Source_code&amp;oldid=38637</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 12 October 2018, at 18:23.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Source_code&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Source+code" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Source+code" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Source_code" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Source_code" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Source_code&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Source_code&amp;oldid=38637" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Source_code&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":249});});</script>
+		</body>
+		</html>
+		

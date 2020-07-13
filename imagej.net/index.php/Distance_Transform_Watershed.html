@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Distance Transform Watershed - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Distance_Transform_Watershed","wgTitle":"Distance Transform Watershed","wgCurRevisionId":40511,"wgRevisionId":40511,"wgArticleId":4094,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Segmentation","Mathematical morphology"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Distance_Transform_Watershed","wgRelevantArticleId":4094,"wgRequestId":"4138aa305b1dc36fda3e4835","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="A classic way of separating touching objects in binary images makes use of the distance transform and the watershed method. The idea is to create a border as far as possible from the center of the overlapping objects. This strategy works very well on rounded objects and it is called Distance Transform Watershed. It consists on calculating the distance transform of the binary image, inverting it (so the darkest parts of the image are the centers of the objects) and then applying watershed on it using the original image as mask (see figure below). In our implementation, we include an option to use watershed with extended minima so the user can control the number of object splits and merges."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Distance Transform Watershed"/>
+
+	<meta property="og:description" content="A classic way of separating touching objects in binary images makes use of the distance transform and the watershed method. The idea is to create a border as far as possible from the center of the overlapping objects. This strategy works very well on rounded objects and it is called Distance Transform Watershed. It consists on calculating the distance transform of the binary image, inverting it (so the darkest parts of the image are the centers of the objects) and then applying watershed on it using the original image as mask (see figure below). In our implementation, we include an option to use watershed with extended minima so the user can control the number of object splits and merges."/>
+
+	<meta property="og:url" content="http://imagej.net/Distance_Transform_Watershed"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Distance_Transform_Watershed rootpage-Distance_Transform_Watershed skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Distance_Transform_Watershed.html#bodyContent">Skip to content</a>, 			<a href="Distance_Transform_Watershed.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Distance_Transform_Watershed.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Distance_Transform_Watershed" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Distance_Transform_Watershed&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Distance_Transform_Watershed&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Distance_Transform_Watershed&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Distance Transform Watershed</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Distance Transform Watershed (2D and 3D) (IJPB-plugins)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>, David Legland
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/ijpb/ijpb-plugins/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> August 25<sup>th</sup>, 2016
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> July 23<sup>rd</sup>, 2019 (<a href="http://imagej.net/MorphoLibJ" title="MorphoLibJ">MorphoLibJ</a> v1.4.1)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a>, <a href="http://imagej.net/Category:Mathematical_morphology" title="Category:Mathematical morphology">Mathematical morphology</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Distance_Transform_Watershed.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Distance_Transform_Watershed.html#Distance_Transform_Watershed"><span class="tocnumber">2</span> <span class="toctext">Distance Transform Watershed</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Distance_Transform_Watershed.html#Distance_Transform_Watershed_.283D.29"><span class="tocnumber">3</span> <span class="toctext">Distance Transform Watershed (3D)</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Distance_Transform_Watershed.html#Installation"><span class="tocnumber">4</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Distance_Transform_Watershed.html#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Distance_Transform_Watershed.html#See_also"><span class="tocnumber">6</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Distance_Transform_Watershed.html#License"><span class="tocnumber">7</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>A classic way of separating touching objects in binary images makes use of the distance transform and the watershed method. The idea is to create a border as far as possible from the center of the overlapping objects. This strategy works very well on rounded objects and it is called Distance Transform Watershed. It consists on calculating the distance transform of the binary image, inverting it (so the darkest parts of the image are the centers of the objects) and then applying watershed on it using the original image as mask (see figure below). In our implementation, we include an option to use watershed with extended minima so the user can control the number of object splits and merges.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="http://imagej.net/File:MorphoLibJ-distance-transform-watershed-basics.png" class="image"><img alt="" src="../_images/0/02/MorphoLibJ-distance-transform-watershed-basics.png" width="700" height="182" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:MorphoLibJ-distance-transform-watershed-basics.png" class="internal" title="Enlarge"></a></div><b>Basics of the Distance Transform Watershed algorithm</b>. From left to right: sample image of touching DAPI stained cell nuclei from a confocal laser scanning microscope, binary mask calculated after filtering and thresholding input image, inverse of the distance transform applied to the binary mask (Chamfer distance map using normalized Chessknight weights and 32-bit output) and resulting labeled image after applying watershed to the inverse distance image using the binary mask (dynamic of 1 and 4-connectivity).</div></div></div></div>
+<p><a href="http://imagej.net/MorphoLibJ" title="MorphoLibJ">MorphoLibJ</a> provides two plugins under the <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Binary Images...</span></em></span> menu to apply this strategy on 2D and 3D images:
+</p>
+<h2><span class="mw-headline" id="Distance_Transform_Watershed">Distance Transform Watershed</span></h2>
+<p>Distance Transform Watershed needs one 2D 8-bit binary image to run. If that's the case, a dialog like the following will pop up:
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 290px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p>The plugin parameters are divided between the distance transform and the watershed options:
+</p>
+<ul><li> <b>Distance map options</b>:
+<ul><li> <b>Distances</b>: allows selecting among a pre-defined set of weights that can be used to compute the distance transform using Chamfer approximations of the Euclidean metric. They affect the location but specially the shape of the border in the final result. The options are:
+<ul><li> <b>Chessboard (1,1)</b>: weight equal to 1 for all neighbors.</li>
+<li> <b>City-Block (1,2)</b>: weights 1 for orthogonal neighbors and 2 for diagonal neighbors.</li>
+<li> <b>Quasi-Euclidean (1,1.41)</b>: weights 1 for orthogonal neighbors and <img class="mwe-math-fallback-image-inline tex" alt="\sqrt{2}" src="../_images/math/e/f/5/ef5590434a387b3c4427e09d5b08baaf.png" /> for diagonal neighbors.</li>
+<li> <b>Borgefors (3,4)</b>: weights 3 for orthogonal neighbors and 4 for diagonal neighbors (best approximation of Euclidean distance for 3-by-3 masks).</li>
+<li> <b>Weights (2,3)</b>: weights 2 for orthogonal neighbors and 3 for diagonal neighbors.</li>
+<li> <b>Weights (5,7)</b>: weights 5 for orthogonal neighbors and 7 for diagonal neighbors.</li>
+<li> <b>Chessknight (5,7,11)</b>: weights 5 for orthogonal neighbors and 7 for diagonal neighbors, and 11 for chess-knight moves (best approximation for 5-by-5 masks).</li></ul></li>
+<li> <b>Output type</b>: 16 or 32-bit, to calculate distance with short or float precision.</li>
+<li> <b>Normalize weights</b>: indicates whether the resulting distance map should be normalized (divide distances by the first Chamfer weight).</li></ul></li>
+<li> Watershed options:
+<ul><li> <b>Dynamic</b>: same as in the Morphological Segmentation plugin, this is the dynamic of intensity for the search of regional minima in the inverse of the distance transform image. Basically, by increasing its value there will be more object merges and by decreasing it there will be more object splits.</li>
+<li> <b>Connectivity</b>: pixel connectivity (4 or 8). Selecting non-diagonal connectivity (4) usually provides more rounded objects. </li></ul></li></ul>
+<p>Finally, the result with the current plugin configuration can be visualize clicking on the Preview option.
+</p><p><b>Result</b>: 2D 32-bit label image (one index value per object).
+</p>
+<h2><span class="mw-headline" id="Distance_Transform_Watershed_.283D.29">Distance Transform Watershed (3D)</span></h2>
+<p>Distance Transform Watershed 3D needs one 3D 8-bit binary image to run. If that's the case, a dialog like the following will pop up:
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 322px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p>The parameters are the same as in the 2D version but some of them are adapted for 3D images:
+</p>
+<ul><li> <b>Distance map options</b>:
+<ul><li> <b>Distances</b>: Now the available options are:
+<ul><li> <b>Chessboard (1,1,1)</b>: weight equal to 1 for all neighbors.</li>
+<li> <b>City-Block (1,2,3)</b>: weights 1 for orthogonal neighbors, 2 for diagonal neighbors and 3 for cube-diagonals.</li>
+<li> <b>Quasi-Euclidean (1,1.41,1.73)</b>: weights 1 for orthogonal neighbors, <img class="mwe-math-fallback-image-inline tex" alt="\sqrt{2}" src="../_images/math/e/f/5/ef5590434a387b3c4427e09d5b08baaf.png" /> for diagonal neighbors and <img class="mwe-math-fallback-image-inline tex" alt="\sqrt{3}" src="../_images/math/7/d/2/7d2db2b2c90be143cb85c105105317da.png" /> for cube-diagonals.</li>
+<li> <b>Borgefors (3,4,5)</b>: weights 3 for orthogonal neighbors, 4 for diagonal neighbors and 5 for cube-diagonals (best approximation of Euclidean distance for 3-by-3-by-3 masks).</li></ul></li>
+<li> <b>Output type</b>: 16 or 32-bit, to calculate distance with short or float precision.</li>
+<li> <b>Normalize weights</b>: indicates whether the resulting distance map should be normalized (divide distances by the first Chamfer weight).</li></ul></li>
+<li> <b>Watershed options</b>:
+<ul><li> <b>Dynamic</b>: same as in the 2D version, this is the dynamic of intensity for the search of regional minima in the inverse of the distance transform image. Basically, by increasing its value there will be more object merges and by decreasing it there will be more object splits.</li>
+<li> <b>Connectivity</b>: voxel connectivity (6 or 26). Selecting non-diagonal connectivity (6) usually provides more rounded objects.</li></ul></li></ul>
+<p>As it is usual in ImageJ, no preview is provided here since we are dealing with 3D images.
+</p><p><b>Result</b>: 3D 32-bit label image (one index value per object).
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>The Distance Transform Watershed plugins (2D and 3D) are part of the <a href="http://imagej.net/MorphoLibJ" title="MorphoLibJ">MorphoLibJ</a> library. To install them, you just need to <a href="http://imagej.net/How_to_follow_a_3rd_party_update_site#Add_update_sites" class="mw-redirect" title="How to follow a 3rd party update site"> add</a> the IJPB-plugins update site:
+</p><p>1) Select <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update...</span></em></span> from the Fiji menu to start the updater.
+</p><p>2) Click on <i>Manage update sites</i>. This brings up a dialog where you can activate additional update sites.
+</p><p>3) Activate the IJPB-plugins update site and close the dialog. Now you should see an additional jar file for download.
+</p><p>4) Click <i>Apply changes</i> and restart Fiji.
+</p><p>You should now find the plugin under the sub-menu <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation</span></em></span>.
+</p><p><b>Note</b>: the Distance Transform Watershed plugins are only two of the plugins included in the <a href="http://imagej.net/MorphoLibJ" title="MorphoLibJ">MorphoLibJ</a> suite. By following these installation steps, you will be installing as well the rest of plugins in the suite.
+</p>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ol><li> David Legland, Ignacio Arganda-Carreras, Philippe Andrey; <a rel="nofollow" class="external text" href="http://bioinformatics.oxfordjournals.org/content/early/2016/07/19/bioinformatics.btw413">MorphoLibJ: integrated library and plugins for mathematical morphology with ImageJ</a>. Bioinformatics 2016; 32 (22): 3532-3534. doi: 10.1093/bioinformatics/btw413</li></ol>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> <a href="http://imagej.net/Marker-controlled_Watershed" title="Marker-controlled Watershed">Marker-controlled Watershed</a>, a plugin to perform watershed by flooding from specific seed points or markers.</li>
+<li> <a href="http://imagej.net/Morphological_Segmentation" title="Morphological Segmentation">Morphological Segmentation</a>, a plugin with a graphical user interface to segment images based on morphological operations and the watershed algorithm.</li>
+<li> <a rel="nofollow" class="external text" href="http://cmm.ensmp.fr/~beucher/wtshed.html">Serge Beucher's site</a>, with graphic descriptions and animations of the watershed algorithms.</li>
+<li> <a rel="nofollow" class="external text" href="https://perso.esiee.fr/~dpt-it/tw/index.html">G. Bertrand's Topological Watershed site</a>, with papers, lecture slides and source code.</li></ul>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is <b>free software</b>; you can redistribute it and/or modify it under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713065020
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.052 seconds
+Real time usage: 0.053 seconds
+Preprocessor visited node count: 473/1000000
+Preprocessor generated node count: 4596/1000000
+Post‐expand include size: 2877/2097152 bytes
+Template argument size: 994/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   27.307      1 - -total
+ 51.88%   14.167      1 - Template:Infobox
+ 33.61%    9.177      2 - Template:Person
+ 23.08%    6.302      3 - Template:Bc
+  7.17%    1.959      5 - Template:Arrow
+  5.98%    1.632      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Distance_Transform_Watershed&amp;oldid=40511">http://imagej.net/index.php?title=Distance_Transform_Watershed&amp;oldid=40511</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 4 September 2019, at 02:48.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Distance_Transform_Watershed&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Mathematical_morphology" title="Category:Mathematical morphology">Mathematical morphology</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Distance+Transform+Watershed" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Distance+Transform+Watershed" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Distance_Transform_Watershed" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Distance_Transform_Watershed" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Distance_Transform_Watershed&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Distance_Transform_Watershed&amp;oldid=40511" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Distance_Transform_Watershed&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":244});});</script>
+		</body>
+		</html>
+		

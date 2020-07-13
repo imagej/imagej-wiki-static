@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Auto Local Threshold - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Auto_Local_Threshold","wgTitle":"Auto Local Threshold","wgCurRevisionId":38066,"wgRevisionId":38066,"wgArticleId":351,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Segmentation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Auto_Local_Threshold","wgRelevantArticleId":351,"wgRequestId":"9e1f2455ea72c381a868ba06","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This plugin binarises 8-bit images using various local  thresholding methods. By 'local' here is meant that the threshold is computed for each pixel according to the image characteristings within a window of radius r (in pixel units) around it. The segmented phase is always shown as white (255)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Auto Local Threshold"/>
+
+	<meta property="og:description" content="This plugin binarises 8-bit images using various local  thresholding methods. By 'local' here is meant that the threshold is computed for each pixel according to the image characteristings within a window of radius r (in pixel units) around it. The segmented phase is always shown as white (255)."/>
+
+	<meta property="og:url" content="http://imagej.net/Auto_Local_Threshold"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Auto_Local_Threshold rootpage-Auto_Local_Threshold skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Auto_Local_Threshold.html#bodyContent">Skip to content</a>, 			<a href="Auto_Local_Threshold.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Auto_Local_Threshold.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Auto_Local_Threshold" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Auto_Local_Threshold&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Auto_Local_Threshold&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Auto_Local_Threshold&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Auto Local Threshold</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Auto Threshold<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Auto_Threshold">https://imagej.net/Auto_Threshold</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Auto_Threshold/releases/tag/Auto_Threshold-1.16.5">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Auto_Threshold~1.16.5~~~kw,versionexpand">1.16.5</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 22:30:45 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:Stelfrich" title="User:Stelfrich">Stefan Helfrich</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<p>This plugin binarises 8-bit images using various <b>local</b>  thresholding methods. By 'local' here is meant that the threshold is computed for each pixel according to the image characteristings within a window of radius <b>r</b> (in pixel units) around it. The segmented phase is always shown as white (255).
+</p><p>For <b>global</b> thresholding rather than local, see  the <a href="http://imagej.net/Auto_Threshold" title="Auto Threshold">Auto Threshold</a> plugin.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Auto_Local_Threshold.html#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Auto_Local_Threshold.html#Use"><span class="tocnumber">2</span> <span class="toctext">Use</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Auto_Local_Threshold.html#Available_methods"><span class="tocnumber">3</span> <span class="toctext">Available methods</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Auto_Local_Threshold.html#Try_all"><span class="tocnumber">3.1</span> <span class="toctext">Try all</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Auto_Local_Threshold.html#Bernsen"><span class="tocnumber">3.2</span> <span class="toctext">Bernsen</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Auto_Local_Threshold.html#Contrast"><span class="tocnumber">3.3</span> <span class="toctext">Contrast</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Auto_Local_Threshold.html#Mean"><span class="tocnumber">3.4</span> <span class="toctext">Mean</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Auto_Local_Threshold.html#Median"><span class="tocnumber">3.5</span> <span class="toctext">Median</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Auto_Local_Threshold.html#MidGrey"><span class="tocnumber">3.6</span> <span class="toctext">MidGrey</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Auto_Local_Threshold.html#Niblack"><span class="tocnumber">3.7</span> <span class="toctext">Niblack</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Auto_Local_Threshold.html#Otsu"><span class="tocnumber">3.8</span> <span class="toctext">Otsu</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Auto_Local_Threshold.html#Phansalkar"><span class="tocnumber">3.9</span> <span class="toctext">Phansalkar</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Auto_Local_Threshold.html#Sauvola"><span class="tocnumber">3.10</span> <span class="toctext">Sauvola</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p><b>ImageJ</b>: requires v1.42m or newer. Download <a rel="nofollow" class="external text" href="http://maven.imagej.net/service/local/artifact/maven/redirect?r=releases&amp;g=sc.fiji&amp;a=Auto_Threshold&amp;v=RELEASE&amp;e=jar">Auto_Threshold-X.Y.Z.jar</a> and copy it into the ImageJ/plugins folder and either restart ImageJ or run the '<span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update Menus</span></em></span>' command. After this a new command should appear in '<span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Auto Local Threshold</span></em></span>'.
+</p><p><b>Fiji</b>: this plugin is part of the Fiji distribution, there is no need to download it.
+</p>
+<h2><span class="mw-headline" id="Use">Use</span></h2>
+<p><b>Method</b> selects the algorithm to be applied (detailed below).
+</p><p>The <b>radius</b> sets the radius of the local domain over which the threshold will be computed.
+</p><p><b>White object on black background</b> sets to white the pixels with values above the threshold value (otherwise, it sets to white the values less or equal to the threshold).
+</p><p><b>Special parameters 1 and 2</b> sets specific values for each method. Those are detailed below for each method.
+</p><p>It you are processing a stack, one additional option is available: <b>Stack</b> can be used to process all the slices.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Available_methods">Available methods</span></h2>
+<h3><span class="mw-headline" id="Try_all">Try all</span></h3>
+<p>Which method segments your data best? You can attempt to answer this question using the <b>Try all</b> option.
+This produces a montage with results from all the methods, so one can explore how the different algorithms perform on an image or stack.
+</p>
+<div class="MediaTransformError" style="width: 130px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Original image
+</p><p><br />
+</p>
+<div class="MediaTransformError" style="width: 396px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Try all methods.
+</p><p>When processing stacks with many slices, the montages can become very large (several times the original stack size) and one risks running out of ram. A popup window will appear (when stacks have more than 25 slices) to confirm whether the procedure should display the stack montages.
+</p>
+<h3><span class="mw-headline" id="Bernsen">Bernsen</span></h3>
+<p>Implements Bernsen's thresholding method.  Note that this implementation uses circular windows instead of rectangular in the original.
+</p><p><b>Parameter 1</b>: is the <i>contrast threshold</i>. The default value is 15. Any number different than 0 will change the default value.
+</p><p><b>Parameter 2</b>: not used, ignored. 
+</p><p>The method uses a user-provided <i>contrast threshold</i>. 
+If the <i>local contrast</i> (max-min) is above or equal to the <i>contrast threshold</i>, the <i>threshold</i> is set at the <i>local midgrey value</i> (the mean of the minimum and maximum grey values in the local window). 
+If the <i>local contrast</i> is below the <i>contrast threshold</i> the neighbourhood is considered to consist only of one class and the pixel is set to object or background depending on the value of the midgrey.
+</p>
+<pre>if ( local_contrast &lt; contrast_threshold )
+ pixel = ( mid_gray &gt;= 128 )&#160;? object&#160;:  background
+else
+ pixel = ( pixel &gt;= mid_gray )&#160;? object&#160;: background
+</pre>
+<p><br />
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Dynamic+Thresholding+of+Grey-Level+Images&amp;rft.aulast=Bernsen&amp;rft.aufirst=J&amp;rft.date=1986"><cite id="CITEREFBernsen1986">Bernsen, J&#32;(1986),&#32;"Dynamic Thresholding of Grey-Level Images",&#32;<i>Proc. of the 8th Int. Conf. on Pattern Recognition</i></cite></span></li></ul>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Survey+over+Image+Thresholding+Techniques+and+Quantitative+Performance+Evaluation&amp;rft.aulast=Sezgin&amp;rft.aufirst=M&amp;rft.date=2004&amp;rft.volume=13%281%29&amp;rft.pages=146-165&amp;rft_id=http%3A%2F%2Fwebdocs.cs.ualberta.ca%2F%7Enray1%2FCMPUT605%2Ftrack3_papers%2FThreshold_survey.pdf"><cite id="CITEREFSezginSankur2004">Sezgin, M&#32;&amp;&#32;Sankur, B&#32;(2004),&#32;"<a rel="nofollow" class="external text" href="http://webdocs.cs.ualberta.ca/~nray1/CMPUT605/track3_papers/Threshold_survey.pdf">Survey over Image Thresholding Techniques and Quantitative Performance Evaluation</a>",&#32;<i>Journal of Electronic Imaging</i>&#32;<b>13(1)</b>:  146-165<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://webdocs.cs.ualberta.ca/~nray1/CMPUT605/track3_papers/Threshold_survey.pdf">http://webdocs.cs.ualberta.ca/~nray1/CMPUT605/track3_papers/Threshold_survey.pdf</a>&gt;</span></cite></span></li></ul>
+<p>Based on ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[1]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[2]</a>.
+</p>
+<h3><span class="mw-headline" id="Contrast">Contrast</span></h3>
+<p>Based on a simple contrast toggle. Sets the pixel value to either white (255) or black (0) depending on whether its current value is closest to the local maximum or minimum respectively. The procedure is an extreme case of Toggle Contrast Enhancement, see for example:
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Morphological+Image+Analysis%3A+Principles+and+applications.+Springer&amp;rft.aulast=Soille&amp;rft.aufirst=P&amp;rft.date=2004&amp;rft.pages=pp.+259"><cite id="CITEREFSoille2004">Soille, P&#32;(2004),&#32;<i>Morphological Image Analysis: Principles and applications. Springer</i>, pp. 259</cite></span></li></ul>
+<p><br />
+This procedure does not have user-provided parameters other than the kernel radius.
+</p>
+<h3><span class="mw-headline" id="Mean">Mean</span></h3>
+<p>This selects the threshold as the mean of the local greyscale distribution. A variation of this method uses the mean - C, where C is a constant.
+</p>
+<pre>pixel = ( pixel &gt; mean - c )&#160;? object&#160;: background
+</pre>
+<p><b>Parameter 1</b>: is the <i>C value</i>. The default value is 0. Any other number will change the default value.
+</p><p><b>Parameter 2</b>: not used, ignored. 
+</p><p><a rel="nofollow" class="external free" href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/adpthrsh.htm">http://homepages.inf.ed.ac.uk/rbf/HIPR2/adpthrsh.htm</a>
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Median">Median</span></h3>
+<p>This selects the threshold as the median of the local greyscale distribution. A variation of this method uses the median - C, where C is a constant.
+</p>
+<pre>pixel = ( pixel &gt; median - c )&#160;? object&#160;: background
+</pre>
+<p><b>Parameter 1</b>: is the <i>C value</i>. The default value is 0. Any other number will change the default value.
+</p><p><b>Parameter 2</b>: not used, ignored. 
+</p><p><a rel="nofollow" class="external free" href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/adpthrsh.htm">http://homepages.inf.ed.ac.uk/rbf/HIPR2/adpthrsh.htm</a>
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="MidGrey">MidGrey</span></h3>
+<p>This selects the threshold as the mid-grey of the local greyscale distribution (i.e. (max + min)/2. A variation of this method uses the mid-grey - C, where C is a constant.
+</p>
+<pre>pixel = ( pixel &gt; ( ( max + min ) / 2 ) - c )&#160;? object&#160;: background
+</pre>
+<p><b>Parameter 1</b>: is the <i>C value</i>. The default value is 0. Any other number will change the default value.
+</p><p><b>Parameter 2</b>: not used, ignored. 
+</p><p><a rel="nofollow" class="external free" href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/adpthrsh.htm">http://homepages.inf.ed.ac.uk/rbf/HIPR2/adpthrsh.htm</a>
+</p>
+<h3><span class="mw-headline" id="Niblack">Niblack</span></h3>
+<p>Implements Niblack's thresholding method:
+</p>
+<pre>pixel = ( pixel &gt;  mean + k * standard_deviation - c)&#160;? object&#160;: background
+</pre>
+<p><b>Parameter 1</b>: is the <i>k value</i>. The default value is 0.2 for bright objects and -0.2 for dark objects. Any other number than 0 will change the default value.
+</p><p><b>Parameter 2</b>: is the <i>C value</i>. This is an offset with a default value of 0. Any other number than 0 will change its value. This parameter was added in version 1.3 and is not part of the original implementation of the algorithm. The original algorithm is applied when C = 0. 
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=An+introduction+to+Digital+Image+Processing%2C+Prentice-Hall&amp;rft.aulast=Niblack&amp;rft.aufirst=W&amp;rft.date=1986"><cite id="CITEREFNiblack1986">Niblack, W&#32;(1986),&#32;<i>An introduction to Digital Image Processing, Prentice-Hall</i></cite></span></li></ul>
+<p>Ported from ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[3]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[4]</a>.
+</p>
+<h3><span class="mw-headline" id="Otsu">Otsu</span></h3>
+<p>Implements a local version of Otsu's global threshold clustering. The algorithm searches for the threshold that minimizes the intra-class variance, defined as a weighted sum of variances of the two classes. The local set is a circular ROI and the central pixel is tested against the Otsu threshold found for that region.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=A+threshold+selection+method+from+gray-level+histograms&amp;rft.aulast=Otsu&amp;rft.aufirst=N&amp;rft.date=1979&amp;rft.volume=9&amp;rft.pages=62-66&amp;rft_id=info:doi/10.1109%2FTSMC.1979.4310076&amp;rft_id=http%3A%2F%2Fieeexplore.ieee.org%2Fxpl%2Ffreeabs_all.jsp%3F%26arnumber%3D4310076"><cite id="CITEREFOtsu1979">Otsu, N&#32;(1979),&#32;"<a rel="nofollow" class="external text" href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?&amp;arnumber=4310076">A threshold selection method from gray-level histograms</a>",&#32;<i>IEEE Trans. Sys., Man., Cyber.</i>&#32;<b>9</b>:  62-66, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109%2FTSMC.1979.4310076">10.1109/TSMC.1979.4310076</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?&amp;arnumber=4310076">http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?&amp;arnumber=4310076</a>&gt;</span></cite></span></li></ul>
+<p><br />
+See also the <a href="http://en.wikipedia.org/wiki/Otsu%27s_method" class="extiw" title="wikipedia:Otsu's method">Wikipedia article on Otsu's method</a>.
+</p><p>Ported from C++ code by Jordan Bevik.
+</p>
+<h3><span class="mw-headline" id="Phansalkar">Phansalkar</span></h3>
+<p>This is a modification of Sauvola's thresholding method to deal with low contrast images.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Adaptive+local+thresholding+for+detection+of+nuclei+in+diversity+stained+cytology+images.&amp;rft.aulast=Phansalskar&amp;rft.aufirst=N&amp;rft.date=2011&amp;rft.pages=218-220&amp;rft_id=info:doi/10.1109%2FICCSP.2011.5739305&amp;rft_id=https%3A%2F%2Fieeexplore.ieee.org%2Fdocument%2F5739305%2F"><cite id="CITEREFPhansalskarMoreSabaleJoshi2011">Phansalskar, N; More, S&#32;&amp; Sabale, A&#32;et al.&#32;(2011),&#32;"<a rel="nofollow" class="external text" href="https://ieeexplore.ieee.org/document/5739305/">Adaptive local thresholding for detection of nuclei in diversity stained cytology images.</a>",&#32;<i>International Conference on Communications and Signal Processing (ICCSP)</i>:  218-220, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109%2FICCSP.2011.5739305">10.1109/ICCSP.2011.5739305</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="https://ieeexplore.ieee.org/document/5739305/">https://ieeexplore.ieee.org/document/5739305/</a>&gt;</span></cite></span></li></ul>
+<p>In this method, the threshold t is computed as:
+</p>
+<pre> t = mean * (1 + p * exp(-q * mean) + k * ((stdev / r) - 1))
+</pre>
+<p>where mean and stdev are the local mean and standard deviation respectively.
+Phansalkar recommends <i>k</i> = 0.25, <i>r</i> = 0.5, <i>p</i> = 2 and <i>q</i> = 10. In this plugin, <i>k</i> and <i>r</i> are the parameters 1 and 2 respectively, but the values of <i>p</i> and <i>q</i> are fixed.
+</p><p><b>Parameter 1</b>: is the <i>k value</i>. The default value is 0.25. Any other number than 0 will change its value.
+</p><p><b>Parameter 2</b>: is the <i>r value</i>. The default value is 0.5. This value is different from Sauvola's because it uses the normalised intensity of the image. Any other number than 0 will change its value.
+</p><p>Implemented from Phansalkar's paper description, although this version uses a circular rather than rectangular local window.
+</p>
+<h3><span class="mw-headline" id="Sauvola">Sauvola</span></h3>
+<p>Implements Sauvola's thresholding method, which is a variation of Niblack's method
+</p>
+<pre>pixel = ( pixel &gt; mean * ( 1 + k * ( standard_deviation / r - 1 ) ) )&#160;? object&#160;: background
+</pre>
+<p><b>Parameter 1</b>: is the <i>k value</i>. The default value is 0.5. Any other number than 0 will change the default value.
+</p><p><b>Parameter 2</b>: is the <i>r value</i>. The default value is 128. Any other number than 0 will change the default value 
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Adaptive+Document+Image+Binarization&amp;rft.aulast=Sauvola&amp;rft.aufirst=J&amp;rft.date=2000&amp;rft.volume=33%282%29&amp;rft.pages=225-236&amp;rft_id=http%3A%2F%2Fwww.ee.oulu.fi%2Fresearch%2Fmvmp%2Fmvg%2Ffiles%2Fpdf%2Fpdf_24.pdf"><cite id="CITEREFSauvolaPietaksinen2000">Sauvola, J&#32;&amp;&#32;Pietaksinen, M&#32;(2000),&#32;"<a rel="nofollow" class="external text" href="http://www.ee.oulu.fi/research/mvmp/mvg/files/pdf/pdf_24.pdf">Adaptive Document Image Binarization</a>",&#32;<i>Pattern Recognition</i>&#32;<b>33(2)</b>:  225-236<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://www.ee.oulu.fi/research/mvmp/mvg/files/pdf/pdf_24.pdf">http://www.ee.oulu.fi/research/mvmp/mvg/files/pdf/pdf_24.pdf</a>&gt;</span></cite></span></li></ul>
+<p>Ported from ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[5]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[6]</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064534
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.180 seconds
+Real time usage: 0.185 seconds
+Preprocessor visited node count: 5482/1000000
+Preprocessor generated node count: 11888/1000000
+Post‐expand include size: 29359/2097152 bytes
+Template argument size: 8521/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  146.658      1 - -total
+ 52.24%   76.617      1 - Template:ComponentStats:sc.fiji:Auto_Threshold
+ 51.01%   74.811      1 - Template:Component
+ 43.85%   64.310      7 - Template:Citation
+ 41.90%   61.443     10 - Template:Person
+ 39.96%   58.600      7 - Template:Citation/core
+  3.24%    4.748      2 - Template:Bc
+  2.57%    3.771      7 - Template:Link
+  1.24%    1.817      1 - Template:GitHub
+  1.01%    1.488      3 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Auto_Local_Threshold&amp;oldid=38066">http://imagej.net/index.php?title=Auto_Local_Threshold&amp;oldid=38066</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 25 June 2018, at 04:31.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Auto_Local_Threshold&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Auto+Local+Threshold" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Auto+Local+Threshold" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Auto_Local_Threshold" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Auto_Local_Threshold" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Auto_Local_Threshold&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Auto_Local_Threshold&amp;oldid=38066" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Auto_Local_Threshold&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":386});});</script>
+		</body>
+		</html>
+		

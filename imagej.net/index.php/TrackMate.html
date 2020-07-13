@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>TrackMate - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"TrackMate","wgTitle":"TrackMate","wgCurRevisionId":41404,"wgRevisionId":41404,"wgArticleId":1099,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Segmentation","Tracking","Tutorials","Plugins","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"TrackMate","wgRelevantArticleId":1099,"wgRequestId":"4e0161d8b79e939f6aa4cc1a","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Please note that TrackMate is available through Fiji, and is based on a publication. If you use it successfully for your research please be so kind to cite our work:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="TrackMate"/>
+
+	<meta property="og:description" content="Please note that TrackMate is available through Fiji, and is based on a publication. If you use it successfully for your research please be so kind to cite our work:"/>
+
+	<meta property="og:url" content="http://imagej.net/TrackMate"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-TrackMate rootpage-TrackMate skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="TrackMate.html#bodyContent">Skip to content</a>, 			<a href="TrackMate.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="TrackMate.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/TrackMate" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk"><a href="http://imagej.net/Talk:TrackMate" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=TrackMate&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=TrackMate&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>TrackMate</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="floatright"><a href="http://imagej.net/File:TrackMate-Logo85x50-color-300p.png" class="image"><img alt="TrackMate-Logo85x50-color-300p.png" src="../_images/0/0c/TrackMate-Logo85x50-color-300p.png" width="160" height="94" /></a></div>
+<table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>TrackMate<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/TrackMate">https://imagej.net/TrackMate</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/releases/tag/TrackMate_-4.0.0">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~TrackMate_~4.0.0~~~kw,versionexpand">4.0.0.</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Tue May 16 15:21:59 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>, <a href="http://imagej.net/User:NicholasPerry" title="User:NicholasPerry">Nick Perry</a>, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:NicholasPerry" title="User:NicholasPerry">Nick Perry</a>, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, Gary Baker, <a href="http://imagej.net/User:Albertcardona" title="User:Albertcardona">Albert Cardona</a>, <a href="http://imagej.net/User:Bdezonia" title="User:Bdezonia">Barry DeZonia</a>, <a href="http://imagej.net/User:Stelfrich" title="User:Stelfrich">Stefan Helfrich</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:Hadim" title="User:Hadim">Hadrien Mary</a>, <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>, Barak Naveh, Chen Ye, <a href="http://imagej.net/User:Haesleinhuepf" title="User:Haesleinhuepf">Robert Haase</a>, <a href="http://imagej.net/User:Eglinger" title="User:Eglinger">Jan Eglinger</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="TrackMate.html#Citation"><span class="tocnumber">1</span> <span class="toctext">Citation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="TrackMate.html#Presentation"><span class="tocnumber">2</span> <span class="toctext">Presentation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="TrackMate.html#Examples"><span class="tocnumber">2.1</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="TrackMate.html#Single_Particle_Tracking"><span class="tocnumber">2.2</span> <span class="toctext">Single Particle Tracking</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="TrackMate.html#TrackMate_goals"><span class="tocnumber">2.3</span> <span class="toctext">TrackMate goals</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="TrackMate.html#For_users"><span class="tocnumber">2.3.1</span> <span class="toctext">For users</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="TrackMate.html#For_developers"><span class="tocnumber">2.3.2</span> <span class="toctext">For developers</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="TrackMate.html#Documentation_and_tutorials"><span class="tocnumber">3</span> <span class="toctext">Documentation and tutorials</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="TrackMate.html#For_users_2"><span class="tocnumber">3.1</span> <span class="toctext">For users</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="TrackMate.html#For_developers_2"><span class="tocnumber">3.2</span> <span class="toctext">For developers</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="TrackMate.html#Known_problems"><span class="tocnumber">4</span> <span class="toctext">Known problems</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="TrackMate.html#Extensions"><span class="tocnumber">5</span> <span class="toctext">Extensions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="TrackMate.html#Downloadable_jars"><span class="tocnumber">5.1</span> <span class="toctext">Downloadable jars</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="TrackMate.html#Extra_source_code"><span class="tocnumber">5.2</span> <span class="toctext">Extra source code</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="TrackMate.html#Documentation"><span class="tocnumber">5.3</span> <span class="toctext">Documentation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-16"><a href="TrackMate.html#Who_uses_TrackMate"><span class="tocnumber">6</span> <span class="toctext">Who uses TrackMate</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="TrackMate.html#TrackMate_components"><span class="tocnumber">7</span> <span class="toctext">TrackMate components</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="TrackMate.html#Acknowledgements"><span class="tocnumber">8</span> <span class="toctext">Acknowledgements</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Citation">Citation</span></h2>
+<p>Please note that TrackMate is available through Fiji, and is based on a publication. If you use it successfully for your research <b>please be so kind to cite our work</b>:
+</p><p><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=TrackMate%3A+An+open+and+extensible+platform+for+single-particle+tracking.&amp;rft.aulast=Tinevez&amp;rft.aufirst=JY.&amp;rft.date=2017&amp;rft.volume=115&amp;rft.pages=80-90&amp;rft_id=info:pmid/27713081&amp;rft_id=http%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS1046202316303346"><cite id="CITEREFTinevezPerrySchindelinHoopes2017">Tinevez, JY.; Perry, N.&#32;&amp; Schindelin, J.&#32;et al.&#32;(2017),&#32;"<a rel="nofollow" class="external text" href="http://www.sciencedirect.com/science/article/pii/S1046202316303346">TrackMate: An open and extensible platform for single-particle tracking.</a>",&#32;<i>Methods</i>&#32;<b>115</b>:  80-90, PMID 27713081<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://www.sciencedirect.com/science/article/pii/S1046202316303346">http://www.sciencedirect.com/science/article/pii/S1046202316303346</a>&gt;</span></cite></span> (<a rel="nofollow" class="external text" href="http://scholar.google.com/scholar?cluster=5639603271314453016">on Google Scholar</a>).
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Presentation">Presentation</span></h2>
+<p><i>TrackMate is your buddy for your everyday tracking .</i>
+</p><p><br />
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Examples">Examples</span></h3>
+<div class="MediaTransformError" style="width: 438px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The first 2 hours of a <i>C.elegans</i> embryo development, followed in 3D over time using TrackMate (strain: <a rel="nofollow" class="external text" href="http://www.wormbase.org/db/gene/strain?name=AZ212;class=Strain">AZ212</a>)
+</p><p><br />
+<a href="http://imagej.net/File:TrackMate_Celegans_lineage_detail.png" class="image"><img alt="TrackMate Celegans lineage detail.png" src="../_images/8/8b/TrackMate_Celegans_lineage_detail.png" width="500" height="382" /></a>
+</p><p>A detail of the corresponding unannotated lineage visualized in TrackScheme. The full lineage of this one hour of imaging is <a href="http://imagej.net/File:TrackMate_Celegans_lineage.pdf" title="File:TrackMate Celegans lineage.pdf">there</a>.
+</p><p><br />
+</p>
+<div class="MediaTransformError" style="width: 128px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>TrackMate can be set to detect and deal with gap-closing events, splitting events and merging events.
+</p><p><br />
+</p>
+<div class="MediaTransformError" style="width: 629px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>TrackMate can also be used for basic track analysis. Here is plotted the estimated diameter of a <i>C.elegans</i> cell as it divides over time.
+</p><p><br />
+</p>
+<div class="MediaTransformError" style="width: 148px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>A movie following one cell of a <i>C.elegans</i> embryo tracked over 3 hours, as it divides. The track follows the lineage from cell AB to ABaraapap.
+</p>
+<div style="clear:both;"></div>
+<p><br />
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Single_Particle_Tracking">Single Particle Tracking</span></h3>
+<p>TrackMate provides the tools to perform single particle tracking (SPT). SPT is an image analysis challenge where the goal is to segment and follow over time some labelled, spot-like structures. Each spot is segmented in multiple frames and its trajectory is reconstructed by assigning it an identity over these frames, in the shape of a track. These tracks can then be either visualized or yield further analysis results such as velocity, total displacement, diffusion characteristics, division events, etc...
+</p><p>TrackMate can deal with single particles, or spot-like objects. They are bright objects over a dark background for which the object contour shape is not important, but for which the main information can be extracted from the X,Y,Z coordinates over time. Examples include sub-resolution fluorescent spots, labelled traffic vesicles, nuclei or cells imaged at low resolution. 
+</p><p>Though these objects are solely represented by a X,Y,Z,T coordinates array, TrackMate can compute numerical features for each spot, given its coordinates and a radius. For instance, the mean, max, min and median intensity will be computed, as well as the estimated radius and orientation for each spot, allowing to follow how these feature evolves over time for one object.
+</p><p><br />
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="TrackMate_goals">TrackMate goals</span></h3>
+<p>Its development focuses on achieving two concomitant goals:
+</p>
+<h4><span class="mw-headline" id="For_users">For users</span></h4>
+<p>TrackMate aims at offering a generic solution that works out of the box, through a simple and sensible user interface. 
+</p><p>The tracking process is divided in a series of steps, through which you will be guided thanks to a wizard-like GUI. It privileges tracking schemes where the segmentation step is decoupled from the particle-linking step.
+</p><p>The segmentation / filtering / particle-linking processes and results are visualized immediately in 2D or 3D, allowing to judge their efficiency and adjust their control parameters. The visualization tools are the one shipped with Fiji and interact nicely with others plugin.
+</p><p>Several automated segmentation and linking algorithms are provided. But you are also offered to edit the results manually, or even to completely skip the automatic steps, and perform fully manual segmentation and/or linking.
+</p><p>Some tools for track and spot analysis are included. Various plots can be made directly from the plugin and for instance used to derive numerical results from the tracks. If they are not enough, functions are provided to export the whole results to other analysis software such as <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>.
+</p><p>TrackMate relies on several different libraries and plugins for data manipulation, analysis and visualization. This can be a pitfall when distributing a complex plugin, but this is where the Fiji magic comes into play. All dependencies are dealt with by through the Fiji updater. Installing TrackMate is easy as calling the <a href="http://imagej.net/Fiji_Updater" class="mw-redirect" title="Fiji Updater">Fiji Updater</a>, and the plugin must work out of the box. If this does not work for you, then it is a bug and we commit to fix it.
+</p><p>A strong emphasis is made on performance, and TrackMate will take advantage of multi-cores hardware.
+</p>
+<h4><span class="mw-headline" id="For_developers">For developers</span></h4>
+<p>Have you ever wanted to develop your own segmentation and/or particle-linking algorithm, but wanted to avoid the painful burden to also write a GUI, several visualization tools, analysis tools and exporting facilities? Then TrackMate is for you.
+</p><p>We spent a considerable amount of time making TrackMate extensible in every aspect. It has a very modular design, that makes it easy to extend. You can for instance develop your own segmentation algorithm, extend TrackMate to include it, and benefit from the visualization tools and the GUI already there. Here is a list of the components you can extend and customize:
+</p>
+<ul><li> detection algorithms</li>
+<li> particle-linking algorithms</li>
+<li> numerical features for spots (such as mean intensity, etc..)</li>
+<li> numerical features for links (such as velocity, orientation, etc..)</li>
+<li> numerical features for tracks (total displacement, length, etc...)</li>
+<li> visualization tools</li>
+<li> post-processing actions (exporting, data massaging, etc...)</li></ul>
+<p>You can even modify the GUI, and remove, edit or insert new steps in the wizard. This can be useful for instance if you want to implement a tracking scheme that solves simultaneously the segmentation part and the particle linking part, but still want to take advantage of TrackMate components. 
+</p><p>Do you want to make your new algorithms usable by the reviewers of your submitted paper? Upload your extended version of TrackMate to a private update site, as <a href="http://imagej.net/How_to_set_up_and_populate_an_update_site" title="How to set up and populate an update site">explained here</a>, then send the link to the reviewers. Now that the paper has been accepted (congratulations), you want to make it accessible to anyone? Just put the link to the update site in the article. All of this can happen without us even noticing.
+</p><p><br />
+TrackMate was developed to serve as a tool for Life-Science image analysis community, so that new tracking tools can be developed more easily and quickly, and so that end-users can use them to perform their own research. We will support you if need help to reuse it.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Documentation_and_tutorials">Documentation and tutorials</span></h2>
+<p>The <a rel="nofollow" class="external text" href="http://www.sciencedirect.com/science/article/pii/S1046202316303346">TrackMate paper</a> contains a polished, pdf version of the documentation below. But we host it here:
+</p><p><a href="http://imagej.net/File:TrackMate-manual.pdf" title="File:TrackMate-manual.pdf">File:TrackMate-manual.pdf</a> 14 MB
+</p><p><br />
+</p>
+<ul><li> TrackMate version history: Please look at the gihub page for TrackMate releases:</li></ul>
+<p><a rel="nofollow" class="external free" href="https://github.com/fiji/TrackMate/releases">https://github.com/fiji/TrackMate/releases</a>
+</p>
+<ul><li> <a href="http://imagej.net/TrackMate_FAQ" title="TrackMate FAQ">TrackMate FAQ</a></li></ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="For_users_2">For users</span></h3>
+<ul><li> <a href="http://imagej.net/Getting_started_with_TrackMate" title="Getting started with TrackMate">Getting started with TrackMate</a> is a basic tutorial that explains how TrackMate works on an easy image. You should start here.</li>
+<li> <a href="http://imagej.net/TrackScheme" title="TrackScheme">TrackScheme</a>: the tool for the visualization, editing and analysis of tracks.</li>
+<li> <a href="http://imagej.net/Manual_tracking_with_TrackMate" title="Manual tracking with TrackMate">Manual tracking with TrackMate</a></li>
+<li> <a href="http://imagej.net/Manual_editing_of_tracks_using_TrackMate" title="Manual editing of tracks using TrackMate">Manual editing of tracks using TrackMate</a> shows how to manually curate and edit tracking results.</li>
+<li> <a href="http://imagej.net/Track_analysis_using_TrackMate" title="Track analysis using TrackMate">Track analysis using TrackMate</a></li>
+<li> <a href="http://imagej.net/TrackMate_Algorithms" title="TrackMate Algorithms">TrackMate Algorithms</a> details and documents the automated segmentation algorithms, particle-linking algorithms, etc.. currently implemented in TrackMate. </li>
+<li> <a href="http://imagej.net/Using_TrackMate_with_MATLAB" class="mw-redirect" title="Using TrackMate with MATLAB">Using TrackMate with MATLAB</a> documents the <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> functions shipped with Fiji that allows importing data generated with TrackMate into <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>.</li>
+<li> <a href="http://imagej.net/TrackMate_Performance" title="TrackMate Performance">TrackMate Performance</a> reports various measures of the performance of its components. Performance reports include execution time and memory usage.</li>
+<li> <a href="http://imagej.net/TrackMate_Accuracy" title="TrackMate Accuracy">TrackMate Accuracy</a> reports various measures of the accuracy of its components. Accuracy reports how well TrackMate can generate scientifically correct results, and compare its output to known ground truth.</li>
+<li> Various very useful tips and tricks contributed by users:
+<ul><li> Dave Mason on using pivot tables to get track statistics based on spot features: <a rel="nofollow" class="external autonumber" href="https://forum.image.sc/t/mean-intensity-of-tracks-using-trackmate/11848/5">[1]</a></li></ul></li></ul>
+<h3><span class="mw-headline" id="For_developers_2">For developers</span></h3>
+<ul><li> <a href="http://imagej.net/Scripting_TrackMate" title="Scripting TrackMate">Scripting TrackMate</a> shows how to do tracking using a scripting language, <i>e.g.</i> from the Fiji <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a>. These example scripts will show you how to use TrackMate as a library and familiarize yourself with the API.</li>
+<li> <a href="http://imagej.net/Using_TrackMate_from_MATLAB" title="Using TrackMate from MATLAB">Using TrackMate from MATLAB</a> shows how to use <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> as a scripting language for TrackMate, and benefit from <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> facilities.</li></ul>
+<p>But the really interesting part for developers is the ability to extend TrackMate. 
+</p><p>Do you have a tracking or a detection algorithm you want to implement? Of course you can write a whole software from scratch. But at some point you will have to design a model to hold the data, to write code that can load and save the results, visualize them, have even a minimalistic GUI, and allow to manually correct the outcome of your algorithm. This can be long, tedious and boring, while the part that interests you is just the core algorithm. 
+</p><p>We propose you to use TrackMate as a home for your algorithm. The framework is already there; it might not be perfect  but can get your algorithm integrated very quickly. And then you can benefit from the other modules. 
+</p><p>The subject of extending TrackMate is not completely trivial. However, recent advances in the <a rel="nofollow" class="external text" href="http://www.scijava.org/">SciJava package</a>, brewed by the Fiji and ImageJ2 teams considerably simplified the task. It should be of no difficulty for an average Java developer. 
+</p><p>The following tutorials show how to integrate a module of each kind in TrackMate. They are listed by increasing complexity, and it is a good idea to practice them in this order. 
+</p>
+<ul><li> <a href="http://imagej.net/How_to_write_your_own_edge_feature_analyzer_algorithm_for_TrackMate" title="How to write your own edge feature analyzer algorithm for TrackMate">How to write your own edge feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" title="How to write your own track feature analyzer algorithm for TrackMate">How to write your own track feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_spot_feature_analyzer_algorithm_for_TrackMate" title="How to write your own spot feature analyzer algorithm for TrackMate">How to write your own spot feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_viewer_for_TrackMate" title="How to write your own viewer for TrackMate">How to write your own viewer for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_custom_actions_for_TrackMate" title="How to write custom actions for TrackMate">How to write custom actions for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_detection_algorithm_for_TrackMate" title="How to write your own detection algorithm for TrackMate">How to write your own detection algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_particle-linking_algorithm_for_TrackMate" title="How to write your own particle-linking algorithm for TrackMate">How to write your own particle-linking algorithm for TrackMate</a></li></ul>
+<h2><span class="mw-headline" id="Known_problems">Known problems</span></h2>
+<p>TrackMate LoG detector will crash if you have the <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">Mosaic suite update site</a> activated. Apparently they ship something that interferes with the FFT code used by the LoG detector. The bug report can be read <a rel="nofollow" class="external text" href="https://fiji.sc/bugzilla/show_bug.cgi?id=806">on BugZilla</a>. 
+</p>
+<h2><span class="mw-headline" id="Extensions">Extensions</span></h2>
+<p>Please tell us if you have one that you want to advertise here!
+</p>
+<h3><span class="mw-headline" id="Downloadable_jars">Downloadable jars</span></h3>
+<p>Thanks to Travis, the extension we are aware of are built automatically and can be downloaded following the links below. They point to a simple .jar file that you just have to drop in your <i>Fiji.app/jars</i> folder. TrackMate will recognise the extra modules it ships and will integrate them in the plugin.
+</p>
+<table class="wikitable">
+<tr>
+<th> Extension name
+</th>
+<th> Content
+</th>
+<th> Authors
+</th>
+<th> Link to jar file
+</th>
+<th> Source code
+</th></tr>
+<tr>
+<td> TrackMate-extras
+</td>
+<td> Various small additions to TrackMate:
+<ul><li> Multi-channel spot mean intensity analyzer: Computes the mean intensity of spots in up to 10 channels.</li>
+<li> Multi-channel track mean intensity analyzer: Computes the track mean intensity of its spots in up to 10 channels.</li>
+<li> ROI exporter: Exports spots as ImageJ ROIs.</li></ul>
+</td>
+<td> Benoit Lombardo &amp; Jean-Yves Tinevez
+</td>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/service/local/repositories/releases/content/org/scijava/TrackMate_extras/0.0.4/TrackMate_extras-0.0.4.jar">on ImageJ maven Nexus</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/tinevez/TrackMate-extras">on Github</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/Find_maxima_(Trackmate_module)" title="Find maxima (Trackmate module)">Find maxima (Trackmate module)</a>
+</td>
+<td> This plugin implements the find maxima detection algorithm for TrackMateas in the <i>Process -&gt; Find Maxima...</i> command. The results are almost the same. Subpixel accuracy is activated by default.
+</td>
+<td> Thorsten Wagner
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-trackmate-findmaxima/releases/latest">on Github</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-trackmate-findmaxima">on Github</a>
+</td></tr>
+<tr>
+<td> Track analysis
+</td>
+<td> This extension ships several track analyzers that yield more statistics on tracks. Such as:
+<ul><li> TOTAL_DISTANCE_TRAVELED</li>
+<li> MAX_DISTANCE_TRAVELED</li>
+<li> TRACK_CONFINMENT_RATIO</li>
+<li> MEAN_STRAIGHT_LINE_SPEED</li>
+<li> LINEARITY_OF_FORWARD_PROGRESSION</li>
+<li> MEAN_DIRECTIONAL_CHANGE_RATE</li></ul>
+</td>
+<td> Jean-Yves Tinevez
+</td>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/content/repositories/snapshots/sc/fiji/TrackMate_trackanalysis/0.0.1-SNAPSHOT/TrackMate_trackanalysis-0.0.1-20170614.171211-1.jar">on ImageJ maven Nexus</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/tinevez/TrackMate-TrackAnalysis">on Github</a>
+</td></tr>
+<tr>
+<td> TrackMate -&gt; Spot-On connector
+</td>
+<td> This extension adds an action allowing to automatically transfer a tracking analysis performed in TrackMate to <a rel="nofollow" class="external text" href="https://spoton.berkeley.edu">Spot-On</a>, without having to export the tracks and reimport them. Spot-On is a web-interface designed for the analysis of single-molecule tracking experiments.
+</td>
+<td> Maxime Woringer
+</td>
+<td> <a rel="nofollow" class="external text" href="https://gitlab.com/tjian-darzacq-lab/Spot-On-TrackMate/tags">on Gitlab</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://gitlab.com/tjian-darzacq-lab/Spot-On-TrackMate">on Gitlab</a>
+</td></tr></table>
+<h3><span class="mw-headline" id="Extra_source_code">Extra source code</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/chicoronny/RonnyTrackMate">Ronny Sczech TrackMate repository</a> contains the source code to various TrackMate enhancements, in Java and macros:
+</p><p><br />
+</p>
+<ul><li> Linear Tracker for TrackMate.</li></ul>
+<p>Principle:
+</p>
+<ul><li><ul><li> Link and set a flag for all objects that are sticking more than 80% of the time lapse movie, i.e not moving within a preset radius (Stick radius)</li>
+<li> Establish a first possible link from an object from the first frame with an object in the second frame within an initial radius</li>
+<li> Estimate the position of the object in the next frame (3rd) with the obtained vector</li>
+<li> Link to an object near to this estimated position within a succeeding radius</li>
+<li> Go on to the next frame until the last is reached</li></ul></li></ul>
+<ul><li> Batch Mode Plugin to run TrackMate headless from a configuration file (example:Trackmate.properties) which has to placed    in the parent folder of the processed files.</li></ul>
+<ul><li> Binary Detector to detect objects from a binary image using the ParticleAnalyzer class from ImageJ.</li></ul>
+<ul><li> Export tracks to SQLite.</li></ul>
+<ul><li> Export tracks to CSV files.</li></ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Documentation">Documentation</span></h3>
+<ul><li> <a href="http://imagej.net/Find_maxima_(Trackmate_module)" title="Find maxima (Trackmate module)">Find maxima detector</a> from Thorsten Wagner.</li></ul>
+<h2><span class="mw-headline" id="Who_uses_TrackMate">Who uses TrackMate</span></h2>
+<p>It turns out that TrackMate has a decent user base, as exemplified by a crude search on <a rel="nofollow" class="external text" href="https://scholar.google.fr/scholar?q=trackmate+fiji">Google Scholar</a>. These citations accumulated before the TrackMate paper was out.
+</p>
+<h2><span class="mw-headline" id="TrackMate_components">TrackMate components</span></h2>
+<p>TrackMate actually depends on many other Fiji plugins or libraries. The <a href="http://imagej.net/Fiji_Build_System" class="mw-redirect" title="Fiji Build System">Fiji Build System</a> system and the <a href="http://imagej.net/Fiji_Updater" class="mw-redirect" title="Fiji Updater">Fiji Updater</a> ensures that these dependencies will not bother you. We list them here, with their author when they are not obviously linked:
+</p>
+<ul><li> <a href="http://imagej.net/ImgLib2" title="ImgLib2">ImgLib2</a> is used everywhere we need dealing with pixels. Relying on imglib made it trivial to have a plugin that deals indifferently with 2D or 3D images. In particular, we use code from Stephan Preibisch, <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a>, Larry Lindsey and Lee Kamentsky.</li>
+<li> <a href="http://imagej.net/ImageJA" title="ImageJA">ImageJA</a> is of course the entry point for the plugin. We use it display the images as 2D slices and in the HyperStack displayer.</li>
+<li> The <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D Viewer</a> is used for 3D display.</li>
+<li> Internally, the tracks are represented by a mathematical <a href="http://en.wikipedia.org/wiki/Graph_(mathematics)" class="extiw" title="wikipedia:Graph (mathematics)">graph</a>. To manipulate it, we take advantage of the excellent <a rel="nofollow" class="external text" href="http://www.jgrapht.org/">JGraphT</a> library.</li>
+<li> TrackScheme, the TrackMate component that is used to visualize and edit tracks uses <a rel="nofollow" class="external text" href="http://www.jgraph.com/jgraph.html">JGraphX</a> for its UI.</li>
+<li> To display plots and histograms we use <a rel="nofollow" class="external text" href="http://www.jfree.org/jfreechart/">JFreeChart</a>.</li>
+<li> Some algorithm in TrackMate rely on the <a rel="nofollow" class="external text" href="http://math.nist.gov/javanumerics/jama/">JAMA</a> matrix package. </li>
+<li> Exporting visualizations and analysis results to SVG, PDF and other formats are made through the <a rel="nofollow" class="external text" href="http://xmlgraphics.apache.org/batik/">Batik</a> and <a rel="nofollow" class="external text" href="http://itextpdf.com/">iText</a> libraries.</li>
+<li> The TrackMate file format is plain XML, and is generated or loaded using the <a rel="nofollow" class="external text" href="http://www.jdom.org/">JDom</a> library.</li>
+<li> For the icons, as almost every ImageJ plugin with a GUI, we used the <a rel="nofollow" class="external text" href="http://www.famfamfam.com/lab/icons/silk/">silk icon set</a>, by Mark James. But we are also very lucky to have icons and logos designed specifically for TrackMate by <a rel="nofollow" class="external text" href="http://www.illuscientia.com/">IlluScienta</a>.</li></ul>
+<h2><span class="mw-headline" id="Acknowledgements">Acknowledgements</span></h2>
+<p>We are extremely thankful for the support of <a rel="nofollow" class="external text" href="http://www.utsouthwestern.edu/labs/jaqaman/">Khuloud Jaqaman</a> while we were implementing in Java a stripped down version of her work on robust LAP tracker, following her seminal paper published in the Danuser group<sup id="cite_ref-1" class="reference"><a href="TrackMate.html#cite_note-1">&#91;1&#93;</a></sup>.
+</p><p>JYT acknowledges funding from the European commission FP7 ICT (<a rel="nofollow" class="external text" href="http://www.memi-fp7.org">project “MEMI”</a>) at the beginning of this project. NP was a visiting student thanks to funds provisioned by the Stanford University.
+JS acknowledges funding from the Laboratory for Optical and Computational Instrumentation at the UW-Madison and National Science Foundation award #1121998. 
+</p><p><br />
+</p><p><br />
+</p><p><br />
+</p><p><br />
+</p><p><br />
+</p>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="TrackMate.html#cite_ref-1">↑</a></span> <span class="reference-text">Jaqaman et al. <i>Robust single-particle tracking in live-cell time-lapse sequences</i>. <b>Nat Methods</b> (2008) vol. 5 (8) pp. 695-702</span>
+</li>
+</ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074011
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.228 seconds
+Real time usage: 0.233 seconds
+Preprocessor visited node count: 6457/1000000
+Preprocessor generated node count: 17396/1000000
+Post‐expand include size: 14014/2097152 bytes
+Template argument size: 3473/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  187.739      1 - -total
+ 83.98%  157.656      1 - Template:ComponentStats:sc.fiji:TrackMate
+ 83.24%  156.278      1 - Template:Component
+ 76.28%  143.198     21 - Template:Person
+ 13.49%   25.334      1 - Template:Publication
+  9.40%   17.645      1 - Template:Citation
+  7.36%   13.821      1 - Template:Citation/core
+  0.90%    1.697      1 - Template:GitHub
+  0.87%    1.638      1 - Template:Project
+  0.65%    1.213      1 - Template:Maven
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=TrackMate&amp;oldid=41404">http://imagej.net/index.php?title=TrackMate&amp;oldid=41404</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=TrackMate&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Tracking" title="Category:Tracking">Tracking</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=TrackMate" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=TrackMate" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/TrackMate" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/TrackMate" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=TrackMate&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=TrackMate&amp;oldid=41404" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=TrackMate&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":432});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Using Weka - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Using_Weka","wgTitle":"Using Weka","wgCurRevisionId":41417,"wgRevisionId":41417,"wgArticleId":28,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Using_Weka","wgRelevantArticleId":28,"wgRequestId":"3e1e74b5811ba97d9c773726","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Weka seems to be a very nice framework that implements a lot of stuff for machine learning. It is completely Java based and Open Source. Here I just want to share my experiences getting started with Weka."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Using Weka"/>
+
+	<meta property="og:description" content="Weka seems to be a very nice framework that implements a lot of stuff for machine learning. It is completely Java based and Open Source. Here I just want to share my experiences getting started with Weka."/>
+
+	<meta property="og:url" content="http://imagej.net/Using_Weka"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Using_Weka rootpage-Using_Weka skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Using_Weka.html#bodyContent">Skip to content</a>, 			<a href="Using_Weka.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Using_Weka.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Using_Weka" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Using_Weka&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Using_Weka&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Using_Weka&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Using Weka</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Using_Weka.html#A_very_small_how_to_get_started_with_Weka_using_a_KDTree"><span class="tocnumber">1</span> <span class="toctext">A very small how to get started with Weka using a KDTree</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Using_Weka.html#Why_do_I_want_to_use_Weka"><span class="tocnumber">1.1</span> <span class="toctext">Why do I want to use Weka</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Using_Weka.html#Setting_up_Weka"><span class="tocnumber">1.2</span> <span class="toctext">Setting up Weka</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Using_Weka.html#Using_the_Weka_datastructures"><span class="tocnumber">1.3</span> <span class="toctext">Using the Weka datastructures</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Using_Weka.html#Setting_up_the_KDTree"><span class="tocnumber">1.4</span> <span class="toctext">Setting up the KDTree</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Using_Weka.html#Searching_the_KDTree"><span class="tocnumber">1.5</span> <span class="toctext">Searching the KDTree</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Using_Weka.html#See_also"><span class="tocnumber">1.6</span> <span class="toctext">See also</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="A_very_small_how_to_get_started_with_Weka_using_a_KDTree">A very small how to get started with Weka using a KDTree</span></h2>
+<p><a rel="nofollow" class="external text" href="http://sourceforge.net/projects/weka/">Weka</a> seems to be a very nice framework that implements a lot of stuff for machine learning. It is completely Java based and Open Source. Here I just want to share my experiences getting started with Weka.
+</p>
+<h3><span class="mw-headline" id="Why_do_I_want_to_use_Weka">Why do I want to use Weka</span></h3>
+<p>In my case, I simply want to find nearest neighbors in two clouds of 3D points.
+</p>
+<h3><span class="mw-headline" id="Setting_up_Weka">Setting up Weka</span></h3>
+<p>As of commit <a rel="nofollow" class="external text" href="https://fiji.sc/cgi-bin/gitweb.cgi?p=fiji.git;a=commitdiff;h=df44aab197dcff1c0de228b0ac08b7ef8966b75e;hb=refs/heads/master">df44aab1</a> (December 16th, 2009), Fiji's <i>master</i> branch comes with Weka.
+</p>
+<h3><span class="mw-headline" id="Using_the_Weka_datastructures">Using the Weka datastructures</span></h3>
+<p>Weka is seems to work with arbitrary datastructures and -types. They are defined using the weka.core.Attribute object that can even hold weka.core.FastVector objects. Each weka.core.Instance is one dataelement that contains n Attributes and their respective values. Groups of same type of Instance objects are grouped using weka.core.Instances.
+</p><p>Below is a Java method howto store a list of 3D points as a Weka datastructure.
+</p>
+<pre class="brush:java">
+/**
+* Creates a Weka Datastructure out of a List of 3D Points
+* @param points - List of 3D Points
+* @param name - Instance name
+* @return Instances containing all 3D points
+*/
+public Instances insertIntoWeka(final List &lt;Point3d&gt; points, final String name)
+{		
+	// Create numeric attributes "x" and "y" and "z"
+	Attribute x = new Attribute("x");
+	Attribute y = new Attribute("y");
+	Attribute z = new Attribute("z");
+	
+        // Create vector of the above attributes
+	FastVector attributes = new FastVector(3);
+	attributes.addElement(x);
+	attributes.addElement(y);
+	attributes.addElement(z);
+
+	// Create the empty datasets "wekaPoints" with above attributes
+	Instances wekaPoints = new Instances(name, attributes, 0);
+		
+	for (Iterator&lt;Point3d&gt; i = points.iterator(); i.hasNext();) 
+	{
+		// Create empty instance with three attribute values
+		Instance inst = new Instance(3);
+
+		// get the point3d
+		Point3d p = i.next();
+			
+		// Set instance's values for the attributes "x", "y", and "z"
+		inst.setValue(x, p.x);
+		inst.setValue(y, p.y);
+		inst.setValue(z, p.z);
+
+		// Set instance's dataset to be the dataset "wekaPoints"
+		inst.setDataset(wekaPoints);
+			
+		// Add the Instance to Instances
+		wekaPoints.add(inst);
+	}
+		
+	return wekaPoints;
+}
+</pre>
+<h3><span class="mw-headline" id="Setting_up_the_KDTree">Setting up the KDTree</span></h3>
+<p>Setting up the <a href="http://en.wikipedia.org/wiki/Kd-tree" class="extiw" title="wikipedia:Kd-tree">KDTree</a> is rather simple. The tricky part is the Euclidean Distance measure. It is very nice that Weka automatically figures out how to compute the Euclidean Distance as we use only simple numeric attributes. However, by default it nomalizes the data independently for each dimension which might cause problems as in my case. If you want to prevent him from doing so you have to assign a new EuclideanDistance object that does not normalize. 
+</p>
+<pre class="brush:java">
+//
+// Create the weka datastructure for 3D Points
+//
+
+Instances wekaPoints1 = insertIntoWeka(points1, "wekaPoints1");
+
+// 
+// Set up the KDTree
+//
+
+KDTree tree = new KDTree();		
+
+try 
+{ 
+	tree.setInstances(wekaPoints1);
+	
+	EuclideanDistance df = new EuclideanDistance(wekaPoints1);
+	df.setDontNormalize(true);
+	
+	tree.setDistanceFunction(df);			
+} 
+catch (Exception e) { e.printStackTrace();}
+</pre>
+<h3><span class="mw-headline" id="Searching_the_KDTree">Searching the KDTree</span></h3>
+<p>Once solved the normalization issue, searching the KDTree for the N-Nearest Neighbors is simple again. You create another Instance of the same type and ask the KDTree for its nearest neigbors.
+</p><p>First we create an Instance that can be used to search the KDTree. Later on it is very simple to just update its values rather than creating a new one for each query.
+</p>
+<pre class="brush:java">
+/**
+ * Create an Instance of the same type as the Instances object you are searching in.
+ * @param p - a 3D point
+ * @param dataset - the dataset you are searching in, which was used to build the KDTree
+ * @return an Instance that the nearest neighbor can be found for
+ */
+public Instance createInstance(final Point3d p, final Instances dataset)
+{
+	// Create numeric attributes "x" and "y" and "z"
+	Attribute x = dataset.attribute(0);
+	Attribute y = dataset.attribute(1);
+	Attribute z = dataset.attribute(2);
+
+	// Create vector of the above attributes
+	FastVector attributes = new FastVector(3);
+	attributes.addElement(x);
+	attributes.addElement(y);
+	attributes.addElement(z);
+
+	// Create empty instance with three attribute values
+	Instance inst = new Instance(3);				
+	
+	// Set instance's values for the attributes "x", "y", and "z"
+	inst.setValue(x, p.x);
+	inst.setValue(y, p.y);
+	inst.setValue(z, p.z);				
+
+	// Set instance's dataset to be the dataset "points1"
+	inst.setDataset(dataset);
+				
+	return inst;	
+}
+</pre>
+<p>Now we can easily search the KDTree.
+</p>
+<pre class="brush:java">
+// let's search for the nearest and second nearest neighbor
+Instance nn1, nn2;
+final Instance p = createInstance(new Point3d(0,0,0), wekaPoints);
+					
+try 
+{ 
+	Instances neighbors = tree.kNearestNeighbours(p, 2);
+	nn1 = neighbors.instance(0);
+	nn2 = neighbors.instance(1);							
+} 
+catch (Exception e) { nn1 = nn2 = null; }
+
+System.out.println(nn1 + " is the nearest neigbor for " + p);
+System.out.println(nn2 + " is the second nearest neigbor for " + p);
+
+// Now we can also easily compute the distances as the KDTree does it
+
+DistanceFunction df = tree.getDistanceFunction();
+System.out.println("The distance between" + nn1 + " and " + p + " is " + df.distance(nn1, p));
+System.out.println("The distance between" + nn2 + " and " + p + " is " + df.distance(nn2, p));
+
+</pre>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<ul><li> How to <a rel="nofollow" class="external text" href="http://weka.wikispaces.com/Use+Weka+in+your+Java+code">use Weka in your Java code</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074401
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.012 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 62/1000000
+Preprocessor generated node count: 112/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Using_Weka&amp;oldid=41417">http://imagej.net/index.php?title=Using_Weka&amp;oldid=41417</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Using_Weka&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Using+Weka" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Using+Weka" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Using_Weka" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Using_Weka" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Using_Weka&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Using_Weka&amp;oldid=41417" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Using_Weka&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":245});});</script>
+		</body>
+		</html>
+		

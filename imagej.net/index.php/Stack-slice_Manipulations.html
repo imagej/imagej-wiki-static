@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Stack-slice Manipulations - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Stack-slice_Manipulations","wgTitle":"Stack-slice Manipulations","wgCurRevisionId":29339,"wgRevisionId":29339,"wgArticleId":1884,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Cookbook","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Stack-slice_Manipulations","wgRelevantArticleId":1884,"wgRequestId":"40837740a2a93e2aa186d8b3","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The slices in a stack can be manipulated in many ways. Some of these functions are described below."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Stack-slice Manipulations"/>
+
+	<meta property="og:description" content="The slices in a stack can be manipulated in many ways. Some of these functions are described below."/>
+
+	<meta property="og:url" content="http://imagej.net/Stack-slice_Manipulations"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Stack-slice_Manipulations rootpage-Stack-slice_Manipulations skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Stack-slice_Manipulations.html#bodyContent">Skip to content</a>, 			<a href="Stack-slice_Manipulations.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Stack-slice_Manipulations.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Stack-slice_Manipulations" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Stack-slice_Manipulations&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Stack-slice_Manipulations&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Stack-slice_Manipulations&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Stack-slice Manipulations</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Cookbook Topics
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Cookbook" title="Cookbook">Introduction and Installation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Annotating_Images" title="Annotating Images">Annotating Images</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Color_Image_Processing" title="Color Image Processing">Color Image Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Intensity_Processing" title="Image Intensity Processing">Image Intensity Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Importing_Image_Files" title="Importing Image Files">Importing Image Files</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Particle_Analysis" title="Particle Analysis">Particle Analysis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Saving_and_Exporting" title="Saving and Exporting">Saving and Exporting</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Stack-slice Manipulations</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/T-functions" title="T-functions">T-functions</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Z-functions" title="Z-functions">Z-functions</a>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Stack-slice_Manipulations.html#Slice_shuffling.2Fremoving.2FAdding"><span class="tocnumber">1</span> <span class="toctext">Slice shuffling/removing/Adding</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Stack-slice_Manipulations.html#Stack_dimension_manipulations"><span class="tocnumber">2</span> <span class="toctext">Stack dimension manipulations</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Stack-slice_Manipulations.html#Zoomify_plugin"><span class="tocnumber">3</span> <span class="toctext">Zoomify plugin</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Stack-slice_Manipulations.html#Align_slices_in_stack"><span class="tocnumber">4</span> <span class="toctext">Align slices in stack</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Slice_shuffling.2Fremoving.2FAdding">Slice shuffling/removing/Adding</span></h2>
+<p>The slices in a stack can be manipulated in many ways. Some of these functions are described below.
+</p><p>Deleting a single slice: “<i>Image/Stacks/Delete Slice</i>"
+</p>
+<ul><li>Deletes the currently displayed slice in a stack.</li></ul>
+<p>Deleting a number of slices: “<i>Image/Stacks/Tools/Slice remover</i>”
+</p>
+<ul><li>Indicate the first and last slices in the range to remove, as well as the increment of slices to remove between the first and last slices.</li></ul>
+<p>Select the slices to remove: “<i>Image/Stacks/Tools/Make substack</i>”
+</p>
+<ul><li>Indicate a range or list of slices to include in new substack; increments are possible.</li>
+<li>Option to delete the slices from the original stack.</li></ul>
+<p>Stack to images/Images to stack: “<i>Image/Stacks/Stack to images” (Images to Stack…)</i>. 
+</p>
+<ul><li>“<i>Images to Stack</i>” requires images to be the same size. If different sized images are used, you will be presented with options to make the size uniform.</li>
+<li>When using "Images to Stack", the original images will close once the stack is formed.</li></ul>
+<p>Montage: "<i>Image/Stack/Make Montage…</i>" 
+</p>
+<ul><li>Many settings are self explanatory. </li>
+<li>Ideal for generating a montage of a stack for a lab book.</li>
+<li>Can do reverse operation with "<i>Image/Stack/Tools/Montage to Stack</i>", but will need to specify the number of rows and columns to ensure the correct number of slices.</li></ul>
+<p>Reversing stack: “<i>Image/Stacks/Tools/Reverse</i>"
+</p><p>Concatenate: “<i>Image/Stacks/Tools/Concatenate</i>"
+</p>
+<ul><li>Stacks must be the same dimension and image type.</li>
+<li>"Open as a 4D Image" option interprets separate stacks as belonging to a single 4D dataset. For example, concatenating two 25-slice stacks would result in a 25-slice stack with two different time points at each slice.</li></ul>
+<p>Stack Combine: “<i>Image/Stacks/Tools/Combine</i>”
+</p>
+<ul><li>Can choose which stack comes first</li>
+<li>If the two stacks contain a different number of slices, the shorter will have blank slices appended to the end so they are the same length.</li></ul>
+<p>(De)Interleave: “<i>Image/Stacks/Tools/DeInterleave”</i> and “<i>/Interleave</i>”
+</p>
+<ul><li>Deinterleave will distribute slices between new stacks as indicated by the specified number of channels.</li>
+<li>Interleave is the reverse process and may be applied to two stacks at a time.</li></ul>
+<p>Stack Inserter: “<i>Image/Stacks/Tools/Insert</i>"
+</p>
+<ul><li>Used with two stacks, one is the source and the other the destination.</li>
+<li>Superimpose the source by specifying the X and Y coordinates for the location of the upper left hand corner.</li>
+<li>No automatic resizing, so the smaller stack should not be used as the destination.</li></ul>
+<p>Stack Sorter: “<i>Image/Stacks/Tools/Stack Sorter</i>”.
+</p>
+<ul><li>Control the position of individual slices or groups of slices.</li>
+<li>Advanced “Insert” functionality.</li></ul>
+<div class="MediaTransformError" style="width: 469px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Stack_dimension_manipulations">Stack dimension manipulations</span></h2>
+<p>Images and stacks can be resized and rotated with native functions or with the more sophisticated TransformJ set of plugins from Erik Meijering. More details about each TransformJ plugin can be found on <a rel="nofollow" class="external text" href="http://www.imagescience.org/meijering/software/transformj/">this website.</a>
+</p><p>E. H. W. Meijering, W. J. Niessen, M. A. Viergever, <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed/11516706">Quantitative Evaluation of Convolution-Based Methods for Medical Image Interpolation</a>, <i>Medical Image Analysis</i>, vol. 5, no. 2, June 2001, pp. 111-126.
+</p><p>An alternative method for cropping a stack is found with "<i>Plugins/Stacks/Crop (3D)</i>" After selecting 'OK', you will be presented with panels of the ZY and XZ planes, as well as the original stack, where you can use the mouse to crop the stack in any of the three directions.
+</p>
+<div class="MediaTransformError" style="width: 270px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Window for the Crop (3D) plugin.
+</p>
+<h2><span class="mw-headline" id="Zoomify_plugin">Zoomify plugin</span></h2>
+<p>The Zoomify plugin will generate a movie sequence such that the first frame includes the whole image and the last is the user defined ROI at 100%. The first slice image is the whole of the original image, scaled so that it fits into the framesize of the ROI. The intermediate images are progressively scaled so that the last frame is 100%. The scale factor is noted as the label slice in the stack.
+</p><p>To use this plugin, select an ROI which will become the final frame, but do not apply the ROI using "<i>Edit/Draw</i>". After the ROI is selected, run the plugin and you will be prompted for the desired number of frames in the movie.
+</p><p>Image with selected ROI
+</p><p><a href="http://imagej.net/File:Zoomify_start.png" class="image"><img alt="Zoomify start.png" src="../_images/5/55/Zoomify_start.png" width="359" height="270" /></a>
+</p><p><br />
+Series generated with zoomify
+</p><p><a href="http://imagej.net/File:Zoomify_montage.png" class="image"><img alt="Zoomify montage.png" src="../_images/3/30/Zoomify_montage.png" width="533" height="111" /></a>
+</p>
+<h2><span class="mw-headline" id="Align_slices_in_stack">Align slices in stack</span></h2>
+<p>The plugins StackReg (to align a stack) and TurboReg (to align more than one image or stack) can be used for alignment and are found at "<i>Plugins/Registration/StackReg or TurboReg</i>". StackReg takes a stack with misaligned slices and aligns the slices with respect to the current slice. Open the stack, scroll to the most centered slice and run the plugin. The "Rigid body" method typically produces the best results for microscopy images. The TurboReg plugin must be installed before using StackReg.
+</p><p>Based on:
+</p><p>P. Thévenaz, U.E. Ruttimann, M. Unser, "<a rel="nofollow" class="external text" href="http://bigwww.epfl.ch/publications/thevenaz9801.html">A Pyramid Approach to Subpixel Registration Based on Intensity</a>," IEEE Transactions on Image Processing, vol. 7, no. 1, pp. 27-41, January 1998.
+</p><p>Time series before alignment
+</p>
+<div class="MediaTransformError" style="width: 385px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+After
+</p>
+<div class="MediaTransformError" style="width: 385px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073457
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.040 seconds
+Real time usage: 0.041 seconds
+Preprocessor visited node count: 91/1000000
+Preprocessor generated node count: 181/1000000
+Post‐expand include size: 1447/2097152 bytes
+Template argument size: 658/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.113      1 - Template:CookbookMenu
+100.00%    5.113      1 - -total
+ 78.84%    4.031      1 - Template:Menu
+ 44.43%    2.272     11 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Stack-slice_Manipulations&amp;oldid=29339">http://imagej.net/index.php?title=Stack-slice_Manipulations&amp;oldid=29339</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:14.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Stack-slice_Manipulations&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Cookbook" title="Category:Cookbook">Cookbook</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Stack-slice+Manipulations" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Stack-slice+Manipulations" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Stack-slice_Manipulations" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Stack-slice_Manipulations" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Stack-slice_Manipulations&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Stack-slice_Manipulations&amp;oldid=29339" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Stack-slice_Manipulations&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":234});});</script>
+		</body>
+		</html>
+		

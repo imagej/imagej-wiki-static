@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Series Labeler - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Series_Labeler","wgTitle":"Series Labeler","wgCurRevisionId":32601,"wgRevisionId":32601,"wgArticleId":892,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Image annotation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Series_Labeler","wgRelevantArticleId":892,"wgRequestId":"c8857a6014c63225a28bbb80","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This plugin is inspired by the Time Stamper plugins from ImageJ and from Tony Collins' MBF Plugin Collection,&#10;as well as the imageJ built-in Image&amp;#160;&amp;#8250; Stack&amp;#160;&amp;#8250; Label command."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Series Labeler"/>
+
+	<meta property="og:description" content="This plugin is inspired by the Time Stamper plugins from ImageJ and from Tony Collins' MBF Plugin Collection,&#10;as well as the imageJ built-in Image&amp;#160;&amp;#8250; Stack&amp;#160;&amp;#8250; Label command."/>
+
+	<meta property="og:url" content="http://imagej.net/Series_Labeler"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Series_Labeler rootpage-Series_Labeler skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Stack_Labeler.html#bodyContent">Skip to content</a>, 			<a href="Stack_Labeler.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Stack_Labeler.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Stack_Labeler.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Series_Labeler&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Series_Labeler&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Series_Labeler&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Series Labeler</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Series Labeler<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Series_Labeler">https://imagej.net/Series_Labeler</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Series_Labeler/releases/tag/Series_Labeler-2.0.1">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Series_Labeler~2.0.1~~~kw,versionexpand">2.0.1</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 23:04:20 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:Kazimiers" title="User:Kazimiers">Tom Kazimiers</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<p>This plugin is inspired by the <a href="http://imagej.net/Time_Stamper" title="Time Stamper">Time Stamper</a> plugins from ImageJ and from Tony Collins' <a href="http://imagej.net/MBF_Plugin_Collection" title="MBF Plugin Collection">MBF Plugin Collection</a>,
+as well as the imageJ built-in <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Stack</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Label</span></em></span> command. 
+</p><p>It aims to combine the functionality of these plugins and
+refine and enhance the functionality for instance by adding
+the preview functionality suggested by Michael Weber.
+Series Labeler is not a drop in replacement for Time Stamper,
+or Label... 
+since it does not work with hyperstacks or allow macro recording.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Stack_Labeler.html#Screen_Shot_of_features"><span class="tocnumber">1</span> <span class="toctext">Screen Shot of features</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Stack_Labeler.html#What_it_works_with"><span class="tocnumber">2</span> <span class="toctext">What it works with</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Stack_Labeler.html#It_reads_in_image_metadata_for_default_settings"><span class="tocnumber">3</span> <span class="toctext">It reads in image metadata for default settings</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Stack_Labeler.html#How_to_use_Series_Labeler"><span class="tocnumber">4</span> <span class="toctext">How to use Series Labeler</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Stack_Labeler.html#It_doesn.27t_work_with_hyperstacks_or_macros..."><span class="tocnumber">5</span> <span class="toctext">It doesn't work with hyperstacks or macros...</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="Stack_Labeler.html#why_not.3F"><span class="tocnumber">5.1</span> <span class="toctext">why not?</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Screen_Shot_of_features">Screen Shot of features</span></h2>
+<div class="MediaTransformError" style="width: 657px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="What_it_works_with">What it works with</span></h2>
+<p>Series Labeler handles any kind of stack: time (t), z (3rd spatial dimension)
+or channel (c, eg. spectral series). It does not work with hyperstacks, see below. 
+</p>
+<h2><span class="mw-headline" id="It_reads_in_image_metadata_for_default_settings">It reads in image metadata for default settings</span></h2>
+<p>When meta data is available in the image, ie. for calibration 
+of time interval, z spacing, etc. it is read into the GUI as default values, 
+so you have a better chance of getting the values and units correct! 
+</p>
+<h2><span class="mw-headline" id="How_to_use_Series_Labeler">How to use Series Labeler</span></h2>
+<p>Generally speaking, just work your way down the GUI, with preview on if you like.
+</p>
+<ul><li>Open an image stack. It can be a z, time or channel stack, but not a hyper stack.</li></ul>
+<p>Make sure its the active image by clicking on it, then.... 
+</p>
+<ul><li>Open the Series Labeler (its in Image-Stacks-Series Labeler)</li>
+<li>Choose the type of stack in the General Settings - Stack Type</li>
+<li>Choose the type of units and how to format them in the Units_Formatting panel. 
+<ul><li>Choose the label unit from the drop down list or choose your own custom one. 
+<ul><li>Custom labels can be anything you like! If you don't see the one you want in the drop down list, just add it here.</li></ul></li>
+<li>"Time series / movie" can have Decimal (0.45 sec) or Digital (00:00:00) formats, as well as a custom format the you can type in the given text field.  
+<ul><li>Custom formats follow patterns as explained at Java SimpleDateFormat <a rel="nofollow" class="external text" href="http://download.oracle.com/docs/cd/E17476_01/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html">Java SimpleDateFormat</a>. H is hours, m is minutes, s is seconds, and S is ms.Try custom formats like HH:mm:ss or ss.SSS  etc.</li></ul></li>
+<li>"Z-stack" can have length units or a custom format. </li>
+<li>"Spectral" can have units of length or inverse length, or a custom format. </li></ul></li>
+<li>Give the Startup value, the Interval value (time/distance/etc between slices/frames), which frames/slices to work on (from First to Last), and how often to label a slice/frame using the Every n-th option. Every n-th of 1 labels every slice, 2 labels every other, 3 every third, etc. </li>
+<li>In the location &amp; Font pane, choose the location in x and y (Custom location) or choose a location preset for eg Top Left, and the font characteristics.  
+<ul><li> If you drew a rectangle RIO in the image before launching Series Labeler, it will try to fit the label into that ROI.  </li>
+<li>To change the font, font size, Series Labeler uses the ImageJ foreground/background color and Fonts tools. Click on the buttons to launch those tools, or double click the Text Tool (A icon) or Color Picker tool (dropper icon) in the Main Fiji/ImageJ tool bar. </li>
+<li> Turn the background on and off with the checkbook. The background uses the color set in the imageJ built in Color Picker (dropper icon), which is also launched by the Font Color button here. </li></ul></li>
+<li>With preview on, you can move the slider in the image to be labeled, and get a preview of what the label/stamp will look like through the stamp. Changes you make in the Series Labeler GUI should be sent to the preview you you can see what you are going to get. </li>
+<li>Click OK to burn the labels/stamps into the image stack (maybe work on a duplicate stack - there is no undo!). The cancel button removes the label preview and gives you back the original stack, and closes the Series Labeler. The help button sends you here.  </li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="It_doesn.27t_work_with_hyperstacks_or_macros...">It doesn't work with hyperstacks or macros...</span></h2>
+<p>Hyperstacks and macro recording are not supported yet. 
+</p>
+<h3><span class="mw-headline" id="why_not.3F">why not?</span></h3>
+<p>Hyperstacks can be labeled with the imageJ builtin Label command, if you want to do that. Series Labeler doesn't work with them, as there are many tricky cases to include when you have all the extra gadgets you have in this plugin. What if you want to label time, z and channel all at the same time? Hmmmm...
+</p><p>Macro recording is broken due to the use of a non blocking (non modal)
+GUI... which is needed for the preview functionality and being able to use built in imageJ font and color choosers. To fix this we need to make some new infrastructure in ImageJ/Fiji.... or wait for imageJ2 n-dimensional data support.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073502
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.100 seconds
+Real time usage: 0.100 seconds
+Preprocessor visited node count: 2573/1000000
+Preprocessor generated node count: 5220/1000000
+Post‐expand include size: 5548/2097152 bytes
+Template argument size: 1364/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   70.887      1 - -total
+ 94.69%   67.123      1 - Template:ComponentStats:sc.fiji:Series_Labeler
+ 93.25%   66.103      1 - Template:Component
+ 75.27%   53.357     10 - Template:Person
+  5.18%    3.673      1 - Template:Bc
+  2.39%    1.692      1 - Template:GitHub
+  2.11%    1.495      1 - Template:Project
+  1.82%    1.292      2 - Template:Arrow
+  1.72%    1.216      1 - Template:Maven
+  1.46%    1.035      1 - Template:SupportStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Series_Labeler&amp;oldid=32601">http://imagej.net/index.php?title=Series_Labeler&amp;oldid=32601</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 3 June 2017, at 21:07.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Series_Labeler&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Image_annotation" title="Category:Image annotation">Image annotation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Series+Labeler" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Series+Labeler" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Series_Labeler" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Series_Labeler" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Series_Labeler&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Series_Labeler&amp;oldid=32601" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Series_Labeler&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":248});});</script>
+		</body>
+		</html>
+		

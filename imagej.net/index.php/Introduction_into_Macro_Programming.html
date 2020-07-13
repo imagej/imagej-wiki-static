@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Introduction into Macro Programming - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Introduction_into_Macro_Programming","wgTitle":"Introduction into Macro Programming","wgCurRevisionId":43971,"wgRevisionId":43971,"wgArticleId":870,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Scripting","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Introduction_into_Macro_Programming","wgRelevantArticleId":870,"wgRequestId":"2030cded7336ff028ef4737b","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Macros can be used to"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Introduction into Macro Programming"/>
+
+	<meta property="og:description" content="Macros can be used to"/>
+
+	<meta property="og:url" content="http://imagej.net/Introduction_into_Macro_Programming"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Introduction_into_Macro_Programming rootpage-Introduction_into_Macro_Programming skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Introduction_into_Macro_Programming.html#bodyContent">Skip to content</a>, 			<a href="Introduction_into_Macro_Programming.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Introduction_into_Macro_Programming.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Introduction_into_Macro_Programming" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Introduction_into_Macro_Programming&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Introduction_into_Macro_Programming&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Introduction_into_Macro_Programming&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Introduction into Macro Programming</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">ImageJ Macro</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="Introduction_into_Macro_Programming.html#Why_Macros.3F"><span class="tocnumber">1</span> <span class="toctext">Why Macros?</span></a></li>
+<li class="toclevel-1 tocsection-1"><a href="Introduction_into_Macro_Programming.html#Variables"><span class="tocnumber">2</span> <span class="toctext">Variables</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Introduction_into_Macro_Programming.html#Using_variables"><span class="tocnumber">2.1</span> <span class="toctext">Using variables</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Introduction_into_Macro_Programming.html#Self-referencing_assignments"><span class="tocnumber">2.2</span> <span class="toctext">Self-referencing assignments</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="Introduction_into_Macro_Programming.html#Functions"><span class="tocnumber">3</span> <span class="toctext">Functions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="Introduction_into_Macro_Programming.html#Defining_functions"><span class="tocnumber">3.1</span> <span class="toctext">Defining functions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="Introduction_into_Macro_Programming.html#Comments"><span class="tocnumber">4</span> <span class="toctext">Comments</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="Introduction_into_Macro_Programming.html#Multi-line_comments"><span class="tocnumber">4.1</span> <span class="toctext">Multi-line comments</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Introduction_into_Macro_Programming.html#Commented-out_code"><span class="tocnumber">4.2</span> <span class="toctext">Commented-out code</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Introduction_into_Macro_Programming.html#Conditional_code_blocks"><span class="tocnumber">5</span> <span class="toctext">Conditional code blocks</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="Introduction_into_Macro_Programming.html#else"><span class="tocnumber">5.1</span> <span class="toctext">else</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="Introduction_into_Macro_Programming.html#Loops"><span class="tocnumber">6</span> <span class="toctext">Loops</span></a>
+<ul>
+<li class="toclevel-2 tocsection-12"><a href="Introduction_into_Macro_Programming.html#1st_example"><span class="tocnumber">6.1</span> <span class="toctext">1st example</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Introduction_into_Macro_Programming.html#Looping_over_slices_of_a_stack"><span class="tocnumber">6.2</span> <span class="toctext">Looping over slices of a stack</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="Introduction_into_Macro_Programming.html#Looping_over_rois_in_RoiManager"><span class="tocnumber">6.3</span> <span class="toctext">Looping over rois in RoiManager</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="Introduction_into_Macro_Programming.html#The_recorder"><span class="tocnumber">7</span> <span class="toctext">The recorder</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="Introduction_into_Macro_Programming.html#Installing_macros"><span class="tocnumber">8</span> <span class="toctext">Installing macros</span></a>
+<ul>
+<li class="toclevel-2 tocsection-17"><a href="Introduction_into_Macro_Programming.html#Keyboard_shortcuts"><span class="tocnumber">8.1</span> <span class="toctext">Keyboard shortcuts</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="Introduction_into_Macro_Programming.html#Tool_icons"><span class="tocnumber">8.2</span> <span class="toctext">Tool icons</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-19"><a href="Introduction_into_Macro_Programming.html#Example_macros"><span class="tocnumber">9</span> <span class="toctext">Example macros</span></a>
+<ul>
+<li class="toclevel-2 tocsection-20"><a href="Introduction_into_Macro_Programming.html#Resizing_to_a_given_width_of_the_selection_bounds"><span class="tocnumber">9.1</span> <span class="toctext">Resizing to a given width of the selection bounds</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="Introduction_into_Macro_Programming.html#Splitting_timepoints"><span class="tocnumber">9.2</span> <span class="toctext">Splitting timepoints</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Introduction_into_Macro_Programming.html#Merging_timepoints"><span class="tocnumber">9.3</span> <span class="toctext">Merging timepoints</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="Introduction_into_Macro_Programming.html#Normalize_all_images_to_the_global_mean"><span class="tocnumber">9.4</span> <span class="toctext">Normalize all images to the global mean</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="Introduction_into_Macro_Programming.html#Make_a_false-colored_montage"><span class="tocnumber">9.5</span> <span class="toctext">Make a false-colored montage</span></a></li>
+<li class="toclevel-2 tocsection-25"><a href="Introduction_into_Macro_Programming.html#Mimic_the_merge_sides_command_in_the_BioRad_MRC600_confocal"><span class="tocnumber">9.6</span> <span class="toctext">Mimic the <i>merge sides</i> command in the BioRad MRC600 confocal</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href="Introduction_into_Macro_Programming.html#More_example_macros"><span class="tocnumber">9.7</span> <span class="toctext">More example macros</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-27"><a href="Introduction_into_Macro_Programming.html#Overcoming_limitations"><span class="tocnumber">10</span> <span class="toctext">Overcoming limitations</span></a>
+<ul>
+<li class="toclevel-2 tocsection-28"><a href="Introduction_into_Macro_Programming.html#Macro_extensions"><span class="tocnumber">10.1</span> <span class="toctext">Macro extensions</span></a></li>
+<li class="toclevel-2 tocsection-29"><a href="Introduction_into_Macro_Programming.html#The_call_function"><span class="tocnumber">10.2</span> <span class="toctext">The call function</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="Introduction_into_Macro_Programming.html#The_eval_function"><span class="tocnumber">10.3</span> <span class="toctext">The eval function</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="Introduction_into_Macro_Programming.html#The_exec_function"><span class="tocnumber">10.4</span> <span class="toctext">The exec function</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-32"><a href="Introduction_into_Macro_Programming.html#Further_documentation"><span class="tocnumber">11</span> <span class="toctext">Further documentation</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Why_Macros.3F">Why Macros?</span></h1>
+<p>Macros can be used to
+</p>
+<ul><li> automate repetitive tasks</li>
+<li> document what you did</li>
+<li> share common procedures</li>
+<li> add tools to the toolbar</li>
+<li> add keyboard shortcuts</li></ul>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Please be aware that there are several other available <a href="http://imagej.net/Scripting" title="Scripting">scripting</a> languages that are more powerful than macros, too! See the sidebar on the right, as well as the <a href="Introduction_into_Macro_Programming.html#Overcoming_limitations">Overcoming limitations</a> section below. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Variables">Variables</span></h1>
+<p>The most important concept when starting to program macros are <i>variables</i>. A variable is a placeholder for a changing entity. It has a <i>name</i> and a <i>value</i>, which can be <i>numeric</i> or <i>text</i> (so-called <i>strings</i>).
+</p><p>Variables are needed whenever you want to execute the same code several times, but for different images, parameters, etc
+</p><p>Variables can also be used to store user input obtained through a dialog.
+</p><p>A variable can be assigned like this:
+</p>
+<pre class="brush:java">
+factor = 1024;
+</pre>
+<p>In this example, <i>factor</i> is the name of the variable, <i>1024</i> is the value assigned to the variable. The semicolon tells ImageJ that the assignment is done.
+</p><p>Example: assign text to a variable:
+</p>
+<pre class="brush:java">
+message = "Hello, World!";
+</pre>
+<p>In this case, the variable is named <i>message</i>, and the text <i>Hello, World!</i> is assigned to it; Text is specified inside double quotes.
+</p>
+<h2><span class="mw-headline" id="Using_variables">Using variables</span></h2>
+<p>You can use variables in <i>expressions</i>: you can calculate with numeric variables, and you can concatenate text and text variables. Example:
+</p>
+<pre class="brush:java">
+x = 2;
+y = 3;
+result = x * x + y + y;
+</pre>
+<p>This assigns the variable <i>x</i> the value 2, the variable <i>y</i> the value 3, and then assigns the variable <i>result</i> the square of <i>x</i> plus the square of <i>y</i>.
+</p><p>This example shows how to <a rel="nofollow" class="external text" href="https://www.techopedia.com/definition/3470/concatenation-programming">concatenate</a> a fixed text with the value of a variable:
+</p>
+<pre class="brush:java">
+name = "Bob";
+msg = "Those days are over, " + name;
+</pre>
+<p><b>Note:</b> a common pitfall is to include the name of a variable in a string. The following code demonstrates this:
+</p><p>(<b>BAD</b> lines are commented out to discourage copying them. If you paste this code in the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">script editor</a>, you can uncomment these lines to see their errors)
+</p>
+<pre class="brush:java">
+title = "Macro";
+//write("The name: title");  // BAD - literally prints "title"
+write("The name: " + title); // GOOD - properly uses the title variable value
+</pre>
+<p>The same principle applies when using variables which reflect parameters passed to a <code>run()</code> method, e.g.
+</p>
+<pre class="brush:java">
+specifiedRadius = 3;
+//run("Median...", "radius=specifiedRadius");  // BAD - will literally pass "specifiedRadius"
+run("Median...", "radius=" + specifiedRadius); // GOOD - will correctly pass the radius variable value
+</pre>
+<p><b>Note:</b> when concatenating strings, whitespace will not automatically be added. So care must be taken, for example when spaces are <i>desired</i>.
+</p>
+<pre class="brush:java">
+// We want to use the "Li white" threshold
+
+userDefinedAutoThreshold = "Li";
+//run("Auto Threshold", "method=" + userDefinedAutoThreshold + "white");   //does NOT work because the macro runs as "method=Liwhite"
+run("Auto Threshold", "method=" + userDefinedAutoThreshold + " white");   //WORKS because including a space in " white" results in "method=Li white"
+</pre>
+<h2><span class="mw-headline" id="Self-referencing_assignments">Self-referencing assignments</span></h2>
+<p>When a variable is assigned, the right-hand side is evaluated first, and only then the assignment is performed. This allows you to double the value of a variable:
+</p>
+<pre class="brush:java">
+amount = amount * 2;
+</pre>
+<p>First, <i>amount * 2</i> is evaluated. The result is then assigned back to the variable <i>amount</i>, effectively doubling  it.
+</p><p>A very important operation is to increment a variable's value by one:
+</p>
+<pre class="brush:java">
+counter = counter + 1;
+</pre>
+<p>It is so important that there is a short form for it:
+</p>
+<pre class="brush:java">
+// This statement does the same as counter = counter + 1;
+counter++;
+</pre>
+<h1><span class="mw-headline" id="Functions">Functions</span></h1>
+<p>Most of the time, you will call <i>functions</i> which implement the actions you want to execute. Functions have names, like variables, but they also have <i>parameters</i> that you can pass to the functions. ImageJ comes with many <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/functions.html">predefined functions</a> that you can call to perform specific calculations or other operations.
+</p><p>This example writes <i>Hello, World!</i> to the <i>Log</i> window:
+</p>
+<pre class="brush:java">
+write("Hello, World!");
+</pre>
+<p>As before, a semicolon signifies the end of the statement. The name of the function is <i>write</i>, and the parameter list is enclosed in parentheses. In the case of <i>write</i>, there is only one parameter. If there are more parameters to be passed, they have to be separated by commas:
+</p>
+<pre class="brush:java">
+newImage("My pretty new image", "8-bit black", 640, 480, 1);
+</pre>
+<p>Like <i>write</i>, <i>newImage</i> is a builtin function of ImageJ. The order of the parameters is relevant, this is the way the function knows what each parameter means.
+</p>
+<h2><span class="mw-headline" id="Defining_functions">Defining functions</span></h2>
+<p>For recurring tasks, you can define your own functions:
+</p>
+<pre class="brush:java">
+function closeImageByTitle(title) {
+        selectWindow(title);
+        close();
+}
+</pre>
+<p>Note that the <i>title</i> is just another <a href="Introduction_into_Macro_Programming.html#Variables">variable</a>, which is implicitly assigned when the function is called. In other words, this call will execute the code in above definition, with the variable <i>title</i> set to <i>My pretty new image</i>:
+</p>
+<pre class="brush:java">
+closeImageByTitle("My pretty new image");
+</pre>
+<h1><span class="mw-headline" id="Comments">Comments</span></h1>
+<p>When you read your code again in six months from now, you want to understand what your code does, and why. For this, you can add comments, i.e. text which is ignored by ImageJ when it executes the macro. Example:
+</p>
+<pre class="brush:java">
+// This variable contains the radius of the circle to be drawn
+r = 15;
+</pre>
+<p>Everything after the two slashes up to the end of the line is a comment.
+</p>
+<h2><span class="mw-headline" id="Multi-line_comments">Multi-line comments</span></h2>
+<p>You can also have multi-line comments enclosed in <i>/* ... */</i> blocks:
+</p>
+<pre class="brush:java">
+/*
+ It turned out in practice that 0.5 is a good choice for alpha, because
+ it leads to fewer artifacts than anything larger, and it is large enough
+ to guarantee a quick convergence.
+*/
+alpha = 0.5;
+</pre>
+<h2><span class="mw-headline" id="Commented-out_code">Commented-out code</span></h2>
+<p>When reading macros written by other people, you will often find the concept of <i>commented-out code</i>. This is code that is pretended to be a comment so that it is not executed. Example:
+</p>
+<pre class="brush:java">
+a = 0.5;
+// write("value of a: " + a);
+run("Gaussian Blur...", "radius=" + a);
+</pre>
+<p>Typical uses for commented-out code are instructions that help with debugging, but are too verbose (or too slow) for regular execution of the macro.
+</p>
+<h1><span class="mw-headline" id="Conditional_code_blocks">Conditional code blocks</span></h1>
+<p>Sometimes, you need to execute a certain part of the code if and only if a certain condition is met. Example:
+</p>
+<pre class="brush:java">
+// If the image is not binary, abort
+if (!is( "binary" )) {
+	exit( "You need a binary image for this macro!" );
+}
+</pre>
+<p>There are several parts to a conditional block: the <i>if</i> keyword, the condition inside the parentheses, and the code block enclosed in curly braces.
+</p><p>In this case, the condition calls the function <i>is</i> to ask whether the current image is binary, and the exclamation mark negates the result, i.e. <i>!is("binary")</i> yields true if and only if the current image is <u>not</u> binary (as opposed to <i>is("binary")</i>, which returns true in the opposite case).
+</p><p>If the code block consists of only one statement, the curly braces may be omitted, but it is a good practice to keep them (for example, nested conditional blocks are much easier to understand with curly braces than without).
+</p><p>Likewise, it is a good practice to <i>indent</i> the code inside the conditional block (i.e. to add white space in front of the lines inside the block). This makes reading the code much easier, too.
+</p>
+<h2><span class="mw-headline" id="else">else</span></h2>
+<p>You can optionally add an <i>else</i> clause, i.e. a code block that is executed when the condition is <b>not</b> met. Example:
+</p>
+<pre class="brush:java">
+if (is("binary")) {
+        write("The current image is binary");
+}
+else {
+        write("The current image is not binary");
+}
+</pre>
+<h1><span class="mw-headline" id="Loops">Loops</span></h1>
+<h2><span class="mw-headline" id="1st_example">1st example</span></h2>
+<p>To repeat instructions several times, loops are used. Example:
+</p>
+<pre class="brush:java">
+for (i = 0; i &lt; 10; i++) {
+        run("Dilate");
+}
+</pre>
+<p>This code will run <i>Dilate</i> ten times. The syntax of the <i>for</i> loop consists of the <i>for</i> keyword, followed by three statements enclosed in parentheses, and the code block to be executed.
+</p><p>The three statements defining how often to run the code block are the
+</p>
+<ol><li> initializer: typically, a counter variable is initialized, in this case <i>i</i> to the value zero,</li>
+<li> the condition: as long as this condition is met (here <i>i &lt; 10</i>), the code block is executed,</li>
+<li> the incrementor: this statement is executed after the code block, just before testing again whether the block should be executed again.</li></ol>
+<p>In this example, the variable <i>i</i> is first initialized to zero, then the condition is checked, and as <i>i</i> is smaller than 10, the code block is executed. After that, <i>i</i> is incremented, and the condition is checked again. As 1 is still smaller than 10, the code block is executed again. This repeats for the values 2, 3, ..., 9, but after the variable <i>i</i> was incremented from 9 to 10, the condition does not hold true anymore, so the loop is finished.
+</p><p>Even if the counter variable was not used inside the code block in this example, you are free to do so, of course.
+</p><p>Note that starting with 0 and testing for the condition "smaller than 10" will result in the code block being run 10 times. It is the standard way to execute a certain block of code a fixed number of times.
+</p>
+<h2><span class="mw-headline" id="Looping_over_slices_of_a_stack">Looping over slices of a stack</span></h2>
+<p>To loop over a stack, one can use the variable <code>nSlices</code>.
+</p>
+<pre class="brush:java">
+#@ImagePlus (label="Some stack") image
+
+selectImage(image);
+for (i=1; i&lt;=nSlices; i++) {
+    setSlice(i);
+    run("Duplicate...", "title=Slice");
+    // do some processing
+}
+</pre>
+<h2><span class="mw-headline" id="Looping_over_rois_in_RoiManager">Looping over rois in RoiManager</span></h2>
+<p>This small IJmacro scriptlet loops over the roi in the Roi Manager, selecting one at a time.
+</p>
+<pre class="brush:java">
+for (i = 0; i &lt; roiManager("count"); i++){
+     roiManager("Select", i);
+     // do some operation
+}
+</pre>
+<h1><span class="mw-headline" id="The_recorder">The recorder</span></h1>
+<p>Typically, macros are not written from scratch, but recorded using the Macro Recorder: Just click on <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Macros </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Record...</span></em></span> and perform some actions. These actions will be recorded in the recorder window, and you can hit the <i>Create</i> button to open the recorded instructions in an editor:
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 583px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p>In some cases, you might need to edit the recorded macro to make it usable with other images than the one you used to record the macro with. Example: when you merge channels, you end up with a statement like this:
+</p>
+<pre class="brush:java">
+run("Merge Channels...",
+    "red=[Edges of boats.gif] green=boats.gif blue=boats.gif gray=*None*");
+</pre>
+<p>The parameters passed to <i>Merge Channels...</i> depend very much on the current image's name. One possible solution looks like this:
+</p>
+<pre class="brush:java">
+title = getTitle();
+run("Merge Channels...",
+     "red=[Edges of " + title + "] green=" + title + " blue=" + title + " gray=*None*");
+</pre>
+<p>Note that we need to use string concatenation in order to insert the current image's name in place of <i>boats.gif</i>, as described in <a href="Introduction_into_Macro_Programming.html#Using_variables">above</a>.
+</p><p>In order to allow spaces in the name, you might also want to add extra <i>[...]</i> around the title:
+</p>
+<pre class="brush:java">
+title = getTitle();
+run("Merge Channels...",
+     "red=[Edges of " + title + "] green=[" + title + "] blue=[" + title + "] gray=*None*");
+</pre>
+<h1><span class="mw-headline" id="Installing_macros">Installing macros</span></h1>
+<p>To install keyboard shortcuts or tool icons, you need to <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/macros.html#tools">wrap macro code in <i>macro</i> blocks</a>:
+</p>
+<pre class="brush:java">
+macro "Title of the macro" {
+       write("Hello, world!");
+}
+</pre>
+<p>Then you need to <i>install</i> them: 
+</p><p>Simply save your macro in a "Plugins" subfolder of <i>./Fiji.app/scripts/</i> (e.g. <i>./Fiji.app/scripts/Plugins/MyScripts/My_Macro.ijm</i>), and it will appear in the respective menu (e.g. <i>Plugins &gt; MyScripts &gt; My Macro</i>) upon restart of <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a>.
+</p><p>Note: The <i>Plugins &gt; Macro &gt; Install...</i> command is an ImageJ 1.x command that does not yet support the SciJava <a href="http://imagej.net/Script_Parameters" title="Script Parameters">Script Parameters</a> syntax (@) that was introduced with ImageJ2.
+</p>
+<h2><span class="mw-headline" id="Keyboard_shortcuts">Keyboard shortcuts</span></h2>
+<p>Keyboard shortcuts can be defined by adding the key within brackets at the end of the macro name. Example:
+</p>
+<pre class="brush:java">
+// install a keyboard shortcut: when pressing Ctrl+J,
+// the user is asked for JPEG quality and for a location
+// to save the current image as .jpg file
+
+macro "Save As JPEG... [j]" {
+	quality = call("ij.plugin.JpegWriter.getQuality");
+	quality = getNumber("JPEG quality (0-100):", quality);
+	run("Input/Output...", "jpeg="+quality);
+	saveAs("Jpeg");
+}
+</pre>
+<h2><span class="mw-headline" id="Tool_icons">Tool icons</span></h2>
+<p>By choosing a macro name that ends in <i>Action Tool</i>, you can install new tools into the toolbar:
+</p>
+<pre class="brush:java">
+// A click on the empty rectangle will have the same
+// effect as {{bc | File | Save As | Jpeg...}}
+
+macro "Save As JPEG Action Tool - C000R11ee" {
+	saveAs("Jpeg");
+}
+</pre>
+<p>The icon is defined by a funny-looking string (in this case, <i>C000R11ee</i>). To learn how to define your own icon, please have a look <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/macros.html#icons">here</a>.
+</p><p>Many tools open an option dialog upon double-click on the icon. You can do that, too, by choosing a name that ends in <i>Action Tool Options</i>:
+</p>
+<pre class="brush:java">
+// A right-click on the tool icon lets the user change
+// the JPEG Quality
+
+macro "Save As JPEG Action Tool Options" {
+	quality = call("ij.plugin.JpegWriter.getQuality");
+	quality = getNumber("JPEG quality (0-100):", quality);
+	run("Input/Output...", "jpeg="+quality);
+}
+</pre>
+<h1><span class="mw-headline" id="Example_macros">Example macros</span></h1>
+<p>This section contains a number of macros which you can use as starting points to write your own macros.
+</p><p>If you're interested in performing a certain procedure for all files in a given folder, you might want to have a look a the tutorial <i><a href="http://imagej.net/How_to_apply_a_common_operation_to_a_complete_directory" title="How to apply a common operation to a complete directory">How to apply a common operation to a complete directory</a></i> or at the macro template that you can open in the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a> via <span><em><span style="border-bottom:1px dotted #ccc;"> Templates </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Macros </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Process Folder</span></em></span>.
+</p>
+<h2><span class="mw-headline" id="Resizing_to_a_given_width_of_the_selection_bounds">Resizing to a given width of the selection bounds</span></h2>
+<p>When you need to resize an image but all you know is what width (in pixels) a structure has that you selected as a ROI, this macro is for you:
+</p>
+<pre class="brush:java">
+desiredSelectionWidth = 480;
+
+roiType = selectionType();
+getSelectionCoordinates(x, y);
+getSelectionBounds(dummy, dummy, selectionWidth, selectionHeight);
+factor = desiredSelectionWidth / selectionWidth;
+newWidth = round(factor * getWidth());
+newHeight = round(factor * getHeight());
+run("Select None");
+run("Size...", "width=" + newWidth + " height=" + newHeight
+	+ " average interpolation=Bicubic");
+for (i = 0; i &lt; x.length; i++) {
+	x[i] = round(x[i] * factor);
+	y[i] = round(y[i] * factor);
+}
+makeSelection(roiType, x, y);
+</pre>
+<h2><span class="mw-headline" id="Splitting_timepoints">Splitting timepoints</span></h2>
+<p>This macro splits a hyperstack into its individual timepoints, so that you end up with as many new images as the original hyperstack had frames:
+</p>
+<pre class="brush:java">
+/* split timepoints */
+
+// remember the original hyperstack
+id = getImageID();
+
+// we need to know only how many frames there are
+getDimensions(dummy, dummy, dummy, dummy, nFrames);
+
+// for each frame...
+for (frame = 1; frame &lt;= nFrames; frame++) {
+	// select the frame
+	selectImage(id);
+	Stack.setPosition(1, 1, frame);
+
+	// extract one frame
+	run("Reduce Dimensionality...", "channels slices keep");
+}
+
+// close the original hyperstack
+selectImage(id);
+close();
+</pre>
+<h2><span class="mw-headline" id="Merging_timepoints">Merging timepoints</span></h2>
+<p>This macro does the opposite from the previous ones: it merges all the open images into one big hyperstack, assuming that they are the different timepoints of one movie.
+</p>
+<pre class="brush:java">
+// join frames
+
+// get the dimensions
+title = getTitle();
+getDimensions(width, height, channelCount, sliceCount, frameCount);
+
+if (frameCount &gt; 1)
+	exit("Only stacks with 1 timepoint may be open!");
+
+// verify that all images have correct dimensions
+setBatchMode(true);
+imageCount = nImages;
+for (image = 1; image &lt;= imageCount; image++) {
+	selectImage(image);
+	getDimensions(width2, height2, channelCount2, sliceCount2, frameCount2);
+	if (width2&#160;!= width || height2&#160;!= height || channelCount2&#160;!= channelCount ||
+			sliceCount2&#160;!= sliceCount || frameCount2&#160;!= frameCount)
+		exit("Dimensions of " + getTitle() + " do not match dimensions of " + title + ": "
+			+ width2 + "x" + height2 + "x" + channelCount2 + "x" + sliceCount2 + "x" + frameCount2 + " are not "
+			+ width2 + "x" + height + "x" + channelCount + "x" + sliceCount + "x" + frameCount + "!");
+}
+
+// now rename all images so that the names are unique
+for (image = 1; image &lt;= imageCount; image++) {
+	selectImage(image);
+	rename("image-" + image);
+}
+
+// now concatenate one by one
+selectImage("image-1");
+rename("image-0");
+for (image = 1; image &lt; imageCount; image++) {
+	run("Concatenate...", "stack1=image-" + (image - 1) + " stack2=image-" + (image + 1) + " title=image-" + image);
+}
+
+// there is only one image left; rename it to the original title
+rename(title);
+
+// set the correct dimensions
+Stack.setDimensions(channelCount, sliceCount, imageCount);
+
+// show the image
+selectImage(title);
+setBatchMode(false);
+</pre>
+<h2><span class="mw-headline" id="Normalize_all_images_to_the_global_mean">Normalize all images to the global mean</span></h2>
+<p>This macro takes the mean of all open images' means and then adjusts the pixel values in each image to that mean:
+</p>
+<pre class="brush:java">
+setBatchMode(true);
+
+total = 0;
+for (i = 1; i &lt;= nImages; i++) {
+	selectImage(i);
+	getRawStatistics(dummy, mean, dummy, dummy, dummy, dummy2);
+	total = total + mean;
+}
+total = total / nImages;
+
+for (i = 1; i &lt;= nImages; i++) {
+	selectImage(i);
+	getRawStatistics(dummy, mean, dummy, dummy, dummy, dummy2);
+	difference = total - mean;
+	run("Add...", "value=" + difference);
+}
+
+setBatchMode(false);
+</pre>
+<h2><span class="mw-headline" id="Make_a_false-colored_montage">Make a false-colored montage</span></h2>
+<p>Here is a more complicated macro, maybe you can guess from reading the code how it does what it does? After that, you might want to try it on the Lena example...
+</p>
+<pre class="brush:java">
+function simplifyColors() {
+	run("Duplicate...", "title=step-1");
+	run("HSB Stack");
+	setSlice(2);
+	stack = getImageID();
+	run("Duplicate...", "title=threshold");
+	run("Gamma...", "value=0.30");
+	run("Bilateral Filter", "spatial=15 range=150");
+	run("Select All");
+	run("Copy");
+	close();
+	selectImage(stack);
+	run("Paste");
+	setSlice(1);
+	run("Duplicate...", "title=bilateral");
+	run("Bilateral Filter", "spatial=15 range=150");
+	run("Enhance Contrast", "saturated=0.4");
+	run("Select All");
+	run("Copy");
+	close();
+	selectImage(stack);
+	run("Paste");
+	run("RGB Color");
+}
+
+function warholize(order, invertR, invertG, invertB) {
+	if (order == 0)
+		order = "1,2,3";
+	else if (order == 1)
+		order = "1,3,2";
+	else if (order == 2)
+		order = "2,1,3";
+	else if (order == 3)
+		order = "2,3,1";
+	else if (order == 4)
+		order = "3,1,2";
+	else if (order == 5)
+		order = "3,2,1";
+	run("Make Substack...", "slices=" + order);
+	if (invertR&#160;!= 0) {
+		setSlice(1);
+		run("Invert", "slice");
+	}
+	if (invertG&#160;!= 0) {
+		setSlice(2);
+		run("Invert", "slice");
+	}
+	if (invertB&#160;!= 0) {
+		setSlice(3);
+		run("Invert", "slice");
+	}
+	run("Stack to RGB");
+}
+
+function makeMontage(big) {
+	orig = getImageID();
+	w = getWidth();
+	h = getHeight();
+
+	columns = 3;
+	rows = 3;
+	orders = newArray(3, 4, 5, 1, 3, 5, 5, 1, 2);
+	inverts = newArray(6, 5, 7, 1, 4, 1, 0, 2, 0);
+
+	if (big) {
+		columns = 8;
+		rows = 6;
+		orders = newArray(columns * rows);
+		inverts = newArray(columns * rows);
+		for (column = 0; column &lt; columns; column++)
+			for (row = 0; row &lt; rows; row++) {
+				index = column + columns * row;
+				orders[index] = row;
+				inverts[index] = column;
+			}
+	}
+	else if (randomize) {
+		for (i = 0; i &lt; orders.length; i++) {
+			orders[i] = floor(random() * 5.999);
+			inverts[i] = 1 * floor(random() * 1.2)
+				+ 2 * floor(random() * 1.2)
+				+ 4 * floor(random() * 1.2);
+			// avoid duplicates
+			for (j = 0; j &lt; i; j++)
+				if ((orders[j] == orders[i] &amp;&amp; inverts[j] == inverts[i])
+						|| (orders[i] == 0 &amp;&amp; inverts[i] == 0)) {
+					i--;
+					j = i;
+				}
+		}
+	}
+
+	// create the panel
+	newImage("Warhol'ized " + getTitle(), "RGB white",
+		(w + 1) * columns + 1, (h + 1) * rows + 1, 1);
+	result = getImageID();
+
+	// for speed, and to minimize user interference, start the batch mode
+	setBatchMode(true);
+	selectImage(orig);
+	run("Duplicate...", "title=stack");
+	run("RGB Color");
+	simplifyColors();
+	run("RGB Stack");
+	stack = getImageID();
+
+	// fill the panel
+	for (column = 0; column &lt; columns; column++)
+		for (row = 0; row &lt; rows; row++) {
+			selectImage(stack);
+			index = column + columns * row;
+			i = inverts[index];
+			warholize(orders[index], i &amp; 1, i &amp; 2, i &amp; 4);
+
+			// copy the false-color image into the clipboard
+			makeRectangle(0, 0, w, h);
+			run("Copy");
+			close();
+
+			// paste the clipboard, at the correct location
+			selectImage(result);
+			makeRectangle((w + 1) * column + 1, (h + 1) * row + 1, w, h);
+			run("Paste");
+		}
+
+	run("Select None");
+	selectImage(stack);
+	close();
+	setBatchMode(false);
+}
+
+randomize = true;
+makeMontage(false);
+</pre>
+<h2><span class="mw-headline" id="Mimic_the_merge_sides_command_in_the_BioRad_MRC600_confocal">Mimic the <i>merge sides</i> command in the BioRad MRC600 confocal</span></h2>
+<p>Macro to mimic the merge sides command in the original BioRad MRC600 confocal. 
+</p><p>For an example raw image, see <a rel="nofollow" class="external free" href="http://www.flickr.com/photos/mcammer/1618746622/">http://www.flickr.com/photos/mcammer/1618746622/</a>
+</p><p>For an example result, see <a rel="nofollow" class="external free" href="http://www.flickr.com/photos/mcammer/8551068739/">http://www.flickr.com/photos/mcammer/8551068739/</a>
+</p><p>Splits a grayscale image and merges.  Works on stacks.
+</p><p>Michael Cammer  michael.cammer@med.nyu.edu with editing by Johannes Schindelin [Johannes.Schindelin@gmx.de]   20130312
+</p>
+<pre class="brush:java">
+macro "Split and Merge" {
+  width = getWidth();
+  height = getHeight();
+  if ( (width&#160;% 2) == 0  ) exit("Image not even # pixels wide.");
+  makeRectangle(0, 0, width/2, height);
+  right = getImageID();
+  slices = nSlices;
+  run("Duplicate...", "title=LEFT duplicate range=1-"+slices);
+  selectImage(right);
+  makeRectangle(width/2, 0, width/2, height);
+  run("Crop");
+  rightTitle = getTitle();
+  run("Merge Channels...", "c1=LEFT c2="+right);
+  rename("merged_"+right);
+}  // end
+</pre>
+<h2><span class="mw-headline" id="More_example_macros">More example macros</span></h2>
+<p>There are quite a lot of macros on the <a rel="nofollow" class="external text" href="https://imagej.net/macros/">ImageJ website</a>, and specifically <a rel="nofollow" class="external text" href="https://imagej.net/macros/examples/">example macros</a> including a few from the Macro workshop at the <a rel="nofollow" class="external text" href="http://imagejconf.tudor.lu/archive/imagej-user-and-developer-conference-2010">ImageJ conference 2010</a>. Since there is no categorized index, you might want to use the search facility on <a rel="nofollow" class="external text" href="https://imagej.net/developer/index.html">this page</a>.
+</p>
+<h1><span class="mw-headline" id="Overcoming_limitations">Overcoming limitations</span></h1>
+<p>Macros have a major limitation compared to the other <a href="http://imagej.net/Scripting" title="Scripting">scripting</a> languages: they have only a <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/functions.html">fixed set of built-in functions</a>. Sometimes, though, one needs access to functions outside this realm; in that case, there are three primary means of overcoming this limitation:
+</p>
+<h2><span class="mw-headline" id="Macro_extensions">Macro extensions</span></h2>
+<p>It is possible to implement code in <a href="http://imagej.net/Java" class="mw-redirect" title="Java">Java</a> which extends the macro language via the <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/functions.html#Ext"><code>Ext</code> prefix</a>. However, this cannot be done within the macro itself.
+</p>
+<h2><span class="mw-headline" id="The_call_function">The call function</span></h2>
+<p>The <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/functions.html#call"><code>call</code> function</a> can invoke Java methods directly. However, this function only supports calling <code>public static</code> Java methods which accept <code>String</code> only, and return <code>String</code> only. Most times, though, the needed function does not conform to these requirements; this approach is suitable mostly for routines designed to be called from the macro language in this way.
+</p>
+<h2><span class="mw-headline" id="The_eval_function">The eval function</span></h2>
+<p>The <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/functions.html#eval"><code>eval</code> function</a> can execute <a href="http://imagej.net/JavaScript" class="mw-redirect" title="JavaScript">JavaScript</a> (or <a href="http://imagej.net/BeanShell" class="mw-redirect" title="BeanShell">BeanShell</a> or <a href="http://imagej.net/Python" title="Python">Python</a>) code directly. This is a powerful and flexible approach which can invoke nearly any Java API without needing to write external Java code.
+</p><p>Here is an example which sets the position of a <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D Viewer</a> window:
+</p>
+<pre class="brush:java">
+run("MRI Stack (528K)");
+run("3D Viewer");
+call("ij3d.ImageJ3DViewer.add", "mri-stack.tif", "None", "mri-stack.tif", "0", "true", "true", "true", "2", "0");
+
+// Loop over all frames to find the 3D Viewer window(s)
+x = 200;
+y = 300;
+eval("script",
+	"frames = java.awt.Frame.getFrames();" +
+	"for (f=0; f&lt;frames.length; f++) {" +
+	"  frame = frames[f];" +
+	"  if (\"ImageJ 3D Viewer\".equals(frame.getTitle())) {" +
+	"    frame.setLocation(" + x + ", " + y + ");" +
+	"  }" +
+	"}"
+);
+</pre>
+<h2><span class="mw-headline" id="The_exec_function">The exec function</span></h2>
+<p>The <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/functions.html#exec"><code>exec</code> function</a> can call any external program or process with optional arguments.<br />
+It can be used to e.g. automatically open a tabular software with a result table after analysis. It can also be used to open a specific webpage in the default browser.<br />
+See <a rel="nofollow" class="external text" href="https://imagej.net/macros/ExecExamples.txt">Examples</a>.<br />
+</p><p>Note that the macro code will wait for the external process to terminate, and only after that continue the execution of the rest of the code (except when opening a webpage or excel).<br />
+If you dont want the macro to wait until the end of the external process you can call the command<br />
+<code>setOption("WaitForCompletion", false);</code> <br />
+before the <code>exec</code> call.
+(since ImageJ 1.52u38)
+</p>
+<h1><span class="mw-headline" id="Further_documentation">Further documentation</span></h1>
+<p>A complete description of the macro language, a reference of the built-in functions, and examples can be found <a rel="nofollow" class="external text" href="https://imagej.net/developer/index.html">here</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072739
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.052 seconds
+Real time usage: 0.053 seconds
+Preprocessor visited node count: 933/1000000
+Preprocessor generated node count: 2339/1000000
+Post‐expand include size: 11587/2097152 bytes
+Template argument size: 6118/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   20.066      1 - -total
+ 59.67%   11.973      1 - Template:Learn
+ 52.24%   10.483      1 - Template:Menu
+ 46.18%    9.267      4 - Template:Submenu
+ 23.13%    4.642     39 - Template:MenuItem
+ 21.02%    4.217      2 - Template:Bc
+ 11.73%    2.354      1 - Template:Notice
+  8.19%    1.643      1 - Template:Ambox
+  7.08%    1.421      4 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Introduction_into_Macro_Programming&amp;oldid=43971">http://imagej.net/index.php?title=Introduction_into_Macro_Programming&amp;oldid=43971</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 27 March 2020, at 13:09.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Introduction_into_Macro_Programming&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Introduction+into+Macro+Programming" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Introduction+into+Macro+Programming" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Introduction_into_Macro_Programming" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Introduction_into_Macro_Programming" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Introduction_into_Macro_Programming&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Introduction_into_Macro_Programming&amp;oldid=43971" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Introduction_into_Macro_Programming&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":173});});</script>
+		</body>
+		</html>
+		

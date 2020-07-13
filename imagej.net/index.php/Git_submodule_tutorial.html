@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Git submodule tutorial - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Git_submodule_tutorial","wgTitle":"Git submodule tutorial","wgCurRevisionId":29386,"wgRevisionId":29386,"wgArticleId":11,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Outdated","Git"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Git_submodule_tutorial","wgRelevantArticleId":11,"wgRequestId":"42db83a9d21b464a422ad91b","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Fiji is hosted on a main git repository which contains several declared submodules such as TrakEM2."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Git submodule tutorial"/>
+
+	<meta property="og:description" content="Fiji is hosted on a main git repository which contains several declared submodules such as TrakEM2."/>
+
+	<meta property="og:url" content="http://imagej.net/Git_submodule_tutorial"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Git_submodule_tutorial rootpage-Git_submodule_tutorial skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Git_submodule_tutorial.html#bodyContent">Skip to content</a>, 			<a href="Git_submodule_tutorial.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Git_submodule_tutorial.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Git_submodule_tutorial" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Git_submodule_tutorial&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Git_submodule_tutorial&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Git_submodule_tutorial&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Git submodule tutorial</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Git Tutorials
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">Git for dummies</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/EGit" title="EGit">Git in Eclipse (EGit)</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_mini_howto" title="Git mini howto">Git mini howto</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_workshop" title="Git workshop">Git workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">Git Conflicts</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">Git topic branches</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Notes" title="Git Notes">Git Notes</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git reflogs</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Git submodule tutorial</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Pinpoint_regressions_with_Git" title="Pinpoint regressions with Git">Pinpoint regressions with Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_publish_a_Git_repository" title="How to publish a Git repository">How to publish a Git repository</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_extract_a_subproject" title="How to extract a subproject">How to extract a subproject</a>
+</td></tr></table>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Git_submodule_tutorial.html#Submodules_in_Fiji"><span class="tocnumber">1</span> <span class="toctext">Submodules in Fiji</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Git_submodule_tutorial.html#Checking_out_submodules"><span class="tocnumber">1.1</span> <span class="toctext">Checking out submodules</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Git_submodule_tutorial.html#Submodule_workflow"><span class="tocnumber">1.2</span> <span class="toctext">Submodule workflow</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="Git_submodule_tutorial.html#Resolving_Submodule_Conflicts"><span class="tocnumber">2</span> <span class="toctext">Resolving Submodule Conflicts</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="Git_submodule_tutorial.html#Submodule_Conflicts_while_Merging"><span class="tocnumber">2.1</span> <span class="toctext">Submodule Conflicts while Merging</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Git_submodule_tutorial.html#Submodule_Conflicts_while_Rebasing"><span class="tocnumber">2.2</span> <span class="toctext">Submodule Conflicts while Rebasing</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="Git_submodule_tutorial.html#A_note_on_.22ours.22_and_.22theirs.22"><span class="tocnumber">2.2.1</span> <span class="toctext">A note on "ours" and "theirs"</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Git_submodule_tutorial.html#Difference_between_git_submodule_update_and_git_pull"><span class="tocnumber">3</span> <span class="toctext">Difference between git submodule update and git pull</span></a></li>
+</ul>
+</div>
+</div><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This section is out of date, potentially misleading or invalid. Be careful with any instructions here. When in doubt, <a href="http://imagej.net/Help" title="Help">ask for help from the community</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Submodules_in_Fiji">Submodules in Fiji</span></h2>
+<p>Fiji is hosted on a main git repository which contains several declared submodules such as TrakEM2.</p>
+<p>With git, any git command executed within any subdirectory of the repository affects the overall git repository.</p>
+<p>Submodules, although existing as folders inside the fiji repository, are different: only the folder name, as a path pointer, is registered as belonging to fiji's git repository, together with the current revision ("commit name", i.e. that 40-digit hex string which is the unique identifier of each commit) of that submodule.</p> 
+<h3><span class="mw-headline" id="Checking_out_submodules">Checking out submodules</span></h3>
+<p>Each submodule is a proper full-fledged git repository, so any git commands executed within the folders of the submodule will affect that git repository, not fiji's.</p>
+<p>However, to work with a submodule you must clone that repository. See the <a href="http://imagej.net/Downloading_and_Building_Fiji_From_Source#Submodules" title="Downloading and Building Fiji From Source">Submodules</a> section of the <a href="http://imagej.net/Downloading_and_Building_Fiji_From_Source" title="Downloading and Building Fiji From Source">Downloading and Building Fiji From Source</a> page for details.</p>
+<h3><span class="mw-headline" id="Submodule_workflow">Submodule workflow</span></h3>
+<p>The usual sequence of commands when working inside a submodule:</p>
+<pre>
+~/fiji$ cd TrakEM2
+~/fiji/TrakEM2$ git status
+</pre>
+<p>Say you observe some unstaged changes. Just add and commit them:</p>
+<pre>
+~/fiji/TrakEM2$ git add path/to/some_file.java
+~/fiji/TrakEM2$ git commit
+</pre>
+<p>You can work as much as you like inside the submodule, and if you have something you want to commit to Fiji, the superproject, first make sure you pushed the changes of the submodule!</p>
+<p>Then move up and add the current revision of the submodule inside fiji.</p>
+<pre>
+~/fiji/TrakEM2$ git push
+~/fiji/TrakEM2$ cd ..
+~/fiji$ git add TrakEM2
+~/fiji$ git commit
+</pre>
+<p><b>BE CAREFUL:</b> adding "TrakEM" and "TrakEM/" is not the same at all! The latter would add all non-ignorable files under TrakEM2's subfolder into fiji's repository, which is NOT what you want. If you screwed up, use <i>"git reset --hard"</i> before proceeding to unstage any changes in fiji's git repository.</p>
+<p>After the above, fiji has been updated to track the latest TrakEM2 commit.</p>
+<p>When happy with the arrangement, push the changes to the shared repository for others to see them. Remember to push both separately: the submodule and fiji's repository itself! If you push <b>only</b> fiji, then whoever pulls fiji will not see the new HEAD of the submodule branch, which will result in an error.</p>
+<pre>
+~/fiji$ cd TrakEM2/
+~/fiji/TrakEM2$ git push
+~/fiji/TrakEM2$ cd ..
+~/fiji$ git push
+</pre>
+<h2><span class="mw-headline" id="Resolving_Submodule_Conflicts">Resolving Submodule Conflicts</span></h2>
+<p>When merging and rebasing fiji, you are likely to end up having to fix conflicts in the versions of submodules.  These next two sections are intended to help you to resolve these conflicts.
+</p>
+<h3><span class="mw-headline" id="Submodule_Conflicts_while_Merging">Submodule Conflicts while Merging</span></h3>
+<p>You are most likely to have submodule conflicts while merging when you run "git merge" or "git pull" (which effectively runs "git fetch" followed by "git merge"). How to resolve those conflicts can be read on the <a href="http://imagej.net/Git_Conflicts#Submodule_conflicts" title="Git Conflicts">Git Conflicts</a> wiki page.
+</p>
+<h3><span class="mw-headline" id="Submodule_Conflicts_while_Rebasing">Submodule Conflicts while Rebasing</span></h3>
+<p>Conflicts in submodule versions while you're rebasing are slightly different.  For example, suppose I am in the following situation:
+</p>
+<pre>o---o----o----o----o master
+ \
+  A----B----C-----D----E----F server
+</pre>
+<p>And I want to rebase server onto master, by doing the following:
+</p>
+<pre>git checkout server
+git rebase -i master
+</pre>
+<p>The "-i" option means that I am first presented with a list of commits to port onto master, named A, B, C, D, E and F in the above diagram.  After possibly making some changes (there may be some commits that you don't actually want to include in the rebased version) the rebasing begins.  The first error I get is the following:
+</p>
+<pre>Automatic cherry-pick failed.  After resolving the conflicts,
+mark the corrected paths with 'git add &lt;paths&gt;', and
+run 'git rebase --continue'
+Could not apply 1f7b713... Various changes to make the server work better
+</pre>
+<p>If you get a message saying you have to resolve conflicts that means that "git status" will tell you what they are.  In this case I get:
+</p>
+<pre>VIB: needs merge
+# Not currently on any branch.
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#
+#	modified:   run-server.sh
+#	deleted:    server-init.d-script
+#	modified:   staged-plugins/VIB_.config
+#
+# Changed but not updated:
+#   (use "git add/rm &lt;file&gt;..." to update what will be committed)
+#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+#
+#	modified:   ImageJA
+#	modified:   TrakEM2
+#	unmerged:   VIB
+#	modified:   java/linux
+#	modified:   java/linux-amd64
+#	deleted:    mpicbg
+#
+# Untracked files:
+#   (use "git add &lt;file&gt;..." to include in what will be committed)
+#
+[... various irrelevant untracked files ...]
+</pre>
+<p>In this case, there's only one problem: versions of the VIB submodule conflict.
+</p><p>Let's say that the situation now corresponds to the following diagram:
+</p>
+<pre>                     A'---B' HEAD
+                    /
+o---o----o----o----o master
+ \
+  A----B----C-----D----E----F server ORIG_HEAD
+</pre>
+<p>First, it's important to see what change in version that commit is trying to make, so take the partial SHA1 sum from the line "Could not apply" above and pass it to git show, so "git show 1f7b713".  This shows the patch introduced by that commit, but we're only looking out for the lines relating to the VIB submodule, which are:
+</p>
+<pre>diff --git a/VIB b/VIB
+index c03c2cc..b6d78c8 160000
+--- a/VIB
++++ b/VIB
+@@ -1 +1 @@
+-Subproject commit c03c2cc7d150087d91879012e1b312e3b2957733
++Subproject commit b6d78c8c390072d89059956d4d3596114c6301f1
+</pre>
+<p>Now just to check that we understand what's going on, run three versions of the diff command.  First, show differences between the the last successful commit in this rebase and the working tree version:
+</p>
+<pre> git diff --base VIB
+* Unmerged path VIB
+diff --git a/VIB b/VIB
+index c03c2cc..764f65b 160000
+--- a/VIB
++++ b/VIB
+@@ -1 +1 @@
+-Subproject commit c03c2cc7d150087d91879012e1b312e3b2957733
++Subproject commit 764f65baee6af310cac4879a52805d7bffcd4dd0
+</pre>
+<p>That shows us that the version in the old commit is as we expect (good!)  The version in the "+" line is what's in our working tree, or what you'll see if you do "( cd VIB &amp;&amp; git show HEAD )".  So, in this case I think it's a good idea to switch VIB to be the version that the commit we're cherry-picking tried to introduce, i.e. b6d78c8c390:
+</p>
+<pre>( cd VIB &amp;&amp; git checkout b6d78c8c390 )
+git add VIB
+</pre>
+<p>Now we should be able to continue, with "git rebase --continue" 
+</p>
+<h4><span class="mw-headline" id="A_note_on_.22ours.22_and_.22theirs.22">A note on "ours" and "theirs"</span></h4>
+<p>If you're using "git diff --theirs" and "git diff --ours" while rebasing then you may get confused.  Essentially:
+</p>
+<ul><li> "git diff --theirs" shows the differences between the "server" branch and the working tree.</li>
+<li> "git diff --ours" shows the differences between the "master" or "upstream" branch and the working tree.</li></ul>
+<p>This is probably the opposite way round from what you expect from resolving conflicts while merging&#160;:)
+</p>
+<h2><span class="mw-headline" id="Difference_between_git_submodule_update_and_git_pull">Difference between git submodule update and git pull</span></h2>
+<p>What is the difference between calling git supmodule update from the fiji directory and changing into a submodule directory and doing a git pull? 
+</p><p>Most of the time you do not want to have the newest coolest version of the submodule.. You want the version that actually works with your status of fiji. Therefore, a commit of a superproject also contains the name of the submodule directories, along with the current commit of these submodules.
+</p><p>Now
+</p>
+<pre> git submodule update
+</pre>
+<p>sets the submodule to the commit that is saved with the commit of fiji. 
+Whereas
+</p>
+<pre> cd submoduleDirectory/
+ git pull
+</pre>
+<p>actually gives you the newest hottest version of that submodule, that is potentially not even compiling with your current status of fiji.
+</p><p>So what happens if I do "git submodule update", but in the submodule I am on an experimental branch, that is not valid for the superproject?
+This will set the submodule to the status valid for your current fiji commit, if you are not on the branch specified, it will detach the HEAD you are on. This means you will be on a no-name branch in the submodule now (for this to work you must not have any uncommited changes in the submodule branch you were on before)
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072414
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.043 seconds
+Preprocessor visited node count: 200/1000000
+Preprocessor generated node count: 623/1000000
+Post‐expand include size: 2683/2097152 bytes
+Template argument size: 1023/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   10.550      1 - -total
+ 49.78%    5.252      1 - Template:GitMenu
+ 39.95%    4.215      1 - Template:Menu
+ 31.06%    3.277      1 - Template:Outdated
+ 23.52%    2.481      1 - Template:Warning
+ 23.08%    2.435     12 - Template:MenuItem
+ 17.53%    1.849      1 - Template:TOC
+ 15.86%    1.673      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Git_submodule_tutorial&amp;oldid=29386">http://imagej.net/index.php?title=Git_submodule_tutorial&amp;oldid=29386</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:42.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Git_submodule_tutorial&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Outdated" title="Category:Outdated">Outdated</a></li><li><a href="http://imagej.net/Category:Git" title="Category:Git">Git</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Git+submodule+tutorial" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Git+submodule+tutorial" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Git_submodule_tutorial" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Git_submodule_tutorial" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Git_submodule_tutorial&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Git_submodule_tutorial&amp;oldid=29386" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Git_submodule_tutorial&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":194});});</script>
+		</body>
+		</html>
+		

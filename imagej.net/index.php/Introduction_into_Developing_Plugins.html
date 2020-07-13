@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Developing Plugins for ImageJ 1.x - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Developing_Plugins_for_ImageJ_1.x","wgTitle":"Developing Plugins for ImageJ 1.x","wgCurRevisionId":38130,"wgRevisionId":38130,"wgArticleId":957,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials","Development"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Developing_Plugins_for_ImageJ_1.x","wgRelevantArticleId":957,"wgRequestId":"42b8f13152adbdd71f3129b1","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="If you want to add a new feature to ImageJ, you can either write a script or macro, or do it as a plugin. Scripts and macros are easier to learn, and hence often faster to develop. However, Java offers numerous advantages including better performance in many cases, as well as compile-time safety of the code."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Developing Plugins for ImageJ 1.x"/>
+
+	<meta property="og:description" content="If you want to add a new feature to ImageJ, you can either write a script or macro, or do it as a plugin. Scripts and macros are easier to learn, and hence often faster to develop. However, Java offers numerous advantages including better performance in many cases, as well as compile-time safety of the code."/>
+
+	<meta property="og:url" content="http://imagej.net/Developing_Plugins_for_ImageJ_1.x"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Developing_Plugins_for_ImageJ_1_x rootpage-Developing_Plugins_for_ImageJ_1_x skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Introduction_into_Developing_Plugins.html#bodyContent">Skip to content</a>, 			<a href="Introduction_into_Developing_Plugins.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Introduction_into_Developing_Plugins.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Introduction_into_Developing_Plugins.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Developing_Plugins_for_ImageJ_1.x&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Developing_Plugins_for_ImageJ_1.x&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Developing_Plugins_for_ImageJ_1.x&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Developing Plugins for ImageJ 1.x</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="float:right; width: 300px; border: 1px solid #ccc; padding: 15px !important; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+  <div class="floatleft"><a href="http://imagej.net/ImageJ1" title="ImageJ1"><img alt="Imagej1-icon.png" src="../_images/a/a8/Imagej1-icon.png" width="64" height="64" /></a></div>  This page explains how to develop plugins with the ImageJ 1.x API. If you start developing a new plugin today, it is highly recommended to <a href="http://imagej.net/Writing_plugins" title="Writing plugins">develop for ImageJ2</a>.</div>
+<p><br />
+</p><p><br /> 
+</p>
+<table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Development
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Development" title="Development">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Philosophy" title="Philosophy">Philosophy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Architecture" title="Architecture">Architecture</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Source_code" title="Source code">Source code</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Project_management" title="Project management">Project management</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Coding_style" title="Coding style">Coding style</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging" title="Debugging">Debugging</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tools
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git" title="Git">Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Maven" title="Maven">Maven</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/IDEs" title="IDEs">IDEs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Travis" title="Travis">Travis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/AppVeyor" title="AppVeyor">AppVeyor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Dotfiles" title="Dotfiles">Dotfiles</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Guides
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Writing_plugins" title="Writing plugins">Writing plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_contribute_to_an_existing_plugin_or_library" title="How to contribute to an existing plugin or library">Contributing to a plugin</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Distribution" title="Distribution">Distributing your plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Development_Lifecycle" title="Development Lifecycle">Development lifecycle</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Building_a_POM" title="Building a POM">Building a POM</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImageJ_in_Eclipse" title="Developing ImageJ in Eclipse">Developing with Eclipse</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging_Exercises" title="Debugging Exercises">Hands-on debugging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_ops" title="Adding new ops">Adding new ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_formats" title="Adding new formats">Adding new formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_using_native_libraries" title="Developing using native libraries">Using native libraries</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_developers" title="Tips for developers">Tips for developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_C%2B%2B_developers" title="Tips for C++ developers">Tips for C++ developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">ImageJ 1.x plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Versioning" title="Versioning">Versioning</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Logging" title="Logging">Logging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Uber-JAR" title="Uber-JAR">Uber-JARs</a>
+</td></tr></table>
+</td></tr></table>
+<div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/ImageJ1" title="ImageJ1"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page  describes content related to the legacy ImageJ 1.x application. Click the logo for details." src="../_images/a/a8/Imagej1-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Introduction_into_Developing_Plugins.html#Plugin.2C_script_or_macro.3F"><span class="tocnumber">1</span> <span class="toctext">Plugin, script or macro?</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Introduction_into_Developing_Plugins.html#Plugins"><span class="tocnumber">2</span> <span class="toctext">Plugins</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Introduction_into_Developing_Plugins.html#What_are_plugins_.28in_terms_of_files.29.3F"><span class="tocnumber">2.1</span> <span class="toctext">What are plugins (in terms of files)?</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Introduction_into_Developing_Plugins.html#Updating_plugins"><span class="tocnumber">2.2</span> <span class="toctext">Updating plugins</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Introduction_into_Developing_Plugins.html#What_are_plugins_.28in_terms_of_menu_entries.29.3F"><span class="tocnumber">2.3</span> <span class="toctext">What are plugins (in terms of menu entries)?</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Introduction_into_Developing_Plugins.html#What_are_plugins_.28in_terms_of_Java_code.29.3F"><span class="tocnumber">2.4</span> <span class="toctext">What are plugins (in terms of Java code)?</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Introduction_into_Developing_Plugins.html#Limitations"><span class="tocnumber">2.5</span> <span class="toctext">Limitations</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Introduction_into_Developing_Plugins.html#Rapid_prototyping_with_the_Script_Editor"><span class="tocnumber">3</span> <span class="toctext">Rapid prototyping with the Script Editor</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="Introduction_into_Developing_Plugins.html#Quick_Start"><span class="tocnumber">3.1</span> <span class="toctext">Quick Start</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="Introduction_into_Developing_Plugins.html#Getting_started_with_Maven"><span class="tocnumber">4</span> <span class="toctext">Getting started with Maven</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Introduction_into_Developing_Plugins.html#Basic_workflow"><span class="tocnumber">5</span> <span class="toctext">Basic workflow</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="Introduction_into_Developing_Plugins.html#ImageJ.27s_API"><span class="tocnumber">6</span> <span class="toctext">ImageJ's API</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="Introduction_into_Developing_Plugins.html#The_class_IJ"><span class="tocnumber">6.1</span> <span class="toctext">The class <i>IJ</i></span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="Introduction_into_Developing_Plugins.html#The_class_ImageJ"><span class="tocnumber">6.2</span> <span class="toctext">The class <i>ImageJ</i></span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="Introduction_into_Developing_Plugins.html#The_class_WindowManager"><span class="tocnumber">6.3</span> <span class="toctext">The class <i>WindowManager</i></span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="Introduction_into_Developing_Plugins.html#The_hierarchy_of_the_classes_representing_an_image"><span class="tocnumber">6.4</span> <span class="toctext">The hierarchy of the classes representing an image</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Introduction_into_Developing_Plugins.html#Beyond_3D:_Hyperstacks"><span class="tocnumber">6.5</span> <span class="toctext">Beyond 3D: Hyperstacks</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="Introduction_into_Developing_Plugins.html#Working_with_the_pixels.27_values"><span class="tocnumber">6.6</span> <span class="toctext">Working with the pixels' values</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="Introduction_into_Developing_Plugins.html#Making_new_images"><span class="tocnumber">6.7</span> <span class="toctext">Making new images</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="Introduction_into_Developing_Plugins.html#Informing_the_user_about_the_progress"><span class="tocnumber">6.8</span> <span class="toctext">Informing the user about the progress</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="Introduction_into_Developing_Plugins.html#Frequently_used_operators"><span class="tocnumber">6.9</span> <span class="toctext">Frequently used operators</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Introduction_into_Developing_Plugins.html#Plots"><span class="tocnumber">6.10</span> <span class="toctext">Plots</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="Introduction_into_Developing_Plugins.html#The_results_table"><span class="tocnumber">6.11</span> <span class="toctext">The results table</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="Introduction_into_Developing_Plugins.html#Regions_of_interest"><span class="tocnumber">6.12</span> <span class="toctext">Regions of interest</span></a></li>
+<li class="toclevel-2 tocsection-25"><a href="Introduction_into_Developing_Plugins.html#Calling_ImageJ2_from_ImageJ_1.x"><span class="tocnumber">6.13</span> <span class="toctext">Calling ImageJ2 from ImageJ 1.x</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href="Introduction_into_Developing_Plugins.html#Further_tips"><span class="tocnumber">6.14</span> <span class="toctext">Further tips</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-27"><a href="Introduction_into_Developing_Plugins.html#Next_steps"><span class="tocnumber">7</span> <span class="toctext">Next steps</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Plugin.2C_script_or_macro.3F">Plugin, script or macro?</span></h1>
+<p>If you want to add a new feature to ImageJ, you can either <a href="http://imagej.net/Scripting_Help" class="mw-redirect" title="Scripting Help">write a script or macro</a>, or do it as a plugin. Scripts and macros are easier to learn, and hence often faster to develop. However, Java offers numerous advantages including better performance in many cases, as well as compile-time safety of the code.
+</p><p>If you are not sure which to choose, take a look at the <a href="http://imagej.net/Scripting_Help" class="mw-redirect" title="Scripting Help">Scripting Help</a> and try your hand at a script in a language that appeals to you. You can always convert it to a Java plugin later if the execution speed becomes an issue.
+</p><p>If you are certain that you want to write a plugin in Java, keep on reading!
+</p>
+<h1><span class="mw-headline" id="Plugins">Plugins</span></h1>
+<h2><span class="mw-headline" id="What_are_plugins_.28in_terms_of_files.29.3F">What are plugins (in terms of files)?</span></h2>
+<ul><li> Plugins are a dedicated mechanism for extending ImageJ/Fiji</li>
+<li> A plugin consists of one or more Java classes living inside a <i>.jar</i> file in <i>plugins/</i> (exception: a single <i>.class</i> file)</li>
+<li> All plugin <i>.jar</i> (or <i>.class</i>) files must contain an underscore in their name</li>
+<li> Plugins can use 3rd party libraries; in Fiji, store them in the <i>jars/</i> directory (in ImageJ you have to put them into the <i>plugins/</i> directory, and to avoid funny menu entries in the Plugins menu, you should rename them if their name contains an underscore)</li></ul>
+<h2><span class="mw-headline" id="Updating_plugins">Updating plugins</span></h2>
+<ul><li> After storing the <i>.jar</i> file(s) into the <i>plugins/</i> (or <i>jars/</i>) directory, call <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Refresh Menus</span></em></span> or restart Fiji</li>
+<li> If the respective plugin is in-use, you might get funny results when refreshing the menus, due to limitations in Sun Java's handling of <i>.jar</i> files.</li></ul>
+<h2><span class="mw-headline" id="What_are_plugins_.28in_terms_of_menu_entries.29.3F">What are plugins (in terms of menu entries)?</span></h2>
+<ul><li> If the <i>.jar</i> file contains a file called <i>plugins.config</i>, it determines what menu items are provided by the plugin</li>
+<li> If the <i>.jar</i> file does not contain a file called <i>plugins.config</i>, all contained classes containing an underscore in their name are added to the <i>Plugins</i> menu</li></ul>
+<p>A <i>plugins.config</i> file looks like this:
+</p>
+<pre># Comments (such as title, author, etc)
+#
+# The other lines have this format:
+#  Menu, “Menu Item”, ClassName
+# Example:
+
+Plugins &gt; Analyze, “Plot”, fiji.Plot
+</pre>
+<p>A class can be reused for multiple menu entries, by passing an optional argument in the <i>plugins.config</i> file:
+</p>
+<pre># Example how to reuse a Java class
+
+Help, “Bug report”, fiji.Send(“bug”)
+Help, “Contact”, fiji.Send(“contact”)
+</pre>
+<h2><span class="mw-headline" id="What_are_plugins_.28in_terms_of_Java_code.29.3F">What are plugins (in terms of Java code)?</span></h2>
+<p>There are two different types of plugins:
+</p>
+<ul><li> Plugins which operate on one image</li>
+<li> All other plugins (including plugins which require more than one input images, or image format loaders)</li></ul>
+<p>A filter plugin looks like this:
+</p>
+<pre class="brush:java">
+public class My_Plugin implements PlugInFilter {
+    public int setup(String arg, ImagePlus image) {
+        return DOES_ALL;
+    }
+    public void run(ImageProcessor ip) {
+        // Here is the action
+    }
+}
+</pre>
+<p>A general plugin looks like this:
+</p>
+<pre class="brush:java">
+public class My_Plugin implements PlugIn {
+    public void run(String arg) {
+        // Here is the action
+    }
+}
+
+</pre>
+<p><b>Note:</b> it is of course possible to implement a filter plugin using the <i>PlugIn</i> interface, but ImageJ will perform more convenience functions if you use the <i>PlugInFilter</i> interface, such as verifying that there is an image and that it is of the correct type, and error handling.
+</p>
+<h2><span class="mw-headline" id="Limitations">Limitations</span></h2>
+<ul><li> Plugins can only implement menu entries (in particular, they cannot provide tools in the toolbar)</li>
+<li> Some functions which are easy to call via macros are not available via the public Java API (e.g. <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Plot Z-axis profile...</span></em></span>)</li>
+<li> It is often quicker to write macros</li></ul>
+<h1><span class="mw-headline" id="Rapid_prototyping_with_the_Script_Editor">Rapid prototyping with the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a></span></h1>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Using the Script Editor for Java development is not currently recommended.<br />For Java development, proceed to the <a href="Introduction_into_Developing_Plugins.html#Getting_started_with_Maven">Getting Started with Maven</a> section.<br />If you would like to use the script editor, see the sections for the <a href="http://imagej.net/Scripting#Supported_languages" title="Scripting">other supported languages</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+<s>There a few good reasons why you should try the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a> for rapid prototyping of your plugins or scripts:
+</p>
+<ul><li> Supports Jython, JRuby, Javascript, Clojure, Java, BeanShell, and ImageJ's Macro Language</li>
+<li> Syntax highlighting</li>
+<li> Compile and Run without restarting Fiji (mini-IDE)</li>
+<li> Export scripts/plugins as <i>.jar</i> files</li>
+<li> You can compile &amp; run Java classes in the Script Editor which implement neither a plugin nor a plugin filter, but which have a static <i>main()</i> method </li>
+<li> Provides code templates</li>
+<li> Convenience functions, (add import, open JavaDoc, for given class, etc)</s></li></ul>
+<h2><span class="mw-headline" id="Quick_Start">Quick Start</span></h2>
+<p><s>To plunge into writing plugins, make sure that there is an active image (e.g. a sample image), start the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a> (<span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> New </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Script</span></em></span>), and select the <i>Process Pixels</i> menu item from the <span><em><span style="border-bottom:1px dotted #ccc;"> Templates </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Java</span></em></span> menu. Then, run the plugin with <i>Run&gt;Run</i>.</s>
+</p>
+<h1><span class="mw-headline" id="Getting_started_with_Maven">Getting started with Maven</span></h1>
+<p>The <a rel="nofollow" class="external text" href="https://github.com/imagej/example-legacy-plugin/">example-legacy-plugin project</a> provides a working example, and documentation, illustrating how an ImageJ plugin should be structured from a "best practices in Maven" point of view.
+</p><p>Using this project requires a basic understanding of <a href="http://imagej.net/Git" title="Git">Git</a> and <a href="http://imagej.net/Maven" title="Maven">Maven</a>; thus if you are already familiar with the ImageJ 1.x API, this is a reasonable starting point to learn the <a href="http://imagej.net/Project_management" title="Project management">project management</a> tools used in <a href="http://imagej.net/Writing_plugins" title="Writing plugins">ImageJ2 development</a>.
+</p>
+<h1><span class="mw-headline" id="Basic_workflow">Basic workflow</span></h1>
+<p>All plugin development tends to follow a consistent "Design - Build - Test" workflow. Practically, this looks like:
+</p>
+<ul><li> Make changes to the source code (e.g. in <a href="http://imagej.net/Eclipse" class="mw-redirect" title="Eclipse">Eclipse</a>)</li>
+<li> Build your plugin's .jar from the source code (e.g. with <a href="http://imagej.net/Maven" title="Maven">Maven</a>)</li>
+<li> Move the plugin to the <a href="http://imagej.net/Plugin#Installing_plugins_manually" class="mw-redirect" title="Plugin">plugins directory</a> of an existing ImageJ installation</li>
+<li> (Re)start ImageJ and run the plugin to test the behavior</li></ul>
+<p>... and repeat until your plugin is working as intended.
+</p>
+<h1><span class="mw-headline" id="ImageJ.27s_API">ImageJ's API</span></h1>
+<p>The source of the various Fiji-related projects is spread over several source code repositories, and so is their API documentation. An overview of all the javadoc resources can be found on <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/">this page with javadoc links</a>.
+</p>
+<h2><span class="mw-headline" id="The_class_IJ">The class <i>IJ</i></span></h2>
+<p>The class <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/IJ.java">ij.IJ</a> is a convenience class with many static functions. Two of them are particularly useful for debugging:
+</p>
+<pre class="brush:java">
+// output into the Log window
+IJ.log(“Hello, World!”);
+
+// Show a message window
+IJ.showMessage(“Hello, World!”);
+</pre>
+<h2><span class="mw-headline" id="The_class_ImageJ">The class <i>ImageJ</i></span></h2>
+<p>The class <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/ImageJ.java">ij.ImageJ</a> implements the main window of ImageJ / Fiji, and you can access it via <i>ij.IJ'</i>s static method <i>getInstance()</i>:
+</p>
+<pre class="brush:java">
+// check if ImageJ is used interactively
+if (IJ.getInstance()&#160;!= null)
+    IJ.showMessage(“Interactive!”);
+</pre>
+<p>Typically, all you do with that instance is to test whether ImageJ is used as a library (in which case the instance is <i>null</i>).
+</p>
+<h2><span class="mw-headline" id="The_class_WindowManager">The class <i>WindowManager</i></span></h2>
+<p>Use the class <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/WindowManager.java">ij.WindowManager</a> to access the ImageJ windows / images:
+</p>
+<pre class="brush:java">
+// how many windows / images are active?
+IJ.log(“There are “
+    + WindowManager.getNonImageWindows().length
+    + “ windows and “
+    + WindowManager.getImageCount()
+    + “ images!”);
+</pre>
+<p>When implementing a filter plugin, you usually do not need to access <i>WindowManager</i> directly.
+</p>
+<h2><span class="mw-headline" id="The_hierarchy_of_the_classes_representing_an_image">The hierarchy of the classes representing an image</span></h2>
+<p>All images are represented as instances of <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/ImagePlus.java">ij.ImagePlus</a>. This class wraps an <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/ImageStack.java">ij.ImageStack</a> of slices. Slices are data-type dependent instances of <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/process/ImageProcessor.java">ij.process.ImageProcessor</a>: <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/process/ByteProcessor.java">ij.process.ByteProcessor</a>, <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/process/ShortProcessor.java">ij.process.ShortProcessor</a>, <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/process/FloatProcessor.java">ij.process.FloatProcessor</a>, and <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/blob/master/src/main/java/ij/process/ColorProcessor.java">ij.process.ColorProcessor</a>. Or graphically:
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:Image_Class_Hierarchy.png" class="image"><img alt="Image Class Hierarchy.png" src="../_images/f/f5/Image_Class_Hierarchy.png" width="600" height="309" /></a></div></div>
+<p>Example usage:
+</p>
+<pre class="brush:java">
+// get the current image
+ImagePlus image = WindowManager.getCurrentImage();
+
+// get the current slice
+ImageProcessor ip = image.getProcessor();
+ 
+// duplicate the slice
+ImageProcessor ip2 = ip.duplicate();
+</pre>
+<h2><span class="mw-headline" id="Beyond_3D:_Hyperstacks">Beyond 3D: Hyperstacks</span></h2>
+<p>In ImageJ, you can represent more than 3 dimensions in an image: <i>X, Y, Z, channels, frames (time)</i>. Internally, these 5-dimensional images are still represented as stacks of images (essentially, a one-dimensional array of <i>ImageProcessor</i> instances). The <i>ImagePlus</i> class knows how to transform <i>(channel, z-slice, frame)</i> triplets into the corresponding index in the <i>ImageStack</i>, though:
+</p>
+<pre class="brush:java">
+// get the n'th slice (1 &lt;= n &lt;= N!)
+ImageStack stack = image.getStack();
+int size = stack.getSize();
+ImageProcessor ip = stack.getProcessor(size);
+
+// get the ImageProcessor for a given
+// (channel, slice, frame) triple
+int index = image.getStackIndex(channel, slice, frame);
+ImageProcessor ip = stack.getProcessor(index);
+</pre>
+<p><b>Note:</b> for historical reasons, slice indices (and channel and frame indices as well) start at <u>1</u>. This is in contrast, e.g. to the x, y coordinates, which start at <u>0</u> (as one might be used to from other computer languages except BASIC, Pascal and <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>).
+</p>
+<h2><span class="mw-headline" id="Working_with_the_pixels.27_values">Working with the pixels' values</span></h2>
+<p>The subclasses of the <i>ImageProcessor</i> class implement 2-dimensional images for specific data types (8-bit, 16-bit, 32-bit floating point, and RGB color). Let's start with the grayscale ones:
+</p>
+<pre class="brush:java">
+// get one pixel's value (slow)
+float value = ip.getf(0, 0);
+</pre>
+<p>This would get you the value of the top left pixel of an object <i>ip</i> of type <i>ImageProcessor</i>, as a 32-bit floating point value.
+</p><p>Since the original data type might be 8-bit, that operation can require a <i>cast</i> (type conversion), which can be quite costly when done very often. Therefore, if you know the data type of your images, you can write more efficient (but data type depednent) code:
+</p>
+<pre class="brush:java">
+// get all type-specific pixels (fast)
+// in this example, a ByteProcessor
+byte[] pixels = (byte[])ip.getPixels();
+int w = ip.getWidth(), h = ip.getHeight();
+for (int j = 0; j &lt; h; j++)
+    for (int i = 0; i &lt; w; i++) {
+        // Java has no unsigned 8-bit data type, so we need to perform Boolean arithmetics
+        int value = pixels[i + w * j] &amp; 0xff;
+        ...
+    }
+</pre>
+<p><b>Note:</b> The previous example assumes that your images are 8-bit (unsigned, i.e. values between 0 and 255) images. Since Java has no data type for unsigned 8-bit integers, we have to use the <i>&amp; 0xff</i> dance (a <i>Boolean AND</i> operation) to make sure that the value is treated as unsigned integer.
+</p><p>Accessing the pixels' values gets trickier when it comes to RGB images. These use the native data type <i>int</i> (32-bit signed integer) to encode 3 color channels à 8-bit, packed into the lower 24 bits (note that ImageJ might store things in the upper 8 bits, so you cannot assume them to be 0). Therefore, the <i>getf()</i> method of the <i>ImageProcessor</i> class does not make sense on color images. You have to access the pixels like this:
+</p>
+<pre class="brush:java">
+// get all pixels of a ColorProcessor
+int[] pixels = (int[])ip.getPixels();
+int w = ip.getWidth(), h = ip.getHeight();
+for (int j = 0; j &lt; h; j++)
+    for (int i = 0; i &lt; w; i++) {
+        int value = pixels[i + w * j];
+        // value is a bit-packed RGB value
+        int red = value &amp; 0xff;
+        int green = (value &gt;&gt; 8) &amp; 0xff;
+        int blue = (value &gt;&gt; 16) &amp; 0xff;
+}
+</pre>
+<h2><span class="mw-headline" id="Making_new_images">Making new images</span></h2>
+<p>To make a new image - be it 2, 3, 4 or 5 dimensional - you have to create instances of <i>ImageProcessor</i> first. Example:
+</p>
+<pre class="brush:java">
+ImageProcessor gradient(double angle, int w, int h) {
+    float c = (float)Math.cos(angle);
+    float s = (float)Math.sin(angle);
+    float[] p = new float[w * h];
+    for (int j = 0; j &lt; h; j++)
+        for (int i = 0; i &lt; w; i++)
+            p[i + w *j] = (i – w / 2) * c + (j – h / 2) * s;
+    return new FloatProcessor(w, h, p, null);
+}
+</pre>
+<p>This example implements a method that shows a gradient along a given angle. You can use this method to build a 3-dimensional image:
+</p>
+<pre class="brush:java">
+// make a stack of gradients
+int w = 512, h = 512;
+ImageStack stack = new ImageStack(w, h);
+for (int i = 0; i &lt; 180; i++)
+    stack.addSlice(“”, gradient(i / 180f * 2 * Math.PI, w, h));
+ImagePlus image = new ImagePlus(“stack”, stack);
+// you do not need to show intermediate images
+image.show();
+</pre>
+<h2><span class="mw-headline" id="Informing_the_user_about_the_progress">Informing the user about the progress</span></h2>
+<p>This code snippet shows you how to update the progress bar and the status text:
+</p>
+<pre class="brush:java">
+// show a progress bar
+for (int i = 0; i &lt; 100; i++) {
+    // do something
+    IJ.showProgress(i + 1, 100);
+}
+
+// show something in the status bar
+IJ.showStatus(“Hello, world!”);
+</pre>
+<p><b>Note:</b> Calling <i>IJ.showProgress(n, n);</i> will hide the progress bar; Therefore, it makes sense to update the progress bar at the <u>end</u> of a loop iteration, so that after the last iteration, the progress bar is hidden.
+</p>
+<h2><span class="mw-headline" id="Frequently_used_operators">Frequently used operators</span></h2>
+<p>The <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImageJ1-javadoc/javadoc/ij/process/ImageProcessor.html">ImageProcessor</a> class has a few methods such as <i>smooth()</i>, <i>sharpen()</i>, <i>findEdges()</i>, etc
+</p><p><b>Tip:</b> use the Script Editor's functions in the <i>Tools</i> menu:
+</p>
+<ul><li> <i>Open Help for Class...</i> (opens the JavaDoc for a class in a browser),</li>
+<li> <i>Open .java file for class...</i> (requires the respective source files to be present in the Fiji directory, such as after <a href="http://imagej.net/Downloading_and_Building_Fiji_From_Source" title="Downloading and Building Fiji From Source">Downloading and Building Fiji From Source</a>, or</li>
+<li> <i>Open .java file for menu item...</i> (also needs the source files).</li></ul>
+<h2><span class="mw-headline" id="Plots">Plots</span></h2>
+<p>You can show a plot window very easily using the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImageJ1-javadoc/javadoc/ij/gui/Plot.html">Plot</a> class:
+</p>
+<pre class="brush:java">
+void plot(double[] values) {
+    double[] x = new double[values.length];
+    for (int i = 0; i &lt; x.length; i++)
+        x[i] = i;
+    Plot plot = new Plot(“Plot window”, “x”, “values”, x, values);
+    plot.show();
+}
+</pre>
+<p>It is almost as easy to put multiple plots into one window:
+</p>
+<pre class="brush:java">
+void plot(double[] values, double[] values2) {
+    double[] x = new double[values.length];
+    for (int i = 0; i &lt; x.length; i++)
+        x[i] = i;
+    Plot plot = new Plot(“Plot window”, “x”, “values”, x, values);
+    plot.setColor(Color.RED);
+    plot.draw();
+    plot.addPoints(x, values2, Plot.LINE);
+    plot.show();
+}
+</pre>
+<p>To update the contents of a plot window, remember the return value of <i>plot.show()</i> which is a <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImageJ1-javadoc/javadoc/ij/gui/PlotWindow.html">PlotWindow</a>, and use its <i>drawPlot()</i> method:
+</p>
+<pre class="brush:java">
+void plot(double[] values) {
+    ...
+    PlotWindow plotWindow = plot.show();
+    ...
+    Plot plot = new Plot("Plot window", "x", "values", x, values);
+    plotWindow.drawPlot(plot);
+}
+</pre>
+<h2><span class="mw-headline" id="The_results_table">The results table</span></h2>
+<p>Whenever your plugin quantifies things in the images, you might want to output the values in a results table:
+</p>
+<pre class="brush:java">
+ResultsTable rt = Analyzer.getResultsTable();
+if (rt == null) {
+    rt = new ResultsTable();
+    Analyzer.setResultsTable(rt);
+}
+for (int i = 1; i &lt;= 10; i++) {
+    rt.incrementCounter();
+    rt.addValue(“i”, i);
+    rt.addValue(“log”, Math.log(i));
+}
+rt.show(“Results”);
+</pre>
+<h2><span class="mw-headline" id="Regions_of_interest">Regions of interest</span></h2>
+<p>You can access the ROIs in the following fashion:
+</p>
+<pre class="brush:java">
+    // testing ROI type
+    if (roi&#160;!= null &amp;&amp; roi.getType() == Roi.POLYGON)
+        IJ.log(“This is a polygon!”);
+    showCoordinates((PolygonRoi)roi);
+
+...
+
+// get ROI coordinates
+void showCoordinates(PolygonRoi polygon) {
+    PolygonRoi polygon = (PolygonRoi)roi;
+    int[] x = polygon.getXCoordinates();
+    int[] y = polygon.getYCoordinates();
+    Rectangle bounds = polygon.getBounds();
+    for (int i = 0; i &lt; x.length; i++)
+        // x, y are relative to the bounds' origin
+        IJ.log(“point ” + i + “: “ + (x[i] + bounds.x) + (y[i] + bounds.y));
+}
+</pre>
+<p><b>Note:</b> If the image has no ROI set, then <i>getRoi()</i> will return <i>null</i>, so you <u>must</u> check whether <i>roi&#160;!= null</i> before accessing fields or methods on the object.
+</p><p>Of course, you can also set ROIs programmatically:
+</p>
+<pre class="brush:java">
+// rectangular ROI
+Roi roi = new Roi(10, 10, 90, 90);
+image.setRoi(roi);
+
+// oval ROI
+Roi roi = new OvalRoi(10, 10, 90, 90);
+image.setRoi(roi);
+</pre>
+<h2><span class="mw-headline" id="Calling_ImageJ2_from_ImageJ_1.x">Calling ImageJ2 from ImageJ 1.x</span></h2>
+<p>You can use ImageJ2-specific functionality from within an ImageJ 1.x plugin. For example, ImageJ2 provides a spreadsheet-like results table that supports string cells. You can write an ImageJ 1.x plugin that produces such a spreadsheet, displaying it onscreen.
+</p><p>See the <a rel="nofollow" class="external text" href="https://github.com/imagej/tutorials/blob/master/maven-projects/call-modern-from-legacy">call-modern-from-legacy</a> example of the ImageJ Tutorials:
+</p>
+<blockquote><a rel="nofollow" class="external text" href="https://github.com/imagej/tutorials/blob/master/maven-projects/call-modern-from-legacy/src/main/java/DisplayATable.java">DisplayATable.java</a></blockquote>
+<h2><span class="mw-headline" id="Further_tips">Further tips</span></h2>
+<p>Please see also the developers tips how to <a href="http://imagej.net/Tips_for_developers#Using_ImageJ_effectively" title="Tips for developers">use ImageJ's API effectively</a>.
+</p>
+<h1><span class="mw-headline" id="Next_steps">Next steps</span></h1>
+<p>See guides on:
+</p>
+<ul><li> <a href="http://imagej.net/Developing_Fiji_in_Eclipse#Create_the_Eclipse_Projects" class="mw-redirect" title="Developing Fiji in Eclipse">Developing in Eclipse</a></li>
+<li> <a href="http://imagej.net/Distribution" title="Distribution">Plugin distribution</a></li>
+<li> <a href="http://imagej.net/Development_Lifecycle" title="Development Lifecycle">Development lifecycle</a></li>
+<li> <a href="http://imagej.net/Debugging_Exercises" title="Debugging Exercises">Debugging practice</a></li>
+<li> <a href="http://imagej.net/ImageJ1-ImageJ2_cheat_sheet" title="ImageJ1-ImageJ2 cheat sheet">ImageJ1-ImageJ2 cheat sheet</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072738
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.064 seconds
+Real time usage: 0.067 seconds
+Preprocessor visited node count: 1227/1000000
+Preprocessor generated node count: 3644/1000000
+Post‐expand include size: 14504/2097152 bytes
+Template argument size: 6527/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   34.480      1 - -total
+ 27.41%    9.450      1 - Template:DevelopMenu
+ 23.78%    8.198      1 - Template:Menu
+ 20.75%    7.154      3 - Template:Submenu
+ 18.49%    6.376      4 - Template:Bc
+ 15.97%    5.505     13 - Template:GitHub
+ 15.49%    5.340      1 - Template:ImageJ1
+ 11.42%    3.939     31 - Template:MenuItem
+ 11.25%    3.880      1 - Template:Box
+  6.36%    2.192      1 - Template:Warning
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Developing_Plugins_for_ImageJ_1.x&amp;oldid=38130">http://imagej.net/index.php?title=Developing_Plugins_for_ImageJ_1.x&amp;oldid=38130</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 30 June 2018, at 17:26.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Developing_Plugins_for_ImageJ_1.x&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Developing+Plugins+for+ImageJ+1.x" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Developing+Plugins+for+ImageJ+1.x" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Developing_Plugins_for_ImageJ_1.x" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Developing_Plugins_for_ImageJ_1.x" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Developing_Plugins_for_ImageJ_1.x&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Developing_Plugins_for_ImageJ_1.x&amp;oldid=38130" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Developing_Plugins_for_ImageJ_1.x&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":199});});</script>
+		</body>
+		</html>
+		

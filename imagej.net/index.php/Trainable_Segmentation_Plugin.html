@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Trainable Segmentation Plugin (deprecated) - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Trainable_Segmentation_Plugin_(deprecated)","wgTitle":"Trainable Segmentation Plugin (deprecated)","wgCurRevisionId":17863,"wgRevisionId":17863,"wgArticleId":855,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Segmentation","Tutorials","Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Trainable_Segmentation_Plugin_(deprecated)","wgRelevantArticleId":855,"wgRequestId":"030416e9958b156e6a98d64a","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="DEPRECATION NOTICE: &#10;This page describes the Trainable Segmentation plugin, the previous incarnation of the Trainable Weka Segmentation plugin and library. We encourage users and developers to work with the more advanced and properly maintained Trainable Weka Segmentation instead."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Trainable Segmentation Plugin (deprecated)"/>
+
+	<meta property="og:description" content="DEPRECATION NOTICE: &#10;This page describes the Trainable Segmentation plugin, the previous incarnation of the Trainable Weka Segmentation plugin and library. We encourage users and developers to work with the more advanced and properly maintained Trainable Weka Segmentation instead."/>
+
+	<meta property="og:url" content="http://imagej.net/Trainable_Segmentation_Plugin_(deprecated)"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Trainable_Segmentation_Plugin_deprecated rootpage-Trainable_Segmentation_Plugin_deprecated skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Trainable_Segmentation_Plugin.html#bodyContent">Skip to content</a>, 			<a href="Trainable_Segmentation_Plugin.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Trainable_Segmentation_Plugin.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Trainable_Segmentation_Plugin.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Trainable_Segmentation_Plugin_(deprecated)&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_(deprecated)&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_(deprecated)&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Trainable Segmentation Plugin (deprecated)</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><div style="background:#fdd; padding: 10px 10px 0 10px; border: 1px solid black;">
+<p><b>DEPRECATION NOTICE:</b> 
+This page describes the Trainable Segmentation plugin, the previous incarnation of the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> plugin and library. We encourage users and developers to work with the more advanced and properly maintained <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> instead.
+</p>
+</div></p>
+<table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Trainable Segmentation (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Verena Kaynig, <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>, Albert Cardona
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a rel="nofollow" class="external text" href="http://www.kaynig.de">Verena Kaynig</a> and <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Trainable_Segmentation/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> March 16<sup>th</sup>, 2010
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> January 6<sup>th</sup>, 2012
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> <b>deprecated</b>
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Trainable_Segmentation_Plugin.html#User_Manual"><span class="tocnumber">1</span> <span class="toctext">User Manual</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Trainable_Segmentation_Plugin.html#Chose_training_image"><span class="tocnumber">1.1</span> <span class="toctext">Chose training image</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Trainable_Segmentation_Plugin.html#Make_example_annotations"><span class="tocnumber">1.2</span> <span class="toctext">Make example annotations</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Trainable_Segmentation_Plugin.html#Train_the_classifier"><span class="tocnumber">1.3</span> <span class="toctext">Train the classifier</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Trainable_Segmentation_Plugin.html#Refine_the_training"><span class="tocnumber">1.4</span> <span class="toctext">Refine the training</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Trainable_Segmentation_Plugin.html#Apply_the_trained_classifier_to_other_images"><span class="tocnumber">1.5</span> <span class="toctext">Apply the trained classifier to other images</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Trainable_Segmentation_Plugin.html#Tips"><span class="tocnumber">1.6</span> <span class="toctext">Tips</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Trainable_Segmentation_Plugin.html#Troubleshooting"><span class="tocnumber">2</span> <span class="toctext">Troubleshooting</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Trainable_Segmentation_Plugin.html#See_Also"><span class="tocnumber">3</span> <span class="toctext">See Also</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="User_Manual">User Manual</span></h2>
+<p>This manual shows you how to use the <b>deprecated</b> Trainable Segmentation plugin. Trainable means that you have to draw some examples of at least 2 different things you want to differentiate in the image and then a classifier is trained by your examples and segments the rest of the image. 
+Afterwards you can also apply the trained classifier to other images or stacks. 
+</p><p>The plugin can be found in the Fiji menu under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> deprecated </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Trainable Segmentation</span></em></span>.
+</p>
+<h3><span class="mw-headline" id="Chose_training_image">Chose training image</span></h3>
+<p>First, you have to choose the image you want to train on. 
+</p>
+<div class="MediaTransformError" style="width: 271px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Now open the plugin (<span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> deprecated </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Trainable Segmentation</span></em></span>). It opens a training window that contains the training image.
+</p>
+<div class="MediaTransformError" style="width: 562px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Make_example_annotations">Make example annotations</span></h3>
+<p>Next, we have to teach the plugin what a membrane in the image looks like. So we select pixels from a membrane using the freeline tool.
+</p>
+<div class="MediaTransformError" style="width: 564px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Now push the "Add to class 2" button. The selected trace will turn green, showing that it is been selected as a representative example of class 2.
+</p>
+<div class="MediaTransformError" style="width: 562px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>For training it is also important what a membrane does not look like. So we select some other pixels and push the "Add to class 1" button.
+</p>
+<div class="MediaTransformError" style="width: 569px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Train_the_classifier">Train the classifier</span></h3>
+<p>Now it is time to train the classifier and look at the result, so we push the "Train classifier" button on the left side. After training the plugin will automatically classify all pixels from the training image and present the result in a color overlay. This overlay can be switched on and off with the "Toggle overlay" button.
+</p>
+<div class="MediaTransformError" style="width: 571px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Refine_the_training">Refine the training</span></h3>
+<p>Looking at the classification result there are some cases that are harder to classify than others. We add more annotations to help the classifier correct these cases. This is done by adding examples and then pushing the train classifier button in between to see how the result changes. <b>If you want to delete an example trace</b>, select the trace in the right list (it turns to yellow in the training image) and then <b>double click on it</b>.
+Here are some examples of what the annoations can look like:
+</p>
+<div class="MediaTransformError" style="width: 569px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>And here is the corresponding classification result:
+</p>
+<div class="MediaTransformError" style="width: 568px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Apply_the_trained_classifier_to_other_images">Apply the trained classifier to other images</span></h3>
+<p>If you want a binary image of this result you can use the "Create result" button and a new window with the classification image will open.
+</p><p>The other option is to apply the trained classifier to other images or stacks. For this we click the "Apply classifier" button. A dialog opens asking for the image or stack that should be classified using the current trained classifier. Depending on the size of this image or stack, the classification can take some time. When it is finished you see the image/stack the classifier was applied to and the result in new windows. These images can now be saved or further processed.
+</p><p><a href="http://imagej.net/File:WholeImageClassified.jpg" class="image"><img alt="WholeImageClassified.jpg" src="../_images/9/99/WholeImageClassified.jpg" width="780" height="417" /></a>
+</p>
+<h3><span class="mw-headline" id="Tips">Tips</span></h3>
+<ul><li> You can use the save data and load data buttons to save the annotated examples. When you then open a new training image you can also load annotations from the former image and now add new examples on the new image. The classifier will be trained on the loaded and the currently annotated examples.</li>
+<li> Use a small image for training, as the classification of the whole image is taking some time. Training on the small image will limit your waiting time.</li>
+<li> At the moment the plugin is aimed for gray value images that are hard to segment with a threshold alone. When you have color images you might want to look at the <a href="http://imagej.net/SIOX:_Simple_Interactive_Object_Extraction" title="SIOX: Simple Interactive Object Extraction">SIOX</a> plugin to segment them. </li></ul>
+<p><br /> 
+</p><p>Have fun!
+</p>
+<h2><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h2>
+<p>Common problems and solutions:
+</p>
+<ul><li><b> I don't find the plugin in my Fiji menus!</b>: Don't worry, depending on your Fiji release, the updater may not offer you this plugin automatically. Just go to <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update Fiji</span></em></span>, then click on "Advanced mode", and on the "View Options" box, select "View uninstalled plugins only". Then the Trainable Segmentation plugin should appear and you should be able to install it.</li></ul>
+<h2><span class="mw-headline" id="See_Also">See Also</span></h2>
+<ul><li> <a href="http://imagej.net/Trainable_Segmentation_Plugin_Implementation" title="Trainable Segmentation Plugin Implementation">Trainable Segmentation Plugin Implementation</a></li>
+<li> <a href="http://imagej.net/Scripting_the_Trainable_Segmentation" class="mw-redirect" title="Scripting the Trainable Segmentation">Scripting the Trainable Segmentation</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074021
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.064 seconds
+Real time usage: 0.067 seconds
+Preprocessor visited node count: 486/1000000
+Preprocessor generated node count: 4570/1000000
+Post‐expand include size: 3185/2097152 bytes
+Template argument size: 1001/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   27.381      1 - -total
+ 66.28%   18.148      1 - Template:Infobox
+ 43.73%   11.975      2 - Template:Person
+ 32.14%    8.800      3 - Template:Bc
+ 11.48%    3.144      7 - Template:Arrow
+  7.47%    2.045      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_(deprecated)&amp;oldid=17863">http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_(deprecated)&amp;oldid=17863</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 8 October 2015, at 13:23.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_(deprecated)&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Trainable+Segmentation+Plugin+%28deprecated%29" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Trainable+Segmentation+Plugin+%28deprecated%29" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Trainable_Segmentation_Plugin_(deprecated)" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Trainable_Segmentation_Plugin_(deprecated)" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_(deprecated)&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_(deprecated)&amp;oldid=17863" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_(deprecated)&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":270});});</script>
+		</body>
+		</html>
+		

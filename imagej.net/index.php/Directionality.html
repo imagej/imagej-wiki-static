@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Directionality - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Directionality","wgTitle":"Directionality","wgCurRevisionId":41228,"wgRevisionId":41228,"wgArticleId":824,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Analysis","Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Directionality","wgRelevantArticleId":824,"wgRequestId":"2a73cea24960b62850ba5284","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This plugin is used to infer the preferred orientation of structures present in the input image. It computes a histogram indicating the amount of structures in a given direction. Images with completely isotropic content are expected to give a flat histogram, whereas images in which there is a preferred orientation are expected to give a histogram with a peak at that orientation."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Directionality"/>
+
+	<meta property="og:description" content="This plugin is used to infer the preferred orientation of structures present in the input image. It computes a histogram indicating the amount of structures in a given direction. Images with completely isotropic content are expected to give a flat histogram, whereas images in which there is a preferred orientation are expected to give a histogram with a peak at that orientation."/>
+
+	<meta property="og:url" content="http://imagej.net/Directionality"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Directionality rootpage-Directionality skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Directionality.html#bodyContent">Skip to content</a>, 			<a href="Directionality.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Directionality.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Directionality" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Directionality&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Directionality&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Directionality&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Directionality</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Directionality<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Directionality">https://imagej.net/Directionality</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Directionality/releases/tag/Directionality_-2.0.2">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Directionality_~2.0.2~~~kw,versionexpand">2.0.2</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 22:38:51 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Eglinger" title="User:Eglinger">Jan Eglinger</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Directionality.html#Usage"><span class="tocnumber">1</span> <span class="toctext">Usage</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Directionality.html#Statistics_generated"><span class="tocnumber">2</span> <span class="toctext">Statistics generated</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Directionality.html#Results_data_export"><span class="tocnumber">3</span> <span class="toctext">Results data export</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Directionality.html#How_does_it_work.3F"><span class="tocnumber">4</span> <span class="toctext">How does it work?</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="Directionality.html#Fourier_components_analysis"><span class="tocnumber">4.1</span> <span class="toctext">Fourier components analysis</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Directionality.html#Local_gradient_orientation"><span class="tocnumber">4.2</span> <span class="toctext">Local gradient orientation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Directionality.html#Orientation_map"><span class="tocnumber">5</span> <span class="toctext">Orientation map</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Directionality.html#Test_images"><span class="tocnumber">6</span> <span class="toctext">Test images</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Directionality.html#Code_structure"><span class="tocnumber">7</span> <span class="toctext">Code structure</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Directionality.html#Scripting"><span class="tocnumber">8</span> <span class="toctext">Scripting</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="Directionality.html#General_scripting"><span class="tocnumber">8.1</span> <span class="toctext">General scripting</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Directionality.html#Getting_the_fit_parameters"><span class="tocnumber">8.2</span> <span class="toctext">Getting the fit parameters</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="Directionality.html#Uses_of_this_plugin"><span class="tocnumber">9</span> <span class="toctext">Uses of this plugin</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="Directionality.html#Version_history"><span class="tocnumber">10</span> <span class="toctext">Version history</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="Directionality.html#Wish_list_for_this_plugin"><span class="tocnumber">11</span> <span class="toctext">Wish list for this plugin</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="Directionality.html#References"><span class="tocnumber">12</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<p><a href="http://imagej.net/File:Directionality_Example.png" class="image"><img alt="Directionality Example.png" src="../_images/1/1f/Directionality_Example.png" width="600" height="242" /></a>
+</p><p>This plugin is used to infer the preferred orientation of structures present in the input image. It computes a histogram indicating the amount of structures in a given direction. Images with completely isotropic content are expected to give a flat histogram, whereas images in which there is a preferred orientation are expected to give a histogram with a peak at that orientation.
+</p><p>For instance, in the pine tree branch pictured above, the needle shaped leaves exist in 2 populations, one with a preferred orientation at about 45º, and another one with preferred orientation around -45º. This is well detected by the plugin, which reports two main peaks at 60º and -60º. On top of that, a minor peak can be seen around 0º, reporting the main branch orientation.
+</p><p>Angles are reported in their common mathematical sense. That is: 0º is the East direction, and the orientation is counterclockwise.
+</p><p>The user interface allows to specify:
+</p>
+<ul><li> The number of bins (default: 90), that will partition the 180º.</li>
+<li> The starting angle (default:-90º) for analysis. Angles will run from this value to 180º plus the starting value. This option was added to avoid having peaks at +90º split at the borders of the histogram.</li>
+<li> The debug flag, if set, will cause angular filters and power spectrum to be displayed.</li>
+<li> The result table flag will generate a table containing all result value to be displayed. This table can be exported as a CSV file thereafter; see below.</li>
+<li> The orientation map flag will cause the orientation map to be generated; see below. </li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Statistics_generated">Statistics generated</span></h2>
+<p>On top of the histogram, the plugin tries to generate statistics on the highest peak found.
+</p>
+<ul><li> The highest peak is fitted by a Gaussian function, taking into account the periodic nature of the histogram.</li>
+<li> The 'Direction (º)' column reports the center of the gaussian.</li>
+<li> The 'Dispersion (º)' column reports the standard deviation of the gaussian.</li>
+<li> The 'Amount' column is the sum of the histogram from center-std to center+std, divided by the total sum of the histogram. The real histogram values are used for the summation, not the gaussian fit.</li>
+<li> The 'Goodness' column reports the goodness of the fit; 1 is good, 0 is bad.</li></ul>
+<p>A study made on artificial images reveal that the 'Amount' value as calculated here <b>underestimates</b> the real proportion of structures with the preferred orientation. So for the pine image up there, one can conclude that the proportion of needle leaves oriented around +60º is at least 25% (however, the image is not completely uniform, which cripples the meaning of this amount value).
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Results_data_export">Results data export</span></h2>
+<ol><li>Save the Directionality Results window contents to a spreadsheet by copy pasting. </li>
+<li>If you want to save an image of the histogram, right-click on the plot, and choose save as.</li>
+<li>If you want to export the histogram data, check the Data table box in the plugin dialog window. This will generate a results table, that can be exported as a csv file with a right click, or copy pasted directly into a spreadsheet etc. </li></ol>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="How_does_it_work.3F">How does it work?</span></h2>
+<p>Different solutions have been thought about, and two of them are currently implemented:
+</p>
+<h3><span class="mw-headline" id="Fourier_components_analysis">Fourier components analysis</span></h3>
+<p>This method is based on Fourier spectrum analysis. For a square
+image, structures with a preferred orientation generate a periodic pattern at
++90º orientation in the Fourier transform of the image, compared to the
+direction of the objects in the input image. 
+</p><p>This plugin chops the image into
+square pieces, and computes their Fourier power spectra. The later are
+analyzed in polar coordinates, and the power is measured for each angle using
+the spatial filters proposed in [1].
+</p>
+<h3><span class="mw-headline" id="Local_gradient_orientation">Local gradient orientation</span></h3>
+<p>This method is local. The gradient of the image is calculated using a 5x5
+Sobel filter, and is used to derive the local gradient orientation. This orientation 
+is then used to build the histogram, by putting the square of the gradient norm 
+in the adequate bin. The square of the norm was retained, so as to have an histogram 
+with the same dimension that for the Fourier analysis.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Orientation_map">Orientation map</span></h2>
+<p>Since version 2.0, the plugin offers the possibility to generate an orientation map,
+where the image is colored according to its local directionality, or location orientation.
+This has a well an easily defined meaning in the case of the local gradient orientation 
+method, but things are a bit more complicated in the case of the Fourier component, which
+is a global method. 
+</p><p>In the later case, the image is filtered using the Fourier filters described above, and 
+transformed back using inverse Fourier transform. For each pixel, the direction retained
+is the one that has the strongest intensity when filtered in this orientation.
+</p><p>To generate the orientation map image, a HSB image is made by taking
+</p>
+<ul><li> the local orientation as hue;</li>
+<li> the original image gray value as brightness;</li>
+<li>for saturation:
+<ul><li> the power spectrum value for the Fourier component method;</li>
+<li> the gradient magnitude square for the Local gradient orientation method.</li></ul></li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Test_images">Test images</span></h2>
+<p>Here is two images stack made to test the plugin accuracy:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="https://fiji.sc/tinevez/directionality/VaryingDirection.tif">VaryingDirection.tif, 2.5MB</a></li>
+<li> <a rel="nofollow" class="external text" href="https://fiji.sc/tinevez/directionality/VaryingAmount.tif">VaryingAmount.tif, 2.5MB</a></li></ul>
+<p><code>VaryingDirection.tif</code> is a 5 slices 16-bit stack made of artificial structures. Each slice is 512x512 pixels, and contains 2000 rods of length 100 pixels in average. 1000 of these rods have a random orientation, the others 1000 have an orientation varying from -60º to 60º from the first slice to the last one. The image is blurred by a gaussian of std 1, and corrupted by Poisson noise. You can use it to determine the accuracy of angle detection. The amount should be close and below 50%.
+</p><p><code>VaryingAmount.tif</code> has the same parameters than the previous stack, but has a varying amount of orientated rods (from 20% to 100% of the 2000 rods) and a fixed direction of -60º for the orientated ones. You can use it to test the "Amount" score.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Code_structure">Code structure</span></h2>
+<p>This plugin is written as a classical ImageJ plugin. It implements <i>PlugInFilter</i>,
+and relies on <i>PlugInFilterRunner</i> to be run. 
+</p><p>String arguments can be passed to it, using the <i>setup(String, ImagePlus)</i> method.
+For instance:
+</p>
+ <pre class="brush:java">
+ ImagePlus imp = IJ.openImage("./TwoLines.tif");
+ imp.show();
+ Directionality_ da = new Directionality_();
+ String command = "Directionality";
+ new PlugInFilterRunner(da, command, "nbins=60, start=-90, method=gradient");
+ </pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Scripting">Scripting</span></h2>
+<h3><span class="mw-headline" id="General_scripting">General scripting</span></h3>
+<p>It is also possible to run the plugin non-interactively from another class, or even in
+a script. For instance in Python:
+</p>
+<pre class="brush:python">
+from fiji.analyze.directionality import Directionality_
+from ij import WindowManager, ImagePlus
+ 
+# Instantiate plugin
+dir = Directionality_()
+ 
+# Set fields and settings
+dir.setImagePlus(WindowManager.getCurrentImage())
+# dir.setMethod(fiji.analyze.directionality.Directionality_.AnalysisMethod.LOCAL_GRADIENT_ORIENTATION)
+dir.setMethod(Directionality_.AnalysisMethod.FOURIER_COMPONENTS)
+dir.setBinNumber(30)
+dir.setBinStart(-60)
+dir.setBuildOrientationMapFlag(True)
+ 
+# Do calculation
+dir.computeHistograms()
+dir.fitHistograms()
+ 
+# Display plot frame
+plot_frame = dir.plotResults()
+plot_frame.setVisible(True)
+ 
+# Display fit analysis
+data_frame = dir.displayFitAnalysis()
+data_frame.setVisible(True) 
+ 
+# Display results table
+table = dir.displayResultsTable()
+table.show("Directionality histograms")
+ 
+# Display orientation map
+stack = dir.getOrientationMap()
+ImagePlus("Orientation map", stack).show()
+ 
+# Generate a color wheel
+Directionality_.generateColorWheel().show()
+
+</pre>
+<h3><span class="mw-headline" id="Getting_the_fit_parameters">Getting the fit parameters</span></h3>
+<p>After a request from Jessica Mansfield (University of Exeter, UK) - October 2010.
+</p><p>The plugin uses a fit by a gaussian to compute directionality parameters; however, the fit parameters themselves are not returned. It is possible to get them however using a script.
+</p><p>The gaussian fit has the following form:
+</p><p><img class="mwe-math-fallback-image-inline tex" alt="&#10;y = a + (b-a)*\exp\left(-\frac{(x-c)^2}{2 d^2}\right)&#10;" src="../_images/math/a/3/6/a3691282106fbfeb20b84e9be94ec99f.png" />  
+</p><p>The parameters are returned by the method <code>public ArrayList&lt;double[]&gt; getFitParameters()</code>, which returns a, b, c and d in an <code>ArrayList</code> of <code>double[]</code>, one array per slice in the stack.
+</p><p>You can retrieve them and display them with the following script:
+</p>
+<pre class="brush:python">
+from fiji.analyze.directionality import Directionality_
+from ij import WindowManager
+from ij.measure import ResultsTable
+
+# Instantiate plugin
+dnlty = Directionality_()
+
+# Set fields and settings
+imp = WindowManager.getCurrentImage()
+dnlty.setImagePlus(imp)
+dnlty.setMethod(Directionality_.AnalysisMethod.FOURIER_COMPONENTS)
+dnlty.setBinNumber(30)
+dnlty.setBinStart(30)
+dnlty.setBuildOrientationMapFlag(False) # No orientation map
+
+# Do calculation
+dnlty.computeHistograms()
+dnlty.fitHistograms()
+
+# Display plot frame
+plot_frame = dnlty.plotResults()
+plot_frame.setVisible(True)
+
+# Display fit analysis
+# data_frame = dir.displayFitAnalysis()
+# data_frame.setVisible(True)
+
+# Display results table
+# table = dir.displayResultsTable()
+# table.show("Directionality histograms")
+
+# Get the fit params and put them in a results table
+fitParams = dnlty. getFitParameters()
+rt = ResultsTable()
+index = 1;
+for param in fitParams:
+    rt.incrementCounter()
+    rt.addLabel(imp.getStack().getShortSliceLabel(index))
+    rt.addValue('a', param[0])
+    rt.addValue('b', param[1])
+    rt.addValue('c', param[2])
+    rt.addValue('d', param[3])
+    index = index + 1;
+
+rt.show('Fit param for y = a + (b-a)*exp(-(x-c)*(x-c)/(2*d*d)') 
+</pre>
+<h2><span class="mw-headline" id="Uses_of_this_plugin">Uses of this plugin</span></h2>
+<p>Since there is no publication associated with this plugin, it is hard tracking where it is used. However people wrote me and helped building the following list. The Directionality plugin has been used at least in the following publications: 
+</p>
+<ul><li> Sensini A., Gualandi C., Zucchelli A., Boyle L., Kao A. P., Reilly G. C., Tozzi G., Cristofolini L., Focarete M. L. (2018), Tendon Fascicle-Inspired Nanofibrous Scaffold of Polylactic acid/Collagen with Enhanced 3D-Structure and Biomechanical Properties. Scientific Reports, 8:17617. doi:  <a rel="nofollow" class="external free" href="https://doi.org/10.1038/s41598-018-35536-8">https://doi.org/10.1038/s41598-018-35536-8</a></li></ul>
+<ul><li> Deravi, Leila F., Nina R. Sinatra, Christophe O. Chantre, Alexander P. Nesmith, Hongyan Yuan, Sahm K. Deravi, Josue A. Goss et al. <a rel="nofollow" class="external text" href="http://diseasebiophysics.seas.harvard.edu/wp-content/uploads/2017/01/pub_93.pdf">"Design and Fabrication of Fibrous Nanomaterials Using Pull Spinning."</a> Macromolecular Materials and Engineering 302, no. 3 (2017).</li></ul>
+<ul><li> Natalie Reznikov, Rotem Almany-Magal, Ron Shahar, Steve Weiner, <a rel="nofollow" class="external text" href="https://doi.org/10.1016/j.bone.2012.10.034">Three-dimensional imaging of collagen fibril organization in rat circumferential lamellar bone using a dual beam electron microscope reveals ordered and disordered sub-lamellar structures</a>, Bone, Volume 52, Issue 2, February 2013, Pages 676-683, ISSN 8756-3282.</li></ul>
+<ul><li> Natalie Reznikov, Ron Shahar, Steve Weiner, <a rel="nofollow" class="external text" href="https://doi.org/10.1016/j.bone.2013.10.023">Three-dimensional structure of human lamellar bone: The presence of two different materials and new insights into the hierarchical organization</a>, Bone, Volume 59, February 2014, Pages 93-104, ISSN 8756-3282. </li></ul>
+<ul><li> These two last papers and their methodology have been put in perspective on <a rel="nofollow" class="external text" href="http://www.weizmann.ac.il/Structural_Biology/Weiner/bone-3d-structure-and-function-together-ron-shahar">Pr. Weiner lab webpage</a>.</li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.sciencedirect.com/science/article/pii/S0165027011004171"><b>Woolley et al.</b> In situ characterization of the brain-microdevice interface using Device Capture Histology. <i>Journal of Neuroscience Methods (2011) vol. 201 (1) pp. 67-77</i></a></li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.sciencedirect.com/science/article/pii/S026635381400342X"><b>Fliegener S, Luke M, Gumbsch P.</b> 3D microstructure modeling of long fiber reinforced thermoplastics. <i>Composites Science and Technology 104(2014), pp. 136-145</i></a></li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://link.springer.com/article/10.1007/s12274-015-0831-x"><b>Daniela P. Lobo, Alan M. Wemyss, David J. Smith et al.</b> Direct detection and measurement of wall shear stress using a filamentous bio-nanoparticle. <i>Nano Research October 2015, Volume 8, Issue 10, pp 3307-3315</i></a></li></ul>
+<ul><li> Sensini, A., Gualandi, C., Cristofolini, L., Tozzi, G., Dicarlo, M., Teti, G., Mattioli-Belmonte, M. &amp; Focarete, M.L. (2017) Biofabrication of bun- dles of poly (lactic acid)-collagen blends mimicking the fascicles of the human Achille tendon. Biofabrication 9(1), 1–13. doi:<a rel="nofollow" class="external free" href="https://doi.org/10.1088/1758-5090/aa6204">https://doi.org/10.1088/1758-5090/aa6204</a></li></ul>
+<ul><li> SENSINI, A. , CRISTOFOLINI, L. , FOCARETE, M. , BELCARI, J. , ZUCCHELLI, A. , KAO, A. and TOZZI, G. (2018), High‐resolution x‐ray tomographic morphological characterisation of electrospun nanofibrous bundles for tendon and ligament regeneration and replacement. Journal of Microscopy. doi:10.1111/jmi.12720</li></ul>
+<p>If you use it, please tell me so that I can add to this list.
+</p>
+<h2><span class="mw-headline" id="Version_history">Version history</span></h2>
+<ul><li> v2.0: After a lot of mistakes and problems, each method now propose to generate an orientation map, which colors the image according to the local directionality.</li>
+<li> v1.2: Added a new analysis method based on local gradient orientation.</li>
+<li> v1.1: Added an option to export the histogram as a table.</li>
+<li> v1.0: First working commit with the Fourier method.</li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Wish_list_for_this_plugin">Wish list for this plugin</span></h2>
+<p>Possible way for further developments:
+</p>
+<ul><li> Have a peak finder that can deal with multiple peaks and return statistics on them.</li>
+<li> Add a radial filter to the Fourier method, that would allow to pick only structures with a given length (+/- bandwidth). Conversely, add a scale option to the Local gradient orientation method.</li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ul><li> [1] <b>Liu.</b> Scale space approach to directional analysis of images. <i>Appl. Opt. (1991) vol. 30 (11) pp. 1369-1373</i></li></ul>
+<p>A discussion with A. Leroy and another one with J. Schindelin are greatly acknowledged.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713065017
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.096 seconds
+Real time usage: 0.096 seconds
+Preprocessor visited node count: 3210/1000000
+Preprocessor generated node count: 4782/1000000
+Post‐expand include size: 5306/2097152 bytes
+Template argument size: 1372/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   70.359      1 - -total
+100.00%   70.359      1 - Template:ComponentStats:sc.fiji:Directionality
+ 97.55%   68.635      1 - Template:Component
+ 80.29%   56.489     10 - Template:Person
+  2.40%    1.686      1 - Template:GitHub
+  1.71%    1.205      1 - Template:Maven
+  1.70%    1.198      1 - Template:Project
+  1.46%    1.029      1 - Template:SupportStatus
+  1.42%    1.002      1 - Template:DevStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Directionality&amp;oldid=41228">http://imagej.net/index.php?title=Directionality&amp;oldid=41228</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Directionality&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Directionality" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Directionality" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Directionality" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Directionality" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Directionality&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Directionality&amp;oldid=41228" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Directionality&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":238});});</script>
+		</body>
+		</html>
+		

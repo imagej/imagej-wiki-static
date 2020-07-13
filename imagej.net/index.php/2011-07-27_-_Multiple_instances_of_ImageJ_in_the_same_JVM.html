@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>2011-07-27 - Multiple instances of ImageJ in the same JVM - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM","wgTitle":"2011-07-27 - Multiple instances of ImageJ in the same JVM","wgCurRevisionId":11341,"wgRevisionId":11341,"wgArticleId":2368,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["News","ImageJ2"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM","wgRelevantArticleId":2368,"wgRequestId":"150a4033dbe01ea98fad7330","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="With ImageJ1, there is a singleton instance of the program, accessible via IJ.getInstance(). With ImageJ2 we want to provide a mechanism for managing multiple ImageJ &amp;quot;application contexts.&amp;quot; At the moment, ImageJ2 is also still a singleton, but we recently did some work to pave the way for multiple ImageJ applications running simultaneously."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="2011-07-27 - Multiple instances of ImageJ in the same JVM"/>
+
+	<meta property="og:description" content="With ImageJ1, there is a singleton instance of the program, accessible via IJ.getInstance(). With ImageJ2 we want to provide a mechanism for managing multiple ImageJ &amp;quot;application contexts.&amp;quot; At the moment, ImageJ2 is also still a singleton, but we recently did some work to pave the way for multiple ImageJ applications running simultaneously."/>
+
+	<meta property="og:url" content="http://imagej.net/2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM rootpage-2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM.html#bodyContent">Skip to content</a>, 			<a href="2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>2011-07-27 - Multiple instances of ImageJ in the same JVM</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>With <a href="http://imagej.net/ImageJ1" title="ImageJ1">ImageJ1</a>, there is a singleton instance of the program, accessible via <code>IJ.getInstance()</code>. With <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> we want to provide a mechanism for managing multiple <a href="http://imagej.net/ImageJ" title="ImageJ">ImageJ</a> &quot;application contexts.&quot; At the moment, ImageJ2 is also still a singleton, but we recently did some work to pave the way for multiple ImageJ applications running simultaneously.
+</p><p>In ImageJ2, functionality is divided into a set of services, which are classes implementing the <code>IService</code> interface. Each service class has a single instance associated with its <code>ImageJ</code> application context. So once you have an <code>ImageJ</code> object, you can ask it for a service of a particular class by calling the <code>getService(Class&lt;? extends IService&gt;)</code> method. With multiple application contexts, the tricky part can be accessing the correct <code>ImageJ</code> object in the first place.
+</p><p>One option is for the API to require passing around an <code>ImageJ</code> object in many places. For example, writing a plugin currently requires implementing a single method, <code>run()</code>. Most plugins require access to one or more services of the application context (e.g., a plugin might wish to ask the <code>DisplayService</code> about the currently active <code>Display</code>). We could change this signature to <code>run(ImageJ)</code>, but then it would become incompatible with the <code>Runnable</code> interface. Alternately, we could add another method setContext(ImageJ) that informs the plugin of the context, or require a constructor that takes an ImageJ argument, but both of these would make writing a plugin more complicated. A third option could be to declare the required services as fields annotated with <code>@Parameter</code>, to be populated during preprocessing.
+</p><p>For now, we have chosen to provide access to the current application context from a static method, <code>ImageJ.getContext()</code>. This method examines the name of the current thread and extracts the context ID if available. For example, a thread called <code>&quot;ImageJ-1-ModuleRunner&quot;</code> is spawned when the <code>ImageJ</code> with an ID of 1 executes a plugin. The <code>getContext()</code> method can then determine the application context merely from the thread name. However, this approach cannot glean the application context from standard threads such as the AWT event dispatch thread. Hence, when creating a new application context, we use a special initialization thread named <code>&quot;ImageJ-0-Initialization&quot;</code> (where &quot;0&quot; is the ID of the context being created), and block the calling thread until it is complete.
+</p><p>To create a new application context, call the static <code>ImageJ.createContext()</code> method, which instantiates an <code>ImageJ</code> object with all available services (i.e., those classes which implement <code>IService</code> and are annotated with <code>@Service</code>, discovered in the classpath at runtime by SezPoz). Alternately, calling <code>ImageJ.createContext(createContext(Class&lt;? extends IService&gt;...)</code> or <code>ImageJ.createContext(Collection&lt;Class&lt;? extends IService&gt;&gt;)</code> will create an application with only those services given (and any dependencies). Either way, the context is guaranteed to have a unique ID, which will be the next available incrementing value, starting at 0.
+</p><p>To initialize services, ImageJ examines the given list of service classes in order, recursively scanning for dependencies, as declared in the constructor of each service. For example, the <code>PluginService</code> requires a <code>ModuleService</code> to function, so it declares a constructor <code>PluginService(ImageJ, ModuleService)</code> which ImageJ takes care of populating with the proper values. (As a side note: every service also declares a no-args constructor, but only because SezPoz requires it; it is never used, and will throw <code>UnsupportedOperationException</code> if it is called.) The constructor used is always the first one found with an <code>ImageJ</code> for its first argument. Any additional arguments are considered dependencies, and expected to be <code>IService</code> implementations. This paradigm allows for easier dependency injection, which e.g. is useful for unit testing the service classes. When initializing, ImageJ uses a two-pass approach to its services: on the first pass, it recursively constructs the instances, and on the second pass it calls `IService.initialize()` on each new instance in the same order. This ensures that all service classes exist before any are initialized, and allows limited support for circular dependencies. Finally, additional services can be loaded into an <code>ImageJ</code> application context after initialization using the <code>loadService(Class&lt;? extends IService&gt;)</code> and <code>loadServices(Collection&lt;Class&lt;? extends IService&gt;&gt;)</code> methods.
+</p><p>There are a few problem areas remaining before ImageJ will fully support multiple simultaneous application contexts. Specifically, there are some static methods that must be fixed or eliminated:
+</p>
+<ul><li> <code>ImageJ.get(Class&lt;? extends IService&gt;)</code>: This method is a shortcut for <code>ImageJ.getContext().getService(Class&lt;? extends IService&gt;)</code> and is the main mechanism that plugins and other external code uses to obtain access to application services. Fortunately, making <code>getContext()</code> work reliably also fixes this method. But ideally we should reduce or possibly even eliminate uses of this method in favor of other approaches.</li>
+<li> <code>Events.publish</code> and <code>Events.subscribe</code>: As part of the refactoring toward multiple application contexts, we moved away from a single static event bus, and now have an <code>EventService</code> with its own event bus. So events are now published locally within a particular context only. We also added a <code>getContext()</code> method to <code>ImageJEvent</code> so that all event handlers have easy access to the application context of the event. Unfortunately, there are over a hundred references to the static <code>Events</code> class throughout the codebase. Thus, we have updated <code>Events.publish(ImageJEvent)</code> to be a shortcut for <code>ImageJ.get(EventService.class).publish(ImageJEvent)</code>. In the future, we may eliminate the <code>Events</code> class, or at least thoroughly scrutinize everywhere it is used.</li></ul>
+<p>In particular, calling either of the above static methods from the EDT or other generic thread will fail, so the architecture must be structured to work properly without ever doing so. Unfortunately, there are currently many places where these methods (particularly the <code>Events</code> methods) are called in such a way. So for now, we have hardcoded <code>ImageJ.getContext()</code> to return <code>ImageJ.getContext(0)</code> by default, which effectively keeps ImageJ restricted to a singleton application. We will revisit this issue in the future, but for the time being there are more pressing matters (<a rel="nofollow" class="external text" href="http://trac.imagej.net/ticket/632">#632</a>, <a rel="nofollow" class="external text" href="http://trac.imagej.net/ticket/694">#694</a>, <a rel="nofollow" class="external text" href="http://trac.imagej.net/ticket/660">#660</a>, and <a rel="nofollow" class="external text" href="http://trac.imagej.net/query?status=accepted&amp;status=assigned&amp;status=new&amp;status=reopened&amp;group=milestone&amp;col=id&amp;col=summary&amp;col=type&amp;col=priority&amp;col=milestone&amp;col=component&amp;order=priority">many more</a>).
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064245
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.008 seconds
+Real time usage: 0.008 seconds
+Preprocessor visited node count: 1/1000000
+Preprocessor generated node count: 4/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 1/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM&amp;oldid=11341">http://imagej.net/index.php?title=2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM&amp;oldid=11341</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 4 August 2014, at 13:12.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:News" title="Category:News">News</a></li><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=2011-07-27+-+Multiple+instances+of+ImageJ+in+the+same+JVM" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=2011-07-27+-+Multiple+instances+of+ImageJ+in+the+same+JVM" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM&amp;oldid=11341" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=2011-07-27_-_Multiple_instances_of_ImageJ_in_the_same_JVM&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":201});});</script>
+		</body>
+		</html>
+		

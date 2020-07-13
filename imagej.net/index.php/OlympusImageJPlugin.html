@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>OlympusImageJPlugin - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"OlympusImageJPlugin","wgTitle":"OlympusImageJPlugin","wgCurRevisionId":43984,"wgRevisionId":43984,"wgArticleId":3309,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Import-Export"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"OlympusImageJPlugin","wgRelevantArticleId":3309,"wgRequestId":"1d6e4e4c0e6cc6ed4e63b32a","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This plugin can load Olympus vsi/oir/omp2info file formats and show some meta data."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="OlympusImageJPlugin"/>
+
+	<meta property="og:description" content="This plugin can load Olympus vsi/oir/omp2info file formats and show some meta data."/>
+
+	<meta property="og:url" content="http://imagej.net/OlympusImageJPlugin"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-OlympusImageJPlugin rootpage-OlympusImageJPlugin skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="OlympusImageJPlugin.html#bodyContent">Skip to content</a>, 			<a href="OlympusImageJPlugin.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="OlympusImageJPlugin.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/OlympusImageJPlugin" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:OlympusImageJPlugin&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=OlympusImageJPlugin&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=OlympusImageJPlugin&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>OlympusImageJPlugin</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  <a href="http://imagej.net/Formats" title="Formats">Formats</a>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Bio-Formats" title="Bio-Formats">Bio-Formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Video" title="Video">Video formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/QuickTime" title="QuickTime">QuickTime</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/TIFF" title="TIFF">TIFF</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Extract_Images_From_PDF..." title="Extract Images From PDF...">PDF</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/DICOM" title="DICOM">DICOM</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/LSM_Toolbox" title="LSM Toolbox">Zeiss LSM</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Olympus VSI</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/LuraWave" title="LuraWave">Opera Flex</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Import-Export" title="Category:Import-Export">All I/O plugins</a>
+</td></tr></table>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>OlympusViewer Plugin (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> OLYMPUS CORPORATION (olympus-imagejplugin at ot.olympus.co.jp)
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> The source code of plugin is in Olympus_Viewer.jar. The source code of native library is not provided.
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> Dec. 9, 2015: First version Ver.1.1.1
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> Mar. 17, 2020: Ver.2.3.1
+</td></tr>
+
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Import-Export" title="Category:Import-Export">Category:Import-Export</a>
+</td></tr>
+
+</table>
+<p>This plugin can load Olympus vsi/oir/omp2info file formats and show some meta data.
+</p>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="OlympusImageJPlugin.html#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="OlympusImageJPlugin.html#How_to_use"><span class="tocnumber">2</span> <span class="toctext">How to use</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="OlympusImageJPlugin.html#Macro_sample_code"><span class="tocnumber">3</span> <span class="toctext">Macro sample code</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="OlympusImageJPlugin.html#Use_GUI_commands"><span class="tocnumber">3.1</span> <span class="toctext">Use GUI commands</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="OlympusImageJPlugin.html#Use_programming_interface"><span class="tocnumber">3.2</span> <span class="toctext">Use programming interface</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="OlympusImageJPlugin.html#See_Also"><span class="tocnumber">4</span> <span class="toctext">See Also</span></a></li>
+</ul>
+</div>
+</div>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>Please see also <a rel="nofollow" class="external text" href="http://www.olympus-lifescience.com/OlympusImageJPlugin/HowToInstallOlympusViewerPlugin">installation manual</a>.
+</p><p>Windows
+</p>
+<ol><li> Download OlympusViewer-win.zip <a rel="nofollow" class="external text" href="http://www.olympus-lifescience.com/OlympusImageJPlugin/OlympusViewer_Win">here</a></li>
+<li> Extract the zip file.</li>
+<li> Execute OlympusViewer-win.exe. This file is in self-extracting format.</li>
+<li> If you agree to our end user license agreement, extract it to your specified folder.</li>
+<li> Unzip the OlympusViewer-package.zip</li>
+<li> Install vs2017 runtime if the runtime is not installed in your PC. The runtime is in OlympusViewer-package/WinRuntime. If you use 32bit OS, install VC_redist.x86.exe. If you use 64bit OS, install VC_redist.x64.exe</li>
+<li> Copy "OlympusViewer" folder in "OlympusViewer-package" folder to the plugins folder of your ImageJ directory. If ImageJ plugin folder already has OlympusViewer folder, delete the folder before copying.</li></ol>
+<p>Mac
+</p>
+<ol><li> Download OlympusViewer-mac.dmg <a rel="nofollow" class="external text" href="http://www.olympus-lifescience.com/OlympusImageJPlugin/OlympusViewer_Mac">here</a></li>
+<li> Double click the dmg file.</li>
+<li> If you agree to our end user license agreement, extract it.</li>
+<li> Copy "OlympusViewer-Ver2.3.1" folder to the plugins folder of your ImageJ directory. If ImageJ plugin folder already has OlympusViewer folder, delete the folder before copying.</li></ol>
+<h2><span class="mw-headline" id="How_to_use">How to use</span></h2>
+<p>File Open
+</p>
+<ol><li> Select a menu item ( Plugins -&gt; OlympusViewer -&gt; Viewer )</li>
+<li> Select a file.</li></ol>
+<p>Show Meta Data
+</p>
+<ol><li> Select a menu item ( Plugins -&gt; OlympusViewer -&gt; ShowInfo )</li></ol>
+<p>Drag &amp; Drop (ver2.1.1-)
+</p>
+<ol><li> Select a menu item ( Plugins -&gt; OlympusViewer -&gt; DragDrop )</li>
+<li> Drop a image file.</li></ol>
+<p>Virtual stack mode for large images (ver2.2.1-)
+</p>
+<ol><li> Select a menu item ( Plugins -&gt; OlympusViewer -&gt; DragDrop -&gt; Use Virtual Stack for large images )</li>
+<li> Drop a image file.</li></ol>
+<p>Use Macro function (ver2.3.1-)
+</p>
+<ol><li> Enable Macro Record function.</li>
+<li> Select menu item ( Plugins -&gt; OlympusViewer -&gt; Viewer )</li>
+<li> Select image file.</li>
+<li> You can see that Macro command was registered.</li></ol>
+<h2><span class="mw-headline" id="Macro_sample_code">Macro sample code</span></h2>
+<h3><span class="mw-headline" id="Use_GUI_commands">Use GUI commands</span></h3>
+<ul><li> Sample for opening an image:</li></ul>
+<pre class="brush:plain">
+run("Viewer", "open=D:/image/test/test.oir");
+</pre>
+<ul><li> Sample for opening an image which has multiple groups or levels:</li></ul>
+<pre class="brush:plain">
+run("Viewer", "open=D:/image/test/test.vsi group1_level1");
+</pre>
+<ul><li> Sample for opening images in a directory:</li></ul>
+<pre class="brush:plain">
+input = "D:/image/test/";
+
+list = getFileList(input);
+for (i = 0; i &lt; list.length; i++){
+	path = input + list[i];
+	run("Viewer", "open=[path]");
+}
+</pre>
+<ul><li> Sample for batch processing:</li></ul>
+<pre class="brush:plain">
+setBatchMode(true);
+
+input = "D:/image/test/";
+
+list = getFileList(input);
+for (i = 0; i &lt; list.length; i++){
+	path = input + list[i];
+	run("Viewer", "open=[path]");
+	// process image e.g. "run("Smooth", "stack");"
+	saveAs("Tiff", "D:/image/test/out_" + i + ".tif");
+}
+</pre>
+<h3><span class="mw-headline" id="Use_programming_interface">Use programming interface</span></h3>
+<p>You can use programming interface by using <i>OVMacro</i> command.
+</p>
+<ul><li> Sample for opening an image:</li></ul>
+<pre class="brush:plain">
+run("OVMacro");
+Ext.openFile("D:/image/test/test.oir");
+</pre>
+<ul><li> Sample for opening an image which has multiple groups or levels:</li></ul>
+<pre class="brush:plain">
+run("OVMacro");
+Ext.openFile("D:/image/test/test.vsi", 1, 2); // Open Group 2, Level 3
+</pre>
+<ul><li> Sample for opening images in a directory:</li></ul>
+<pre class="brush:plain">
+run("OVMacro");
+Ext.openFolder("D:/image/test"); // You can specify group and level like as openFile
+</pre>
+<ul><li> Sample for getting number of groups and levels:</li></ul>
+<pre class="brush:plain">
+run("OVMacro");
+path = "D:/image/test/test.vsi";
+Ext.getGroupCount(path, groupNum); // Get total count of groups
+Ext.getLevelCount(path, groupNum-1, levelNum); // Get total count of levels
+Ext.openFile(path, groupNum-1, levelNum-1); // Open last level of the last group
+</pre>
+<h2><span class="mw-headline" id="See_Also">See Also</span></h2>
+<p>This plugin uses jai-imageio.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073052
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.037 seconds
+Preprocessor visited node count: 255/1000000
+Preprocessor generated node count: 1001/1000000
+Post‐expand include size: 2353/2097152 bytes
+Template argument size: 1100/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   17.638      1 - -total
+ 50.65%    8.934      1 - Template:FormatsMenu
+ 39.50%    6.967      1 - Template:Menu
+ 36.45%    6.429      1 - Template:Infobox
+ 22.54%    3.976     10 - Template:MenuItem
+ 11.12%    1.962      1 - Template:TOC
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=OlympusImageJPlugin&amp;oldid=43984">http://imagej.net/index.php?title=OlympusImageJPlugin&amp;oldid=43984</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 28 March 2020, at 19:32.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=OlympusImageJPlugin&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Import-Export" title="Category:Import-Export">Import-Export</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=OlympusImageJPlugin" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=OlympusImageJPlugin" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/OlympusImageJPlugin" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/OlympusImageJPlugin" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=OlympusImageJPlugin&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=OlympusImageJPlugin&amp;oldid=43984" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=OlympusImageJPlugin&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":269});});</script>
+		</body>
+		</html>
+		

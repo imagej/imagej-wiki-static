@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>MATLAB Scripting - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"MATLAB_Scripting","wgTitle":"MATLAB Scripting","wgCurRevisionId":41462,"wgRevisionId":41462,"wgArticleId":2371,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Scripting","MATLAB","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"MATLAB_Scripting","wgRelevantArticleId":2371,"wgRequestId":"284ae5c08146601c216c626e","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="ImageJ-MATLAB is an extension which:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushMatlab.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="MATLAB Scripting"/>
+
+	<meta property="og:description" content="ImageJ-MATLAB is an extension which:"/>
+
+	<meta property="og:url" content="http://imagej.net/MATLAB_Scripting"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-MATLAB_Scripting rootpage-MATLAB_Scripting skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#bodyContent">Skip to content</a>, 			<a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:MATLAB_Scripting&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=MATLAB_Scripting&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=MATLAB_Scripting&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>MATLAB Scripting</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Prior to MATLAB R2017b, MATLAB ships with Java 7, but ImageJ requires Java 8. You will need to change your MATLAB installation to use Java 8, by following the instructions for your platform: <a rel="nofollow" class="external text" href="http://www.mathworks.com/matlabcentral/answers/130359-how-do-i-change-the-java-virtual-machine-jvm-that-matlab-is-using-on-windows">Windows</a>, <a rel="nofollow" class="external text" href="http://www.mathworks.com/matlabcentral/answers/103056-how-do-i-change-the-java-virtual-machine-jvm-that-matlab-is-using-for-mac-os">macOS</a> or <a rel="nofollow" class="external text" href="http://www.mathworks.com/matlabcentral/answers/130360-how-do-i-change-the-java-virtual-machine-jvm-that-matlab-is-using-for-linux-os">Linux</a>.
+If you run MATLAB R2017b and later, you don't need to do this, as it ships and uses Java 8 already. </td>
+
+
+</tr>
+</table></div>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">MATLAB</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p><b>ImageJ-MATLAB</b> is an extension which:
+</p>
+<ul><li> Translates data between ImageJ images and MATLAB matrices.</li>
+<li> Enables execution of MATLAB scripts from inside ImageJ's <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a>.</li>
+<li> Lets you launch ImageJ and interact with it from inside MATLAB.</li>
+<li> Allows developers to write additional <a href="http://imagej.net/Plugins" title="Plugins">plugins</a> which <a href="http://imagej.net/Extensibility" class="mw-redirect" title="Extensibility">extend</a> these capabilities in new directions.</li></ul>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#MATLAB_tutorial_for_ImageJ"><span class="tocnumber">1</span> <span class="toctext">MATLAB tutorial for ImageJ</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Prerequisites"><span class="tocnumber">1.1</span> <span class="toctext">Prerequisites</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Memory_issue"><span class="tocnumber">1.1.1</span> <span class="toctext">Memory issue</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-4"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Creating_MATLAB_scripts_inside_ImageJ"><span class="tocnumber">1.2</span> <span class="toctext">Creating MATLAB scripts inside ImageJ</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Global_state"><span class="tocnumber">1.2.1</span> <span class="toctext">Global state</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Passing_Objects"><span class="tocnumber">1.2.2</span> <span class="toctext">Passing Objects</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Return_values"><span class="tocnumber">1.2.3</span> <span class="toctext">Return values</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Importing_classes"><span class="tocnumber">1.2.4</span> <span class="toctext">Importing classes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-9"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Running_ImageJ_within_MATLAB"><span class="tocnumber">1.3</span> <span class="toctext">Running ImageJ within MATLAB</span></a>
+<ul>
+<li class="toclevel-3 tocsection-10"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Useful_Commands"><span class="tocnumber">1.3.1</span> <span class="toctext">Useful Commands</span></a>
+<ul>
+<li class="toclevel-4 tocsection-11"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Show_a_MATLAB_array_I_as_an_image_in_ImageJ"><span class="tocnumber">1.3.1.1</span> <span class="toctext">Show a MATLAB array I as an image in ImageJ</span></a></li>
+<li class="toclevel-4 tocsection-12"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Retrieve_an_image_data_in_ImageJ_as_a_MATLAB_array_I"><span class="tocnumber">1.3.1.2</span> <span class="toctext">Retrieve an image data in ImageJ as a MATLAB array I</span></a></li>
+<li class="toclevel-4 tocsection-13"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Quit_the_ImageJ_instance_from_MATLAB_command_line"><span class="tocnumber">1.3.1.3</span> <span class="toctext">Quit the ImageJ instance from MATLAB command line</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-14"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Known_Issues"><span class="tocnumber">1.3.2</span> <span class="toctext">Known Issues</span></a>
+<ul>
+<li class="toclevel-4 tocsection-15"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Common_Issues"><span class="tocnumber">1.3.2.1</span> <span class="toctext">Common Issues</span></a></li>
+<li class="toclevel-4 tocsection-16"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Issues_specific_to_IJM.show.28name.29"><span class="tocnumber">1.3.2.2</span> <span class="toctext">Issues specific to IJM.show(name)</span></a></li>
+<li class="toclevel-4 tocsection-17"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Solution_to_IJM.show.28name.29_issues"><span class="tocnumber">1.3.2.3</span> <span class="toctext">Solution to IJM.show(name) issues</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-18"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Examples"><span class="tocnumber">1.3.3</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-4 tocsection-19"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Accessing_ImageJ_Java_API_from_MATLAB"><span class="tocnumber">1.3.3.1</span> <span class="toctext">Accessing ImageJ Java API from MATLAB</span></a></li>
+<li class="toclevel-4 tocsection-20"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Opening_a_MATLAB_array_as_an_image_in_ImageJ"><span class="tocnumber">1.3.3.2</span> <span class="toctext">Opening a MATLAB array as an image in ImageJ</span></a></li>
+<li class="toclevel-4 tocsection-21"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Retrieving_a_MATLAB_array_data_from_an_image_in_ImageJ"><span class="tocnumber">1.3.3.3</span> <span class="toctext">Retrieving a MATLAB array data from an image in ImageJ</span></a></li>
+<li class="toclevel-4 tocsection-22"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Opening_a_2D-5D_MATLAB_array_as_a_Hyperstack_in_ImageJ"><span class="tocnumber">1.3.3.4</span> <span class="toctext">Opening a 2D-5D MATLAB array as a Hyperstack in ImageJ</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-23"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Source"><span class="tocnumber">2</span> <span class="toctext">Source</span></a></li>
+<li class="toclevel-1 tocsection-24"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Video_presentation"><span class="tocnumber">3</span> <span class="toctext">Video presentation</span></a></li>
+<li class="toclevel-1 tocsection-25"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Publication"><span class="tocnumber">4</span> <span class="toctext">Publication</span></a></li>
+<li class="toclevel-1 tocsection-26"><a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#See_also"><span class="tocnumber">5</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="MATLAB_tutorial_for_ImageJ">MATLAB tutorial for ImageJ</span></h1>
+<h2><span class="mw-headline" id="Prerequisites">Prerequisites</span></h2>
+<ul><li> Add the <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">ImageJ-MATLAB</a> update site. See <a href="http://imagej.net/Following_an_update_site" title="Following an update site">Following an update site</a> for more detail.
+<ol><li> You go to <code>Help &gt; Update...</code></li>
+<li> Once checking status is done, open <code>Manage update sites</code></li>
+<li> Tick <code>ImageJ-MATLAB</code> and then <code>Close</code> <div class="MediaTransformError" style="width: 703px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></li>
+<li> And then click <code>Apply changes</code> on ImageJ Updater</li>
+<li> This will literally update and replace the existing, non-functional <code>ImageJ.m</code> file in the scripts folder with the genuine one.</li></ol></li>
+<li> You will need to install your own licensed copy of <a rel="nofollow" class="external text" href="http://www.mathworks.com/products/matlab/">MATLAB</a>. All that is provided with ImageJ are adapters for evaluating scripts written in ImageJ to <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>, and converters between ImageJ and <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> data structures.</li>
+<li> Prior to MATLAB R2017b, MATLAB ships with Java 7, but ImageJ requires Java 8. You will need to change your MATLAB installation to use Java 8, by following the instructions for your platform: <a rel="nofollow" class="external text" href="http://www.mathworks.com/matlabcentral/answers/130359-how-do-i-change-the-java-virtual-machine-jvm-that-matlab-is-using-on-windows">Windows</a>, <a rel="nofollow" class="external text" href="http://www.mathworks.com/matlabcentral/answers/103056-how-do-i-change-the-java-virtual-machine-jvm-that-matlab-is-using-for-mac-os">macOS</a> or <a rel="nofollow" class="external text" href="http://www.mathworks.com/matlabcentral/answers/130360-how-do-i-change-the-java-virtual-machine-jvm-that-matlab-is-using-for-linux-os">Linux</a>. If you run MATLAB R2017b and later, you don't need to do this, as it ships and uses Java 8 already. 
+<ul><li> The command <code>version -java</code> will return the current Java version used by MATLAB</li></ul></li>
+<li> If you're new to <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>, first check out Mathworks' <a rel="nofollow" class="external text" href="http://www.mathworks.com/help/matlab/getting-started-with-matlab.html">getting started guide</a>.</li>
+<li> If you're familiar with the <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> language but haven't written .m scripts before, look through the <a rel="nofollow" class="external text" href="http://www.mathworks.com/help/matlab/scripts.html">script examples</a>.</li></ul>
+<h3><span class="mw-headline" id="Memory_issue">Memory issue</span></h3>
+<ul><li> In order to handle large images, the default Java Heap Memory size assigned won't be enough and you may get the error <code>java.lang.OutOfMemoryError: Java heap space</code>.</li>
+<li> From MATLAB R2010a onward, you can increase the Jave Heap Memory size from <b>Preferences &gt; General &gt; Java Heap Memory</b>. <div class="MediaTransformError" style="width: 581px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></li>
+<li> However, the maximum value allowed in the Preferences can still be too small for your purpose. In that case, you can directly edit <code>matlab.prf</code> file in the folder specified by the <code>prefdir&lt;\code&gt; MATLAB function (eg. &lt;code&gt;C:\Users\xxxxxxx\AppData\Roaming\MathWorks\MATLAB\R2018b</code>). Find the parameter <code>JavaMemHeapMax</code> in the file and increase the number that follows the capital I (in MB) to increase the maximum Java heap memory size. The change will be reflected by the Preferences as above.</li></ul>
+<pre class="brush:plain">
+JavaMemHeapMax=I25000
+</pre>
+<ul><li> Alternatively, this can also be done by creating a <code>java.opts</code> file in <a rel="nofollow" class="external text" href="https://mathworks.com/help/matlab/matlab_env/matlab-startup-folder.html">the startup directory</a> and overriding the default memory settings (see <a rel="nofollow" class="external text" href="https://mathworks.com/help/matlab/matlab_env/java-opts-file.html">this documentation</a> for more information). For instance, <code>-Xmx512m</code> in your <code>java.opts</code> file may be a good start point.</li>
+<li> For the common "Out of Memory" error, see <a href="http://imagej.net/Troubleshooting#OutOfMemoryError" title="Troubleshooting"> the Troubleshooting page</a>.</li></ul>
+<h2><span class="mw-headline" id="Creating_MATLAB_scripts_inside_ImageJ">Creating MATLAB scripts inside ImageJ</span></h2>
+<p>Using the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a> you will be able to select <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> from the <a href="http://imagej.net/Script_Editor#Choosing_a_language" class="mw-redirect" title="Script Editor"> language menu</a>. You can also install and run .m scripts via the <a href="http://imagej.net/Scripting_Help#Creating_scripts_and_using_.22refresh_scripts.22" class="mw-redirect" title="Scripting Help"> standard script plugin infrastructure</a>.
+</p><p>Actually running a <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> script from ImageJ is effectively like calling <code><a rel="nofollow" class="external text" href="http://www.mathworks.com/help/matlab/ref/eval.html">eval</a></code> on the script's contents. The script will be evaluated as such in a remote <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> instance (which will be launched automatically, if needed). Note that only scripts, not functions, can be evaluated in this way. See <a rel="nofollow" class="external text" href="http://www.mathworks.com/help/matlab/learn_matlab/scripts-and-functions.html">the MATLAB documentation</a> for an explanation of these concepts.
+</p>
+<blockquote>
+<p>NB: Because of the similarity to <code>eval</code>, when you need to assign character vector or string with special characters, they need to be <b>escaped</b>. A typical example is the handling of file/folder paths in Windows. Thus,
+</p>
+<pre class="brush:matlab">
+s = 'C:\Users\xxxxx\Desktop'
+</pre>
+<p>will end up in an error in MATLAB:
+</p>
+<pre class="brush:plain">
+Warning: Escaped character '\U' is not valid. See 'doc sprintf' for
+supported special characters. 
+scijava_script523255 =
+    's = 'C:'
+Error: Character vector is not terminated properly.
+</pre>
+<p>You need to escape backslashes as below:
+</p>
+<pre class="brush:matlab">
+s = 'C:\\Users\\xxxxx\\Desktop'
+</pre>
+<pre class="brush:plain">
+s =
+    'C:\Users\xxxxx\Desktop'
+</pre>
+<p>For more details, see documetation for <code>sprintf</code> and learn about Special Characters.
+</p>
+</blockquote>
+<p>Options for controlling the startup of <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>, or killing existing <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> processes (e.g. if hidden) can be accessed via:
+</p>
+<pre>  <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> MATLAB...</span></em></span>
+</pre>
+<div class="MediaTransformError" style="width: 470px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<blockquote>
+<p>NB: because the script is being passed from ImageJ to a remote <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>, <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> will not have access to ImageJ's classpath. Objects can be passed as variables to <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> (e.g. by using @ annotation) but only if they are valid <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> classes or specially handled classes.
+</p><p>Scripts requiring ImageJ classes without auto-conversion support should <a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Running_ImageJ_within_MATLAB"> launch ImageJ from within MATLAB</a>.
+</p><p>eg. a script using <code><a rel="nofollow" class="external text" href="https://javadoc.scijava.org/ImageJ1/ij/IJ.html">ij.IJ</a></code> commands needs to be run from within MATLAB (or you'll need to add Java class paths to MATLAB search path before calling <code>ij.IJ</code> commands).
+</p>
+</blockquote>
+<p>For example, by default all <a rel="nofollow" class="external text" href="http://matlabcontrol.googlecode.com/svn/javadocs/doc/matlabcontrol/extensions/MatlabNumericArray.html">MatlabNumericArrays</a> will be converted to matrices within <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>. We also support auto-conversion of ImageJ Datasets out of the box, which can be read in by scripts using "@matrix" parameters:
+</p>
+<pre class="brush:matlab">
+% @matrix data
+% @OUTPUT net.imagej.Dataset rval
+% @OUTPUT net.imagej.Dataset mask
+
+% Performs dilation with a 3x3 square,
+% operating on the active dataset
+% Outputs the dilated mask and the original image
+% with the mask applied.
+
+rval = uint8(data);&#160;% convert to uint8
+rval = mat2gray(rval);&#160;% normalize data
+mask = im2bw(rval,0.5);&#160;% make logical mask
+se = strel('square',3);&#160;% create structure to use in dilation
+mask = imdilate(mask,se);&#160;% perform dilation on the mask
+rval(~mask) = 0;&#160;% subtract mask from original dataset
+</pre>
+<p>This script will take the active Dataset, set it as an array variable named "data" in <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>, and set the matrixSum output value to the sum of the first three dimensions of the dataset. 
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Global_state">Global state</span></h3>
+<p>MATLAB retains state (e.g. declared variables) as commands are executed, and ImageJ makes no special effort to clean up after a script. So whether running internally or communicating externally with MATLAB, state will be available to and persist after script execution. Thus one can, for example, write scripts in ImageJ referencing variables declared in MATLAB, without actually initializing them in the script.
+</p>
+<h3><span class="mw-headline" id="Passing_Objects">Passing Objects</span></h3>
+<p>The caveat to <a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Global_state">global state</a> is that, when running ImageJ externally, ImageJ and MATLAB run in separate <a rel="nofollow" class="external text" href="http://docs.oracle.com/javase/7/docs/technotes/guides/vm/">JVMs</a>. As a result, most objects can not be passed between the two. This makes Datasets (and arrays) the currency that is passed between these applications.
+</p>
+<h3><span class="mw-headline" id="Return_values">Return values</span></h3>
+<p>Most of the ImageJ scripting languages have implicit return values. As mentioned above, ImageJ will only execute true scripts, which do not have return values (in the MATLAB functional sense). There is a similar concept in the <code>ans</code> variable, which automatically gets the return value of executed statements if they are not explicitly assigned. However, due to the <a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Global_state">global nature</a> of the ImageJ-MATLAB script language, it is not necessarily clear if <code>ans</code> was set by the script or a pre-existing command. Thus the decision was made that ImageJ-MATLAB scripts will <b>never</b> implicitly return a value. Instead, <a href="http://imagej.net/Script_parameters" class="mw-redirect" title="Script parameters">the @OUTPUT annotation</a> should always be used - even for <code>ans</code>, as shown here:
+</p>
+<pre class="brush:matlab">
+% @OUTPUT double[] ans
+
+% This trivial script demonstrates the use of
+% the "ans" variable in the SciJava-MATLAB
+% script language.
+
+% Unassigned statements in MATLAB are automatically
+% assigned to "ans". However, these scripts will not
+% return "ans" unless it is explicitly requested as
+% an output parameter.
+
+0
+</pre>
+<h3><span class="mw-headline" id="Importing_classes">Importing classes</span></h3>
+<p>To reference Java classes from MATLAB you will need to import them.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Unlike <a href="http://imagej.net/ImageJ_1.x" class="mw-redirect" title="ImageJ 1.x">ImageJ 1.x</a>, <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> (and therefore <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a>) does not automatically import any classes. Consequently, scripts written for <a href="http://imagej.net/ImageJ_1.x" class="mw-redirect" title="ImageJ 1.x">ImageJ 1.x</a> will not run in <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> without adding the proper imports.
+The rationale is that the auto-import feature is not safe. What if two classes of the same name live in two different packages? Or if a new class is introduced that makes formerly unique names ambiguous? All of a sudden, all of the scripts that reference the original class no longer work. In short: auto-imports are dangerously imprecise. </td>
+
+
+</tr>
+</table></div>
+<p><br />
+When running ImageJ externally, <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> will not have ImageJ classes in its classpath - so they can not simply be imported. Although <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> does support <a rel="nofollow" class="external text" href="http://www.mathworks.com/help/matlab/matlab_external/bringing-java-classes-and-methods-into-matlab-workspace.html">editing its classpath</a> this is NOT recommended, as the classes loaded by <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> will not be the same as those loaded in ImageJ.
+</p><p>Instead, you can <a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Running_ImageJ_within_MATLAB">launch ImageJ inside MATLAB</a> and have it take care of managing the class loading for you. <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> then supports the use of import statements to <a rel="nofollow" class="external text" href="http://www.mathworks.com/help/matlab/matlab_external/bringing-java-classes-and-methods-into-matlab-workspace.html#f46341">simplify class names</a>.
+</p>
+<h2><span class="mw-headline" id="Running_ImageJ_within_MATLAB">Running ImageJ within MATLAB</span></h2>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> MATLAB versions prior to R2017b need to be <a rel="nofollow" class="external text" href="http://www.mathworks.com/matlabcentral/answers/130359-how-do-i-change-the-java-virtual-machine-jvm-that-matlab-is-using-on-windows">tweaked to use Java 8</a> instead of Java 7. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+The ImageJ update site provides an <code>ImageJ.m</code> script that will start up an ImageJ instance inside a running <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> application. Launching the script is the same as for <a href="http://imagej.net/Miji" title="Miji">Miji</a>:
+</p>
+<pre class="brush:matlab">
+addpath '/Applications/Fiji.app/scripts'&#160;% Update for your ImageJ installation as appropriate
+ImageJ;
+</pre>
+<p>Now, you should see a new ImageJ instance shows up as a window. <a href="http://imagej.net/File:ImageJ_launched_from_MATLAB.png" class="image"><img alt="ImageJ launched from MATLAB.png" src="../_images/5/54/ImageJ_launched_from_MATLAB.png" width="400" height="73" /></a>
+</p><p>In your MATLAB base workspace, you'll find a variable <code>IJM</code>, which is a <code>net.imagej.matlab.ImageJMATLABCommands</code> Java object. <code>IJM</code> offers a few useful methods as below:
+</p>
+<ul><li> <code>IJM.getDataset()</code> creates a MATLAB matrix from the active ImageJ image using its window title as the variable name (incompatible characters like <code>.</code> will be escaped with <code>_</code>). The MATLAB matrix is in <code>double</code> type. Although the X and Y axes are swapped, the third to fifth dimensions of the data are preserved.</li></ul>
+<ul><li> <code>IJM.getDatasetAs(name)</code> creates a MATLAB matrix from the active ImageJ image, and assigns it to the specified variable name <code>name</code>.</li></ul>
+<ul><li> <code>IJM.show(name)</code> takes the MATLAB matrix with the specified name <code>name</code> and displays it as an image in ImageJ. The image is always in 32bit type. The X and Y axes are swapped. The third to fifth dimensions of the original MATLAB matrix are all piled in the fifth dimension and interpreted as time frames.</li></ul>
+<p>In the MATLAB command window, you'll see something like this:
+</p>
+<pre class="brush:plain">
+--------------------------------------------------------------
+ImageJ-MATLAB 0.7.2: MATLAB to ImageJ Interface
+--------------------------------------------------------------
+JVM&gt; Version: 1.8.0_144
+JVM&gt; Total amount of memory: 370176 Kb
+JVM&gt; Amount of free memory: 122756 Kb
+
+-- Welcome to ImageJ-MATLAB --
+ImageJ-MATLAB consists of an extensible set of commands for passing information between ImageJ and MATLAB.
+See the individual sections below for a list of available commands.
+
+For more information and examples see:
+	https://imagej.net/MATLAB-Scripting
+
+--- MATLAB Command Plugins ---
+
+-- ImageJ MATLAB commands --
+
+Usage: IJM.[command]
+	help - prints a brief description of available commands
+	getDataset - creates a MATLAB matrix from the active ImageJ image
+	getDatasetAs(name) - creates a MATLAB matrix from the active ImageJ image, and assigns it to the specified variable name
+	show(name) - takes the MATLAB matrix with the specified name and displays it as an image
+
+
+
+--------------------------------------------------------------
+Status&gt; ImageJ is running.
+--------------------------------------------------------------
+</pre>
+<p><br />
+The startup process automatically injects the ImageJ classpath into the <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> classpath, merging the two. At this point, you'll have a working ImageJ and can now <a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Creating_MATLAB_scripts_inside_ImageJ">run MATLAB scripts as normal</a> with access to the full unified classpath.
+</p>
+<h3><span class="mw-headline" id="Useful_Commands">Useful Commands</span></h3>
+<h4><span class="mw-headline" id="Show_a_MATLAB_array_I_as_an_image_in_ImageJ">Show a MATLAB array <code>I</code> as an image in ImageJ</span></h4>
+<ul><li> using <code>IJM</code></li></ul>
+<pre class="brush:matlab">
+IJM.show('I');
+</pre>
+<ul><li> using ImageJ1 <code>ImagePlus</code> (<a rel="nofollow" class="external text" href="https://github.com/kouichi-c-nakamura/copytoImagePlus">see</a>)</li></ul>
+<pre class="brush:matlab">
+imp = copytoImagePlus(I);
+imp.show();
+</pre>
+<ul><li> using ImgLib2 <code>ArrayImg</code></li></ul>
+<pre class="brush:matlab">
+img = copytoImg(I);
+net.imglib2.img.display.imagej.ImageJFunctions.show(img);
+</pre>
+<h4><span class="mw-headline" id="Retrieve_an_image_data_in_ImageJ_as_a_MATLAB_array_I">Retrieve an image data in ImageJ as a MATLAB array <code>I</code></span></h4>
+<ul><li> using <code>IJM</code> with the current window title as the variable name </li></ul>
+<pre class="brush:matlab">
+IJM.getDataset();
+</pre>
+<ul><li> using <code>IJM</code> with the variable name <code>I</code></li></ul>
+<pre class="brush:matlab">
+IJM.getDatasetAs('I');
+</pre>
+<ul><li> from ImgLib2 <code>Img</code> </li></ul>
+<pre class="brush:matlab">
+I = copytoMATLAB(img);
+</pre>
+<h4><span class="mw-headline" id="Quit_the_ImageJ_instance_from_MATLAB_command_line">Quit the ImageJ instance from MATLAB command line</span></h4>
+<pre class="brush:matlab">
+ij.IJ.run("Quit","");
+</pre>
+<h3><span class="mw-headline" id="Known_Issues">Known Issues</span></h3>
+<h4><span class="mw-headline" id="Common_Issues">Common Issues</span></h4>
+<ul><li> Although the first and second dimensions, respectively, of MATLAB array are treated as rows (Y)and columns (X) in MATLAB, the first and second dimensions of an array are treated as X and Y, respectively, in ImageJ. The axes are transposed by <code>IJM.show(name)</code>, <code>IJM.getDataset()</code>, <code>IJM.getDatasetAs(name)</code>. (See discussion <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/ijm-show-in-imagej-matlab-does-not-support-multi-dimentional-or-multi-channel-images/10156">here for details</a>)</li>
+<li> <code>IJM</code> object is always added to the MATLAB base workspace. In order to access <code>IJM</code> methods from within a MATLAB function, you'll need to  use <code>assignin</code>, <code>evalin</code>, and/or <code>global</code> (see <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/how-can-i-use-imagej-from-within-a-matlab-function/10297">here for details</a>)</li>
+<li> When launching ImageJ, you'll see the error message below:</li></ul>
+<pre class="brush:plain">
+log4j:WARN No appenders could be found for logger (loci.formats.ClassList).
+log4j:WARN Please initialize the log4j system properly.
+</pre>
+<h4><span class="mw-headline" id="Issues_specific_to_IJM.show.28name.29">Issues specific to <code>IJM.show(name)</code></span></h4>
+<ul><li> A multi (&gt;2) dimensional image (with multi-channels, slices or time frames) is treated as single channel images with multiple time frames irrespective of the dimensions. For example, if a MATLAB array <code>A</code> has the size <code>[i,j,k]</code>, where <code>i</code>, <code>j</code>, and <code>k</code> correspond to the sizes in rows, columns and channels, then <code>IJM.show(name)</code> will show it as <code>[j,i,1,1,k]</code>, where X and Y axes are flipped over (see below) and channels are interpreted as frames. On the other hand, <code>IJM.getDataset()</code> and <code>IJM.getDatasetAs(name)</code> can maintain the dimensions of the image data (except the flipping over of X and Y axes).
+<ul><li> From GUI, you can fix this by <i>Image &gt; Hyperstacks &gt; Re-order Hyperstack...</i> </li>
+<li> For a scripting-based solution, you can run <code>ij.IJ.run("Re-order Hyperstack ...", "channels=[Frames (t)] slices=[Slices (z)] frames=[Channels (c)]");</code> in MATLAB for the example above to have dimensions <code>[i,j,k,1,1]</code> in XYCZT format. See <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/imagej-matlab-ijm-show-does-not-reliably-pass-numeric-data-to-imagej/10724">here for details</a>. </li>
+<li> When you have multiple channels, slices and frames, they're all damped into the fifth dimension, so it takes extra effort to correct the data format.</li></ul></li>
+<li> Also, data is always handled as 32bit (int32) per channel. <b>Conversion to 8 bit or 16 bit images require an extra care</b> to avoid unwanted scaling of numeric values (see <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/imagej-matlab-ijm-show-does-not-reliably-pass-numeric-data-to-imagej/10724">here for details</a>)</li></ul>
+<h4><span class="mw-headline" id="Solution_to_IJM.show.28name.29_issues">Solution to <code>IJM.show(name)</code> issues</span></h4>
+<ul><li> Until someone can fix <code>IJM.show(name)</code> properly, consider using  <code><a rel="nofollow" class="external text" href="https://github.com/kouichi-c-nakamura/copytoImagePlus">copytoImagePlus</a></code> MATLAB function instead. It solves all the issues of <code>IJM.show(name)</code> descrived above and create an ImagePlus hyperstack. See the example of a 5D Hyperstack below.</li>
+<li> <code>copytoImg</code> and <code>copytoImgPlus</code> MATLAB functions are also available from <code>Fiji.app/scripts</code> folder to allow you convert a MATLAB array to ImageJ2 (ImgLib2) Img and ImgPlus objects, respectively. See also <a href="http://imagej.net/Creating_Imglib2_images_in_MATLAB" title="Creating Imglib2 images in MATLAB"> this page</a>.</li></ul>
+<h3><span class="mw-headline" id="Examples">Examples</span></h3>
+<h4><span class="mw-headline" id="Accessing_ImageJ_Java_API_from_MATLAB">Accessing ImageJ Java API from MATLAB</span></h4>
+<p>The following Java commands work in MATLAB command window to open a sample image in ImageJ.
+</p>
+<pre class="brush:matlab">
+imp = ij.IJ.openImage("http://imagej.nih.gov/ij/images/boats.gif");
+imp.show()
+</pre>
+<p><a href="http://imagej.net/File:Boats_screenshot.png" class="image"><img alt="Boats screenshot.png" src="../_images/5/5d/Boats_screenshot.png" width="400" height="340" /></a>
+</p>
+<h4><span class="mw-headline" id="Opening_a_MATLAB_array_as_an_image_in_ImageJ">Opening a MATLAB array as an image in ImageJ</span></h4>
+<p>The following will open a MATLAB array data as an image in ImageJ. Note that the X and Y of the image are transposed in ImageJ in the second image (see Limitations of <code>IJM.show()</code> above).
+</p>
+<pre class="brush:matlab">
+corn_gray = imread('corn.tif',3);
+imshow(corn_gray);&#160;% show in MATLAB
+IJM.show('corn_gray');&#160;% show in ImageJ
+corn_gray_tp = corn_gray';&#160;% transpose array
+IJM.show('corn_gray_tp');&#160;% show in ImageJ properly
+
+</pre>
+<p><a href="http://imagej.net/File:Corn_gray_matlab.png" class="image"><img alt="Corn gray matlab.png" src="../_images/7/76/Corn_gray_matlab.png" width="250" height="299" /></a>
+<a href="http://imagej.net/File:Corn_gray.png" class="image"><img alt="Corn gray.png" src="../_images/8/8f/Corn_gray.png" width="250" height="210" /></a>
+<a href="http://imagej.net/File:Corn_gray_transposed.png" class="image"><img alt="Corn gray transposed.png" src="../_images/a/ac/Corn_gray_transposed.png" width="250" height="350" /></a>
+</p><p>A more general solution to this issue of X-Y transposition can be achieved by <code>permute</code> function of MATLAB. But please beware of <a rel="nofollow" class="external text" href="https://stackoverflow.com/questions/36065182/why-does-matlabs-permute-not-need-extra-memory">memory demands by <code>permute</code></a>.
+</p>
+<pre class="brush:matlab">
+% I is a MATLAB array with 2 or more dimensions
+order = [{2, 1}, num2cell(3:ndims(I))];
+I2 = permute(I,[order{:}]);
+IJM.show(I2)&#160;% this will show an image in proper X and Y
+</pre>
+<p>If you wish to show an image with ImageJ from within a MATLAB function, you can achieve that by using <code><a rel="nofollow" class="external text" href="https://github.com/kouichi-c-nakamura/copytoImagePlus">copytoImagePlus </a></code> as below:
+</p>
+<pre class="brush:matlab">
+function demofun()
+
+corn_gray = imread('corn.tif',3);
+
+imp = copytoImagePlus(corn_gray);
+imp.show();
+
+end
+</pre>
+<h4><span class="mw-headline" id="Retrieving_a_MATLAB_array_data_from_an_image_in_ImageJ">Retrieving a MATLAB array data from an image in ImageJ</span></h4>
+<p>Additionally, the <a rel="nofollow" class="external text" href="https://github.com/scijava/scripting-matlab/">Scripting-MATLAB</a> library also includes an extensible <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> command framework. This allows for the creation of utility classes that will be automatically populated into <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> variables for easy access. For example, you could use ImageJ to open a dataset and perform thresholding (or any other processing steps), then in <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> use the <code>IJM.getDatasetAs(name)</code> command to set the active dataset as a <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> matrix variable with a specified name, for further analysis.
+</p><p>For example, instead of using a script as <a href="MATLAB_Scripting.TestedwithImageJ2.0.0-rc-54.html#Creating_MATLAB_scripts_inside_ImageJ">described above</a>, we could achieve the same result by executing the following commands in the MATLAB prompt:
+</p>
+<pre class="brush:matlab">
+IJM.getDatasetAs('data')&#160;% import the image as a MATLAB matrix
+rval = uint8(data);&#160;% convert to uint8
+rval = mat2gray(rval);&#160;% normalize data
+mask = im2bw(rval,0.5);&#160;% make logical mask
+se = strel('square',3);&#160;% create structure to use in dilation
+mask = imdilate(mask,se);&#160;% perform dilation on the mask
+rval(~mask) = 0;&#160;% subtract mask from original dataset
+IJM.show('rval')&#160;% display the rval array in ImageJ
+IJM.show('mask')&#160;% display the mask array in ImageJ
+</pre>
+<p>If you wish to assign the numeric data of an ImageJ image into the Workspace of a MATLAB function, rather than the base Workspace, you can achieve that by making the variable global as below:
+</p>
+<pre class="brush:matlab">
+
+function demofun()
+
+evalin('base','global data');
+evalin('base','IJM.getDatasetAs(''data'')');
+global data&#160;% data is now available in the Workspace of this function
+disp(size(data))
+
+clear global data&#160;% leaving a global varibale can cause unexpected problems
+
+end
+
+</pre>
+<p><br />
+</p>
+<h4><span class="mw-headline" id="Opening_a_2D-5D_MATLAB_array_as_a_Hyperstack_in_ImageJ">Opening a 2D-5D MATLAB array as a Hyperstack in ImageJ</span></h4>
+<p>If you use <code><a rel="nofollow" class="external text" href="https://github.com/kouichi-c-nakamura/copytoImagePlus">copytoImagePlus</a></code>, you can open a 2D-5D MATLAB array as a Hyperstack with the right image type (8bit, 16bit, and 32bit for uint8, uint16, and other types of MATLAB array, respectively) in ImageJ with a simple syntax. Also, you can use <code>copytoImagePlus</code> within a MATLAB function independently of the <code>IJM</code> variable in base workspace.
+</p>
+<pre class="brush:matlab">
+imp = ij.IJ.openImage("http://imagej.nih.gov/ij/images/Spindly-GFP.zip");
+imp.show();
+IJM.getDatasetAs('I');&#160;% I is 5-D double with the size of 171x196x2x5x51 in MATLAB
+I16 = uint16(I);
+
+IJM.show('I16')&#160;% ImagePlus, 32-bit, 171x196x1x1x510
+
+imp4 = copytoImagePlus(I16,'XYCZT')&#160;% ImagePlus, 16-bit, 171x196x2x5x51
+imp4.show(); 
+</pre>
+<p><code>IJM.show(name)</code> cannot reproduce the dimensions and the data type. Channels (C), slices (Z), and frames (T) are all treated as frames. Image type is 32 bit.
+<a href="http://imagej.net/File:IJMshow_Image006.png" class="image"><img alt="IJMshow Image006.png" src="../_images/f/f5/IJMshow_Image006.png" width="150" height="220" /></a>
+</p><p><code>copytoImagePlus</code> can keep the dimensions and the data type.
+<a href="http://imagej.net/File:Image003.png" class="image"><img alt="Image003.png" src="../_images/2/22/Image003.png" width="150" height="257" /></a>
+</p>
+<h1><span class="mw-headline" id="Source">Source</span></h1>
+<ul><li> <a rel="nofollow" class="external text" href="https://github.com/scijava/scripting-matlab/">Scripting-MATLAB</a> provides the script engine plugins.</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-matlab/">ImageJ-MATLAB</a> defines the ImageJ-specific translators.</li></ul>
+<h1><span class="mw-headline" id="Video_presentation">Video presentation</span></h1>
+<p><iframe src="https://player.vimeo.com/video/140929686?color=b80013&title=0&byline=0&portrait=0" width="425" height="355" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><p style="font-size: small; margin-top: 0"><a href="https://vimeo.com/140929686">ImageJ+MATLAB: Reunited</a></span></p>
+</p>
+<h1><span class="mw-headline" id="Publication">Publication</span></h1>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=ImageJ-MATLAB%3A+a+bidirectional+framework+for+scientific+image+analysis+interoperability&amp;rft.aulast=Hiner&amp;rft.aufirst=M.+C.&amp;rft.date=2016&amp;rft_id=info:doi/10.1093%2Fbioinformatics%2Fbtw681&amp;rft_id=info:pmid/27797782&amp;rft_id=http%3A%2F%2Fbioinformatics.oxfordjournals.org%2Fcontent%2Fearly%2F2016%2F10%2F25%2Fbioinformatics.btw681"><cite id="CITEREFHinerRuedenEliceiri2016">Hiner, M. C.; Rueden, C. R.&#32;&amp; Eliceiri, K. W.&#32;(2016),&#32;"<a rel="nofollow" class="external text" href="http://bioinformatics.oxfordjournals.org/content/early/2016/10/25/bioinformatics.btw681">ImageJ-MATLAB: a bidirectional framework for scientific image analysis interoperability</a>",&#32;<i>Bioinformatics</i>, PMID 27797782, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1093%2Fbioinformatics%2Fbtw681">10.1093/bioinformatics/btw681</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://bioinformatics.oxfordjournals.org/content/early/2016/10/25/bioinformatics.btw681">http://bioinformatics.oxfordjournals.org/content/early/2016/10/25/bioinformatics.btw681</a>&gt;</span></cite></span>.</li></ul>
+<h1><span class="mw-headline" id="See_also">See also</span></h1>
+<ul><li> <a href="http://imagej.net/Creating_Imglib2_images_in_MATLAB" title="Creating Imglib2 images in MATLAB">Creating Imglib2 images in MATLAB</a></li>
+<li> <a href="http://imagej.net/Using_TrackMate_from_MATLAB" title="Using TrackMate from MATLAB">Using TrackMate from MATLAB</a></li>
+<li> <a href="http://imagej.net/Analyzing_TrackMate_results_with_MATLAB" title="Analyzing TrackMate results with MATLAB">Analyzing TrackMate results with MATLAB</a></li>
+<li> <a href="http://imagej.net/Comparison_of_Matlab_functions_and_Ops" title="Comparison of Matlab functions and Ops">Comparison of Matlab functions and Ops</a></li>
+<li> <a href="http://imagej.net/Miji" title="Miji">Miji</a> (legacy)</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072859
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.136 seconds
+Real time usage: 0.135 seconds
+Preprocessor visited node count: 1350/1000000
+Preprocessor generated node count: 15063/1000000
+Post‐expand include size: 23514/2097152 bytes
+Template argument size: 10605/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   76.029      1 - -total
+ 40.91%   31.105      1 - Template:Publication
+ 28.69%   21.809      1 - Template:Citation
+ 26.36%   20.042      1 - Template:Learn
+ 23.35%   17.751      1 - Template:Citation/core
+ 22.80%   17.335      1 - Template:Menu
+ 20.11%   15.287      4 - Template:Submenu
+ 11.09%    8.429     39 - Template:MenuItem
+  8.37%    6.367      2 - Template:Warning
+  7.98%    6.071      3 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=MATLAB_Scripting&amp;oldid=41462">http://imagej.net/index.php?title=MATLAB_Scripting&amp;oldid=41462</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 28 January 2020, at 09:00.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=MATLAB_Scripting&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li><li><a href="http://imagej.net/index.php?title=Category:MATLAB&amp;action=edit&amp;redlink=1" class="new" title="Category:MATLAB (page does not exist)">MATLAB</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=MATLAB+Scripting" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=MATLAB+Scripting" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/MATLAB_Scripting" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/MATLAB_Scripting" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=MATLAB_Scripting&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=MATLAB_Scripting&amp;oldid=41462" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=MATLAB_Scripting&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":290});});</script>
+		</body>
+		</html>
+		

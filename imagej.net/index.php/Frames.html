@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Frames - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Frames","wgTitle":"Frames","wgCurRevisionId":44876,"wgRevisionId":44876,"wgArticleId":12497,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Import-Export","Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Frames","wgRelevantArticleId":12497,"wgRequestId":"8e604a58a610c50a84936c97","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="These are a set of plugins that are used to work with data in the frame direction.  The F_Project plugin projects the images in the frame direction into a lower dimension using different methods. The F_Profiler pulgin plots the contents of an ROI through the frame direction.  The Frame_Slider provides sliders to step though the frames of a hyperstacks based on the variable/values in the slice labels."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Frames"/>
+
+	<meta property="og:description" content="These are a set of plugins that are used to work with data in the frame direction.  The F_Project plugin projects the images in the frame direction into a lower dimension using different methods. The F_Profiler pulgin plots the contents of an ROI through the frame direction.  The Frame_Slider provides sliders to step though the frames of a hyperstacks based on the variable/values in the slice labels."/>
+
+	<meta property="og:url" content="http://imagej.net/Frames"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Frames rootpage-Frames skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Frames.html#bodyContent">Skip to content</a>, 			<a href="Frames.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Frames.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Frames" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Frames&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Frames&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Frames&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Frames</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Frames (ImageJ1)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Fred Damen
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Fred Damen
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> Frames.jar
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://imagej.net/_images/3/3d/Frames.zip">Frames.zip</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> 1 April 2019
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> 1 April 2020
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis‏‎‏‎</a>
+</td></tr>
+
+</table>
+<p><br />
+</p><p>These are a set of plugins that are used to work with data in the frame direction.  The F_Project plugin projects the images in the frame direction into a lower dimension using different methods. The F_Profiler pulgin plots the contents of an ROI through the frame direction.  The Frame_Slider provides sliders to step though the frames of a hyperstacks based on the variable/values in the slice labels.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Frames.html#F_Project"><span class="tocnumber">1</span> <span class="toctext">F_Project</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Frames.html#Uses"><span class="tocnumber">1.1</span> <span class="toctext">Uses</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="Frames.html#ASL_-_MRI"><span class="tocnumber">1.1.1</span> <span class="toctext">ASL - MRI</span></a></li>
+<li class="toclevel-3 tocsection-4"><a href="Frames.html#ADC_-_MRI"><span class="tocnumber">1.1.2</span> <span class="toctext">ADC - MRI</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="Frames.html#Arbitrary_proccessing"><span class="tocnumber">1.1.3</span> <span class="toctext">Arbitrary proccessing</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="Frames.html#F_Profilier"><span class="tocnumber">2</span> <span class="toctext">F_Profilier</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Frames.html#Frame_Slider"><span class="tocnumber">3</span> <span class="toctext">Frame_Slider</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Frames.html#Install"><span class="tocnumber">4</span> <span class="toctext">Install</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Frames.html#ChangeLog"><span class="tocnumber">5</span> <span class="toctext">ChangeLog</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="F_Project">F_Project</span></h2>
+<p><a href="http://imagej.net/File:F_Project_ScreenShot.jpg" class="image"><img alt="F Project ScreenShot.jpg" src="../_images/c/cc/F_Project_ScreenShot.jpg" width="400" height="476" /></a>
+</p><p>When run as a plugin from the gui the image used is identified on the top line.  A subset of the slices and frames can be used as the source data; see syntax for <i>Make Substacks...</i>. When the identified frames is 'label', the frames are grouped by identical labels. When the frames are identified by 'repeats var', where var is the name of the variable in the slice label, these frames are treated as repeats of data.
+<br /><b>Transpose?</b> Swap frames for slices.
+</p><p>The following summary methods as provided:
+<br /><b>Sum</b> Arithmetic Sum
+<br /><b>Mean</b> Arithmetic Mean (μ)
+<br /><b>StdDev</b> Standard Deviation (σ) - computed using the slow method for numerical accuracy
+<br /><b>ZScore</b> Z Score (μ/σ) - akin to Signal to Noise (SNR)
+<br /><b>CV</b> Coefficient of Variation (σ/μ)
+<br /><b>Minimum</b> Minimum
+<br /><b>Maximum</b> Maximum
+<br /><b>Median</b> Median
+<br /><b>Center</b> Weighted arithmetic mean around the median - resilient to outliers
+<br /><b>Product</b> Product (Π s<sub>i</sub><sup>-n</sup>)<sup>n</sup>
+<br /><b>GeoMean</b> Geometric Mean - prescaled product (Π s<sub>i</sub><sup>-n</sup>)
+<br /><b>SumSq</b> Sum of Squares
+<br /><b>Magnitude</b> Pythagoras
+<br /><b>LinReg</b> Linear least squares regression - frames returned m, b, r<sup>2</sup>
+<br /><b>TheilSen</b> Theil Sen linear regression with Center estimator - frames m, b
+<br /><b>Theilsen2</b> Theil Sen quadratic regression with with Center estimator - a,b,c
+<br /><b>Centroid</b> Centroid
+<br /><b>Fit</b> CurveFitter fitting - frames are model parameters, r<sup>2</sup>, Ψ<sup>2</sup>
+<br /><b>Deviation</b> Appends a frame with the appropriate deviation from an appropriate selected summary.
+<br />If the first slice of every frame has a Short Label that can be split by the regex " = |=| ", e.g., var = fval, and the list has unique elements, the float fval values will be used in the fittings instead of the frame number.
+</p><p>There are also static methods provided, with the same names, albeit, all lower case, with two syntaxis: <code>method(ImagePlus,slices,frames)</code>, <code>method(ImagePlus)</code>, <code>save fit(..., int), fit(..., String)</code>. 
+</p><p><br /><code>TreeMap&lt;String,Double&gt; getVars(ImagePlus imp, int f)</code>
+<br />Extract variable/value pairs from frame's slice label.
+<br /><code>TreeMap&lt;String,TreeMap&lt;Double,Double&gt;&gt; getVars(ImagePlus imp)</code>
+<br />Extract variable/values from all frames' slice labels.
+<br /><code>LinkedHashMap&lt;String,String&gt; overRepeats(ImagePlus imp, String var)</code>
+<br />Determine the subsets (keys) that exist and the associated comma separated frames (values), where var is the repeater.
+<br />see 'repeats var'
+<br /><code>TreeMap&lt;Double,String&gt; sortFramesByLabel(ImagePlus imp) </code>
+<br />returns comma separated list of frames for each unique label.
+<br /><code>void removeVarFromLabels(ImagePlus imp, String var)</code>
+<br />Remove superfluous variable var from all slice labels
+<br /><code>void replaceVarValWithInLabel(ImagePlus imp, String var, String val)</code>
+<br />Replace all the values for var with val in all the slice labels.
+<br /><code>int findVarInLabel(ImagePlus imp, String var)</code>
+<br />Determines position of var in the slice label variables. -1 not found or error.
+<br /><code>TreeMap&lt;Double,String&gt; sortFramesByLabel(ImagePlus imp, String var)</code>
+<br />Determine frames (values - comma separated) that corrosponds to each var values (keys).
+<br /><code>ImagePlus extractFramesByVar(ImagePlus imp, String var, double val)</code>
+<br />Extract all frames that have the variable / value pair var/val.
+<br /><code>TreeMap&lt;Double,ImagePlus&gt; extractFramesByVar(ImagePlus imp, String var)</code>
+<br />Extract the frames (as an ImagePlus) that corresponds to each value (key) for slice label
+<br /><code>ImagePlus sortFramesByVar(ImagePlus imp, String var)</code>
+<br />Rearrange frame order to that of increasing var values.
+<br /><code>double center(double[] a)</code>
+<br />weighted mean weighted to the median
+<br /><code>double[] theilsen(double[] ... _x)</code>
+<br />theilsen regressor for linear.
+<br />can be called as x[],y[] or xy[][] but only the first pair computed
+<br /><code>double[] theilsen2(double[] ... _x)</code>
+<br />theilsen regressor for quadradic.
+<br />can be called as x[],y[] or xy[][] but only the first pair computed
+<br /><code>double[] linreg(double[] x, double[] y)</code>
+<br />linear least squares regressor
+<br />can be called as x[],y[] or xy[][] but only the first pair computed
+<br /><code>double centroid(double[] x, double[] y)</code>
+<br />Centroid
+<br /><code>
+<br />public interface Compute {
+<br />public double[] compute(double[] x, double[] y);
+<br />&#160;&#160;&#160;return (x == null)&#160;? new double[NV]&#160;: process(x,y);
+<br />&#160;&#160;&#160;}
+<br />ImagePlus compute(ImagePlus imp, Compute fp)
+<br />ImagePlus compute(ImagePlus imp, String slices, String frames, Compute fp)
+<br />ImagePlus compute(ImagePlus imp, Compute fp, ImagePlus mask)
+<br />ImagePlus compute(ImagePlus imp, String slices, String frames, Compute fp, ImagePlus mask)
+</code>
+</p><p><br /><code>ImagePlus[] split(ImagePlus imp)</code>
+<br />fit and compute have <code>ImagePlus[] method(..., ImagePlus[] imps);</code>
+<br /><code>imps</code> is syntactic sugar.
+<b>Nota bene</b>: Works even when there is only one slice in the Z direction.
+</p>
+<h3><span class="mw-headline" id="Uses">Uses</span></h3>
+<h4><span class="mw-headline" id="ASL_-_MRI">ASL - MRI</span></h4>
+<p><code>ImagePlus aslAcquired = . . .
+<br />ImagePlus tag = F_Project.mean(aslAcquired,"all","1-100-2");
+<br />ImagePlus ctl = F_Project.mean(aslAcquired,"all","2-100-2");
+<br />ImagePlus asl = ctl.duplicate();
+<br />(new ImageCaculator()).run("Subtract 32-bit stack", asl, tag);
+<br />(new ImageCaculator()).run("Divide 32-bit stack", asl, ctl);
+</code>
+</p>
+<h4><span class="mw-headline" id="ADC_-_MRI">ADC - MRI</span></h4>
+<p><code>/* Assuming many b-values (slicelabels = "b=%f") */
+<br />ImagePlus dwiAcquired = . . .
+<br />ImagePlus dwi = dwiAcquired.duplicate();
+<br />ImagePlus dwib0 = SubHyperstackMaker.makeSubhyperstack(dwi,"1-"+dwi.getNSlices(),"1",dwiAcquired);
+<br />for(int f=0; f&lt;dwiAcquired.getNFrames(); f++)
+<br />&#160;&#160;&#160;(new ImageCalculator()).run("Divide 32-bit stack", dwi, dwib0);
+</code>
+<br /><code>ImagePlus adc_etal = F_Project.fit(dwi,"Exponential");<i></code></i>
+<br />OR with more resilience to outliers . . .
+<code>
+<br />IJ.run(dwi, "Log", "");
+<br />ImagePlus adc_etal = F_Project.theilsen(dwi);
+</code>
+</p>
+<h4><span class="mw-headline" id="Arbitrary_proccessing">Arbitrary proccessing</span></h4>
+<p><code>IJ.run(mask,"Convert to Mask", "method=Huang background=Default calculate");
+<br />ImagePlus[] pimp = F_Project.compute(imp, new F_Project.Compute() {
+<br />&#160;&#160;&#160;@Override
+<br />&#160;&#160;&#160;public double[] compute(double[] x, double[] y) {
+<br />&#160;&#160;&#160;&#160;&#160;&#160;if (x == null) return new double[10]
+<br />&#160;&#160;&#160;&#160;&#160;&#160;return nonlinearFit(x,y);
+<br />&#160;&#160;&#160;&#160;&#160;&#160;}
+<br />&#160;&#160;&#160;}, mask, new ImagePlus[0]);
+</code>
+</p>
+<h2><span class="mw-headline" id="F_Profilier">F_Profilier</span></h2>
+<p><a href="http://imagej.net/File:F_Profiler_Screenshot.jpg" class="image"><img alt="F Profiler Screenshot.jpg" src="../_images/7/78/F_Profiler_Screenshot.jpg" width="400" height="312" /></a>
+<br />Given a Hyperstack image, draw an ROI and start plugin. Manipulate the ROI and the plot changes. Check out Interactive_Fitting plugin.
+</p>
+<h2><span class="mw-headline" id="Frame_Slider">Frame_Slider</span></h2>
+<p><a href="http://imagej.net/File:Frame_Slider_Screenshot.jpg" class="image"><img alt="Frame Slider Screenshot.jpg" src="../_images/a/a8/Frame_Slider_Screenshot.jpg" width="400" height="285" /></a>
+<br />When you have one or more Hyperstacks open and want to step though the images per the variables in the slice labels, start the Frame_Slider with the dataset with the most variables, select the other datasets, and step through them using the sliders.  The datasets should all be governed by the same set of variables, i.e., The two left images are the raw data with repeats and the two right images are the mean and SNR projections, to see why click the scrollbars.
+</p>
+<h2><span class="mw-headline" id="Install">Install</span></h2>
+<p>Unzip <a rel="nofollow" class="external text" href="https://imagej.net/_images/3/3d/Frames.zip">Frames.zip</a> into ImageJ1 plugins (File&gt;Show Folder&gt;Plugins) or plugins/jars directories.  Source code in jar file.
+</p>
+<h2><span class="mw-headline" id="ChangeLog">ChangeLog</span></h2>
+<pre> * 1 April 2018 - Initial Version.
+ * 1 April 2019 - Updated.
+</pre>
+<!-- 
+NewPP limit report
+Cached time: 20200713072346
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.035 seconds
+Preprocessor visited node count: 117/1000000
+Preprocessor generated node count: 599/1000000
+Post‐expand include size: 916/2097152 bytes
+Template argument size: 343/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    4.065      1 - Template:Infobox
+100.00%    4.065      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Frames&amp;oldid=44876">http://imagej.net/index.php?title=Frames&amp;oldid=44876</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 10 April 2020, at 22:41.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Frames&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Import-Export" title="Category:Import-Export">Import-Export</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Frames" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Frames" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Frames" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Frames" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Frames&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Frames&amp;oldid=44876" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Frames&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":235});});</script>
+		</body>
+		</html>
+		

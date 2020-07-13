@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Importing Image Files - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Importing_Image_Files","wgTitle":"Importing Image Files","wgCurRevisionId":41262,"wgRevisionId":41262,"wgArticleId":44,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Cookbook","Tutorials","Plugins","Import-Export"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Importing_Image_Files","wgRelevantArticleId":44,"wgRequestId":"c52839a9ee4a30ee51f28e8e","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Most of the commands listed, particularly Fiji extensions, are also available (via ImageJ's HandleExtraFileTypes feature) simply by using the File / Open... menu item."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Importing Image Files"/>
+
+	<meta property="og:description" content="Most of the commands listed, particularly Fiji extensions, are also available (via ImageJ's HandleExtraFileTypes feature) simply by using the File / Open... menu item."/>
+
+	<meta property="og:url" content="http://imagej.net/Importing_Image_Files"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Importing_Image_Files rootpage-Importing_Image_Files skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="File_Import.html#bodyContent">Skip to content</a>, 			<a href="File_Import.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="File_Import.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="File_Import.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Importing_Image_Files&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Importing_Image_Files&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Importing_Image_Files&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Importing Image Files</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Cookbook Topics
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Cookbook" title="Cookbook">Introduction and Installation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Annotating_Images" title="Annotating Images">Annotating Images</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Color_Image_Processing" title="Color Image Processing">Color Image Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Intensity_Processing" title="Image Intensity Processing">Image Intensity Processing</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Importing Image Files</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Particle_Analysis" title="Particle Analysis">Particle Analysis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Saving_and_Exporting" title="Saving and Exporting">Saving and Exporting</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Stack-slice_Manipulations" title="Stack-slice Manipulations">Stack-slice Manipulations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/T-functions" title="T-functions">T-functions</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Z-functions" title="Z-functions">Z-functions</a>
+</td></tr></table>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="File_Import.html#The_File_.2F_Import_submenu"><span class="tocnumber">1</span> <span class="toctext">The File / Import submenu</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="File_Import.html#Built-in_formats"><span class="tocnumber">2</span> <span class="toctext">Built-in formats</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="File_Import.html#Bio-Formats"><span class="tocnumber">3</span> <span class="toctext">Bio-Formats</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="File_Import.html#Zeiss_LSM_panel"><span class="tocnumber">4</span> <span class="toctext">Zeiss LSM panel</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="File_Import.html#Multiple_files_from_a_folder"><span class="tocnumber">5</span> <span class="toctext">Multiple files from a folder</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="File_Import.html#Multi-RAW_sequence_from_a_folder"><span class="tocnumber">6</span> <span class="toctext">Multi-RAW sequence from a folder</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="File_Import.html#AVI_and_MOV_files"><span class="tocnumber">7</span> <span class="toctext">AVI and MOV files</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="File_Import.html#Other_Import_functions"><span class="tocnumber">8</span> <span class="toctext">Other Import functions</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="File_Import.html#Fiji_Extensions"><span class="tocnumber">9</span> <span class="toctext">Fiji Extensions</span></a></li>
+</ul>
+</div>
+</div>
+<h2><span class="mw-headline" id="The_File_.2F_Import_submenu">The File / Import submenu</span></h2>
+<p>Most of the commands listed, particularly Fiji extensions, are also available (via ImageJ's <a rel="nofollow" class="external text" href="https://imagej.net/plugins/file-handler.html">HandleExtraFileTypes</a> feature) simply by using the File / Open... menu item.
+</p>
+<h2><span class="mw-headline" id="Built-in_formats">Built-in formats</span></h2>
+<p>Fiji primarily uses TIFF as the image file format. The menu command <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Save</span></em></span> will save in TIFF format. The menu command <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open</span></em></span> will open TIFF files and import a number of other common file formats (e.g. JPEG, GIF, BMP, PGM, PNG) as well as those detailed below. Files can be also dragged and dropped to the toolbar to open them.
+</p>
+<h2><span class="mw-headline" id="Bio-Formats">Bio-Formats</span></h2>
+<p>Many more file formats can be imported via Fiji plugins. One plugin is called <a href="http://imagej.net/Bio-Formats" title="Bio-Formats">Bio-Formats</a>. This will import and export a wide number of file formats along with their important metadata. They can be accessed directly via the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Bio-Formats</span></em></span> or indirectly via the <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open</span></em></span> menu command which will use the Bio-Formats plugin if needed. See the <a rel="nofollow" class="external text" href="http://openmicroscopy.org/site/support/bio-formats5/supported-formats.html">list of supported file formats</a> on the Bio-Formats website for the complete list (135 as of this writing).
+</p><p>If Bio-Formats is used, you will be prompted with a big dialog and your preferences remembered.
+</p><p>Drag and dropping an image file to the Fiji toolbar will effectively open the file the same as the <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open</span></em></span> command.
+</p><p>Some image file formats are more akin to databases rather than images (e.g. Leica LIF files). In these cases a second dialog will list the images in the 'database' prompting you to select which to open.
+</p><p>There are several different Bio-Formats commands for importing data into Fiji:
+</p>
+<ul><li> <b>Bio-Formats Remote Importer.</b> For this selection, the image doesn’t have to be saved onto your computer or a disk. But it is a limited feature; it is more robust to download the file and then use the regular Bio-Formats instead.</li>
+<li> <b>Bio-Formats Windowless Importer.</b> With this option, Fiji uses the settings that were previously used for Bio-Formats, so it skips all dialog boxes at the beginning.</li>
+<li> <b>Bio-Formats Importer.</b> Select this command if you need to change the settings for importing an image.</li></ul>
+<h2><span class="mw-headline" id="Zeiss_LSM_panel">Zeiss LSM panel</span></h2>
+<p>The LSM panel plugin duplicates the Zeiss LSM file import function of the LOCI Bio-Format Importer, but will also extensively catalogue the LSM metadata. The <i><a href="http://imagej.net/LSM_Toolbox" title="LSM Toolbox">LSM Toolbox</a></i> is activated by the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> LSM.</span></em></span> Once you select LSM the panel will appear.
+</p><p>Images are opened as 8-bit color images with the “no-palette” pseudo color from the LSM acquisition software. Each channel is imported as a separate image/stack. Lambda stacks are therefore imported as multiple images, not a single stack. They can be converted to a stack with the menu command: <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Images to stack.</span></em></span>
+</p><p>Once opened, the file information can be accessed and the information can be irreversibly stamped into the images or exported.
+</p>
+<h2><span class="mw-headline" id="Multiple_files_from_a_folder">Multiple files from a folder</span></h2>
+<p>Each time point of an experiment acquired with software such as Perkin Elmer’s UltraVIEW or Scion Image’s time lapse macro is saved by the acquisition software as a single TIF. The experimental sequence can be imported to Fiji via the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Image Sequence.</span></em></span>
+</p><p>Locate the directory, click on the first image in the sequence and OK all dialogs. (You may get a couple of error messages while Fiji tries to open any non-image files in the experimental directory.) The stack will “interleave” the multiple channels you recorded, and can be de-interleaved via <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks - Shuffling </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Deinterleave</span></em></span>
+</p><p>Selected images that are not the same size can be imported as individual images windows using <i>File/Import</i> and select each individual image you want imported into Fiji. Then you can put those images into a stack by <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Images to stack</span></em></span> Unlike the <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Image Sequence</span></em></span> function, the images don’t need to be the same dimensions. If memory is limited, stacks can be opened as Virtual-Stacks with most of the stack remaining on the disk until it is required.
+</p>
+<h2><span class="mw-headline" id="Multi-RAW_sequence_from_a_folder">Multi-RAW sequence from a folder</span></h2>
+<p>To form an image, Fiji needs to know the image dimensions, bit-depth, slice number per file and any extraneous information in the file format (offset and header size). All you really need to tell it is the image dimension in x and y. These values should be obtainable from the software in which the images were acquired. Armed with this information follow these steps:
+</p>
+<ol><li> File/Import/Raw…</li>
+<li> Select experimental directory.</li>
+<li> Typical values for the dialog box are: 
+<ul><li> Image type = 16-bit unsigned (or 8 bit typically) </li>
+<li> Width and height as determined earlier</li>
+<li> Offset = 0, number of image = 1, gap = 0, ‘white’ is zero = off</li>
+<li> ‘Little-endian byte order’ = on, ‘open all files in folder’ = on to open all files in folder.</li></ul></li></ol>
+<p>Non-images will also be opened and may appear as blank images and need deleting: <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Delete slice</span></em></span>. The stack will "interleave” the multiple channels you recorded, and can be de-interleaved via <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks - Shuffling </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> DeInterleave</span></em></span>. 
+</p>
+<h2><span class="mw-headline" id="AVI_and_MOV_files">AVI and MOV files</span></h2>
+<p>There are two plugins which can open uncompressed AVIs and some types of MOV file. AVIs can be opened via <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> AVI</span></em></span>
+</p>
+<h2><span class="mw-headline" id="Other_Import_functions">Other Import functions</span></h2>
+<p>Animated GIF- This plugin opens animated GIF files as an RGB stack. Also opens single GIF images.
+</p>
+<h2><span class="mw-headline" id="Fiji_Extensions">Fiji Extensions</span></h2>
+<ul><li> <b>Amira...</b>: Open as a stack both Amira (.am) label and image stack files.</li>
+<li> <b>Biorad...</b>: Open a Biorad (.pic) confocal stack.</li>
+<li> <b>Psychomorph .tem Reader</b></li>
+<li> <b>Show Amira Surface</b>: Open in a 3D Window Amira .surf surface files (3D meshes).</li>
+<li> <b>DF3...</b>: Open a <a rel="nofollow" class="external text" href="http://www.povray.org/documentation/view/3.6.1/374/">POV-Ray density file</a>.</li>
+<li> <b>MRC Leginon ...</b>: Open an .mrc image (8, 16 and 32-bit) generated by <a rel="nofollow" class="external text" href="http://ami.scripps.edu/software/leginon/">Leginon</a> (software for automated imaging in transmission electron microscopy).</li>
+<li> <b>PDF ...</b>: Open a .pdf file. Optionally specify which page (or all) and at which scale (from 100% to 1000%). Note that when opening from "File / Open", "File / Import / URL" or from a ij.io.Opener().open() method call, this plugin will by default open all pages at 100% magnification.</li>
+<li> <b><a href="http://imagej.net/Extract_Images_From_PDF..." title="Extract Images From PDF...">Extract Images From PDF...</a></b>: Extract all images from a PDF file, in their original resolution.</li>
+<li> <b>DAT EMMENU ...</b>: Open a .dat image file from EMMENU software for imaging with transmission electron microscopes.</li>
+<li> <b>DM3 Reader...</b>: Open a .dm3 image file from Gatan cameras, with all its metadata (transmission electron microscopy).</li>
+<li> <b>TorstenRaw GZ Reader...</b>: Open the files generated by the registration tools from <a rel="nofollow" class="external free" href="http://flybrain.stanford.edu/">http://flybrain.stanford.edu/</a></li>
+<li> <b>IPLab Reader...</b></li>
+<li> <b>Animated Gif...</b>: Open an animated .gif file as a stack.</li>
+<li> <b>Amira as TrakEM2...</b>: Open an amira .am image stack file as a <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/trakem2.html">TrakEM2</a> project. The labels file will be asked for. All calibrations and parameters are set to streamline the process.</li>
+<li> <b>Analyze...</b></li>
+<li> <b><a href="http://imagej.net/LSM_Toolbox" title="LSM Toolbox"> Show LSM Toolbox</a></b>: Open the LSM Toolbox window, from which LSM files can be opened, viewed in multi dimensions, montaged,  their metadata directly inspected, time and z stamped and more.</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072328
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.048 seconds
+Preprocessor visited node count: 1004/1000000
+Preprocessor generated node count: 1385/1000000
+Post‐expand include size: 7592/2097152 bytes
+Template argument size: 1388/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   33.586      1 - -total
+ 71.76%   24.102     14 - Template:Bc
+ 22.18%    7.449     24 - Template:Arrow
+ 17.61%    5.915      1 - Template:CookbookMenu
+ 13.21%    4.435      1 - Template:Menu
+  7.40%    2.487     11 - Template:MenuItem
+  6.56%    2.202      1 - Template:TOC
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Importing_Image_Files&amp;oldid=41262">http://imagej.net/index.php?title=Importing_Image_Files&amp;oldid=41262</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Importing_Image_Files&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Cookbook" title="Category:Cookbook">Cookbook</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Import-Export" title="Category:Import-Export">Import-Export</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Importing+Image+Files" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Importing+Image+Files" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Importing_Image_Files" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Importing_Image_Files" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Importing_Image_Files&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Importing_Image_Files&amp;oldid=41262" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Importing_Image_Files&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":193});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Colorizer Overlay - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Colorizer_Overlay","wgTitle":"Colorizer Overlay","wgCurRevisionId":45554,"wgRevisionId":45554,"wgArticleId":12685,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Image annotation","Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Colorizer_Overlay","wgRelevantArticleId":12685,"wgRequestId":"a0a909bfecd41ecacd0758f2","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The Colorizer_Overlay plugin provides the ability to apply a LUT, colorbar, and annotation to a map, i.e., quantified image, and overlay this upon a background image.  The impetus for this plugin was my inability to remember how to perform all the necessary steps and the laborious task of doing this again and again whenever my whim for the best representation of my data kicked in, usually right before an abstract deadline."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Colorizer Overlay"/>
+
+	<meta property="og:description" content="The Colorizer_Overlay plugin provides the ability to apply a LUT, colorbar, and annotation to a map, i.e., quantified image, and overlay this upon a background image.  The impetus for this plugin was my inability to remember how to perform all the necessary steps and the laborious task of doing this again and again whenever my whim for the best representation of my data kicked in, usually right before an abstract deadline."/>
+
+	<meta property="og:url" content="http://imagej.net/Colorizer_Overlay"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Colorizer_Overlay rootpage-Colorizer_Overlay skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Colorizer_Overlay.html#bodyContent">Skip to content</a>, 			<a href="Colorizer_Overlay.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Colorizer_Overlay.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Colorizer_Overlay" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Colorizer_Overlay&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Colorizer_Overlay&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Colorizer_Overlay&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Colorizer Overlay</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Colorizer_Overlay (ImageJ1)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Fred Damen
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> Colorizer_Overlay.jar
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://imagej.net/_images/4/46/Colorizer_Overlay.zip">Colorizer_Overlay.zip</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> 1 April 2020
+</td></tr>
+
+<tr>
+<th> Development status
+</th>
+<td> stable
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Image_annotation" title="Category:Image annotation">Image annotation‏‎</a>
+</td></tr>
+
+</table>
+<p><br />
+</p><p>The Colorizer_Overlay plugin provides the ability to apply a LUT, colorbar, and annotation to a map, i.e., quantified image, and overlay this upon a background image.  The impetus for this plugin was my inability to remember how to perform all the necessary steps and the laborious task of doing this again and again whenever my whim for the best representation of my data kicked in, usually right before an abstract deadline.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Colorizer_Overlay.html#Features"><span class="tocnumber">1</span> <span class="toctext">Features</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Colorizer_Overlay.html#Methods"><span class="tocnumber">2</span> <span class="toctext">Methods</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Colorizer_Overlay.html#Coding_Goodies"><span class="tocnumber">3</span> <span class="toctext">Coding Goodies</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Colorizer_Overlay.html#Install"><span class="tocnumber">4</span> <span class="toctext">Install</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Colorizer_Overlay.html#Licence"><span class="tocnumber">5</span> <span class="toctext">Licence</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Colorizer_Overlay.html#ChangeLog"><span class="tocnumber">6</span> <span class="toctext">ChangeLog</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Colorizer_Overlay.html#Known_Bugs"><span class="tocnumber">7</span> <span class="toctext">Known Bugs</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Features">Features</span></h2>
+<p><a href="http://imagej.net/File:Colorizer_Overlay.jpg" class="image"><img alt="Colorizer Overlay.jpg" src="../_images/9/91/Colorizer_Overlay.jpg" width="600" height="483" /></a>
+</p><p>The process of generating a colorized overlay is best, but not required, done in three stages.
+</p><p><i><b>First...</b></i>
+<br /><b>Background</b> identifies the background image.  If unspecified the background color is used.  If the specified ImageWindow contains an Roi, the image is cropped to the bounding box and cleared outside the Roi, i.e., set to background color.
+<br /><b>Foreground</b> identifies the foreground image that is colorized.  If the ImageWindow contains an Roi then only the contents of the Roi will be overlayed.
+<br /><b>Range</b> is the colorization range that will be used.  Defaults to the display range of the foreground source image. If <b>Query</b> is on, then the range will be requeried and set every time a foreground image is selected.
+</p><p><i><b>then...</b></i>
+<br /><b>Scale</b> identifies the rescaling of the images that is done before any annotation is performed. <i>W</i> and <i>H</i> are the scaling factor, 1 and 100% are the same. The <i>w</i> and <i>h</i> are columns and rows of voxels added to the resulting image before annotation.
+<br /><b>Interpolation</b> identifies the means by which the image will be scaled.
+<br /><b>Boarder</b> identifies the location of the source image in the resultant image, i.e., opposite of where to stick the boarder voxels.
+</p><p><i><b>then...</b></i>
+<br /><b>ColorBar</b> identifies if and where a colorbar should be placed.
+<br /><b>Size</b> identifies the size and boarder of the colorbar. <i>W</i> and <i>H</i> identify the axial and longitudinal dimension of the colorbar; # is in voxels and #% is a fraction of the rescaled image. <i>in</i> and <i>out</i> specify the number of voxels added to the attachment proximal and distal side of the colorbar.
+<br /><b>Label</b> is the string to be inserted at the top left of the image.
+<br /><b>Multiplier</b> scales the colorized range before annotating the colorbar.  If the voxel values are in meters and the annotation is in mm, then set to 1000.
+<br /><b>Format</b> is the Java format string used to produce the colorbar annotations.
+<br /><b>Font</b> is the font family to use for the annotations.
+<br /><b>Style</b> is the font style to use for the annotations.
+<br /><b>Color</b> is the foreground color to use for the annotations.
+<br /><b>Background</b> in the overlayed annotation background.  None is a transparent overlay.
+<br /><b>Size</b> is the font size.
+</p>
+<h2><span class="mw-headline" id="Methods">Methods</span></h2>
+<p><code>public static ImagePlus doOverlay(ImagePlus bgimp, Roi bgroi, ImagePlus fgimp, Roi fgroi, double wmin, double wmax, String lut)</code>
+<br />Apply LUT to Roi'ed DisplayRange'd forground image, overlay on Roi'ed background image and crop to bounding box. Roi(s) need to explicitly identified; image(s) will not be queried for Roi(s).
+</p><p><code>public static ImagePlus addLabel(ImagePlus imp, double x, double y, String label, Font font, Color fgc, Color bgc)</code>
+<br />Add label to imp at x,y using font and colors.
+</p><p><code>public static ImagePlus addColorBar(ImagePlus imp, String lut, String cbwhere, String cbsize, double fgll, double fgul, String format, Font font, Color fgc, Color bgc)</code>
+<br />Add a properly adorned colorbar of at edge of the image.
+</p><p><code>public static ImagePlus doScale(ImagePlus imp, String newSize, String interpolationType, String boarderType)</code>
+<br />Scale the image appropriately.
+</p><p><code>public static ImagePlus doOverlayLabelColorBar(ImagePlus bgimp, Roi bgroi, ImagePlus fgimp, Roi fgroi, 
+String label, double fgll, double fgul, double multiplier,
+String lut, String cbwhere, String cbsize, String format, Font font, Color fgc, Color bgc)</code>
+<br />Overlay colorbar and label.
+</p><p><code>public static ImagePlus doOverlayScaleLabelColorBar(ImagePlus bgimp, Roi bgroi, ImagePlus fgimp, Roi fgroi, 
+String label, double fgll, double fgul, double multiplier, String lut, 
+String newSize, String interpolationType, String boarderType,
+String cbwhere, String cbsize, String format, Font font, Color fgc, Color gc)</code>
+<br />Scale then overlay colorbar and label.
+</p>
+<h2><span class="mw-headline" id="Coding_Goodies">Coding Goodies</span></h2>
+<p>How to not do string overlays; there are more direct ways I discovered after becoming happy with the plugin.
+</p>
+<h2><span class="mw-headline" id="Install">Install</span></h2>
+<p>Unzip <a rel="nofollow" class="external text" href="https://imagej.net/_images/4/46/Colorizer_Overlay.zip">Colorizer_Overlay.zip</a> into ImageJ1 plugins (File&gt;Show Folder&gt;Plugins) or plugins/jars directories.  Source code in jar file.
+<br /><b>Plugins&gt;Annotation&gt;Colarizer_Overlay...</b>
+</p>
+<h2><span class="mw-headline" id="Licence">Licence</span></h2>
+<p>GPL distribution licence.
+</p>
+<h2><span class="mw-headline" id="ChangeLog">ChangeLog</span></h2>
+<p>1 April 2020 Initial version.
+</p>
+<h2><span class="mw-headline" id="Known_Bugs">Known Bugs</span></h2>
+<p>Let me know.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064842
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.048 seconds
+Real time usage: 0.050 seconds
+Preprocessor visited node count: 101/1000000
+Preprocessor generated node count: 567/1000000
+Post‐expand include size: 921/2097152 bytes
+Template argument size: 394/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    6.397      1 - Template:Infobox
+100.00%    6.397      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Colorizer_Overlay&amp;oldid=45554">http://imagej.net/index.php?title=Colorizer_Overlay&amp;oldid=45554</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 26 May 2020, at 20:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Colorizer_Overlay&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Image_annotation" title="Category:Image annotation">Image annotation</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Colorizer+Overlay" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Colorizer+Overlay" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Colorizer_Overlay" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Colorizer_Overlay" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Colorizer_Overlay&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Colorizer_Overlay&amp;oldid=45554" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Colorizer_Overlay&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":217});});</script>
+		</body>
+		</html>
+		

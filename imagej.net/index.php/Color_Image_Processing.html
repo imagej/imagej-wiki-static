@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Color Image Processing - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Color_Image_Processing","wgTitle":"Color Image Processing","wgCurRevisionId":29351,"wgRevisionId":29351,"wgArticleId":1950,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Cookbook","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Color_Image_Processing","wgRelevantArticleId":1950,"wgRequestId":"ec31e7e51cd0c2cac9f4f82a","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Images with color come in three different forms: pseudo-color, 24-bit RGB image, or color composite image."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Color Image Processing"/>
+
+	<meta property="og:description" content="Images with color come in three different forms: pseudo-color, 24-bit RGB image, or color composite image."/>
+
+	<meta property="og:url" content="http://imagej.net/Color_Image_Processing"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Color_Image_Processing rootpage-Color_Image_Processing skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Color_Image_Processing.html#bodyContent">Skip to content</a>, 			<a href="Color_Image_Processing.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Color_Image_Processing.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Color_Image_Processing" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Color_Image_Processing&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Color_Image_Processing&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Color_Image_Processing&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Color Image Processing</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Cookbook Topics
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Cookbook" title="Cookbook">Introduction and Installation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Annotating_Images" title="Annotating Images">Annotating Images</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Color Image Processing</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Intensity_Processing" title="Image Intensity Processing">Image Intensity Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Importing_Image_Files" title="Importing Image Files">Importing Image Files</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Particle_Analysis" title="Particle Analysis">Particle Analysis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Saving_and_Exporting" title="Saving and Exporting">Saving and Exporting</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Stack-slice_Manipulations" title="Stack-slice Manipulations">Stack-slice Manipulations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/T-functions" title="T-functions">T-functions</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Z-functions" title="Z-functions">Z-functions</a>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Color_Image_Processing.html#Types_of_color_images"><span class="tocnumber">1</span> <span class="toctext">Types of color images</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Color_Image_Processing.html#Pseudo-color"><span class="tocnumber">1.1</span> <span class="toctext">Pseudo-color</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Color_Image_Processing.html#24-bit_RGB_images"><span class="tocnumber">1.2</span> <span class="toctext">24-bit RGB images</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Color_Image_Processing.html#Color_Composite_Images"><span class="tocnumber">1.3</span> <span class="toctext">Color Composite Images</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Color_Image_Processing.html#Merging_multi-channel_images"><span class="tocnumber">2</span> <span class="toctext">Merging multi-channel images</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="Color_Image_Processing.html#Interleaved_multi-channel_experiments"><span class="tocnumber">2.1</span> <span class="toctext">Interleaved multi-channel experiments</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Color_Image_Processing.html#RGB_color_merging"><span class="tocnumber">2.2</span> <span class="toctext">RGB color merging</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Color_Image_Processing.html#Merging_transmitted_light_and_fluorescence_images"><span class="tocnumber">3</span> <span class="toctext">Merging transmitted light and fluorescence images</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="Color_Image_Processing.html#Merging_images_to_a_color_composite"><span class="tocnumber">3.1</span> <span class="toctext">Merging images to a color composite</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="Color_Image_Processing.html#Splitting_multi-channel_Images"><span class="tocnumber">4</span> <span class="toctext">Splitting multi-channel Images</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Color_Image_Processing.html#Color_Composite"><span class="tocnumber">5</span> <span class="toctext">Color Composite</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="Color_Image_Processing.html#Pseudo-color_2"><span class="tocnumber">6</span> <span class="toctext">Pseudo-color</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Types_of_color_images">Types of color images</span></h2>
+<p>Images with color come in three different forms: pseudo-color, 24-bit RGB image, or color composite image.
+</p>
+<h3><span class="mw-headline" id="Pseudo-color">Pseudo-color</span></h3>
+<p>A pseudo-colored image has a single channel, (i.e. grey) image that has color ascribed to it via a “Look Up Table” or LUT (a.k.a. palette, color table). This is a table of grey values (zero to 256 or 4095 whether 8-bit or 12-bit grey) with accompanying red, green and blue values. Instead of displaying grey, the image displays a pixel with a defined amount of each color. Differences in color in the pseudo-colored image reflect differences in intensity of the object rather than differences in color of the specimen that has been imaged. For pseudo-color functions see later.
+</p>
+<h3><span class="mw-headline" id="24-bit_RGB_images">24-bit RGB images</span></h3>
+<p>The colors in RGB images (24-bit with 8-bits for each of the red, green and blue channels) are used to show multi-channel images. The colors are designed to reflect genuine colors (i.e. the green in an RGB image reflects green color in the specimen). There are several RGB functions in Fiji. Native functions can be found in “Image/Color”. 
+</p>
+<div class="MediaTransformError" style="width: 337px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Color_Composite_Images">Color Composite Images</span></h3>
+<p>A color composite image is similar to the color images one would find in the image processing software Photoshop. In Photoshop these images are made of "layers", and in Fiji they are made of "channels". Both "layers" and "channels" are the same idea. The advantages of using this type of image instead of RGB images include:
+</p>
+<ol><li> Each channel is kept separate from the others and can be turned on or off using the 'Channels Tool' ("Image/Color/Channels Tool"). You have the option of viewing the image as a composite of all or some of the different channels, as individual channels, or as individual greyscale channels. There is a button labeled 'More' at the bottom of the window that allows you to make a composite, convert the image to RGB, merge or split channels, edit the image's LUT, or choose new channel colors from a list.</li>
+<li> Each original channel can be kept as 16-bit.</li>
+<li> More than 3 channels can be merged and kept separate. Each channel can be selected via the scroll bar at the bottom of the window.</li>
+<li> The contrast and brightness of individual channels can be adjusted after merging.</li></ol>
+<p>Color composite images can be converted to 24-bit RGB via the 'Channels Tool' dialog box.
+</p><p>The disadvantage of the Composite image type is that this relatively recent Fiji development is not supported by all existing plugins. Sometime the composite can revert to a multi-slice stack. To convert it back to a composite you can use the menu command "Image/Color/Make Composite".
+</p>
+<h2><span class="mw-headline" id="Merging_multi-channel_images">Merging multi-channel images</span></h2>
+<h3><span class="mw-headline" id="Interleaved_multi-channel_experiments">Interleaved multi-channel experiments</span></h3>
+<p>Multi-channel experiments acquired on some systems are imported with the different channels interleaved, i.e. Slice 1 is Timepoint1-channel1 and Slice 2 is Timepoint1-channel2. The stack needs to be “De-interleaved” before it can be RGB-merged. This can be done with “<i>Image/Stacks/Tools/Deinterleave</i>” and entering the number of channels in the dialog (typically “2”). You can also choose to check a box for whether or not the source stacks should be kept. The two stacks can then be merged via: “<i>Image/Color/RGB merge</i>”.
+</p>
+<div class="MediaTransformError" style="width: 342px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="RGB_color_merging">RGB color merging</span></h3>
+<p>The native Fiji function "<i>Image/Color/Merge Channels...</i>" can be used to merge red, green and/or blue channel images or Image Stacks
+</p><p>This reduces 16-bit images to 8-bits (based on the current Brightness and Contrast values) then generates a 24-bit RGB image.
+</p><p>An alternative to the normal Red-Green merge is to merge the images based on Cyan and Magenta, or Cyan-Yellow or any other color combination. 
+</p><p>This can aid visualization of colocalization due to our poor perception of red and green colors. The Colour_merge plugin gives the user the option of using the ‘difference’ arithmetic processing on the image stacks you select. This is not strictly a merge (when cyan and magenta merge they produce white, not yellow) but facilitates visualization of the separate channels (See Demandolx and Davoust, J. Microscopy, 1997 v185. p21). You can perform a true merge if you turn off the “Difference” option.
+</p><p>Run the plugin and select the two images to be merged. Select the desired colors from the drop-down options. &lt;Current&gt; uses the LUT that the image currently has (this is often the desired LUT). The “Difference” option performs a “difference” arithmetic operation rather than an “addition”. If the “Pre-sub 2 from 1” option is checked the second image is subtracted from the first prior to merging.
+</p>
+<h2><span class="mw-headline" id="Merging_transmitted_light_and_fluorescence_images">Merging transmitted light and fluorescence images</span></h2>
+<p>Fluorescence and transmitted light brightfield images can be merged with the “<i>Image/Color/Merge Channels...</i>”. This instruction lets you than choose the C4 (gray) option. This can prevent a 'washed out' look to the fluorescence.
+</p><p>This also reduces 16-bit images to 8-bits (based on the current Brightness and Contrast values) then generates a 24-bit RGB image.
+</p>
+<h3><span class="mw-headline" id="Merging_images_to_a_color_composite">Merging images to a color composite</span></h3>
+<p>The menu command "<i>Image/Color/Merge Channels...</i>" opens a dialog to merge grey, red, green, blue, cyan, magenta, and yellow channels to a new composite image.
+</p>
+<div class="MediaTransformError" style="width: 303px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Splitting_multi-channel_Images">Splitting multi-channel Images</span></h2>
+<p>An RGB image or stack can be split to the respective red, green and blue image components using the menu command "<i>Image/Color/Split Channels</i>".
+</p><p>Sometime a merged RGB image may need to be displayed along with the separate channels in a final figure. This can be done with the "RGB to Montage" plugin.
+</p><p>It works with single slice RGB images. A new RGB stack is created, channel 1 being the red channel; 2 the green and 3 the blue. The fourth slice is the merged slice. If a channel is empty (e.g. a red-green merged image will have no blue) then the slice is omitted. Then the plugin prompts you for the layout of the montage. You have the option to alter the width of the white border between the image panels. If the 'Pseudo-color 'option is off, each channel will be greyscale. If scale bar size is set to zero, no scale bar will be added.
+</p>
+<div class="MediaTransformError" style="width: 215px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Color_Composite">Color Composite</span></h2>
+<p>The composite can be reverted to a greyscale stack via the menu command "<i>Image/Hyperstacks/Hyperstack to Stack</i>". The channels can be subsequently split to individual images via the menu command "<i>Image/Stacks/Stack to Images</i>".
+</p>
+<h2><span class="mw-headline" id="Pseudo-color_2">Pseudo-color</span></h2>
+<p>Judicious use of LUTs can be very useful in highlighting the desired features of an image. The human eye can perceive relatively few shades in one image. Pseudo-coloring images can make data more visible
+</p><p>Traditional “Green” LUT
+</p>
+<div class="MediaTransformError" style="width: 224px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>	
+<p>Enhanced “Green Hot” LUT
+</p>
+<div class="MediaTransformError" style="width: 224px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Microtubules under nucleus now more apparent
+</p><p>Have a play and see which LUT helps illustrates the features in your image.
+</p>
+<div class="MediaTransformError" style="width: 468px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Montage compiled from a stack generated using the menu commands “<i>Image/Color/Display LUTs</i>".
+</p><p>Different LUTs are available via the menu commands “<i>Image/Lookup Tables</i>”. 
+</p><p>When using a non-standard LUT it may be useful to add a greyscale ramp so the user can judge which color represents which grey-scale value. A ramp can be added with the native function "<i>Analyze/Tools/Calibration Bar...</i>". If there is no space for the ramp, try enlarging the image canvas with the menu command "<i>Image/Adjust/Canvas Size...</i>".
+</p>
+<div class="MediaTransformError" style="width: 255px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Analyze/Tools/Calibration Bar...
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064840
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.040 seconds
+Real time usage: 0.044 seconds
+Preprocessor visited node count: 123/1000000
+Preprocessor generated node count: 213/1000000
+Post‐expand include size: 1447/2097152 bytes
+Template argument size: 658/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.553      1 - Template:CookbookMenu
+100.00%    5.553      1 - -total
+ 78.86%    4.379      1 - Template:Menu
+ 44.82%    2.489     11 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Color_Image_Processing&amp;oldid=29351">http://imagej.net/index.php?title=Color_Image_Processing&amp;oldid=29351</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:15.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Color_Image_Processing&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Cookbook" title="Category:Cookbook">Cookbook</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Color+Image+Processing" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Color+Image+Processing" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Color_Image_Processing" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Color_Image_Processing" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Color_Image_Processing&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Color_Image_Processing&amp;oldid=29351" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Color_Image_Processing&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":255});});</script>
+		</body>
+		</html>
+		

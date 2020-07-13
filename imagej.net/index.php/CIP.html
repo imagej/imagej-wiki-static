@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>CIP - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"CIP","wgTitle":"CIP","wgCurRevisionId":38056,"wgRevisionId":38056,"wgArticleId":10235,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"CIP","wgRelevantArticleId":10235,"wgRequestId":"e2343e966ccb81f4cd25043b","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Classic Image Processing (CIP) is an image procesing toolbox which provides functions for scripting in ImageJ. Its principal goal is to facilitate image analysis workflow construction as well as to provide an accessible entry point to learn the programming of such workflow. CIP also has a specific focus on user experience which should appear clearly in the libraries main features:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="CIP"/>
+
+	<meta property="og:description" content="Classic Image Processing (CIP) is an image procesing toolbox which provides functions for scripting in ImageJ. Its principal goal is to facilitate image analysis workflow construction as well as to provide an accessible entry point to learn the programming of such workflow. CIP also has a specific focus on user experience which should appear clearly in the libraries main features:"/>
+
+	<meta property="og:url" content="http://imagej.net/CIP"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-CIP rootpage-CIP skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="CIP.html#bodyContent">Skip to content</a>, 			<a href="CIP.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="CIP.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/CIP" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:CIP&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=CIP&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=CIP&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>CIP</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="CIP.html#CIP_:_Classic_Image_Processing"><span class="tocnumber">1</span> <span class="toctext">CIP&#160;: Classic Image Processing</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="CIP.html#Getting_started"><span class="tocnumber">2</span> <span class="toctext">Getting started</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="CIP.html#Installation"><span class="tocnumber">2.1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="CIP.html#Documentation_organisation"><span class="tocnumber">2.2</span> <span class="toctext">Documentation organisation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="CIP.html#Tools_categories"><span class="tocnumber">3</span> <span class="toctext">Tools categories</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="CIP.html#Script_example"><span class="tocnumber">4</span> <span class="toctext">Script example</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="CIP.html#Development_plan"><span class="tocnumber">5</span> <span class="toctext">Development plan</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="CIP.html#Cite"><span class="tocnumber">6</span> <span class="toctext">Cite</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="CIP.html#History"><span class="tocnumber">7</span> <span class="toctext">History</span></a></li>
+</ul>
+</div>
+
+<table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>CIP (ImageJ/Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Benoit" title="User:Benoit">Benoit Lombardot</a>
+</td></tr>
+<tr>
+<th> Update site
+</th>
+<td> <a href="http://imagej.net/Following_an_update_site" title="Following an update site">CIP</a>
+</td></tr>
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Benoit" title="User:Benoit">Benoit Lombardot</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> CIP update site
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external free" href="https://github.com/benoalo/CIP">https://github.com/benoalo/CIP</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> January 2018
+</td></tr>
+
+
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:CIP_basic_concept.PNG" class="image" title="CIP:"><img alt="CIP:" src="../_images/b/bd/CIP_basic_concept.PNG" width="600" height="248" /></a></div></div>
+<div align="center"><b>Figure 1</b>: CIP is a simple toolbox to learn and prototype image analysis workflow in ImageJ. It hides ImageJ complexity while making it easy to combine ImageJ packages for more specific tasks. </div>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="CIP_:_Classic_Image_Processing">CIP&#160;: Classic Image Processing</span></h1>
+<p>Classic Image Processing (CIP) is an image procesing toolbox which provides functions for scripting in ImageJ. Its principal goal is to facilitate image analysis workflow construction as well as to provide an accessible entry point to learn the programming of such workflow. CIP also has a specific focus on user experience which should appear clearly in the libraries main features:
+</p>
+<ul><li> <b>Integration</b> to ImageJ ecosystem: CIP can be easily used in combination other ImageJ1 and ImageJ2 plugins. For instance, it can process seamlessly all usual imageJ image type (ImagePlus, Dataset, ImgPlus, Img) wihtout requiring any conversion.</li></ul>
+<ul><li> <b>Discoverability</b> of its functionnalities: CIP provides a complete user documentation that explain function usage, details their parameters and provides illustration. In order to allow an intuitive learning, function parameters can be named or made optionnal while similar functions will have similar signatures. For the same reason 2D and 3D images can be processed with the same functions. </li></ul>
+<ul><li> <b>Simplicity</b> of use: Learning programming is demanding and CIP goal is to hide unecessary difficulty when one starts scripting. For instance CIP requires no class and package import. It Also uses only 3 main data types, Image, Region Table, to simplify data representation. Finally, CIP functions never modifies functions inputs so you always know what is happening to your data.</li></ul>
+<ul><li> An <b>essential</b> set of tools: CIP gathers the 10% of tools that will get the job done, allowing one to go straight to the tool he needs. The function selected are also well adopted by the community to facilitate exchange and understanding. Finally, CIP provides basic visualisation and measure tools that are needed in every workflow.</li></ul>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Getting_started">Getting started</span></h1>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>If you want to use CIP in ImageJ script editor, simply add the CIP update site to your imageJ installation (<a rel="nofollow" class="external text" href="https://imagej.net/Following_an_update_site">instruction to follow an update site</a>) restart imagej, open the script editor and you are good to go. For inspiration, one can look at one of the <a href="http://imagej.net/CIP#Script_example" title="CIP">example scripts</a>.
+</p><p>If one would like to contribute or simply toy with the source code of the library, its source code and the instruction for the project set up in an IDE can be found on the <a rel="nofollow" class="external text" href="https://github.com/benoalo/CIP">project repository</a>.
+</p>
+<h2><span class="mw-headline" id="Documentation_organisation">Documentation organisation</span></h2>
+<p>To build a script with CIP, follow one of the examples below or try one of the <a rel="nofollow" class="external text" href="https://github.com/benoalo/CIP/tree/master/scripts%7Cproject">repository</a> examples.
+</p><p>To get information on a function follow the link in the function table in the <a href="http://imagej.net/CIP#Tools_categories" title="CIP">categories</a> section or directly go to one of the category pages:
+<a href="http://imagej.net/CIP_Format" title="CIP Format">Format</a>, 
+<a href="http://imagej.net/CIP_Filter" title="CIP Filter">Filter</a>, 
+<a href="http://imagej.net/CIP_Math" title="CIP Math">Math</a>, 
+<a href="http://imagej.net/CIP_Segmentation" title="CIP Segmentation">Segment</a>, 
+<a href="http://imagej.net/CIP_Utilities" title="CIP Utilities">Assess</a>.
+</p><p>For information on the parameters, their type, whether they are optionnal or required and more one can consult the <a href="http://imagej.net/CIP_Parameters" title="CIP Parameters"> Parameters</a> page.
+</p><p><br />
+</p>
+<h1><span class="mw-headline" id="Tools_categories">Tools categories</span></h1>
+<p>Image analysis workflows require the user to perform stereotypic steps: enhance signal, define and characterize region, visualize and assess results. This recurring process allows to create one function per task and to organize these functions in categories with similar roles, input and output: Format, Filter, Segment, Math, Assess.
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:CIP_generic_pipeline.PNG" class="image"><img alt="CIP generic pipeline.PNG" src="../_images/2/25/CIP_generic_pipeline.PNG" width="700" height="135" /></a></div></div>
+<div align="center"><b>Figure 2</b>: Many analysis workflow are composed of generic tasks. </div>
+<ul><li> <b><a href="http://imagej.net/CIP_Format" title="CIP Format">Format</a></b>: These functions are used to managed image data, combine them or reduce their dimensionnality. They take one or multiple image as input and return one image as output. These function will generally provide an ouput which size and/or dimensionality can be different from the input</li></ul>
+<ul><li> <b><a href="http://imagej.net/CIP_Filter" title="CIP Filter">Filter</a></b>: filters act on image graylevel. They creates an output image the same size as the input. Filters are used to remove noise, filter out unwanted background or enhance feature of interest such as spots and lines.</li></ul>
+<ul><li> <b><a href="http://imagej.net/CIP_Math" title="CIP Math">Math</a> operations and functions</b>:  These category gathers usual mathematical operations such as addition, subtraction or trigonometric functions for instance. They can be used with scalars, images or image and scalar in combination. When use with images the operation are applied pixel wise.</li></ul>
+<ul><li> <b><a href="http://imagej.net/CIP_Segmentation" title="CIP Segmentation">Segmentation</a></b>: Segmentation functions allow to define regions in an image. Applied to an input image they create so called label image that defines the pixel where the object lays. Each region is attributed a particular label, an integer value, that can be used to retrieve the object later. Watershed, thresholding spot and line detection can be found here. </li></ul>
+<ul><li> <b><a href="http://imagej.net/CIP_Utilities" title="CIP Utilities">Assess</a></b>: in that category are tools to facilitate data visualisation and measures that will be needed in every pipeline once the image processing is done.</li></ul>
+<p>Link to function user documentation are provided in the table below.
+</p>
+<table class="wikitable">
+
+<tr>
+<th> Filter
+</th>
+<th> Segmentation
+</th>
+<th> Format
+</th>
+<th> Math
+</th>
+<th> Assess
+</th>
+<th> Experimental
+</th></tr>
+<tr>
+<td> <a href="http://imagej.net/CIP_Filter#gauss" title="CIP Filter">gauss</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Segmentation#threshold" title="CIP Segmentation">threshold</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Format#create" title="CIP Format">create</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Math#binary_operator" title="CIP Math">add</a>, <a href="http://imagej.net/CIP_Math#binary_operator" title="CIP Math">sub</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#measure" title="CIP Utilities">measure</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Experimental#track" title="CIP Experimental">track</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/CIP_Filter#erosion" title="CIP Filter">erosion</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Segmentation#maxima" title="CIP Segmentation">maxima</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Format#duplicate" title="CIP Format">duplicate</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Math#binary_operator" title="CIP Math">mul</a>, <a href="http://imagej.net/CIP_Math#binary_operator" title="CIP Math">div</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#show" title="CIP Utilities">show</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/CIP_Filter#dilation" title="CIP Filter">dilation</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Segmentation#watershed" title="CIP Segmentation">watershed</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Format#slice" title="CIP Format">slice</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">cos</a>, <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">sin</a>, <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">tan</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#region" title="CIP Utilities">region</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/CIP_Filter#opening" title="CIP Filter">opening</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Segmentation#label" title="CIP Segmentation">label</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Format#project" title="CIP Format">project</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">acos</a>, <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">asin</a>, <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">atan</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#toIJ1" title="CIP Utilities">toIJ1</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/CIP_Filter#closing" title="CIP Filter">closing</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td> <a href="http://imagej.net/CIP_Math#binary_operator" title="CIP Math">min</a>, <a href="http://imagej.net/CIP_Math#binary_operator" title="CIP Math">max</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#toIJ2" title="CIP Utilities">toIJ2</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/CIP_Filter#tophat" title="CIP Filter">tophat</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td> <a href="http://imagej.net/CIP_Math#binary_operator" title="CIP Math">pow</a>, <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">sqrt</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#spacing" title="CIP Utilities">spacing</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/CIP_Filter#distance" title="CIP Filter">distance</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td> <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">floor</a>, <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">ceil</a>, <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">round</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#unit" title="CIP Utilities">unit</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/CIP_Filter#median" title="CIP Filter">median</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td> <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">log</a>, <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">exp</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#axes" title="CIP Utilities">axes</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/CIP_Filter#invert" title="CIP Filter">invert</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td> <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">sign</a>, <a href="http://imagej.net/CIP_Math#unary_operator" title="CIP Math">abs</a>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#list" title="CIP Utilities">list</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td> <a href="http://imagej.net/CIP_Utilities#help" title="CIP Utilities">help</a>
+</td>
+<td>
+</td></tr></table>
+<h1><span class="mw-headline" id="Script_example">Script example</span></h1>
+<p>The following script  shows how to segment 2d object in an image and visualize them. The workflow is illustrated in the <b>Figure 3</b>.
+</p><p><b><a rel="nofollow" class="external text" href="https://github.com/benoalo/CIP/blob/master/wiki_examples/2D_nuclei.py">wiki_examples/2D_nuclei.py</a></b>
+</p>
+<pre class="brush:python">#@ImagePlus img
+#@CIP cip
+
+# CIP example: a simple 2d cell measure. can be run with the image 
+# 	2D_nuclei.tif available on the CIP repository
+# Author: Benoit Lombardot
+
+# crop the image
+origin = cip.list(300,200)
+size = cip.list(150,150)
+img_dup = cip.duplicate(img , origin, size)
+
+# filter and segment the nuclei
+img_filt = cip.opening( img_dup , 5 )
+img_seg  = cip.watershed( img_filt , 'threshold', 500 , 'hmin', 300)
+
+# measure nuclei size
+regions = cip.region(img_seg, 'nuclei')
+measures  = cip.measure( regions , 'size')
+
+# visualize intermediary steps
+cip.show(img_dup)
+cip.show(img_filt)
+cip.show(img_seg, 'glasbey')
+
+# visualize results 
+cip.show(img_dup)
+cip.show( regions, 'color', 'glasbey' )
+ # show the region on current image
+cip.show(measures)
+
+</pre>
+<p><br />
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:CIP_example_2D.PNG" class="image" title="CIP:"><img alt="CIP:" src="../_images/d/da/CIP_example_2D.PNG" width="800" height="178" /></a></div></div>
+<div align="center"><b>Figure 3</b>: Example a workflow performing the cropping, filtering segmentation and visualisation of a 2D image. Raw data:  Platynereis embryo, acquisition: Mette Handberg-Thorsager from Tomancak lab, MPI-CBG, Dresden in collaboration with Keller lab, HHMI - Janelia Research Campus</div>
+<p><br />
+The following script shows a 3d nuclei segmentation and the measure and displau of nuclei size. The workflow is illustrated in the <b>Figure 4</b>.
+</p><p><b><a rel="nofollow" class="external text" href="https://github.com/benoalo/CIP/blob/master/wiki_examples/3D_nuclei_segmentation.py">wiki_examples/3D_nuclei_segmentation.py</a></b>
+</p>
+<pre class="brush:python">#@ImagePlus img
+#@Float blurRadius
+#@CIP cip
+
+# CIP example: a simple 3d cell measure. can be run with the image 
+# 	3D_nuc_mem_full_DS.tif available on the CIP repository
+# Author: Benoit Lombardot
+
+# duplicate the nuclei channel
+img_nuc = cip.slice( img , 'dimensions',2 , 'position',0 )
+
+# blurring using the image pixel size
+spacing = cip.spacing(img_nuc)
+radii = [blurRadius/r for r in spacing]
+img_blur = cip.gauss(img_nuc, cip.list(radii) )
+
+# segmentation of the nuclei
+threshold = cip.threshold(img_blur, 'moments', 'value')
+img_seg = cip.label(img_blur, threshold )
+
+# measure of nuclei size in image unit
+regions = cip.region(img_seg, 'nuclei3D_')
+measures  = cip.measure( regions , 'size')
+
+# visualize intermediary step and measures
+cip.show( img_nuc )
+cip.show( img_blur )
+cip.show( img_seg, 'glasbey_inverted' )
+cip.show( measures )
+
+</pre>
+<p><br />
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:CIP_example_3D.PNG" class="image" title="CIP:"><img alt="CIP:" src="../_images/5/5c/CIP_example_3D.PNG" width="800" height="177" /></a></div></div>
+<div align="center"><b>Figure 4</b>: Example a workflow performing the cropping, filtering segmentation and visualisation of a 2D image. Raw data:  Platynereis embryo, acquisition: Mette Handberg-Thorsager from Tomancak lab, MPI-CBG, Dresden in collaboration with Keller lab, HHMI - Janelia Research Campus</div>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Development_plan">Development plan</span></h1>
+<p>This section provide the main development directions as well as a list of functions that we intend to implement per category
+</p>
+<table class="wikitable">
+
+<tr>
+<th> Filter
+</th>
+<th> Segmentation
+</th>
+<th> Format
+</th>
+<th> Math
+</th>
+<th> Assess
+</th></tr>
+<tr>
+<td> gradient
+</td>
+<td> skeleton
+</td>
+<td> concatenate
+</td>
+<td> logic operators
+</td>
+<td>
+</td></tr>
+<tr>
+<td> laplacian
+</td>
+<td> edge
+</td>
+<td>
+</td>
+<td> comparison operators
+</td>
+<td>
+</td></tr>
+<tr>
+<td> hessian
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> fillholes
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td></tr></table>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Cite">Cite</span></h1>
+<h1><span class="mw-headline" id="History">History</span></h1>
+<ul><li> 2017-12-20&#160;: version 0.1.0 , first public version of CIP is made available on CIP update site. The package is still under development</li></ul>
+<ul><li> 2018-01-29&#160;: version 0.1.1 , add a help function</li></ul>
+<ul><li> 2018-05-03&#160;: version 0.1.2 , minimal backcompatible updates of a few functions signatures for consistency. cip.show( handle*, region*, ...) becomes cip.show(region*, handle, ...), if no handle is provided region are shown on the current image. Update parameter name for create, slice and show function.</li></ul>
+<ul><li> 2018-05-28&#160;: version 0.2.0 , tracking, watershed and maxima update
+<ul><li> add an experimental cip.track function allowing to track regions in a list of labelmap. it uses trackmate LapTracker below the hood thus allowing splitting, merging and discontinous tracks. resulting track can be visualized with cip.show both in trackscheme or hyperstack viewer.</li>
+<li> cip.watershed(img, threshold, ...) labeling is more consistant, each connected component (region) has a distinct label and region with height inferior to hMin are no displayed. This feature was added with ImgAlgo-0.1.1.jar</li>
+<li> the multiscale maxima detection was debugged and now give consistant results. It works in 2d/3d and takes into account data anisotropy. As an experiment it is possible to return multiscale maxima detection as a list of measures. multiscale maxima debugging also occured in ImgAlgo-0.1.2.jar update.</li>
+<li> corresponding documentation is on the work</li></ul></li></ul>
+<ul><li> 2018-06-11&#160;: version 0.2.1 correct a regression that prevented the visualisation of 3d regions</li></ul>
+<ul><li> 2018-06-19&#160;: version 0.2.2 bug corrections
+<ul><li> correct a bug in median measure</li>
+<li> cip.project(...): change outputType parameter name to output</li>
+<li> cip.project(...): correct a bug preventing to use output='both'</li></ul></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064704
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.080 seconds
+Real time usage: 0.489 seconds
+Preprocessor visited node count: 230/1000000
+Preprocessor generated node count: 1181/1000000
+Post‐expand include size: 1807/2097152 bytes
+Template argument size: 746/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  426.964      1 - -total
+ 98.49%  420.513      2 - Template:GitHubEmbed
+  1.42%    6.075      1 - Template:Infobox
+  0.65%    2.791      2 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=CIP&amp;oldid=38056">http://imagej.net/index.php?title=CIP&amp;oldid=38056</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 19 June 2018, at 12:11.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=CIP&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=CIP" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=CIP" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/CIP" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/CIP" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=CIP&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=CIP&amp;oldid=38056" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=CIP&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":695});});</script>
+		</body>
+		</html>
+		

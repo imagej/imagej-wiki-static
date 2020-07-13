@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Anomalous Diffusion Filters - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Anomalous_Diffusion_Filters","wgTitle":"Anomalous Diffusion Filters","wgCurRevisionId":18177,"wgRevisionId":18177,"wgArticleId":2718,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Anomalous_Diffusion_Filters","wgRelevantArticleId":2718,"wgRequestId":"86982132abc347f0b17f6efc","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="A PlugInFilter for the two different methods for image filtering: Anisotropic Anomalous Diffusion and Isotropic Anomalous Diffusion. Both methods description can be found in the Physics in Medicine and Biology article weblink and have a discrete solution of generalized diffusion heat equation (also know as a porous media equation)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Anomalous Diffusion Filters"/>
+
+	<meta property="og:description" content="A PlugInFilter for the two different methods for image filtering: Anisotropic Anomalous Diffusion and Isotropic Anomalous Diffusion. Both methods description can be found in the Physics in Medicine and Biology article weblink and have a discrete solution of generalized diffusion heat equation (also know as a porous media equation)."/>
+
+	<meta property="og:url" content="http://imagej.net/Anomalous_Diffusion_Filters"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Anomalous_Diffusion_Filters rootpage-Anomalous_Diffusion_Filters skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="AnomalousDiffusionFilters.html#bodyContent">Skip to content</a>, 			<a href="AnomalousDiffusionFilters.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="AnomalousDiffusionFilters.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="AnomalousDiffusionFilters.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Anomalous_Diffusion_Filters&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Anomalous_Diffusion_Filters&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Anomalous_Diffusion_Filters&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Anomalous Diffusion Filters</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Anomalous Diffusion Filters PlugIn (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Acsenrafilho" title="User:Acsenrafilho">Antonio Carlos da S. Senra Filho</a> (<a rel="nofollow" class="external autonumber" href="mailto:acsenrafilho@gmail.com">[1]</a>)
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Acsenrafilho" title="User:Acsenrafilho">Antonio Carlos da S. Senra Filho</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/CSIM-Toolkits/ImageJ/tree/master/plugins/AnomalousDiffusionFilters/">GitHub CSIM-ImageJ AnomalousDiffusionFilters repository</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> February 03<sup>rd</sup>, 2015
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> February 03<sup>rd</sup>, 2015
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> experimental, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a>, <a href="http://imagej.net/Category:Filtering" title="Category:Filtering">Filtering</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="AnomalousDiffusionFilters.html#Anomalous_Diffusion_Filters"><span class="tocnumber">1</span> <span class="toctext">Anomalous Diffusion Filters</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="AnomalousDiffusionFilters.html#Anomalous_Diffusion_Analytic_Description"><span class="tocnumber">2</span> <span class="toctext">Anomalous Diffusion Analytic Description</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="AnomalousDiffusionFilters.html#Generalized_diffusion_coefficient_function"><span class="tocnumber">2.1</span> <span class="toctext">Generalized diffusion coefficient function</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="AnomalousDiffusionFilters.html#Filter.27s_Description"><span class="tocnumber">2.2</span> <span class="toctext">Filter's Description</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="AnomalousDiffusionFilters.html#Filters_parameters"><span class="tocnumber">3</span> <span class="toctext">Filters parameters</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="AnomalousDiffusionFilters.html#Indicated_Usage"><span class="tocnumber">4</span> <span class="toctext">Indicated Usage</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Anomalous_Diffusion_Filters">Anomalous Diffusion Filters</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:502px;"><a href="http://imagej.net/File:Filters-examples.png" class="image"><img alt="" src="../_images/b/b7/Filters-examples.png" width="500" height="204" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Filters-examples.png" class="internal" title="Enlarge"></a></div>Filtering examples with the T1w MRI stack available in Fiji examples images.</div></div></div>
+<p>A PlugInFilter for the two different methods for image filtering: Anisotropic Anomalous Diffusion and Isotropic Anomalous Diffusion. Both methods description can be found in the Physics in Medicine and Biology article <a rel="nofollow" class="external text" href="http://dx.doi.org/10.1088/0031-9155/60/6/2355">weblink</a> and have a discrete solution of generalized diffusion heat equation (also know as a porous media equation). 
+</p><p>In summary, the anomalous diffusion filters are generalized methods that are proposed using the new anomalous distribution probability function (PDF) paradigm, also called <i>q-Gaussian</i> PDF. These new filters are capable to build both classic and anomalous diffusion process, which is related to the anomalous parameter, called q value. When q=1 it returns the classic diffusion methods, both anisotropic diffusion (Perona and Malik method) and Gaussian filter (usual Gaussian filter widely knows in several filtering applications). On the contrary, when q ≠ 1 the anomalous diffusion filters uses the q-Gaussian probability distribution to attenuate the local noise present in each neighborhood around each pixel of the image.
+</p><p><b>Update notes:</b>
+</p>
+<ul><li><i>Feb-01-2015</i>: The methods are capable to process image stacks, however, all the filtering method still is performed in bidimensional images.</li></ul>
+<h2><span class="mw-headline" id="Anomalous_Diffusion_Analytic_Description">Anomalous Diffusion Analytic Description</span></h2>
+<p>Anomalous diffusion processes (ADP) are mathematically denoted by a power law in the Fokker-Planck equation, leading to the generalized form. There are several generalizations of the Fokker-Plank equation, which should give many different partial differential equations (PDEs). Here we adopt only the so called porous media form, allowing the super-diffusive and the sub-diffusive processes. In porous media, channels are created promoting or blocking the flow of the density function. Equation (\ref{Eq:FokkerPlanckGeneralized}) shows the generalized heat flow equation that is the main PDE equation for the anomalous diffusion paradigm.    
+</p><p><img class="mwe-math-fallback-image-inline tex" alt="&#10;\frac{\partial\rho}{\partial t} =   \overrightarrow{\nabla}[D_q .\overrightarrow{\nabla} \rho]^{2-q}&#10;" src="../_images/math/b/0/3/b034bc19a33777aa63ddb7ee626ad237.png" />
+</p><p>Where <img class="mwe-math-fallback-image-inline tex" alt="\rho" src="../_images/math/f/7/f/f7f177957cf064a93e9811df8fe65ed1.png" /> represents diffusing element concentration, <img class="mwe-math-fallback-image-inline tex" alt="D_q" src="../_images/math/9/1/0/910f6bf29d1f7b204d2779874c281379.png" /> denotes the generalized diffusion coefficient and $q$ is the power law parameter conveniently written. When <img class="mwe-math-fallback-image-inline tex" alt="q=1" src="../_images/math/5/8/3/583501c61594f4cde283a1a5f0d314d7.png" />, the porous media equation recovers the classical diffusion, for <img class="mwe-math-fallback-image-inline tex" alt="q&lt;1" src="../_images/math/0/8/5/085e2dcea21c77cf0eef6e999639ee33.png" /> it represents sub-diffusive process, and when <img class="mwe-math-fallback-image-inline tex" alt="q&gt;1" src="../_images/math/e/5/e/e5e29880829a163ca4da888c6f8a3ad9.png" /> it means super-diffusive phenomena are present. The <img class="mwe-math-fallback-image-inline tex" alt="D_q" src="../_images/math/9/1/0/910f6bf29d1f7b204d2779874c281379.png" /> is the diffusion coefficient function that regulates diffusibility. We can distinguish <img class="mwe-math-fallback-image-inline tex" alt="D_q" src="../_images/math/9/1/0/910f6bf29d1f7b204d2779874c281379.png" /> function in isotropic: when the diffusion coefficient is the same for all direction, i.e. <img class="mwe-math-fallback-image-inline tex" alt="D_q" src="../_images/math/9/1/0/910f6bf29d1f7b204d2779874c281379.png" /> is direction invariant; and anisotropic behavior: when diffusion is driven to specific directions. The definition of isotropy or anisotropy is directly related to <img class="mwe-math-fallback-image-inline tex" alt="D_{q}" src="../_images/math/9/2/b/92bb348fa75c7be9ed7993cf5f9b6711.png" /> function, which is the spatial function that regulates the filter blurring effect at each point.
+</p>
+<h3><span class="mw-headline" id="Generalized_diffusion_coefficient_function">Generalized diffusion coefficient function</span></h3>
+<p>The generalized diffusion coefficient value, <img class="mwe-math-fallback-image-inline tex" alt="D_q" src="../_images/math/9/1/0/910f6bf29d1f7b204d2779874c281379.png" />, must be consistent with ADP so that it can be used in IAD and AAD filters. The analytical form for <img class="mwe-math-fallback-image-inline tex" alt="D_q" src="../_images/math/9/1/0/910f6bf29d1f7b204d2779874c281379.png" /> must be consistent with the ADP time evolution of variance, which follows <img class="mwe-math-fallback-image-inline tex" alt="\sigma^{2} = 2.D_q.t" src="../_images/math/7/3/d/73dfa08c4b6b0b1d7034491815666e78.png" />, i.e. linear relationship for classical diffusion, and <img class="mwe-math-fallback-image-inline tex" alt="\sigma^{2} \propto t^{2/(3-q)}" src="../_images/math/3/4/a/34a7fe4685414771321436647f1f178e.png" />, i.e nonlinear relationship for ADP.
+</p>
+<h3><span class="mw-headline" id="Filter.27s_Description">Filter's Description</span></h3>
+<p>Proposed IAD and AAD filters are based on iterative numerical algorithms for ADP. The method used to solve partial differential anomalous equations uses finite differences, of first and second order, when time and space becomes discrete, i.e. digital images. Both isotropic and anisotropic approaches were implemented through numerical differential operators using explicit numeric formulation, similar to classic anisotropic diffusion filter (purposed by Perona and Malik).
+</p><p>Numerical approaches were implemented using differential operators in one dimension, and then rotated in eight angle directions with respect to the central reference pixel. We can express this rotation in follow equation. 
+</p><p><img class="mwe-math-fallback-image-inline tex" alt="&#10; I_{\phi,t+1} = I_{\phi,t} + \lambda.\overrightarrow{\nabla} \Big[ D_q. \overrightarrow{\nabla} I_{\phi,t}^{2 - q} \Big]&#10;" src="../_images/math/3/9/b/39bb12e01286c7716973c5444713c540.png" />
+</p><p>Where <img class="mwe-math-fallback-image-inline tex" alt="I_{\phi,t}" src="../_images/math/f/0/5/f05b06665e47474a68d9a88ae088d329.png" /> and <img class="mwe-math-fallback-image-inline tex" alt="I_{\phi,t+1}" src="../_images/math/8/4/0/84054734fedcf505099c1f716f383561.png" /> are the evaluated images in <img class="mwe-math-fallback-image-inline tex" alt="t_i" src="../_images/math/a/5/7/a578f93d86a9111f5900e4681f14ce16.png" /> iterations, and <img class="mwe-math-fallback-image-inline tex" alt="I_{\phi,0}" src="../_images/math/d/0/9/d09044b91e0d62022295d545c8693cf2.png" /> is the original image. <img class="mwe-math-fallback-image-inline tex" alt="D_{q}" src="../_images/math/9/2/b/92bb348fa75c7be9ed7993cf5f9b6711.png" /> is the diffusion coefficient regulated by a power law with <img class="mwe-math-fallback-image-inline tex" alt="\textit{q}" src="../_images/math/a/b/8/ab8b85a487cf8dc049a6203ce4140044.png" />, and <img class="mwe-math-fallback-image-inline tex" alt="\phi" src="../_images/math/7/f/2/7f20aa0b3691b496aec21cf356f63e04.png" /> are the possible orientations with respect to the central pixel. The equation above assumes the time step is a constant (<img class="mwe-math-fallback-image-inline tex" alt="\lambda \propto \Delta t/\Delta x^2" src="../_images/math/1/7/d/17dd215f8a1a3442a3e5c99150560afa.png" />) and it depends on the numerical discretization. A careful time step determination plays an important role for numerical stability. The time step determination have a direct influence on the numeric discretization of the diffusion equation and here it follows the same assumptions made for the classical anisotropic diffusion algorithm. More details about the time step parameters and numerical stability can be found in <a href="http://imagej.net/User:Acsenrafilho" title="User:Acsenrafilho">references section</a> of the CSIM main wiki site.
+</p>
+<h2><span class="mw-headline" id="Filters_parameters">Filters parameters</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:278px;"><div class="MediaTransformError" style="width: 276px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Filters-parameters.png" class="internal" title="Enlarge"></a></div>Filter's parameters for both isotropic and anisotropic approaches.</div></div></div>
+<p>Basically, the common parameters that are used for both anomalous filtering methods are the number of iterations and the anomalous parameter (q value). The number of iterations is directly related to the time parameter and it must be a positive and integer number, because of the forward and discrete filter implementation. The anomalous parameter, or q value, is the general parameters to define what anomalous probability distribution that will be used for all filtering process in the image. 
+</p><p>Now, the only different parameters that have to be set for each filter method are: Condutance and Generalized diffusion coefficient. In summary, both parameters have an intrinsic relationship with the diffusion intensity. 
+</p><p>In the case of isotropic filtering, the diffusion intensity is set as a fixed parameter for all filtering process, given by the Generalized diffusion coefficient value (<img class="mwe-math-fallback-image-inline tex" alt="D_q" src="../_images/math/9/1/0/910f6bf29d1f7b204d2779874c281379.png" />). This approach is similar with the <a href="http://en.wikipedia.org/wiki/Gaussian_blur" class="extiw" title="wikipedia:Gaussian blur">Gaussian blur</a> and have the physical process, where all the image space have the same diffusion intensity applied. A further idea, the anisotropic filtering set a local diffusion intensity based on the neighborhood characteristic. The local gradient magnitude is the general parameter to set what will be the filter behavior in that specific region of the image, given by its pixel neighbors. This kind of solution for the local diffusion intensity (gradient magnitude) is similar with the Perona and Malik anisotropic filter and for this case the Condutance parameters plays the edge detection role. See the <a href="http://en.wikipedia.org/wiki/Anisotropic_diffusion" class="extiw" title="wikipedia:Anisotropic diffusion">Classic Anisotropic Filter</a> to get more information about the condutance parameter.
+</p>
+<h2><span class="mw-headline" id="Indicated_Usage">Indicated Usage</span></h2>
+<p>Some studies were already made with different MRI imaging techniques and the both isotropic and anisotropic filters shown a good performance with some specific imaging modalities. Diffusion tensor imaging (DTI) and structural MRI images such as T1 and T2 weighted images show a better filtering efficiency with the AAD filter. For the IAD method, we indicate the use of higher SNR images such as T1 weighted images, where you do not need to decrease so much noise presented in the original image. A short analysis with functional MRI and Diffusion Weighted Imaging with the IAD methods was made and publish in international conferences (<a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed/25570699">fMRI</a>, <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed/24110614">DWI</a>) and should be appropriate use this kind of filtering method to enhance image quality in these cases.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064521
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.056 seconds
+Real time usage: 0.064 seconds
+Preprocessor visited node count: 364/1000000
+Preprocessor generated node count: 4390/1000000
+Post‐expand include size: 1853/2097152 bytes
+Template argument size: 1080/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   12.271      1 - Template:Infobox
+100.00%   12.271      1 - -total
+ 58.52%    7.181      2 - Template:Person
+ 13.87%    1.702      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Anomalous_Diffusion_Filters&amp;oldid=18177">http://imagej.net/index.php?title=Anomalous_Diffusion_Filters&amp;oldid=18177</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 21 October 2015, at 12:03.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Anomalous_Diffusion_Filters&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Anomalous+Diffusion+Filters" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Anomalous+Diffusion+Filters" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Anomalous_Diffusion_Filters" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Anomalous_Diffusion_Filters" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Anomalous_Diffusion_Filters&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Anomalous_Diffusion_Filters&amp;oldid=18177" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Anomalous_Diffusion_Filters&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":222});});</script>
+		</body>
+		</html>
+		

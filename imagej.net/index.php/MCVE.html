@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Bug reporting best practices - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Bug_reporting_best_practices","wgTitle":"Bug reporting best practices","wgCurRevisionId":41212,"wgRevisionId":41212,"wgArticleId":2254,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Bug Reporting"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Bug_reporting_best_practices","wgRelevantArticleId":2254,"wgRequestId":"f7267990d2814c6d8303352d","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="A bug report is a reproducible set of steps describing a problem. They are a common communication medium between users and developers. Users willing to take the time to write helpful bug reports drive the development of ImageJ, making it a better product for everyone."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Bug reporting best practices"/>
+
+	<meta property="og:description" content="A bug report is a reproducible set of steps describing a problem. They are a common communication medium between users and developers. Users willing to take the time to write helpful bug reports drive the development of ImageJ, making it a better product for everyone."/>
+
+	<meta property="og:url" content="http://imagej.net/Bug_reporting_best_practices"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Bug_reporting_best_practices rootpage-Bug_reporting_best_practices skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="MCVE.html#bodyContent">Skip to content</a>, 			<a href="MCVE.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="MCVE.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="MCVE.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Bug_reporting_best_practices&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Bug_reporting_best_practices&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Bug_reporting_best_practices&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Bug reporting best practices</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Help
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Help" title="Help">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Frequently_Asked_Questions" title="Frequently Asked Questions">FAQ</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Troubleshooting" title="Troubleshooting">Troubleshooting</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">How to write bug reports</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Report_a_Bug" title="Report a Bug">Report an issue</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Help:Contents" title="Help:Contents">Editing the ImageJ Wiki</a>
+</td></tr></table>
+<p>A bug report is a reproducible set of steps describing a problem. They are a common communication medium between users and developers. Users willing to take the time to write helpful bug reports drive the development of ImageJ, making it a better product for everyone.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="MCVE.html#TL.3BDR_Summary"><span class="tocnumber">1</span> <span class="toctext">TL;DR Summary</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="MCVE.html#Be_concise"><span class="tocnumber">2</span> <span class="toctext">Be concise</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="MCVE.html#Why_put_effort_into_bug_reports"><span class="tocnumber">3</span> <span class="toctext">Why put effort into bug reports</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="MCVE.html#Components_of_a_complete_bug_report"><span class="tocnumber">4</span> <span class="toctext">Components of a complete bug report</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="MCVE.html#Environment_information"><span class="tocnumber">4.1</span> <span class="toctext">Environment information</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="MCVE.html#Minimal_and_precise_steps_to_reproduce"><span class="tocnumber">4.2</span> <span class="toctext">Minimal and precise steps to reproduce</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="MCVE.html#Sample_data"><span class="tocnumber">4.3</span> <span class="toctext">Sample data</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="MCVE.html#While_you.27re_waiting..."><span class="tocnumber">5</span> <span class="toctext">While you're waiting...</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="MCVE.html#Disable_SCIFIO"><span class="tocnumber">5.1</span> <span class="toctext">Disable SCIFIO</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="MCVE.html#Disable_problematic_update_sites"><span class="tocnumber">5.2</span> <span class="toctext">Disable problematic update sites</span></a>
+<ul>
+<li class="toclevel-3 tocsection-11"><a href="MCVE.html#Binary_search_through_your_external_plugins"><span class="tocnumber">5.2.1</span> <span class="toctext">Binary search through your external plugins</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-12"><a href="MCVE.html#Catastrophic_failure"><span class="tocnumber">5.3</span> <span class="toctext">Catastrophic failure</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="TL.3BDR_Summary">TL;DR Summary</span></h1>
+<ul><li> Report the issue using the <a href="http://imagej.net/Report_a_Bug" title="Report a Bug">Report a Bug</a> plugin (in the Help menu).</li>
+<li> Provide a <a rel="nofollow" class="external text" href="http://stackoverflow.com/help/mcve">minimal, complete, verifiable example</a> (MCVE).</li>
+<li> <a rel="nofollow" class="external text" href="http://whathaveyoutried.com/">Describe what you already tried</a>.</li>
+<li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/help/how-to-ask">Put as much effort into your question</a> as you expect to be put into its response.</li></ul>
+<h1><span class="mw-headline" id="Be_concise">Be concise</span></h1>
+<p>Here are some quick tips for <a rel="nofollow" class="external text" href="http://en.wikiquote.org/wiki/Blaise_Pascal">writing a shorter letter</a>:
+</p>
+<ul><li> Use bullet points to summarize.</li>
+<li> Do not inline lengthy logs; use <a rel="nofollow" class="external text" href="https://gist.github.com/">Gist</a> or <a rel="nofollow" class="external text" href="http://pastebin.com/">Pastebin</a> instead.</li>
+<li> Use formatting such as <b>emphasis</b> and <code>code snippets</code> to make text easier to read.</li>
+<li> Use <a rel="nofollow" class="external text" href="https://help.github.com/articles/github-flavored-markdown">link syntax</a> instead of relying on URL autolinking.</li>
+<li> Use footnotes [1] for lengthy asides.</li>
+<li> Most importantly, provide a <a rel="nofollow" class="external text" href="http://stackoverflow.com/help/mcve">Minimal, Complete and Verifiable example</a> (MCVE), ideally as a standalone project.</li></ul>
+<p>[1] For technical matters, "too much" information is certainly much preferred to "too little" information. But long paragraphs also break up the flow of information, and bog down an otherwise concise and clear bug report or question. So there is certainly a balance to be struck.
+</p>
+<h1><span class="mw-headline" id="Why_put_effort_into_bug_reports">Why put effort into bug reports</span></h1>
+<p>For light reading, there are numerous guides and essays on <a rel="nofollow" class="external text" href="http://www.chiark.greenend.org.uk/~sgtatham/bugs.html">how and why to write excellent bug reports</a>. ImageJ users should be aware that the development community is diverse: from publicly-funded individuals and teams to scientists and user contributors. For a largely open-source community like this, there are several key points to consider when submitting a bug:
+</p>
+<ul><li> Teams developing open-source code are typically smaller and lack dedicated testing teams. Developers thus rely on an active and vocal community to provide feedback and guide the development process by identifying the areas in need of attention (complaint-driven development).</li>
+<li> If you encounter a bug, it is likely interfering with your desired workflow and needs to be resolved quickly. The better the bug report, the faster a developer will be able to reproduce and address the issue. Poorly written bug reports are more likely to sit unanswered—not because developers see the issue as unimportant, rather that the time required to clarify the bug report itself presents a significant barrier when setting priorities within an overflowing schedule.</li>
+<li> When you find a bug, it is unlikely that you are the only individual affected by it. By reporting a bug in a way that developers can understand, identify and resolve the issue, you are performing a necessary and valuable service to the entire ImageJ community.</li></ul>
+<h1><span class="mw-headline" id="Components_of_a_complete_bug_report">Components of a complete bug report</span></h1>
+<p>There are three critical components in an ImageJ bug report. If a report is missing any of these components, its usefulness may be limited.
+</p>
+<h2><span class="mw-headline" id="Environment_information">Environment information</span></h2>
+<p>ImageJ is a flexible and extensible platform, so the actual "ImageJ environment" can vary from user to user. A common misunderstanding in bug reports is to just report the version of the base ImageJ component (e.g. 1.49e). This is helpful, but says nothing about what plugins, update sites, etc... are in use.
+</p><p>Errors can appear in any component of the software, and in some cases two plugins might work individually but have some negative interaction with each other. Thus a complete view of the ImageJ environment is imperative. Fiji currently ships with a <a href="http://imagej.net/Report_a_Bug" title="Report a Bug">Report a Bug</a> command; this will automatically populate the complete environment information and include it in the <a rel="nofollow" class="external text" href="https://fiji.sc/bugzilla/">bugzilla report</a>; this bug-reporting functionality will be migrated to core ImageJ soon.
+</p><p>Note that if you file a bug manually or are enquiring to a <a href="http://imagej.net/Mailing_Lists" title="Mailing Lists">mailing list</a>, you can still copy and paste the contents of the <i>"Useful information about your system"</i> text box from the <a href="http://imagej.net/Report_a_Bug" title="Report a Bug">Report a Bug</a> dialog. It will be greatly appreciated.
+</p>
+<h2><span class="mw-headline" id="Minimal_and_precise_steps_to_reproduce">Minimal and precise steps to reproduce</span></h2>
+<p>When we're in a hurry, it's easy to provide a brief overview a bug without actually describing how to reproduce the error. We are also prone to providing too much information, which can confuse the issue and discourage thorough reading.
+</p><p>The actual text of your bug report should succinctly describe the fewest steps possible to reproduce your issue. For example:
+</p>
+<dl><dd>1) Open sample image "blobs"</dd>
+<dd>2) Run auto-threshold command</dd>
+<dd>3) Run subtract background command</dd>
+<dd>At this point, an evil kraken appears and sinks my hard drive.</dd></dl>
+<p>Additional information is typically unnecessary... if a developer can reproduce the problem, they will do their best to fix it.
+</p>
+<h2><span class="mw-headline" id="Sample_data">Sample data</span></h2>
+<p>Developers typically have a cache of sample data for testing their application. That said, we are still striving to reproduce the original environment of the error. Having the original image that caused the error is the best possible way to test.
+</p><p>If your test data is small and public, you can typically attach it to the bug report.
+</p><p>The easiest and safest way to provide sample data is via the <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> <a href="http://imagej.net/Upload_Sample_Image" title="Upload Sample Image">Upload Sample Image</a></span></em></span> command. This sends the image to a private space accessible only by trusted developers. This allows proprietary data to be tested without fear of public distribution.
+</p><p>Note: if you do upload sample data via ImageJ, you should mention the name of the dataset in your bug report. This will help developers find your image(s) quickly.
+</p><p>For bugs working with excessively large datasets, you may need to communicate with a developer to determine the best way to test on your data.
+</p>
+<h1><span class="mw-headline" id="While_you.27re_waiting...">While you're waiting...</span></h1>
+<p>If you have encountered and reported a bug that is completely blocking your work, you still have options available while waiting for the issue to be resolved.
+</p>
+<h2><span class="mw-headline" id="Disable_SCIFIO">Disable SCIFIO</span></h2>
+<p><a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> provides an alternative to the hard-coded case logic of <a href="http://imagej.net/ImageJ_1.x" class="mw-redirect" title="ImageJ 1.x">ImageJ 1.x</a>'s image I/O: <a href="http://imagej.net/SCIFIO" title="SCIFIO">SCIFIO</a>, plugin-based image I/O. While SCIFIO is more powerful, due to the vast scope of the overhaul, there are inevitably issues remaining. If your dataset used to open correctly for you, but is broken after updating, please <i>disable</i> the "Use SCIFIO when opening files (BETA!)" option in the <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> ImageJ2</span></em></span> dialog. This will revert to ImageJ 1.x's classic image I/O until the SCIFIO-driven I/O is fixed or improved.
+</p><p>Note: even if disabling SCIFIO fixes the issue for you, <b>please</b> still report the discovered bug. The long-term vision for ImageJ is to migrate completely to the new image I/O paradigm, so if there are problems we need to know about them.
+</p>
+<h2><span class="mw-headline" id="Disable_problematic_update_sites">Disable problematic update sites</span></h2>
+<p>The <a href="http://imagej.net/Report_a_Bug" title="Report a Bug">Report a Bug</a> dialog provides several pieces of critical information. Some of the most important being:
+</p>
+<ul><li> Activated update sites</li>
+<li> Files not up-to-date</li></ul>
+<p>The <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">default update sites</a> are intended to be fairly stable, but if you have additional update sites enabled there can be a risk of skewed or out of date dependencies (due to changes in core libraries), and some update sites are intentionally experimental.
+</p><p>Furthermore, if you have any <b>LOCAL_ONLY</b> or <b>MODIFIED</b> files, their behavior can not be guaranteed - as they do not match what's on the active update sites and thus can not be automatically updated in response to changes in their dependencies.
+</p><p>In cases where it is clear which class or classes are causing problems, you can do remove the offending component as follows:
+</p>
+<ul><li> If the problem is in an external plugin, simply delete the file(s).</li></ul>
+<ul><li> If the problem is with an update site:</li></ul>
+<ol><li> If necessary, identify the jar containing the problematic class(es), e.g. by using <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Utilities </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Find Jar for Class</span></em></span> in Fiji.</li>
+<li> Start the updater with <code><span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update...</span></em></span></code></li>
+<li> Switch to Advanced Mode</li>
+<li> Search for the problematic components. Their associated update site will be listed here.</li>
+<li> Select <code>Manage Update Sites</code> and disable the update site identified in 4.</li>
+<li> Repeat 1-5 until your problem is resolved.</li></ol>
+<p><b>NOTICE:</b> During this process it is critical to keep in mind that update sites take precedence in the <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">order they are declared</a> - update sites lower on the list will overwrite components in sites higher on the list.
+</p>
+<h3><span class="mw-headline" id="Binary_search_through_your_external_plugins">Binary search through your external plugins</span></h3>
+<p>If it is not clear which update sites or external plugins are causing problems in your installation, a simple technique to help identify the cause of your problem is a <a href="http://en.wikipedia.org/wiki/Binary_search_algorithm" class="extiw" title="wikipedia:Binary search algorithm">binary search</a>. The general procedure is such:
+</p>
+<ol><li> Start from your current installation</li>
+<li> Remove half of your non-core update sites and/or local plugins.</li>
+<li> Test to see if the erroneous behavior is resolved.</li>
+<li> Repeat from 1) with only the "bad" pool of update sites/plugins enabled.</li></ol>
+<p>With this method you will continue to reduce your list of potentially bad candidates by 1/2, until you find the culprit(s).
+</p><p>Note: if the "erroneous behavior" is <a href="MCVE.html#Catastrophic_failure">catastrophic</a> to the point you can not start ImageJ, you can instead start from a clean build and re-introduce update sites and local plugins as detailed above until the problem is identified.
+</p>
+<h2><span class="mw-headline" id="Catastrophic_failure">Catastrophic failure</span></h2>
+<p>We maintain lifeline ImageJ distributions on the <a href="http://imagej.net/Downloads" title="Downloads">Downloads page</a>. You can use these until any outstanding issues are resolved.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072902
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.040 seconds
+Real time usage: 0.040 seconds
+Preprocessor visited node count: 342/1000000
+Preprocessor generated node count: 887/1000000
+Post‐expand include size: 2884/2097152 bytes
+Template argument size: 738/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   21.245      1 - -total
+ 61.45%   13.055      4 - Template:Bc
+ 27.91%    5.929      1 - Template:HelpMenu
+ 20.86%    4.431      1 - Template:Menu
+ 16.29%    3.460      6 - Template:Arrow
+ 10.97%    2.331      6 - Template:MenuItem
+  5.86%    1.244      2 - Template:ListOfUpdateSites
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Bug_reporting_best_practices&amp;oldid=41212">http://imagej.net/index.php?title=Bug_reporting_best_practices&amp;oldid=41212</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Bug_reporting_best_practices&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Bug_Reporting" title="Category:Bug Reporting">Bug Reporting</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Bug+reporting+best+practices" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Bug+reporting+best+practices" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Bug_reporting_best_practices" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Bug_reporting_best_practices" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Bug_reporting_best_practices&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Bug_reporting_best_practices&amp;oldid=41212" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Bug_reporting_best_practices&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":254});});</script>
+		</body>
+		</html>
+		

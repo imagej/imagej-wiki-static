@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>BigStitcher BoundingBox - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"BigStitcher_BoundingBox","wgTitle":"BigStitcher BoundingBox","wgCurRevisionId":37404,"wgRevisionId":37404,"wgArticleId":10338,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"BigStitcher_BoundingBox","wgRelevantArticleId":10338,"wgRequestId":"7dd1387cbd7776fd542cc7e3","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="If you want to fuse or deconvolve a sub-volume of your dataset (other than all views or the currently selected views), you have to specify that volume by defining a Bounding Box."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="BigStitcher BoundingBox"/>
+
+	<meta property="og:description" content="If you want to fuse or deconvolve a sub-volume of your dataset (other than all views or the currently selected views), you have to specify that volume by defining a Bounding Box."/>
+
+	<meta property="og:url" content="http://imagej.net/BigStitcher_BoundingBox"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-BigStitcher_BoundingBox rootpage-BigStitcher_BoundingBox skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="BigStitcher_BoundingBox.html#bodyContent">Skip to content</a>, 			<a href="BigStitcher_BoundingBox.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="BigStitcher_BoundingBox.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/BigStitcher_BoundingBox" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:BigStitcher_BoundingBox&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=BigStitcher_BoundingBox&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=BigStitcher_BoundingBox&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>BigStitcher BoundingBox</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>If you want to fuse or deconvolve a sub-volume of your dataset (other than <i>all views</i> or the <i>currently selected views</i>), you have to specify that volume by defining a <b>Bounding Box</b>. 
+</p><p>The Bounding Box Definition can be started by clicking <b>Define Bounding Box...</b> in the main menu, located under <code>Fusion</code> (Stitching mode) or <code>Displaying</code> (MultiView mode).
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="BigStitcher_BoundingBox.html#Bounding_Box_Definition"><span class="tocnumber">1</span> <span class="toctext">Bounding Box Definition</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="BigStitcher_BoundingBox.html#Modify_pre-defined_Bounding_Box"><span class="tocnumber">1.1</span> <span class="toctext">Modify pre-defined Bounding Box</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="BigStitcher_BoundingBox.html#Define_using_the_BigDataViewer_interactively"><span class="tocnumber">1.2</span> <span class="toctext">Define using the BigDataViewer interactively</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="BigStitcher_BoundingBox.html#Maximal_Bounding_Box_spanning_all_transformed_views"><span class="tocnumber">1.3</span> <span class="toctext">Maximal Bounding Box spanning all transformed views</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="BigStitcher_BoundingBox.html#Automatically_find_Bounding_Box_through_image_filtering"><span class="tocnumber">1.4</span> <span class="toctext">Automatically find Bounding Box through image filtering</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Bounding_Box_Definition">Bounding Box Definition</span></h2>
+<p>In the first dialog, you can specify how to define you bounding box in the <b>Bounding Box</b> drop-down menu. The available options are explained in detail below. In addition, you can give your Bounding box a name under <b>Bounding Box Name</b>.
+</p><p>The dialog will also list the currently <b>Existing Bounding Boxes</b>  
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_BBox_main.png" class="image"><img alt="BigStitcher BBox main.png" src="../_images/4/4e/BigStitcher_BBox_main.png" width="600" height="356" /></a></div></div>
+<h3><span class="mw-headline" id="Modify_pre-defined_Bounding_Box">Modify pre-defined Bounding Box</span></h3>
+<p>First, you will be asked for the existing bounding box that you want to modify:
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_BBox_existing.png" class="image"><img alt="BigStitcher BBox existing.png" src="../_images/3/33/BigStitcher_BBox_existing.png" width="400" height="281" /></a></div></div>
+<p>In the next dialog, you can modify the bounding box by adjusting the sliders for the minima and maxima. The size and memory/disk space requirements of a fusion will also be previewed. Clicking <b>OK</b> will generate the new, modified Mounding Box.
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_BBox_modify.png" class="image"><img alt="BigStitcher BBox modify.png" src="../_images/7/7b/BigStitcher_BBox_modify.png" width="600" height="459" /></a></div></div>
+<h3><span class="mw-headline" id="Define_using_the_BigDataViewer_interactively">Define using the BigDataViewer interactively</span></h3>
+<p>This will open a new window allowing you to modify your bounding box by adjusting the sliders for the minima and maxima. If the BigDataViewer is open, the bounding box will be previewed there. 
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_BBox_interactive.png" class="image"><img alt="BigStitcher BBox interactive.png" src="../_images/b/bd/BigStitcher_BBox_interactive.png" width="700" height="353" /></a></div></div>
+<p>After clicking <b>OK</b>, another dialog will show a preview of the bounding box size and expected memory/disk space requirements for a fused image of the contents of the bounding box. Click <b>OK</b> again to complete the definition.
+</p>
+<h3><span class="mw-headline" id="Maximal_Bounding_Box_spanning_all_transformed_views">Maximal Bounding Box spanning all transformed views</span></h3>
+<p>This will simply show the <b>Manually define Bounding Box</b>-dialog, preset to a bounding box enclosing all selected views. You can use the sliders to modify the minima and maxima of the bounding box. Click <b>OK</b> to finish the definition. 
+</p>
+<h3><span class="mw-headline" id="Automatically_find_Bounding_Box_through_image_filtering">Automatically find Bounding Box through image filtering</span></h3>
+<p>This method will try to automatically find a bounding box around the sample by applying a <b>minimum filter</b> and then <b>thresholding</b> a downsampled version of the fused image.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This method will try to segment a bright object in front of dark background, so it cannot be used e.g. for brightfield images with dark objects in front a bright background. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+You will be asked for the following parameters:
+</p>
+<ul><li> <b>Background intensity (%)</b>: relative intensity of background to the maximal intensity in the images, used for thresholding.</li>
+<li> <b>Size of objects to be discarded</b>: size of the box-minimum-filter that is applied to the image before thresholding, effectively removing isolated objects smaller than that.</li>
+<li> <b>Downsampling</b>: by how much to downsample the fused image. Since fusion can be a time and memory-consuming process, we recommend to use a large (<img class="mwe-math-fallback-image-inline tex" alt="&gt;4" src="../_images/math/4/1/f/41f26c91128dcab789bfe3ebfdde0eb4.png" />) downsampling factor, especially if your dataset is big. </li>
+<li> <b> Display image used for segmentation</b>: selecting this will show the fused and the filtered images.</li></ul>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_BBox_auto.png" class="image"><img alt="BigStitcher BBox auto.png" src="../_images/2/2e/BigStitcher_BBox_auto.png" width="600" height="412" /></a></div></div>
+<p>After clicking <b>OK</b>, the bounding box will be estimated and another dialog will show a preview of the bounding box size and expected memory/disk space requirements for a fused image of the contents of the bounding box. Click <b>OK</b> again to complete the definition.
+</p><p>Go back to the <a href="http://imagej.net/BigStitcher#Documentation" title="BigStitcher">main page</a>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064610
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.036 seconds
+Preprocessor visited node count: 61/1000000
+Preprocessor generated node count: 265/1000000
+Post‐expand include size: 810/2097152 bytes
+Template argument size: 346/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    3.555      1 - -total
+100.00%    3.555      1 - Template:Notice
+ 74.54%    2.650      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=BigStitcher_BoundingBox&amp;oldid=37404">http://imagej.net/index.php?title=BigStitcher_BoundingBox&amp;oldid=37404</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 23 March 2018, at 11:40.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=BigStitcher_BoundingBox&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=BigStitcher+BoundingBox" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=BigStitcher+BoundingBox" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/BigStitcher_BoundingBox" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/BigStitcher_BoundingBox" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=BigStitcher_BoundingBox&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=BigStitcher_BoundingBox&amp;oldid=37404" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=BigStitcher_BoundingBox&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":220});});</script>
+		</body>
+		</html>
+		

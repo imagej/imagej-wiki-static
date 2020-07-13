@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Robust clump splitting - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Robust_clump_splitting","wgTitle":"Robust clump splitting","wgCurRevisionId":41317,"wgRevisionId":41317,"wgArticleId":4185,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Robust_clump_splitting","wgRelevantArticleId":4185,"wgRequestId":"544b0a575c2c19b8fb1c40fc","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This plugin is an implementation of the concavity-based clump splitting algorithms described in:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Robust clump splitting"/>
+
+	<meta property="og:description" content="This plugin is an implementation of the concavity-based clump splitting algorithms described in:"/>
+
+	<meta property="og:url" content="http://imagej.net/Robust_clump_splitting"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Robust_clump_splitting rootpage-Robust_clump_splitting skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Robust_clump_splitting.html#bodyContent">Skip to content</a>, 			<a href="Robust_clump_splitting.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Robust_clump_splitting.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Robust_clump_splitting" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Robust_clump_splitting&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Robust_clump_splitting&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Robust_clump_splitting&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Robust clump splitting</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Robust Clump Splitting (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> LouiseBloch, <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> LouiseBloch, <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> ij_robust_split.jar []
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> Github <a rel="nofollow" class="external autonumber" href="https://github.com/thorstenwagner/ij-robust-split">[1]</a>
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> v1.0.0 (04 Sep 2016)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+
+
+</table>
+<p><br />
+</p><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Robust_clump_splitting.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Robust_clump_splitting.html#Plugin_usage"><span class="tocnumber">2</span> <span class="toctext">Plugin usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Robust_clump_splitting.html#Detection_Types"><span class="tocnumber">2.1</span> <span class="toctext">Detection Types</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="Robust_clump_splitting.html#Split_Lines"><span class="tocnumber">2.1.1</span> <span class="toctext">Split Lines</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="Robust_clump_splitting.html#Concavity_Region_Detection"><span class="tocnumber">2.1.2</span> <span class="toctext">Concavity Region Detection</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="Robust_clump_splitting.html#Concavity_Pixel_Detection"><span class="tocnumber">2.1.3</span> <span class="toctext">Concavity Pixel Detection</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-7"><a href="Robust_clump_splitting.html#SVM"><span class="tocnumber">2.2</span> <span class="toctext">SVM</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Robust_clump_splitting.html#Parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Robust_clump_splitting.html#Installation"><span class="tocnumber">4</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Robust_clump_splitting.html#How_to_cite"><span class="tocnumber">5</span> <span class="toctext">How to cite</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>This plugin is an implementation of the concavity-based clump splitting algorithms described in:
+</p><p><i>Kumar, S., Ong, S.-H., Ranganath, S., Ong, T., und Cheq, F.</i>
+(2005). A rule based Approach for robust clump splitting. Pattern Recognition,
+39(6), pp.1088–1098.
+
+</p><p><i>Farhan, M., Yli-Harja, O., und Niemistö, A. (2013). A novel</i>
+method for splitting clumps of convex objects incorporating image intensity and
+using rectangular window-based concavity point-pair search. Pattern Recognition,
+46(3), pp.741–751.
+</p><p>and
+</p><p><i>Wang, H., Zhang, H., und Nilanjan, R. (2011). Clump splitting via</i>
+bottleneck detection. IEEE International Conference Image Processing, 2, pp.61–64.
+</p><p>The plugin provides an alternative to the ImageJ "build-in"-<a rel="nofollow" class="external text" href="https://imagej.nih.gov/ij/docs/guide/146-29.html#sub:Watershed">watershed</a>-plugin. It does not perform better results on regular round clumps. Especially for big clumps with image disturbances and many holes in the clump the results of the watershed plugins are much more robust and it does not depends on so many parameters. For elongated indididual objects, the plugin can produce better results than the watershed.
+</p><p>It depends on the <a rel="nofollow" class="external text" href="https://imagej.net/IJ_Blob">IJ-Blob</a> library, the <a rel="nofollow" class="external text" href="https://github.com/hharrison/vecmath">Vecmath</a> library, the <a rel="nofollow" class="external text" href="https://www.csie.ntu.edu.tw/~cjlin/libsvm/">LIBSVM</a> library and the <a rel="nofollow" class="external text" href="http://java-ml.sourceforge.net/">JavaML</a> library.
+</p>
+<h2><span class="mw-headline" id="Plugin_usage">Plugin usage</span></h2>
+<p>If you start the plugin you can choose between two main uses, you either want to split clumps of an image or want to train a SVM to optimize parameters <img class="mwe-math-fallback-image-inline tex" alt="c_1" src="../_images/math/0/b/d/0bd1ecc6359ce275e3a626020b904c8c.png" /> and <img class="mwe-math-fallback-image-inline tex" alt="c_2" src="../_images/math/e/c/6/ec6afd67ef6d50afbb01857b9eee7d59.png" />. To train the SVM you need to have input data already.
+</p>
+<div class="MediaTransformError" style="width: 220px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Detection_Types">Detection Types</span></h3>
+<p>The plugin supports different types of split lines, concavity region detection and concavity pixel detection. If you want to split a clump you have to choose, what kind of detection you want to use.
+</p>
+<div class="MediaTransformError" style="width: 590px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h4><span class="mw-headline" id="Split_Lines">Split Lines</span></h4>
+<p>The plugin supports different split line types, which should be specified:
+</p><p><b>Straight Split Line:</b> The straight split line is a straight line between two concavity pixels.
+When to use?&#160;: If no intensity information for better split lines is available use this line.
+</p><p><a href="http://imagej.net/File:StraightSplitline.png" class="image"><img alt="StraightSplitline.png" src="../_images/d/da/StraightSplitline.png" width="300" height="112" /></a>
+</p><p><b>Geodesic Distance Split Line:</b> The geodesic distance split line uses the path of maximum intensity change between two concavity pixels. It is detected by the algorithm of <i>Wang et al.</i>
+When to use?&#160;:  If the individual objects can be distinguished by intensity and the split lines are not to convex.
+</p><p><a href="http://imagej.net/File:GeodesicDistanceSplitLine.png" class="image"><img alt="GeodesicDistanceSplitLine.png" src="../_images/9/95/GeodesicDistanceSplitLine.png" width="300" height="136" /></a>
+</p><p><b>Maximum Intensity Split Line:</b> The maximum intensity split line uses the path of maximum intensity between two concavity pixels. It is detected by the algorithm of <i>Wang et al.</i>
+When to use?&#160;: If the intensity of the individual objects is higher at the edge, than in the center and the split lines are not to convex.
+</p><p><a href="http://imagej.net/File:MaximumIntensitySplitLine.png" class="image"><img alt="MaximumIntensitySplitLine.png" src="../_images/f/ff/MaximumIntensitySplitLine.png" width="300" height="136" /></a>
+</p><p><b>Minimum Intensity Split Line:</b> The minimum intensity split line uses the path of minimum intensity between two concavity pixels. It is detected by the algorithm of <i>Wang et al.</i>
+When to use?&#160;: If the intensity of the individual objects is lower at the edge, than in the center and the split lines are not to convex.
+</p><p><a href="http://imagej.net/File:MinimumIntensitySplitLine.png" class="image"><img alt="MinimumIntensitySplitLine.png" src="../_images/6/6e/MinimumIntensitySplitLine.png" width="300" height="136" /></a>
+</p><p><b>Maximum Intensity Split Line Farhan:</b> The maximum intensity split line uses the path of maximum intensity between two concavity pixels. It is detected by the algorithm of <i>Wang et al.</i>
+When to use?&#160;: If the intensity of the individual objects is higher at the edge, than in the center and there are no clumps without intensity information, and the split line does not change orientation to often.
+</p><p><a href="http://imagej.net/File:MaximumIntensitySplitLine.png" class="image"><img alt="MaximumIntensitySplitLine.png" src="../_images/f/ff/MaximumIntensitySplitLine.png" width="300" height="136" /></a>
+</p><p><b>Minimum Intensity Split Line Farhan:</b> The minimum intensity split line uses the path of minimum intensity between two concavity pixels. It is detected by the algorithm of <i>Farhan et al.</i>
+When to use?&#160;: If the intensity of the individual objects is lower at the edge, than in the center and there are no clumps without intensity information, and the split line does not change orientation to often.
+</p><p><a href="http://imagej.net/File:MinimumIntensitySplitLine.png" class="image"><img alt="MinimumIntensitySplitLine.png" src="../_images/6/6e/MinimumIntensitySplitLine.png" width="300" height="136" /></a>
+</p>
+<h4><span class="mw-headline" id="Concavity_Region_Detection">Concavity Region Detection</span></h4>
+<p>The plugin supports different concavity region detection types. It specifies, in which way a concavity region is detected.
+</p><p><b>Detect outer concavity regions by convex hull:</b> The concavity region detection by convex hull corresponds to the algorithm of <i>Kumar et al.</i> Concavity regions are detected, if there is a difference between convex hull and contour of the clump. Use this detection, if there are few clumps with less complex concavity regions. The blue shaded regions are the detected concavity regions.
+</p><p><a href="http://imagej.net/File:ConvexHull.png" class="image"><img alt="ConvexHull.png" src="../_images/b/bc/ConvexHull.png" width="250" height="185" /></a>
+</p><p><b>Detect outer concavity regions locally:</b> The local concavity region detection follows the algorithm of <i>Farhan et al.</i> Concavity regions are detected, by iterating along the contour and look for local concavity regions. Use this detection, if there are complex clumps consisting of many individual objects.
+</p><p><a href="http://imagej.net/File:Farhan.png" class="image"><img alt="Farhan.png" src="../_images/c/c9/Farhan.png" width="250" height="208" /></a>
+</p>
+<h4><span class="mw-headline" id="Concavity_Pixel_Detection">Concavity Pixel Detection</span></h4>
+<p>The plugin supports different concavity pixel detection types. The chosen type specifies which and how many concavity pixels can be detected.
+</p><p><b>Detect all concavity pixels:</b> If all concavity pixels should be detected, the plugin is looking for all local concavity pixels. Use it, if you have chosen the concavity region detection by convex hull.
+</p><p><a href="http://imagej.net/File:AllPixels.png" class="image"><img alt="AllPixels.png" src="../_images/a/ad/AllPixels.png" width="250" height="199" /></a>
+</p><p><br />
+<b>Detect all concavity pixels with largest concavity depth:</b>
+If all concavity pixel with largest concavity depth should be detected, the plugin is looking for the global concavity pixels of a concavity region. Use it, if you have choosen the local concavity region detection.
+</p><p><a href="http://imagej.net/File:LargestPixels.png" class="image"><img alt="LargestPixels.png" src="../_images/d/d8/LargestPixels.png" width="250" height="214" /></a>
+</p>
+<h3><span class="mw-headline" id="SVM">SVM</span></h3>
+<p>The parameters <img class="mwe-math-fallback-image-inline tex" alt="c_1" src="../_images/math/0/b/d/0bd1ecc6359ce275e3a626020b904c8c.png" /> and <img class="mwe-math-fallback-image-inline tex" alt="c_2" src="../_images/math/e/c/6/ec6afd67ef6d50afbb01857b9eee7d59.png" /> can be optimized by a linear SVM. This SVM is integrated in the plugin and uses the <a rel="nofollow" class="external text" href="https://www.csie.ntu.edu.tw/~cjlin/libsvm/">LIBSVM</a> library. 
+</p><p>If you want to train the SVM you have to generate training and testdata first. There is currently no easy way of generating those. 
+</p><p>Firstly you have to generate an image with optimal split lines manually. This may be a time consuming and complex task. The overlay of the plugin tries to aid at this point, but it could be complex as well. Therefoe it could be easier to separate individual clumps and split them separately. Now you have to generate traing data by the plugin. In the progress the SVM writes data and whether or not it is a split line to a CSV-File. The data is the sum of concavity depths of the concavity pixels at the x axis and the distance between the points at y axis.
+</p><p>Now you have to look for a good cost- and epsilon parameter of the SVM. This could happen by a grid search for example.
+</p>
+<div class="MediaTransformError" style="width: 306px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>After this the SVM starts training. This could take some time. The duration depends on complexity and size of the training data.
+</p><p>Once the SVM was trained, there are two windows, showing the results. In the first window you can see a graphical representation of the SVM model. The blue points represent the split line class, the red points represent the no split line class data and the green line represents the dividing line of the SVM.
+</p>
+<div class="MediaTransformError" style="width: 511px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The second window shows the parameters of this model. The optimum  for <img class="mwe-math-fallback-image-inline tex" alt="c_1" src="../_images/math/0/b/d/0bd1ecc6359ce275e3a626020b904c8c.png" /> and <img class="mwe-math-fallback-image-inline tex" alt="c_2" src="../_images/math/e/c/6/ec6afd67ef6d50afbb01857b9eee7d59.png" /> parameters, are given together with the number of support vectors and a confidencial matrix to evaluate the model.
+</p><p><a href="http://imagej.net/File:SVMModelNumbers.png" class="image"><img alt="SVMModelNumbers.png" src="../_images/7/7e/SVMModelNumbers.png" width="300" height="139" /></a>
+</p>
+<h2><span class="mw-headline" id="Parameters">Parameters</span></h2>
+<p>As already mentioned the main algorithm follows the publication of <i>Kumar et al.</i> The presented algorithm to specify a valid split line depends on lots of parameters, as you can see below. Not every parameter is needed for every split line type and concavity region detection
+</p>
+<div class="MediaTransformError" style="width: 517px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><b>background color:</b> Choose the color of your background. Choose white, if the objects are darker than the background, and black if the objects are lighter than the background.
+</p><p><b>is already preprocessed:</b> Choose whether or not your picture is already preprocessed. If unchecked, preprocessing will be executed before the algorithm starts. The default-preprocessing contains: binarization, erosion, gaussian blur (<img class="mwe-math-fallback-image-inline tex" alt="\sigma=2" src="../_images/math/b/8/1/b81265bbb9fc0dd6c4be88aff0f81cdb.png" />), dilation
+</p><p><b>Show concavity regions:</b> If checked, an overlay shows detected concavity regions, this could help to detect good thresholds and to detect mistakes in detection.
+</p><p><b>Show concavity pixels and split points:</b> If checked, an overlay shows detected concavity pixels, this could help to detect good thresholds and to detect mistakes in detection.
+</p><p><b>write data in file to train SVM:</b> If checked, data for the SVM-Model is written to a file of your choice.
+</p><p><b>binarization threshold:</b> Threshold to binarize an image. Default: Detected value for the image by ImageJ default method.
+</p><p><b>concavity-depth threshold:</b> Largest distance of a concavity region in pixels <img class="mwe-math-fallback-image-inline tex" alt="CD_i" src="../_images/math/4/0/9/4095947143fac31c07e67718dc1acefb.png" />. Threshold should be smaller than minimum concavity-depth value of a valid concavity pixel. 
+</p><p><b>saliency-threshold:</b> The ratio of concavity-depth and distance of two concavity pixels, increases, if less split lines are detected.
+<img class="mwe-math-fallback-image-inline tex" alt="SA_{i,j}=\frac{\min(CD_i,CD_j)}{\min(CD_i,CD_j)+ d(C_i,C_j)}" src="../_images/math/4/d/0/4d0fb4655fb262b67a3e8416106d9f90.png" />
+</p><p><b>concavity-concavity-alignment-threshold:</b> Angle between orientation of the two concavity regions. <img class="mwe-math-fallback-image-inline tex" alt="CC_{ij}= \pi - \cos^{-1}(v_i \cdot v_j)" src="../_images/math/d/c/9/dc9b3f5b93034143ad768fe27b94003f.png" />. Threshold should be greater than <img class="mwe-math-fallback-image-inline tex" alt="\max{|180-|\theta_i-\theta_j||}" src="../_images/math/a/c/1/ac128939793922ee2d4f37a9d3812e59.png" /> of all valid split lines.
+</p><p><a href="http://imagej.net/File:ConcavityConcavityAlignment.png" class="image"><img alt="ConcavityConcavityAlignment.png" src="../_images/2/2c/ConcavityConcavityAlignment.png" width="300" height="352" /></a>
+</p><p><b>concavity-line-alignment-threshold:</b> Angle between orientation of a split lines concavity pixel and the split line. <img class="mwe-math-fallback-image-inline tex" alt="CL_{ij}=\max{\cos^{-1}(v_i \cdot u_{ij}),\cos^{-1}(v_j \cdot (-u_{ij})))}" src="../_images/math/d/3/b/d3b0a7abb1e41e25cfe0bac8555fa715.png" /> 
+</p><p><a href="http://imagej.net/File:ConcavityLineAlignment.png" class="image"><img alt="ConcavityLineAlignment.png" src="../_images/2/2d/ConcavityLineAlignment.png" width="300" height="354" /></a>
+</p><p><b>concavity-angle-threshold:</b> Angle of a concavity region. <img class="mwe-math-fallback-image-inline tex" alt="CA=\angle C_{i1}C_iC_{i2}" src="../_images/math/7/f/a/7fa5562932c6fa550162456eca524ea1.png" /> Threshold should be larger, than the maximum angle of a concavity region where a split line between concavity pixel and contour point is expected.
+</p><p><a href="http://imagej.net/File:ConcavityAngle.png" class="image"><img alt="ConcavityAngle.png" src="../_images/d/dd/ConcavityAngle.png" width="300" height="316" /></a>
+</p><p><b>concavity-ratio-threshold:</b> Ratio between first and second largest concavity regions. <img class="mwe-math-fallback-image-inline tex" alt="CR=\frac{CD_m}{CD_n}" src="../_images/math/6/5/2/652b736867d38f62e0db83502440bd80.png" /> Threshold should be smaller than the maximum ratio of valid split line between concavity pixel and contour point.
+</p><p><b>inner-contour-parameter:</b> Same as inner contour constant. If the inner contour is large and round, choose a large constant, else choose a small constant.
+</p><p><b>outer-contour-parameter:</b> Same as outer contour constant. If concavity regions are big, choose a large value, otherwise choose a small value.
+</p><p><b>picture section for intensity:</b> For split line detection of <i>Wang et al.</i> you need to determine a picture section, in which the split line should be detected. Choose a large value if clumps and split lines are large and a small value if clumps and split lines are small.
+</p><p><a href="http://imagej.net/File:PictureSelection.png" class="image"><img alt="PictureSelection.png" src="../_images/7/7e/PictureSelection.png" width="300" height="241" /></a>
+</p><p><b><img class="mwe-math-fallback-image-inline tex" alt="c_1" src="../_images/math/0/b/d/0bd1ecc6359ce275e3a626020b904c8c.png" />:</b> Parameter to validate a split line, for an optimal value train SVM.
+</p><p><b><img class="mwe-math-fallback-image-inline tex" alt="c_2" src="../_images/math/e/c/6/ec6afd67ef6d50afbb01857b9eee7d59.png" />:</b> Parameter to validate a split line, for an optimal value train SVM.
+</p><p><b><img class="mwe-math-fallback-image-inline tex" alt="\chi" src="../_images/math/7/9/c/79c40dd2b43f3c03eaf88b5fc4c199b8.png" />-threshold:</b> Parameter to validate a splitline. <img class="mwe-math-fallback-image-inline tex" alt="\chi = \frac{c_1*CD_i+c_1*CD_j+c_2}{d(C_i,C_j)+c_1*CD_i+ c_1*CD_j+c_2}" src="../_images/math/0/f/6/0f681f41de5d0e5381413e93c4c406b4.png" /> Decrease threshold value if there are less split lines.
+</p>
+<h1><span class="mw-headline" id="Installation">Installation</span></h1>
+<p>If you use ImageJ just copy ij_robust_split.jar in your plugins folder and copy the <a rel="nofollow" class="external text" href="https://imagej.net/IJ_Blob">IJ-Blob</a>, <a rel="nofollow" class="external text" href="https://github.com/hharrison/vecmath">Vecmath</a>, the <a rel="nofollow" class="external text" href="https://www.csie.ntu.edu.tw/~cjlin/libsvm/">LIBSVM</a> and the <a rel="nofollow" class="external text" href="http://java-ml.sourceforge.net/">JavaML</a> jars into the plugins/jars folder.
+</p>
+<h1><span class="mw-headline" id="How_to_cite">How to cite</span></h1>
+<p>The best way to cite the formal methods is:
+</p><p><i>Kumar, S., Ong, S.-H., Ranganath, S., Ong, T., und Cheq, F.</i>
+(2005). A rule based Approach for robust clump splitting. Pattern Recognition,
+39(6), pp.1088–1098.
+</p><p><i>Farhan, M., Yli-Harja, O., und Niemistö, A. (2013). A novel</i>
+method for splitting clumps of convex objects incorporating image intensity and
+using rectangular window-based concavity point-pair search. Pattern Recognition,
+46(3), pp.741–751.
+</p><p>and
+</p><p><i>Wang, H., Zhang, H., und Nilanjan, R. (2011). Clump splitting via</i>
+bottleneck detection. IEEE International Conference Image Processing, 2, pp.61–64.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073232
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.100 seconds
+Real time usage: 0.109 seconds
+Preprocessor visited node count: 1245/1000000
+Preprocessor generated node count: 4002/1000000
+Post‐expand include size: 1036/2097152 bytes
+Template argument size: 445/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   37.663      1 - -total
+100.00%   37.663      1 - Template:Infobox
+ 88.23%   33.229      4 - Template:Person
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Robust_clump_splitting&amp;oldid=41317">http://imagej.net/index.php?title=Robust_clump_splitting&amp;oldid=41317</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Robust_clump_splitting&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Robust+clump+splitting" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Robust+clump+splitting" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Robust_clump_splitting" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Robust_clump_splitting" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Robust_clump_splitting&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Robust_clump_splitting&amp;oldid=41317" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Robust_clump_splitting&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":346});});</script>
+		</body>
+		</html>
+		

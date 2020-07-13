@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>EpiGraph - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"EpiGraph","wgTitle":"EpiGraph","wgCurRevisionId":39056,"wgRevisionId":39056,"wgArticleId":10207,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"EpiGraph","wgRelevantArticleId":10207,"wgRequestId":"b32ae1088f36905194fe0d63","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The EpiGraph is a Fiji plugin that combines computational geometry and graph theory to measure the degree of arrangement in any made by computational or natural tessellation. Here, a tessellation is treated as a network in which the edges are defined by the regions contacts. A network can be split up into different subgraphs named graphlets. The comparison of the quantity of each type of graphlets with the reference tessellations provide the Graphlet degree Distribution Distances (GDDs) as a marker of arrangement. This plugin has into account three different reference patterns: a &quot;hexagonal lattice&quot;, a &quot;random Voronoi Diagram&quot; (generated Voronoi from seeds located randomly) and a &quot;Voronoi Diagram 5&quot; (which represents the common polygon distribution in nature). They have been used to compute a set of references that quantify organization: Epi-Hexagons, Epi-Random and Epi-Voronoi5, respectively."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="EpiGraph"/>
+
+	<meta property="og:description" content="The EpiGraph is a Fiji plugin that combines computational geometry and graph theory to measure the degree of arrangement in any made by computational or natural tessellation. Here, a tessellation is treated as a network in which the edges are defined by the regions contacts. A network can be split up into different subgraphs named graphlets. The comparison of the quantity of each type of graphlets with the reference tessellations provide the Graphlet degree Distribution Distances (GDDs) as a marker of arrangement. This plugin has into account three different reference patterns: a &quot;hexagonal lattice&quot;, a &quot;random Voronoi Diagram&quot; (generated Voronoi from seeds located randomly) and a &quot;Voronoi Diagram 5&quot; (which represents the common polygon distribution in nature). They have been used to compute a set of references that quantify organization: Epi-Hexagons, Epi-Random and Epi-Voronoi5, respectively."/>
+
+	<meta property="og:url" content="http://imagej.net/EpiGraph"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-EpiGraph rootpage-EpiGraph skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="EpiGraph.html#bodyContent">Skip to content</a>, 			<a href="EpiGraph.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="EpiGraph.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/EpiGraph" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:EpiGraph&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=EpiGraph&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=EpiGraph&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>EpiGraph</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Please note that, this plugin is focused on biology research. This web page doesn't provide a complete explanation of usability. Deep detailed information can be found in the manuscript: <a rel="nofollow" class="external text" href="https://www.biorxiv.org/content/10.1101/217521v2"><b>EpiGraph: an open-source platform to quantify epithelial organization</b></a>, and in the official lab website: <a rel="nofollow" class="external free" href="https://www.scutoids.es/">https://www.scutoids.es/</a> </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Epigraph<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> <b>EpiGraph: an open-source platform to quantify epithelial organization</b>
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/EpiGraph">https://imagej.net/EpiGraph</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external free" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph">https://github.com/ComplexOrganizationOfLivingMatter/Epigraph</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> 1.0.2
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> 29/01/2019 12:00:00 GMT+0100 (CEST)
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Pablovm1990" title="User:Pablovm1990">Pablo Vicente-Munuera</a>, <a href="http://imagej.net/User:Pedgomgal1" title="User:Pedgomgal1">Pedro Gomez-Galvez</a>, <a href="http://imagej.net/User:LMEscudero" title="User:LMEscudero">L.M. Escudero</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:LMEscudero" title="User:LMEscudero">L.M. Escudero</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> <a href="http://imagej.net/User:Pablovm1990" title="User:Pablovm1990">Pablo Vicente-Munuera</a>, <a href="http://imagej.net/User:Pedgomgal1" title="User:Pedgomgal1">Pedro Gomez-Galvez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:Pablovm1990" title="User:Pablovm1990">Pablo Vicente-Munuera</a>, <a href="http://imagej.net/User:Pedgomgal1" title="User:Pedgomgal1">Pedro Gomez-Galvez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Pablovm1990" title="User:Pablovm1990">Pablo Vicente-Munuera</a>, <a href="http://imagej.net/User:Pedgomgal1" title="User:Pedgomgal1">Pedro Gomez-Galvez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Pablovm1990" title="User:Pablovm1990">Pablo Vicente-Munuera</a>, <a href="http://imagej.net/User:Pedgomgal1" title="User:Pedgomgal1">Pedro Gomez-Galvez</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Pablovm1990" title="User:Pablovm1990">Pablo Vicente-Munuera</a>, <a href="http://imagej.net/User:Pedgomgal1" title="User:Pedgomgal1">Pedro Gomez-Galvez</a>
+</td></tr>
+
+
+</table><div class="project-info">
+<span class="project-logo"></span></div>
+<table>
+<tr>
+<td style="vertical-align:top">
+</td></tr></table><div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="EpiGraph.html#Introduction"><span class="tocnumber">1</span> <span class="toctext"><b>Introduction</b></span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="EpiGraph.html#Pipeline"><span class="tocnumber">2</span> <span class="toctext"><b>Pipeline</b></span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="EpiGraph.html#Installation_and_initial_settings"><span class="tocnumber">2.1</span> <span class="toctext">Installation and initial settings</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="EpiGraph.html#Calculation_of_GDDs"><span class="tocnumber">2.2</span> <span class="toctext">Calculation of GDDs</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="EpiGraph.html#Exporting_and_importing_GDDs_data"><span class="tocnumber">2.3</span> <span class="toctext">Exporting and importing GDDs data</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="EpiGraph.html#Visualizing_results"><span class="tocnumber">2.4</span> <span class="toctext">Visualizing results</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="EpiGraph.html#Limitations"><span class="tocnumber">3</span> <span class="toctext"><b>Limitations</b></span></a></li>
+</ul>
+</div>
+</div>
+<h2><span class="mw-headline" id="Introduction"><b>Introduction</b></span></h2>
+<p>The <strong class="selflink">EpiGraph</strong> is a Fiji plugin that combines computational geometry and graph theory to measure the degree of arrangement in any made by computational or natural tessellation. Here, a tessellation is treated as a network in which the edges are defined by the regions contacts. A network can be split up into different subgraphs named graphlets. The comparison of the quantity of each type of graphlets with the reference tessellations provide the Graphlet degree Distribution Distances (GDDs) as a marker of arrangement. This plugin has into account three different reference patterns: a "hexagonal lattice", a "random Voronoi Diagram" (generated Voronoi from seeds located randomly) and a "Voronoi Diagram 5" (which represents the common polygon distribution in nature). They have been used to compute a set of references that quantify organization: Epi-Hexagons, Epi-Random and Epi-Voronoi5, respectively.
+</p><p>It contains a set of visualization tools, together with graphical user interfaces for easy extraction and analysis of information. The collected data of arrangement can be exported to excel tables for being processed with other tools as well.
+</p><p>On top, to encourage the sharing of resources, <strong class="selflink">EpiGraph</strong> is published under an open-source (GPLv3) license, which can be downloaded from <a rel="nofollow" class="external free" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/blob/master/LICENSE">https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/blob/master/LICENSE</a>.
+</p>
+<h2><span class="mw-headline" id="Pipeline"><b>Pipeline</b></span></h2>
+<p>EpiGraph consists of a pipeline of 5 very simple steps. First, the skeleton of a mosaic image is uploaded and the individual cells are identified.  Second, there is a step where the user selects the distance threshold to identify two cells as neighbours. Here it is possible to select different thresholds and to check the number of neighbours of every cell in each case. Third, a ROI is selected. There are several possibilities such as a default ROI from the image or the selection of individual cells. Fourth, the graphlet information for the selected cells is calculated, obtaining the Epi-Hexagons, Epi-Random and Epi-Voronoi5. These values are incorporated to a table and serve as input data for a statistical analysis that indicates if a new image is inside or outside of the CVTn path, and what is the Voronoi diagram that presents the most similar organization to the sample. The fifth step includes the classification and labelling of different images in order to represent them in a new window. This final phase allows exporting the representation of the data in a three-dimensional graph. The next videos explain in detail each operation and the three GUI windows are shown as well:
+</p>
+<h3><span class="mw-headline" id="Installation_and_initial_settings">Installation and initial settings</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/installEpiGraph%20.mp4"><i>1. Install EpiGraph</i></a>
+</p><p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/Uninstalling%20EpiGraph.mp4"><i>2. Uninstall EpiGraph</i></a>
+</p><p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/Select%20your%20maximum%20RAM%20memory.mp4"><i>3. Set the maximum RAM memory</i></a>
+</p>
+<h3><span class="mw-headline" id="Calculation_of_GDDs">Calculation of GDDs</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/calculateGraphlets_default.mp4"><i>4. Calculate graphlets - default</i></a>
+</p><p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/invalidRegion.mp4"><i>5. Calculate graphlets - select invalid region</i></a>
+</p><p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/graphletsSquareShape.mp4"><i>6. Calculate graphlets - squared shape</i></a>
+</p><p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/mo29_mo17_mo10_mo7.mp4"><i>7. Calculate graphlets - 4 kind of motifs</i></a>
+</p><p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/connectivity4.mp4"><i>8. Calculate graphlets - 4-connectivity</i></a>
+</p><p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/roiSelection.mp4"><i>9. Calculate graphlets - ROI selection</i></a>
+</p><p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/largeImage.mp4"><i>10. Calculate graphlets - large image</i></a>
+</p>
+<h3><span class="mw-headline" id="Exporting_and_importing_GDDs_data">Exporting and importing GDDs data</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/exportingGraphlets.mp4"><i>11. Export supplementary graphlets results</i></a>
+</p><p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/importExportExcel.mp4"><i>12. Export and import GDDs - main window</i></a>
+</p>
+<h3><span class="mw-headline" id="Visualizing_results">Visualizing results</span></h3>
+<p><a rel="nofollow" class="external text" href="https://github.com/ComplexOrganizationOfLivingMatter/Epigraph/raw/master/tutorials/visualizingWindow.mp4"><i>13.  Visualizing window</i></a>
+</p>
+<h2><span class="mw-headline" id="Limitations"><b>Limitations</b></span></h2>
+<p>EpiGraph only accepts single images right now. A stack of images should be adapted to single frames before uploading it to EpiGraph. Also, computers with little RAM memory (less than 16gb) will work but with a series of restrictions. For ensuring the usability, it is not recommended computing images with a high number of cells (more than 1000) due to a possible lack of memory. In the same way, we suggest skeletonizing the edges of the images and using a small radius (lower than 3) to calculate the cell's neighbourhood. Likewise, we warn if the input image is large (either 3000px of height or 3000px of width) in the case you have limited resources. Choosing an elevated radius value could slow down the work queue, increasing the use of RAM memory. On the other hand, computers with greater RAM memory will work with more complex and larger images and a wide range of radius. 
+</p><p>If any of these requirements are not satisfied, the program alerts the user allowing him/her to change the image provided. Importantly, the images and the ROIs require a minimum number of cells in order to get coherent graphlets. 
+</p><p>Regarding the 3D visualization tool, it allows the user to see the position of the samples from different angles. However, the resolution of the exported file is only 72 pixels per inch (dpi). This could be too low for publications and therefore EpiGraph provides an excel table with all the information needed to represent it with other programs. In addition, you can download any of the CVTn references (29-motifs, 17-motifs, ...) from the 'Visualizing window'.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713065041
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.084 seconds
+Real time usage: 0.087 seconds
+Preprocessor visited node count: 1790/1000000
+Preprocessor generated node count: 4454/1000000
+Post‐expand include size: 5442/2097152 bytes
+Template argument size: 1918/2097152 bytes
+Highest expansion depth: 9/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   54.839      1 - -total
+ 92.25%   50.588      1 - Template:ComponentStats:EpiGraph
+ 88.92%   48.764      1 - Template:Component
+ 72.44%   39.727     14 - Template:Person
+  4.84%    2.653      1 - Template:Ambox
+  2.39%    1.311      1 - Template:Project
+  2.00%    1.099      1 - Template:DevStatus
+  1.88%    1.030      1 - Template:TOC
+  1.87%    1.027      1 - Template:SupportStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=EpiGraph&amp;oldid=39056">http://imagej.net/index.php?title=EpiGraph&amp;oldid=39056</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 31 January 2019, at 11:07.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=EpiGraph&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=EpiGraph" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=EpiGraph" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/EpiGraph" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/EpiGraph" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=EpiGraph&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=EpiGraph&amp;oldid=39056" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=EpiGraph&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":238});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Tips and Tricks - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Tips_and_Tricks","wgTitle":"Tips and Tricks","wgCurRevisionId":20836,"wgRevisionId":20836,"wgArticleId":202,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Tips_and_Tricks","wgRelevantArticleId":202,"wgRequestId":"501a6e9701ee4c402dd3089e","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="ImageJ is easy to use, but sometimes you wish for some function that is actually implemented, yet you do not know how to trigger.  This page lists a few of those tricks."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Tips and Tricks"/>
+
+	<meta property="og:description" content="ImageJ is easy to use, but sometimes you wish for some function that is actually implemented, yet you do not know how to trigger.  This page lists a few of those tricks."/>
+
+	<meta property="og:url" content="http://imagej.net/Tips_and_Tricks"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Tips_and_Tricks rootpage-Tips_and_Tricks skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="ImageJ_tricks.html#bodyContent">Skip to content</a>, 			<a href="ImageJ_tricks.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="ImageJ_tricks.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="ImageJ_tricks.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Tips_and_Tricks&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Tips_and_Tricks&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Tips_and_Tricks&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Tips and Tricks</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Tips and Tricks</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p>ImageJ is easy to use, but sometimes you wish for some function that is actually implemented, yet you do not know how to trigger.  This page lists a few of those tricks.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="ImageJ_tricks.html#Show_the_memory_consumption"><span class="tocnumber">1</span> <span class="toctext">Show the memory consumption</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="ImageJ_tricks.html#Execute_external_programs"><span class="tocnumber">2</span> <span class="toctext">Execute external programs</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="ImageJ_tricks.html#Quickly_see_return_values"><span class="tocnumber">3</span> <span class="toctext">Quickly see return values</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="ImageJ_tricks.html#Find_out_in_which_menu_.28or_.jar_file.29_a_certain_command_is"><span class="tocnumber">4</span> <span class="toctext">Find out in which menu (or .jar file) a certain command is</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="ImageJ_tricks.html#Put_the_main_window_to_the_foreground"><span class="tocnumber">5</span> <span class="toctext">Put the main window to the foreground</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="ImageJ_tricks.html#Close_all_images_.28without_being_asked_whether_to_save_them.29"><span class="tocnumber">6</span> <span class="toctext">Close all images (without being asked whether to save them)</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="ImageJ_tricks.html#Set_the_foreground_color"><span class="tocnumber">7</span> <span class="toctext">Set the foreground color</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="ImageJ_tricks.html#Set_the_line_width"><span class="tocnumber">8</span> <span class="toctext">Set the line width</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="ImageJ_tricks.html#Quickly_copy_a_ROI_from_one_image_to_another"><span class="tocnumber">9</span> <span class="toctext">Quickly copy a ROI from one image to another</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Show_the_memory_consumption">Show the memory consumption</span></h2>
+<p>Just click on the status bar, and you will see how much memory is used, and how much memory is available.
+</p>
+<h2><span class="mw-headline" id="Execute_external_programs">Execute external programs</span></h2>
+<p>The macro language allows executing programs, and capturing their output:
+</p>
+<pre>output = exec("dir /w");
+</pre>
+<h2><span class="mw-headline" id="Quickly_see_return_values">Quickly see return values</span></h2>
+<p>You do not need to wrap macro calls into write() calls: if you just write something like
+</p>
+<pre>getDirectory("plugins");
+</pre>
+<p>the return value will appear in your Log window when called.
+</p>
+<h2><span class="mw-headline" id="Find_out_in_which_menu_.28or_.jar_file.29_a_certain_command_is">Find out in which menu (or .jar file) a certain command is</span></h2>
+<p>Hit <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">L</kbd> to start the <a href="http://imagej.net/Command_Finder" class="mw-redirect" title="Command Finder">Command Finder</a>.  Type (part of) the name of the entry, then click on <i>Show full information</i>.
+</p><p>If <i><span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Misc...</span></em></span>&gt;Require command key for shortcuts</i> is <i>un</i>checked, typing <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">L</kbd> is sufficient.
+</p>
+<h2><span class="mw-headline" id="Put_the_main_window_to_the_foreground">Put the main window to the foreground</span></h2>
+<p>Pressing the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⏎</span> Return</kbd> key on any image will bring the main window to the foreground.
+</p>
+<h2><span class="mw-headline" id="Close_all_images_.28without_being_asked_whether_to_save_them.29">Close all images (without being asked whether to save them)</span></h2>
+<p><span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Utilities </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Close All Without Saving</span></em></span>
+</p>
+<h2><span class="mw-headline" id="Set_the_foreground_color">Set the foreground color</span></h2>
+<p>Double-click on the pipette, or hit <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">K</kbd> (on Macs, it is <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⌘</span> Cmd</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">K</kbd>), or select the menu item <i><span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Color </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Color Picker...</span></em></span></i>
+</p>
+<h2><span class="mw-headline" id="Set_the_line_width">Set the line width</span></h2>
+<p>Line selections can have a width larger than one, which also has an effect on line profiles.  You can set it by double clicking on the line selection tool, or by calling <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Line Width...</span></em></span>
+</p>
+<h2><span class="mw-headline" id="Quickly_copy_a_ROI_from_one_image_to_another">Quickly copy a ROI from one image to another</span></h2>
+<p>Simply activate the image with the desired ROI, then the image you want to put that ROI into, and hit <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">E</kbd>. This triggers the <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Selection </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Restore Selection</span></em></span> which "restores" the selection.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072553
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.148 seconds
+Real time usage: 0.150 seconds
+Preprocessor visited node count: 4580/1000000
+Preprocessor generated node count: 7527/1000000
+Post‐expand include size: 41901/2097152 bytes
+Template argument size: 7997/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  134.142      1 - -total
+ 81.16%  108.871      6 - Template:Key
+ 74.22%   99.557     13 - Template:Key_press/core
+ 10.46%   14.037      1 - Template:Learn
+  9.22%   12.373      1 - Template:Menu
+  8.24%   11.048      4 - Template:Submenu
+  7.57%   10.159      5 - Template:Bc
+  4.17%    5.591     39 - Template:MenuItem
+  4.05%    5.429     13 - Template:Box-shadow
+  3.89%    5.213     13 - Template:Linear-gradient
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Tips_and_Tricks&amp;oldid=20836">http://imagej.net/index.php?title=Tips_and_Tricks&amp;oldid=20836</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 15 June 2016, at 11:42.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Tips_and_Tricks&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Tips+and+Tricks" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Tips+and+Tricks" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Tips_and_Tricks" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Tips_and_Tricks" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Tips_and_Tricks&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Tips_and_Tricks&amp;oldid=20836" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Tips_and_Tricks&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":306});});</script>
+		</body>
+		</html>
+		

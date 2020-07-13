@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>AplimTools - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"AplimTools","wgTitle":"AplimTools","wgCurRevisionId":44269,"wgRevisionId":44269,"wgArticleId":12048,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Analysis"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"AplimTools","wgRelevantArticleId":12048,"wgRequestId":"195b05a810411adf55fee7d1","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.page.gallery.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.page.gallery.styles%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="AplimTools is a set of image processing tools for plants magnetic resonance analysis. These tools are developed in the context of the Aplim project (see the project official page ).&#10;Main features&amp;#160;:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="AplimTools"/>
+
+	<meta property="og:description" content="AplimTools is a set of image processing tools for plants magnetic resonance analysis. These tools are developed in the context of the Aplim project (see the project official page ).&#10;Main features&amp;#160;:"/>
+
+	<meta property="og:url" content="http://imagej.net/AplimTools"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-AplimTools rootpage-AplimTools skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="AplimTools.html#bodyContent">Skip to content</a>, 			<a href="AplimTools.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="AplimTools.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/AplimTools" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:AplimTools&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=AplimTools&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=AplimTools&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>AplimTools</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>AplimTools (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Romain Fernandez &amp; Bamba Diop
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Romain Fernandez
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/Rocsg/AplimTools/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> March 23<sup>th</sup>, 2020
+</td></tr>
+
+<tr>
+<th> Development status
+</th>
+<td> unstable, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a>
+</td></tr>
+
+</table>
+<p><br />
+</p><p>AplimTools is a set of image processing tools for plants magnetic resonance analysis. These tools are developed in the context of the Aplim project (see the <a rel="nofollow" class="external text" href="https://umr-agap.cirad.fr/recherche/projets-de-recherche/aplim">project official page</a> ).
+Main features&#160;:
+</p>
+<ul><li> T1/T2/M0 maps computation from spin echo sequences (multiple TR and/or TE)</li>
+<li> Time-lapse exploration of T1/T2/M0 parameters in interest areas</li></ul>
+<div class="thumb tleft"><div class="thumbinner" style="width:802px;"><a href="http://imagej.net/File:Full-1.jpg" class="image"><img alt="" src="../_images/e/ec/Full-1.jpg" width="800" height="434" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Full-1.jpg" class="internal" title="Enlarge"></a></div>Time-lapse exploration of parameters in a plant under drought stress</div></div></div>
+<p><br /> 
+</p><p><br /> 
+</p><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="AplimTools.html#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="AplimTools.html#Aplim_T1.2FT2.2FM0_maps_importer"><span class="tocnumber">2</span> <span class="toctext">Aplim T1/T2/M0 maps importer</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="AplimTools.html#The_science_behind"><span class="tocnumber">2.1</span> <span class="toctext">The science behind</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="AplimTools.html#Preparing_your_data"><span class="tocnumber">2.2</span> <span class="toctext">Preparing your data</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="AplimTools.html#Running_the_plugin"><span class="tocnumber">2.3</span> <span class="toctext">Running the plugin</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="AplimTools.html#Exploring_the_results"><span class="tocnumber">2.4</span> <span class="toctext">Exploring the results</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="AplimTools.html#Aplim_T1.2FT2.2FM0_curves_explorer"><span class="tocnumber">3</span> <span class="toctext">Aplim T1/T2/M0 curves explorer</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="AplimTools.html#Exploring_relaxation_curves"><span class="tocnumber">3.1</span> <span class="toctext">Exploring relaxation curves</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="AplimTools.html#Preparing_your_data_2"><span class="tocnumber">3.2</span> <span class="toctext">Preparing your data</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="AplimTools.html#Running_the_plugin_2"><span class="tocnumber">3.3</span> <span class="toctext">Running the plugin</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="AplimTools.html#Exploring_the_results_2"><span class="tocnumber">3.4</span> <span class="toctext">Exploring the results</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="AplimTools.html#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="AplimTools.html#Software_dependencies_acknowledgements"><span class="tocnumber">5</span> <span class="toctext">Software dependencies acknowledgements</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="AplimTools.html#License"><span class="tocnumber">6</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>In order to install AplimTools on your computer, please follow these simple steps:
+</p><p>1. (if needed) Download and install Fiji from <a rel="nofollow" class="external free" href="https://fiji.sc/">https://fiji.sc/</a>&#160;; start Fiji, and let it automatically update. Then restart Fiji.  
+</p><p>2. Open Fiji, run the <b>Update manager</b> (Help &gt; Update). Click on "OK" to close the first popup windows, then click on the button <b>Manage update sites...</b>. 
+</p><p>3. In this list, activate <b>ImageJ-ITK</b> by checking the corresponding checkboxes. Don't close the window, or reopen it you read this to late.
+</p><p>4. Add the <b>Fijiyama</b> repository (by clicking on the button <b>Add update site</b>, and filling the fields&#160;: name = "Fijiyama", site = <a rel="nofollow" class="external free" href="https://sites.imagej.net/Fijiyama">https://sites.imagej.net/Fijiyama</a>), then check the associated checkbox. Don't close the window, or reopen it you read this to late.
+</p><p>5. Add the <b>AplimTools</b> repository (by clicking on the button <b>Add update site</b>, and filling the fields&#160;: name = "AplimTools", site = <a rel="nofollow" class="external free" href="https://sites.imagej.net/AplimTools">https://sites.imagej.net/AplimTools</a>), then check the associated checkbox. Now you can click on <b>Close</b>.
+</p><p>6. Restart Fiji: a new <b>AplimTools</b> entry should be available in the menu Plugins &gt; Analyze. If not, go back to the Update Manager, and check that the repositories <b>ImageJ-ITK</b>, <b>Fijiyama</b>, and <b>AplimTools</b> are correctly selected.
+</p><p><br /> 
+</p>
+<h2><span class="mw-headline" id="Aplim_T1.2FT2.2FM0_maps_importer">Aplim T1/T2/M0 maps importer</span></h2>
+<h3><span class="mw-headline" id="The_science_behind">The science behind</span></h3>
+<p>This plugin compute M0, T1 and T2 maps pixelwise from a given set of spin-echo sequences, acquired with different repetition times and/or different echo times.
+</p><p>First a 3d registration is computed to align precisely the successive images, using libraries of the [Fijiyama] plugin. Then the rice noise level is estimated, and the M0, T1 and T2 parameters are estimated, fitting mono or bi-exponential curves, corrected with the measured rice noise (reference&#160;: [<a rel="nofollow" class="external text" href="https://onlinelibrary.wiley.com/doi/full/10.1002/mrm.22178">[Raya et al., 2010</a>]]. 
+</p>
+<h3><span class="mw-headline" id="Preparing_your_data">Preparing your data</span></h3>
+<p>This plugin needs properly formatted dataset, a SL_RAW directory (whatever be its exact name) with exported data in it. To construct it, use the BionanoNMRI scripts, with the processing.bnp parameters set to&#160;:
+</p>
+<ul><li> <b>Create RAW DICOM</b> set to <b>yes</b>.</li>
+<li> <b>Create CLEAN DICOM</b> set to <b>no</b>.</li>
+<li> <b>Create MASK DICOM</b> set to <b>no</b>.</li></ul>
+<p>and using a listSer.ser file including all the interesting data for the T1 and T2 sequences.
+</p>
+<h3><span class="mw-headline" id="Running_the_plugin">Running the plugin</span></h3>
+<p>The plugin ask for the SL_RAW directory (see above), then an output directory to write results, before asking some questions about the computation you want:
+</p>
+<ul><li> Register data&#160;? Answer <b>No</b> means you are really confident about the exact positioning of the object. You should answer <b>Yes</b></li>
+<li> Register T1 and T2&#160;? When providing T1 and T2 sequence, to get proper results and analyze, you should answer <b>Yes</b>, in order all the exported results (T2, M0 and T1 maps being aligned)</li>
+<li> Register Manually&#160;? Answer <b>Yes</b> if the data are really misaligned (angle &gt; 30 degrees, translation &gt; the object half-size)</li>
+<li> Register Dense&#160;? Answer <b>Yes</b> if the object could undergo some deformations during experiments (growing, stretching in the antenna, drying...)</li>
+<li> Register successive T1&#160;? Answer <b>No</b> means you are really confident about the exact positioning of the object. You should answer <b>Yes</b></li>
+<li> Use T2 in T1 sequence&#160;? You should.</li></ul>
+<p>After all these questions, the plugin run the registrations, and compute the maps. It can last a while (typically 1 min. for a 512 x 512 slice).
+</p><p>Finally, the maps are concatenated in an hyperimage, saved in your output directory
+</p>
+<h3><span class="mw-headline" id="Exploring_the_results">Exploring the results</span></h3>
+<p>The output image is a 4D MR hyperimage. The "channels" slicer helps you to explore the 4th dimension, that is the images computed, and the input spin echo images. In detail&#160;:
+</p>
+<ul><li> Channels 1,2 3 are respectively the M0 map, T1 map, T2 map (see this information in the slice title, just upside the image pixels)</li>
+<li> Channels 4,5, ..... NR-3 are the successive NR repetition times of the "T1 sequence", in increasing order.</li>
+<li> Channels NR-2,..... NR-2+NE are the successive NE echo times of the "T2 sequence", in increasing order.</li></ul>
+<p><br />
+Unit for the channels 2 and 3 are milliseconds, what mean you can use it like it, without any additional conversion.
+<br />
+For time-lapse experiments, one can compute such a 4D MR hyperimage at successive timepoints, and register and combine them in a 5D MR hyperimage (the same, with an additional slicer to walk through time). Registration and data combining can be done using the plugin [Fijiyama], using the Series registration mode .
+</p><p><br /> 
+</p>
+<h2><span class="mw-headline" id="Aplim_T1.2FT2.2FM0_curves_explorer">Aplim T1/T2/M0 curves explorer</span></h2>
+<h3><span class="mw-headline" id="Exploring_relaxation_curves">Exploring relaxation curves</span></h3>
+<p>This plugin helps exploring the relaxation curves on a point, the neighbourhood of a point, or a user-defined roi, using non-linear fit (as above). The visualization of these curves (middle panels) is enriched by semi-log graphs of the T1 and T2 values (right-top panel), and a distribution of these values in the selected area (right-bottom panel). This explorer can open time-lapse 5D hyperimages, to give insight of the evolution of these parameters along the experiment. The explorer display informations through 6 panels&#160;: 
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:602px;"><a href="http://imagej.net/File:Full-1.jpg" class="image"><img alt="" src="../_images/e/ec/Full-1.jpg" width="600" height="326" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Full-1.jpg" class="internal" title="Enlarge"></a></div>Application panels</div></div></div></div>
+<p><br />
+</p>
+<ul class="gallery mw-gallery-traditional" style="max-width: 1179px;_width: 1179px;">
+	<li class='gallerycaption'>Panels details</li>
+		<li class="gallerybox" style="width: 385px"><div style="width: 385px">
+			<div class="thumb" style="width: 380px;"><div style="margin:40px auto;"><a href="http://imagej.net/File:Panel_1-1.jpg" class="image"><img alt="" src="../_images/c/c1/Panel_1-1.jpg" width="350" height="350" /></a></div></div>
+			<div class="gallerytext">
+<p>Left panels: spin echo images from T1 (top) and T2 (bottom) sequences. The yellow square shows the interest area where the tissue parameters are estimated. Its size and position can be modified dynamically.
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 385px"><div style="width: 385px">
+			<div class="thumb" style="width: 380px;"><div style="margin:96px auto;"><a href="http://imagej.net/File:Panel3-1.jpg" class="image"><img alt="" src="../_images/6/61/Panel3-1.jpg" width="350" height="238" /></a></div></div>
+			<div class="gallerytext">
+<p>T1 relaxation curve (red) estimated from MRI data (blue crosses), given the measured noise level (black)
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 385px"><div style="width: 385px">
+			<div class="thumb" style="width: 380px;"><div style="margin:93.5px auto;"><a href="http://imagej.net/File:Panel4-1.jpg" class="image"><img alt="" src="../_images/2/2a/Panel4-1.jpg" width="350" height="243" /></a></div></div>
+			<div class="gallerytext">
+<p>T2 relaxation curve (dark green=mono-exponential, light green=bi-exponential) estimated from MRI data (blue crosses). The blue crosses display the mean MR value over all the pixels in the interest area (the yellow square), and the std within these data is displayed as a vertical blue bar. The measured noise level used for noise-corrected estimation is displayed as a black line.
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 385px"><div style="width: 385px">
+			<div class="thumb" style="width: 380px;"><div style="margin:99px auto;"><a href="http://imagej.net/File:Panel5-1.jpg" class="image"><img alt="" src="../_images/5/5c/Panel5-1.jpg" width="350" height="232" /></a></div></div>
+			<div class="gallerytext">
+<p>Values of T1 (red) and T2 (green) estimated from the mean values (blue crosses on the curves panel). Marker thickness are proportional to the relative proton density. The three graphs (from bottom to top) shows the values in this area for the three successive timepoints of the 5D MR Hyperimage.
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 385px"><div style="width: 385px">
+			<div class="thumb" style="width: 380px;"><div style="margin:98.5px auto;"><a href="http://imagej.net/File:Panel6-1.jpg" class="image"><img alt="" src="../_images/d/dd/Panel6-1.jpg" width="350" height="233" /></a></div></div>
+			<div class="gallerytext">
+<p>Distribution of the T1 and T2 values estimated from each individual pixel of the current region of interest.
+</p>
+			</div>
+		</div></li>
+</ul>
+<h3><span class="mw-headline" id="Preparing_your_data_2">Preparing your data</span></h3>
+<p>This plugin needs properly formatted dataset, a 4D MR hyperimage or a 5D MR hyperimage (see above).
+</p>
+<h3><span class="mw-headline" id="Running_the_plugin_2">Running the plugin</span></h3>
+<p>The plugin ask for the MR hyperimage, and run the explorer. 
+</p>
+<h3><span class="mw-headline" id="Exploring_the_results_2">Exploring the results</span></h3>
+<p>A window appear, that let you explore your data clicking on your images. Controls are explained in the help menu that opens when hitting the 'h' key of your keyboard.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ul><li> José G. Raya, Olaf Dietrich, Annie Horng, Jürgen Weber, Maximilian F. Reiser, Christian Glaser, 2010.  «&#160;T2 measurement in articular cartilage: Impact of the fitting method on accuracy and precision at low SNR&#160;». Magnetic Resonance in Medicine 63:181–193 (2010)</li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Software_dependencies_acknowledgements">Software dependencies acknowledgements</span></h2>
+<ul><li> Johannes Schindelin et al for <a rel="nofollow" class="external text" href="https://imagej.net/Fiji">Fiji</a> (Schindelin et al., 2012)</li>
+<li> Karl Schmidt and Curtis Rueden for tips seen in the MRI Analysis Calculator and in the CurveFitters</li></ul>
+<p><br /> 
+</p>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is an open-source <b>free software</b>: it can be redistributed and/or modified under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  
+</p>
+<hr />
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064524
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.056 seconds
+Real time usage: 0.061 seconds
+Preprocessor visited node count: 166/1000000
+Preprocessor generated node count: 919/1000000
+Post‐expand include size: 983/2097152 bytes
+Template argument size: 415/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    7.094      1 - -total
+100.00%    7.094      1 - Template:Infobox
+ 30.38%    2.155      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=AplimTools&amp;oldid=44269">http://imagej.net/index.php?title=AplimTools&amp;oldid=44269</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 1 April 2020, at 10:06.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=AplimTools&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=AplimTools" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=AplimTools" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/AplimTools" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/AplimTools" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=AplimTools&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=AplimTools&amp;oldid=44269" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=AplimTools&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":300});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Git Notes - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Git_Notes","wgTitle":"Git Notes","wgCurRevisionId":29401,"wgRevisionId":29401,"wgArticleId":45,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Git"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Git_Notes","wgRelevantArticleId":45,"wgRequestId":"01ad17828717ce2991a114a8","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Here are some common git operations for which we often find ourselves searching."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Git Notes"/>
+
+	<meta property="og:description" content="Here are some common git operations for which we often find ourselves searching."/>
+
+	<meta property="og:url" content="http://imagej.net/Git_Notes"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Git_Notes rootpage-Git_Notes skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Git_Notes.html#bodyContent">Skip to content</a>, 			<a href="Git_Notes.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Git_Notes.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Git_Notes" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Git_Notes&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Git_Notes&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Git_Notes&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Git Notes</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Git Tutorials
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">Git for dummies</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/EGit" title="EGit">Git in Eclipse (EGit)</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_mini_howto" title="Git mini howto">Git mini howto</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_workshop" title="Git workshop">Git workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">Git Conflicts</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">Git topic branches</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Git Notes</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git reflogs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_submodule_tutorial" title="Git submodule tutorial">Git submodule tutorial</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Pinpoint_regressions_with_Git" title="Pinpoint regressions with Git">Pinpoint regressions with Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_publish_a_Git_repository" title="How to publish a Git repository">How to publish a Git repository</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_extract_a_subproject" title="How to extract a subproject">How to extract a subproject</a>
+</td></tr></table>
+<p><br />
+Here are some common git operations for which we often find ourselves searching.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Git_Notes.html#Workflow"><span class="tocnumber">1</span> <span class="toctext">Workflow</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Git_Notes.html#Checkout_a_remote_branch_.27develop.27_and_keep_it_linked_to_the_origin"><span class="tocnumber">1.1</span> <span class="toctext">Checkout a remote branch 'develop' and keep it linked to the origin</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Git_Notes.html#List_all_branches_.28both_local_and_remote.29"><span class="tocnumber">1.2</span> <span class="toctext">List all branches (both local and remote)</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Git_Notes.html#List_local_branches_and_their_corresponding_upstream_remote_branches"><span class="tocnumber">1.3</span> <span class="toctext">List local branches and their corresponding upstream remote branches</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Git_Notes.html#Revert_local_changes_to_a_file_.28prior_to_commit.29"><span class="tocnumber">1.4</span> <span class="toctext">Revert local changes to a file (prior to commit)</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Git_Notes.html#Revert_all_local_changes_to_the_current_subtree_.28prior_to_commit.29"><span class="tocnumber">1.5</span> <span class="toctext">Revert all local changes to the current subtree (prior to commit)</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Git_Notes.html#Cute_hack_to_revert_all_local_changes_.28prior_to_commit.29"><span class="tocnumber">1.6</span> <span class="toctext">Cute hack to revert all local changes (prior to commit)</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Git_Notes.html#Undo_a_commit"><span class="tocnumber">1.7</span> <span class="toctext">Undo a commit</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Git_Notes.html#Undo_multiple_commits"><span class="tocnumber">1.8</span> <span class="toctext">Undo multiple commits</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Git_Notes.html#Update_to_latest_HEAD.2C_preserving_local_changes_and_local_commits_on_top"><span class="tocnumber">1.9</span> <span class="toctext">Update to latest HEAD, preserving local changes and local commits on top</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Git_Notes.html#Push_changes_on_master_to_origin"><span class="tocnumber">1.10</span> <span class="toctext">Push changes on master to origin</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Git_Notes.html#Delete_untracked_files_and_directories"><span class="tocnumber">1.11</span> <span class="toctext">Delete untracked files and directories</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Git_Notes.html#Interactively_stage_patches_from_changed_file.28s.29"><span class="tocnumber">1.12</span> <span class="toctext">Interactively stage patches from changed file(s)</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="Git_Notes.html#Roll_back_the_last_commit.27s_changes_to_a_particular_file"><span class="tocnumber">1.13</span> <span class="toctext">Roll back the last commit's changes to a particular file</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="Git_Notes.html#Branches"><span class="tocnumber">2</span> <span class="toctext">Branches</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="Git_Notes.html#Branch_master_to_a_new_local_branch_.22new_branch.22"><span class="tocnumber">2.1</span> <span class="toctext">Branch master to a new local branch "new_branch"</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Git_Notes.html#Push_local_branch_to_remote"><span class="tocnumber">2.2</span> <span class="toctext">Push local branch to remote</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="Git_Notes.html#Make_the_current_local_branch_start_tracking_a_corresponding_remote_branch"><span class="tocnumber">2.3</span> <span class="toctext">Make the current local branch start tracking a corresponding remote branch</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="Git_Notes.html#List_the_local_branches_that_have_already_been_merged_to_this_one"><span class="tocnumber">2.4</span> <span class="toctext">List the local branches that have already been merged to this one</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="Git_Notes.html#Diff_a_file_between_two_branches"><span class="tocnumber">2.5</span> <span class="toctext">Diff a file between two branches</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="Git_Notes.html#Delete_a_branch_both_locally_and_remotely"><span class="tocnumber">2.6</span> <span class="toctext">Delete a branch both locally and remotely</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Git_Notes.html#Move_a_commit_from_bad_branch_to_good_branch"><span class="tocnumber">2.7</span> <span class="toctext">Move a commit from bad_branch to good_branch</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="Git_Notes.html#Rename_the_current_branch"><span class="tocnumber">2.8</span> <span class="toctext">Rename the current branch</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-24"><a href="Git_Notes.html#Git_.2B_SVN"><span class="tocnumber">3</span> <span class="toctext">Git + SVN</span></a>
+<ul>
+<li class="toclevel-2 tocsection-25"><a href="Git_Notes.html#Clone_an_SVN_repository_to_a_local_Git_repository"><span class="tocnumber">3.1</span> <span class="toctext">Clone an SVN repository to a local Git repository</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href="Git_Notes.html#Commit_and_push_changes.2C_even_with_local_changes_in_the_working_copy"><span class="tocnumber">3.2</span> <span class="toctext">Commit and push changes, even with local changes in the working copy</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href="Git_Notes.html#Update_to_latest_trunk.2C_preserving_local_changes_and_local_commits_on_top"><span class="tocnumber">3.3</span> <span class="toctext">Update to latest trunk, preserving local changes and local commits on top</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-28"><a href="Git_Notes.html#Searching"><span class="tocnumber">4</span> <span class="toctext">Searching</span></a>
+<ul>
+<li class="toclevel-2 tocsection-29"><a href="Git_Notes.html#Recursively_search_for_HelloWorld.file_.28and_display_the_most_recent_commit_modifying_it.29"><span class="tocnumber">4.1</span> <span class="toctext">Recursively search for HelloWorld.file (and display the most recent commit modifying it)</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="Git_Notes.html#Recursively_search_for_all_files_containing_the_phrase_.27import_HelloWorld.27"><span class="tocnumber">4.2</span> <span class="toctext">Recursively search for all files containing the phrase 'import HelloWorld'</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="Git_Notes.html#Recursively_search_for_all_files_in_any_topic_branch_containing_the_phrase_.27import_HelloWorld.27"><span class="tocnumber">4.3</span> <span class="toctext">Recursively search for all files <i>in any topic branch</i> containing the phrase 'import HelloWorld'</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-32"><a href="Git_Notes.html#History"><span class="tocnumber">5</span> <span class="toctext">History</span></a>
+<ul>
+<li class="toclevel-2 tocsection-33"><a href="Git_Notes.html#Display_a_log_with_colored_word_diffs"><span class="tocnumber">5.1</span> <span class="toctext">Display a log with colored word diffs</span></a></li>
+<li class="toclevel-2 tocsection-34"><a href="Git_Notes.html#Display_a_diff_with_colored_words_between_a_file_in_one_commit_and_a_file_in_another_commit"><span class="tocnumber">5.2</span> <span class="toctext">Display a diff with colored words between a file in one commit and a file in another commit</span></a></li>
+<li class="toclevel-2 tocsection-35"><a href="Git_Notes.html#Display_all_contributing_authors_of_a_project_including_their_e-mail"><span class="tocnumber">5.3</span> <span class="toctext">Display all contributing authors of a project including their e-mail</span></a></li>
+<li class="toclevel-2 tocsection-36"><a href="Git_Notes.html#Viewing_the_history_for_a_single_file"><span class="tocnumber">5.4</span> <span class="toctext">Viewing the history for a single file</span></a></li>
+<li class="toclevel-2 tocsection-37"><a href="Git_Notes.html#See_commits_in_branch_B_not_present_in_branch_A"><span class="tocnumber">5.5</span> <span class="toctext">See commits in branch B not present in branch A</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-38"><a href="Git_Notes.html#Scripts"><span class="tocnumber">6</span> <span class="toctext">Scripts</span></a>
+<ul>
+<li class="toclevel-2 tocsection-39"><a href="Git_Notes.html#List_information_about_all_remote_branches_including_last_author.2C_commit_date_and_unmerged_commit_count"><span class="tocnumber">6.1</span> <span class="toctext">List information about all remote branches including last author, commit date and unmerged commit count</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-40"><a href="Git_Notes.html#Advanced_and.2For_dangerous"><span class="tocnumber">7</span> <span class="toctext">Advanced and/or dangerous</span></a>
+<ul>
+<li class="toclevel-2 tocsection-41"><a href="Git_Notes.html#Create_a_repository_with_g.2Bw_permissions"><span class="tocnumber">7.1</span> <span class="toctext">Create a repository with g+w permissions</span></a></li>
+<li class="toclevel-2 tocsection-42"><a href="Git_Notes.html#Push_all_remote_branches_from_one_remote_.28e.g..2C_.22origin.22.29_to_another_.28e.g..2C_.22github.22.29"><span class="tocnumber">7.2</span> <span class="toctext">Push all remote branches from one remote (e.g., "origin") to another (e.g., "github")</span></a></li>
+<li class="toclevel-2 tocsection-43"><a href="Git_Notes.html#Another_way_to_push_all_remote_branches_between_remotes"><span class="tocnumber">7.3</span> <span class="toctext">Another way to push all remote branches between remotes</span></a></li>
+<li class="toclevel-2 tocsection-44"><a href="Git_Notes.html#Fully_garbage_collect_and_compact_the_repository_.28deletes_all_orphaned_refs.21.29"><span class="tocnumber">7.4</span> <span class="toctext">Fully garbage collect and compact the repository (deletes all orphaned refs!)</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-45"><a href="Git_Notes.html#Rewriting_history"><span class="tocnumber">8</span> <span class="toctext">Rewriting history</span></a>
+<ul>
+<li class="toclevel-2 tocsection-46"><a href="Git_Notes.html#Split_a_subdirectory_into_a_separate_git_repository"><span class="tocnumber">8.1</span> <span class="toctext">Split a subdirectory into a separate git repository</span></a></li>
+<li class="toclevel-2 tocsection-47"><a href="Git_Notes.html#Throw_away_git-svn-id_metadata"><span class="tocnumber">8.2</span> <span class="toctext">Throw away git-svn-id metadata</span></a></li>
+<li class="toclevel-2 tocsection-48"><a href="Git_Notes.html#Combine_the_first_two_commits_of_a_Git_repository"><span class="tocnumber">8.3</span> <span class="toctext">Combine the first two commits of a Git repository</span></a></li>
+<li class="toclevel-2 tocsection-49"><a href="Git_Notes.html#Change_the_author_of_a_commit"><span class="tocnumber">8.4</span> <span class="toctext">Change the author of a commit</span></a></li>
+<li class="toclevel-2 tocsection-50"><a href="Git_Notes.html#Change_the_author_of_many_commits"><span class="tocnumber">8.5</span> <span class="toctext">Change the author of many commits</span></a></li>
+<li class="toclevel-2 tocsection-51"><a href="Git_Notes.html#Merge_multiple_repositories"><span class="tocnumber">8.6</span> <span class="toctext">Merge multiple repositories</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-52"><a href="Git_Notes.html#Tutorials"><span class="tocnumber">9</span> <span class="toctext">Tutorials</span></a>
+<ul>
+<li class="toclevel-2 tocsection-53"><a href="Git_Notes.html#Creating_a_shared_remote_repository"><span class="tocnumber">9.1</span> <span class="toctext">Creating a shared remote repository</span></a></li>
+<li class="toclevel-2 tocsection-54"><a href="Git_Notes.html#Displaying_a_filtered_set_of_commits"><span class="tocnumber">9.2</span> <span class="toctext">Displaying a filtered set of commits</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Workflow">Workflow</span></h2>
+<h3><span class="mw-headline" id="Checkout_a_remote_branch_.27develop.27_and_keep_it_linked_to_the_origin">Checkout a remote branch 'develop' and keep it linked to the origin</span></h3>
+<pre class="brush:bash">git checkout -t origin/develop</pre>
+<p>It should report: "Branch develop set up to track remote branch develop from origin."
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="List_all_branches_.28both_local_and_remote.29">List all branches (both local and remote)</span></h3>
+<pre class="brush:bash">git branch -a</pre>
+<h3><span class="mw-headline" id="List_local_branches_and_their_corresponding_upstream_remote_branches">List local branches and their corresponding upstream remote branches</span></h3>
+<pre class="brush:bash">git branch -vv</pre>
+<h3><span class="mw-headline" id="Revert_local_changes_to_a_file_.28prior_to_commit.29">Revert local changes to a file (prior to commit)</span></h3>
+<pre class="brush:bash">git checkout file</pre>
+<h3><span class="mw-headline" id="Revert_all_local_changes_to_the_current_subtree_.28prior_to_commit.29">Revert all local changes to the current subtree (prior to commit)</span></h3>
+<pre class="brush:bash">git checkout .</pre>
+<h3><span class="mw-headline" id="Cute_hack_to_revert_all_local_changes_.28prior_to_commit.29">Cute hack to revert all local changes (prior to commit)</span></h3>
+<pre class="brush:bash">git stash git stash drop</pre>
+<h3><span class="mw-headline" id="Undo_a_commit">Undo a commit</span></h3>
+<pre class="brush:bash">git reset --soft HEAD^</pre>
+<h3><span class="mw-headline" id="Undo_multiple_commits">Undo multiple commits</span></h3>
+<pre class="brush:bash">git reset --soft HEAD@{2}</pre>
+<p>Where <code>2</code> is the number of commits to undo.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Update_to_latest_HEAD.2C_preserving_local_changes_and_local_commits_on_top">Update to latest HEAD, preserving local changes and local commits on top</span></h3>
+<pre class="brush:bash">
+git stash
+git pull --rebase
+git stash pop
+</pre>
+<h3><span class="mw-headline" id="Push_changes_on_master_to_origin">Push changes on master to origin</span></h3>
+<pre class="brush:bash">git push origin master</pre>
+<h3><span class="mw-headline" id="Delete_untracked_files_and_directories">Delete untracked files and directories</span></h3>
+<pre class="brush:bash">git clean -df</pre>
+<h3><span class="mw-headline" id="Interactively_stage_patches_from_changed_file.28s.29">Interactively stage patches from changed file(s)</span></h3>
+<pre class="brush:bash">git add -p &lt;path&gt;</pre>
+<h3><span class="mw-headline" id="Roll_back_the_last_commit.27s_changes_to_a_particular_file">Roll back the last commit's changes to a particular file</span></h3>
+<pre class="brush:bash">git checkout HEAD@{1} -- file</pre>
+<h2><span class="mw-headline" id="Branches">Branches</span></h2>
+<h3><span class="mw-headline" id="Branch_master_to_a_new_local_branch_.22new_branch.22">Branch master to a new local branch "new_branch"</span></h3>
+<pre class="brush:bash">git checkout -b new_branch master</pre>
+<h3><span class="mw-headline" id="Push_local_branch_to_remote">Push local branch to remote</span></h3>
+<pre class="brush:bash">git push -u origin new_branch</pre>
+<h3><span class="mw-headline" id="Make_the_current_local_branch_start_tracking_a_corresponding_remote_branch">Make the current local branch start tracking a corresponding remote branch</span></h3>
+<pre class="brush:bash">git branch --set-upstream-to origin/new_branch</pre>
+<p>This is not necessary if you used <code>git push -u</code> as suggested above.
+</p>
+<h3><span class="mw-headline" id="List_the_local_branches_that_have_already_been_merged_to_this_one">List the local branches that have already been merged to this one</span></h3>
+<pre class="brush:bash">git branch --merged</pre>
+<h3><span class="mw-headline" id="Diff_a_file_between_two_branches">Diff a file between two branches</span></h3>
+<pre class="brush:bash">git diff branch1 branch2 -- file</pre>
+<h3><span class="mw-headline" id="Delete_a_branch_both_locally_and_remotely">Delete a branch both locally and remotely</span></h3>
+<pre class="brush:bash">
+git branch -rd origin/branch_to_kill
+git branch -d branch_to_kill
+git push origin&#160;:branch_to_kill
+</pre>
+<h3><span class="mw-headline" id="Move_a_commit_from_bad_branch_to_good_branch">Move a commit from bad_branch to good_branch</span></h3>
+<pre class="brush:bash">
+# First cherry-pick the commit onto the correct branch:
+git checkout good_branch
+git cherry-pick deadbeef
+
+# Then remove the commit from the bad branch:
+git checkout bad_branch
+git rebase -i
+# Change the undesirable commit to "noop"
+</pre>
+<p>For more on branching, see <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">Git topic branches</a>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Rename_the_current_branch">Rename the current branch</span></h3>
+<pre class="brush:bash">git branch -m &lt;new branch name&gt;</pre>
+<h2><span class="mw-headline" id="Git_.2B_SVN">Git + SVN</span></h2>
+<h3><span class="mw-headline" id="Clone_an_SVN_repository_to_a_local_Git_repository">Clone an SVN repository to a local Git repository</span></h3>
+<pre class="brush:bash">git svn clone -s http://svn.code.sf.net/p/jhotdraw/svn/</pre>
+<h3><span class="mw-headline" id="Commit_and_push_changes.2C_even_with_local_changes_in_the_working_copy">Commit and push changes, even with local changes in the working copy</span></h3>
+<pre class="brush:bash">git commit git stash git svn dcommit git stash pop</pre>
+<h3><span class="mw-headline" id="Update_to_latest_trunk.2C_preserving_local_changes_and_local_commits_on_top">Update to latest trunk, preserving local changes and local commits on top</span></h3>
+<pre class="brush:bash">git stash git svn rebase git stash pop</pre>
+<h2><span class="mw-headline" id="Searching">Searching</span></h2>
+<h3><span class="mw-headline" id="Recursively_search_for_HelloWorld.file_.28and_display_the_most_recent_commit_modifying_it.29">Recursively search for HelloWorld.file (and display the most recent commit modifying it)</span></h3>
+<pre class="brush:bash">git ls-tree -r HEAD | grep HelloWorld.file</pre>
+<h3><span class="mw-headline" id="Recursively_search_for_all_files_containing_the_phrase_.27import_HelloWorld.27">Recursively search for all files containing the phrase 'import HelloWorld'</span></h3>
+<pre class="brush:bash">git grep 'import HelloWorld'</pre>
+<h3><span class="mw-headline" id="Recursively_search_for_all_files_in_any_topic_branch_containing_the_phrase_.27import_HelloWorld.27">Recursively search for all files <i>in any topic branch</i> containing the phrase 'import HelloWorld'</span></h3>
+<pre class="brush:bash">git grep 'import HelloWorld' $(git rev-list --all --no-walk)</pre>
+<h2><span class="mw-headline" id="History">History</span></h2>
+<h3><span class="mw-headline" id="Display_a_log_with_colored_word_diffs">Display a log with colored word diffs</span></h3>
+<pre class="brush:bash">git log -p --color-words</pre>
+<p>Add <code>-S</code> to <code>less</code> to virtually wrap long lines.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Display_a_diff_with_colored_words_between_a_file_in_one_commit_and_a_file_in_another_commit">Display a diff with colored words between a file in one commit and a file in another commit</span></h3>
+<pre class="brush:bash">git diff &lt;commitA&gt;:&lt;file&gt; &lt;commitB&gt;:&lt;file&gt; --color-words</pre>
+<p>Add <code>-S</code> to <code>less</code> to virtually wrap long lines.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Display_all_contributing_authors_of_a_project_including_their_e-mail">Display all contributing authors of a project including their e-mail</span></h3>
+<pre class="brush:bash">git log --format='%aN &lt;%ae&amp;&gt;' | sort -u</pre>
+<p>Respects <code>.mailmap</code>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Viewing_the_history_for_a_single_file">Viewing the history for a single file</span></h3>
+<pre class="brush:bash">git log --follow HelloWorld.file</pre>
+<p>This history is algorithmically calculated and must be carefully preserved.
+</p><p>Simultaneous (within a single commit) significant changes + file renaming (including relocation) can prevent the algorithm from successfully tracing the file's history, or cause it to begin tracing the wrong file.
+</p><p>Keeping code changes separate from renames should prevent this confusion, but it is good practice to check <code>log --follow</code> before pushing to a remote repository.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="See_commits_in_branch_B_not_present_in_branch_A">See commits in branch B not present in branch A</span></h3>
+<p>There are two main options. The first:
+</p>
+<pre class="brush:bash">git log A..B</pre>
+<p>will display the different commits in full git log format. NB: the <code>..</code> between commits is important to sure only the difference in commits is considered.
+</p><p>The second:
+</p>
+<pre class="brush:bash">git cherry -v A B</pre>
+<p>will display a simple list of the different commits, one per line, with commit message and hash.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Scripts">Scripts</span></h2>
+<p>There are some Git-related scripts available in the <a rel="nofollow" class="external text" href="https://github.com/scijava/scijava-scripts">scijava-scripts</a> project.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="List_information_about_all_remote_branches_including_last_author.2C_commit_date_and_unmerged_commit_count">List information about all remote branches including last author, commit date and unmerged commit count</span></h3>
+<pre class="brush:bash">$SCIJAVA/bin/remote-branch-info.sh</pre>
+<h2><span class="mw-headline" id="Advanced_and.2For_dangerous">Advanced and/or dangerous</span></h2>
+<h3><span class="mw-headline" id="Create_a_repository_with_g.2Bw_permissions">Create a repository with g+w permissions</span></h3>
+<pre class="brush:bash">git init --shared=group</pre>
+<p>Or for a bare repository:
+</p>
+<pre class="brush:bash">git init --bare --shared=group</pre>
+<p>(Bare repositories are meant for a remote server repository that all your coworkers push into and pull/fetch from.)
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Push_all_remote_branches_from_one_remote_.28e.g..2C_.22origin.22.29_to_another_.28e.g..2C_.22github.22.29">Push all remote branches from one remote (e.g., "origin") to another (e.g., "github")</span></h3>
+<pre class="brush:bash">
+git push github $(git for-each-ref refs/remotes/origin | \
+  grep -v HEAD | \
+  while read sha1 type ref
+  do
+    echo $ref:refs/heads/${ref#refs/remotes/origin/}
+  done)
+</pre>
+<h3><span class="mw-headline" id="Another_way_to_push_all_remote_branches_between_remotes">Another way to push all remote branches between remotes</span></h3>
+<pre class="brush:bash">
+eval git push github $(git for-each-ref | \
+  sed -n 's/.*\t\(refs\/remotes\/origin\/\(.*\)\)$/\1:refs\/heads\/\2/p')
+</pre>
+<h3><span class="mw-headline" id="Fully_garbage_collect_and_compact_the_repository_.28deletes_all_orphaned_refs.21.29">Fully garbage collect and compact the repository (deletes all orphaned refs!)</span></h3>
+<pre class="brush:bash">
+git reset --hard git for-each-ref --format="%(refname)" refs/original/ | \
+  xargs -n 1 git update-ref -d git reflog expire --expire=now --all git gc --aggressive --prune=now
+</pre>
+<h2><span class="mw-headline" id="Rewriting_history">Rewriting history</span></h2>
+<h3><span class="mw-headline" id="Split_a_subdirectory_into_a_separate_git_repository">Split a subdirectory into a separate git repository</span></h3>
+<p>See these posts on Stack Overflow:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/questions/359424/detach-subdirectory-into-separate-git-repository">Detach subdirectory into separate Git repository</a></li>
+<li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/questions/6638019/detach-subdirectory-that-was-renamed-into-a-new-repo">Detach subdirectory (that was renamed!) into a new repo</a></li>
+<li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/questions/3910412/split-large-git-repository-into-many-smaller-ones">Split large Git repository into many smaller ones</a></li></ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Throw_away_git-svn-id_metadata">Throw away git-svn-id metadata</span></h3>
+<pre class="brush:bash">git filter-branch --msg-filter ' sed -e "/^git-svn-id:/d" '</pre>
+<h3><span class="mw-headline" id="Combine_the_first_two_commits_of_a_Git_repository">Combine the first two commits of a Git repository</span></h3>
+<p>See this post on Stack Overflow:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/questions/435646/how-do-i-combine-the-first-two-commits-of-a-git-repository">How do I combine the first two commits of a Git repository?</a></li></ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Change_the_author_of_a_commit">Change the author of a commit</span></h3>
+<pre class="brush:bash">git commit --amend --author="Author Name"</pre>
+<h3><span class="mw-headline" id="Change_the_author_of_many_commits">Change the author of many commits</span></h3>
+<p>See this post on Stack Overflow:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/questions/750172/how-do-i-change-the-author-of-a-commit-in-git">How do I change the author of a commit in git?</a></li></ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Merge_multiple_repositories">Merge multiple repositories</span></h3>
+<p>See these posts on Stack Overflow:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/questions/277029/combining-multiple-git-repositories">Combining multiple git repositories</a></li>
+<li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/questions/4039682/git-retroactively-introduce-several-merges">git: Retroactively introduce several merges</a></li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Tutorials">Tutorials</span></h2>
+<h3><span class="mw-headline" id="Creating_a_shared_remote_repository">Creating a shared remote repository</span></h3>
+<pre class="brush:bash">
+ssh you@server
+mkdir repos/remote.git
+cd repos/remote.git
+git --bare init --shared=group
+logout
+
+cd ~/local
+git remote add origin ssh://you@server/home/you/remote.git
+git push origin master
+git config branch.master.remote origin
+git config branch.master.merge refs/heads/master
+</pre>
+<p>Creates a bare remote repository at <code><a rel="nofollow" class="external free" href="ssh://server/home/you/remote.git">ssh://server/home/you/remote.git</a></code> that tracks your local repository in <code>/home/you/local</code>. Adopted from <a rel="nofollow" class="external text" href="http://toolmantim.com/articles/setting_up_a_new_remote_git_repository">Tim Lucas</a>.
+</p>
+<h3><span class="mw-headline" id="Displaying_a_filtered_set_of_commits">Displaying a filtered set of commits</span></h3>
+<p>Assume you want to see commits in branch <code>stephan</code>, but only those that are <u>not</u> part of the history of branch <code>saalfeld</code>:
+</p>
+<pre class="brush:bash">git log stephan ^saalfeld</pre>
+<p>More realistically, if you want to see all the commits which are in a topic branch, but not yet merged into master:
+</p>
+<pre class="brush:bash">git log --all ^master</pre>
+<p>If you want to see the changes which come from a topic branch which was merged in commit <code>deadbeef</code>, use this command line:
+</p>
+<pre class="brush:bash">git log deadbeef^..deadbeef^2</pre>
+<p>Explanation: <code>deadbeef</code> is a merge commit, so its first parent (<code>deadbeef^</code>, can also be written as <code>deadbeef^1</code>) was the current <code>HEAD</code> when the merge was performed, and the second parent (<code>deadbeef^2</code>) is the tip of the branch which was merged. The argument <code>A..B</code> is short form of <code>^A B</code>, i.e. all commits reachable from <code>B</code> excluding those which are also reachable from <code>A</code>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072411
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.024 seconds
+Real time usage: 0.025 seconds
+Preprocessor visited node count: 683/1000000
+Preprocessor generated node count: 1290/1000000
+Post‐expand include size: 1508/2097152 bytes
+Template argument size: 691/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.335      1 - Template:GitMenu
+100.00%    5.335      1 - -total
+ 78.29%    4.177      1 - Template:Menu
+ 44.85%    2.393     12 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Git_Notes&amp;oldid=29401">http://imagej.net/index.php?title=Git_Notes&amp;oldid=29401</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:43.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Git_Notes&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Git" title="Category:Git">Git</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Git+Notes" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Git+Notes" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Git_Notes" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Git_Notes" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Git_Notes&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Git_Notes&amp;oldid=29401" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Git_Notes&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":209});});</script>
+		</body>
+		</html>
+		

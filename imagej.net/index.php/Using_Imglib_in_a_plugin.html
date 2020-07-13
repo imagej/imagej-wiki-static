@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Using ImgLib1 in a plugin - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Using_ImgLib1_in_a_plugin","wgTitle":"Using ImgLib1 in a plugin","wgCurRevisionId":17461,"wgRevisionId":17461,"wgArticleId":809,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["ImgLib","Tutorials","Development"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Using_ImgLib1_in_a_plugin","wgRelevantArticleId":809,"wgRequestId":"a9a4df384e8b337d7fecd55e","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The Imglib library makes extensive use of Java generics. Generics appeared in Java from version 1.5, and they introduce new semantic items that can be puzzling if you never used them before. The programming techniques associated are quite new to the ImageJ world, and using Imglib inside your plugins will change their typical layout."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Using ImgLib1 in a plugin"/>
+
+	<meta property="og:description" content="The Imglib library makes extensive use of Java generics. Generics appeared in Java from version 1.5, and they introduce new semantic items that can be puzzling if you never used them before. The programming techniques associated are quite new to the ImageJ world, and using Imglib inside your plugins will change their typical layout."/>
+
+	<meta property="og:url" content="http://imagej.net/Using_ImgLib1_in_a_plugin"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Using_ImgLib1_in_a_plugin rootpage-Using_ImgLib1_in_a_plugin skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Using_Imglib_in_a_plugin.html#bodyContent">Skip to content</a>, 			<a href="Using_Imglib_in_a_plugin.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Using_Imglib_in_a_plugin.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Using_Imglib_in_a_plugin.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Using_ImgLib1_in_a_plugin&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Using_ImgLib1_in_a_plugin&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Using_ImgLib1_in_a_plugin&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Using ImgLib1 in a plugin</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> <b>DEPRECATION NOTICE:</b><br />This page describes ImgLib1, the previous incarnation of the <a href="http://imagej.net/ImgLib2" title="ImgLib2">ImgLib2</a> library. We encourage developers to use ImgLib2 instead, and <a href="http://imagej.net/How_To_Migrate_Code_From_ImgLib_To_ImgLib2" title="How To Migrate Code From ImgLib To ImgLib2">migrate existing ImgLib1 programs to ImgLib2</a> as soon as possible. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p><p>The <a href="http://imagej.net/Imglib" class="mw-redirect" title="Imglib">Imglib</a> library makes extensive use of <a href="http://en.wikipedia.org/wiki/Generics_in_Java" class="extiw" title="wikipedia:Generics in Java">Java generics</a>. Generics appeared in Java from version 1.5, and they introduce new semantic items that can be puzzling if you never used them before. The programming techniques associated are quite new to the ImageJ world, and using Imglib inside your plugins will change their typical layout.
+</p><p>This short page does not aim at being an introduction on generics, but rather is a quick and dirty introduction on how to tune your java files to use Imglib. The deep meaning of semantics is skipped, and we will try to provide a quick template to start with. However, we will attempt to be quite pedestrian when ImageJ itself is involved, and try to display the code and the commands needed to generate a plugin from scratch.  
+</p>
+<h2><span class="mw-headline" id="Importing_imglib">Importing <code>imglib</code></span></h2>
+<p>We will work on a dummy plugin that takes an image and sum the pixel value over all pixels. As an exercise, we choose to use imglib classes internally. It will turn out to be quite convenient, even for a dummy plugin. 
+</p><p>A plugin skeleton looks like this:
+</p>
+<pre class="brush:java">
+import ij.IJ;
+
+import ij.plugin.PlugIn;
+
+public class Pixel_Summation implements PlugIn {
+  
+  public void run(String arg) {
+    IJ.write("Ciao, bella.");
+  }
+} 
+</pre>
+<p>If you work from within the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a>, you can save it anywhere and Compile &amp; Run it with <i>Run&gt;Compile &amp; Run</i>.
+</p><p>Otherwise you have to save this in a file named <tt>Pixel_Summation.java</tt> in the Fiji plugins folder. You can either <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update Menus</span></em></span> and find the new plugin in the <i>Plugins</i> menu, or compile it from the command line with:
+</p>
+<pre class="brush:bash">
+./fiji --javac plugins/Pixel_Summation.java
+</pre>
+<p>(assuming that you are in the Fiji source tree).
+</p><p>Now we want to import the imglib library, and use its <tt>Image</tt> class as an internal field. We write:
+</p>
+<pre class="brush:java">
+import ij.IJ;
+
+import ij.plugin.PlugIn;
+
+import mpicbg.imglib.image.Image;
+
+public class Pixel_Summation implements PlugIn {
+  
+  protected Image img;
+
+  public void run(String arg) {
+    IJ.write("Ciao, bella.");
+  }
+} 
+</pre>
+<p>Fiji will already know where to pick up <i>imglib.jar</i>.
+</p><p>Now, there is already quite a few things we can stumble on:
+</p>
+<ul><li> If you put this code in Eclipse IDE, for instance, it will generate a warning about unused fields, and a warning about <tt>Image</tt> being a raw type. We will come back to that later.</li>
+<li> If you try to compile this code using <tt>javac</tt> from the command line, it will fail unless you use a java 1.6 compiler, for the <tt>imglib.jar</tt> is compiled with this java version.</li></ul>
+<p>But anyway, let us move on.
+</p>
+<h2><span class="mw-headline" id="Converting_from_ImagePlus_to_Imglib">Converting from <tt>ImagePlus</tt> to Imglib</span></h2>
+<p>As we use this plugin from within Fiji, we will receive images in form of an <tt>ImagePlus</tt>. Since we want to use Imglib internally, we need to convert it. This is done using the class <tt><b>ImagePlusAdapter</b></tt> that has various static utilities to do so.
+</p><p>This is how a minimally converted class would look like:
+</p>
+<pre class="brush:java">
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+
+import ij.plugin.PlugIn;
+
+import mpicbg.imglib.image.Image;
+import mpicbg.imglib.image.ImagePlusAdapter;
+
+import mpicbg.imglib.type.numeric.RealType;
+
+public class Pixel_Summation&lt;T extends RealType&lt;T&gt;&gt; implements PlugIn {
+  
+  protected Image&lt;T&gt; img;
+
+  public void run(String arg) {
+	  ImagePlus imp = WindowManager.getCurrentImage();
+	  img = ImagePlusAdapter.wrap(imp);
+  }
+}
+</pre>
+<p>Note that we use generics that provide compile-time type-safety, we cannot leave the field <tt>img</tt> be an image of unknown type. We must explicitly state that it is going to be an image containing a certain generic type: 
+</p>
+<pre class="brush:java">
+protected Image&lt;T&gt; img;
+</pre>
+<p>We must also detail what <tt>T</tt> can be. This is done by modifying the class signature. We add a type variable to it, that specifies what the plugin operates on:
+</p>
+<pre class="brush:java">
+public class Pixel_Summation&lt;T extends RealType&lt;T&gt;&gt; implements PlugIn {
+</pre>
+<p>This is like saying: "this plugin operates on <tt>T</tt>", whatever <tt>T</tt> is.
+In our specific case, <tt>T</tt> can't be anything. If you inspect the source of <tt>Image</tt>, you will see that we need to use a subclass of <tt>mpicbg.imglib.type.Type</tt> (we can't have images made of koalas, yet). 
+</p><p>Here, we want to access the <i>real</i> pixel value (note that <i>complex</i> values are more general, so if you implement an algorithm on <i>complex</i> types, it will work on <i>real</i> ones, too, but not vice versa), so we will use <tt>RealType</tt>. It defines an interesting method <tt>getReal()</tt> that will allow us to retrieve a <tt>float</tt> representation of the pixel value.
+</p>
+<h2><span class="mw-headline" id="Making_something_out_of_it">Making something out of it</span></h2>
+<p>Now that we vanquished the semantics, we would like to wrap up this tutorial by doing something with the plugin. In Imglib, we iterate over the data within an image using <b>Cursors</b>. They are the subject of <a href="http://imagej.net/Imglib:_iterating_through_pixel_data" class="mw-redirect" title="Imglib: iterating through pixel data">another tutorial</a>, we will not present them thoroughly. But briefly:
+</p>
+<ul><li> A plain cursor can be generated by the <tt>createCursor()</tt> method of an <tt>Image&lt;T&gt;</tt> instance. It will have the same type variable as that of the <tt>Image</tt> object it originates from.</li></ul>
+<ul><li> It is made to iterate through the underlying data, and in the above particular case, it will do it in a memory-optimized fashion. You want to use the <tt>hasNext()</tt> and <tt>fwd()</tt> methods of the cursor.</li></ul>
+<ul><li> The actual data can be retrieved using the <tt>getType()</tt> method, that will return - oh surprise - an object of class <tt>T</tt>.</li></ul>
+<ul><li> Since in our case <tt>T</tt> extends <tt>RealType</tt>, we can use the <tt>getRealFloat()</tt> or <tt>getRealDouble()</tt> method to convert to a basic java <tt>float</tt> or <tt>double</tt>, respectively.</li></ul>
+<p>Which leads to:
+</p>
+<pre class="brush:java">
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+
+import ij.plugin.PlugIn;
+
+import mpicbg.imglib.cursor.Cursor;
+
+import mpicbg.imglib.image.Image;
+import mpicbg.imglib.image.ImagePlusAdapter;
+
+import mpicbg.imglib.type.numeric.RealType;
+
+public class Pixel_Summation&lt;T extends RealType&lt;T&gt;&gt; implements PlugIn {
+  
+  protected Image&lt;T&gt; img;
+
+  public void run(String arg) {
+	  ImagePlus imp = WindowManager.getCurrentImage();
+	  img = ImagePlusAdapter.wrap(imp);  
+	  Cursor&lt;T&gt; cursor = img.createCursor();
+	  float sum = 0f;
+	  float val;
+	  T type; // This is the generic type of the image. 
+          // Note we actually don't have squat idea about what it is actually at the present time,
+          // but our plugin will still work whatever it will be.
+	  while (cursor.hasNext()) {
+		  cursor.fwd();
+		  type = cursor.getType();
+		  val = type.getRealFloat();
+		  sum = sum + val;
+	  }
+	  IJ.write("Sum on all pixels: "+sum);
+  }
+} 
+</pre>
+<p>And this is it!
+</p><p>You can test this plugin on all possible image types ImageJ supports, and it will still yield a result. <b>And you did not have to write code for each particular data type.</b>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713074358
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.038 seconds
+Preprocessor visited node count: 156/1000000
+Preprocessor generated node count: 931/1000000
+Post‐expand include size: 1794/2097152 bytes
+Template argument size: 606/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    7.438      1 - -total
+ 55.08%    4.097      1 - Template:ImgLib1_Deprecation_Notice
+ 44.35%    3.299      1 - Template:Warning
+ 42.65%    3.172      1 - Template:Bc
+ 33.29%    2.476      1 - Template:Ambox
+ 13.15%    0.978      1 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Using_ImgLib1_in_a_plugin&amp;oldid=17461">http://imagej.net/index.php?title=Using_ImgLib1_in_a_plugin&amp;oldid=17461</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 September 2015, at 13:53.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Using_ImgLib1_in_a_plugin&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:ImgLib" title="Category:ImgLib">ImgLib</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Using+ImgLib1+in+a+plugin" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Using+ImgLib1+in+a+plugin" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Using_ImgLib1_in_a_plugin" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Using_ImgLib1_in_a_plugin" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Using_ImgLib1_in_a_plugin&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Using_ImgLib1_in_a_plugin&amp;oldid=17461" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Using_ImgLib1_in_a_plugin&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":193});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>DiameterJ - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"DiameterJ","wgTitle":"DiameterJ","wgCurRevisionId":41227,"wgRevisionId":41227,"wgArticleId":2732,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Analysis"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"DiameterJ","wgRelevantArticleId":2732,"wgRequestId":"827765cfdc87c9b58e24f661","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="nanofiber diameter measurement, nanofiber diameter analysis, nanofiber diameter characterization, nanofiber diameter software, nanofiber diameter plugin, nanofiber diameter program, ImageJ nanofiber diameter, Fiji nanofiber diameter, automated nanofiber diameter, free, open source, radiusDiameterJ&amp;#91;1&amp;#93; is a free, open source plugin created for ImageJ, ImageJ 2, and Fiji developed at the National Institute of Standards and Technology.   DiameterJ is a validated nanofiber diameter characterization tool.  DiameterJ is able to analyze an image and find the diameter of nanofibers or microfibers at every pixel along a fibers axis and produces a histogram of these diameters.  Included with this histogram are summary statistics such as mean fiber diameter and most occurring fiber diameter (mode).   DiameterJ also bundles OrientationJ&amp;#91;2&amp;#93; for a complete analysis of fiber orientation within an image as well as the &quot;Analyze Particles&quot; function built into ImageJ/Fiji to analyze pore space within scaffolds and produce summary statistics for pores."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="DiameterJ"/>
+
+	<meta property="og:description" content="nanofiber diameter measurement, nanofiber diameter analysis, nanofiber diameter characterization, nanofiber diameter software, nanofiber diameter plugin, nanofiber diameter program, ImageJ nanofiber diameter, Fiji nanofiber diameter, automated nanofiber diameter, free, open source, radiusDiameterJ&amp;#91;1&amp;#93; is a free, open source plugin created for ImageJ, ImageJ 2, and Fiji developed at the National Institute of Standards and Technology.   DiameterJ is a validated nanofiber diameter characterization tool.  DiameterJ is able to analyze an image and find the diameter of nanofibers or microfibers at every pixel along a fibers axis and produces a histogram of these diameters.  Included with this histogram are summary statistics such as mean fiber diameter and most occurring fiber diameter (mode).   DiameterJ also bundles OrientationJ&amp;#91;2&amp;#93; for a complete analysis of fiber orientation within an image as well as the &quot;Analyze Particles&quot; function built into ImageJ/Fiji to analyze pore space within scaffolds and produce summary statistics for pores."/>
+
+	<meta property="og:url" content="http://imagej.net/DiameterJ"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-DiameterJ rootpage-DiameterJ skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Diameterj.html#bodyContent">Skip to content</a>, 			<a href="Diameterj.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Diameterj.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Diameterj.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk"><a href="http://imagej.net/Talk:DiameterJ" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=DiameterJ&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=DiameterJ&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>DiameterJ</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>DiameterJ (ImageJ 1.48 or newer (including ImageJ 2.XX) and Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:DiameterJ" title="User:DiameterJ">Nathan Hotaling</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:DiameterJ" title="User:DiameterJ">Nathan Hotaling</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> ImageJ 1.48a to 2.XXX <a rel="nofollow" class="external text" href="https://imagej.net/_images/c/cc/DiameterJ_1-018.zip">DiameterJ v1.018</a>
+<p>Fiji any version <a rel="nofollow" class="external text" href="https://imagej.net/_images/6/65/DiameterJ_Fiji_-_1-018.zip">DiameterJ v1.018</a>
+</p>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/NHotaling/DiameterJ">Source Code</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> February  2015
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> August 5<sup>th</sup>, 2016
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> v X.003 (first version released publicly)
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a> <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a>
+</td></tr>
+
+</table>
+<p><br />
+<span style="display: none">nanofiber diameter measurement, nanofiber diameter analysis, nanofiber diameter characterization, nanofiber diameter software, nanofiber diameter plugin, nanofiber diameter program, ImageJ nanofiber diameter, Fiji nanofiber diameter, automated nanofiber diameter, free, open source, radius</span><b>DiameterJ</b><sup id="cite_ref-Hotaling_1-0" class="reference"><a href="Diameterj.html#cite_note-Hotaling-1">&#91;1&#93;</a></sup> is a free, open source plugin created for ImageJ, ImageJ 2, and Fiji developed at the National Institute of Standards and Technology.   DiameterJ is a validated nanofiber diameter characterization tool.  DiameterJ is able to analyze an image and find the diameter of nanofibers or microfibers at every pixel along a fibers axis and produces a histogram of these diameters.  Included with this histogram are summary statistics such as mean fiber diameter and most occurring fiber diameter (mode).   DiameterJ also bundles <a rel="nofollow" class="external text" href="http://bigwww.epfl.ch/demo/orientation/">OrientationJ</a><sup id="cite_ref-OrientationJ_2-0" class="reference"><a href="Diameterj.html#cite_note-OrientationJ-2">&#91;2&#93;</a></sup> for a complete analysis of fiber orientation within an image as well as the "Analyze Particles" function built into ImageJ/Fiji to analyze pore space within scaffolds and produce summary statistics for pores.   
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Diameterj.html#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Diameterj.html#Citation.2FReference_Information"><span class="tocnumber">1.1</span> <span class="toctext">Citation/Reference Information</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="Diameterj.html#Download_Link"><span class="tocnumber">2</span> <span class="toctext">Download Link</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Diameterj.html#How_DiameterJ_Works"><span class="tocnumber">3</span> <span class="toctext">How DiameterJ Works</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="Diameterj.html#Segmentation"><span class="tocnumber">3.1</span> <span class="toctext">Segmentation</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Diameterj.html#Super_Pixel_Diameter"><span class="tocnumber">3.2</span> <span class="toctext">Super Pixel Diameter</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Diameterj.html#Fiber_Diameter_Histogram"><span class="tocnumber">3.3</span> <span class="toctext">Fiber Diameter Histogram</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Diameterj.html#Mesh_Hole_Analysis"><span class="tocnumber">3.4</span> <span class="toctext">Mesh Hole Analysis</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Diameterj.html#Fiber_Orientation"><span class="tocnumber">3.5</span> <span class="toctext">Fiber Orientation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="Diameterj.html#How_to_Use_DiameterJ"><span class="tocnumber">4</span> <span class="toctext">How to Use DiameterJ</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="Diameterj.html#Learn_DiameterJ_Training_Module"><span class="tocnumber">4.1</span> <span class="toctext">Learn DiameterJ Training Module</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="Diameterj.html#DiameterJ_Output"><span class="tocnumber">5</span> <span class="toctext">DiameterJ Output</span></a>
+<ul>
+<li class="toclevel-2"><a href="Diameterj.html#Summaries_Folder"><span class="tocnumber">5.1</span> <span class="toctext">Summaries Folder</span></a></li>
+<li class="toclevel-2"><a href="Diameterj.html#Histograms_Folder"><span class="tocnumber">5.2</span> <span class="toctext">Histograms Folder</span></a></li>
+<li class="toclevel-2"><a href="Diameterj.html#Diameter_Analysis_Images_Folder"><span class="tocnumber">5.3</span> <span class="toctext">Diameter Analysis Images Folder</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="Diameterj.html#Limitations"><span class="tocnumber">6</span> <span class="toctext">Limitations</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="Diameterj.html#Installation"><span class="tocnumber">7</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="Diameterj.html#FAQs"><span class="tocnumber">8</span> <span class="toctext">FAQs</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="Diameterj.html#Complementary_Tools"><span class="tocnumber">9</span> <span class="toctext">Complementary Tools</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="Diameterj.html#Future_Development"><span class="tocnumber">10</span> <span class="toctext">Future Development</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="Diameterj.html#References"><span class="tocnumber">11</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="Diameterj.html#External_Links"><span class="tocnumber">12</span> <span class="toctext">External Links</span></a></li>
+</ul>
+</div>
+
+<h3><span class="mw-headline" id="Overview"><big>Overview</big></span></h3>
+<hr />
+<div class="thumb tright"><div class="thumbinner" style="width:502px;"><a href="http://imagej.net/File:02b_Hotaling_Visual_Abstract.png" class="image"><img alt="Alt" src="../_images/2/28/02b_Hotaling_Visual_Abstract.png" width="500" height="200" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:02b_Hotaling_Visual_Abstract.png" class="internal" title="Enlarge"></a></div>Overview of DiameterJ analysis flow - (<i>Top</i>) SEM image --&gt; segmented image --&gt; stylized Euclidean distance transform. (<i>Bottom</i>) A few of the graphs capable of being produced from data given by DiameterJ</div></div></div> DiameterJ<sup id="cite_ref-Hotaling_1-1" class="reference"><a href="Diameterj.html#cite_note-Hotaling-1">&#91;1&#93;</a></sup> is a two step process of image analysis:
+<ol><li> Image Segmentation into a binary image (black and white pixels only)
+<ul><li>Sixteen default segmentation algorithms have been included with DiameterJ in the "Segment SRM" and "Segment Mixed" plugins.  However, these algorithms may not work for all SEM images.  </li>
+<li>If the user is not happy with the results of the segmentation algorithms (i.e. the black and white images do not produce an accurate representation of the original image) then DiameterJ will still work with any binary image that has been segmented through some other means.</li></ul></li>
+<li> Analysis of Segmented image
+<ul><li>All measures given by DiameterJ are in pixels by default</li>
+<li>DiameterJ has been validated with over 130 digital images created <i>in silico</i> and with scanning electron microscope images of reference wires with known diameters.  
+<dl><dd>-  <b>Fibers that are smaller than 10px or greater than 10% of the smallest dimension of the image produce 10% or greater error</b></dd>
+<dd>-  For now DiameterJ only analyzes .tif, jpeg, png, .bmp, and .gif files</dd>
+<dd>-  Fibers must be less than 512px in diameter to be analyzed</dd></dl></li></ul></li></ol>
+<p>If you would like to cite DiameterJ in your work, citation information can be found <a rel="nofollow" class="external text" href="http://www.">here</a> or use the below: 
+</p>
+<h4><span class="mw-headline" id="Citation.2FReference_Information">Citation/Reference Information</span></h4>
+<dl><dd> Hotaling NA, Bharti K, Kriel H, Simon Jr. CG. DiameterJ: A validated open source nanofiber diameter measurement tool. Biomaterials 2015;61:327–38. doi:10.1016/j.biomaterials.2015.05.015.</dd></dl>
+<p><a rel="nofollow" class="external free" href="http://www.sciencedirect.com/science/article/pii/S0142961215004652">http://www.sciencedirect.com/science/article/pii/S0142961215004652</a>
+</p>
+<h3><span class="mw-headline" id="Download_Link">Download Link</span></h3>
+<dl><dd> For ImageJ 1.48 or newer:  <a rel="nofollow" class="external text" href="https://imagej.net/_images/c/cc/DiameterJ_1-018.zip">DiameterJ v. 1.018 for ImageJ</a></dd>
+<dd> For Fiji latest release: <a rel="nofollow" class="external text" href="https://imagej.net/_images/6/65/DiameterJ_Fiji_-_1-018.zip">DiameterJ v. 1.018 for Fiji</a></dd></dl>
+<h3><span class="mw-headline" id="How_DiameterJ_Works"><big>How DiameterJ Works</big></span></h3>
+<hr />
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:Figure_1.png" class="image"><img alt="Alt" src="../_images/8/84/Figure_1.png" width="400" height="467" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Figure_1.png" class="internal" title="Enlarge"></a></div>Diagram of DiameterJ code</div></div></div> The overall goal of the DiameterJ<sup id="cite_ref-Hotaling_1-2" class="reference"><a href="Diameterj.html#cite_note-Hotaling-1">&#91;1&#93;</a></sup> algorithm was to be able to analyze an 8-bit SEM image of any resolution using a desktop computer in less than 60 seconds.  For a block diagram and overview of how the DiameterJ algorithm analyzes fiber diameter and other scaffold properties see below.
+<h4><span class="mw-headline" id="Segmentation">Segmentation</span></h4>
+<p>SEM micrographs were first segmented using a variety of thresholding techniques available in ImageJ/Fiji. Both the Segment SRM and Segment Mixed plugins are automated inclusions of others segmentation algorithm work.  Specifically, we have found that for SEM images of nanofibers the <a href="http://imagej.net/Statistical_Region_Merging" title="Statistical Region Merging">Statistical Region Merging</a> algorithm<sup id="cite_ref-3" class="reference"><a href="Diameterj.html#cite_note-3">&#91;3&#93;</a></sup> developed by Johannes Schindelin does a great job of blending fibers across their diameter and by depth to create great representations of the fibers when they are segmented.  Additionally, we use more conventional segmentation algorithms developed by Otsu<sup id="cite_ref-4" class="reference"><a href="Diameterj.html#cite_note-4">&#91;4&#93;</a></sup> , Huang<sup id="cite_ref-5" class="reference"><a href="Diameterj.html#cite_note-5">&#91;5&#93;</a></sup>, Kittler (min error)<sup id="cite_ref-6" class="reference"><a href="Diameterj.html#cite_note-6">&#91;6&#93;</a></sup>, Doyle (percentile) <sup id="cite_ref-7" class="reference"><a href="Diameterj.html#cite_note-7">&#91;7&#93;</a></sup>, or Zack (triangle)<sup id="cite_ref-8" class="reference"><a href="Diameterj.html#cite_note-8">&#91;8&#93;</a></sup>
+</p><p>After segmentation all images had remaining noise and morphological features that were smoothed according to the protocols outlined by D'Amore<sup id="cite_ref-9" class="reference"><a href="Diameterj.html#cite_note-9">&#91;9&#93;</a></sup> and by Gonzalez<sup id="cite_ref-10" class="reference"><a href="Diameterj.html#cite_note-10">&#91;10&#93;</a></sup>.  Briefly, successive rounds of noise removal (via ImageJ’s despeckle command) were performed until no change in the image was found. Erosion (through ImageJs erode command, and dilation (through ImageJs dilate command), and a final erosion (through ImageJs erode command), operations served to refine the image, highlighting fiber edges and eliminating isolated pixel areas.  The described morphological procedures were performed to improve the precision of the centerline determinations as per the method developed by Lam et. al.<sup id="cite_ref-11" class="reference"><a href="Diameterj.html#cite_note-11">&#91;11&#93;</a></sup>.
+</p><p><a href="http://imagej.net/File:Segmentation.png" class="image" title="Original image--&gt; Segmented image with no processing--&gt; Segmented image after smoothing and noise removal"><img alt="Alt" src="../_images/7/7d/Segmentation.png" width="600" height="152" /></a>
+</p>
+<h4><span class="mw-headline" id="Super_Pixel_Diameter">Super Pixel Diameter</span></h4>
+<p>After image segmentation white pixels were summed for total fiber area in each image. Two different center-lines were then calculated for the image, one using an axial thinning algorithm developed by Zhang and Suen<sup id="cite_ref-12" class="reference"><a href="Diameterj.html#cite_note-12">&#91;12&#93;</a></sup>(Skeletonize command in ImageJ) and the other using a Voronoi tessellation<sup id="cite_ref-13" class="reference"><a href="Diameterj.html#cite_note-13">&#91;13&#93;</a></sup> (Voronoi command in ImageJ).  The axial thinning algorithm is very sensitive to changes in the fiber surface resulting in branches to areas that were not necessarily new fibers. The Voronoi algorithm essentially maximizes the distance between discrete black pixel clusters and thus is completely insensitive to fiber morphology.  The length of each center-line was then averaged and the total area of fibers was divided by the average of the axially thinned and Voronoi center-line lengths.  The two centerline lengths were averaged based on results from analyzing digital synthetic images and the finding that one method consistently overestimated fiber length while the other consistently underestimated fiber length.
+</p><p>The Super Pixel name was chosen because the fiber area, in pixels, was divided by the center-line lengths, in pixels; thus producing a unitless value that is equivalent to mean fiber diameter (fiber length x diameter = fiber area). This value is therefore a transformed pixel unit and is equivalent to the mean fiber diameter under the assumption that the fibers are just long rectangles when segmented into 2D shapes.   
+</p><p>After its initial calculation the diameter calculation was then further refined via intersection correction.  Intersection correction was done by taking the average length of the centerline and subtracting a radius value (obtained from first approximation of the diameter as determined without intersection correction) for each three-point intersection and a diameter value (obtained from first approximation) for each four-point intersection of the fibers. Intersections of each centerline were found using the algorithm developed by Arganda-Carreras et al.<sup id="cite_ref-14" class="reference"><a href="Diameterj.html#cite_note-14">&#91;14&#93;</a></sup>.  
+</p><p>A new diameter was then calculated using the new corrected length and the total fiber area and this processes was looped until the diameter converged to 1/1000th of a pixel.  Additionally, the number of intersections was also saved and the intersection density (ID) was calculated for a 100px x 100px (10<sup>4</sup>) pixel area by dividing the total number of intersections by the total area (in pixels) of the image and multiplying by 10<sup>4</sup>:  <img class="mwe-math-fallback-image-inline tex" alt="ID = {intersections_{Total} \over pixels_{total}}*10^4" src="../_images/math/d/8/4/d84b02a8da3300107500e82eb522774a.png" /> .  The characteristic length (CL) of fibers was defined as mean length of fiber between intersections and was calculated by dividing the total centerline length by the number of intersections: <img class="mwe-math-fallback-image-inline tex" alt="CL = {Fiber_{Length} \over Intersections_{Total}}" src="../_images/math/9/9/5/995d3b1939c15c8843fa10b5975a86fe.png" />.  The center-line length was calculated as the average of the axial thinning and Voronoi tessellation center-lines.
+</p>
+<h4><span class="mw-headline" id="Fiber_Diameter_Histogram">Fiber Diameter Histogram</span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><div class="MediaTransformError" style="width: 300px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Radius_Histogram.png" class="internal" title="Enlarge"></a></div>Radius histogram produced by DiameterJ</div></div></div>To obtain the distribution of fiber diameters the segmented image was transformed with a Euclidian distance transformation algorithm <sup id="cite_ref-15" class="reference"><a href="Diameterj.html#cite_note-15">&#91;15&#93;</a></sup> (Distance Map command in ImageJ).  This algorithm takes a fiber pixel and finds the distance to the nearest orthogonal mesh hole using the square root of the sum of the square of the vertical and horizontal distances to the hole and then transforms the fiber pixel to a grey scale value equal to that distance.  The resulting image is a grey scale image rather than black and white.  The center-line calculated by the axial thinning algorithm above is then overlaid on top of the distance transformed image.  At each intersection of the centerline the greyscale value is found and radii values within that range are subtracted out from the center-line.  The greyscale values under the remaining centerline are then obtained and multiplied by 2 to get the value of all diameters not in an intersection area.  The subsequent histogram of greyscale values is then found and placed in a .csv file along with the overall average, standard deviation, median and mode of all diameter values.  The sensitive centerline was chosen because it was the more discriminating option and thus, had a higher likelihood of eliminating pixels that had a higher value than the real radius value.
+<h4><span class="mw-headline" id="Mesh_Hole_Analysis">Mesh Hole Analysis</span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Pore_Outlines.png" class="image"><img alt="Alt" src="../_images/3/30/Pore_Outlines.png" width="300" height="475" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Pore_Outlines.png" class="internal" title="Enlarge"></a></div>Mesh holes measured by DiameterJ</div></div></div>Segmented pictures contain only black and white pixels; with black pixels representing background and white pixels representing fibers.  Black pixels were analyzed using the Analyze Particles command in ImageJ.  This algorithm essentially finds discrete clusters of black pixels, counts the number of pixels in each cluster and then reports their area.  Pixel units were selected for particle analysis as well as a circularity from 0.00-1.00, the option to exclude clusters that touch the edge was also chosen.  The subsequent particle analysis was then saved to later produce a mesh hole histogram, mean mesh hole area (produced by averaging all cluster areas), and percent mesh hole (produced by taking the total number of black pixels and dividing it by the total image resolution).
+<h4><span class="mw-headline" id="Fiber_Orientation">Fiber Orientation</span></h4>
+<p>Fiber orientation was determined using a well-established plug-in for ImageJ called <a rel="nofollow" class="external text" href="http://bigwww.epfl.ch/demo/orientation/">OrientationJ</a><sup id="cite_ref-OrientationJ_2-1" class="reference"><a href="Diameterj.html#cite_note-OrientationJ-2">&#91;2&#93;</a></sup>.  To determine fiber orientation an axial thinning algorithm was used and then the centerline was enlarged by 2 pixels (using the Enlarge command in ImageJ) to ensure accurate measure of the line.  Within OrientationJ a Fourier gradient was used with a gaussian window of 7 pixels.  The subsequent frequency histogram of fiber orientation was then saved as an image.  OrientationJ limits access to the raw data for this histogram; thus, if the user desires the raw data they must use the "OrientationJ Distribution" plugin.  In the Fiji version of DiameterJ the <a href="http://imagej.net/Directionality" title="Directionality">Directionality</a><sup id="cite_ref-Directionality_16-0" class="reference"><a href="Diameterj.html#cite_note-Directionality-16">&#91;16&#93;</a></sup> plugin, written by Jean-Yves Tinevez, can also be used to obtain the raw distribution data.  This approach is considerably slower and less elegant (pop-up windows remain open) than OrientationJ but for now it is the only way to obtain the raw orientation data in batch.
+</p>
+<h3><span class="mw-headline" id="How_to_Use_DiameterJ"><big>How to Use DiameterJ</big></span></h3>
+<hr />
+<h4><span class="mw-headline" id="Learn_DiameterJ_Training_Module"><big>Learn DiameterJ Training Module</big></span></h4>
+<p>An in-depth training, called <a rel="nofollow" class="external text" href="https://sites.google.com/site/diameterj/">Learn DiameterJ</a>, has been developed for users of DiameterJ. In total the training as been broken into 7 components:  
+</p>
+<ol><li> Initial Installation/Training/Use of DiameterJ
+<ul><li> Overview of how to install DiameterJ</li>
+<li> Training documents explaining general features of DiameterJ software/operation</li>
+<li> Detailed description of how to convert pixels to units for analysis </li>
+<li> Quiz to ensure understanding of concepts covered in the training documents</li></ul></li>
+<li> Pre-Test 
+<ul><li> For research purposes, this training is not required to learn how to use DiameterJ</li>
+<li> However, we'd appreciate it if you took the Pre-Test so that we can publish training results later</li></ul></li>
+<li> Training 1 -  Cropping and Segmenting
+<ul><li> How to crop images for use with DiameterJ</li>
+<li> How to segment images using DiameterJ</li>
+<li> Segmentation selection criteria for selecting the best segmentation from the options available</li></ul></li>
+<li> Training 2 - Manual Segmentation
+<ul><li> This training covers how to efficiently manually correct image segmentations</li></ul></li>
+<li> Training 3 - Assessment of Fiber Diameter 
+<ul><li> Determining average fiber diameter, </li>
+<li> Identifican and use of histograms of the fiber diameter </li>
+<li> Multiple fiber diameters identification</li>
+<li> Selection criteria for when to accept a fiber analysis</li></ul></li>
+<li> Training 4 - Other Metric Assessment
+<ul><li> How to use DiameterJ to assess other metrics of scaffolds</li></ul></li>
+<li> Post-Test
+<ul><li> For research purposes, this training is not required to learn how to use DiameterJ</li>
+<li> However, we'd appreciate it if you took the Post-Test so that we can publish training results later</li></ul></li></ol>
+<p>Please go to <a rel="nofollow" class="external text" href="https://sites.google.com/site/diameterj/">Learn DiameterJ</a> to take the training!
+</p>
+<h3><span class="mw-headline" id="DiameterJ_Output"><big>DiameterJ Output</big></span></h3>
+<hr />
+<table class="wikitable collapsible collapsed" style="vertical-align:top; width:90%; margin: 1em auto 1em auto;">
+
+<tr id="section_link_anchor_name" style="text-align:center" valign="top">
+<td colspan="2"> <h4><span class="mw-headline" id="Summaries_Folder"><big> Summaries Folder </big></span></h4>
+</td></tr>
+<tr valign="top">
+<th scope="col" width="50%"> <b>"File Source Name"_Total Summary.csv</b>
+</th>
+<th scope="col" width="50%"> <b>"File Source Name"_Total Summary.csv Continued</b>
+</th></tr>
+<tr valign="top">
+<td>
+<ol><li>Super Pixel: The mean fiber diameter as calculated using a super pixel determination.  A detailed explanation of how this algorithm  works can be found above. </li>
+<li>Histogram Mean: The mean fiber diameter as calculated by fitting a Gaussian Curve to the radius data and finding the curves mean value.  </li>
+<li>Histogram SD: The standard dev. of the Gaussian fit of the radius histogram</li>
+<li>Histogram Mode: Most occurring fiber diameter in the histogram</li>
+<li>Histogram Median: Middle fiber diameter in the histogram</li>
+<li>Histogram Min. Diam.: The smallest diameter measured</li>
+<li>Histogram Max. Diam.: The largest diameter measured</li>
+<li>Histogram Integrated Density: The product of length of the fibers and the average radius</li>
+<li>Histogram Raw Integrated Density: The sum of the radii at all pixels in the image or selection</li>
+<li>Diameter Skewness: The third order moment about the mean</li>
+<li>Diameter Kurtosis: The fourth order moment about the mean.</li></ol>
+</td>
+<td>
+<ol><li>Fiber Length: The total length of the Fiber centerlines in the segmented image.</li>
+<li>Mean Pore Area:  (Total number of black pixels counted in pores) / (Total number of pores in image)</li>
+<li>Pore Area SD: The standard deviation of all pore areas measured</li>
+<li>Min. Pore Area: The minimum pore area measured</li>
+<li>Max Pore Area: The maximum pore area measured</li>
+<li>Percent Porosity: (Total number of black pixels) / (Total pixels in an image)</li>
+<li>Intersection Density (100x100px):  (Number of fiber overlaps)*10000 / (Total pixels in image)</li>
+<li>Characteristic Length: (Total length of all fiber centerlines) / (# of fiber overlaps)</li></ol>
+</td></tr>
+<tr style="text-align:center" valign="top">
+<td colspan="2"> <h4><span class="mw-headline" id="Histograms_Folder"><big>Histograms Folder</big></span></h4>
+</td></tr>
+<tr valign="top">
+<th><b>"File Source Name"_Pore Data.csv</b>
+</th>
+<th><b>"File Source Name"_Histogram.csv</b>
+</th></tr>
+<tr valign="top">
+<td>
+<ol><li>Slice: Image name</li>
+<li>Count: Total number of pores found in image that are not touching the side</li>
+<li>Area: Total number of black pixels in an image not in groups touching the sides</li>
+<li>StdDev: 0 (individual pore measurements so no SD</li>
+<li>% Area: (Total number of black pixels) / (Total pixels in an image)</li>
+<li>Major: The length of the primary axis of the best fitting ellipse for each pore. </li>
+<li>Minor: The length of the secondary axis of the best fitting ellipse for each pore</li>
+<li>Angle: The angle between the primary axis and a line parallel to the X-axis of the image</li>
+<li>Circ.: 4π × [Area] / [Perimeter^2] with a value of 1.0 indicating a perfect circle. As the value approaches 0.0, it indicates an increasingly elongated shape&#160;:::#Values may not be valid for very small particles. Uses the heading Circ.</li>
+<li>Skew: The third order moment about the mean – NaN because only one pore</li>
+<li>Kurt: The fourth order moment about the mean – NaN because only one pore</li>
+<li>AR:  The aspect ratio of the particle’s fitted ellipse, i.e., [Major Axis] / [Minor Axis]</li>
+<li>Round:  4 × [Area] / (π × [Major axis]2) or the inverse of Aspect Ratio. </li>
+<li>Solidity: [Area] / [Convex area]</li></ol>
+</td>
+<td>
+<ol><li>Radius Value:  Radius length (in pixels)</li>
+<li>Radius Count: Number of times the radius value occurred in the image. Also known as the frequency of occurrence and can also be interpreted as the length of fiber in an image that has a given radius
+<ul><li>The radius or diameter histogram is constructed from the radius value (x-axis) and radius count (frequency of occurrence on y-axis)</li></ul></li></ol>
+</td></tr>
+<tr valign="top">
+<th><b>"File Source Name"_Intersection Coordinates.txt</b>
+</th>
+<th><b>"File Source Name"_Radius Histogram.tif</b>
+</th></tr>
+<tr valign="top">
+<td>
+<ol><li>Column 1 – Grey scale value at intersection </li>
+<li>Column 2 – x coordinate of intersection 
+<ul><li>Upper left hand corner is 0,0</li></ul></li>
+<li>Column 3 – y coordinate of intersection 
+<ul><li>Upper left hand corner is 0,0</li></ul></li></ol>
+</td>
+<td>
+<ol><li>Image of the histogram of all fiber radii in the image</li></ol>
+</td></tr>
+<tr style="text-align:center" valign="top">
+<td colspan="2"> <h4><span class="mw-headline" id="Diameter_Analysis_Images_Folder"><big>Diameter Analysis Images Folder</big></span></h4>
+</td></tr>
+<tr valign="top">
+<th><b>"File Source Name"_Compare.png</b>
+</th>
+<th><b>"File Source Name"_Orientation.tif</b>
+</th></tr>
+<tr valign="top">
+<td>
+<p>A montage image with four images in it
+</p>
+<ol><li> Top Left Image - Original segmented image</li>
+<li> Top right Image- Image of the centerline as determined by the Voronoi tessellation algorithm</li>
+<li> Bottom Left Image - Image of all centerlines counted in the histogram overlaid on the Euclidean distance transformed of the fibers fibers.
+<ul><li>Yellow lines are the locations where radii were counted</li>
+<li>Fibers are in greyscale as transformed by the Euclidean distance transform</li></ul></li>
+<li> Bottom Right Image - Pores found and analyzed by Diameterj</li></ol>
+</td>
+<td>
+<ol><li>An image with the frequency of orientation of the centerline of all fibers. This is an output of OrientationJ and was not coded by any developers from DiameterJ</li></ol>
+</td></tr></table>
+<h3><span class="mw-headline" id="Limitations"><big>Limitations</big></span></h3>
+<hr />
+<dl><dd><ol><li>Due to mathematical limitations fibers that are smaller than 10px or greater than 10% of the smallest dimension of the image produce errors that are above 10% and thus deemed as too high for accurate measurement. This is because at small diameters (less than 10px) a single pixel error can cause 10% error in measurement.  While with large fibers (greater than 10% of the smallest dimension of the image) low sampling and edge effects of fibers become a dominant factor in diameter distribution. This limitation can be overcome by altering your magnification when taking the image to make fibers smaller/larger as appropriate.</li>
+<li>Due to algorithmic reasons fibers that have a diameter larger than 512 px cannot be analyzed by DiameterJ.  In general, this is not a concern if the researcher is taking images that do not violate the first limitation because an image would have to be over 5120 px on its smallest dimension for this limitation to affect them. However, with stitched images and with ultra high image resolutions (36MP or greater) this could prove to be a limiting factor.  Work is underway to convert the Euclidean Distance Transform to a 16-bit algorithm that can analyze images with fibers that are 131,072 px or less in diameter.  </li>
+<li>Images that have many fibers that entwine or that touch and run parallel to each other for long distances in an image can produce errant peaks in DiameterJ. This is usually due to segmentation of these images showing one larger fiber instead of many smaller fibers bundled. Additionally, images where partial fibers run along the edge of the image can cause DiameterJ to show fiber diameters that are smaller than the actual fiber.   Thus, a "common sense" check on all images must be performed and while taking images the researcher must be careful to select areas where fibers do not overlap and run parallel considerably or run along the edge of the image. </li>
+<li>An integral part of analysis for DiameterJ is image segmentation.  However, how an image is segmented into foreground or background can drastically alter the outputs produced by DiameterJ listed below:  
+<dl><dd><dl><dd><ul><li> Normalized Orientation Index</li>
+<li> Mean Mesh Hole Size</li>
+<li> Percent Porocity</li>
+<li> Intersection Density</li>
+<li> Characteristic Fiber Length </li>
+<li> Fiber Orientation Histogram</li></ul></dd></dl></dd>
+<dd>This is because the more fibers that are segmented out of an image the larger the pore size, the lower the intersection density and the higher the characteristic fiber length between intersections.  Additionally, fiber orientation can be shifted because the orientation of underlying fibers can be different than the fibers that are closer to the top layer.  Thus, while the algorithms analyzing these metrics are able to produce highly accurate results on calibration images; on real segmented images the analysis is entirely dependent on segmentation algorithm used.  While, these algorithms were incorporated into DiameterJ to provide a reference way to calculate these values we caution that unless identical segmentation algorithms and image capture settings are used, results from these algorithms are not comparable between images.  
+<dl><dd><ul><li><small>Fiber diameter is relatively invariant to segmentation because good image segmentation leads to having no partial fibers, only less fibers being included in the segmentation.  Thus, while different segmentation algorithms may produce increased or decreased fiber sampling the measure of fiber diameters within each segmentation is accurate.  Developing a segmentation algorithm that does not have this problem across any image is currently a topic of heavy research in the image analysis field.</small></li></ul></dd></dl></dd></dl></li>
+<li>When analyzing the images with multiple distinct fiber diameters it has been found that DiameterJ under represented the prevalence of larger diameter fibers as compared to smaller fibers.  This bias leads to weighted averages being inaccurate and for global averages of fiber diameters to be biased toward smaller fiber diameters.  The bias is due to intersection correction/subtraction and the increased probability of larger fibers having more intersections due to their increased size.  This limitation can be partially overcome by directional intersection correction of fiber intersection, which is currently under development.  However, this limitation is inherent to all two-dimensional image analysis techniques and cannot be completely eliminated, making weighted averages of fiber diameter slightly inaccurate no matter what.  </li>
+<li>Distinguishing between fiber diameters that are closer in diameter than 3 pixels often creates resolution difficulties for peak fitting and the prevalence of each fiber diameter can be skewed.  This has to do with inherent limitations due to pixel binning of diagonal lines in Euclidean Distance Transforms. This limitation can be overcome by increasing magnification of your image so that fibers with different diameters have more than 3 pixels of difference between them.</li></ol></dd></dl>
+<h3><span class="mw-headline" id="Installation"><big>Installation</big></span></h3>
+<hr />
+<p>If you installed imageJ before the end of 2013 you should uninstall your current version of ImageJ (<b>DO NOT UPDATE</b>) and reinstall ImageJ 1.48 or newer. 
+</p>
+<dl><dd><ul><li>Before uninstall be sure to copy all of your old plugins into a separate folder as these will be removed when you uninstall your old version of ImageJ.  </li>
+<li>We recommend ImageJ over Fiji if you have no experience with either software because it is simpler to use.  </li></ul></dd></dl>
+<table class="wikitable collapsible collapsed" style="vertical-align:top; width:90%; margin: 1em auto 1em auto;">
+
+<tr id="section_link_anchor_name" style="text-align:center" valign="top">
+<td colspan="3"> <big> <b>Download and install <a rel="nofollow" class="external text" href="http://rsb.info.nih.gov/ij/download.html">ImageJ 1.48</a> or newer or <a href="http://imagej.net/Downloads" title="Downloads">Fiji</a> (any version)</b> </big>
+</td></tr>
+<tr valign="top">
+<th scope="col" width="33%"> <b>Windows</b>
+</th>
+<th scope="col" width="33%"> <b>OSX</b>
+</th>
+<th scope="col" width="33%"> <b>Linux</b>
+</th></tr>
+<tr valign="top">
+<td>
+<ol><li>Download and unzip the DiameterJ files (Find in "Source" above) and move or copy the three folders into the plugins folder of ImageJ.  </li>
+<li>That should be in directory:
+<dl><dd>"C:\Program Files\ImageJ\plugins"
+<dl><dd>Or </dd></dl></dd>
+<dd>"C:\Program Files (x86)\ImageJ\plugins"
+<ul><li>DiameterJ will work with x86 (32-bit) or x64 (64-bit) versions of Java/ImageJ</li></ul></dd></dl></li>
+<li>Restart ImageJ </li></ol>
+</td>
+<td>
+<ol><li>Follow instructions <a rel="nofollow" class="external text" href="http://rsb.info.nih.gov/ij/docs/install/osx.html#dandd">Here</a> or <a href="http://imagej.net/MacOSX_tips" title="MacOSX tips">Here</a> for installation of ImageJ/Fiji on OSX </li></ol>
+</td>
+<td>
+<ol><li>Download and unzip the DiameterJ files (Find in "File" in the Info box above) </li>
+<li>Move or copy the three folders into the plugins folder of the directory where you have placed ImageJ.  
+<dl><dd><ul><li>DiameterJ will work with x86 (32-bit) or x64 (64-bit) versions of Java/ImageJ</li></ul></dd></dl></li>
+<li>Restart ImageJ</li></ol>
+</td></tr></table>
+<h2><span class="mw-headline" id="FAQs">FAQs</span></h2>
+<dl><dd><ol><li> Q:  When running either segmentation algorithm an error occurs that says either "Unrecognized command: "Auto Threshold"" or "Unrecognized command: "Auto Threshold..""
+<dl><dd><ul><li>  A: <i>You have installed the wrong version of DiameterJ into your ImageJ/Fiji release.  Fiji gives the "Auto Threshold.." error and it means you installed ImageJ's plugin into Fiji. ImageJ gives the "Auto Threshold" error and it means you've installed Fiji's software version into ImageJ0. Please download and install the correct version of DiameterJ for the piece of software you are using.</i></li></ul></dd></dl></li>
+<li> Q:  When I start ImageJ or Fiji for the first time after installing DiameterJ I get "Plugin configuration error: C:\...  Duplicate command: "XXXX" (already in "YYYY")
+<dl><dd>  <small> Where "..." is the directory where your plugin is located, "XXXX" is the name of the plugin and "YYYY" is the name of the directory where that plugin is already.</small>
+<ul><li>  A: <i>You have duplicate plugins! Go to the file where you unzipped DiameterJ and its other plugins open the "DiameterJ", "OrientationJ", or "Analyze Skeleton 2D - 3D" folder" and delete the file named XXXX</i></li></ul></dd></dl></li>
+<li> Q:  When I run DiameterJ an error occurs that says "Unrecognized Command: "Skeleton Intersections"" or "Unrecognized Command: "OrientationJ"" or "Unrecognized Command: "Analyze Skeleton (2D/3D)"" or "Unrecognized Command: "Statistical Region Merging""
+<dl><dd><ul><li>  A: <i>During installation one or more of the plugins that is needed for DiameterJ was missed.  Please go back to the zip file that you downloaded for DiameterJ and copy all files into the plugins folder of ImageJ/Fiji</i></li></ul></dd></dl></li>
+<li> Q:  When I run DiameterJ an error occurs that says "Unrecognized Command: AAAA" where AAAA is any command not listed above.
+<dl><dd><ul><li>  A: <i>You are probably using a version of ImageJ that was updated to v. 1.48 or newer and did not create a fresh install of ImageJ.  DiameterJ uses several plugins/scripts that ImageJ does not include in its updates, they ONLY include them in fresh installs.  Thus you must uninstall ImageJ and reinstall a new version 1.48 or newer.  Please remember save a copy of any plugins you added to ImageJ before uninstalling it, these will be lost during the uninstall process unless you save a copy in another location on your computer.</i></li></ul></dd></dl></li>
+<li> Q:  When I run DiameterJ an error appears in the log that says "Error there are no fibers in  "BBBB".tif  to analyze".
+<dl><dd><ul><li>  A: <i>The images that are in the folder that you have selected are not binary (black and white) images or the image is completely black.  Please segment your image before trying to analyze it with DiameterJ and then move the segmented image into a separate folder with only black and white images in it.</i></li></ul></dd></dl></li>
+<li> Q: No error occurs but when I ask the Segment XXX or DiameterJ to analyze a folder that I have images in, no output is produced by Segment XXX/DiameterJ.
+<dl><dd><ul><li>  A: <i>The image is probably not a .tif file.  For now DiameterJ only analyzes .tif images. Please save your images as .tif files and then analyze with DiameterJ</i></li></ul></dd></dl></li>
+<li> Q: DiameterJ keeps giving me an error on a file and won't continue on to the next file
+<dl><dd><ul><li>  A: <i>Unfortunately DiameterJ goes serially through files and isn't capable of skipping a file with an error.  Simply remove the file that is giving the error from the folder you wish to analyze and rerun DiameterJ.</i></li></ul></dd></dl></li>
+<li> Q: None of the images I am analyzing are segmenting well with your algorithms, why not?
+<dl><dd><ul><li>  A: <i>The algorithms included by default with DiameterJ rely heavily on uniformity of fiber color and/or a dark background.  Below are four good examples and four examples that work poorly for image segmentation with the default algorithms.  Keep in mind there are many more segmentation algorithms than I have included with DiameterJ in both Fiji and ImageJ.  See the <a href="Diameterj.html#Complementary_Tools" title="DiameterJ">Complementary Tools</a> or <a href="Diameterj.html#Image_Segmentation" title="DiameterJ">Image Segmentation</a> sections of this work for a few of the options available.<div class="center"><div class="floatnone"><a href="http://imagej.net/File:Good_vs_Bad_Seg.PNG" class="image" title="Example images that segment well and that do not segment well with DiameterJ&#39;s default segmentation algorithms"><img alt="Alt" src="../_images/9/98/Good_vs_Bad_Seg.PNG" width="750" height="310" /></a></div></div></i></li></ul></dd></dl></li></ol></dd></dl>
+<h2><span class="mw-headline" id="Complementary_Tools">Complementary Tools</span></h2>
+<p>DiameterJ<sup id="cite_ref-Hotaling_1-3" class="reference"><a href="Diameterj.html#cite_note-Hotaling-1">&#91;1&#93;</a></sup> works with several plugins of ImageJ/Fiji.  First and foremost <a rel="nofollow" class="external text" href="http://bigwww.epfl.ch/demo/orientation/">OrientationJ</a>. Also, other great tools that we have incorporated are <a href="http://imagej.net/AnalyzeSkeleton" title="AnalyzeSkeleton">AnalyzeSkeleton</a> function from Ignacio Arganda-Carreras, as well as <a rel="nofollow" class="external text" href="http://jvsmicroscope.uta.fi/?q=skeleton_intersections">Skeleton Intersections</a> from Gabriel Landini's morphology plugin.   We'd also like to give a big thank you to the <a href="http://imagej.net/Statistical_Region_Merging" title="Statistical Region Merging">Statistical Region Merging</a> algorithm which makes our segmentations work a lot better.  Speaking of which, we include a lot of segmentation algorithms that we aren't nearly talented enough to of developed ourselves. In particular those techniques outlined above in the <a href="Diameterj.html#Segmentation" title="DiameterJ">Segmentation</a> section of this article and can be found in the links below.
+</p><p>We'd also like to say that DiameterJ plays nicely with the output from any other segmentation algorithm that produces a binary image.  Fiji has a ton of <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a> algorithms that are great for different types of images.  Additionally, many plugins have been created for use in ImageJ or Fiji: <a rel="nofollow" class="external text" href="http://ij-plugins.sourceforge.net/plugins/segmentation/">IJ Plugins</a> <a href="http://imagej.net/Auto_Threshold" title="Auto Threshold">Auto Threshold</a> and <a href="http://imagej.net/Auto_Local_Threshold" title="Auto Local Threshold">Auto Local Threshold</a>.  If our defaults don't work then try any/all of these.  
+</p><p>Finally, we'd like to encourage everyone to do peak fitting of the diameter histograms that DiameterJ produces.  To do this any peak fitting tool can be used. A free resource for Windows is <a rel="nofollow" class="external text" href="http://fityk.nieto.pl/">Fityk</a> however, we don't recommend any software in particular.
+</p>
+<h2><span class="mw-headline" id="Future_Development">Future Development</span></h2>
+<dl><dd><ol><li> Reducing bias of the Histogram intersection correction by directionally subtracting fiber intersections rather than blanket subtraction within a given intersection radius</li>
+<li> incorporation of Gaussian peak fitting algorithms within DiameterJ itself.  </li>
+<li>Currently we are working on a native JAVA application on DiameterJ.  This will not fundamentally change the function of DiameterJ however, it will make it faster, look cleaner, and should solve continuity issues</li>
+<li> 16-bit Euclidean distance transform calculator</li>
+<li> Enable DiameterJ to skip to the next file if an error occurs during analysis</li></ol></dd></dl>
+<p><big>Completed Goals</big>
+</p>
+<dl><dd><ol><li> Combine the three different releases of DiameterJ into a single release for all versions of ImageJ/Fiji</li>
+<li> Easier to use GUI (any GUI at all) with more options for what the outputs of DiameterJ are and what types of analysis it performs.</li>
+<li> Make DiameterJ compatible with images other than .tif files</li></ol></dd></dl>
+<p>Help is welcome in any/all of these improvements!
+</p>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<div class="references-small">
+<ol class="references">
+<li id="cite_note-Hotaling-1"><span class="mw-cite-backlink">↑ <sup><a href="Diameterj.html#cite_ref-Hotaling_1-0">1.0</a></sup> <sup><a href="Diameterj.html#cite_ref-Hotaling_1-1">1.1</a></sup> <sup><a href="Diameterj.html#cite_ref-Hotaling_1-2">1.2</a></sup> <sup><a href="Diameterj.html#cite_ref-Hotaling_1-3">1.3</a></sup></span> <span class="reference-text">Hotaling NA, Bharti K, Kriel H, Simon Jr. CG. DiameterJ: A validated open source nanofiber diameter measurement tool. Biomaterials 2015;61:327–38. doi:10.1016/j.biomaterials.2015.05.015 <a rel="nofollow" class="external free" href="http://www.sciencedirect.com/science/article/pii/S0142961215004652">http://www.sciencedirect.com/science/article/pii/S0142961215004652</a></span>
+</li>
+<li id="cite_note-OrientationJ-2"><span class="mw-cite-backlink">↑ <sup><a href="Diameterj.html#cite_ref-OrientationJ_2-0">2.0</a></sup> <sup><a href="Diameterj.html#cite_ref-OrientationJ_2-1">2.1</a></sup></span> <span class="reference-text">R. Rezakhaniha, A. Agianniotis, J. T. C. Schrauwen, A. Griffa, D. Sage, C. V. C. Bouten, F. N. van de Vosse, M. Unser and N. Stergiopulos, Experimental investigation of collagen waviness and orientation in the arterial adventitia using confocal laser scanning microscopy, Biomechanics and modeling in mechanobiology, SpringerLink (DOI: 10.1007/s10237-011-0325-z)</span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-3">↑</a></span> <span class="reference-text">R. Nock, F. Nielsen (2004), "Statistical Region Merging", IEEE Trans. Pattern Anal. Mach. Intell. 26 (11): 1452-1458</span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-4">↑</a></span> <span class="reference-text">Otsu N. A threshold selection method from gray-level histograms. Automatica 1975;11:23–7.</span>
+</li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-5">↑</a></span> <span class="reference-text">Huang L-K, Wang M-JJ. Image thresholding by minimizing the measures of fuzziness. Pattern Recognit 1995;28:41–51. doi:10.1016/0031-3203(94)E0043-K.</span>
+</li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-6">↑</a></span> <span class="reference-text">Kittler J, Illingworth J. Minimum error thresholding. Pattern Recognit 1986;19:41–7. doi:10.1016/0031-3203(86)90030-0.</span>
+</li>
+<li id="cite_note-7"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-7">↑</a></span> <span class="reference-text">Doyle, W (1962), "Operation useful for similarity-invariant pattern recognition", Journal of the Association for Computing Machinery 9: 259-267, doi:10.1145/321119.321123</span>
+</li>
+<li id="cite_note-8"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-8">↑</a></span> <span class="reference-text">Zack GW, Rogers WE, Latt SA (1977), "Automatic measurement of sister chromatid exchange frequency", J. Histochem. Cytochem. 25 (7): 741–53, PMID 70454</span>
+</li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-9">↑</a></span> <span class="reference-text">D’Amore A, Stella JA, Wagner WR, Sacks MS. Characterization of the complete fiber network topology of planar fibrous tissues and scaffolds. Biomaterials 2010;31:5345–54. doi:10.1016/j.biomaterials.2010.03.052.</span>
+</li>
+<li id="cite_note-10"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-10">↑</a></span> <span class="reference-text">Gonzalez RC, Eddins SL. Digital Image Processing Using <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>, 2nd ed. 2nd edition. S.I.: Gatesmark Publishing; 2001.</span>
+</li>
+<li id="cite_note-11"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-11">↑</a></span> <span class="reference-text">Lam L, Lee S-W, Suen CY. Thinning Methodologies-A Comprehensive Survey. IEEE Trans Pattern Anal Mach Intell 1992;14:869–85. doi:10.1109/34.161346.</span>
+</li>
+<li id="cite_note-12"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-12">↑</a></span> <span class="reference-text">Zhang TY, Suen CY. A Fast Parallel Algorithm for Thinning Digital Patterns. Commun ACM 1984;27:236–9. doi:10.1145/357994.358023.</span>
+</li>
+<li id="cite_note-13"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-13">↑</a></span> <span class="reference-text">Okabe A. Spatial Tessellations: Concepts and Applications of Voronoi Diagrams. 2 edition. Chichester ; New York: Wiley; 2000.</span>
+</li>
+<li id="cite_note-14"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-14">↑</a></span> <span class="reference-text">Arganda-Carreras I, Fernández-González R, Muñoz-Barrutia A, Ortiz-De-Solorzano C. 3D reconstruction of histological sections: Application to mammary gland tissue. Microsc Res Tech 2010;73:1019–29. doi:10.1002/jemt.20829</span>
+</li>
+<li id="cite_note-15"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-15">↑</a></span> <span class="reference-text">F. Leymarie, M. D. Levine, in: CVGIP Image Understanding, vol. 55 (1992), pp 84-94 <a rel="nofollow" class="external free" href="http://dx.doi.org/10.1016/1049-9660(92)90008-Q">http://dx.doi.org/10.1016/1049-9660(92)90008-Q</a></span>
+</li>
+<li id="cite_note-Directionality-16"><span class="mw-cite-backlink"><a href="Diameterj.html#cite_ref-Directionality_16-0">↑</a></span> <span class="reference-text"> Liu. Scale space approach to directional analysis of images. Appl. Opt. (1991) vol. 30 (11) pp. 1369-1373</span>
+</li>
+</ol></div>
+<h2><span class="mw-headline" id="External_Links">External Links</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="http://bigwww.epfl.ch/demo/orientation/">OrientationJ</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.nist.gov/">NIST</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713065014
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.076 seconds
+Real time usage: 0.077 seconds
+Preprocessor visited node count: 529/1000000
+Preprocessor generated node count: 4444/1000000
+Post‐expand include size: 1754/2097152 bytes
+Template argument size: 966/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   40.213      1 - -total
+ 28.96%   11.646      1 - Template:Infobox
+ 22.43%    9.021      1 - Template:Reflist
+ 20.76%    8.347      2 - Template:Person
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=DiameterJ&amp;oldid=41227">http://imagej.net/index.php?title=DiameterJ&amp;oldid=41227</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=DiameterJ&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=DiameterJ" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=DiameterJ" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/DiameterJ" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/DiameterJ" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=DiameterJ&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=DiameterJ&amp;oldid=41227" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=DiameterJ&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":223});});</script>
+		</body>
+		</html>
+		

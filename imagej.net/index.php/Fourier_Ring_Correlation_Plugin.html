@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Fourier Ring Correlation Plugin - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Fourier_Ring_Correlation_Plugin","wgTitle":"Fourier Ring Correlation Plugin","wgCurRevisionId":40041,"wgRevisionId":40041,"wgArticleId":4445,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Fourier_Ring_Correlation_Plugin","wgRelevantArticleId":4445,"wgRequestId":"65326b04fba522028f1fa0ae","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The plugin was moved to a new location, to help sort our plugins."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Fourier Ring Correlation Plugin"/>
+
+	<meta property="og:description" content="The plugin was moved to a new location, to help sort our plugins."/>
+
+	<meta property="og:url" content="http://imagej.net/Fourier_Ring_Correlation_Plugin"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Fourier_Ring_Correlation_Plugin rootpage-Fourier_Ring_Correlation_Plugin skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Fourier_Ring_Correlation_Plugin.html#bodyContent">Skip to content</a>, 			<a href="Fourier_Ring_Correlation_Plugin.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Fourier_Ring_Correlation_Plugin.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Fourier_Ring_Correlation_Plugin" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Fourier_Ring_Correlation_Plugin&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Fourier_Ring_Correlation_Plugin&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Fourier_Ring_Correlation_Plugin&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Fourier Ring Correlation Plugin</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Fourier Ring Correlation (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Olivier Burri, Alex Herbert
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Olivier Burri
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> FRC_-1.0.2.jar
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/BIOP/ijp-frc">github page</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> September 2016
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> July 2018
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable
+</td></tr>
+
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external text" href="http://biop.epfl.ch/INFO_Facility.html#staff">BIOP Staff Page</a>
+</td></tr>
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Fourier_Ring_Correlation_Plugin.html#Updates"><span class="tocnumber">1</span> <span class="toctext">Updates</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Fourier_Ring_Correlation_Plugin.html#January_2018"><span class="tocnumber">1.1</span> <span class="toctext">January 2018</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Fourier_Ring_Correlation_Plugin.html#July_2018"><span class="tocnumber">1.2</span> <span class="toctext">July 2018</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Fourier_Ring_Correlation_Plugin.html#June_2019"><span class="tocnumber">1.3</span> <span class="toctext">June 2019</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Fourier_Ring_Correlation_Plugin.html#Purpose"><span class="tocnumber">2</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Fourier_Ring_Correlation_Plugin.html#Details"><span class="tocnumber">3</span> <span class="toctext">Details</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="Fourier_Ring_Correlation_Plugin.html#Threshold_Methods"><span class="tocnumber">3.1</span> <span class="toctext">Threshold Methods</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Fourier_Ring_Correlation_Plugin.html#Image_Calibration"><span class="tocnumber">3.2</span> <span class="toctext">Image Calibration</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Fourier_Ring_Correlation_Plugin.html#Installation"><span class="tocnumber">4</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Fourier_Ring_Correlation_Plugin.html#Use"><span class="tocnumber">5</span> <span class="toctext">Use</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="Fourier_Ring_Correlation_Plugin.html#Direct_Use"><span class="tocnumber">5.1</span> <span class="toctext">Direct Use</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Fourier_Ring_Correlation_Plugin.html#Batch_Mode"><span class="tocnumber">5.2</span> <span class="toctext">Batch Mode</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="Fourier_Ring_Correlation_Plugin.html#Results"><span class="tocnumber">6</span> <span class="toctext">Results</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="Fourier_Ring_Correlation_Plugin.html#Plots"><span class="tocnumber">6.1</span> <span class="toctext">Plots</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="Fourier_Ring_Correlation_Plugin.html#Macro_Recordable"><span class="tocnumber">7</span> <span class="toctext">Macro Recordable</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="Fourier_Ring_Correlation_Plugin.html#Running_from_a_Plugin"><span class="tocnumber">8</span> <span class="toctext">Running from a Plugin</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="Fourier_Ring_Correlation_Plugin.html#Notes"><span class="tocnumber">9</span> <span class="toctext">Notes</span></a>
+<ul>
+<li class="toclevel-2 tocsection-18"><a href="Fourier_Ring_Correlation_Plugin.html#References"><span class="tocnumber">9.1</span> <span class="toctext">References</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Updates">Updates</span></h1>
+<h3><span class="mw-headline" id="January_2018">January 2018</span></h3>
+<p>The plugin was moved to a new location, to help sort our plugins.
+</p>
+<h3><span class="mw-headline" id="July_2018">July 2018</span></h3>
+<p>Following information kindly provided by Alex Herbert and Miguel Lermo, we have proceeded to correct the following bugs
+</p>
+<ol><li> FRC_ Plugin was added to package ch.epfl.biop.frc (instead of no package)</li>
+<li> POM was updated to use latest pom-scijava version</li>
+<li> FIRE number is now computed correctly by checking image size</li>
+<li> Images are ensured to be a multiple of two by adding one pixel of padding as needed</li>
+<li> Angles are converted to radians, ensuring a better radial sampling</li></ol>
+<p><br />
+These bugs were present in the first FRC code we had adapted for this plugin, and were recently brought to our attention. In case your images are not powers of two, check the value of the FIRE number as it might not be correct with the previous version of the code. 
+</p><p><br />
+If you are using FRC to compare different images or conditions, and your images do not change size, then the relative differences are still perfectly valid, but absolute values might be off.
+</p>
+<h3><span class="mw-headline" id="June_2019">June 2019</span></h3>
+<p>A remark from Brian Patton, University of Strathclyde, Glasgow says that the original computation for the numerator was wrong, namely:
+<code>code|numerator[i] = dataA1[i] * dataA2[i] + dataB1[i] * dataB2[i];</code>
+And should be instead:
+<code>abs((FFT(Image1)*Complex_Conj(FFT(Image2)))</code>
+</p>
+<h1><span class="mw-headline" id="Purpose">Purpose</span></h1>
+<p>Making use of the Fourier Ring Correlation Implementation by Alex Herbert
+which is itself adapted from the FIRE (Fourier Image REsolution) plugin produced as part of the paper
+<b>Niewenhuizen, et al (2013). Measuring image resolution in optical nanoscopy. Nature Methods, 10, 557</b> <sup id="cite_ref-1" class="reference"><a href="Fourier_Ring_Correlation_Plugin.html#cite_note-1">&#91;1&#93;</a></sup>
+</p>
+<h1><span class="mw-headline" id="Details">Details</span></h1>
+<h2><span class="mw-headline" id="Threshold_Methods">Threshold Methods</span></h2>
+<p>There are three threshold methods currently implemented
+</p>
+<ol><li> <b>Fixed 1/7</b>: Finds the FIRE number when the FRC curve reaches a correlation value of 1/7.</li>
+<li> <b>Half-bit</b>: Threshold method where the intersection of the threshold curve with the FRC defines the point where there is 1/2 bit of information per pixel. </li>
+<li> <b>Three sigma</b>: The intersection of the FRC curve with this threshold defines the value where the FRC begins primarily representing high frequency noise.</li></ol>
+<p>Please see the publication <b>van Hell and Schatz, Fourier shell correlation threshold criteria, Journal of Structural Biology 151, 2005</b><sup id="cite_ref-2" class="reference"><a href="Fourier_Ring_Correlation_Plugin.html#cite_note-2">&#91;2&#93;</a></sup> for more information on the calculation of these criteria.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Image_Calibration">Image Calibration</span></h2>
+<p>We recommend you use a calibrated image so that your results are in calibrated units (microns, millimeters, etc..) directly. The plugin will always return both the non calibrated values and the calibrated ones as separate columns.
+</p>
+<h1><span class="mw-headline" id="Installation">Installation</span></h1>
+<p>This plugin is available from the <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">PTBIOP Update Site</a>
+This places it in a "BIOP" Folder in the plugins directory of Fiji/ImageJ
+</p>
+<h1><span class="mw-headline" id="Use">Use</span></h1>
+<h2><span class="mw-headline" id="Direct_Use">Direct Use</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:247px;"><div class="MediaTransformError" style="width: 245px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Frc-dialog-std.png" class="internal" title="Enlarge"></a></div>Plugin Dialog choices Standard Use</div></div></div>
+<p>Call up the plugin using <i>Plugins-&gt;BIOP-&gt;Image Analysis-&gt;FRC-&gt;FRC Calculation...</i>.
+</p><p>You need two images open to perform the FRC. 
+</p>
+<h2><span class="mw-headline" id="Batch_Mode">Batch Mode</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:370px;"><div class="MediaTransformError" style="width: 368px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Frc-dialog-batch.png" class="internal" title="Enlarge"></a></div>Plugin Dialog choices in Batch mode</div></div></div>
+<p>There is also a Batch Option under <i>Plugins-&gt;BIOP-&gt;Image Analysis-&gt;FRC-&gt;FRC Calculation (Batch)...</i>
+</p><p>This dialog needs two folders. 
+The plugin will open one folder, and perform the FRC for each image that has an image in the second folder <b>with the same name</b>.
+</p>
+<h1><span class="mw-headline" id="Results">Results</span></h1>
+<p>The plugin writes the FIRE (Fourier Image REsolution) number on a Results Table that gets appended as the plugin gets used. The column name reflects the calibration of the image and the threshold method selected. 
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:502px;"><a href="http://imagej.net/File:Frc-results.png" class="image"><img alt="" src="../_images/e/e2/Frc-results.png" width="500" height="135" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Frc-results.png" class="internal" title="Enlarge"></a></div>Results Table example from FRC Calculation</div></div></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Plots">Plots</span></h2>
+<p>The Plugin can display a plot of the FRC curve, along with the LOESS smoothed version of the curve. Finally it displays the threshold method used and the intersection of the FRC with the threshold, providing the FIRE number. The X dimension is in the frequency domain and represents pixels<sup>-1</sup>
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:502px;"><a href="http://imagej.net/File:Frc-results-curve.png" class="image"><img alt="" src="../_images/c/cd/Frc-results-curve.png" width="500" height="315" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Frc-results-curve.png" class="internal" title="Enlarge"></a></div>FRC Curve example using 1/7 Threshold condition</div></div></div>
+<p>In the case of batch processing, if <i>Save Plot</i> is checked, the plugin creates a new folder in the parent directory called "Graphs" and saves an over-sampled plot with the name of the image and threshold method. 
+</p>
+<h1><span class="mw-headline" id="Macro_Recordable">Macro Recordable</span></h1>
+<p>Making use of the GenericDialog class, the plugin is macro-recordable. An example is shown below
+</p>
+<pre class="brush:java">
+run("FRC Calculation...", "image_1=[first_image.tif] image_2=[second_image.tif] resolution=[Fixed 1/7] display");
+
+//Example with batch
+run("FRC Calculation (Batch)...", "first=[D:\\FRC Tests\\A] second=[D:\\FRC Tests\\B] resolution=[Fixed 1/7] save");
+</pre>
+<h1><span class="mw-headline" id="Running_from_a_Plugin">Running from a Plugin</span></h1>
+<p>If you would like to use the FRC class in your own plugin, you can either use the one from Alex Herbert on <a rel="nofollow" class="external text" href="https://github.com/aherbert/GDSC-SMLM">GitHub</a> if you're already using his excellent SMLM plugins. Otherwise you can use the one that was re-purposed here through the following import
+</p>
+<pre class="brush:java">
+import ch.epfl.biop.frc.FRC;
+</pre>
+<p>And then use the FRC Class
+</p>
+<pre class="brush:java">
+
+FRC frc = new FRC();
+
+// Get FIRE Number, assumes you have access to the two image processors.
+double fire = frc.calculateFireNumber(ip1, ip2, FRC.FIXED_1_OVER_7);
+</pre>
+<p>There are other methods to get the FRC curve, see the <a rel="nofollow" class="external text" href="https://c4science.ch/diffusion/988/browse/master/src/main/java/ch/epfl/biop/frc/FRC.java">FRC.java file</a>, which was very well documented. 
+</p>
+<h1><span class="mw-headline" id="Notes">Notes</span></h1>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<div class="references-small">
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="Fourier_Ring_Correlation_Plugin.html#cite_ref-1">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Measuring+image+resolution+in+optical+nanoscopy&amp;rft.aulast=Nieuwenhuizen&amp;rft.aufirst=Robert+P+J&amp;rft.date=2013-06&amp;rft.volume=10&amp;rft.issue=6&amp;rft.pages=557%E2%80%93562&amp;rft.issn=1548-7091"><cite id="CITEREFNieuwenhuizenLidkeBatesPuig2013">Nieuwenhuizen, Robert P J; Lidke, Keith A&#32;&amp; Bates, Mark&#32;et al.&#32;(2013-06),&#32;"Measuring image resolution in optical nanoscopy",&#32;<i>Nat Meth</i>&#32;<b>10</b>&#xa0;(6):  557–562, ISSN <a rel="nofollow" class="external text" href="http://worldcat.org/issn/1548-7091">1548-7091</a></cite></span>
+</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="Fourier_Ring_Correlation_Plugin.html#cite_ref-2">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Fourier+shell+correlation+threshold+criteria&amp;rft.aulast=van+Heel&amp;rft.aufirst=Marin&amp;rft.date=2005-09&amp;rft.volume=151&amp;rft.issue=3&amp;rft.pages=250%E2%80%93262&amp;rft_id=info:doi/10.1016%2Fj.jsb.2005.05.009&amp;rft.issn=1047-8477"><cite id="CITEREFvan_HeelSchatz2005">van Heel, Marin&#32;&amp;&#32;Schatz, Michael&#32;(2005-09),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1016%2Fj.jsb.2005.05.009">Fourier shell correlation threshold criteria</a>",&#32;<i>Journal of Structural Biology</i>&#32;<b>151</b>&#xa0;(3):  250–262, ISSN <a rel="nofollow" class="external text" href="http://worldcat.org/issn/1047-8477">1047-8477</a><span class="printonly">, DOI 10.1016/j.jsb.2005.05.009</span></cite></span>
+</span>
+</li>
+</ol></div>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072344
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.076 seconds
+Real time usage: 0.076 seconds
+Preprocessor visited node count: 1086/1000000
+Preprocessor generated node count: 7490/1000000
+Post‐expand include size: 6969/2097152 bytes
+Template argument size: 2084/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   40.248      1 - -total
+ 79.97%   32.185      1 - Template:Reflist
+ 66.48%   26.755      2 - Template:Cite_journal
+ 56.37%   22.686      2 - Template:Citation/core
+  9.52%    3.831      1 - Template:Infobox
+  4.22%    1.699      2 - Template:Link
+  1.88%    0.756      1 - Template:ListOfUpdateSites
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Fourier_Ring_Correlation_Plugin&amp;oldid=40041">http://imagej.net/index.php?title=Fourier_Ring_Correlation_Plugin&amp;oldid=40041</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 3 June 2019, at 10:16.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Fourier_Ring_Correlation_Plugin&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Fourier+Ring+Correlation+Plugin" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Fourier+Ring+Correlation+Plugin" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Fourier_Ring_Correlation_Plugin" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Fourier_Ring_Correlation_Plugin" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Fourier_Ring_Correlation_Plugin&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Fourier_Ring_Correlation_Plugin&amp;oldid=40041" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Fourier_Ring_Correlation_Plugin&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":233});});</script>
+		</body>
+		</html>
+		

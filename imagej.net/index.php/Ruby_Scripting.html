@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>JRuby Scripting - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"JRuby_Scripting","wgTitle":"JRuby Scripting","wgCurRevisionId":41270,"wgRevisionId":41270,"wgArticleId":36,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Scripting"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"JRuby_Scripting","wgRelevantArticleId":36,"wgRequestId":"84d025e09ebba10eba61ad6b","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="JRuby is a marvellous project that created a complete implementation of Ruby that runs in the JVM.  The excellent work of the authors of JRuby has made it very simple for us to add JRuby scripting into ImageJ."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="JRuby Scripting"/>
+
+	<meta property="og:description" content="JRuby is a marvellous project that created a complete implementation of Ruby that runs in the JVM.  The excellent work of the authors of JRuby has made it very simple for us to add JRuby scripting into ImageJ."/>
+
+	<meta property="og:url" content="http://imagej.net/JRuby_Scripting"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-JRuby_Scripting rootpage-JRuby_Scripting skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Ruby_Scripting.html#bodyContent">Skip to content</a>, 			<a href="Ruby_Scripting.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Ruby_Scripting.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Ruby_Scripting.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:JRuby_Scripting&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=JRuby_Scripting&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=JRuby_Scripting&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>JRuby Scripting</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Ruby (JRuby)</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p><a rel="nofollow" class="external text" href="http://jruby.codehaus.org/">JRuby</a> is a marvellous project that created a complete implementation of Ruby that runs in the JVM.  The excellent work of the authors of JRuby has made it very simple for us to add JRuby scripting into ImageJ.
+</p><p>JRuby scripting in ImageJ is a nice alternative to scripting using ImageJ's macro language.  It has the following advantages:
+</p>
+<ul><li> You don't have to learn a new language to script ImageJ (assuming you know Ruby)</li>
+<li> You're not limited to using the functionality exposed by the macro language: you can use any class in ImageJ, one of its plugins or standard Java classes</li>
+<li> Developing JRuby scripts is very fast compared to developing plugins in Java</li></ul>
+<p><i>(These advantages, of course, are shared by the <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Jython Scripting</a>, <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Clojure Scripting</a>, Beanscript and <a href="http://imagej.net/Javascript_Scripting" class="mw-redirect" title="Javascript Scripting">Javascript Scripting</a> bundled in Fiji.)</i>
+</p><p>If you have any questions or suggestions about JRuby scripting in ImageJ, please contact the <a rel="nofollow" class="external text" href="https://forum.imagej.net">ImageJ forum</a>. Have fun!
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Ruby_Scripting.html#Tutorial"><span class="tocnumber">1</span> <span class="toctext">Tutorial</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Ruby_Scripting.html#Note_On_Names"><span class="tocnumber">1.1</span> <span class="toctext">Note On Names</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Ruby_Scripting.html#Importing_classes"><span class="tocnumber">1.2</span> <span class="toctext">Importing classes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="Ruby_Scripting.html#Example:_Generating_a_Plasma_Cloud"><span class="tocnumber">2</span> <span class="toctext">Example: Generating a Plasma Cloud</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Ruby_Scripting.html#Example:_Batch_Converting_File_Formats"><span class="tocnumber">3</span> <span class="toctext">Example: Batch Converting File Formats</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="Ruby_Scripting.html#Converting_ImageJ_Macros_to_JRuby"><span class="tocnumber">3.1</span> <span class="toctext">Converting ImageJ Macros to JRuby</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Ruby_Scripting.html#Example:_Generating_Red.2FCyan_Anaglyphs"><span class="tocnumber">4</span> <span class="toctext">Example: Generating Red/Cyan Anaglyphs</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Ruby_Scripting.html#Script_Parameters"><span class="tocnumber">5</span> <span class="toctext">Script Parameters</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Ruby_Scripting.html#Library"><span class="tocnumber">6</span> <span class="toctext">Library</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Ruby_Scripting.html#What_next.3F"><span class="tocnumber">7</span> <span class="toctext">What next?</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Tutorial">Tutorial</span></h2>
+<p>Let's start writing some JRuby right away - start up the interpreter by going to <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Scripting </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> JRuby Interpreter</span></em></span>.  The interpreter window will pop up, but it may take a little time for the JRuby runtime to be ready.  You should initially see the message:
+</p>
+<pre> Starting JRuby ...
+</pre>
+<p>... and when it's ready, the line:
+</p>
+<pre> Done.
+</pre>
+<p>Now you can start typing Ruby expressions into that window, such as:
+</p>
+<pre> &gt;&gt;&gt; "hello there".upcase[1..4]
+ ELLO
+</pre>
+<p>It would be a good idea to take a quick look at the page on <a href="http://imagej.net/Scripting_Help" class="mw-redirect" title="Scripting Help">Scripting Help</a> for tips on using this interpreter window.l
+</p><p>Try loading one of the ImageJ sample images by going to <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open Samples </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> T1 Head (2.4M, 16-bits)</span></em></span>.  Once you've done that we'll examine the image using JRuby.  You can get a reference to the current image with ij.IJ.getImage.  Try assigning the result to a variable, like this:
+</p>
+<pre> &gt;&gt;&gt; i = ij.IJ.getImage
+ imp[t1-head.tif 256x256x129]
+</pre>
+<p>Now we can find out the width and the depth of the stack like this:
+</p>
+<pre> &gt;&gt;&gt; w = i.getWidth
+ 256
+ &gt;&gt;&gt; d = i.getStackSize
+ 129
+</pre>
+<p>Many of the operations that you might want to perform on the image are available via the ImageProcessor associate with a slice.  For example, to invert the current slice do:
+</p>
+<pre> i.getProcessor.invert
+</pre>
+<p>That won't actually produce a visible effect on the image until you also call i.updateAndDraw on the image:
+</p>
+<pre> i.updateAndDraw
+</pre>
+<p>If you scroll through the stack now you should find that one of the slices is inverted.
+</p>
+<h3><span class="mw-headline" id="Note_On_Names">Note On Names</span></h3>
+<p>You might find the use of "ij.IJ.getImage" above slightly suspicious if you're used to Java and the ImageJ API.  "ij" is the Java package name, "IJ" is the class name in that package and "getImage" is a static method in that class which returns a reference to an ImagePlus object representing the current image or null if there is none.  How does this work?  We have set up the JRuby interpreter in ImageJ so that if a method or class name can't be found it will look for a correponding class or method name in the ij.* packages.  JRuby by default does exactly this for the java.* classes, so for example the following works without having to explicitly include the java.util.Random class:
+</p>
+<pre> &gt;&gt;&gt; rng = java.util.Random.new
+ java.util.Random@bf9a12
+ &gt;&gt;&gt; rng.nextInt 1024
+ 603
+ &gt;&gt;&gt; rng.nextInt 1024
+ 94
+</pre>
+<p>Note that this is an example of creating an object in JRuby; you use the usual Something.new syntax of Ruby, but it creates an object of the standard Java class.  Hopefully you're thinking "Excellent!" or something similar at this stage...
+</p>
+<h3><span class="mw-headline" id="Importing_classes">Importing classes</span></h3>
+<p>If you need to use classes that aren't in the java.* or ij.* hierarchy&#8212;or if you are developing JRuby scripts in the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a>&#8212;you will have to include them explicitly.
+To reference Java classes from JRuby you will need to import them.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Unlike <a href="http://imagej.net/ImageJ_1.x" class="mw-redirect" title="ImageJ 1.x">ImageJ 1.x</a>, <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> (and therefore <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a>) does not automatically import any classes. Consequently, scripts written for <a href="http://imagej.net/ImageJ_1.x" class="mw-redirect" title="ImageJ 1.x">ImageJ 1.x</a> will not run in <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> without adding the proper imports.
+The rationale is that the auto-import feature is not safe. What if two classes of the same name live in two different packages? Or if a new class is introduced that makes formerly unique names ambiguous? All of a sudden, all of the scripts that reference the original class no longer work. In short: auto-imports are dangerously imprecise. </td>
+
+
+</tr>
+</table></div>
+<p><br />
+For example, in the classpath of <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a> there is a useful class called util.BatchOpener, that has static methods for opening files as arrays of ImagePlus objects (one per channel) without showing them.  To use these methods, you would have to do:
+</p>
+<pre> &gt;&gt;&gt; java_import 'util.BatchOpener'
+ util.BatchOpener
+</pre>
+<p>Then you can, for example, do the following:
+</p>
+<pre> &gt;&gt;&gt; a = BatchOpener.open "/home/mark/confocal/test.lsm"
+ [Lij.ImagePlus;@b1406b
+ &gt;&gt;&gt; a.length
+ 2
+ &gt;&gt;&gt; a[0].getTitle
+ C1-test.lsm
+ &gt;&gt;&gt; a[1].getTitle
+ C2-test.lsm
+ &gt;&gt;&gt; a[1].show
+</pre>
+<h2><span class="mw-headline" id="Example:_Generating_a_Plasma_Cloud">Example: Generating a Plasma Cloud</span></h2>
+<p>In this first example, we'll just create a small script to create a fractal "plasma cloud" image.  We'll start of experimenting in the interpreter to make sure we've got the code to create images correctly.  To create the RGB image in the first place, we create a ColorProcessor and then an ImagePlus from that:
+</p>
+<pre class="brush:ruby">
+&gt;&gt;&gt; w = 800
+800
+&gt;&gt;&gt; h = 600
+600
+&gt;&gt;&gt; cp = ij.process.ColorProcessor.new(w,h)
+ip[width=800, height=600, min=0.0, max=255.0]
+&gt;&gt;&gt; i = ij.ImagePlus.new "Plasma Cloud", cp
+imp[Plasma Cloud 800x600x1]
+</pre>
+<p>... and now show it:
+</p>
+<pre class="brush:ruby">
+&gt;&gt;&gt; i.show
+</pre>
+<p>We'll manipulate the pixel array directly, so it's worth checking that this will work OK.  Here we try to set half of the image to green:
+</p>
+<pre class="brush:ruby">
+&gt;&gt;&gt; i
+imp[Plasma Cloud 800x600x1]
+&gt;&gt;&gt; pixels = cp.getPixels
+[I@e038c4
+&gt;&gt;&gt; 0.upto( w * (h / 2) - 1) { |j| pixels[j] = 0x0000FF00 }
+0
+&gt;&gt;&gt; i.updateAndDraw
+</pre>
+<p>Hopefully that worked OK.  The color value specified there is in ARGB format.  You may have noticed that this step was rather slow - there is quite a bit of magic involved in JRuby's transparent access between Ruby and Java, which has an inevitable performance cost.  But if your goal is not so much the speed with which the script is executed, but to get a working script as fast as possible, JRuby scripting may well be your optimal tool. 
+</p>
+(By the way, sometimes it's even possible to use java's optimizations in ruby. Replace the <pre class="brush:ruby">0.upto( w * (h / 2) - 1) { |j| pixels[j] = 0x0000FF00 }</pre>
+<p>with
+</p>
+<pre class="brush:ruby"> java.util.Arrays.fill(pixels, 0, w*h/2 - 1, 0x0000FF00)</pre>
+<p>and get a free 240 times speedup.)
+</p><p><br />
+You would probably proceed at this stage by switching to a text editor and creating a script with the extension ".rb" and underscores in the name in the Fiji plugins directory.  You should find an example "Plasma_Cloud.rb" script in plugins/Examples which is based on the basics we worked out above.  The output of this script looks like this:
+</p>
+<div class="MediaTransformError" style="width: 418px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Example:_Batch_Converting_File_Formats">Example: Batch Converting File Formats</span></h2>
+<p>This is a short example script showing how to convert a directory of LSM files into BioRad .PIC format using JRuby and the util.BatchOpener methods that I mentioned above.  This just hard-codes the paths in the filesystem, so you would need to edit it if you want to do something similar.  Nonetheless, hopefully this is instructive: filtering filenames, and so on, is typically much more convenient using JRuby than the ImageJ macro language:
+</p>
+<pre class="brush:ruby">
+input_directory  = "/home/mark/lsm-examples/"
+output_directory = "/home/mark/lsm-examples/biorad/"
+
+include_class 'util.BatchOpener'
+include_class 'Biorad_Writer'
+
+# Check that the input directory exists:
+unless FileTest.directory? input_directory
+  ij.IJ.error "Input directory '#{input_directory} was not found"
+  exit(-1)
+end
+
+# Create the output directory if it doesn't exist:
+unless FileTest.exist? output_directory
+  Dir.mkdir output_directory
+end
+
+# Biorad filenames have a standard format, which we generate with
+# this function.  ('channel' should be 1-indexed):
+def make_biorad_filename(lsm_filename,channel)
+  lsm_filename.gsub(/.lsm$/,sprintf("%02d.pic",channel))
+end
+
+Dir.entries(input_directory).each do |e|
+  # Skip anything that doesn't have a '.lsm' extension:
+  next unless e =~ /\.lsm$/
+  puts "Converting: #{e}"
+  # Open the image file to an array of ImagePlus objects:
+  a = BatchOpener.open("#{input_directory}#{e}")
+  # Create the writer plugin object:
+  writer = Biorad_Writer.new
+  # Now, for each channel in the input image, write out
+  index = 0
+  a.each do |image|
+    # The Biorad_Writer doesn't like COLOR_256 images, so convert to
+    # GRAY8:
+    ij.process.StackConverter.new(image).convertToGray8
+    biorad_filename = make_biorad_filename e, index + 1
+    puts "    Writing: #{biorad_filename}"
+    writer.save image, output_directory, biorad_filename
+    index += 1
+    image.close
+  end
+end
+  
+ij.IJ.showMessage("Finished converting to Biorad format!")
+</pre>
+<h3><span class="mw-headline" id="Converting_ImageJ_Macros_to_JRuby">Converting ImageJ Macros to JRuby</span></h3>
+<p>To help with porting existing ImageJ macros to JRuby, I have made a start on implementing similarly named JRuby functions to the standard ImageJ macros.  These have been defined with idiomatic Ruby function names as well as the "lower camel case" style ImageJ macro names, so instead of "image = ij.IJ.getImage" as used above, you can use either:
+</p>
+<pre> image = getImage
+</pre>
+<p>or:
+</p>
+<pre> image = get_image
+</pre>
+<p>The "run" method may also be particularly useful for calling existing ImageJ plugins and commands.  The next section has an example of the use of this.  It may be instructive to compare the <a rel="nofollow" class="external text" href="https://imagej.net/macros/ConvexHull.txt">"Blobs Demo" macro</a> from the ImageJ distribution with <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/blob/master/plugins/Examples/Blobs_Demo_in_Ruby.rb">a version ported to JRuby</a>.  The use of the analagous function in JRuby is not always the same - for example, if you compare the invocation of getSelectionCoordinates, you'll find that whereas the ImageJ macro version passes in the output variables:
+</p>
+<pre> getSelectionCoordinates(xCoordinates, yCoordinates);
+</pre>
+<p>... the JRuby version can return two arrays:
+</p>
+<pre> x_coordinates, y_coordinates = get_selection_coordinates
+</pre>
+<p>A note for the interested programmer: About 15% of the macro functions have be done so far, and if anyone wanted to help out with doing the rest, that would be excellent!  The source code <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/blob/master/plugins/JRuby/imagej.rb">can be found here</a>.
+</p>
+<h2><span class="mw-headline" id="Example:_Generating_Red.2FCyan_Anaglyphs">Example: Generating Red/Cyan Anaglyphs</span></h2>
+<p>This example script can be found in the Plugins/Examples/ folder of Fiji.  It will take an image stack and generate from it an image that should appear in 3D when viewed through red and cyan glasses.  All that this does is to do two maximum intensity projections from two slightly different angles and merges them together.  It's a nice example because all the work is done by existing ImageJ commands.  If you look at the script,  you'll see that the first step is to run the "3D Project..." plugin with some slightly convoluted options:
+</p>
+<pre class="brush:ruby">
+projection_options = "projection=[Brightest Point] axis=Y-Axis "
+projection_options += "initial=-#{degree_separation / 2} "
+projection_options += "total=#{degree_separation} "
+projection_options += "rotation=#{degree_separation} "
+projection_options += "interpolate"
+
+run "3D Project...", projection_options
+</pre>
+<p>In general, the best way to figure out what these options should be is to start the macro recorder with "<span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Macros </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Record...</span></em></span>" and run the plugin.  In this case, the output in the macro recorder looks like this:
+</p>
+<pre> run("3D Project...", "projection=[Brightest Point] axis=Y-Axis slice=1.20 initial=-2 total=4 
+               rotation=4 lower=1 upper=255 opacity=0 surface=100 interior=50 interpolate");
+</pre>
+<p>Hopefully it should be obvious how I derived the 'projection_options' string in the script from that output.  The next part of the script splits the hyperstack generated by that command and merges it with appropriate colours.  Similarly this can be figured out with the help of the macro recorder, the only tricky bit being that one has to predict the names of the images that are output from each step.  There are further helpful comments in the script itself.
+</p><p>Some example output:
+</p>
+<div class="MediaTransformError" style="width: 534px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Script_Parameters">Script Parameters</span></h2>
+<p>When using <a href="http://imagej.net/Script_Parameters" title="Script Parameters">Script Parameters</a>, e.g., in the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a>, you need to use a <tt>$</tt> before <tt>@ variables</tt>, due to a limitation in the scoping, as in this example from <a href="http://imagej.net/Script_Templates" title="Script Templates">Script Templates</a>:
+</p><p><b><a rel="nofollow" class="external text" href="https://github.com/scijava/scripting-jruby/blob/master/src/main/resources/script_templates/Intro/Greeting.rb">Greeting.rb</a></b>
+</p>
+<pre class="brush:rb">#@ String name
+#@output String greeting
+
+# A JRuby script with parameters.
+# It is the duty of the scripting framework to harvest
+# the 'name' parameter from the user, and then display
+# the 'greeting' output parameter, based on its type.
+
+$greeting = "Hello, " + $name + "!"
+</pre>
+<h2><span class="mw-headline" id="Library">Library</span></h2>
+<p>There is a library called <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/blob/master/plugins/JRuby/imagej.rb">imagej.rb</a> for convenience. It contains a number of useful functions related to ImageJ. It is loaded by default when creating a new JRuby script in the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a>.
+</p>
+<h2><span class="mw-headline" id="What_next.3F">What next?</span></h2>
+<p>You may want to first have a quick look at the <a href="http://imagej.net/Scripting_Help" class="mw-redirect" title="Scripting Help">Scripting Help</a> page for generic instructions in using the interpreter and script interfaces, and the <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Scripting comparisons</a> page for an example written in several of the different scripting languages available.  The JRuby example shows how to implement a Java interface in JRuby.
+</p><p>JRuby offers some more nice features, have a look at them in the JRuby documentation: <a rel="nofollow" class="external free" href="https://github.com/jruby/jruby/wiki/CallingJavaFromJRuby">https://github.com/jruby/jruby/wiki/CallingJavaFromJRuby</a>
+</p><p>And of course, if you want to know how to use a class from ImageJ or any of its projects, visit:  <a rel="nofollow" class="external free" href="https://javadoc.imagej.net">https://javadoc.imagej.net</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073235
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.116 seconds
+Real time usage: 0.286 seconds
+Preprocessor visited node count: 783/1000000
+Preprocessor generated node count: 2440/1000000
+Post‐expand include size: 14748/2097152 bytes
+Template argument size: 7435/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  210.670      1 - -total
+ 85.89%  180.935      1 - Template:GitHubEmbed
+  7.16%   15.091      1 - Template:Learn
+  6.32%   13.323      1 - Template:Menu
+  5.65%   11.893      4 - Template:Submenu
+  3.20%    6.732      3 - Template:Bc
+  2.91%    6.124     39 - Template:MenuItem
+  1.73%    3.649      1 - Template:ImportingClasses
+  1.64%    3.445      4 - Template:GitHub
+  1.21%    2.557      1 - Template:Warning
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=JRuby_Scripting&amp;oldid=41270">http://imagej.net/index.php?title=JRuby_Scripting&amp;oldid=41270</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=JRuby_Scripting&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=JRuby+Scripting" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=JRuby+Scripting" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/JRuby_Scripting" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/JRuby_Scripting" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=JRuby_Scripting&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=JRuby_Scripting&amp;oldid=41270" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=JRuby_Scripting&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":451});});</script>
+		</body>
+		</html>
+		

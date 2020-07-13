@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Generic dialog - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Generic_dialog","wgTitle":"Generic dialog","wgCurRevisionId":40985,"wgRevisionId":40985,"wgArticleId":10843,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Generic_dialog","wgRelevantArticleId":10843,"wgRequestId":"4c4d4497261805c7b8977ade","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The GenericDialog class is part of ImageJ1 and can be used to make simple graphical user interfaces for scripts and plugins. It requires a bit more of work than with the script parameters option but offers more possibilities.&#10;Fiji offers an additional GenericDialogPlus subclass which include additional GUI item like a file input with a browse button.&#10;Like the script parameters, plugins using the Generic Dialog (or one of its subclass) are macro recordable."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Generic dialog"/>
+
+	<meta property="og:description" content="The GenericDialog class is part of ImageJ1 and can be used to make simple graphical user interfaces for scripts and plugins. It requires a bit more of work than with the script parameters option but offers more possibilities.&#10;Fiji offers an additional GenericDialogPlus subclass which include additional GUI item like a file input with a browse button.&#10;Like the script parameters, plugins using the Generic Dialog (or one of its subclass) are macro recordable."/>
+
+	<meta property="og:url" content="http://imagej.net/Generic_dialog"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Generic_dialog rootpage-Generic_dialog skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Dialog.html#bodyContent">Skip to content</a>, 			<a href="Dialog.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Dialog.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Dialog.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Generic_dialog&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Generic_dialog&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Generic_dialog&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Generic dialog</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Dialog.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Dialog.html#In_Jython_.28or_similar_scripting_language.29"><span class="tocnumber">1.1</span> <span class="toctext">In Jython (or similar scripting language)</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Dialog.html#In_the_macro_language"><span class="tocnumber">1.2</span> <span class="toctext">In the macro language</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="Dialog.html#Image_and_file_inputs"><span class="tocnumber">2</span> <span class="toctext">Image and file inputs</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Dialog.html#Macro-recording"><span class="tocnumber">3</span> <span class="toctext">Macro-recording</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Dialog.html#Recalling_previous_entries_using_the_PrefService"><span class="tocnumber">4</span> <span class="toctext">Recalling previous entries using the PrefService</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Dialog.html#Custom_buttons"><span class="tocnumber">5</span> <span class="toctext">Custom buttons</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>The <a rel="nofollow" class="external text" href="https://javadoc.scijava.org/ImageJ1/ij/gui/GenericDialog.html">GenericDialog</a> class is part of <a href="http://imagej.net/ImageJ1" title="ImageJ1">ImageJ1</a> and can be used to make simple graphical user interfaces for scripts and plugins. It requires a bit more of work than with the <a href="http://imagej.net/Script_Parameters" title="Script Parameters">script parameters</a> option but offers more possibilities.<br />
+Fiji offers an additional <a rel="nofollow" class="external text" href="https://javadoc.scijava.org/Fiji/fiji/util/gui/GenericDialogPlus.html">GenericDialogPlus</a> subclass which include additional GUI item like a file input with a browse button.<br />
+Like the script parameters, plugins using the Generic Dialog (or one of its subclass) are macro recordable.
+</p>
+<h3><span class="mw-headline" id="In_Jython_.28or_similar_scripting_language.29">In Jython (or similar scripting language)</span></h3>
+<p>Here is an example in Jython.
+</p>
+<pre class="brush:python">
+from ij.gui import GenericDialog
+
+# Create an instance of GenericDialog
+gui = GenericDialog("My first GUI")
+
+# Add some gui elements (Ok and Cancel button are present by default)
+# Elements are stacked on top of each others by default (unless specified)
+gui.addMessage("Some information to display at the top of the gui")
+gui.addStringField("Type some input text&#160;:", "initial text")
+gui.addCheckbox("This is a tickbox-&gt;Activate some option", True)
+
+# We can add elements next to each other using the addToSameRow method
+gui.addToSameRow() # The next item is appended next to the tick box
+gui.addChoice("Choose one option among a list", ["Choice1", "Choice2"], "Choice1") # Choice1 is default here
+
+gui.addNumericField("Some integer", 10, 0) # 0 for no decimal part
+
+# Add a Help button in addition to the default OK/Cancel
+gui.addHelp(r"https://imagej.net/Generic_dialog") # clicking the help button will open the provided URL in the default browser
+
+# Show dialog, the rest of the code is not executed before OK or Cancel is clicked
+gui.showDialog() # dont forget to actually display the dialog at some point
+
+
+# If the GUI is closed by clicking OK, then recover the inputs in order of "appearance"
+if gui.wasOKed():
+    inString = gui.getNextString()
+    inBool = gui.getNextBoolean()
+    inChoice = gui.getNextChoice() # one could alternatively call the getNextChoiceIndex too
+    inNum = Win.getNextNumber() # This always return a double (ie might need to cast to int)
+</pre>
+<h3><span class="mw-headline" id="In_the_macro_language">In the macro language</span></h3>
+<p>There are 2 options to generate a GUI in the ImageJ macro language.<br />
+The first option is convenient if only a single or few parameters are requested.<br />
+It will open a dedicated input window for every parameter requested ie if there are multiple parameters, several windows will successively show up.
+</p>
+<pre class="brush:java">
+someNumber = getNumber("Some number", 0); // 0 is the default here
+someString = getString("Some string", "DefaultValue");
+</pre>
+<p>The list of possible inputs is the same than for the second option with the Dialog.<br />
+Using Dialog (the 2nd option), a single input window will show up with all parameters. This requires a little bit more coding than the 1st option, but is more elegant.
+</p>
+<pre class="brush:java">
+Dialog.create("My inputs");
+Dialog.addMessage("Some message to display");
+
+var min = 0;
+var max = 10;
+var default = 5;
+Dialog.addSlider("Some slider", min, max, default);
+Dialog.addNumber("Some number", 0);
+Dialog.addString("Some string", "DefaultString");
+
+Dialog.addChoice("Type:", newArray("8-bit", "16-bit", "32-bit", "RGB"));
+Dialog.addCheckbox("Ramp", true);
+
+// One can add a Help button that opens a webpage
+Dialog.addHelp("https://imagej.net/macros/DialogDemo.txt");
+
+// Finally show the GUI, once all parameters have been added
+Dialog.show();
+
+// Once the Dialog is OKed the rest of the code is executed
+// ie one can recover the values in order of appearance 
+inNumber1 = Dialog.getNumber(); // Sliders are number too
+inNumber2 = Dialog.getNumber();
+inString  = Dialog.getString();
+inChoice  = Dialog.getChoice();
+inBoolean = Dialog.getCheckbox();
+
+print("Number1:", inNumber1);
+print("Number2:", inNumber2);
+print(inString);
+print("Choice:", inChoice);
+print("Do something (1=True, 0=False):", inBoolean);
+</pre>
+<p>See the section "Dialog" of the <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/functions.html">Macro functions reference</a> for more details.
+</p>
+<h2><span class="mw-headline" id="Image_and_file_inputs">Image and file inputs</span></h2>
+<p>By default, script and plugins process the last selected image.<br />
+However sometime one needs to specify different images or files as input.<br />
+The subclass <a rel="nofollow" class="external text" href="https://javadoc.scijava.org/Fiji/fiji/util/gui/GenericDialogPlus.html">GenericDialogPlus</a> provides a couple of handful methods for such cases, while all methods shown above are inherited from the GenericDialog class.
+</p>
+<pre class="brush:python">
+from fiji.util.gui import GenericDialogPlus
+
+# Create an instance of GenericDialogPlus
+gui = GenericDialogPlus("an enhanced GenericDialog")
+
+# Add possibility to choose some images already opened in Fiji
+gui.addImageChoice("Image1","Some description for image1")
+gui.addImageChoice("Image2","Some description for image2")
+
+
+# The GenericDialogPlus also allows to select files, folder or both using a browse button
+gui.addFileField("Some_file path", "DefaultFilePath")
+gui.addDirectoryField("Some_folder path", "DefaultFolderPath")
+gui.addDirectoryOrFileField("Some_Path", "DefaultPath")
+
+gui.showDialog()
+
+# Recover the inputs in order of "appearance"
+if gui.wasOKed():
+    ImpImage1 = gui.getNextImage() # This method directly returns the ImagePlus object
+    ImpImage2 = gui.getNextImage()
+    
+    # Path are recovered as string
+    FilePath   = gui.getNextString()
+    FolderPath = gui.getNextString()
+    SomePath   = gui.getNextString()
+</pre>
+<h2><span class="mw-headline" id="Macro-recording">Macro-recording</span></h2>
+<p>Just like script parameters, plugins using the GenericDialog class are macro-recordable.<br />
+One important thing to note is the name of the variable in the recorded command. This name is actually the first word of the string used as label for each item, with lowercase letters only.<br />
+A single word is not very intuitive to understand a parameter in most cases. To include the next words of the label in the recorded command replace the space with underscores, as in <code>some_file</code> above.   
+</p><p>For instance the previous code saved as <code>GUI_.py</code> in <code>Fiji.app/scripts/Plugins/Test</code> yields the following recorded command:<br />
+</p>
+<pre class="brush:plain">
+run("GUI ", "image1=MyImage1.tif image2=MyImage2.tif some_file=DefaultFilePath some_folder=DefaultFolderPath some_path=DefaultPath");
+</pre>
+<h2><span class="mw-headline" id="Recalling_previous_entries_using_the_PrefService">Recalling previous entries using the PrefService</span></h2>
+<p>It is convenient to have the previously entered parameters recalled at the next run of a given plugin. This is happening automatically for Script parameters (unless specified differently) but not for the GenericDialog class.<br />
+Fortunately, it is still possible to make it works using the PrefService.
+</p><p>Services are some ImageJ2/SciJava features that can be though of as some kind of package import at runtime. They are not available in a plain ImageJ1, thus an alternative to recall parameter in ImageJ1 is to use a temp file to store the previously entered parameters.<br />
+Here's the link to the <a rel="nofollow" class="external text" href="https://javadoc.scijava.org/SciJava/org/scijava/prefs/PrefService.html">PrefService</a>.<br />
+And below is a Jython example of how to use it.
+</p>
+<pre class="brush:python">
+#@ PrefService prefs 
+from fiji.util.gui import GenericDialogPlus 
+ 
+# Create GUI 
+gui = GenericDialogPlus("Some GUI")
+ 
+gui.addImageChoice("Image", prefs.get(None, "Image", "DefaultImage") ) 
+gui.addCheckbox("Activate some option", prefs.getInt(None, "doOption", False) ) # in theory we should use the getBoolean method but it does not work for Jython, the wrong method signature is matched
+gui.addStringField("Some_string", prefs.get(None, "someString", "initial")) 
+gui.addChoice("Some_choice", ["Choice1","Choice2"], prefs.get(None, "someChoice", "DefaultChoice")) 
+gui.addNumericField("Some_integer", prefs.getInt(None, "N", 1), 0)  
+gui.addNumericField("Some_float", prefs.getFloat(None, "Decimal", 0.5), 2) 
+ 
+gui.showDialog() 
+ 
+if gui.wasOKed(): 
+	image      = gui.getNextImage() 
+	doOption   = gui.getNextBoolean()
+	someString = gui.getNextString() 
+	someChoice = gui.getNextChoice() 
+	N          = int(gui.getNextNumber()) # cast to int&#160;: getNextNumber always return a double
+	Decimal = gui.getNextNumber()
+	 
+	# Save in memory using PrefService 
+	prefs.put(None, "Image", image.getTitle()) 
+	prefs.put(None, "doOption", doOption) 
+	prefs.put(None, "someString", someString) 
+	prefs.put(None, "someChoice", someChoice ) 
+	prefs.put(None, "N", N) 
+	prefs.put(None, "Decimal", Decimal) 
+</pre>
+<p>The first step is to "import" the PrefService and to assign it a name, here prefs.
+</p><p>Then there are 2 methods to respectively recover and store some parameter values from the PrefService, namely <code>get</code> and <code>put</code>.
+</p><p>Let's start with <code>get</code>. This method is define for the different datatype <code>getInt</code>, <code>getFloat</code>, <code>getBoolean</code>. An exception for String there is no <code>getString</code> just <code>get</code>.<br />
+Also in Jython the <code>getBoolean</code> method is not mapping the right Java signature, so use <code>getInt</code> instead as illustrated above.
+</p><p>There are 3 arguments for the <code>get</code> methods:
+</p>
+<ol><li> The Plugin class for which to associate the parameter persistence. Leave it None (or Null in other languages) to use the default.</li>
+<li> The name of the variable to recall from memory/the preferences, it should be the same name used by the <code>put</code> method for that parameter.</li>
+<li> The default value to use if no variable with such name exist in memory ie the first time you run your script or if you reset the preferences.</li></ol>
+<p><br />
+The method <code>put</code> is even simpler as there is only a single method that takes also 3 arguments:
+</p>
+<ol><li> Like for <code>get</code> an optional Plugin class</li>
+<li> The name used to store the parameter value in memory/in the preferences, it is the same name used by <code>get</code> to recover the previously entered value.</li>
+<li> The value to store in memory with the name in argument 2. If the parameter was already existing in memory the value is updated to this newly provided value.</li></ol>
+<p>Therefore in the script above, the default values for the GenericDialog fields are initialized to the values available in memory, or some default values if there are missing in memory.<br />
+Once the GUI is oked, the values in memory are updated with the newly typed values, using the <code>put</code> method.
+</p>
+<h2><span class="mw-headline" id="Custom_buttons">Custom buttons</span></h2>
+<p>Using the <a rel="nofollow" class="external text" href="https://javadoc.scijava.org/Fiji/fiji/util/gui/GenericDialogPlus.html">GenericDialogPlus</a> provided with Fiji, it is possible to add custom buttons and associated actions to a GUI.<br />
+To do so, we have to import the <a rel="nofollow" class="external text" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/ActionListener.html">ActionListener</a> interface from <code>java.awt.event</code>.<br /> 
+We then create a class that implements this interface, and that contains a single method named <code>actionPerformed</code>, which will be called anytime the user interacts with an item that is linked to this event-listening class, like a button.<br />
+</p><p>In the folloguig jython example, we define 2 buttons A and B, both associated to the same event-handling class named <code>ButtonClic</code>.<br />
+If any of the button is clicked, the <code>actionPerformed</code> method of <code>ButtonClic</code> is called. However the source of the event is different (button A or B), and thus we can define different commands to execute for each case.<br />
+For more complicated cases, one could also create different event-handling classes to assign to different set of GUI items. 
+</p>
+<pre class="brush:python">
+from fiji.util.gui    import GenericDialogPlus
+from java.awt.event   import ActionListener
+
+
+class ButtonClic(ActionListener):
+	'''Class which unique function is to handle the button clics'''
+
+	def actionPerformed(self, event): # self (or this in Java) to state that the method will be associated to the class instances
+		
+		# Check from where comes the event 
+		Source = event.getSource() # returns the Button object
+		print Source 
+
+		# Do an action depending on the button clicked
+		if Source.label == "A":
+			print "You clicked A\n"
+
+		elif Source.label == "B":
+			print "You clicked B\n"
+		
+
+gui = GenericDialogPlus("GUI with custom buttons")
+gui.addButton("A", ButtonClic() ) # We associate the button objects to some instance of the ButtonClic class
+gui.addButton("B", ButtonClic() )
+gui.showDialog()
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713065012
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.016 seconds
+Real time usage: 0.016 seconds
+Preprocessor visited node count: 199/1000000
+Preprocessor generated node count: 533/1000000
+Post‐expand include size: 532/2097152 bytes
+Template argument size: 294/2097152 bytes
+Highest expansion depth: 4/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    4.771      1 - -total
+ 86.33%    4.119      4 - Template:Javadoc
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Generic_dialog&amp;oldid=40985">http://imagej.net/index.php?title=Generic_dialog&amp;oldid=40985</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 11 December 2019, at 15:59.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Generic_dialog&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Generic+dialog" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Generic+dialog" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Generic_dialog" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Generic_dialog" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Generic_dialog&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Generic_dialog&amp;oldid=40985" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Generic_dialog&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":171});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Trainable Weka Segmentation - How to install new classifiers - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Trainable_Weka_Segmentation_-_How_to_install_new_classifiers","wgTitle":"Trainable Weka Segmentation - How to install new classifiers","wgCurRevisionId":17158,"wgRevisionId":17158,"wgArticleId":1813,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials","Segmentation","Machine Learning"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Trainable_Weka_Segmentation_-_How_to_install_new_classifiers","wgRelevantArticleId":1813,"wgRequestId":"6272833fe06974b5910dd0ef","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="From version 3.7.2, Weka has a package manager (understanding package not in the java sense but as a bundle of additional functionality, separate from that supplied in the main weka.jar file). Many learning algorithms and tools that were present in earlier versions of Weka have become separate packages from version 3.7.2 and need to be installed via the package manager."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Trainable Weka Segmentation - How to install new classifiers"/>
+
+	<meta property="og:description" content="From version 3.7.2, Weka has a package manager (understanding package not in the java sense but as a bundle of additional functionality, separate from that supplied in the main weka.jar file). Many learning algorithms and tools that were present in earlier versions of Weka have become separate packages from version 3.7.2 and need to be installed via the package manager."/>
+
+	<meta property="og:url" content="http://imagej.net/Trainable_Weka_Segmentation_-_How_to_install_new_classifiers"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Trainable_Weka_Segmentation_-_How_to_install_new_classifiers rootpage-Trainable_Weka_Segmentation_-_How_to_install_new_classifiers skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Trainable_Weka_Segmentation_-_How_to_install_new_classifiers.html#bodyContent">Skip to content</a>, 			<a href="Trainable_Weka_Segmentation_-_How_to_install_new_classifiers.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Trainable_Weka_Segmentation_-_How_to_install_new_classifiers.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Trainable_Weka_Segmentation_-_How_to_install_new_classifiers" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Trainable_Weka_Segmentation_-_How_to_install_new_classifiers&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation_-_How_to_install_new_classifiers&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation_-_How_to_install_new_classifiers&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Trainable Weka Segmentation - How to install new classifiers</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h3><span class="mw-headline" id="Introduction">Introduction</span></h3>
+<p>From version 3.7.2, Weka has a <b>package manager</b> (understanding package not in the java sense but as a bundle of additional functionality, separate from that supplied in the main weka.jar file). Many learning algorithms and tools that were present in earlier versions of Weka have become separate packages from version 3.7.2 and need to be installed via the package manager.
+</p><p>In this tutorial we describe step by step <b>how to add new classifiers</b> to the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> plugin using the <a rel="nofollow" class="external text" href="http://weka.wikispaces.com/How+do+I+use+the+package+manager%3F">Weka package manager</a>.
+</p>
+<h3><span class="mw-headline" id="Calling_the_package_manager">Calling the package manager</span></h3>
+<p>We assume you are familiar with the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> plugin and know why and how to use it, otherwise, please go back to a more basic tutorial.
+</p><p><br />
+To get started, from the main plugin GUI click on the Weka button (on the bottom left corner of the window):
+</p><p><a href="http://imagej.net/File:TWS-GUI-ubuntu.png" class="image"><img alt="TWS-GUI-ubuntu.png" src="../_images/a/aa/TWS-GUI-ubuntu.png" width="700" height="515" /></a>
+</p><p><br />
+This will launch the Weka GUI Chooser and, if it is the first time, a warning dialog will be displayed to warn you about the package manager:
+</p>
+<div class="MediaTransformError" style="width: 498px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+We can just click OK, go the Weka GUI Chooser window and look for the package manager under the menu <span><em><span style="border-bottom:1px dotted #ccc;"> Tools </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Package manager</span></em></span>, or by pressing <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">U</kbd>:
+</p>
+<div class="MediaTransformError" style="width: 434px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+This will open the Weka Package Manager window:
+</p><p><a href="http://imagej.net/File:Weka-package-manager-window.png" class="image"><img alt="Weka-package-manager-window.png" src="../_images/1/1d/Weka-package-manager-window.png" width="700" height="650" /></a>
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Adding_a_new_classifier">Adding a new classifier</span></h3>
+<p>Once the package manager is open, we can select any "package" from the displayed list to install it or to remove it from our working Weka toolbox.
+</p><p>In this tutorial we show how to install a new classifier, in particular the <i>ClassificationViaClustering</i> classifier. For that reason, we scroll down until we find the packaged called "classificationViaClustering" and click on "Install":
+</p><p><a href="http://imagej.net/File:Weka-package-manager-classificationViaClustering.png" class="image"><img alt="Weka-package-manager-classificationViaClustering.png" src="../_images/4/49/Weka-package-manager-classificationViaClustering.png" width="700" height="650" /></a>
+</p><p><br />
+A confirmation dialog will pop up:
+</p>
+<div class="MediaTransformError" style="width: 512px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+We click on "Yes" and another dialog will pop up to warn us about closing any active Weka application window that we might have open:
+</p>
+<div class="MediaTransformError" style="width: 438px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+We click OK and the package will be installed. If everything goes right, the package should be listed with a "Yes" in the "Loaded" column:
+</p><p><a href="http://imagej.net/File:Weka-package-manager-loaded-package.png" class="image"><img alt="Weka-package-manager-loaded-package.png" src="../_images/5/59/Weka-package-manager-loaded-package.png" width="700" height="650" /></a>
+</p><p><br />
+This means the <i>ClassificationViaClustering</i> classifier <b>is now installed</b> and ready to use. We can check it out by going to the settings dialog of the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> plugin and confirming the classifier is now listed:
+</p>
+<div class="MediaTransformError" style="width: 368px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074025
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.064 seconds
+Real time usage: 0.066 seconds
+Preprocessor visited node count: 794/1000000
+Preprocessor generated node count: 6017/1000000
+Post‐expand include size: 4793/2097152 bytes
+Template argument size: 375/2097152 bytes
+Highest expansion depth: 7/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   33.077      1 - -total
+ 87.64%   28.988      1 - Template:Key
+ 79.51%   26.299      2 - Template:Key_press/core
+ 12.11%    4.006      1 - Template:Bc
+  5.32%    1.758      2 - Template:Linear-gradient
+  4.46%    1.476      2 - Template:Box-shadow
+  3.04%    1.005      1 - Template:Arrow
+  2.86%    0.945      2 - Template:Border-radius
+  2.34%    0.773      1 - Template:Unicode
+  1.14%    0.377      2 - Template:Linear-gradient/legacy
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation_-_How_to_install_new_classifiers&amp;oldid=17158">http://imagej.net/index.php?title=Trainable_Weka_Segmentation_-_How_to_install_new_classifiers&amp;oldid=17158</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 September 2015, at 21:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation_-_How_to_install_new_classifiers&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Machine_Learning" title="Category:Machine Learning">Machine Learning</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Trainable+Weka+Segmentation+-+How+to+install+new+classifiers" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Trainable+Weka+Segmentation+-+How+to+install+new+classifiers" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Trainable_Weka_Segmentation_-_How_to_install_new_classifiers" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Trainable_Weka_Segmentation_-_How_to_install_new_classifiers" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation_-_How_to_install_new_classifiers&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation_-_How_to_install_new_classifiers&amp;oldid=17158" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation_-_How_to_install_new_classifiers&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":215});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>How to extract a subproject - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"How_to_extract_a_subproject","wgTitle":"How to extract a subproject","wgCurRevisionId":29416,"wgRevisionId":29416,"wgArticleId":2025,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Development"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"How_to_extract_a_subproject","wgRelevantArticleId":2025,"wgRequestId":"5f21a5d66b95ff8cf108bc7d","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Sometimes, a piece of functionality is developed as part of one project, but grows so much as to warrant becoming its own, separate project."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="How to extract a subproject"/>
+
+	<meta property="og:description" content="Sometimes, a piece of functionality is developed as part of one project, but grows so much as to warrant becoming its own, separate project."/>
+
+	<meta property="og:url" content="http://imagej.net/How_to_extract_a_subproject"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-How_to_extract_a_subproject rootpage-How_to_extract_a_subproject skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="How_to_extract_a_subproject.html#bodyContent">Skip to content</a>, 			<a href="How_to_extract_a_subproject.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="How_to_extract_a_subproject.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/How_to_extract_a_subproject" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:How_to_extract_a_subproject&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=How_to_extract_a_subproject&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=How_to_extract_a_subproject&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>How to extract a subproject</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Git Tutorials
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">Git for dummies</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/EGit" title="EGit">Git in Eclipse (EGit)</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_mini_howto" title="Git mini howto">Git mini howto</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_workshop" title="Git workshop">Git workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">Git Conflicts</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">Git topic branches</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Notes" title="Git Notes">Git Notes</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git reflogs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_submodule_tutorial" title="Git submodule tutorial">Git submodule tutorial</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Pinpoint_regressions_with_Git" title="Pinpoint regressions with Git">Pinpoint regressions with Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_publish_a_Git_repository" title="How to publish a Git repository">How to publish a Git repository</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">How to extract a subproject</strong>
+</td></tr></table>
+<p><br />
+Sometimes, a piece of functionality is developed as part of one project, but grows so much as to warrant becoming its own, separate project.
+</p><p>This tutorial describes how to split part of a Git repository into its own dedicated Git repository, preserving only the history relevant to the subproject being extracted.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="How_to_extract_a_subproject.html#Extract_the_revision_history"><span class="tocnumber">1</span> <span class="toctext">Extract the revision history</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="How_to_extract_a_subproject.html#Update_the_Maven_build"><span class="tocnumber">2</span> <span class="toctext">Update the Maven build</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="How_to_extract_a_subproject.html#Push_the_changes"><span class="tocnumber">3</span> <span class="toctext">Push the changes</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="How_to_extract_a_subproject.html#Change_any_online_resources"><span class="tocnumber">4</span> <span class="toctext">Change any online resources</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Extract_the_revision_history">Extract the revision history</span></h2>
+<ol>
+<li>Use Git's <i>filter-branch</i> feature to extract the Git history of only the subproject:
+<pre class="brush:bash">
+git filter-branch -f --prune-empty --subdirectory-filter &lt;subdir&gt;
+</pre>
+Where <code>&lt;subdir&gt;</code> is the folder containing the subproject's source code.</li>
+</li>
+</ol>
+<h2><span class="mw-headline" id="Update_the_Maven_build">Update the Maven build</span></h2>
+<p>Assuming you are using <a href="http://imagej.net/Maven" title="Maven">Maven</a> to build the subproject:
+</p>
+<ol>
+<li>Add an <i>&lt;scm&gt;</i> section to the <i>pom.xml</i> to reflect the new remote repository's URL (see <a rel="nofollow" class="external text" href="https://github.com/scijava/jep/commit/b76f4a1df830c090fc96ab99bb145dd67e8e69ce">example</a>):
+<pre class="brush:bash">vi pom.xml
+git commit -m 'Add SCM location' pom.xml</pre>
+</li>
+<li>Replace the old <i>&lt;parent&gt;</i> with a new one, such as <a rel="nofollow" class="external text" href="https://github.com/scijava/pom-scijava">pom-scijava</a>, <a rel="nofollow" class="external text" href="https://github.com/imagej/pom-imagej">pom-imagej</a> or <a rel="nofollow" class="external text" href="https://github.com/fiji/pom-fiji">pom-fiji</a> (see <a rel="nofollow" class="external text" href="https://github.com/scijava/jep/commit/336c0a46fad855508aaa905a9f82e5d88136df91">example</a>)—or remove the <i>&lt;parent&gt;</i> altogether.</li>
+<li>Add a <i>&lt;developers&gt;</i> section to the <i>pom.xml</i> to indicate the project developers (see <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/commit/f0c2cf6cca3e198ba5b9283a71fc564f41c642d5">example</a>). You can also add <i>&lt;contributors&gt;</i> if desired and relevant.
+<li>Make sure the project still builds:
+<pre class="brush:bash">mvn clean package</pre>
+</li>
+<li>Add (or adjust) the <i>.gitignore</i> file (see <a rel="nofollow" class="external text" href="https://github.com/fiji/spimreconstruction/commit/cf95dcc06b31c0044b58213c12f886027a5eb3ba">example</a>).</li>
+</ol>
+<h2><span class="mw-headline" id="Push_the_changes">Push the changes</span></h2>
+<ol>
+<li>Make sure that all your changes look good:
+<pre class="brush:bash">
+git status
+git diff
+</pre>
+This is good advice in general: check <code>git status</code> and <code>git diff</code> <i>every time</i> before you commit, to prevent making a fool out of yourself.</li>
+<li>Commit everything, mentioning the commit of the parent project from which history was rewritten (see <a rel="nofollow" class="external text" href="https://github.com/scijava/jep/commit/660930836860c6f67ecb53d091eb1730ecb68c80">example</a>):
+<pre class="brush:bash">git add . &amp;&amp; git commit -s</pre>
+</li>
+<li>Create a new repository somewhere for the new project—we recommend <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>.</li>
+<li>Connect your repository with the remote one:
+<pre class="brush:bash">git remote set-url origin git@github.com:my-org/my-new-project</pre>
+Where <i>git@github.com:my-org/my-new-project</i> is the remote URL for the new project's dedicated repository.</li>
+<li>Push the resultant history to the project's new repository:
+<pre class="brush:bash">git push -u origin master</pre></li>
+</ol>
+<h2><span class="mw-headline" id="Change_any_online_resources">Change any online resources</span></h2>
+<ol><li> Edit the relevant web page(s) to reflect the new Git repository location</li>
+<li> Update any other known links to the project</li></ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072451
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.024 seconds
+Real time usage: 0.025 seconds
+Preprocessor visited node count: 159/1000000
+Preprocessor generated node count: 330/1000000
+Post‐expand include size: 1508/2097152 bytes
+Template argument size: 691/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    7.954      1 - Template:GitMenu
+100.00%    7.954      1 - -total
+ 79.25%    6.303      1 - Template:Menu
+ 45.58%    3.625     12 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=How_to_extract_a_subproject&amp;oldid=29416">http://imagej.net/index.php?title=How_to_extract_a_subproject&amp;oldid=29416</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:43.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=How_to_extract_a_subproject&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=How+to+extract+a+subproject" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=How+to+extract+a+subproject" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/How_to_extract_a_subproject" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/How_to_extract_a_subproject" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=How_to_extract_a_subproject&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=How_to_extract_a_subproject&amp;oldid=29416" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=How_to_extract_a_subproject&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":279});});</script>
+		</body>
+		</html>
+		

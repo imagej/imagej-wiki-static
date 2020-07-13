@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>FijiArchipelago - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"FijiArchipelago","wgTitle":"FijiArchipelago","wgCurRevisionId":32420,"wgRevisionId":32420,"wgArticleId":1650,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","TrakEM2"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"FijiArchipelago","wgRelevantArticleId":1650,"wgRequestId":"90d4601d444f5f80731218b9","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Fiji Archipelago is a plugin that brings Cluster functionality to Fiji"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="FijiArchipelago"/>
+
+	<meta property="og:description" content="Fiji Archipelago is a plugin that brings Cluster functionality to Fiji"/>
+
+	<meta property="og:url" content="http://imagej.net/FijiArchipelago"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-FijiArchipelago rootpage-FijiArchipelago skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="FijiArchipelago.html#bodyContent">Skip to content</a>, 			<a href="FijiArchipelago.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="FijiArchipelago.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/FijiArchipelago" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:FijiArchipelago&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=FijiArchipelago&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=FijiArchipelago&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>FijiArchipelago</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Fiji Archipelago<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Fiji_Archipelago">https://imagej.net/Fiji_Archipelago</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Fiji_Archipelago/releases/tag/Fiji_Archipelago-2.0.1">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv2" class="mw-redirect" title="GPLv2">GPLv2</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Fiji_Archipelago~2.0.1~~~kw,versionexpand">2.0.1</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 22:40:41 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Minimal
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Lindsey" title="User:Lindsey">Larry Lindsey</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Lindsey" title="User:Lindsey">Larry Lindsey</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Lindsey" title="User:Lindsey">Larry Lindsey</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<p>Fiji Archipelago is a plugin that brings Cluster functionality to Fiji
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="FijiArchipelago.html#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="FijiArchipelago.html#Requirements"><span class="tocnumber">2</span> <span class="toctext">Requirements</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="FijiArchipelago.html#Features"><span class="tocnumber">3</span> <span class="toctext">Features</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="FijiArchipelago.html#Usage"><span class="tocnumber">4</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="FijiArchipelago.html#Existing_Archipelago_Plugins"><span class="tocnumber">4.1</span> <span class="toctext">Existing Archipelago Plugins</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="FijiArchipelago.html#TrakEM2_Archipelago"><span class="tocnumber">4.1.1</span> <span class="toctext">TrakEM2 Archipelago</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="FijiArchipelago.html#Batch_Weka_Segmentation"><span class="tocnumber">4.1.2</span> <span class="toctext">Batch Weka Segmentation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-8"><a href="FijiArchipelago.html#Starting_a_Cluster"><span class="tocnumber">4.2</span> <span class="toctext">Starting a Cluster</span></a>
+<ul>
+<li class="toclevel-3 tocsection-9"><a href="FijiArchipelago.html#Configure_the_Root_Node"><span class="tocnumber">4.2.1</span> <span class="toctext">Configure the Root Node</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="FijiArchipelago.html#Configure_Remote_Nodes"><span class="tocnumber">4.2.2</span> <span class="toctext">Configure Remote Nodes</span></a>
+<ul>
+<li class="toclevel-4 tocsection-11"><a href="FijiArchipelago.html#Via_SSH"><span class="tocnumber">4.2.2.1</span> <span class="toctext">Via SSH</span></a></li>
+<li class="toclevel-4 tocsection-12"><a href="FijiArchipelago.html#Via_Keyboard"><span class="tocnumber">4.2.2.2</span> <span class="toctext">Via Keyboard</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-13"><a href="FijiArchipelago.html#Configuration_on_a_Proprietary_Cluster"><span class="tocnumber">4.2.3</span> <span class="toctext">Configuration on a Proprietary Cluster</span></a></li>
+<li class="toclevel-3 tocsection-14"><a href="FijiArchipelago.html#Saving"><span class="tocnumber">4.2.4</span> <span class="toctext">Saving</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="FijiArchipelago.html#Loading"><span class="tocnumber">4.2.5</span> <span class="toctext">Loading</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="FijiArchipelago.html#Start_the_Cluster"><span class="tocnumber">4.2.6</span> <span class="toctext">Start the Cluster</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="FijiArchipelago.html#Start_the_Server"><span class="tocnumber">4.2.7</span> <span class="toctext">Start the Server</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="FijiArchipelago.html#Show_Node_Statistics"><span class="tocnumber">4.2.8</span> <span class="toctext">Show Node Statistics</span></a></li>
+<li class="toclevel-3 tocsection-19"><a href="FijiArchipelago.html#Debug_Output"><span class="tocnumber">4.2.9</span> <span class="toctext">Debug Output</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-20"><a href="FijiArchipelago.html#Programmers"><span class="tocnumber">5</span> <span class="toctext">Programmers</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Overview">Overview</span></h2>
+<p>Fiji Archipelago is a tool designed to make it easy for programmers to export Fiji/ImageJ functionality over a network to several other computers.
+</p><p>For the purposes of this article, the root node is the computer from which the cluster is started and managed. Client nodes are computers that perform computations exported from the root node. A program consists of several processes, the computations that are exported to the client nodes.
+</p><p>Client nodes either may be started by the root node, or else the root node may be configured to accept connections from client nodes that have been started manually. By default, communication is done by standard IO over ssh when possible, but may optionally be done via insecure sockets instead.
+</p>
+<h2><span class="mw-headline" id="Requirements">Requirements</span></h2>
+<ul><li> Root and client nodes should all have the same version of Fiji installed.</li>
+<li> Fiji Archipelago makes use of ssh and ssh key pair authentication, so the server must have a private key file that matches a public key in authorized_hosts on the client.</li>
+<li> Server and clients must have access to a shared network file server if file transfer is required.</li></ul>
+<p>So far, this has been extensively tested only on Linux machines, but it should be platform-independent.
+</p>
+<h2><span class="mw-headline" id="Features">Features</span></h2>
+<ul><li> On-the-fly addition of new cluster nodes</li>
+<li> Volunteer cluster nodes. A node may be started manually (this has security implications).</li>
+<li> Processes running on nodes that crash or are cancelled are automatically rescheduled.</li>
+<li> Security - root/client communication is done over ssh standard IO by default.</li>
+<li> Easy API - submit Callables to an ExecutorService.</li></ul>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<h3><span class="mw-headline" id="Existing_Archipelago_Plugins">Existing Archipelago Plugins</span></h3>
+<p>The following plugins are available by  <a href="http://imagej.net/How_to_follow_a_3rd_party_update_site#Add_update_sites" class="mw-redirect" title="How to follow a 3rd party update site"> adding</a> the Archipelago update site.
+</p>
+<h4><span class="mw-headline" id="TrakEM2_Archipelago">TrakEM2 Archipelago</span></h4>
+<p>This plugin allows clusterized least-squares and elastic alignment in TrakEM2. Right Click in the TrakEM2 canvas window, then select "Setup Cluster...". If you have not yet started an Archipelago Cluster, you will be prompted to do so. Start the alignment as usual.
+</p>
+<h4><span class="mw-headline" id="Batch_Weka_Segmentation">Batch Weka Segmentation</span></h4>
+<p>This plugin accelerates image classification with the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation"> Trainable Weka Segmentation</a> plugin. To use it, create a classifier and save it (ie, a .model file).
+</p><p>Run the batch segmentation plugin by selecting Plugins -&gt; Batch -&gt; Weka Segmentation 2D
+</p><p>This plugin is designed for two-dimensional serial sections.
+</p>
+<h3><span class="mw-headline" id="Starting_a_Cluster">Starting a Cluster</span></h3>
+<ul><li> From the ImageJ window, select Plugins-&gt;Cluster-&gt;Start Cluster...</li></ul>
+<p>The Cluster user interface will open. The cluster must be configured before it may be started.
+</p>
+<div class="MediaTransformError" style="width: 300px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+</p>
+<h4><span class="mw-headline" id="Configure_the_Root_Node">Configure the Root Node</span></h4>
+<p><a href="http://imagej.net/File:Archipelago_02.png" class="image"><img alt="Archipelago 02.png" src="../_images/a/ad/Archipelago_02.png" width="500" height="250" /></a>
+</p>
+<ul><li> Click the Configure Root Node... button
+<ul><li> Local Exec Root: The folder containing your local fiji (or ImageJ) executable. This field may disappear in future versions.</li>
+<li> Local File Root: A shared network folder, if one is available. Not necessary for most jobs.</li>
+<li> User Name: Your user name on this machine</li>
+<li> Default Client Exec Root: The folder containing fiji (or ImageJ) on most remote clients. This field may disappear in future versions.</li>
+<li> Default Client File Root: The matching network folder, relative to remote clients.</li></ul></li></ul>
+<ul><li> Click the OK button</li></ul>
+<p><br />
+</p>
+<h4><span class="mw-headline" id="Configure_Remote_Nodes">Configure Remote Nodes</span></h4>
+<h5><span class="mw-headline" id="Via_SSH">Via SSH</span></h5>
+<p>Archipelago uses JSch to start remote nodes by ssh. This requires key file authentication, in order for Fiji Archipelago to avoid storing your password. There are two options with regard to how the root and client nodes communicate.
+</p><p><br />
+The default is the SSH Shell method, which uses standard IO over ssh for communication. The benefits of this method are that traffic is encrypted and security concerns are deferred to your implementation of ssh.
+</p><p>The other option is the Insecure Socket Shell method, which starts the remote nodes by ssh and causes them to connect to an insecure server running on the root node. This may be faster, but should not be used on an unprotected network.
+</p><p><a href="http://imagej.net/File:Archipelago_03.png" class="image"><img alt="Archipelago 03.png" src="../_images/c/c8/Archipelago_03.png" width="500" height="300" /></a>
+</p>
+<ul><li> Click Configure Cluster Nodes...</li></ul>
+<p>This will open the cluster node configuration window
+</p>
+<ul><li> Click Add Node...</li></ul>
+<p><a href="http://imagej.net/File:Archipelago_04.png" class="image"><img alt="Archipelago 04.png" src="../_images/e/ec/Archipelago_04.png" width="500" height="311" /></a>
+</p><p>This will open a dialog for adding a new cluster node, with the following fields:
+</p>
+<ul><li><ul><li> Hostname: The hostname or IP address for this host</li>
+<li> User name: The username for this host</li>
+<li> Thread Limit: Allow up to this many processes to be scheduled on this host. If set to 0, this defaults to the number of available cores.</li>
+<li> Remote Fiji Root: The folder containing fiji or ImageJ on this host.</li>
+<li> Remote File Root: The shared network folder relative to this host.</li>
+<li> Shell: SSH Shell or Insecure Socket Shell</li>
+<li> keyfile: Your ssh keyfile, as generated in Linux by ssh-keygen</li>
+<li> executable: either fiji or ImageJ</li>
+<li> ssh-port: the ssh port for this host</li></ul></li></ul>
+<ul><li> Click OK</li>
+<li> When you have added all of your nodes, click OK</li></ul>
+<h5><span class="mw-headline" id="Via_Keyboard">Via Keyboard</span></h5>
+<p>Client nodes may also be started locally, ie, by walking over to them and using a keyboard and mouse (or script). This requires insecure socket connections, and is not recommended on untrusted networks.
+</p><p>On the root node, once the cluster is started, click the Start Insecure Server button.
+</p><p>On the client node:
+</p>
+<ul><li> Start Fiji</li>
+<li> From the ImageJ window, select Plugins-&gt;Cluster-&gt;Attach to Cluster...</li>
+<li> Enter the hostname and port for your root node</li>
+<li> Click OK</li></ul>
+<p>or
+</p>
+<ul><li> Run ./fiji --full-classpath --main-class edu.utexas.clm.archipelago.Fiji_Archipelago root.node.hostname port</li></ul>
+<p>The default port is 4012.
+</p>
+<h4><span class="mw-headline" id="Configuration_on_a_Proprietary_Cluster">Configuration on a Proprietary Cluster</span></h4>
+<p>Archipelago may be run on a proprietary cluster, for instance one running SLURM or qsub, by scripting the creation of an .arc configuration file and passing it as an argument to the Fiji or ImageJ executable. An <a rel="nofollow" class="external text" href="https://github.com/larrylindsey/Stampede-Fiji-Archipelago/blob/master/job.fiji#L126">example</a> showing how this is done on the vnc queue of the TACC stampede cluster is available.
+</p>
+<h4><span class="mw-headline" id="Saving">Saving</span></h4>
+<p>Clicking the Save to Configuration File... button will save the current configuration to an xml file for later use. This will save the root node configuration, as well as any nodes that appear in the Configure Cluster Nodes... dialog. This excludes any nodes that have stopped or crashed.
+</p>
+<h4><span class="mw-headline" id="Loading">Loading</span></h4>
+<p>Click the Load Configuration File... button to load an existing configuration file. This will automatically configure the root node and any client nodes indicated in the file. The cluster should be startable immediately afterward.
+</p>
+<h4><span class="mw-headline" id="Start_the_Cluster">Start the Cluster</span></h4>
+<p>Click the Start Cluster button. When the cluster is running, this button will change to Stop Cluster. When clicked, the cluster and all running client nodes will stop.
+</p>
+<h4><span class="mw-headline" id="Start_the_Server">Start the Server</span></h4>
+<p>To allow "volunteer nodes" to attach, click the Start Insecure Server button. This starts a server on the default port of 4012. The socket is insecure and unencrypted, and therefore may pose a security risk.
+</p>
+<h4><span class="mw-headline" id="Show_Node_Statistics">Show Node Statistics</span></h4>
+<p><a href="http://imagej.net/File:Archipelago_05.png" class="image"><img alt="Archipelago 05.png" src="../_images/1/12/Archipelago_05.png" width="500" height="200" /></a>
+</p><p><br />
+Clicking the Show Node Statistics button will open a dialog that displays usage stats for running client nodes:
+</p>
+<ul><li> Host: the hostname of the client node in question</li>
+<li> state: the state of the node, active, inactive, or stopped.</li>
+<li> n Jobs: k/n, where there are k running processes out of n available cores.</li>
+<li> Beat: Client nodes send a heartbeat message to the root node approximately once per second. This indicates the length of time since the last heartbeat was received.</li>
+<li> MB Used: The number of megabytes of RAM used by Fiji's JVM on the client node.</li>
+<li> MB Total: The number of megabytes of RAM that are available to the remote JVM.</li>
+<li> Stop: Click this button to shut the client node down. Any running processes will be rescheduled on other nodes, once they become available.</li></ul>
+<h4><span class="mw-headline" id="Debug_Output">Debug Output</span></h4>
+<p>Select this checkbox if you would like to display debug output on your command line. This is potentially verbose, but should include useful information if your cluster behaves erroneously.
+</p>
+<h2><span class="mw-headline" id="Programmers">Programmers</span></h2>
+<p>The Cluster class provides 
+<a rel="nofollow" class="external text" href="http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ExecutorService.html">ExecutorServices</a> through Cluster.getService(n). The argument n may be either an int or a float. If an int, any processes submitted to the ExecutorService are assumed to require n number of cores. If a float, processes are assumed to require a fraction n of the available resources of any given computer. For most usage cases, Cluster.getCluster().getService(1) will return the desired service.
+</p><p><br />
+To make this work, submissions to a Cluster are serialized and transmitted to a remote instance of Fiji. The returned result is serialized remotely, then retrieved by the root node. Any submitted Callable or Runnable must implement Serializable. Failure to do so will result in a NotSerializableException at runtime. A consequence of Serialization is that the deep equality of objects is not preserved. In other words, a Callable that is designed to return an object that has been instantiated prior to submission will effectively return a clone. 
+</p><p>While many Clusters may exist on a single root node, only one is "official." This instance is referenced by Cluster.getCluster(). Cluster.activeCluster() indicates whether there is existing active Cluster.
+</p><p>An example may be found in <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/blob/master/src-plugins/Fiji_Archipelago/src/main/java/edu/utexas/clm/archipelago/example/Cluster_SIFT.java">Cluster_SIFT</a>. An example that demonstrates the breakage of deep equality may be found in <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/blob/master/src-plugins/Fiji_Archipelago/src/main/java/edu/utexas/clm/archipelago/example/Equality_Example.java">Equality_Example</a>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713065117
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.104 seconds
+Real time usage: 0.107 seconds
+Preprocessor visited node count: 2109/1000000
+Preprocessor generated node count: 4823/1000000
+Post‐expand include size: 5754/2097152 bytes
+Template argument size: 1750/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   69.531      1 - -total
+ 97.02%   67.461      1 - Template:ComponentStats:sc.fiji:Fiji_Archipelago
+ 93.31%   64.879      1 - Template:Component
+ 69.90%   48.604      7 - Template:Person
+  5.57%    3.873      4 - Template:GitHub
+  2.39%    1.664      1 - Template:Maven
+  2.32%    1.614      1 - Template:Project
+  2.19%    1.520      1 - Template:SupportStatus
+  1.96%    1.363      1 - Template:DevStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=FijiArchipelago&amp;oldid=32420">http://imagej.net/index.php?title=FijiArchipelago&amp;oldid=32420</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 2 June 2017, at 22:13.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=FijiArchipelago&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:TrakEM2" title="Category:TrakEM2">TrakEM2</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=FijiArchipelago" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=FijiArchipelago" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/FijiArchipelago" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/FijiArchipelago" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=FijiArchipelago&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=FijiArchipelago&amp;oldid=32420" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=FijiArchipelago&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":348});});</script>
+		</body>
+		</html>
+		

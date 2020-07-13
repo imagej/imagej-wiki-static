@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Segmentation - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Segmentation","wgTitle":"Segmentation","wgCurRevisionId":41329,"wgRevisionId":41329,"wgArticleId":1740,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials","Segmentation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Segmentation","wgRelevantArticleId":1740,"wgRequestId":"acf1e13c27a146c269117f88","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Image segmentation is &quot;the process of partitioning a digital image into multiple segments.&quot; (Wikipedia)"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Segmentation"/>
+
+	<meta property="og:description" content="Image segmentation is &quot;the process of partitioning a digital image into multiple segments.&quot; (Wikipedia)"/>
+
+	<meta property="og:url" content="http://imagej.net/Segmentation"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Segmentation rootpage-Segmentation skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Segmentation.html#bodyContent">Skip to content</a>, 			<a href="Segmentation.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Segmentation.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Segmentation" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Segmentation&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Segmentation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Segmentation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Segmentation</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> <span style="font-size: larger"> See <a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Category:Segmentation</a> for pages about image segmentation.</span> </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Segmentation</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p><br />
+</p><p><br />
+</p>
+<div style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> See <a rel="nofollow" class="external text" href="https://imagej.net/_images/8/87/Arganda-Carreras-Segmentation-Bioimage-course-MDC-Berlin-2016.pdf">this helpful workshop on Image Segmentation</a> for another great overview of Segmentation!</div>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Segmentation.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Segmentation.html#Easy_workflow"><span class="tocnumber">2</span> <span class="toctext">Easy workflow</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Segmentation.html#Flexible_workflow"><span class="tocnumber">3</span> <span class="toctext">Flexible workflow</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Segmentation.html#Preprocessing"><span class="tocnumber">3.1</span> <span class="toctext">Preprocessing</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Segmentation.html#Adjusting_Threshold"><span class="tocnumber">3.2</span> <span class="toctext">Adjusting Threshold</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Segmentation.html#Creating_Masks"><span class="tocnumber">3.3</span> <span class="toctext">Creating Masks</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Segmentation.html#Selections"><span class="tocnumber">3.4</span> <span class="toctext">Selections</span></a>
+<ul>
+<li class="toclevel-3 tocsection-8"><a href="Segmentation.html#Creating_Selections"><span class="tocnumber">3.4.1</span> <span class="toctext">Creating Selections</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="Segmentation.html#Transferring_Selections"><span class="tocnumber">3.4.2</span> <span class="toctext">Transferring Selections</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-10"><a href="Segmentation.html#Analysis"><span class="tocnumber">3.5</span> <span class="toctext">Analysis</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="Segmentation.html#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>Image segmentation is "the process of partitioning a digital image into multiple segments." (<a href="http://en.wikipedia.org/wiki/Image_segmentation" class="extiw" title="wikipedia:Image segmentation">Wikipedia</a>)
+</p>
+<div class="MediaTransformError" style="width: 249px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> <div class="MediaTransformError" style="width: 249px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>It is typically used to locate <i>objects</i> and <i>boundaries</i>.
+</p><p>More precisely, image segmentation is the process of <i>assigning a label</i> to every pixel in an image such that pixels with the same label share certain visual characteristics.
+</p>
+<h1><span class="mw-headline" id="Easy_workflow">Easy workflow</span></h1>
+<p>One plugin which is designed to be very powerful, yet easy to use for non-experts in image processing:
+</p>
+<table class="wikitable">
+
+<tr>
+<td><b>Plugin Name</b>
+</td>
+<td><b>Short Description</b>
+</td>
+<td><b>Highlights</b>
+</td>
+<td><b>Plugin Snapshot</b>
+</td></tr>
+<tr>
+<td><a rel="nofollow" class="external text" href="https://imagej.net/Trainable_Weka_Segmentation">Trainable Weka Segmentation</a>
+</td>
+<td>A tool that combines a collection of machine learning algorithms with a set of selected image features to produce pixel-based segmentations.
+</td>
+<td>
+<ul><li> Can be trained to learn from the user input and perform later the same task in unknown (test) data</li>
+<li> Makes use of all the powerful tools and classifiers from the latest version of <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a></li>
+<li> Provides a labeled result based on the training of a chosen classifier</li>
+<li> Ease of use due to its graphical user interfaces</li></ul>
+</td>
+<td><a href="http://imagej.net/File:TWS-GUI-after-training.png" class="image"><img alt="TWS-GUI-after-training.png" src="../_images/c/cd/TWS-GUI-after-training.png" width="500" height="398" /></a>
+</td></tr>
+</table>
+<p>Give it a try—you might like it!
+</p>
+<h1><span class="mw-headline" id="Flexible_workflow">Flexible workflow</span></h1>
+<p>One good workflow for segmentation in ImageJ is as follows:
+</p>
+<ol><li><a href="http://imagej.net/Segmentation#Preprocessing" title="Segmentation"> Preprocess</a> the given images</li>
+<li> Apply an <a href="http://imagej.net/Segmentation#Adjusting_Threshold" title="Segmentation"> Auto Threshold</a></li>
+<li> Create and manipulate a <a href="http://imagej.net/Segmentation#Creating_Masks" title="Segmentation"> mask</a></li>
+<li> <a href="http://imagej.net/Segmentation#Selections.23Creating_Selections" title="Segmentation"> Create and transfer</a> a selection from a mask to your original image</li>
+<li><a href="http://imagej.net/Segmentation#Analysis" title="Segmentation"> Analyze</a> the resulting data</li></ol>
+<h2><span class="mw-headline" id="Preprocessing">Preprocessing</span></h2>
+<p>Preprocess the image using filters, to make later thresholding more effective. Which filter(s) to use is highly dependent on your data, but some commonly useful filters include:
+</p>
+<ul><li> <a href="http://imagej.net/Category:Deconvolution" title="Category:Deconvolution">Deconvolution</a></li>
+<li> <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-29.html#sub:Subtract-Background...">Subtract Background</a></li>
+<li> <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-29.html#sub:Gaussian-Blur...">Gaussian Blur</a></li>
+<li> <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-29.html#sub:Find-Edges">Find Edges</a></li></ul>
+<h2><span class="mw-headline" id="Adjusting_Threshold">Adjusting Threshold</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Threshold_tree.png" class="image"><img alt="" src="../_images/6/68/Threshold_tree.png" width="300" height="116" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Threshold_tree.png" class="internal" title="Enlarge"></a></div>Tree ring sample image with a threshold applied for a B&amp;W image</div></div></div>
+<p>Ideally you want to use one of the auto-threshold methods, rather than manually tweaking, so that your result is reproducible later on the same data, and on multiple other datasets.
+</p>
+<ul><li>Open your image</li>
+<li>Select <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Threshold...</span></em></span></li>
+<li>Specify whether or not the background should be dark or light</li>
+<li>Adjust the minimum and maximum sliders until you are satisfied with the saturation level of your image
+<ul><li><a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-28.html#sub:Threshold...%5BT%5D">More information</a></li></ul></li></ul>
+<h2><span class="mw-headline" id="Creating_Masks">Creating Masks</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Eroded_tree.png" class="image"><img alt="" src="../_images/5/5d/Eroded_tree.png" width="300" height="108" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Eroded_tree.png" class="internal" title="Enlarge"></a></div>Over-saturated mask is eroded around the center tree ring</div></div></div>
+<ul><li>Select <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Selection </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Create Mask</span></em></span></li>
+<li>Based on the image and set threshold, some portions of the image may be over/under saturated
+<ul><li>Select the portion of the image that needs to be adjusted</li>
+<li>Select <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-29.html#sub:Dilate">Dilate</a> to grow the included pixels to further saturate this portion of the image or <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-29.html#sub:Erode">Erode</a> to remove saturation
+<ul><li><a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-29.html#infobox:InvertedLutMask">More information</a>.</li></ul></li></ul></li>
+<li>One quick way to split overlapping objects is the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-29.html#sub:Watershed">Watershed</a> command.</li></ul>
+<h2><span class="mw-headline" id="Selections">Selections</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Selection_tree.png" class="image"><img alt="" src="../_images/4/4f/Selection_tree.png" width="300" height="92" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Selection_tree.png" class="internal" title="Enlarge"></a></div>Selections on the mask</div></div></div>
+<h3><span class="mw-headline" id="Creating_Selections">Creating Selections</span></h3>
+<ul><li>Select <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Selection </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Create Selection</span></em></span> to select the objects within the mask</li>
+<li>To deselect a portion of the image, select <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">click</kbd>
+<ul><li><a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-27.html#sub:Create-Selection">More information</a></li></ul></li></ul>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Reverted_tree.png" class="image"><img alt="" src="../_images/5/55/Reverted_tree.png" width="300" height="96" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Reverted_tree.png" class="internal" title="Enlarge"></a></div>Selections on the reverted image</div></div></div>
+<h3><span class="mw-headline" id="Transferring_Selections">Transferring Selections</span></h3>
+<ul><li>Before transferring the mask's selections, revert the image to its original form by selecting <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">E</kbd></li>
+<li>Select first the mask, then the original image, and select <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">E</kbd> to transfer the mask's selections
+<ul><li><a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-27.html#infobox:TransferSelections">More information</a></li></ul></li></ul>
+<h2><span class="mw-headline" id="Analysis">Analysis</span></h2>
+<p>Do some numerical analysis on the selected data:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-30.html#sub:Measure...%5Bm%5D">Measure</a> the entire selection directly.
+<ul><li> Control which measurements are done using <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-30.html#sub:Set-Measurements...">Set Measurements</a>.</li></ul></li>
+<li> Use <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-30.html#sub:Analyze-Particles...">Analyze Particles</a> to extract desirable objects from your selection and report individual statistics on them.</li>
+<li> Use the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-30.html#fig:The-ROI-Manager">ROI Manager</a> to <b>Add</b> the selection and then <b>Split</b> it (under the <b>More</b> button), then use <b>Multi Measure</b> (also under <b>More</b>) to report statistics on the objects.</li>
+<li> <a href="http://imagej.net/Macros_Intro" class="mw-redirect" title="Macros Intro">Write a macro</a> to automate this sort of analysis, loop over objects in the ROI manager, measure and manipulate them, etc.</li></ul>
+<h1><span class="mw-headline" id="See_also">See also</span></h1>
+<ul><li> The <a rel="nofollow" class="external text" href="https://imagej.net/_images/8/87/Arganda-Carreras-Segmentation-Bioimage-course-MDC-Berlin-2016.pdf">Introduction to Image Segmentation using ImageJ/Fiji</a> workshop.</li>
+<li> The <a rel="nofollow" class="external text" href="http://imagej.github.io/presentations/fiji-segmentation/">Segmentation with Fiji workshop slides</a>.</li>
+<li> <a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Category:Segmentation</a>, a list of pages about image segmentation.</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073348
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.132 seconds
+Real time usage: 0.133 seconds
+Preprocessor visited node count: 2548/1000000
+Preprocessor generated node count: 7688/1000000
+Post‐expand include size: 24436/2097152 bytes
+Template argument size: 7213/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   88.669      1 - -total
+ 67.84%   60.155      6 - Template:Key
+ 59.02%   52.332      6 - Template:Key_press/core
+ 14.99%   13.292      1 - Template:Learn
+ 13.13%   11.641      1 - Template:Menu
+ 11.63%   10.313      4 - Template:Submenu
+  7.87%    6.976      3 - Template:Bc
+  6.44%    5.714     39 - Template:MenuItem
+  4.81%    4.264      1 - Template:BigNotice
+  3.87%    3.435      1 - Template:Notice
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Segmentation&amp;oldid=41329">http://imagej.net/index.php?title=Segmentation&amp;oldid=41329</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Segmentation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Segmentation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Segmentation" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Segmentation" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Segmentation" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Segmentation&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Segmentation&amp;oldid=41329" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Segmentation&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":324});});</script>
+		</body>
+		</html>
+		

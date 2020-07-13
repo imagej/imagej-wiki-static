@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Ridge Detection - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Ridge_Detection","wgTitle":"Ridge Detection","wgCurRevisionId":45552,"wgRevisionId":45552,"wgArticleId":2660,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Unmaintained"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Ridge_Detection","wgRelevantArticleId":2660,"wgRequestId":"7f5d1d729a482c2fac548664","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This plugin implements and extends the ridge / line detection algorithm described in:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Ridge Detection"/>
+
+	<meta property="og:description" content="This plugin implements and extends the ridge / line detection algorithm described in:"/>
+
+	<meta property="og:url" content="http://imagej.net/Ridge_Detection"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Ridge_Detection rootpage-Ridge_Detection skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Ridge_Detection.html#bodyContent">Skip to content</a>, 			<a href="Ridge_Detection.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Ridge_Detection.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Ridge_Detection" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Ridge_Detection&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Ridge_Detection&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Ridge_Detection&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Ridge Detection</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This page describes a <a href="http://imagej.net/Plugin" class="mw-redirect" title="Plugin">plugin</a> which is <i><b>UNMAINTAINED</b></i>! While the plugin and documentation remain available for use, no one is pledged to fix bugs or respond to support questions about it. You can try <a href="http://imagej.net/Help" title="Help">asking for help from the community</a>, but your mileage may vary. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> <span style="font-size: larger"> As this plugin is no longer maintained... you can check out <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a> for Ridge Detection algorithms.</span> </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Ridge (Line) Detection Plugin (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Unmaintained
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> Ridge_Detect.jar <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-ridgedetection/releases/latest">[1</a>]
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> Github <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-ridgedetection">[2</a>]
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> v1.4.0 (20 Aug 2017)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> Unmaintained
+</td></tr>
+
+
+</table>
+<p><br />
+</p><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Ridge_Detection.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Ridge_Detection.html#Examples"><span class="tocnumber">2</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Ridge_Detection.html#Parameter_Selection"><span class="tocnumber">3</span> <span class="toctext">Parameter Selection</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Ridge_Detection.html#Mandatory_Parameters"><span class="tocnumber">3.1</span> <span class="toctext">Mandatory Parameters</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Ridge_Detection.html#Optional_parameters"><span class="tocnumber">3.2</span> <span class="toctext">Optional parameters</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Ridge_Detection.html#Further_options_.28true.2Ffalse.29"><span class="tocnumber">3.3</span> <span class="toctext">Further options (true/false)</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Ridge_Detection.html#Overlap_resolution"><span class="tocnumber">3.4</span> <span class="toctext">Overlap resolution</span></a>
+<ul>
+<li class="toclevel-3 tocsection-8"><a href="Ridge_Detection.html#Method:_NONE"><span class="tocnumber">3.4.1</span> <span class="toctext">Method: NONE</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="Ridge_Detection.html#Method:_SLOPE"><span class="tocnumber">3.4.2</span> <span class="toctext">Method: SLOPE</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="Ridge_Detection.html#Installation"><span class="tocnumber">4</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Ridge_Detection.html#Who_used_this_plugin.3F"><span class="tocnumber">5</span> <span class="toctext">Who used this plugin?</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="Ridge_Detection.html#How_to_cite"><span class="tocnumber">6</span> <span class="toctext">How to cite</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>This plugin implements <b>and extends</b> the ridge / line detection algorithm described in:
+</p><p><i>Steger, C., 1998. An unbiased detector of curvilinear structures. IEEE Transactions on Pattern Analysis and Machine Intelligence, 20(2), pp.113–125.</i>
+</p><p>It works with stacks, is parallelized, has a preview mode and is able to resolve overlapping lines.
+It depends on the <a rel="nofollow" class="external text" href="http://commons.apache.org/proper/commons-lang/">apache-commons-lang 3</a> library. For ImageJ, please copy it into plugins/jars.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Examples">Examples</span></h2>
+<div class="MediaTransformError" style="width: 293px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>      <div class="MediaTransformError" style="width: 293px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>This example shows the application of the plugin on images of carbon nanotubes (Sigma = 1.5, Lower Threshold = 1.3, Higher Threshold = 7).
+</p>
+<h1><span class="mw-headline" id="Parameter_Selection">Parameter Selection</span></h1>
+There are three parameters which <b>have to </b> be specified. These are the mandatory parameters. The optional parameters can be used to estimate the mandatory parameters <div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="http://imagej.net/File:Ridge_Detection_Parameters.png" class="image"><img alt="Ridge Detection Parameters.png" src="../_images/a/ab/Ridge_Detection_Parameters.png" width="200" height="511" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Ridge_Detection_Parameters.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<h2><span class="mw-headline" id="Mandatory_Parameters">Mandatory Parameters</span></h2>
+<p><b>Sigma:</b> Determines the sigma for the derivatives. It depends on the line width.
+</p><p><b>Lower Threshold:</b> Line points with a response smaller as this threshold are rejected
+</p><p><b>Upper Threshold:</b> Line points with a response larger as this threshold are accepted.
+</p><p><b>Darkline:</b> (true/false) This parameter determines whether dark or bright lines are extracted.
+</p>
+<h2><span class="mw-headline" id="Optional_parameters">Optional parameters</span></h2>
+<p>The following optional parameters are used to estimate the mandatory parameters:
+</p><p><b>Line width</b> (<img class="mwe-math-fallback-image-inline tex" alt="w" src="../_images/math/f/1/2/f1290186a5d0b1ceab27f4e77c0c5d68.png" />): The line diameter in pixels. It estimates the mandatory parameter 'Sigma' by:
+</p><p><img class="mwe-math-fallback-image-inline tex" alt="\sigma=\frac{w}{2\sqrt{3}}+0.5" src="../_images/math/f/a/1/fa1811e396524ce1dd816c7109da3016.png" />
+</p><p><b>High contrast</b> (<img class="mwe-math-fallback-image-inline tex" alt="b_{upper}" src="../_images/math/9/3/9/93919c71090ec5d6896d909d53fbd826.png" />): Highest grayscale value of the line. It estimates the mandatory parameter 'Upper threshold' by:
+</p><p><img class="mwe-math-fallback-image-inline tex" alt="T_{U}=\left\lfloor 0.17\cdot\frac{2\cdot b_{upper}\cdot\frac{w}{2}}{\sqrt{2\pi}\sigma^{3}}e^{-\frac{\left(\frac{w}{2}\right)^{2}}{2\sigma^{2}}}\right\rfloor " src="../_images/math/3/f/d/3fda4d3356dca4de03a192191a0bf1d4.png" />
+</p><p><br />
+<b>Low contrast</b> (<img class="mwe-math-fallback-image-inline tex" alt="b_{low}" src="../_images/math/3/3/e/33e4b33c3fbf525a602ddaab0d0a5bc5.png" />):  Lowest grayscale value of the line. It estimates the mandatory parameter 'Lower Threshold' by:
+</p><p><img class="mwe-math-fallback-image-inline tex" alt="T_{L}=\left\lfloor 0.17\cdot\frac{2\cdot b_{low}\cdot\frac{w}{2}}{\sqrt{2\pi}\sigma^{3}}e^{-\frac{\left(\frac{w}{2}\right)^{2}}{2\sigma^{2}}}\right\rfloor " src="../_images/math/e/9/5/e957150b52ca2813d1af842fd2f5dd1f.png" />
+</p>
+<h2><span class="mw-headline" id="Further_options_.28true.2Ffalse.29">Further options (true/false)</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:142px;"><a href="http://imagej.net/File:RidgeDetectionWidth.png" class="image"><img alt="" src="../_images/f/f8/RidgeDetectionWidth.png" width="140" height="248" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:RidgeDetectionWidth.png" class="internal" title="Enlarge"></a></div>Output if "Estimated width" is selected</div></div></div>
+<p><b>Correct position:</b> Correct the line position if it has different contrast on each side of it.
+</p><p><b>Estimate width:</b> If this option is selected the width of the line is estimated.
+</p><p><b>Show junction points:</b> If this option is selected the junctions points will be displayed.
+</p><p><b>Show IDs:</b> The ID of each line will be shown.
+</p><p><b>Verbose mode:</b> If this option is selected, status information will be printed to the log while running. 
+</p><p><b>Display results:</b> If this option is selected, all contours and junctions are filled into a results table.
+</p><p><b>Add to Manager:</b> All lines and junctions points will be added to the roi manager.
+</p>
+<h2><span class="mw-headline" id="Overlap_resolution">Overlap resolution</span></h2>
+<p>You can select a method to attempt automatic overlap resolution. The accuracy of this method will depend on the structure of your data.
+</p>
+<h3><span class="mw-headline" id="Method:_NONE">Method: NONE</span></h3>
+<p>The default behavior: no assumption of overlap is made. Any point of potential intersection will be treated as an end point for the ridges involved.
+</p>
+<h3><span class="mw-headline" id="Method:_SLOPE">Method: SLOPE</span></h3>
+<p>This method makes the assumption that when two ridges overlap, it is more likely that they will continue on their path than make turns. <b>This is best suited to datasets with brief periods of overlap!</b> If two ridges have a significant portion of overlap, the accuracy of this method will rapidly diminish.
+</p><p>If you use this method of overlap resolution, it is recommended that you first tune the Ridge Detection parameters with <code>Preview</code> enabled to get a minimal starting set of junction points - so that each ridge matches reality as best as possible. For example:
+</p><p><a href="http://imagej.net/File:Slope_detection_low_sigma.png" class="image"><img alt="Slope detection low sigma.png" src="../_images/e/ec/Slope_detection_low_sigma.png" width="325" height="352" /></a>
+</p><p>This detection with a sigma of 1.6 produces a set of lines and junctions not suited to slope-based overlap detection.
+</p><p><br />
+<a href="http://imagej.net/File:Slope_detection_high_sigma.png" class="image"><img alt="Slope detection high sigma.png" src="../_images/7/7c/Slope_detection_high_sigma.png" width="325" height="350" /></a>
+</p><p>The same image with a sigma of 3.0. These are "real" junction points that will allow reasonable overlap detection via line slope.
+</p><p><br />
+<a href="http://imagej.net/File:Slope_detection_bad.png" class="image"><img alt="Slope detection bad.png" src="../_images/8/8c/Slope_detection_bad.png" width="325" height="327" /></a>
+</p><p>In this image we see poor overlap detection. In this case due to a superfluous junction point at the bottom of one arm, leading to a misdiagnosis of what lines are overlapping.
+</p><p><br />
+<a href="http://imagej.net/File:Slope_detection_success.png" class="image"><img alt="Slope detection success.png" src="../_images/0/0e/Slope_detection_success.png" width="325" height="385" /></a>
+</p><p>Successful ridge detection with slope-based overlap detection enabled. Line 134 is selected to illustrate the selection of a complete line despite numerous intersections.
+</p>
+<h1><span class="mw-headline" id="Installation">Installation</span></h1>
+<p>Simply turn on the <a href="http://imagej.net/How_to_follow_a_3rd_party_update_site" class="mw-redirect" title="How to follow a 3rd party update site">Biomedgroup update site</a>, which includes the ridge detection plugin.
+</p><p>If you use ImageJ just copy the RidgeDetection.jar file in your plugins folder and copy the  <a rel="nofollow" class="external text" href="http://commons.apache.org/proper/commons-lang/">apache-commons-lang 3</a> jar file into the plugins/jars folder.
+</p>
+<h1><span class="mw-headline" id="Who_used_this_plugin.3F">Who used this plugin?</span></h1>
+<p>This is a list of publications where the plugin was used:
+</p><p>Glaser, M., Schnauß, J., Tschirner, T., Schmidt, S., Moebius-Winkler, M., Käs, J. A., &amp; Smith, D. M. (2016). Self-assembly of hierarchically ordered structures in DNA nanotube systems. New Journal of Physics New J. Phys., 18(5), 055001. doi:10.1088/1367-2630/18/5/055001
+</p><p><br />
+</p>
+<h1><span class="mw-headline" id="How_to_cite">How to cite</span></h1>
+<p>We think the best way is to cite the formal method and the used implementation:
+</p><p><b>Method</b>:
+</p><p><i>Steger, C., 1998. An unbiased detector of curvilinear structures. IEEE Transactions on Pattern Analysis and Machine Intelligence, 20(2), pp.113–125.</i>
+</p><p><b>Implementation</b>:
+</p><p><a href="https://zenodo.org/badge/latestdoi/18649/thorstenwagner/ij-ridgedetection" rel="nofollow"><img alt="Ij-ridgedetection.svg" src="../_images/thumb/2/2e/Ij-ridgedetection.svg/174px-Ij-ridgedetection.svg.png" width="174" height="20" srcset="/_images/thumb/2/2e/Ij-ridgedetection.svg/261px-Ij-ridgedetection.svg.png 1.5x, /_images/thumb/2/2e/Ij-ridgedetection.svg/348px-Ij-ridgedetection.svg.png 2x" /></a>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073229
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.060 seconds
+Real time usage: 0.066 seconds
+Preprocessor visited node count: 457/1000000
+Preprocessor generated node count: 4048/1000000
+Post‐expand include size: 3757/2097152 bytes
+Template argument size: 1540/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   20.230      1 - -total
+ 63.15%   12.775      1 - Template:Infobox
+ 47.90%    9.690      2 - Template:Person
+ 23.72%    4.798      1 - Template:Unmaintained
+ 16.48%    3.333      2 - Template:Ambox
+ 16.26%    3.290      1 - Template:Warning
+ 12.28%    2.485      1 - Template:BigNotice
+  8.37%    1.694      1 - Template:Notice
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Ridge_Detection&amp;oldid=45552">http://imagej.net/index.php?title=Ridge_Detection&amp;oldid=45552</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 26 May 2020, at 14:41.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Ridge_Detection&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Unmaintained" title="Category:Unmaintained">Unmaintained</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Ridge+Detection" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Ridge+Detection" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Ridge_Detection" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Ridge_Detection" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Ridge_Detection&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Ridge_Detection&amp;oldid=45552" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Ridge_Detection&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":242});});</script>
+		</body>
+		</html>
+		

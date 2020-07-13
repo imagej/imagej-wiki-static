@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Git workshop - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Git_workshop","wgTitle":"Git workshop","wgCurRevisionId":41246,"wgRevisionId":41246,"wgArticleId":1364,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials","Git"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Git_workshop","wgRelevantArticleId":1364,"wgRequestId":"261c34783397cf1cea4d50cb","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="These are the notes of a Git workshop held at the Max-Planck Institute of molecular Cell Biology and Genetics on August 3rd, 2011."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Git workshop"/>
+
+	<meta property="og:description" content="These are the notes of a Git workshop held at the Max-Planck Institute of molecular Cell Biology and Genetics on August 3rd, 2011."/>
+
+	<meta property="og:url" content="http://imagej.net/Git_workshop"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Git_workshop rootpage-Git_workshop skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Git_workshop.html#bodyContent">Skip to content</a>, 			<a href="Git_workshop.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Git_workshop.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Git_workshop" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Git_workshop&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Git_workshop&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Git_workshop&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Git workshop</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Git Tutorials
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">Git for dummies</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/EGit" title="EGit">Git in Eclipse (EGit)</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_mini_howto" title="Git mini howto">Git mini howto</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Git workshop</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">Git Conflicts</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">Git topic branches</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Notes" title="Git Notes">Git Notes</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git reflogs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_submodule_tutorial" title="Git submodule tutorial">Git submodule tutorial</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Pinpoint_regressions_with_Git" title="Pinpoint regressions with Git">Pinpoint regressions with Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_publish_a_Git_repository" title="How to publish a Git repository">How to publish a Git repository</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_extract_a_subproject" title="How to extract a subproject">How to extract a subproject</a>
+</td></tr></table>
+<p><br />
+These are the notes of a Git workshop held at the <a rel="nofollow" class="external text" href="http://www.mpi-cbg.de/">Max-Planck Institute of molecular Cell Biology and Genetics</a> on August 3rd, 2011.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Git_workshop.html#What_is_a_version_control_system.2C_why_should_I_care.3F"><span class="tocnumber">1</span> <span class="toctext">What is a version control system, why should I care?</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Git_workshop.html#Hands-on"><span class="tocnumber">1.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="Git_workshop.html#What_are_diffs.3F"><span class="tocnumber">2</span> <span class="toctext">What are diffs?</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Git_workshop.html#Hands-on_2"><span class="tocnumber">2.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Git_workshop.html#A_word_on_the_data_model_of_Git_.28and_how_to_reference_objects.29"><span class="tocnumber">3</span> <span class="toctext">A word on the data model of Git (and how to reference objects)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="Git_workshop.html#Hands-on_3"><span class="tocnumber">3.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Git_workshop.html#What_are_branches.3F_Why_do_I_need_them.3F"><span class="tocnumber">4</span> <span class="toctext">What are branches? Why do I need them?</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="Git_workshop.html#Hands-on_4"><span class="tocnumber">4.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Git_workshop.html#What_does_.22distributed.22_mean_with_regards_to_Git.3F"><span class="tocnumber">5</span> <span class="toctext">What does "distributed" mean with regards to Git?</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="Git_workshop.html#Hands-on_5"><span class="tocnumber">5.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="Git_workshop.html#The_merge_concept_of_Git_.28and_what_is_this_.22index.22_all_about.3F.29"><span class="tocnumber">6</span> <span class="toctext">The merge concept of Git (and what is this "index" all about?)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-12"><a href="Git_workshop.html#Hands-on_6"><span class="tocnumber">6.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="Git_workshop.html#What_are_reflogs.3F_How_can_they_help_me.3F"><span class="tocnumber">7</span> <span class="toctext">What are reflogs? How can they help me?</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="Git_workshop.html#Hands-on_7"><span class="tocnumber">7.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="Git_workshop.html#What_is_the_stash.3F"><span class="tocnumber">8</span> <span class="toctext">What is the stash?</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="Git_workshop.html#Hands-on_8"><span class="tocnumber">8.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-17"><a href="Git_workshop.html#Accessing_parts_of_the_object_database"><span class="tocnumber">9</span> <span class="toctext">Accessing parts of the object database</span></a>
+<ul>
+<li class="toclevel-2 tocsection-18"><a href="Git_workshop.html#Hands-on_9"><span class="tocnumber">9.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-19"><a href="Git_workshop.html#What_meanings_do_.22checkout.22.2C_.22reset.22_have_in_Git.3F"><span class="tocnumber">10</span> <span class="toctext">What meanings do "checkout", "reset" have in Git?</span></a>
+<ul>
+<li class="toclevel-2 tocsection-20"><a href="Git_workshop.html#Hands-on_10"><span class="tocnumber">10.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-21"><a href="Git_workshop.html#Git.27s_concept_of_.22remote_repositories.22"><span class="tocnumber">11</span> <span class="toctext">Git's concept of "remote repositories"</span></a>
+<ul>
+<li class="toclevel-2 tocsection-22"><a href="Git_workshop.html#Hands-on_11"><span class="tocnumber">11.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-23"><a href="Git_workshop.html#Popular_public_repository_hosters"><span class="tocnumber">12</span> <span class="toctext">Popular public repository hosters</span></a>
+<ul>
+<li class="toclevel-2 tocsection-24"><a href="Git_workshop.html#Hands-on_12"><span class="tocnumber">12.1</span> <span class="toctext">Hands-on</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-25"><a href="Git_workshop.html#Advanced_topics"><span class="tocnumber">13</span> <span class="toctext">Advanced topics</span></a></li>
+<li class="toclevel-1 tocsection-26"><a href="Git_workshop.html#Links"><span class="tocnumber">14</span> <span class="toctext">Links</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="What_is_a_version_control_system.2C_why_should_I_care.3F">What is a version control system, why should I care?</span></h1>
+<p>A version control system is a database that holds multiple revisions of a project. A revision consists of
+</p>
+<ul><li> the file names and contents (excluding the generated files) as well as their directory structure</li>
+<li> the author</li>
+<li> the committer</li>
+<li> the author date</li>
+<li> the commit date</li>
+<li> a description (<i>commit message</i>) what the change leading to this revision is about, usually divided into the first line (<i>subject</i>) and the more verbose rest (<i>body</i>)</li>
+<li> zero, one or more pointers to revisions preceding the current one</li></ul>
+<p>In Git, <i>a commit</i> refers to a revision.
+</p><p>Version control usually facilitates:
+</p>
+<ul><li> easy backup</li>
+<li> easy retrieval of specific revisions</li>
+<li> documentation (who did what when and why?)</li>
+<li> documentation (how do I do ...?)</li>
+<li> easy synchronization (staying up-to-date, integrating changes between multiple developers/machines)</li>
+<li> finding the changes introducing regressions (AKA bugs) efficiently</li></ul>
+<h2><span class="mw-headline" id="Hands-on">Hands-on</span></h2>
+<p>Initial setup:
+</p>
+<ul><li> set up user name:</li></ul>
+<pre class="brush:bash">
+git config --global user.name "Howard Carter"
+git config --global user.email howard@egyptian-antiquities-service.com
+</pre>
+<ul><li> set up editor (if you do not like <i>vi</i>)</li></ul>
+<pre class="brush:bash">
+git config --global core.editor wordpad
+</pre>
+<p>First steps:
+</p>
+<ul><li> initialize a repository</li></ul>
+<pre class="brush:bash">
+git init
+</pre>
+<ul><li> add contents (caveat for Subversion users: <i>git add</i> adds the <u>contents</u>, not just the <u>file name</u>)</li></ul>
+<pre class="brush:bash">
+git add hello-world.txt
+</pre>
+<ul><li> commit</li></ul>
+<pre class="brush:bash">
+git commit
+</pre>
+<p>Notes:
+</p>
+<ul><li> All modified files should be added before calling <i>git commit</i></li>
+<li> Since the added files are <i>staged for commit</i>, the command <i>git stage</i> is a synonym for <i>git add'</i></li>
+<li> making use of the <i>git status</i> output</li>
+<li> using a .gitignore file</li>
+<li> adding a Sign-off (AKA S-O-B)</li>
+<li> <i>git init</i> creates .git/ in which all of the repository's files live</li>
+<li> <i>git config</i> accesses .git/config, ~/.gitconfig and /etc/gitconfig</li></ul>
+<h1><span class="mw-headline" id="What_are_diffs.3F">What are diffs?</span></h1>
+<p>Before committing, it is a good idea to see what modifications are about to be committed. One mode to look at them is to let Git show a <i>diff</i>. A <i>diff</i> consists of the following parts for every modified file:
+</p>
+<ol><li> a pseudo command line starting with <i>diff --git</i></li>
+<li> a line describing the <i>previous</i> revision, starting with <i>---</i></li>
+<li> a line describing the <i>next</i> revision, starting with <i>+++</i></li>
+<li> one or more <i>hunks</i> starting with <i>@@ -&lt;begin line&gt;,&lt;line count&gt; +&lt;begin line&gt;,&lt;line count&gt;</i></li>
+<li> a corresponding block of lines starting with a space for lines in both the previous and next revision, a minus for lines only in the previous one (<i>removed line</i>) and a plus for lines only in the next revision (<i>added line</i>). A modified line will show up as removed and added.</li></ol>
+<h2><span class="mw-headline" id="Hands-on_2">Hands-on</span></h2>
+<ul><li> Looking at a diff:</li></ul>
+<pre class="brush:bash">
+git diff
+</pre>
+<ul><li> Looking at a diff in color:</li></ul>
+<pre class="brush:bash">
+git diff --color
+</pre>
+<ul><li> Changing the default to color diffs:</li></ul>
+<pre class="brush:bash">
+git config --global diff.color auto
+</pre>
+<h1><span class="mw-headline" id="A_word_on_the_data_model_of_Git_.28and_how_to_reference_objects.29">A word on the data model of Git (and how to reference objects)</span></h1>
+<p>See <a rel="nofollow" class="external text" href="http://eagain.net/articles/git-for-computer-scientists/">Git for computer scientists</a>.
+</p>
+<ul><li> Everything is an object</li>
+<li> Every object has a type</li>
+<li> Every object has a <i>name</i> that is calculated by a one-way function (the <i>hash function</i> SHA-1) from the type and the contents</li>
+<li> It is a 40-digit hex number</li>
+<li> Every object is immutable (changing something changes the name).</li>
+<li> Plain files are encoded as <i>blobs</i></li>
+<li> Directories are encoded as <i>trees</i></li>
+<li> Revisions are encoded as <i>commits</i></li></ul>
+<p>For ease of use, in addition to their long name (40 hex characters, quite klunky but precise) commits can be referred to by
+</p>
+<ul><li> short name</li>
+<li> HEAD</li>
+<li> HEAD~&lt;n&gt;</li></ul>
+<h2><span class="mw-headline" id="Hands-on_3">Hands-on</span></h2>
+<ul><li> Inspecting the version history</li></ul>
+<pre class="brush:bash">
+git log
+</pre>
+<ul><li> Inspecting the version history in a graphical way</li></ul>
+<pre class="brush:bash">
+gitk
+</pre>
+<ul><li> Inspecting the version history with diffs</li></ul>
+<pre class="brush:bash">
+git log -p
+</pre>
+<ul><li> Inspecting the latest 5 revisions with diffs</li></ul>
+<pre class="brush:bash">
+git log -p -5
+</pre>
+<ul><li> Inspecting just one commit</li></ul>
+<pre class="brush:bash">
+git show HEAD~5
+</pre>
+<ul><li> Looking at all commits touching a specific set of files/directories</li></ul>
+<pre class="brush:bash">
+git log README
+</pre>
+<p>Note: to disambiguate between start commit and files, put a <i>--</i> between commit and/or options and files/directories, e.g. <i>git log HEAD -5 -- doc</i>
+</p>
+<h1><span class="mw-headline" id="What_are_branches.3F_Why_do_I_need_them.3F">What are branches? Why do I need them?</span></h1>
+<p>A branch is a named pointer into the commit graph. The main branch is called 'master' (Subversion's <i>trunk</i>, Mercurial's <i>default</i>). Since branches are just pointers, they are very easily created.
+</p><p>Committing while on a branch advances that pointer (if you need something that cannot advance, you need to use <i>tags</i>).
+</p><p>Note: branch names must be simple, i.e. not contain spaces or wild characters (although minus &amp; underscore is okay).
+</p><p>Branches can be used to organize sets of changes by topic. Compare also <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">Fiji's tutorial on topic branches</a>.
+</p>
+<h2><span class="mw-headline" id="Hands-on_4">Hands-on</span></h2>
+<ul><li> Creating a branch</li></ul>
+<pre class="brush:bash">
+git checkout -b my-new-branch
+</pre>
+<ul><li> Switching to another branch</li></ul>
+<pre class="brush:bash">
+git checkout master
+</pre>
+<ul><li> Seeing all (local) branches (the current one is prefixed by a star)</li></ul>
+<pre class="brush:bash">
+git branch
+</pre>
+<ul><li> Switching back to the previous branch</li></ul>
+<pre class="brush:bash">
+git checkout @{-1}
+</pre>
+<h1><span class="mw-headline" id="What_does_.22distributed.22_mean_with_regards_to_Git.3F">What does "distributed" mean with regards to Git?</span></h1>
+<p>So far, the repository is local to the working directory. But Git can also synchronize with multiple other repositories.
+</p><p>Typically, there is one designated <i>main repository</i>. If you want to initialize a working directory from a given repository, use <i>git clone</i>.
+</p><p>A main repository usually does not need a working directory, in which case it is called a <i>bare repository</i>.
+</p>
+<h2><span class="mw-headline" id="Hands-on_5">Hands-on</span></h2>
+<ul><li> Clone a repository</li></ul>
+<pre class="brush:bash">
+git clone git://github.com/git/hello-world
+</pre>
+<ul><li> Clone a repository from USB disk or file server</li></ul>
+<pre class="brush:bash">
+git clone /path/to/hello-world
+</pre>
+<ul><li> Set up a main repository on the file server</li></ul>
+<pre class="brush:bash">
+git init --bare --shared=group /path/to/fileserver/my.git
+</pre>
+<h1><span class="mw-headline" id="The_merge_concept_of_Git_.28and_what_is_this_.22index.22_all_about.3F.29">The merge concept of Git (and what is this "index" all about?)</span></h1>
+<p>When working with others, or with topic branches, the changes (including their complete commit history) need to be integrated into another branch, typically <i>master</i>. This integration is called <i>merging</i>.
+</p><p>In order to perform a merge, the file versions are put into a staging area (the <i>index</i>), and all non-overlapping changes are resolved automatically. Overlapping (read: contradicting) changes are not resolved, but marked as <i>merge conflicts</i>.
+</p><p>Please refer to the Fiji's page on <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">Git Conflicts</a> for a detailed explanation how to resolve merge conflicts.
+</p>
+<h2><span class="mw-headline" id="Hands-on_6">Hands-on</span></h2>
+<ul><li> Initialize and commit a file, say, <i>hello.txt</i></li></ul>
+<pre class="brush:bash">
+echo Hello &gt; hello.txt
+git add hello.txt
+git commit -m initial
+</pre>
+<ul><li> Initialize a new branch and modify hello.txt</li></ul>
+<pre class="brush:bash">
+git checkout -b tut-anch-amun
+echo Boooh &gt; hello.txt
+git add hello.txt
+git commit -m "On branch"
+</pre>
+<ul><li> Switch back to old branch, modify hello.txt</li></ul>
+<pre class="brush:bash">
+git checkout @{-1}
+echo Hi &gt; hello.txt
+git add hello.txt
+git commit -m "On original branch"
+</pre>
+<ul><li> Merge</li></ul>
+<pre class="brush:bash">
+git merge tut-anch-amun
+</pre>
+<h1><span class="mw-headline" id="What_are_reflogs.3F_How_can_they_help_me.3F">What are reflogs? How can they help me?</span></h1>
+<p>We looked at the commit history previously. But every repository has its own individual history; for example, yesterday at noon, a specific branch with a specific revision was the current branch. This is stored in the reflogs (for space efficiency, reflogs are not available eternally but are pruned at some stage).
+</p><p>You can access the reflogs by appending <i>@{&lt;number&gt;}</i> or <i>@{&lt;date&gt;}</i> to a branch name or to <i>HEAD</i>.
+</p>
+<h2><span class="mw-headline" id="Hands-on_7">Hands-on</span></h2>
+<ul><li> See what revision was current five minutes ago</li></ul>
+<pre class="brush:bash">
+git show HEAD@{5.minutes.ago}
+</pre>
+<ul><li> See the reflog history</li></ul>
+<pre class="brush:bash">
+git log -g
+</pre>
+<h1><span class="mw-headline" id="What_is_the_stash.3F">What is the stash?</span></h1>
+<p>Sometimes one needs to store away all modifications and go back to a clean state, but keep the modifications accessible. This is done using the <i>stash</i>.
+</p><p>Note: the stash is a special pseudo-branch, living in <i>refs/stash</i>. Their history is in the reflog.
+</p>
+<h2><span class="mw-headline" id="Hands-on_8">Hands-on</span></h2>
+<ul><li> Make a change and stash it</li></ul>
+<pre class="brush:bash">
+echo Shalom &gt; hello.txt
+git stash
+</pre>
+<ul><li> Get it back</li></ul>
+<pre class="brush:bash">
+git stash apply
+</pre>
+<ul><li> Stashing only the changes that have not been <i>git add</i>ed yet</li></ul>
+<pre class="brush:bash">
+echo Howdy &gt; hello.txt
+git add hello.txt
+echo Hey hey &gt; hello.txt
+git stash -k
+</pre>
+<ul><li> Getting a list of stashed changes</li></ul>
+<pre class="brush:bash">
+git stash list
+</pre>
+<ul><li> Stash with a custom message</li></ul>
+<pre class="brush:bash">
+git stash save This is my description
+</pre>
+<ul><li> Remove the latest changes from the stash</li></ul>
+<pre class="brush:bash">
+git stash pop
+</pre>
+<h1><span class="mw-headline" id="Accessing_parts_of_the_object_database">Accessing parts of the object database</span></h1>
+<p>The primary way to look at commits is by using <i>git show</i>. It can show tags, commits, trees and blobs.
+</p><p>To access more information about commits, use the parameter <i>--pretty=fuller</i>.
+</p><p>For more low-level access, use <i>git cat-file</i>.
+</p>
+<h2><span class="mw-headline" id="Hands-on_9">Hands-on</span></h2>
+<ul><li> Show the raw commit message, with the diff</li></ul>
+<pre class="brush:bash">
+git show --pretty=raw HEAD
+</pre>
+<ul><li> Show a commit's corresponding top-level tree</li></ul>
+<pre class="brush:bash">
+git show HEAD:
+</pre>
+<ul><li> Show a blob</li></ul>
+<pre class="brush:bash">
+git show HEAD:Documentation/README
+</pre>
+<ul><li> Low-level access to a commit</li></ul>
+<pre class="brush:bash">
+git cat-file commit HEAD
+</pre>
+<h1><span class="mw-headline" id="What_meanings_do_.22checkout.22.2C_.22reset.22_have_in_Git.3F">What meanings do "checkout", "reset" have in Git?</span></h1>
+<p>We already saw that <i>checkout</i> can switch between branches and even initialize new branches.
+</p><p>Unfortunately, <i>checkout</i> is also the command to pick file versions from other branches without switching the branches. Thusly picked file versions are automatically added, i.e. staged for the next commit.
+</p><p>To unstage changes, one can use the <i>reset</i> command (without arguments, it resets all files which HEAD knows about currently).
+</p><p>The <i>reset</i> command can further be convinced to reset not only the index (staging area), but also the working directory.
+</p>
+<h2><span class="mw-headline" id="Hands-on_10">Hands-on</span></h2>
+<ul><li> pick a file version from another branch</li></ul>
+<pre class="brush:bash">
+git checkout other-branch README
+</pre>
+<ul><li> Unstage all changes, i.e. revert all files from "to-be-committed" status to "modified"</li></ul>
+<pre class="brush:bash">
+git reset
+</pre>
+<ul><li> Get rid of all changes (like <i>git stash</i> but the changes are not stored)</li></ul>
+<pre class="brush:bash">
+git reset --hard
+</pre>
+<h1><span class="mw-headline" id="Git.27s_concept_of_.22remote_repositories.22">Git's concept of "remote repositories"</span></h1>
+<p>In addition to the repository from which we cloned, other repositories can be linked, too, using the <i>git remote</i> command. Such repositories are called <i>remote repositories</i> or simply <i>remotes</i>.
+</p><p>The repository from which we cloned is called <i>origin</i>.
+</p><p>Interaction with remote repositories is performed using
+</p>
+<ul><li> <i>git fetch</i>, which local copies of the branches of the remote repository including all required objects (but being a bit clever about avoiding to get objects we have already) and</li>
+<li> <i>git push</i>, which updates remote repositories' branches to the local branches' state.</li></ul>
+<p>The local copies of remote branches live in a specific namespace, refs/remotes/&lt;name&gt;. For example, the <i>master</i> branch of the remote called <i>origin</i> will be stored in <i>refs/remotes/origin/master</i>. If unambiguous, it can be referred to as <i>origin/master</i>, too.
+</p><p>Note: you need to make sure that you do not mix two different projects in the same working directory's repository. Git will happily fetch from wherever into your local repository, even if it does not make sense.
+</p><p>Note: there is a shortcut for <i>fetch &amp; merge</i>: <i>pull</i>. If you create a new branch from a local copy of a remote branch, you can even set it up such that <i>git pull</i> without further parameters will fetch from the correct remote and merge the correct branch: <i>git checkout --track origin/cool-feature</i>
+</p>
+<h2><span class="mw-headline" id="Hands-on_11">Hands-on</span></h2>
+<ul><li> Add a remote</li></ul>
+<pre class="brush:bash">
+git remote add hello git://github.com/git/hello-world
+</pre>
+<ul><li> Fetch from a remote</li></ul>
+<pre class="brush:bash">
+git fetch hello
+</pre>
+<ul><li> Listing all local copies of the remotes' branches</li></ul>
+<pre class="brush:bash">
+git branch -r
+</pre>
+<ul><li> Push a branch</li></ul>
+<pre class="brush:bash">
+git push origin master
+</pre>
+<ul><li> Push the current branch</li></ul>
+<pre class="brush:bash">
+git push origin HEAD
+</pre>
+<ul><li> Push to a branch with a name differing from the local name</li></ul>
+<pre class="brush:bash">
+git push origin my-new-branch:master
+</pre>
+<ul><li> Delete a branch from a remote repository</li></ul>
+<pre class="brush:bash">
+git push --delete origin blabla-branch
+</pre>
+<h1><span class="mw-headline" id="Popular_public_repository_hosters">Popular public repository hosters</span></h1>
+<p>If you need to have public repositories, you can use <a rel="nofollow" class="external free" href="http://github.com/">http://github.com/</a>, <a rel="nofollow" class="external free" href="http://code.google.com/">http://code.google.com/</a>, <a rel="nofollow" class="external free" href="http://sourceforge.net/">http://sourceforge.net/</a>, <a rel="nofollow" class="external free" href="http://repo.or.cz/">http://repo.or.cz/</a> and quite a few others. Typically, you have a decent amount of storage, but the deal is that your version-controlled project must be Open Source.
+</p><p>As a goodie, all of said hosters support <i>gitweb</i>, a web interface to look at the history.
+</p>
+<h2><span class="mw-headline" id="Hands-on_12">Hands-on</span></h2>
+<p>Let's surf to <a rel="nofollow" class="external free" href="http://github.com/git/hello-world">http://github.com/git/hello-world</a> and inspect the history
+</p>
+<h1><span class="mw-headline" id="Advanced_topics">Advanced topics</span></h1>
+<ul><li> aliases</li></ul>
+<ul><li> rebasing</li></ul>
+<ul><li> cherry-picking</li></ul>
+<ul><li> partial staging</li></ul>
+<ul><li> interactive checkout</li></ul>
+<ul><li> tags (simple, annotated, signed)</li></ul>
+<ul><li> bisecting</li></ul>
+<ul><li> blaming</li></ul>
+<ul><li> <i>git apply</i></li></ul>
+<ul><li> <i>git diff --color-words</i></li></ul>
+<ul><li> archiving</li></ul>
+<ul><li> scripting (plumbing/porcelain)</li></ul>
+<ul><li> hooks</li></ul>
+<ul><li> diff filters</li></ul>
+<ul><li> interacting with svn</li></ul>
+<ul><li> interacting with Mercurial</li></ul>
+<ul><li> smudge/clean filters</li></ul>
+<ul><li> merge drivers</li></ul>
+<ul><li> diff drivers</li></ul>
+<ul><li> rename handling</li></ul>
+<h1><span class="mw-headline" id="Links">Links</span></h1>
+<ul><li> The homepage: <a rel="nofollow" class="external free" href="http://git-scm.com/">http://git-scm.com/</a></li>
+<li> Git for Windows: <a rel="nofollow" class="external free" href="http://code.google.com/p/msysgit/">http://code.google.com/p/msysgit/</a></li>
+<li> Git for MacOSX <a rel="nofollow" class="external free" href="http://code.google.com/p/git-osx-installer/">http://code.google.com/p/git-osx-installer/</a></li>
+<li> An overview of the underlying data model: <a rel="nofollow" class="external free" href="http://eagain.net/articles/git-for-computer-scientists/">http://eagain.net/articles/git-for-computer-scientists/</a></li>
+<li> Fiji's <i>topic branches</i> tutorial: <a rel="nofollow" class="external free" href="https://fiji.sc/wiki/index.php/Git_topic_branches">https://fiji.sc/wiki/index.php/Git_topic_branches</a></li>
+<li> The ProGit book: <a rel="nofollow" class="external free" href="http://progit.org/">http://progit.org/</a></li>
+<li> The most popular repository hoster: <a rel="nofollow" class="external free" href="https://github.com/">https://github.com/</a></li>
+<li> The original repository hoster: <a rel="nofollow" class="external free" href="http://repo.or.cz/">http://repo.or.cz/</a></li>
+<li> The Git Wiki: <a rel="nofollow" class="external free" href="https://git.wiki.kernel.org/index.php/Main_Page">https://git.wiki.kernel.org/index.php/Main_Page</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072415
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.024 seconds
+Real time usage: 0.026 seconds
+Preprocessor visited node count: 607/1000000
+Preprocessor generated node count: 1218/1000000
+Post‐expand include size: 1508/2097152 bytes
+Template argument size: 691/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    6.013      1 - Template:GitMenu
+100.00%    6.013      1 - -total
+ 79.73%    4.794      1 - Template:Menu
+ 45.44%    2.733     12 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Git_workshop&amp;oldid=41246">http://imagej.net/index.php?title=Git_workshop&amp;oldid=41246</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Git_workshop&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Git" title="Category:Git">Git</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Git+workshop" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Git+workshop" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Git_workshop" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Git_workshop" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Git_workshop&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Git_workshop&amp;oldid=41246" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Git_workshop&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":224});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Topology preserving warping error - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Topology_preserving_warping_error","wgTitle":"Topology preserving warping error","wgCurRevisionId":17454,"wgRevisionId":17454,"wgArticleId":1382,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Segmentation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Topology_preserving_warping_error","wgRelevantArticleId":1382,"wgRequestId":"58b0edb7796a8fc769bf5aca","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The warping error is a segmentation metric that tolerates disagreements over boundary location, penalizes topological disagreements, and can be used directly as a cost function for learning boundary detection&amp;#91;1&amp;#93;."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Topology preserving warping error"/>
+
+	<meta property="og:description" content="The warping error is a segmentation metric that tolerates disagreements over boundary location, penalizes topological disagreements, and can be used directly as a cost function for learning boundary detection&amp;#91;1&amp;#93;."/>
+
+	<meta property="og:url" content="http://imagej.net/Topology_preserving_warping_error"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Topology_preserving_warping_error rootpage-Topology_preserving_warping_error skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Topology_preserving_warping_error.html#bodyContent">Skip to content</a>, 			<a href="Topology_preserving_warping_error.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Topology_preserving_warping_error.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Topology_preserving_warping_error" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Topology_preserving_warping_error&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Topology_preserving_warping_error&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Topology_preserving_warping_error&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Topology preserving warping error</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:Warping-error-comparison.png" class="image"><img alt="" src="../_images/8/89/Warping-error-comparison.png" width="400" height="275" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Warping-error-comparison.png" class="internal" title="Enlarge"></a></div>Application of the topology-preserving warping error. Example A and B have almost the same amount of pixel error with respect to the ground truth, however, example B has no topological error.</div></div></div>
+<p>The <b>warping error</b> is a <a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">segmentation</a> metric that tolerates disagreements over boundary location, penalizes topological disagreements, and can be used directly as a cost function for learning boundary detection<sup id="cite_ref-Viren2010_1-0" class="reference"><a href="Topology_preserving_warping_error.html#cite_note-Viren2010-1">&#91;1&#93;</a></sup>.
+</p><p>In other words, instead of focusing on the geometric differences (pixel disagreement) between two segmentations, the <b>warping error</b> focuses on the objects and measures the topological error between them.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Topology_preserving_warping_error.html#Pixel_error"><span class="tocnumber">1</span> <span class="toctext">Pixel error</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Topology_preserving_warping_error.html#Digital_topology_and_the_warping_error"><span class="tocnumber">2</span> <span class="toctext">Digital topology and the warping error</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Topology_preserving_warping_error.html#Topological_constraints"><span class="tocnumber">2.1</span> <span class="toctext">Topological constraints</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Topology_preserving_warping_error.html#Geometric_constraints"><span class="tocnumber">2.2</span> <span class="toctext">Geometric constraints</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Topology_preserving_warping_error.html#Descent_algorithm_for_warping"><span class="tocnumber">2.3</span> <span class="toctext">Descent algorithm for warping</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Topology_preserving_warping_error.html#Warping_error_versus_Rand_error"><span class="tocnumber">2.4</span> <span class="toctext">Warping error versus Rand error</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Topology_preserving_warping_error.html#2D_implementation_in_Fiji"><span class="tocnumber">3</span> <span class="toctext">2D implementation in Fiji</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Topology_preserving_warping_error.html#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Topology_preserving_warping_error.html#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Pixel_error">Pixel error</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:362px;"><a href="http://imagej.net/File:Pixel-error-description.png" class="image"><img alt="" src="../_images/0/0c/Pixel-error-description.png" width="360" height="254" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Pixel-error-description.png" class="internal" title="Enlarge"></a></div>Pixel error between two different segmentations labels (A and B) with respect to the original labels (*, ground truth).</div></div></div>
+<p>The simplest way of evaluating a segmentation is by measuring the pixel error between the original labels and the segmented ones. Let <img class="mwe-math-fallback-image-inline tex" alt="l_i" src="../_images/math/b/8/1/b81530f8c06730856a518a08b1740be9.png" /> denote the value of the boundary labeling <i>L</i> at image location <i>i</i>. The pixel error of <i>L</i> with respect to another binary labeling <i>L</i><sup>*</sup> is the number of pixel locations at which the two labelings disagree. This can also be written as the squared <a href="http://en.wikipedia.org/wiki/Euclidean_distance" class="extiw" title="wikipedia:Euclidean distance">Euclidean distance</a> <img class="mwe-math-fallback-image-inline tex" alt="\parallel L - L^*\parallel^2" src="../_images/math/9/3/c/93c463d090474399cb9e279496b08140.png" />, which is equivalent to the <a href="http://en.wikipedia.org/wiki/Hamming_distance" class="extiw" title="wikipedia:Hamming distance">Hamming distance</a> since the labels are binary-valued. 
+</p><p>The pixel error is appealing because of its simplicity, but suffers from a serious defect. It is <b>overly sensitive to minor displacements in the location of a boundary</b> that are ubiquitous even when comparing one human boundary labeling to another. These disagreements cause no qualitative differences in the interpretation of the image, but can lead to large quantitative differences in pixel error.
+</p>
+<h2><span class="mw-headline" id="Digital_topology_and_the_warping_error">Digital topology and the warping error</span></h2>
+<p>Jain <i>et al.</i> <sup id="cite_ref-Viren2010_1-1" class="reference"><a href="Topology_preserving_warping_error.html#cite_note-Viren2010-1">&#91;1&#93;</a></sup> introduced the <b>warping error</b>, another metric for comparing boundary labelings based on concepts from the field of <a href="http://en.wikipedia.org/wiki/Digital_topology" class="extiw" title="wikipedia:Digital topology">digital topology</a>. 
+</p><p>If <i>L</i><sup>*</sup> can be transformed into <i>L</i> by a sequence of pixel flips that each
+</p>
+<ol><li> preserve a set of desired topological properties</li>
+<li> occur only at locations within a mask <i>M</i>,</li></ol>
+<p>then we will say <i>L</i> is a <i>warping of</i> <i>L</i><sup>*</sup>, or <img class="mwe-math-fallback-image-inline tex" alt="L &#9;\triangleleft L^*" src="../_images/math/8/9/8/898e80fcb8114ad7e067d73e702fc839.png" />. The first condition constrains <i>L</i> and <i>L</i><sup>*</sup> to be <b>topologically equivalent</b>. The second condition can be used to constrain <i>L</i> to be geometrically similar to <i>L</i><sup>*</sup>. Both conditions will be explained in more detail below.
+</p><p>Now consider the pixel error of <i>T</i> relative to warpings of <i>L</i><sup>*</sup>. The <i>warping error</i> between some candidate labeling <i>T</i> and a reference labeling <i>L</i><sup>*</sup> is the <a href="http://en.wikipedia.org/wiki/Hamming_distance" class="extiw" title="wikipedia:Hamming distance">Hamming distance</a> (or equivalently squared <a href="http://en.wikipedia.org/wiki/Euclidean_distance" class="extiw" title="wikipedia:Euclidean distance">Euclidean distance</a>) between <i>L</i> and the "best warping" of <i>L</i><sup>*</sup> onto <i>T</i>:
+</p><p><img class="mwe-math-fallback-image-inline tex" alt="D(T \parallel L^*) = \underset{L \triangleleft L^*}{min} \parallel T-L \parallel ^2 " src="../_images/math/5/3/5/535261ca05b834aff9e412926c94c81a.png" />                     (Eq. 1)
+</p><p>In other words, the warping error between two segmentations is the <b>minimum mean square error between the pixels of the target segmentation and the pixels of a topology-preserving warped source segmentation</b>.
+</p>
+<h3><span class="mw-headline" id="Topological_constraints">Topological constraints</span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Simple-points-example.png" class="image"><img alt="" src="../_images/d/d8/Simple-points-example.png" width="300" height="214" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Simple-points-example.png" class="internal" title="Enlarge"></a></div>Label relaxation is only allowed at simple points. The black pixels in the top circle and the white pixels in the bottom circle are not simple points, because flipping them would cause a merger or a split. Figure courtesy of <a rel="nofollow" class="external text" href="http://www.hhmi.org/research/fellows/jain_bio.html">Viren Jain</a>.</div></div></div>
+<p>To impose topological constraints on the warping, we use concepts from <a href="http://en.wikipedia.org/wiki/Digital_topology" class="extiw" title="wikipedia:Digital topology">digital topology</a>, a field that extends the concepts of continuous-space topology to digital images. One of the most fundamental principles of this field is that
+complementary definitions of adjacency must be used for foreground (“1”) and background (“0”) pixels, so that a digital analog of the <a href="http://en.wikipedia.org/wiki/Jordan_Curve_Theorem" class="extiw" title="wikipedia:Jordan Curve Theorem">Jordan Curve Theorem</a> holds. We use the 4-adjacency for foreground and the 8-adjacency for background, and calculate <a href="http://en.wikipedia.org/wiki/Connected-component_labeling" class="extiw" title="wikipedia:Connected-component labeling">connected components</a> based on these adjacencies.
+</p><p>A major practical goal of digital topology is to identify methods of altering the <i>geometry</i> of objects within a digital image without altering any topological properties of the image. A <b>simple point</b> is defined as a <b>location in a binary image at which the pixel can be flipped to its complementary value without changing any topological properties</b> of the image. These properties include, for example, the number of <img class="mwe-math-fallback-image-inline tex" alt="\kappa" src="../_images/math/c/7/8/c78f6d0f108bd13554e62804d0790f42.png" />-connected components of the foreground and the number of <img class="mwe-math-fallback-image-inline tex" alt="\bar{\kappa}" src="../_images/math/a/e/2/ae2892732338fcec189a3f721f48d036.png" />-connected components of the background.
+</p><p>Although flipping a single simple point is guaranteed to preserve topology, it is not true that simultaneously flipping an arbitrary set of <i>multiple</i> simple points will preserve topology. Hence, many algorithms that deform digital images
+by altering simple points instead perform a sequence of flips, where any particular flip is made at a point that is simple relative to the current state of the image. Since all flips preserve topology, such a sequence of flips is a topology-preserving deformation of the original image (sometimes
+called a <a href="http://en.wikipedia.org/wiki/Homotopy" class="extiw" title="wikipedia:Homotopy">homotopic deformation</a>). The converse has also been proven: two images that are topologically equivalent
+in the sense of sharing isomorphic adjacency trees can always be transformed into each other by a sequence of changes in the values of simple pixels.
+</p><p>In short, by definition <b>flipping a simple point is a topology-preserving operation and flipping a non-simple point is not topology-preserving</b>. Non-simple points can be classified by the nature of the topological change they
+would cause by being flipped. The possible topological changes are 
+</p>
+<ul><li> splitting,</li>
+<li> merging, </li>
+<li> hole addition/deletion, </li>
+<li> or object addition/deletion. </li></ul>
+<p>We may wish to allow some of these types of changes, and therefore flipping of some types of non-simple pixels.
+</p><p>We will write simple(<i>L</i>) to denote the set of simple points of <i>L</i>.
+</p>
+<h3><span class="mw-headline" id="Geometric_constraints">Geometric constraints</span></h3>
+<p>There are many ways to define the <b>mask</b>, depending on the exact nature of the desired geometric constraints. For example, in the original paper implementation, they choose <i>M</i> to be the set of all pixels within <a href="http://en.wikipedia.org/wiki/Euclidean_distance" class="extiw" title="wikipedia:Euclidean distance">Euclidean distance</a> 5 from the background of <i>L</i>. This allows the foreground of <i>L</i> to expand arbitrarily, as long as topology is preserved. But the foreground can shrink by only a limited amount. Note that basing <i>M</i> on <i>L</i> makes warping an asymmetric relation.
+</p>
+<h3><span class="mw-headline" id="Descent_algorithm_for_warping">Descent algorithm for warping</span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Warping-error-animation.gif" class="image"><img alt="" src="../_images/6/67/Warping-error-animation.gif" width="300" height="300" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Warping-error-animation.gif" class="internal" title="Enlarge"></a></div>Example of the topology-preserving warping of one (binary) source image onto a target one.</div></div></div>
+<p>As described by the authors, there is not an efficient algorithm for finding the global minimum in Eq. (1), and indeed this is likely to be an <a href="http://en.wikipedia.org/wiki/NP-hard" class="extiw" title="wikipedia:NP-hard">NP-hard</a> problem. However, there is a very simple descent algorithm for finding local minima. During warping, we are allowed to flip simple points of <i>L</i> that lie inside the mask <i>M</i>, i.e., points in the set <img class="mwe-math-fallback-image-inline tex" alt="simple(L) \cap M" src="../_images/math/c/9/8/c98471f55ec4ff9e042596833ebf05b3.png" />. Flipping any such pixel <i>j</i> of <i>L</i> satisfying <img class="mwe-math-fallback-image-inline tex" alt=" \mid t_j - l_j \mid &gt; 0.5 " src="../_images/math/4/3/2/432648db165057fbb3df6077229bef6b.png" /> produces a new warping with smaller error. The descent algorithm greedily picks the pixel for which this error reduction is the largest, breaking ties randomly.
+</p><p>Descent algorithm for warping the binary image <i>L</i><sup>*</sup> onto the binary image <i>T</i>, under geometric constraints set by the mask image <i>M</i>:
+</p>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="warp(L^* \in B,T \in A,M \in B)" src="../_images/math/7/e/8/7e88314f100bdebfd92051cb88fbc553.png" /></dd>
+<dd><img class="mwe-math-fallback-image-inline tex" alt="L" src="../_images/math/d/2/0/d20caec3b48a1eef164cb4ca81ba2587.png" />&#160;:= <img class="mwe-math-fallback-image-inline tex" alt="L^*" src="../_images/math/8/9/0/89084328ea912bfa88d4650df9bf303f.png" /></dd>
+<dd>do
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="S := simple(L) \cap M" src="../_images/math/6/c/a/6cab802e955778ccc7369376e83533df.png" /></dd>
+<dd><img class="mwe-math-fallback-image-inline tex" alt="i := argmax_{j \in S} \mid t_j - l_j \mid" src="../_images/math/a/c/8/ac8be3fac96fab942f7baee51213f484.png" /> , breaking ties randomly</dd>
+<dd>if <img class="mwe-math-fallback-image-inline tex" alt="\mid t_i - l_i \mid &gt; 0.5" src="../_images/math/e/e/e/eee542429ffcf46b05f10d7eedda53b5.png" />
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="l_i := 1 - l_i" src="../_images/math/3/d/c/3dc751be04a0ca6b8b570ee67a3bc223.png" /></dd></dl></dd>
+<dd>else
+<dl><dd>return <img class="mwe-math-fallback-image-inline tex" alt="L" src="../_images/math/d/2/0/d20caec3b48a1eef164cb4ca81ba2587.png" /></dd></dl></dd>
+<dd>end</dd></dl></dd></dl>
+<p>Since <img class="mwe-math-fallback-image-inline tex" alt="\parallel T-L \parallel ^2" src="../_images/math/2/5/9/259dc768c13f7273c580ff3d82c15a04.png" /> is decreasing, the algorithm is guaranteed to converge to a local minimum of the warping error. How problematic is the lack of an efficient algorithm for finding a global minimum? It does not seem a problem in practice. The warpings found by this descent algorithm look reasonable to the eye. In spite of the random choice of flipped pixels, the results are highly reproducible in practice.
+</p>
+<h3><span class="mw-headline" id="Warping_error_versus_Rand_error">Warping error versus Rand error</span></h3>
+<p>At first glance, it may seem that the <b>warping error</b> measures only boundary detection performance. But it is also a good measure of segmentation performance. This is because digital topology tells us how any single pixel affects the global topology of an image.
+The <b>warping error</b> is an upper bound on the number of topologically-relevant
+boundary labeling errors in <i>T</i> (if a geometric mask is used, then the <b>warping error</b> also includes labeling errors of a geometric nature). Therefore, if segmentations are generated from <i>T</i> and <i>L</i><sup>*</sup> by finding their connected components, then the <b>warping error</b> should be a reasonable measure of the topological disagreements between the segmentations.
+</p><p>The <a href="http://imagej.net/Rand_error" title="Rand error">Rand error</a> can be used to compare segmentations in which regions are noncontiguous clusters of pixels. Such segmentations are not equivalent to boundary labelings, so the <b>warping error</b> cannot be applied. In many applications, this is not a significant limitation.
+</p><p>The <b>warping error</b> can be distinguished from the <a href="http://imagej.net/Rand_error" title="Rand error">Rand error</a> in other respects. The <b>warping error</b> can penalize all kinds of topological errors, including the presence of holes and handles, but the <a href="http://imagej.net/Rand_error" title="Rand error">Rand error</a> penalizes only connectivity errors. In certain medical imaging situations, control of such aspects of topology is especially important. The <a href="http://imagej.net/Rand_error" title="Rand error">Rand error</a> mildly penalizes shifts in boundary location, while the <b>warping error</b> ignores them altogether. The <b>warping error</b> weights a topological error by the number of pixels involved in the error itself, while the <a href="http://imagej.net/Rand_error" title="Rand error">Rand error</a> weights a split or merger by the number of pixels in the objects associated with the errors.
+</p>
+<h2><span class="mw-headline" id="2D_implementation_in_Fiji">2D implementation in Fiji</span></h2>
+<p>The warping error metric is implemented for 2D images in the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> library. Here is an example of how to use it in a <a href="http://imagej.net/Beanshell_Scripting" class="mw-redirect" title="Beanshell Scripting">Beanshell script</a>:
+</p>
+<pre class="brush:java">
+import trainableSegmentation.metrics.WarpingError;
+import ij.IJ;
+
+// original labels
+originalLabels = IJ.openImage("/path/original-labels.tif");
+
+// proposed (new) labels
+proposedLabels = IJ.openImage("/path/proposed-labels.tif");
+
+// mask with geometric constraints
+mask = IJ.openImage("/path/mask.tif");
+
+// threshold to binarize labels (just in case they are not binary)
+threshold = 0.5;
+
+metric = new WarpingError( originalLabels, proposedLabels, mask );
+
+warpingError = metric.getMetricValue( threshold );
+
+IJ.log("Warping error between source image " + originalLabels.getTitle() + " and target image " 
++ proposedLabels.getTitle() + " = " + warpingError);
+
+</pre>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> <a href="http://imagej.net/Rand_error" title="Rand error">Rand error</a>.</li></ul>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ol class="references">
+<li id="cite_note-Viren2010-1"><span class="mw-cite-backlink">↑ <sup><a href="Topology_preserving_warping_error.html#cite_ref-Viren2010_1-0">1.0</a></sup> <sup><a href="Topology_preserving_warping_error.html#cite_ref-Viren2010_1-1">1.1</a></sup></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Boundary+Learning+by+Optimization+with+Topological+Constraints&amp;rft.aulast=V.+Jain%2C+B.+Bollmann%2C+M.+Richardson%2C+D.R.+Berger%2C+M.N.+Helmstaedter%2C+K.L.+Briggman%2C+W.+Denk%2C+J.B.+Bowden%2C+J.M.+Mendenhall%2C+W.C.+Abraham%2C%0A%09K.M.+Harris%2C+N.+Kasthuri%2C+K.J.+Hayworth%2C+R.+Schalek%2C+J.C.+Tapia%2C+J.W.+Lichtman%2C+S.H.+Seung&amp;rft.date=2010&amp;rft.pages=pp.+2488-2495&amp;rft_id=info:doi/10.1109%2FCVPR.2010.5539950"><cite id="CITEREFV._Jain.2C_B._Bollmann.2C_M._Richardson.2C_D.R._Berger.2C_M.N._Helmstaedter.2C_K.L._Briggman.2C_W._Denk.2C_J.B._Bowden.2C_J.M._Mendenhall.2C_W.C._Abraham.2C.0A.09K.M._Harris.2C_N._Kasthuri.2C_K.J._Hayworth.2C_R._Schalek.2C_J.C._Tapia.2C_J.W._Lichtman.2C_S.H._Seung2010">V. Jain, B. Bollmann, M. Richardson, D.R. Berger, M.N. Helmstaedter, K.L. Briggman, W. Denk, J.B. Bowden, J.M. Mendenhall, W.C. Abraham,
+	K.M. Harris, N. Kasthuri, K.J. Hayworth, R. Schalek, J.C. Tapia, J.W. Lichtman, S.H. Seung&#32;(2010),&#32;<i><a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109%2FCVPR.2010.5539950">Boundary Learning by Optimization with Topological Constraints</a></i>, IEEE Conference on Computer Vision and Pattern Recognition, pp. 2488-2495<span class="printonly">, DOI 10.1109/CVPR.2010.5539950</span></cite></span>
+</span>
+</li>
+</ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074009
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.060 seconds
+Real time usage: 0.068 seconds
+Preprocessor visited node count: 606/1000000
+Preprocessor generated node count: 6712/1000000
+Post‐expand include size: 5821/2097152 bytes
+Template argument size: 2899/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   18.327      1 - Template:Cite_journal
+100.00%   18.327      1 - -total
+ 82.31%   15.085      1 - Template:Citation/core
+  6.75%    1.237      1 - Template:Link
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Topology_preserving_warping_error&amp;oldid=17454">http://imagej.net/index.php?title=Topology_preserving_warping_error&amp;oldid=17454</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 September 2015, at 13:53.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Topology_preserving_warping_error&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Topology+preserving+warping+error" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Topology+preserving+warping+error" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Topology_preserving_warping_error" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Topology_preserving_warping_error" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Topology_preserving_warping_error&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Topology_preserving_warping_error&amp;oldid=17454" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Topology_preserving_warping_error&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":269});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Image Intensity Processing - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Image_Intensity_Processing","wgTitle":"Image Intensity Processing","wgCurRevisionId":29332,"wgRevisionId":29332,"wgArticleId":1851,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Cookbook","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Image_Intensity_Processing","wgRelevantArticleId":1851,"wgRequestId":"c99ed9ffdca6fa7bd6ba5a10","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Brightness is the visual perception of reflected light. Increased brightness refers to an image's increased luminance."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Image Intensity Processing"/>
+
+	<meta property="og:description" content="Brightness is the visual perception of reflected light. Increased brightness refers to an image's increased luminance."/>
+
+	<meta property="og:url" content="http://imagej.net/Image_Intensity_Processing"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Image_Intensity_Processing rootpage-Image_Intensity_Processing skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Image_Intensity_Processing.html#bodyContent">Skip to content</a>, 			<a href="Image_Intensity_Processing.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Image_Intensity_Processing.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Image_Intensity_Processing" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Image_Intensity_Processing&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Image_Intensity_Processing&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Image_Intensity_Processing&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Image Intensity Processing</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Cookbook Topics
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Cookbook" title="Cookbook">Introduction and Installation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Annotating_Images" title="Annotating Images">Annotating Images</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Color_Image_Processing" title="Color Image Processing">Color Image Processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Image Intensity Processing</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Importing_Image_Files" title="Importing Image Files">Importing Image Files</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Particle_Analysis" title="Particle Analysis">Particle Analysis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Saving_and_Exporting" title="Saving and Exporting">Saving and Exporting</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Stack-slice_Manipulations" title="Stack-slice Manipulations">Stack-slice Manipulations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/T-functions" title="T-functions">T-functions</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Z-functions" title="Z-functions">Z-functions</a>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Image_Intensity_Processing.html#Brightness_and_Contrast"><span class="tocnumber">1</span> <span class="toctext">Brightness and Contrast</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Image_Intensity_Processing.html#Getting_intensity_values_from_single_ROI"><span class="tocnumber">2</span> <span class="toctext">Getting intensity values from single ROI</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Image_Intensity_Processing.html#Dynamic_intensity_vs_Time_analysis"><span class="tocnumber">3</span> <span class="toctext">Dynamic intensity vs Time analysis</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Image_Intensity_Processing.html#Getting_intensity_values_from_multiple_ROIs"><span class="tocnumber">4</span> <span class="toctext">Getting intensity values from multiple ROIs</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Image_Intensity_Processing.html#Ratio_Analysis"><span class="tocnumber">5</span> <span class="toctext">Ratio Analysis</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Image_Intensity_Processing.html#Obtaining_timestamp_data"><span class="tocnumber">6</span> <span class="toctext">Obtaining timestamp data</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="Image_Intensity_Processing.html#Zeiss_LSM"><span class="tocnumber">6.1</span> <span class="toctext">Zeiss LSM</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Image_Intensity_Processing.html#Biorad"><span class="tocnumber">6.2</span> <span class="toctext">Biorad</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Image_Intensity_Processing.html#Pseudo-linescan"><span class="tocnumber">7</span> <span class="toctext">Pseudo-linescan</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Image_Intensity_Processing.html#FRAP_.28Fluorescence_Recovery_After_Photobleaching.29_Analysis"><span class="tocnumber">8</span> <span class="toctext">FRAP (Fluorescence Recovery After Photobleaching) Analysis</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Image_Intensity_Processing.html#Non-linear_contrast_stretching"><span class="tocnumber">9</span> <span class="toctext">Non-linear contrast stretching</span></a>
+<ul>
+<li class="toclevel-2 tocsection-12"><a href="Image_Intensity_Processing.html#Equalization"><span class="tocnumber">9.1</span> <span class="toctext">Equalization</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Image_Intensity_Processing.html#Gamma"><span class="tocnumber">9.2</span> <span class="toctext">Gamma</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="Image_Intensity_Processing.html#Filtering"><span class="tocnumber">10</span> <span class="toctext">Filtering</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="Image_Intensity_Processing.html#Background_correction"><span class="tocnumber">11</span> <span class="toctext">Background correction</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="Image_Intensity_Processing.html#Rolling-Ball_background_correction"><span class="tocnumber">11.1</span> <span class="toctext">Rolling-Ball background correction</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Image_Intensity_Processing.html#ROI_background_correction"><span class="tocnumber">11.2</span> <span class="toctext">ROI background correction</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-18"><a href="Image_Intensity_Processing.html#Flat-field_correction"><span class="tocnumber">12</span> <span class="toctext">Flat-field correction</span></a>
+<ul>
+<li class="toclevel-2 tocsection-19"><a href="Image_Intensity_Processing.html#Proper_correction"><span class="tocnumber">12.1</span> <span class="toctext">Proper correction</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="Image_Intensity_Processing.html#Pseudo-correction"><span class="tocnumber">12.2</span> <span class="toctext">Pseudo-correction</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="Image_Intensity_Processing.html#FFT_background.C2.A0correction"><span class="tocnumber">12.3</span> <span class="toctext">FFT background correction</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-22"><a href="Image_Intensity_Processing.html#Masking_unwanted_regions"><span class="tocnumber">13</span> <span class="toctext">Masking unwanted regions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-23"><a href="Image_Intensity_Processing.html#Simple_masking"><span class="tocnumber">13.1</span> <span class="toctext">Simple masking</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="Image_Intensity_Processing.html#Complex_masking"><span class="tocnumber">13.2</span> <span class="toctext">Complex masking</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Brightness_and_Contrast">Brightness and Contrast</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:167px;"><div class="MediaTransformError" style="width: 165px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Brightness_contrast_pic.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<p>Brightness is the visual perception of reflected light. Increased brightness refers to an image's increased luminance. 
+</p><p>Contrast is the separation of the lightest and darkest parts of an image. An increase in contrast will darken shadows and lighten highlights. Increasing contrast is generally used to make objects in an image more distinguishable.
+</p><p>Adjust the brightness and contrast with <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Brightness/Contrast...</span></em></span> to make visualization of the image easier.
+</p><p>Press the <i>Auto</i> button to apply an intelligent contrast stretch to the <i>the image display</i>. Brightness and contrast is adjusted by taking into account the image's histogram. If pressed repeatedly, the button increases the percentage of saturated pixels.
+</p><p>The <i>Reset</i> button makes the "maximum" 0 and the "minimum" 255 in 8-bit images and the "maximum" and "minimum" equal to the smallest and largest pixel values in the image’s histogram for 16-bit images.
+</p><p>If the <i>Auto</i> button does not produce a desirable result, use the region-of-interest (ROI) tool to select part of the cell and some background, then hit the <i>Auto</i> button again. The stretch will then be based on the intensities of the ROI.
+</p><p>Pressing the <i>Apply</i> button permanently changes the <i>actual</i> grey values of the image. If just analyzing image intensity do not press this button.
+</p><p>If you prefer the image to be displayed as "black on white" rather than "white on black", then use the "inverted" command: <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Lookup Tables </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Invert LUT</span></em></span>. The command <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Invert</span></em></span> inverts the pixel <i>values themselves</i> permanently.
+</p>
+<h2><span class="mw-headline" id="Getting_intensity_values_from_single_ROI">Getting intensity values from single ROI</span></h2>
+<p>If working with a stack, the ROI selected can be analyzed with the command: <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Plot Z Axis Profile</span></em></span>. This generates a single column of numbers - one slice intensity per row.
+</p><p>The top 6 rows of the column are details of the ROI. This makes sure the same ROI is not analyzed twice and allows you to save any interesting ROIs. The details are comprised of area, x-coordinate, y-coordinate, AR, roundness, and solidity of the ROI. If the ROI is a polyline&gt;freehand ROI rather than a square&gt;oval, it acts as if the ROI is an oval&gt;square. The (oval) ROI can be restored by entering the details prompted by the <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Selection </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Restore Selection</span></em></span> (hotkey: <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">E</kbd>) command.
+</p><p>The results are displayed in a plot-window with the ROI details in the plot window title. The plot contains the buttons <i>List, Save, Copy.</i> The <i>Copy</i> button puts the data in the clipboard so it can be pasted into an Excel sheet. The settings for the copy button can be found under <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Profile Plot Options</span></em></span>. Recommended settings include: <i>Do not save x-values </i>(prevents slice number data being pasted into Excel) and <i>Autoclose</i> so that you don't have to close the analyzed plot each time.
+</p>
+<h2><span class="mw-headline" id="Dynamic_intensity_vs_Time_analysis">Dynamic intensity vs Time analysis</span></h2>
+<p>The plugin <i>Plot Z Axis Profile</i> (this is the <i>Z Profiler</i> from Kevin (Gali) Baler (gliblr at yahoo.com) and <a href="http://imagej.net/Wayne_Rasband" title="Wayne Rasband">Wayne Rasband</a> simply renamed) will monitor the intensity of a moving ROI using a particle tracking tool. This tool can be either manual or automatic. Use the <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Plot Z Axis Profile</span></em></span> command.
+</p>
+<h2><span class="mw-headline" id="Getting_intensity_values_from_multiple_ROIs">Getting intensity values from multiple ROIs</span></h2>
+<p>You can analyze multiple ROIs at once with Bob Dougherty’s <i>Multi Measure</i> plugin. The native "ROI manager" function does a similar job except doesn't generate the results in sorted columns. Check <a rel="nofollow" class="external text" href="http://www.optinav.com/imagej.html">Bob’s website</a> for updates.
+</p><p>The Multi Measure plugin that comes with the installation is v3.2.
+</p>
+<ol><li> Open confocal-series and remove the background (See Background correction)</li>
+<li> Generate a reference stack for the addition of ROIs. Use the <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Z-project</span></em></span> function and select the <i>Average</i>.</li>
+<li> Rename this image something memorable.</li>
+<li> Open the <i>ROI Manager</i> plugin (<span><em><span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Tools </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Roi Manager</span></em></span> or toolbar icon).</li>
+<li> Select ROIs and "<i>Add</i>" to the ROI manager. Click the "<i>Show All</i>" button to help avoid analyzing the same cell twice.</li>
+<li> After selecting ROIs to be analyzed in the reference image, you can draw them to the reference image by clicking the "<i>More&gt;&gt;</i>" button and selecting <i>Draw</i>. Save the reference image to the experiment’s data folder and then click on the stack to be analyzed.</li>
+<li> Click the "<i>More&gt;&gt;</i>" button in the ROI manager and select the <i>Multi Measure</i> button to measure all the ROIs. Click <i>Ok</i>. This will put values from each slice in to a single row with multiple columns per slice. Clicking on "<i>Measure all 50 slices</i>" will put all values from all slices and each ROI in a single column.</li>
+<li> Go to the <i>Results</i> window and select the menu item <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Select All...</span></em></span>. Then <i>Edit/Copy</i>.</li>
+<li> Go to Excel and paste in the data. Check that everything was pasted in correctly</li></ol>
+<div class="MediaTransformError" style="width: 351px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>10. To copy ROI coordinates into the Excel spreadsheet, there needs to be an empty row above the intensity data. Use the Multi Measure dialog and click the <i>Copy list</i> button.
+</p><p>14. In Excel, click the empty cell above the first data column and paste in the ROI coordinates.
+Save the ROIs with the Multi Measure button <i>Save</i>. Put them in the experimental data folder. The ROIs can be opened later either individually with the button <i>Open</i> or all at once with the button <i>Open All</i>.
+</p><p>Oval and rectangular ROIs can be restored individually from x, y, l, h values with the <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> ROI </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Specify ROI...</span></em></span> command.
+</p>
+<h2><span class="mw-headline" id="Ratio_Analysis">Ratio Analysis</span></h2>
+<div class="floatright"><div class="MediaTransformError" style="width: 407px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>
+<p>Ratiometric imaging compares the recordings of two different signals to see if there are any similarities between them. It is done by dividing one channel by another channel to produce a third ratiometric channel. This technique is useful because it corrects for dye leakage, unequal dye loading, and photo-bleaching. An example application would be measuring intracellular ion, pH, and voltage dynamics in real time. 
+</p><p>Background subtraction is needed before analysis of dual-channel ratio images. See also the <a href="Image_Intensity_Processing.html#Background_correction">background correction</a> section. The <i>Ratio_Profiler</i> plugin will perform ratiometric analysis of a single ROI on a dual-channel interleaved stack. The odd-slices are channel 1 images and the even slices are channel 2 images. If your two channels are opened as separate stacks, such as Zeiss, the two channels can be interleaved (mixed together by alternating between them) with the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks - Shuffling </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stack Interleaver</span></em></span>.
+</p><p>The plugin will generate a green-plot of the ratio values. Ch1÷Ch2 is the default and you can get Ch2÷Ch1 if the plugin is run with the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⎇</span> Alt</kbd> key down. It will also generate a second plot of the intensities of the individual channels, Ch1 and Ch2, as well as a results table.
+</p><p>The first row of the results table contains values for the x, y, width and height of the ROI.
+</p><p>From the second row downward, the first column is the time (slice number), the second column is the Ch1 mean intensity, and the third channel is the Ch2 mean intensity and the ratio value. The stack must have its frame interval calibrated in order for the "Time" value to be in seconds. Otherwise, it is "Slices". The frame interval can be set for the stack via the menu command <i><span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Properties</span></em></span>.</i>
+</p><p>This table can be copied to the clipboard and pasted elsewhere with the "<span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Copy All</span></em></span>" menu command.
+</p><p><i><b>Ratio Analysis Using ROI manager</b></i>
+</p><p>1.Subtract the background from the image.
+</p><p>2. Open <i>ROI manager</i> (<span><em><span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Tools </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> ROI manager...</span></em></span>) and click the "Show All" button.
+</p><p>3. Select the cells to be analyzed and add them to the ROI manager ("Add" button or keyboard <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">T</kbd> key).
+</p><p>4. Run the plugin.
+</p><p>The results window contains the mean of ch1 and ch2 and their ratio. Each row is a timepoint (slice). The first row contains the ROI details.
+</p><p>To generate a reference image:
+</p>
+<ol><li> Flatten the stack with the menu command (<span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Z-project</span></em></span> with "Projection type: Maximum"),</li>
+<li> Adjust the brightness and contrast if necessary.</li>
+<li> Select the new image and click the "More" button in the ROI manager. After that select "Label".</li></ol>
+<h2><span class="mw-headline" id="Obtaining_timestamp_data">Obtaining timestamp data</span></h2>
+<h3><span class="mw-headline" id="Zeiss_LSM">Zeiss LSM</span></h3>
+<p>The <a href="http://imagej.net/LSM_Toolbox" title="LSM Toolbox">LSM Toolbox</a> is a project aiming at the integration of common useful functions around the Zeiss LSM file format, that should enhance usability of confocal LSM files kept in their native format, thus preserving all available metadata.
+</p><p>In Fiji, corresponding commands are: "<span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Show LSMToolbox</span></em></span>" which displays the toolbox, from which all commands can be called and "<span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> About Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> LSMToolbox...</span></em></span>" which displays information about the plugin.
+</p>
+<h3><span class="mw-headline" id="Biorad">Biorad</span></h3>
+<p>This reading can be found by using the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Show Info...</span></em></span>. Scroll down to get the time each slice was acquired. Select this time, copy it into Excel, and find the time number obtained by using the Excel menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Replace</span></em></span>. This will leave only the time data. The "elapsed" time can then be calculated by subtracting row 1 from all subsequent rows.
+</p>
+<h2><span class="mw-headline" id="Pseudo-linescan">Pseudo-linescan</span></h2>
+<p>Linescanning involves acquiring a single line, one pixel in width, from a common confocal microscope instead of a standard 2D image. This is usually a faster way to take an image. All the single pixel-wide images are then stacked to recreate the 2D image.
+</p><p>A pseudo-linescan generation of a 3-D (<i>x, y, t</i>) image. It is useful for displaying 3-D data in 2 dimensions.
+</p><p>A line of interest is drawn followed by the command: <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Reslice</span></em></span> or with the keyboard button <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">/</kbd>. It will ask you for the line width that you wish to be averaged. It will generate a pseudo-linescan "stack" with each slice representing the pseudo-linescan of a single-pixel wide line along the line of interest. Average the pseudo-linescan "stack" by selecting <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stacks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Z-Project...</span></em></span> and use the <i>Average</i> command. A poly-line can be utilized, but this will only generate a single pixel slice.
+</p><p>Fiji's default settings assume that stacks are <i>z</i>-series rather than <i>t</i>-series. This means that many functions related to the third-dimension of an image stack are referred to with a <i>z-</i>. Just keep this in mind.
+</p>
+<h2><span class="mw-headline" id="FRAP_.28Fluorescence_Recovery_After_Photobleaching.29_Analysis">FRAP (Fluorescence Recovery After Photobleaching) Analysis</span></h2>
+<p>The FRAP profiler plugin will analyze the intensity of a bleached ROI over time and normalize it against the intensity of the whole cell. After that it will find the minimum intensity in the bleached ROI and fit the recovery with this point in mind.
+</p><p>To use:
+</p>
+<ol><li> Open the ROI manager.</li>
+<li> Draw around the bleached ROI and add it to the ROI manager.</li>
+<li> Draw around the whole cell and add that to the ROI manager. The normalization corrects for the bleaching that occurs during image acquisition and assumes the whole cell is in the field of view. <b>The plugin assumes the larger of the two ROIs in the ROI manager is the whole cell ROI and that the smaller ROI is the bleached part.</b></li>
+<li> Run the FRAP profiler plugin.</li>
+<li> The plugin will return the intensity vs time plot, the normalized intensity vs time plot of the bleached area, and the curve fit.</li></ol>
+<h2><span class="mw-headline" id="Non-linear_contrast_stretching">Non-linear contrast stretching</span></h2>
+<h3><span class="mw-headline" id="Equalization">Equalization</span></h3>
+<table style="border-spacing:0;">
+<tr>
+<td style="border:none;padding:0in;"> You can have more control over brightness and contrast adjustments with the <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Enhance contrast</span></em></span> menu command. With a stack, it analyzes the each slice’s histogram to make the adjustment.
+<p>The <i>Equalize contrast</i> command applies a non-linear stretch of the histogram based on the square root of its intensity.
+</p>
+</td></tr></table>
+<div class="MediaTransformError" style="width: 207px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Gamma">Gamma</span></h3>
+<p>Gamma performs a non-linear histogram adjustment. Faint objects become more intense while bright objects do not (gamma &lt;1). Also, medium-intensity objects become fainter while bright objects do not (gamma &gt; 1). The intensity of each pixel is "raised to the power" of the gamma value and then scaled to 8-bits or the min and max of 16-bit images.
+</p><p>For 8 bit images; New intensity = 255 × <i>[(old intensity÷255) gamma</i>]
+</p><p>Gamma can be adjusted via the <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Math </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Gamma</span></em></span> command. It will allow you to adjust the gamma with the scroll bar. Click on <i>Ok</i> when you are finished. You can use the Scroll-bar to determine the desired gamma value on one slice of your stack. There is also an option to preview the results. 
+</p>
+<div class="MediaTransformError" style="width: 488px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Filtering">Filtering</span></h2>
+<p>See the <a rel="nofollow" class="external text" href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/filtops.htm">online reference</a> for an explanation of digital filters and how they work.
+</p><p>Filters can be found using the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Filters...</span></em></span>.
+</p><p><i>Mean filter</i>: the pixel is replaced with the average of itself and its neighbors within the specified radius. The menu item <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Smooth</span></em></span> is a 3×3 mean filter.
+</p><p><i>Gaussian filter</i>: This is similar to a smoothing filter but instead replaces the pixel value with a value proportional to a normal distribution of its neighbors.
+</p><p><i>Median filter</i>: The pixel value is replaced with the median of itself and its adjacent neighbors. This removes noise and <i>preserves boundaries</i> better than simple average filtering. The menu item <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Noise </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Despeckle</span></em></span> is a 3×3 median filter.
+</p><p>"Convolve filter": This allows two arrays of numbers to be multiplied together. The arrays can be different sizes but must be of the same dimension. In image analysis this process is generally used to produce an output image where the pixel values are linear combinations of certain input values.
+</p><p>"Minimum": This filter, also known as an erosion filter, is a morphological filter that considers the neighborhood around each pixel and, from this list of neighbors, determines the minimum value. Each pixel in the image is then replaced with the resulting value generated by each neighborhood.
+</p><p>"Maximum": This filter, also known as a dilation filter, is a morphological filter that considers the neighborhood around each pixel and, from this list of neighbors, determines the maximum value. Each pixel in the image is then replaced with the resulting value generated by each neighborhood.
+</p><p><i>Kalman filter</i>: This filter, also known as the Linear Quadratic Estimation, recursively operates on noisy inputs to compute a statistically optimal estimate of the underlying system state.
+</p>
+<h2><span class="mw-headline" id="Background_correction">Background correction</span></h2>
+<p>Background correction can be done in multiple ways. A simple method is to use the <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Lookup Tables </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> HiLo</span></em></span> LUT to display zero values as blue and white values (pixel value 255) as red.
+</p><p>With a background that is relatively even across the image, remove it with the <i>Brightness/Contrast</i> command by slowly raising the <i>Minimum</i> value until most of the background is displayed blue. Press the <i>Apply </i>button to make a permanent change.
+</p>
+<h3><span class="mw-headline" id="Rolling-Ball_background_correction">Rolling-Ball background correction</span></h3>
+<p>To fix an uneven background use the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Subtract background</span></em></span>. This will use a <i>rolling ball</i> algorithm on the uneven background. The radius should be set to at least the size of the largest object that is <i>not</i> part of the background. It can also be used to remove background from gels where the background is white. Running the command several times may produce better results. The user can choose whether or not to have a light background, create a background with no subtraction, have a sliding paraboloid, disable smoothing, or preview the results. The default value for the rolling ball radius is 50 pixels. 
+</p>
+<table style="border-spacing:0;">
+<tr>
+<td style="border:none;padding:0.0194in;"> <i>RAW</i>
+</td>
+<td style="border:none;padding:0.0194in;">
+</td>
+<td style="border:none;padding:0.0194in;"> <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Subtract Background...</span></em></span>
+</td></tr>
+<tr>
+<td style="border:none;padding:0.0194in;"> <div class="MediaTransformError" style="width: 192px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td>
+<td style="border:none;padding:0.0194in;"> <div class="MediaTransformError" style="width: 261px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td>
+<td style="border:none;padding:0.0194in;"> <div class="MediaTransformError" style="width: 192px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td></tr></table>
+<p>Once the background has been evened, final adjustments can be made with the <i>Brightness/Contrast</i> control.
+</p>
+<table style="border-spacing:0;">
+<tr>
+<td style="border:none;padding:0.0194in;"> <div class="MediaTransformError" style="width: 192px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td>
+<td style="border:none;padding:0.0194in;"> <div class="MediaTransformError" style="width: 168px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td>
+<td style="border:none;padding:0.0194in;">
+<div class="MediaTransformError" style="width: 166px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td></tr></table>
+<h3><span class="mw-headline" id="ROI_background_correction">ROI background correction</span></h3>
+<p>The rolling-ball algorithm takes a lot of time. To speed up the process with an image that has a more even background, select a region of interest from the background and subtract the mean value of this area for each slice from each slice. Use the selection tools to select an area of background and run the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Subtract Background</span></em></span>. This macro will subtract the mean of the ROI from the image plus an additional value equal to the standard deviation of the ROI multiplied by the scaling factor you enter. The default for this is 3.
+</p><p>This macro, because it also works with stacks, can be used on time-courses with varying backgrounds.
+</p>
+<table style="border-spacing:0;">
+<tr>
+<td style="border:none;padding:0in;"> <center>Before correction</center>
+</td>
+<td style="border:none;padding:0in;"> <center>Background intensity over time</center>
+</td>
+<td style="border:none;padding:0in;"> <center>After <i>ROI_BG_Correction</i></center>
+</td></tr>
+<tr>
+<td style="border:none;padding:0in;"> <div class="MediaTransformError" style="width: 204px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td>
+<td style="border:none;padding:0in;"> <div class="MediaTransformError" style="width: 199px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td>
+<td style="border:none;padding:0in;"> <div class="MediaTransformError" style="width: 199px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td></tr></table>
+<h2><span class="mw-headline" id="Flat-field_correction">Flat-field correction</span></h2>
+<h3><span class="mw-headline" id="Proper_correction">Proper correction</span></h3>
+<p>Use this technique on brightfield images. You can correct uneven illumination or dirt/dust on lenses by acquiring a "flat-field" reference image <i>with the same intensity illumination as the experiment</i>. The flat field image should be as close as possible to a field of view of the cover slip without any cells/debris. This is often not possible with the experimental cover slip, so a fresh cover slip may be used with approximately the same amount of buffer as the experiment.
+</p>
+<table style="border-spacing:0;">
+<tr>
+<td colspan="3"> <div class="MediaTransformError" style="width: 578px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td></tr>
+<tr>
+<td> <center><b>RAW</b></center>
+</td>
+<td> <center><b>Flat-field</b></center>
+</td>
+<td> <center><b>Processed</b></center>
+</td></tr></table>
+<ol><li> Open both the experimental image and the flat-field image.</li>
+<li> Click the <i>Select all</i> button on the flat-field image and measure the average intensity. This value, the k1 value, will appear in the results window.</li>
+<li> Use the <i>Image Calculator plus</i> plugin (<span><em><span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Tools </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Calculator plus</span></em></span>).</li>
+<li> i1 = experimental image; i2 = flat-field image; k1 = mean flat-field intensity; k2 = 0. Select the "<i>Divide"</i> operation.</li></ol>
+<p>This can also be done using the <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Image Calculator</span></em></span>function with the <i>32-bit Result</i> option checked. Then adjust the brightness and contrast and convert the image to 8-bit.
+</p>
+<div class="MediaTransformError" style="width: 228px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Pseudo-correction">Pseudo-correction</span></h3>
+<table style="border-spacing:0;">
+<tr>
+<td colspan="2" style="border:none;padding:0in;"> <div class="MediaTransformError" style="width: 289px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Sometimes it is not possible to obtain a flat-field reference image. It is still possible to correct for illumination intensity, though not small defects like dust, by making a "pseudo-flat field" image by performing a large-kernel filter on the image to be corrected. For those working with DIC images, this is particularly useful because they generally have an intrinsic, and distracting, gradient in illumination.
+</p><p>This can be accomplished simply by subtracting the Gaussian-blurred image version of the image.
+</p><p>This can also be used with stacks for brightfield time-courses that vary in intensity with time. Doing this with stacks can be time consuming.
+</p>
+</td></tr>
+<tr>
+<td style="border:none;padding:0in;"> <div class="MediaTransformError" style="width: 337px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+</td>
+<td style="border:none;padding:0in;"> The first RAW image (top) is pseudo-flat field corrected. Here the pseudo-flat field corrects for the uneven illumination, but does not correct for the dust specks. Look at this compared to the result of a proper flat-field correction above.
+</td></tr></table>
+<h3><span class="mw-headline" id="FFT_background.C2.A0correction">FFT background correction</span></h3>
+<p>You can correct for uneven illumination and horizontal "scan lines" in transmitted light images acquired using confocal microscopes by using the native FFT bandpass function (<span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> FFT </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Bandpass Filter...).</span></em></span>
+</p><p>You can experiment with the settings to optimize the filtering and also choose to filter structures down to a certain number of pixels. The default value is 40 pixels. You can filter small structures up to a certain value. The default value is 3 pixels. The user can choose from a drop down menu whether to suppress stripes with None, Horizontal, or Vertical. The tolerance of direction can be chosen. The default is 5%. Finally, the user can choose whether to allow autoscale after filtering, saturation of the image when autoscaling, whether or not to display the filter, and whether or not to process an entire stack.
+</p>
+<div class="MediaTransformError" style="width: 617px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Masking_unwanted_regions">Masking unwanted regions</span></h2>
+<h3><span class="mw-headline" id="Simple_masking">Simple masking</span></h3>
+<p>Use one of the ROI tools to draw around the area of interest and then select: <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Clear outside</span></em></span>. This will change the area outside the selected region to the background value.
+</p>
+<h3><span class="mw-headline" id="Complex_masking">Complex masking</span></h3>
+<p>More sophisticated masking can be done by <i>thresholding</i> the image and subtracting the new binary image from the original image.
+</p>
+<ol><li> Duplicate the image, or, if it’s a stack, generate an <i>average projection</i> of a few frames.</li>
+<li> Threshold this image with the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Threshold</span></em></span>.</li>
+<li> Hit the Auto button and adjust the sliders until all the cells are highlighted red.</li>
+<li> Click <i>Apply</i>. Check the following box: <i>black foreground, white background</i>. You should now have a white and black image with your cells black and background white. If you have white cells and black background, invert the image with <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Invert</span></em></span>.</li>
+<li> This can be smoothed with the command <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Smooth</span></em></span> and the black area enlarged slightly with <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Binary </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Dilate</span></em></span> to give a better mask.</li>
+<li> Using the regular Image calculator <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Image calculator</span></em></span> subtract this black and white "mask" image from your original image or stack.</li></ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072601
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.240 seconds
+Real time usage: 0.247 seconds
+Preprocessor visited node count: 4700/1000000
+Preprocessor generated node count: 11399/1000000
+Post‐expand include size: 29721/2097152 bytes
+Template argument size: 3885/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  170.129      1 - -total
+ 45.55%   77.488      6 - Template:Key
+ 42.71%   72.669     40 - Template:Bc
+ 39.28%   66.834      6 - Template:Key_press/core
+ 12.02%   20.457     63 - Template:Arrow
+  4.42%    7.528      1 - Template:CookbookMenu
+  4.06%    6.902      1 - Template:Person
+  3.44%    5.848      1 - Template:Menu
+  2.31%    3.931      6 - Template:Linear-gradient
+  2.07%    3.527      6 - Template:Box-shadow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Image_Intensity_Processing&amp;oldid=29332">http://imagej.net/index.php?title=Image_Intensity_Processing&amp;oldid=29332</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:14.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Image_Intensity_Processing&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Cookbook" title="Category:Cookbook">Cookbook</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Image+Intensity+Processing" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Image+Intensity+Processing" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Image_Intensity_Processing" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Image_Intensity_Processing" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Image_Intensity_Processing&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Image_Intensity_Processing&amp;oldid=29332" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Image_Intensity_Processing&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":441});});</script>
+		</body>
+		</html>
+		

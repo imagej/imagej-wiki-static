@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Spots colocalization (ComDet) - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Spots_colocalization_(ComDet)","wgTitle":"Spots colocalization (ComDet)","wgCurRevisionId":44466,"wgRevisionId":44466,"wgArticleId":7032,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Colocalization"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Spots_colocalization_(ComDet)","wgRelevantArticleId":7032,"wgRequestId":"a4a4dcf3ebf5bbcd911282e9","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Plugin for finding and/or analyzing colocalization of bright intensity spots (cells, particles, vesicles, comets, dots, etc) in images with heterogeneous background (microscopy, astronomy, engineering, etc)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Spots colocalization (ComDet)"/>
+
+	<meta property="og:description" content="Plugin for finding and/or analyzing colocalization of bright intensity spots (cells, particles, vesicles, comets, dots, etc) in images with heterogeneous background (microscopy, astronomy, engineering, etc)."/>
+
+	<meta property="og:url" content="http://imagej.net/Spots_colocalization_(ComDet)"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Spots_colocalization_ComDet rootpage-Spots_colocalization_ComDet skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Spots_colocalization_(ComDet).html#bodyContent">Skip to content</a>, 			<a href="Spots_colocalization_(ComDet).html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Spots_colocalization_(ComDet).html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Spots_colocalization_(ComDet)" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Spots_colocalization_(ComDet)&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Spots_colocalization_(ComDet)&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Spots_colocalization_(ComDet)&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Spots colocalization (ComDet)</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>ComDet (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a rel="nofollow" class="external text" href="http://katpyxa.info">Eugene Katrukha</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a rel="nofollow" class="external text" href="mailto:katpyxa_at_gmail.com">Eugene Katrukha</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/ekatrukha/ComDet/blob/master/target/ComDet_-0.5.1.jar?raw=true">ComDet.jar</a> + for ImageJ <a rel="nofollow" class="external text" href="https://math.nist.gov/javanumerics/jama/Jama-1.0.3.jar">Jama lib</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/ekatrukha/ComDet">github</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> 23 November 2012
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> 7 April 2020
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Colocalization" title="Category:Colocalization">Category:Colocalization</a>
+</td></tr>
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/ekatrukha/ComDet/wiki">wiki</a>
+</td></tr>
+</table>
+<p><br />
+</p><p>Plugin for finding and/or analyzing colocalization of bright intensity spots (cells, particles, vesicles, comets, dots, etc) in images with heterogeneous background (microscopy, astronomy, engineering, etc). 
+</p><p>For help with plugin installation, see <a rel="nofollow" class="external text" href="https://github.com/ekatrukha/ComDet/wiki/How-to-install-plugin">instructions</a>.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Spots_colocalization_(ComDet).html#How_to_use_plugin"><span class="tocnumber">1</span> <span class="toctext">How to use plugin</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Spots_colocalization_(ComDet).html#Simple_detection_.281_channel.29"><span class="tocnumber">2</span> <span class="toctext">Simple detection (1 channel)</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Spots_colocalization_(ComDet).html#Detection_in_ROI"><span class="tocnumber">3</span> <span class="toctext">Detection in ROI</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Spots_colocalization_(ComDet).html#Detection_and_colocalization_in_multi-channel_image_.28two_or_more_channels.29"><span class="tocnumber">4</span> <span class="toctext">Detection and colocalization in multi-channel image (two or more channels)</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Spots_colocalization_(ComDet).html#Results_table"><span class="tocnumber">5</span> <span class="toctext">Results table</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Spots_colocalization_(ComDet).html#Additional_info"><span class="tocnumber">6</span> <span class="toctext">Additional info</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="How_to_use_plugin">How to use plugin</span></h2>
+<p>Open the image to be analyzed in ImageJ. In general, the plugin works in two modes: 
+</p>
+<ul><li> particles detection (whole image or ROI)</li>
+<li> particles detection and colocalization analysis (whole image or ROI).</li></ul>
+<p><br />
+For <b>colocalization</b> you need a <a rel="nofollow" class="external text" href="https://imagej.net/Color_Image_Processing#Color_Composite_Images">color composite image</a> containing <b>multiple color channels (two or more)</b>. Plugin auto-detects the number of channels and if it is more than one then the plugin will automatically switch to the second mode (see below).
+</p><p>The plugin works with time/z-stacks.  
+</p><p>Launch the detection by choosing <i>Plugins-&gt;ComDet-&gt;Detect Particles</i>.  
+</p><p><img src="http://katpyxa.info/software/ComDet/ComDet_open_v.0.5.0.png" alt="ComDet_open_v.0.5.0.png"/>
+</p>
+<h2><span class="mw-headline" id="Simple_detection_.281_channel.29">Simple detection (1 channel)</span></h2>
+<p>If the image is not multi-channel image, the following dialog window will appear:  
+</p><p><img src="http://katpyxa.info/software/ComDet/ComDet_detection_only_v0.5.0.png" alt="ComDet_detection_only_v0.5.0.png"/>
+</p><p>Specify estimated particles size and intensity threshold (particle brightness) and press OK.
+To have good detection usually you need to play with parameters and see how it goes. Checkbox "<i>Preview...</i>" allows to see detection on the current picture and simplifies this task.
+The "ROI shape" option allows you to choose, if you want your detection to be displayed as "Ovals" or "Rectangles".
+</p><p><img src="http://katpyxa.info/software/ComDet/ComDet_preview_button.gif" alt="ComDet_preview_button.gif"/>
+</p><p>By default, plugin looks only for particles of specified size. If you check "<i>Include larger particles?</i>" box, it will also try to quantify bigger spots.
+</p><p>If "<i>Segment larger particles (slow)?</i>" box is checked, plugin will try to further split large particles into a smaller dots, if it is possible. As its name suggests, this procedure requires computational power and can be slow, especially on big images.  
+</p><p>If you choose <i>Add to ROI Manager</i> option ("All particles"), plugin will add detected rectangular ROIs around particles to <a rel="nofollow" class="external text" href="https://imagej.nih.gov/ij/docs/guide/146-30.html#sub:ROI-Manager...">ROI Manager</a>. ROIs will have names in the format of ind(detection# in Results table)_ch(#channel)_sl(#slice)_fr(#frame).
+</p><p>After pressing OK plugin runs and add ovals/rectangles in overlay on top of detected particles.
+</p><p><img src="http://katpyxa.info/software/ComDet/ComDet_detection_before_after_v2.png" alt="ComDet_detection_before_after_v2.png"/>
+</p><p>Also it will provide you <i>Results</i> table containing particles' coordinates (see below) and <i>Summary</i> table.  
+I recommend to play with parameters to get a nice detection result.
+</p>
+<h2><span class="mw-headline" id="Detection_in_ROI">Detection in ROI</span></h2>
+<p>If you want detection to be performed in some specific region instead of whole image, select some ROI using any ImageJ ROI selection tools <b>before</b> launching plugin:
+</p><p><img src="http://katpyxa.info/software/ComDet/ComDet_ROI_before_v2.png" alt="ComDet_ROI_before_v2.png"/>
+</p><p>In this case only particles in that ROI will be detected (also supported in "<i>Preview..</i>" mode):
+</p><p><img src="http://katpyxa.info/software/ComDet/ComDet_ROI_after_v2.png" alt="ComDet_ROI_after_v2.png"/>  
+</p>
+<h2><span class="mw-headline" id="Detection_and_colocalization_in_multi-channel_image_.28two_or_more_channels.29">Detection and colocalization in multi-channel image (two or more channels)</span></h2>
+<p>If your image contains multiple channels then after pressing <i>Detect Particles</i> the dialog will look differently:
+</p><p><br />
+<img src="http://katpyxa.info/software/ComDet/ComDet_detection_and_coloc_v0.5.0.png" alt="ComDet_detection_and_coloc_v0.5.0.png"/>  
+</p><p>First, the plugin will show the window above with general setup and later it will proceed with a series of parameter windows, specifying detection parameters for each channel. 
+To get colocalization analysis you need to check "<i>Calculate colocalization?</i>" box. If you uncheck it, then only detection will be performed. 
+</p><p>There is an additional parameter in case of colocalization: maximum distance between spots' centers. It defines at what distance (in pixels) two spots in different channels are considered to be localized. 
+</p><p><b>So colocalization is based on the distance between spots' centers!</b>
+</p><p>After you press "OK", a series of windows for detection parameters for each channel will pop-up:
+</p><p><img src="http://katpyxa.info/software/ComDet/ComDet_detection_and_coloc_v0.5.0_multich.png" alt="ComDet_detection_and_coloc_v0.5.0_multich.png"/>
+</p><p>Take a notice that "<i>Preview...</i>" button in this case will only show detection, it will not mark/analyze colocalization.
+</p><p>After detection is finished ComDet marks detected particles with ovals/rectangles of their own channel (LUT) color and colocalized particles in overlapping color:
+</p><p><img src="http://katpyxa.info/software/ComDet/ComDet_detection_and_coloc_mark_v2.png" alt="ComDet_detection_and_coloc_mark_v2.png"/>
+</p><p>Also <i>Add to ROI Manager</i> option is available. ROIs will have names in the format of ind(detection# in Results table)_ch(#channel)_sl(#slice)_fr(#frame). You can add all detected particles or only those that colocalize.
+</p><p><i>Only ROI detection</i> mode (as described above) also automatically works in this case. 
+</p>
+<h2><span class="mw-headline" id="Results_table">Results table</span></h2>
+<p>Here is example of <i>Results</i> table (<i>Summary</i> table is kind of self-explanatory). 
+</p><p><img src="http://katpyxa.info/software/ComDet/Results_v.0.5.0.png" alt="Results_v.0.5.0.png"/> 
+</p><p><br />
+Columns are: 
+</p>
+<ol><li> <i>Abs_frame</i> = absolute frame number in stack/hyperstack (unique frame number)</li>
+<li> <i>X_(px)</i> = <i>x</i> coordinate of spot (centroid fitting)</li>
+<li> <i>Y_(px)</i> = <i>y</i> coordinate of spot (centroid fitting)</li>
+<li> <i>Channel</i> = corresponding channel number, where the particle was detected</li>
+<li> <i>Slice</i> = corresponding slice number (if z-stack)</li>
+<li> <i>Frame</i> = corresponding frame number (if timelapse)</li>
+<li> <i>xMin</i>, <i>yMin</i>, <i>xMax</i>, <i>yMax</i> = coordinate of rectangle around spot (in pixels)</li>
+<li> <i>NArea</i> = <a rel="nofollow" class="external text" href="https://github.com/ekatrukha/ComDet/wiki/How-does-detection-work%3F">thresholded area</a> of the spot in pixels</li>
+<li> <i>IntegrIntChX</i> = for each channel (marked by X number) shows spot's integrated intensity: sum of all pixels intensity inside the <a rel="nofollow" class="external text" href="https://github.com/ekatrukha/ComDet/wiki/How-does-detection-work%3F">thresholded area</a> minus average spot-specific backgrounds. Background value is calculated as the average intensity of pixels along the perimeter of the rectangle.</li>
+<li> <i>ColocChX</i> = equals to 1, if the spot is colocalized in this channel (marked by X number) and 0 otherwise. Notice, that it is always 1 in the channel, where the particle itself is detected (so it kind of colocalizes with itself). Also keep in mind, that if three particles from three different channels are colocalized, there would be three rows in the Results table.</li>
+<li> <i>ColocIndChX</i> = corresponds to the unique detection index (last column) in Results table, corresponding to the particle in another channel (if colocalized). Zero otherwise.</li>
+<li> <i>Index</i> = unique index for each detection.</li></ol>
+<h2><span class="mw-headline" id="Additional_info">Additional info</span></h2>
+<p>For detection explanation, see <a rel="nofollow" class="external text" href="https://github.com/ekatrukha/ComDet/wiki/How-does-detection-work%3F">How does detection work?</a> Also <a rel="nofollow" class="external text" href="https://github.com/ekatrukha/ComDet/wiki/Updates-history">updates history</a> is available.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073455
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.016 seconds
+Real time usage: 0.014 seconds
+Preprocessor visited node count: 109/1000000
+Preprocessor generated node count: 587/1000000
+Post‐expand include size: 1388/2097152 bytes
+Template argument size: 783/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    4.005      1 - Template:Infobox
+100.00%    4.005      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Spots_colocalization_(ComDet)&amp;oldid=44466">http://imagej.net/index.php?title=Spots_colocalization_(ComDet)&amp;oldid=44466</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 7 April 2020, at 08:23.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Spots_colocalization_(ComDet)&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Colocalization" title="Category:Colocalization">Colocalization</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Spots+colocalization+%28ComDet%29" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Spots+colocalization+%28ComDet%29" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Spots_colocalization_(ComDet)" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Spots_colocalization_(ComDet)" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Spots_colocalization_(ComDet)&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Spots_colocalization_(ComDet)&amp;oldid=44466" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Spots_colocalization_(ComDet)&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":216});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>StarDist - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"StarDist","wgTitle":"StarDist","wgCurRevisionId":45664,"wgRevisionId":45664,"wgArticleId":11094,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Segmentation","Deep Learning"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"StarDist","wgRelevantArticleId":11094,"wgRequestId":"f703aed5aa17dbc27b31bdb2","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This is the ImageJ/Fiji plugin for StarDist, a cell/nuclei detection method for microscopy images with star-convex shape priors.&#10;The plugin can be used to apply already trained models to new images. &#10;See the main repository for links to our publications and the full-featured Python package that can also be used to train new models. If you encounter problems with the plugin, please file an issue here."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="StarDist"/>
+
+	<meta property="og:description" content="This is the ImageJ/Fiji plugin for StarDist, a cell/nuclei detection method for microscopy images with star-convex shape priors.&#10;The plugin can be used to apply already trained models to new images. &#10;See the main repository for links to our publications and the full-featured Python package that can also be used to train new models. If you encounter problems with the plugin, please file an issue here."/>
+
+	<meta property="og:url" content="http://imagej.net/StarDist"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-StarDist rootpage-StarDist skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="StarDist.html#bodyContent">Skip to content</a>, 			<a href="StarDist.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="StarDist.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/StarDist" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:StarDist&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=StarDist&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=StarDist&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>StarDist</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>StarDist (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Uwe Schmidt, Martin Weigert
+</td></tr>
+<tr>
+<th> Update site
+</th>
+<td> <a href="http://imagej.net/Following_an_update_site" title="Following an update site">StarDist</a>
+</td></tr>
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Uwe Schmidt, Martin Weigert
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/stardist/stardist-imagej/">on GitHub</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external free" href="https://github.com/mpicbg-csbd/stardist">https://github.com/mpicbg-csbd/stardist</a>
+</td></tr>
+</table>
+<p><br />
+</p>
+<div class="floatright"><a href="http://imagej.net/File:StarDist_logo.jpg" class="image"><img alt="StarDist logo.jpg" src="../_images/c/cc/StarDist_logo.jpg" width="128" height="131" /></a></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="StarDist.html#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="StarDist.html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="StarDist.html#Usage"><span class="tocnumber">3</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="StarDist.html#Plugin"><span class="tocnumber">3.1</span> <span class="toctext">Plugin</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="StarDist.html#Scripting.2FBatch-Processing"><span class="tocnumber">3.2</span> <span class="toctext">Scripting/Batch-Processing</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="StarDist.html#Citation"><span class="tocnumber">4</span> <span class="toctext">Citation</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="StarDist.html#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Overview">Overview</span></h2>
+<p>This is the ImageJ/Fiji plugin for <a rel="nofollow" class="external text" href="https://github.com/mpicbg-csbd/stardist">StarDist</a>, a cell/nuclei detection method for microscopy images with star-convex shape priors.
+The plugin can be used to apply already trained models to new images. 
+See the <a rel="nofollow" class="external text" href="https://github.com/mpicbg-csbd/stardist">main repository</a> for links to our publications and the full-featured Python package that can also be used to train new models. If you encounter problems with the plugin, please file an issue <a rel="nofollow" class="external text" href="https://github.com/stardist/stardist-imagej">here</a>.
+</p><p><i>The plugin currently only supports 2D image and time lapse data. If you have 3D data, please use our <a rel="nofollow" class="external text" href="https://github.com/mpicbg-csbd/stardist">python library</a>.</i>
+</p><p><a href="http://imagej.net/File:Stardist_screenshot_small.jpg" class="image"><img alt="Stardist screenshot small.jpg" src="../_images/9/90/Stardist_screenshot_small.jpg" width="640" height="322" /></a>
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<ol><li> Start Fiji (or download and install it from <a rel="nofollow" class="external text" href="https://fiji.sc">here</a> first).</li>
+<li> Select <code>Help &gt; Update...</code> from the menu bar.</li>
+<li> Click on the button <code>Manage update sites</code>.</li>
+<li> Scroll down the list and tick the checkboxes for update sites <code>CSBDeep</code> and <code>StarDist</code>, then click the <code>Close</code> button.<br />(If <code>StarDist</code> is missing, click <code>Update URLs</code> to refresh the list of update sites.)<br /><a href="http://imagej.net/File:StarDist_update_site2.png" class="image"><img alt="StarDist update site2.png" src="../_images/7/78/StarDist_update_site2.png" width="320" height="158" /></a><a href="http://imagej.net/File:StarDist_update_site.png" class="image"><img alt="StarDist update site.png" src="../_images/f/ff/StarDist_update_site.png" width="320" height="158" /></a></li>
+<li> Click on <code>Apply changes</code> to install the plugin.</li>
+<li> Restart Fiji.</li></ol>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<h3><span class="mw-headline" id="Plugin">Plugin</span></h3>
+<p>Open the image that should be segmented. Note, that currently only 2D and 2D+time images are supported. Suitable test images can for instance be found at the <a rel="nofollow" class="external text" href="https://data.broadinstitute.org/bbbc/BBBC008/BBBC008_v1_images.zip">Broad Bioimage Benchmark Collection</a><sup id="cite_ref-1" class="reference"><a href="StarDist.html#cite_note-1">&#91;1&#93;</a></sup>:
+</p><p><a href="http://imagej.net/File:StarDist_usage_input.png" class="image"><img alt="StarDist usage input.png" src="../_images/0/03/StarDist_usage_input.png" width="222" height="240" /></a>
+</p><p>Start the plugin from <code>Plugins &gt; StarDist &gt; StarDist 2D</code>. The following parameters can be set:
+</p>
+<table class="wikitable">
+
+<tr>
+<td> <a href="http://imagej.net/File:StarDist_usage_param_pred.jpg" class="image"><img alt="StarDist usage param pred.jpg" src="../_images/d/de/StarDist_usage_param_pred.jpg" width="400" height="150" /></a>
+</td>
+<td> Select a neural network model from the dropdown list, which can be one of the following:
+<ul>
+<li><i>A built-in model</i>. We currently provide:
+<ul>
+<li><code>Versatile (fluorescent nuclei)</code> and <code>DSB 2018 (from StarDist 2D paper)</code> that were both trained on a subset of the <a rel="nofollow" class="external text" href="https://data.broadinstitute.org/bbbc/BBBC038/">DSB 2018 nuclei segmentation challenge dataset</a>.
+<li><code>Versatile (H&amp;E nuclei)</code> that was trained on images from the <a rel="nofollow" class="external text" href="https://monuseg.grand-challenge.org/Data/">MoNuSeg 2018 training data</a> and the <a rel="nofollow" class="external text" href="http://cancergenome.nih.gov/">TCGA archive</a>.
+</ul>
+<li><i>A custom user-trained model</i> (<a rel="nofollow" class="external text" href="https://github.com/mpicbg-csbd/stardist">via the training code</a>) that has been <a rel="nofollow" class="external text" href="https://github.com/mpicbg-csbd/stardist/search?q=export_TF&amp;type=Code">exported as a zip file</a> and can be loaded from a file or URL (see <i>Advanced options</i> below).
+</ul>
+<p>If necessary, one can change/disable the percentile-based input image normalization.
+</p>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/File:StarDist_usage_param_nms.jpg" class="image"><img alt="StarDist usage param nms.jpg" src="../_images/2/2a/StarDist_usage_param_nms.jpg" width="400" height="135" /></a>
+</td>
+<td> Adjust the NMS (non-maximum suppression) postprocessing parameters: <ul> <li> <i>Probability/Score Threshold</i> - higher values lead to fewer segmented objects, but will likely avoid false positives. <li> <i>Overlap Threshold</i> - higher values allow segmented objects to overlap substantially.</ul>
+<p>If in doubt, load the default NMS parameters of the selected built-in model (see below).
+</p><p>The segmented objects can be returned as a <i>Label Image</i> or in the <i>ROI Manager</i> (or both).
+</p>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/File:StarDist_usage_param_advanced.jpg" class="image"><img alt="StarDist usage param advanced.jpg" src="../_images/0/09/StarDist_usage_param_advanced.jpg" width="400" height="274" /></a>
+</td>
+<td> Advanced options: <ul><li> Specify a user-trained model file or URL <li>  Increase the number of tiles (in case of GPU memory limitations/errors, i.e. for larger images) <li> Load default NMS parameters for the selected built-in model. <li> Restore all default parameters.</ul>
+</td></tr>
+</table>
+<p>Example of running the plugin, showing the returned label image and ROIs overlaid on the input image (check <code>Show All</code> in the ROI Manager):
+</p><p><a href="http://imagej.net/File:StarDist_usage_output.png" class="image"><img alt="StarDist usage output.png" src="../_images/4/49/StarDist_usage_output.png" width="470" height="240" /></a>
+</p>
+<h3><span class="mw-headline" id="Scripting.2FBatch-Processing">Scripting/Batch-Processing</span></h3>
+<p>Please have a look at the  <a rel="nofollow" class="external text" href="https://gist.github.com/maweigert/8dd6ef139e1cd37b2307b35fb50dee4a">Fiji/Jython script batch-processing example</a> that runs stardist on all  files of a folder. 
+</p>
+<h2><span class="mw-headline" id="Citation">Citation</span></h2>
+<p>Please cite the paper if you are using the plugin in your research:
+</p>
+<ul><li> Uwe Schmidt, Martin Weigert, Coleman Broaddus, and Gene Myers. <a rel="nofollow" class="external text" href="https://arxiv.org/abs/1806.03535">Cell Detection with Star-convex Polygons</a>. International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI), Granada, Spain, September 2018.</li></ul>
+<h2><span class="mw-headline" id="References">References</span></h2><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="StarDist.html#cite_ref-1">↑</a></span> <span class="reference-text">Carpenter et al., Genome Biology, 2006</span>
+</li>
+</ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073509
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.047 seconds
+Preprocessor visited node count: 136/1000000
+Preprocessor generated node count: 881/1000000
+Post‐expand include size: 954/2097152 bytes
+Template argument size: 392/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.542      1 - -total
+100.00%    5.542      1 - Template:Infobox
+ 31.32%    1.736      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=StarDist&amp;oldid=45664">http://imagej.net/index.php?title=StarDist&amp;oldid=45664</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 12 June 2020, at 04:11.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=StarDist&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/index.php?title=Category:Deep_Learning&amp;action=edit&amp;redlink=1" class="new" title="Category:Deep Learning (page does not exist)">Deep Learning</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=StarDist" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=StarDist" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/StarDist" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/StarDist" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=StarDist&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=StarDist&amp;oldid=45664" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=StarDist&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":247});});</script>
+		</body>
+		</html>
+		

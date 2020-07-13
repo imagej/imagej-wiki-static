@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>TensorFlow-GPU - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"TensorFlow-GPU","wgTitle":"TensorFlow-GPU","wgCurRevisionId":45821,"wgRevisionId":45821,"wgArticleId":12753,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"TensorFlow-GPU","wgRelevantArticleId":12753,"wgRequestId":"72e0ab2fc91b14a6d6ae4220","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The notes on this page are relevant for any tool shipping the imagej-tensorflow library (e.g. the update sites imagej-tensorflow and CSBDeep)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="TensorFlow-GPU"/>
+
+	<meta property="og:description" content="The notes on this page are relevant for any tool shipping the imagej-tensorflow library (e.g. the update sites imagej-tensorflow and CSBDeep)."/>
+
+	<meta property="og:url" content="http://imagej.net/TensorFlow-GPU"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-TensorFlow-GPU rootpage-TensorFlow-GPU skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="TensorFlow-GPU.html#bodyContent">Skip to content</a>, 			<a href="TensorFlow-GPU.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="TensorFlow-GPU.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/TensorFlow-GPU" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:TensorFlow-GPU&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=TensorFlow-GPU&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=TensorFlow-GPU&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>TensorFlow-GPU</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><b>The notes on this page are relevant for any tool shipping the <code>imagej-tensorflow</code> library (e.g. the update sites <code>imagej-tensorflow</code> and <code>CSBDeep</code>).</b>
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="TensorFlow-GPU.html#How_to_install_TensorFlow_GPU_native_libraries"><span class="tocnumber">1</span> <span class="toctext">How to install TensorFlow GPU native libraries</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="TensorFlow-GPU.html#Install_TensorFlow_with_GPU_support_for_Java"><span class="tocnumber">1.1</span> <span class="toctext">Install TensorFlow with GPU support for Java</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="TensorFlow-GPU.html#Install_the_CUDA.C2.AE_Toolkit_and_cuDNN"><span class="tocnumber">1.2</span> <span class="toctext">Install the CUDA® Toolkit and cuDNN</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="TensorFlow-GPU.html#Which_specific_CUDA_and_cuDNN_versions_to_install.3F"><span class="tocnumber">1.3</span> <span class="toctext">Which specific CUDA and cuDNN versions to install?</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="TensorFlow-GPU.html#How_to_check_if_GPU_support_works"><span class="tocnumber">2</span> <span class="toctext">How to check if GPU support works</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="TensorFlow-GPU.html#Hints_for_Windows"><span class="tocnumber">3</span> <span class="toctext">Hints for Windows</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="TensorFlow-GPU.html#Set_the_environment_variables"><span class="tocnumber">3.1</span> <span class="toctext">Set the environment variables</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="TensorFlow-GPU.html#Step-by-step_example"><span class="tocnumber">3.2</span> <span class="toctext">Step-by-step example</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="TensorFlow-GPU.html#Hints_for_Linux"><span class="tocnumber">4</span> <span class="toctext">Hints for Linux</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="TensorFlow-GPU.html#Set_the_library_path"><span class="tocnumber">4.1</span> <span class="toctext">Set the library path</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="TensorFlow-GPU.html#Multiple_GPUs"><span class="tocnumber">4.2</span> <span class="toctext">Multiple GPUs</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="TensorFlow-GPU.html#HELP"><span class="tocnumber">5</span> <span class="toctext">HELP</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="How_to_install_TensorFlow_GPU_native_libraries">How to install TensorFlow GPU native libraries</span></h2>
+<p>GPU support is available for Linux and Windows machines with NVIDIA graphics cards. Please be warned that the TensorFlow Java native bindings are considered experimental and while some hardware / OS setups easily gained GPU support with the tools described on this page, on other machines we were not successful.
+</p>
+<h3><span class="mw-headline" id="Install_TensorFlow_with_GPU_support_for_Java">Install TensorFlow with GPU support for Java</span></h3>
+<ol><li> Open <code>Edit &gt; Options &gt; TensorFlow...</code></li>
+<li> Choose the TensorFlow version matching your system</li>
+<li> Wait until the library is downloaded and installed (a popup will tell you when it’s done)</li>
+<li> Restart Fiji</li></ol>
+<div class="MediaTransformError" style="width: 500px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>You can for example switch from CPU to GPU by finding the option which is already selected (in the screenshot, <code>TF 1.15.0 CPU</code>) and choose the same TensorFlow version but with GPU support (e.g. <code>TF 1.15.0 GPU</code>).
+</p>
+<h3><span class="mw-headline" id="Install_the_CUDA.C2.AE_Toolkit_and_cuDNN">Install the CUDA® Toolkit and cuDNN</span></h3>
+<p>Install these NVIDIA requirements to run TensorFlow with GPU support as described in the <a rel="nofollow" class="external text" href="https://www.tensorflow.org/install/gpu">TensorFlow Documentation</a>.
+</p>
+<h3><span class="mw-headline" id="Which_specific_CUDA_and_cuDNN_versions_to_install.3F">Which specific CUDA and cuDNN versions to install?</span></h3>
+<p>The CUDA and CuDNN versions displayed in the ImageJ TensorFlow installer (pictured above) are there to help you setup the right environment.
+</p><p>Example: The <code>CSBDeep</code> update site comes with <code>TensorFlow 1.15.0</code>, which requires <code>CUDA 10.1</code> and <code>cuDNN &gt;= 7.5.1</code>.
+</p><p>You can also use the filters on the top of the display to filter for a specific TensorFlow or CUDA version or to only list libraries with GPU support.
+</p><p>If you trained your model on a different TensorFlow version, running the model with with the default installation might fail. In this case, choose a specific TensorFlow version via <code>Edit &gt; Options &gt; TensorFlow...</code> and install CUDA and cuDNN compatible to the TensorFlow version.
+</p>
+<h2><span class="mw-headline" id="How_to_check_if_GPU_support_works">How to check if GPU support works</span></h2>
+<ul><li> Go to <code>Edit &gt; Options &gt; TensorFlow...</code> and make sure a GPU version is selected an no error is displayed</li>
+<li> When running a command using <code>imagej-tensorflow</code>, you can open the console via <code>Window &gt; Console</code>. There might be a line similar to this (in this example, no GPU version manually installed and therefore the default CPU TensorFlow version is used): </li></ul>
+<code><pre>
+[INFO] No TF library found in /media/data/Programs/Fiji.app/lib/.
+[INFO] Using default TensorFlow version from JAR: TF 1.15.0 CPU
+</pre></code>
+<ul><li> Sometimes that's still not sufficient and even though the right library is chosen and the console confirms that, the GPU is not used. Please read the notes for the specific operating systems below.</li></ul>
+<h2><span class="mw-headline" id="Hints_for_Windows">Hints for Windows</span></h2>
+<h3><span class="mw-headline" id="Set_the_environment_variables">Set the environment variables</span></h3>
+<p>To set the CUDA environment variables in Windows, please follow the steps described on <a rel="nofollow" class="external text" href="https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#install-windows">this page</a> (section 4.3.4).
+</p>
+<h3><span class="mw-headline" id="Step-by-step_example">Step-by-step example</span></h3>
+<p>Here is a step-by-step example of a successful GPU support installation (keep in mind that the person who tested this has little Windows experience and would benefit a lot from hints if this guide should be improved somehow):
+</p>
+<ul><li> in Fiji, opened <code>Edit &gt; Options &gt; TensorFlow...</code> and switched to TF 1.15.0 GPU</li>
+<li> Installed <code>CUDA 10.1</code> from <a rel="nofollow" class="external text" href="https://developer.nvidia.com/cuda-10.1-download-archive-base?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exenetwork">here</a></li>
+<li> Downloaded <code>cuDNN 7.6.5 for CUDA 10.1</code> from <a rel="nofollow" class="external text" href="https://developer.nvidia.com/rdp/form/cudnn-download-survey">here</a> (you need to register / login)</li>
+<li> copied cuDNN files from the ZIP into CUDA as described <a rel="nofollow" class="external text" href="https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#installwindows">here</a></li>
+<li> add <code>/PATH/TO/Fiji.app/lib/win64/tensorflow_jni.dll</code> to your <code>PATH</code> (here’s a guide <a rel="nofollow" class="external text" href="https://www.techjunkie.com/environment-variables-windows-10/">how to set system variables</a>)</li></ul>
+<h2><span class="mw-headline" id="Hints_for_Linux">Hints for Linux</span></h2>
+<h3><span class="mw-headline" id="Set_the_library_path">Set the library path</span></h3>
+<p><code>CUDA</code> and <code>cuDNN</code> need to be added to your system variables in order for Fiji to be able to use them. You can do that by adding lines similar to this to your <code>.bashrc</code> or <code>.zshrc</code> file:
+</p>
+<pre>export PATH=/usr/local/cuda/bin${PATH}
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}</pre>
+<p>.. and then launch Fiji from command line. Another possibility is to edit the Fiji launcher to something like this:
+</p>
+<pre>export PATH=/usr/local/cuda/bin${PATH};export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH};/PATH_TO_APPS/Fiji.app/ImageJ-linux64</pre>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Multiple_GPUs">Multiple GPUs</span></h3>
+<p>If you have multiple CUDA enabled GPUs you may want to set the environment variable <code>CUDA_VISIBLE_DEVICES</code> to specify the GPU which should be used.
+</p><p>As CUDA will try to enumerate the GPUs by speed
+</p>
+<pre>$ export CUDA_VISIBLE_DEVICES=0</pre>
+<p>should give you only the fastest GPU. Execute this line before you start Fiji or put it into your <code>~/.bashrc</code> or set the environment variable somewhere else like in <code>~/.pam_environment</code>. See the documentation of your distribution for options on how to set environment variables.
+</p><p><b>Optional:</b>
+</p><p>If this is not sufficient for your setup. You can find out the ID (in PCI bus order) of your GPU with:
+</p>
+<pre>$ nvidia-smi
+Thu Sep 14 17:39:33 2017       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 375.66                 Driver Version: 375.66                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  NVS 310             Off  | 0000:A1:00.0     N/A |                  N/A |
+| 30%   56C    P0    N/A /  N/A |    294MiB /   961MiB |     N/A      Default |
++-------------------------------+----------------------+----------------------+
+|   1  TITAN Xp            Off  | 0000:03:00.0     Off |                  N/A |
+| 23%   28C    P8     9W / 250W |      1MiB / 12189MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+</pre>
+<p>and also set the environment variable <code>CUDA_​DEVICE_​ORDER</code>:
+</p>
+<pre>$ export CUDA_​DEVICE_​ORDER=&quot;PCI_BUS_ID&quot;
+$ export CUDA_VISIBLE_DEVICES=1</pre>
+<p>See the <a rel="nofollow" class="external text" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#env-vars">CUDA Programming Guide</a> for more information.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="HELP">HELP</span></h2>
+<p>Is something not working? Please post your question <a rel="nofollow" class="external text" href="https://forum.image.sc">in the forum</a>!
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073951
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.024 seconds
+Real time usage: 0.025 seconds
+Preprocessor visited node count: 101/1000000
+Preprocessor generated node count: 172/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=TensorFlow-GPU&amp;oldid=45821">http://imagej.net/index.php?title=TensorFlow-GPU&amp;oldid=45821</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 25 June 2020, at 06:31.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=TensorFlow-GPU&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=TensorFlow-GPU" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=TensorFlow-GPU" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/TensorFlow-GPU" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/TensorFlow-GPU" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=TensorFlow-GPU&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=TensorFlow-GPU&amp;oldid=45821" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=TensorFlow-GPU&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":186});});</script>
+		</body>
+		</html>
+		

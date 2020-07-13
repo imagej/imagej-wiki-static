@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>LSM Worker - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"LSM_Worker","wgTitle":"LSM Worker","wgCurRevisionId":41275,"wgRevisionId":41275,"wgArticleId":10514,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"LSM_Worker","wgRelevantArticleId":10514,"wgRequestId":"dffe70770dd42bea95a40f3c","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="LSM-W2 manual"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="LSM Worker"/>
+
+	<meta property="og:description" content="LSM-W2 manual"/>
+
+	<meta property="og:url" content="http://imagej.net/LSM_Worker"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-LSM_Worker rootpage-LSM_Worker skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="LSM_Worker.html#bodyContent">Skip to content</a>, 			<a href="LSM_Worker.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="LSM_Worker.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/LSM_Worker" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:LSM_Worker&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=LSM_Worker&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=LSM_Worker&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>LSM Worker</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><b>LSM-W2 manual</b>
+<br />
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="http://imagej.net/File:Untitled-7_small.png" class="image"><img alt="Untitled-7 small.png" src="../_images/3/30/Untitled-7_small.png" width="200" height="86" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Untitled-7_small.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<p class="western" style="margin-bottom: 0cm"><font size="4"><span lang="en-US"><i><b>LSM-W2
+</b></i></span></font><font size="4"><span lang="en-US"><i>extracts
+Leaf Surface Morphology from Laser Scanning Microscopy images</i></span></font></p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US"><b>Installation:</b></span></font><font size="3"><span lang="en-US">
+You can <a rel="nofollow" class="external text" href="https://imagej.net/Following_an_update_site">follow an update site</a> 	with URL <a rel="nofollow" class="external free" href="http://sites.imagej.net/Bionet.nsc/">http://sites.imagej.net/Bionet.nsc/</a> (LSM-W2 in the <a rel="nofollow" class="external text" href="https://imagej.net/List_of_update_sites#Available_update_sites">Optional Update Sites</a>).</span></font></p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US"><b>Description:</b></span></font><font size="3"><span lang="en-US">
+The plugin can work with multi-channel multi-frame 3D images in *.lsm
+format obtained from a laser scanning microscope. </span></font><font size="3">The
+main functionality of the plugin includes:</font></p>
+<ul>
+	<li><p lang="en-US" class="western" style="margin-bottom: 0cm"><font size="3">Assembly
+	and visualization of images.</font></p>
+	<li><p class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3"><span lang="en-US">Improve image quality (elimination
+	of shear and overlap, application of the anisotropic diffusion
+	algorithm).</span></font></p>
+	<li><p lang="en-US" class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3">Linear operations with intensity values from different
+	channels.</font></p>
+	<li><p class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3"><span lang="en-US">Detection a 2D leaf surface.</span></font></p>
+	<li><p lang="en-US" class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3">Application of the segmentation algorithm for cellular
+	and nuclear layers.</font></p>
+	<li><p class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3"><span lang="en-US">Manual correction of segmented
+	regions.</span></font></p>
+	<li><p class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3"><span lang="en-US">M</span></font><font size="3">a</font><font size="3"><span lang="en-US">r</span></font><font size="3">king</font><font size="3"><span lang="en-US">
+	of</span></font><font size="3"> </font><font size="3"><span lang="en-US">c</span></font><font size="3">ell</font><font size="3"><span lang="en-US">
+	</span></font><font size="3">groups.</font></p>
+	<li><p class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3"><span lang="en-US">Calculation of volumes for cells and
+	nuclei.</span></font></p>
+	<li><p class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3"><span lang="en-US">Comparison of cells and nuclei by
+	mutual arrangement.</span></font></p>
+	<li><p lang="en-US" class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3">Download images in tiff format for single-channel
+	processing (multiple images for each channel can be downloaded).</font></p>
+	<li><p lang="en-US" class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3">Saving results in the form of tables and intermediate
+	images, obtained at any stage of processing.</font></p>
+</ul><br />
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:English_manual_uz_html_m7831868e.png" class="image"><img alt="English manual uz html m7831868e.png" src="../_images/3/32/English_manual_uz_html_m7831868e.png" width="1000" height="573" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_m7831868e.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p><br />
+</p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><font size="4"><b>Getting
+started</b></font></p>
+<p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">After
+starting the plugin, select a 3D image lsm-file. The plugin works
+only with lsm-files.</span></font></p>
+<p lang="en-US" class="western" align="JUSTIFY" style="margin-bottom: 0cm">
+<font size="3">As
+soon as the information from the file is read, a window will be
+displayed showing the necessary information to form a complete
+multi-frame multi-channel 3D image (uploading window is showed in
+fig.1). To continue working with the plugin, one must specify:</font></p>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="http://imagej.net/File:English_manual_uz_html_m75ce2a0c.png" class="image"><img alt="" src="../_images/a/ac/English_manual_uz_html_m75ce2a0c.png" width="200" height="221" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_m75ce2a0c.png" class="internal" title="Enlarge"></a></div>Fig 1. Image upload options</div></div></div>
+<ul>
+	<li><p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+	number of fragments on X axis and Y axis.</span></font></p>
+</ul>
+<ul>
+	<li><p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+	overlap percentage. The part of the total area at the junction of
+	the fragments is indicated as a percentage.  </span></font>
+	</p>
+</ul>
+<ul>
+	<li><p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">If necessary, you can reduce
+	the amount of memory consumed by compressing the image (reducing the
+	size and depth of color). </span></font><font size="3"><span lang="en-US"><b>Choosing
+	this option will result in data loss and possible deterioration of
+	the information received, but for stable operation of the plug-in,
+	the memory consumption during the download phase should not exceed
+	50% of the available RAM.</b></span></font>
+	</p>
+</ul>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">After
+you specify all the necessary information, click “OK” and
+wait for the image formation.</span></font></p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><font size="4"><b>The
+main window of LSM-W2</b></font></p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+window header displays basic information about the image, including
+the current slice number and the total number of slices, the size of
+one slice in pixels and in microns, the color depth, and the image
+size. In the central part of the main window, there is a
+layer-by-layer display of the image formed from the frames for the
+selected channel (the default is channel 1). At the bottom part of
+the main window, there are buttons and fields for working with the
+image.</span></font></p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">Functions
+of the buttons:</span></font></p>
+<ul>
+	<li><p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+	</span></font><font size="3"><span lang="en-US"><b>“Get original
+	image”</b></span></font><font size="3"><span lang="en-US">
+	button cancels all changes and returns the original image.</span></font></p>
+</ul>
+<ul>
+	<li><p class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3"><span lang="en-US">The </span></font><font size="3"><span lang="en-US"><b>“Apply
+	offset”</b></span></font><font size="3"><span lang="en-US">
+	button is responsible for shifting frames on the specified number of
+	pixels. Reusing this option shifts frames relative to their original
+	positions (not the current one).</span></font></p>
+	<li><p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+	</span></font><font size="3"><span lang="en-US"><b>“Cut Image”</b></span></font><font size="3"><span lang="en-US">
+	button cuts the selected area for all channels from the source
+	image. Before applying this function, you must select a rectangular
+	fragment in the image using the standard ImageJ tool.</span></font></p>
+	<li><p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+	</span></font><font size="3"><span lang="en-US"><b>“Diffusion”</b></span></font><font size="3"><span lang="en-US">
+	button allows one to apply an anisotropic diffusion filter layer by
+	layer for all slices of the selected channel. This button calls the
+	plugin <a rel="nofollow" class="external text" href="https://imagej.nih.gov/ij/plugins/anisotropic-diffusion-2d.html">Anisotropic diffusion 2D</a>.</span></font></p>
+	<li><p class="western" style="margin-bottom: 0cm; border: none; padding: 0cm">
+	<font size="3"><span lang="en-US">The </span></font><font size="3"><span lang="en-US"><b>“MorfSegmentation”</b></span></font><font size="3"><span lang="en-US">
+	button starts the plugin “Morphological Segmentation”
+	(for more information, see section “The module of
+	morphological segmentation by means of watersheds”).</span></font></p>
+</ul>
+<ul>
+	<li><p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+	</span></font><font size="3"><span lang="en-US"><b>“Cells/Nucleus
+	Info”</b></span></font><font size="3"><span lang="en-US"> button
+	maps the segmented images of the cell walls and nuclei and displays
+	the result in the table (for more details see section “Comparison
+	of cells and nuclei images” section).</span></font></p>
+</ul>
+<ul>
+	<li><p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+	</span></font><font size="3"><span lang="en-US"><b>“Pix Graph”</b></span></font><font size="3"><span lang="en-US">
+	button allows one to plot the intensity change depending on the
+	layer number (“depth” of the image). After clicking the
+	button, one must point the pixel on the image by the mouse. This
+	information may be used to visualize the influence of the parameter
+	of the maximum “Threshold”, which is used for
+	construction of 2D projection for the surface layer (see details
+	below). This option helps to select this parameter and to study the
+	specificity of the image.</span></font></p>
+</ul>
+<p lang="en-US" class="western" style="margin-left: 0.75cm; margin-bottom: 0cm">
+<br />
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:751px;"><div class="MediaTransformError" style="width: 749px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_m7937f04c.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p lang="en-US" class="western" align="CENTER" style="margin-left: 0.75cm; margin-bottom: 0cm">
+<font size="3">Fig.2 Main window of the LSM-W2 plugin</font></p>
+<p lang="en-US" class="western" align="JUSTIFY" style="margin-bottom: 0cm">
+<br />
+</p>
+<p lang="en-US" class="western" align="JUSTIFY" style="margin-left: 1.27cm; margin-bottom: 0cm">
+<font size="3"><b>Description of the main window (Fig. 2)</b></font></p>
+<p class="western" align="JUSTIFY" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>A. </b></span></font><font size="3"><span lang="en-US">Area
+for switching between image channels. The standard situation is the
+presence in the image of two channels: the channel for the image of
+the cells (channel 1) and the channel for the image of the cell
+nuclei (channel 2). The additional channel 3 is generated
+artificially by calculating the linear combination between pixels of
+the first and second channels. </span></font><font size="3"><span lang="en-US"><b>Many
+functions, such as segmentation, depend on the selected image
+channel.</b></span></font></p>
+<p class="western" align="JUSTIFY" style="text-indent: 0.5cm; margin-bottom: 0cm">
+<font size="3"><span lang="en-US"><b>B. </b></span></font><font size="3"><span lang="en-US">Area
+for specifying the parameters for constructing a 2D projection of the
+upper cell-level walls. The “Get 2D Image” button builds
+this projection depending on the specified parameters:</span></font></p>
+<ul>
+	<li><p align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+	</span></font><font size="3"><span lang="en-US"><b>Diving value</b></span></font><font size="3"><span lang="en-US">
+	indicates how much pixels should be descended from the surface
+	layer.</span></font></p>
+	<li><p align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US"><b>Lattice
+	size</b></span></font><font size="3"><span lang="en-US"> specifies the
+	number of pixels between adjacent nodes for the algorithm of
+	construction and calculation of the surface layer.</span></font></p>
+	<li><p align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+	maximum “threshold” (</span></font><font size="3"><span lang="en-US"><b>Threshold</b></span></font><font size="3"><span lang="en-US">)
+	determines the optimal maximum of intensity. The maximum point is
+	called optimal if it is a local maximum and if moving toward it to
+	the left (the intensity increases), the intensity change at a single
+	step (dx = 1) is greater than the set parameter “threshold”.</span></font></p>
+</ul>
+<p class="western" align="JUSTIFY" style="text-indent: 0.5cm; margin-bottom: 0cm">
+<font size="3"><b>С</b></font><font size="3"><span lang="en-US"><b>.</b></span></font><font size="3"><span lang="en-US">
+A block of buttons for loading a new image and saving the current
+image. Loading an image replaces the current image for the selected
+channel with a new one, for the first and second channel. After
+downloading, a number of options are disabled. Reloading an image
+places this image on the selected channel. Thus, it is possible to
+upload an image consecutively for each channel. All original meta
+information is stored for the new image. This approach allows one to
+download images that belong to the source, in different formats. The
+correspondence of the images is not checked and lies on the
+conscience of the expert interacting with the plugin. The ability to
+save an intermediate stage of work, and then reopen the file and
+continue processing, is an additional functionality.</span></font></p>
+<p class="western" align="JUSTIFY" style="text-indent: 0.5cm; margin-bottom: 0cm">
+<font size="3"><span lang="en-US"><b>D.</b></span></font><font size="3"><span lang="en-US">
+The </span></font><font size="3"><span lang="en-US"><b>“Open
+segmentation”</b></span></font><font size="3"><span lang="en-US">
+button opens segmented image.</span></font></p>
+<p lang="en-US" class="western" align="JUSTIFY" style="text-indent: 0.5cm; margin-bottom: 0cm">
+<br />
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="4"><span lang="en-US"><b>The
+window for working with leaf surface </b></span></font>
+</p>
+<p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">The
+surface of any cell layer can be selected by constructing the
+projection of the cellular structure onto the leaf surface from the
+original 3D-confocal image. In the process of constructing the leaf
+surface of the cell layer, it is usually considered that the maximum
+of intensity is concentrated on the upper layer.  Figure 3 shows the
+surface layer of the sample in the ZoX plane. It shows that the cell
+walls of the upper cell layer are well colored, unlike the lower
+walls.</span></font></p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:English_manual_uz_html_m6c7637a1.png" class="image"><img alt="English manual uz html m6c7637a1.png" src="../_images/c/c8/English_manual_uz_html_m6c7637a1.png" width="1000" height="62" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_m6c7637a1.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p class="western" align="CENTER" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">Fig.3
+ZoX-projection of cell walls structure</span></font></p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<p lang="en-US" class="western" align="JUSTIFY" style="margin-bottom: 0cm">
+<font size="3">The first step is to determine the plane of the most
+colored cell layer of the leaf surface.</font></p>
+<p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">Firstly,
+to isolate the upper surface, it is necessary to determine the range
+of layers on which the plane of intensely stained cell walls is
+located.  The </span></font><font size="3"><span lang="en-US"><b>“Pix
+Graph”</b></span></font><font size="3"><span lang="en-US"> button
+is used to plot the intensity change depending on the layer number.
+With this option, it is possible to study the dependence of the
+intensity on the number of the slice in 3D images (see fig. 3).</span></font></p>
+<p lang="en-US" class="western" align="JUSTIFY" style="margin-bottom: 0cm">
+<br />
+</p>
+<p lang="" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:802px;"><a href="http://imagej.net/File:English_manual_uz_html_2bfeaac3.png" class="image"><img alt="English manual uz html 2bfeaac3.png" src="../_images/4/4a/English_manual_uz_html_2bfeaac3.png" width="800" height="450" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_2bfeaac3.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p class="western" align="CENTER" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">Fig.
+4  Samples of plots for intensity distribution over the 3D image
+slices</span></font></p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">Points
+of local maxima corresponding to the pixels with the greatest
+intensity build the upper surface of the leaf.</span></font></p>
+<p class="western" align="JUSTIFY" style="margin-bottom: 0cm"> <font size="3"><span lang="en-US">The
+following parameters are used to build a leaf surface.</span></font></p>
+<p class="western" align="JUSTIFY" style="margin-right: 0.28cm; margin-top: 0.21cm; margin-bottom: 0cm">
+<font size="3"><span lang="en-US"><i>Threshold</i></span></font><font size="3"><span lang="en-US">
+is the parameter responsible for specifying the local maximum of the
+intensity.  The point of the upper surface of the leaf is the optimal
+local maximum, in the right half-neighborhood of which the rate of
+falling of the graph of the signal intensity exceeds the value of the
+specified parameter. </span></font>
+</p>
+<p class="western" align="JUSTIFY" style="margin-right: 0.28cm; margin-top: 0.21cm; margin-bottom: 0cm">
+<font size="3"><span lang="en-US"><i>Diving value</i></span></font><font size="3"><span lang="en-US">
+is the parameter responsible for the distance between the plane of
+the leaf surface and the plane of the cut. This parameter is selected
+individually depending on the intensity of staining of the sample and
+the height of the cells of the upper layer, as well as the underlying
+layers.</span></font></p>
+<p class="western" align="JUSTIFY" style="margin-right: 0.28cm; margin-top: 0.18cm; margin-bottom: 0cm">
+<font size="3"><span lang="en-US"><i>Lattice size</i></span></font><font size="3"><span lang="en-US">
+is a parameter that determines the density of the grid, allows one to
+optimize the process of constructing the leaf curve surface with
+minimal construction errors. The increase in the parameter value is
+directly proportional to the absolute distance between the axes and
+leads to a decrease in their number, speeding up the process of
+constructing the leaf surface. Zero value of this parameter is
+equivalent to building an axis in each pixel. After constructing a
+discrete surface of the leaf, an automatic approximation of the
+values ​is performed to smooth the resulting surface.</span></font></p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">To
+work with the selected surface cell layer, an additional window was 
+developed (fig. 5). This window visualize the result in the form of a
+2D plane image and a corresponding “surface mask”. The
+“surface mask” is a 2D image, where the value of each
+pixel is equal to the number of slice from the original image.
+Applying a “surface mask” to the original 3D image allows
+one to obtain a 2D image of the upper cell layer structure.</span></font></p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">To
+switch between the “surface mask” tab and the “2D
+cell structure” tab, one should change the flag “Image
+Mask”.</span></font></p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:English_manual_uz_html_m75ddb95f.png" class="image"><img alt="English manual uz html m75ddb95f.png" src="../_images/d/d7/English_manual_uz_html_m75ddb95f.png" width="1000" height="213" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_m75ddb95f.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p lang="en-US" class="western" align="CENTER" style="margin-bottom: 0cm">
+<font size="3">Fig. 5 Screenshot of the window for working with
+superficial cell layer</font></p>
+<p lang="en-US" class="western" align="CENTER" style="margin-bottom: 0cm">
+<br />
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">Changes
+in pixels values of the “surface mask” entail changes in
+the process of the leaf surface constructing. Smoothing of the
+“surface mask” leads to an improvement of the quality for
+the resulting image of cell structure. As a rule the standard
+processing functions integrated into ImageJ (the median filter, gray
+morphology function) are useful.</span></font></p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">After
+the improvement 2D segmentation could be evaluated by pressing the
+“MorfSegmentation” button.</span></font></p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="4"><span lang="en-US"><b>The
+segmentation module by the marked watershed segmentation algorithm</b></span></font></p>
+<p align="JUSTIFY" style="margin-bottom: 0cm; background: #ffffff; line-height: 115%">
+<a rel="nofollow" class="external text" href="https://imagej.net/Morphological_Segmentation">Morphological Segmentation</a>
+integrated into LSM-W2 implements the segmentation of the image.
+The plugin Morphological Segmentation combines morphological
+operations, such as extended minima and morphological gradient, with
+watershed flooding algorithms to segment grayscale images.
+The main plugin’s window is shown in Figure 6.</p>
+<p class="western" align="JUSTIFY" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">This
+plugin can </span></font><font size="3"><span lang="en-US"><span style="background: #ffffff">process
+images with cell walls</span></span></font><font size="3"><span lang="en-US"><b><span style="background: #ffffff">
+</span></b></span></font><font size="3"><span lang="en-US">(Border
+Image) and images with cell nuclei (Object Image). During the work
+with the plugin Morphological_Segmentation one should specify the
+parameter Tolerance, which indicates the intensity of </span></font><font size="3"><span lang="en-US"><span style="background: #ffffff">local
+minimum</span></span></font><font size="3"><span lang="en-US">. This
+parameter requires an individual manual calibration depending on the
+image.</span></font></p>
+<p lang="en-US" class="western" align="JUSTIFY" style="margin-bottom: 0cm">
+<br />
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:English_manual_uz_html_m3fb0e365.png" class="image"><img alt="English manual uz html m3fb0e365.png" src="../_images/0/00/English_manual_uz_html_m3fb0e365.png" width="1000" height="563" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_m3fb0e365.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p lang="en-US" class="western" align="CENTER" style="margin-bottom: 0cm">
+<font size="3">Fig. 6 Screenshot of the window for the plugin
+Morphological_Segmentation</font></p>
+<p lang="en-US" class="western" align="CENTER" style="margin-bottom: 0cm">
+<br />
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">After
+pressing the button “Run” one should waiting for the
+segmentation processing. If it is necessary, you also could change
+the Tolerance value and repeat segmentation. Then import the result image carrying out the following steps:</span></font></p>
+<ol>
+
+				<li><p style="margin-bottom: 0cm; background: #ffffff; line-height: 115%">
+				<font face="Courier New, monospace"><font size="2"><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">Choose</span></font></font><font face="Calibri, sans-serif"><span lang="en-US">
+				</span></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US"><span style="background: #ffffff">result image display type</span></span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">
+				as</span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">
+				“Catchment basins” </span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">(</span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">Results</span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">
+				-&gt; Display). </span></font></font></font></font>
+				</p>
+				<li><p style="margin-bottom: 0cm; background: #ffffff; line-height: 115%">
+				<font face="Courier New, monospace"><font size="2"><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">Create
+				the window with segmented image (press </span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">“Create
+				Image”) </span></font></font></font></font>
+				</p>
+				<li><p style="margin-bottom: 0cm; background: #ffffff; line-height: 115%">
+				<font face="Courier New, monospace"><font size="2"><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">Close
+				the main window of Morphological_Segmentation plugin and return
+				back to the window of LSM-W2 plugin.</span></font></font></font></font></p>
+				<li><p style="margin-bottom: 0cm; background: #ffffff; line-height: 115%">
+				<font face="Courier New, monospace"><font size="2"><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">The
+				button “MorfSegmentation” will change to the button
+				“</span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US"><b>Get
+				result</b></span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">”.
+				The button “</span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US"><b>Get
+				result</b></span></font></font><font face="Calibri, sans-serif"><font size="3"><span lang="en-US">”
+				opens the window with segmented image. </span></font></font></font></font>
+				</p>
+</ol>
+<p lang="en-US" style="margin-bottom: 0cm; background: #ffffff; line-height: 115%">
+<br />
+</p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><font size="4"><b>The
+window for working with segmented image</b></font></p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">A
+colorized 3D/2D image is a result of segmentation through the plugin
+Morphological_Segmentation, integrated with LSM-W2. An additional
+window is used to edit segmented regions.</span></font></p>
+<p><br />
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:English_manual_uz_html_m1bab5a50.jpg" class="image"><img alt="English manual uz html m1bab5a50.jpg" src="../_images/d/dc/English_manual_uz_html_m1bab5a50.jpg" width="1000" height="562" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_m1bab5a50.jpg" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p lang="en-US" class="western" align="CENTER" style="margin-bottom: 0cm">
+<font size="3">Fig. 7 Screenshot of the window for working with
+segmented image</font></p>
+<p lang="en-US" class="western" align="CENTER" style="margin-bottom: 0cm">
+<br />
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US">Description
+of the window for working with segmented image: </span></font>
+</p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>A.</b></span></font><font size="3"><span lang="en-US">
+Fix the minimal amount of pixels for a segmented area. After choosing the parameter
+<b>“Pixels in bad region”</b> all elements with less amount of pixels will be removed from
+further consideration.</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>B.</b></span></font><font size="3"><span lang="en-US">
+The <b>“Delete Boundary Cells”</b> button will delete objects on the border of image.</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>C.</b></span></font><font size="3"><span lang="en-US">
+The <b>“Show original image”</b> button will return the original image.</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>D.</b></span></font><font size="3"><span lang="en-US">
+The <b>“Select cells”</b> button allows choosing segmented areas. Indices of selected areas are
+displayed at the bottom of the window.</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>E.</b></span></font><font size="3"><span lang="en-US">
+Delete selected segmented areas.</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>F.</b></span></font><font size="3"><span lang="en-US">
+The </span></font><font size="3"><span lang="en-US"><b>“Combine”</b></span></font><font size="3"><span lang="en-US">
+button unite segmented areas after selection (button “Select
+cells” will change to button “Combine”).  </span></font>
+</p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>G.</b></span></font><font size="3"><span lang="en-US">
+The </span></font><font size="3"><span lang="en-US"><b>“Group”</b></span></font><font size="3"><span lang="en-US">
+button group segmented areas after selection. Group indexes will be
+indicated in the results table</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>H.</b></span></font><font size="3"><span lang="en-US">
+</span></font><font size="3"><span lang="en-US"><b>“Contact
+nucleus”</b></span></font><font size="3"><span lang="en-US">
+corrects over segmented nuclei by association of bordering objects of
+nuclei segmentation.</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>I.</b></span></font><font size="3"><span lang="en-US">
+The </span></font><font size="3"><span lang="en-US"><b>“Count
+pixels”</b></span></font><font size="3"><span lang="en-US">
+button displays the resulted measurements in csv-file. Navigation
+between tables and segmented areas is realized by selection an
+element in the table. The color of corresponding segmented area will
+changes. The index of the area in the resulting table is displayed at
+the bottom of the window when you click on it.</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>J. </b></span></font><font size="3"><span lang="en-US">The
+</span></font><font size="3"><span lang="en-US"><b>“Save”</b></span></font><font size="3"><span lang="en-US">
+button saves results image in tif-file.</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>K.</b></span></font><font size="3"><span lang="en-US">
+The </span></font><font size="3"><span lang="en-US"><b>“Cancel”</b></span></font><font size="3"><span lang="en-US">
+button cancels changes and returns to the original image.</span></font></p>
+<p class="western" style="text-indent: 0.5cm; margin-bottom: 0cm; border: none; padding: 0cm">
+<font size="3"><span lang="en-US"><b>L.</b></span></font><font size="3"><span lang="en-US">
+The flag </span></font><font size="3"><span lang="en-US"><b>“Nucleus
+image”</b></span></font><font size="3"><span lang="en-US">
+indicates the image with nuclei. </span></font>
+</p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><font size="4"><b>Comparison
+of cells and nuclei images </b></font>
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US"><b>The algorithm: </b></span></font></p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><b>A. </b><span lang="en-US">Run LSM-W2 and open original 3D image. </span></font>
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><b>B. </b><span lang="en-US">Select a set of points distant from the leaf surface by a distance d. </span></font>
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><b>C. </b><span lang="en-US">Make a segmentation of resulting 2D image (Border Image) and count objects’ volumes.
+C1 is a resulting table. </span></font>
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:602px;"><a href="http://imagej.net/File:English_manual_uz_html_m66ff0f30.png" class="image"><img alt="English manual uz html m66ff0f30.png" src="../_images/4/48/English_manual_uz_html_m66ff0f30.png" width="600" height="338" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_m66ff0f30.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><b>D. </b><span lang="en-US">Make a “nuclei segmentation” of original 3D image (Object Image) and count volumes of
+segmented areas (C1 is a resulting table}. </span></font>
+</p>
+<p lang="en-US" class="western" style="text-indent: 0.5cm; margin-bottom: 0cm">
+<br />
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><b>I. </b><span lang="en-US">Mark the image with nuclei by the <b>“Nucleus image”</b> flag in the checkbox. </span></font>
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:602px;"><a href="http://imagej.net/File:English_manual_uz_html_ae32c15.png" class="image"><img alt="English manual uz html ae32c15.png" src="../_images/4/47/English_manual_uz_html_ae32c15.png" width="600" height="338" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_ae32c15.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><b>E. </b><span lang="en-US">Calculate the correspondence between cells and nuclei by pressing the button <b>“Cell-nucleus”</b>. <u>It is necessary to keep all resulting tables and segmentation windows opened for
+correct work.</u> </span></font>
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:English_manual_uz_html_m70237ad3.png" class="image"><img alt="English manual uz html m70237ad3.png" src="../_images/4/4e/English_manual_uz_html_m70237ad3.png" width="1000" height="563" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_m70237ad3.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p lang="en-US" class="western" style="margin-bottom: 0cm"><br />
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><span lang="en-US"><b>G. </b></span></font><font size="3"><span lang="en-US">
+Table columns: </span></font>
+</p>
+<p lang="en-US" class="western" style="margin-left: 1.27cm; margin-bottom: 0cm">
+<font size="3">1. cell number;</font></p>
+<p class="western" style="margin-left: 1.27cm; margin-bottom: 0cm"><font size="3"><span lang="en-US">2.
+cell volume;</span></font></p>
+<p lang="en-US" class="western" style="margin-left: 1.27cm; margin-bottom: 0cm">
+<font size="3">3. nucleus number;</font></p>
+<p class="western" style="margin-left: 1.27cm; margin-bottom: 0cm"><font size="3"><span lang="en-US">4.
+nucleus volume;</span></font></p>
+<p class="western" style="text-indent: 1.25cm; margin-bottom: 0cm"><font size="3"><span lang="en-US">5.
+fraction of pixels laying into the cell area. When there are mistakes
+in segmentation, the value P is less then one.</span></font></p>
+<p class="western" style="margin-bottom: 0cm"><div class="MediaTransformError" style="width: 48px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><font size="3"><span lang="en-US">, where k is quantitate of cell’s
+pixels; n is quantitate of pixels into the inner cell area. In the
+case of incomplete overlapping of the nucleus region by the inner
+space of the cell </span></font><font size="3"><span lang="en-US"><i>p</i></span></font><font size="3"><span lang="en-US">
+becomes less than one. </span></font>
+</p>
+</p>
+<p class="western" style="margin-bottom: 0cm"><font size="3"><b>H. </b><span lang="en-US">Resulting image </span></font>
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:802px;"><a href="http://imagej.net/File:English_manual_uz_html_e86db9c.png" class="image"><img alt="English manual uz html e86db9c.png" src="../_images/b/b2/English_manual_uz_html_e86db9c.png" width="800" height="450" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:English_manual_uz_html_e86db9c.png" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<p><br /><br />
+Test lsm image is available <a rel="nofollow" class="external text" href="http://pixie.bionet.nsc.ru/LSM_WORKER/example.lsm">here</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072827
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.060 seconds
+Real time usage: 0.066 seconds
+Preprocessor visited node count: 496/1000000
+Preprocessor generated node count: 994/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 1/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=LSM_Worker&amp;oldid=41275">http://imagej.net/index.php?title=LSM_Worker&amp;oldid=41275</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=LSM_Worker&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=LSM+Worker" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=LSM+Worker" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/LSM_Worker" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/LSM_Worker" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=LSM_Worker&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=LSM_Worker&amp;oldid=41275" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=LSM_Worker&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":209});});</script>
+		</body>
+		</html>
+		

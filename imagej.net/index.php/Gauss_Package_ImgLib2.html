@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Gauss Package ImgLib2 - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Gauss_Package_ImgLib2","wgTitle":"Gauss Package ImgLib2","wgCurRevisionId":41243,"wgRevisionId":41243,"wgArticleId":1449,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Gauss_Package_ImgLib2","wgRelevantArticleId":1449,"wgRequestId":"b739276e8a5a27b0cad67a62","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The gauss package for ImgLib2 is an generic, optimized implementation of the traditional Gaussian convolution. It can perform anisotropic, n-dimensional convolution on any image or any interval on an image, if required even in-place."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Gauss Package ImgLib2"/>
+
+	<meta property="og:description" content="The gauss package for ImgLib2 is an generic, optimized implementation of the traditional Gaussian convolution. It can perform anisotropic, n-dimensional convolution on any image or any interval on an image, if required even in-place."/>
+
+	<meta property="og:url" content="http://imagej.net/Gauss_Package_ImgLib2"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Gauss_Package_ImgLib2 rootpage-Gauss_Package_ImgLib2 skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Gauss_Package_ImgLib2.html#bodyContent">Skip to content</a>, 			<a href="Gauss_Package_ImgLib2.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Gauss_Package_ImgLib2.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Gauss_Package_ImgLib2" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Gauss_Package_ImgLib2&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Gauss_Package_ImgLib2&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Gauss_Package_ImgLib2&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Gauss Package ImgLib2</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Gaussian Convolution (Fiji/ImgLib2)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Stephan Preibisch
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Stephan Preibisch
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external autonumber" href="https://fiji.sc/git/?p=imglib.git;a=tree;f=algorithms/core/src/main/java/net/imglib2/algorithm/gauss;hb=refs/heads/master">[1]</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> 20 December 2011
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> 20 December 2011
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external autonumber" href="http://fly.mpi-cbg.de/preibisch">[2]</a>
+</td></tr>
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Gauss_Package_ImgLib2.html#Gauss_Package_for_ImgLib2"><span class="tocnumber">1</span> <span class="toctext">Gauss Package for ImgLib2</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Gauss_Package_ImgLib2.html#Purpose"><span class="tocnumber">2</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Gauss_Package_ImgLib2.html#Documentation"><span class="tocnumber">3</span> <span class="toctext">Documentation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Gauss_Package_ImgLib2.html#Computing_gaussian_convolutions_on_entire_images"><span class="tocnumber">3.1</span> <span class="toctext">Computing gaussian convolutions on entire images</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Gauss_Package_ImgLib2.html#Computing_gaussian_convolutions_on_RandomAccessibles_with_Intervals"><span class="tocnumber">3.2</span> <span class="toctext">Computing gaussian convolutions on RandomAccessibles with Intervals</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Gauss_Package_ImgLib2.html#Some_examples"><span class="tocnumber">3.3</span> <span class="toctext">Some examples</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Gauss_Package_ImgLib2.html#Implementation"><span class="tocnumber">4</span> <span class="toctext">Implementation</span></a></li>
+</ul>
+</div>
+
+<h3><span class="mw-headline" id="Gauss_Package_for_ImgLib2">Gauss Package for ImgLib2</span></h3>
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>The gauss package for ImgLib2 is an generic, optimized implementation of the traditional Gaussian convolution. It can perform anisotropic, n-dimensional convolution on any image or any interval on an image, if required even in-place. 
+</p><p>The computation is performed multi-threaded and accesses each pixel of the input and output containers only once to guarantee high performance, even on paged cell containers. The precision of the computation can be of any ImgLib2 NumericType, however, there are more efficient implementations for convolution with float and double precision. Any precision of gaussian convolution can be computed on any type of real valued input data, it will be internally wrapped to either float or double. For other conversions (e.g. perform a gaussian convolution on complex float data with complex double precision) respective converters need to be provided. However, any NumericType can always be convolved with its own precision. Warning: this might reduce the accuracy of the computation significantly if the Type itself is an integer type.
+</p>
+<h2><span class="mw-headline" id="Documentation">Documentation</span></h2>
+<p>The Gauss package for ImgLib2 consists of several classes which abstract the convolution operations to n dimensions. <b>The developer/user should use the static methods provided in the Gauss.java class.</b> It will determine itself which class should be used with which parameters in order to provide the best performance possible. 
+</p>
+<h3><span class="mw-headline" id="Computing_gaussian_convolutions_on_entire_images">Computing gaussian convolutions on entire images</span></h3>
+<p>For computing a Gaussian convolution on an entire <b>Img&lt;T&gt;</b>, simply call one the following lines of code:
+</p>
+<pre class="brush:java">
+import net.imglib2.algorithm.gauss.Gauss;
+
+// the source
+final Img&lt; T &gt; img = ...
+
+// define the sigma for each dimension
+final double[] sigma = new double[ img.numDimensions() ];
+for ( int d = 0; d &lt; sigma.length; ++d )
+    sigma[ d ] = 1 + d;
+
+//
+// float-precision
+//
+// compute with float precision, but on T
+final Img&lt; T &gt; convolved = Gauss.inFloat( sigma, img );
+
+// compute with float precision, and output a FloatType Img
+final Img&lt; FloatType &gt; convolved = Gauss.toFloat( sigma, img );
+
+// compute with float precision in-place
+Gauss.inFloatInPlace( sigma, img );
+
+//
+// double-precision
+//
+// compute with double precision, but on T
+final Img&lt; T &gt; convolved = Gauss.inDouble( sigma, img );
+
+// compute with double precision, and output a FloatType Img
+final Img&lt; DoubleType &gt; convolved = Gauss.toDouble( sigma, img );
+
+// compute with double precision in-place
+Gauss.inDoubleInPlace( sigma, img );
+
+//
+// precision defined by the type T itself (this will produce garbage if T has insufficient range 
+// or accuracy like ByteType, IntType, etc, but will work nicely on for example ComplexFloatType)
+//
+// compute with precision of T
+final Img&lt; T &gt; convolved = Gauss.inNumericType( sigma, img );
+
+// compute with precision of T in-place
+Gauss.inNumericTypeInPlace( sigma, img );
+</pre>
+<p>By default, the Gaussian convolution will use the OutOfBoundsMirrorFactory with single boundary. If another OutOfBoundsFactory is desired, it can be defined on any of those methods as follows:
+</p>
+<pre class="brush:java">
+// compute with float precision, but on T using an periodic (FFT-like) strategy where at the end of
+// each dimension the image simply starts again
+final Img&lt; T &gt; convolved = Gauss.inFloat( sigma, img, 
+  new OutOfBoundsPeriodicFactory&lt;FloatType, RandomAccessibleInterval&lt;FloatType&gt;&gt;() ) );
+</pre>
+<h3><span class="mw-headline" id="Computing_gaussian_convolutions_on_RandomAccessibles_with_Intervals">Computing gaussian convolutions on RandomAccessibles with Intervals</span></h3>
+<p>For more advanced use of the Gaussian convolution, it accepts RandomAccessibles as input and output, too. In this way the developer has complete freedom which area to convolve and where to write the result. The input and output can be any RandomAccessible, i.e. also any kind of transformed View or Type.
+</p><p>To perform a Gaussian convolution on RandomAccessible you need to specify more input variables:
+</p>
+<ul><li> the <b>sigma</b> in each dimension</li>
+<li> the <b>input RandomAccessible</b> (has to cover all the area required for the convolution, you might need to use Views.extend( ... ) if it is too small</li>
+<li> the <b>Interval</b> in which the Randomaccessible should be convolved. Note that more pixels around this area are required to perform the convolution, see implementation</li>
+<li> the <b>output RandomAccessible</b> specifies the target, i.e. where the result will be written to (can be the same as the input)</li>
+<li> the <b>Location in the output RandomAccessible</b> defines where the content will be inserted</li>
+<li> an <b>ImageFactory</b> for creating the temporary images, it has to be of the type in which the computation is performed. If it is inFloat, it will require an ImgFactory&lt;FloatType&gt;, inDouble will require ImgFactory&lt;DoubleType&gt; and inNumericType needs an ImageFactory&lt;T&gt;</li></ul>
+<p>An example on how to call the most generic version of the Gaussian convolution can be found below in the examples section.
+</p>
+<h3><span class="mw-headline" id="Some_examples">Some examples</span></h3>
+<pre class="brush:java">
+// create a new, empty 2-d image
+final ArrayImgFactory&lt;FloatType&gt; factory = new ArrayImgFactory&lt;FloatType&gt;();
+final Img&lt;FloatType&gt; img = factory.create( new int[]{ 512, 256 }, new FloatType() );
+
+// fill it with some funny content			
+int i = 0;
+for ( final FloatType f&#160;: img )
+	f.set( i++ );
+			
+for ( final FloatType f&#160;: img )
+	if ( i++&#160;% 7 == 0 || i&#160;% 8 == 0 )
+		f.set( f.get() * 1.5f );
+
+// show the input			
+ImageJFunctions.show( img );
+
+// define the 2-d sigmas
+final double[] sigma = new double[] { 2, 0.75 };
+
+// compute a gauss convolution with double precision
+ImageJFunctions.show( Gauss.inDouble( sigma, img ) );	
+
+// compute a Gaussian convolution in-place in a small Interval	
+Gauss.inFloat( sigma, Views.extendMirrorSingle( img ), new FinalInterval( new long[]{300,150},
+	new long[]{ 400,200 } ), img, new Location( new long[] {300,150} ), img.factory() );
+
+// show the result
+ImageJFunctions.show( img );
+</pre>
+<p>Another nice example of the generality of the gaussian convolution is the <b>Game of Death 2</b> which uses Gaussian convolution to simulate diffusion of different species of viruses. It redefines the add() operator of our new NumericType called <b>LifeForm</b> which can then be used to start the simulation. The <b>Game of Death 2</b> is included in the imglib repository.
+</p>
+<h2><span class="mw-headline" id="Implementation">Implementation</span></h2>
+<p>The first (obvious) core idea of the implementation is to break down the convolution into one-dimensional convolutions along each dimension. In order to properly convolve all input data, a continuously decreasing area has to be convolved when going along each dimension (see figure). This is necessary as the input for dimension d+1 has to be convolved in dimension d in order to produce the correct result.
+</p><p>The second core idea is to not iterate over the output but over the input to save operations and access the input as little as possible as it might be an expensive operation (page cell container, renderer, ...). Furthermore, the symmetry of the gauss kernel allows to skip almost half of all operations as each input pixel contributes left and right of itself with with the same weight. This, however, includes a more complicated logic, special cases at the beginning and end of each line, as well as different operations if the kernel is larger than the convolved image. 
+</p><p>For more details please refer to the source code for now, it is linked on top of this page.
+</p><p><a href="http://imagej.net/File:Gauss.png" class="image" title="Visualizes the offsets and sizes required to perform an n-dimensional gaussian convolution"><img alt="Visualizes the offsets and sizes required to perform an n-dimensional gaussian convolution" src="../_images/f/fd/Gauss.png" width="780" height="585" /></a>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072357
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.032 seconds
+Real time usage: 0.030 seconds
+Preprocessor visited node count: 128/1000000
+Preprocessor generated node count: 627/1000000
+Post‐expand include size: 1016/2097152 bytes
+Template argument size: 471/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    4.069      1 - Template:Infobox
+100.00%    4.069      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Gauss_Package_ImgLib2&amp;oldid=41243">http://imagej.net/index.php?title=Gauss_Package_ImgLib2&amp;oldid=41243</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Gauss_Package_ImgLib2&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Gauss+Package+ImgLib2" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Gauss+Package+ImgLib2" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Gauss_Package_ImgLib2" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Gauss_Package_ImgLib2" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Gauss_Package_ImgLib2&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Gauss_Package_ImgLib2&amp;oldid=41243" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Gauss_Package_ImgLib2&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":210});});</script>
+		</body>
+		</html>
+		

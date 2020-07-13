@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>TrakEM2 - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"TrakEM2","wgTitle":"TrakEM2","wgCurRevisionId":41407,"wgRevisionId":41407,"wgArticleId":152,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Registration","Segmentation","TrakEM2","Image annotation","Neuroanatomy","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"TrakEM2","wgRelevantArticleId":152,"wgRequestId":"a97ef2904d3fafe3890d6efa","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="TrakEM2 is an ImageJ plugin for morphological data mining, three-dimensional modeling and image stitching, registration, editing and annotation."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="TrakEM2"/>
+
+	<meta property="og:description" content="TrakEM2 is an ImageJ plugin for morphological data mining, three-dimensional modeling and image stitching, registration, editing and annotation."/>
+
+	<meta property="og:url" content="http://imagej.net/TrakEM2"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-TrakEM2 rootpage-TrakEM2 skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="TrakEM2.html#bodyContent">Skip to content</a>, 			<a href="TrakEM2.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="TrakEM2.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/TrakEM2" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:TrakEM2&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=TrakEM2&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=TrakEM2&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>TrakEM2</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>TrakEM2<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/TrakEM2">https://imagej.net/TrakEM2</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/trakem2/TrakEM2/releases/tag/TrakEM2_-1.0i">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~TrakEM2_~1.0i~~~kw,versionexpand">1.0i</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Tue May 02 16:09:32 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Partial
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Albertcardona" title="User:Albertcardona">Albert Cardona</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Albertcardona" title="User:Albertcardona">Albert Cardona</a>, <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Albertcardona" title="User:Albertcardona">Albert Cardona</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>, <a href="http://imagej.net/User:Bogovic" title="User:Bogovic">John Bogovic</a>, Rodney Douglas, <a href="http://imagej.net/User:Hanslovsky" title="User:Hanslovsky">Philipp Hanslovsky</a>, <a href="http://imagej.net/User:Verena" title="User:Verena">Verena Kaynig</a>, <a href="http://imagej.net/User:Lindsey" title="User:Lindsey">Larry Lindsey</a>, <a href="http://imagej.net/User:Mark" title="User:Mark">Mark Longair</a>, Jacques Pecreaux, <a rel="nofollow" class="external text" href="https://github.com/perlman">Eric Perlman</a>, <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>, <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<p>TrakEM2 is an ImageJ plugin for morphological data mining, three-dimensional modeling and image stitching, registration, editing and annotation.
+</p><p>See <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/snapshots.html">TrakEM2 snapshots</a> for an overview.
+</p>
+<div style="font-size: 0.75em"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="TrakEM2.html#Features"><span class="tocnumber">1</span> <span class="toctext">Features</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="TrakEM2.html#TrakEM2_in_Fiji"><span class="tocnumber">2</span> <span class="toctext">TrakEM2 in Fiji</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="TrakEM2.html#Documentation"><span class="tocnumber">3</span> <span class="toctext">Documentation</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="TrakEM2.html#Running_fiji_for_heavy-duty.2C_memory-intensive.2C_high-performance_TrakEM2_tasks"><span class="tocnumber">4</span> <span class="toctext">Running fiji for heavy-duty, memory-intensive, high-performance TrakEM2 tasks</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="TrakEM2.html#Preparing_TrakEM2_for_best_performance"><span class="tocnumber">5</span> <span class="toctext">Preparing TrakEM2 for best performance</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="TrakEM2.html#For_fastest_browsing_through_layers"><span class="tocnumber">5.1</span> <span class="toctext">For fastest browsing through layers</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="TrakEM2.html#For_importing_large_collections_of_images_and_editing_them_immediately_afterwards"><span class="tocnumber">5.2</span> <span class="toctext">For importing large collections of images and editing them immediately afterwards</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="TrakEM2.html#For_regenerating_mipmaps_the_fastest_possible"><span class="tocnumber">5.3</span> <span class="toctext">For regenerating mipmaps the fastest possible</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="TrakEM2.html#Faster_XML_loading_and_less_memory_consumption_with_larger_quadtree_buckets"><span class="tocnumber">5.4</span> <span class="toctext">Faster XML loading and less memory consumption with larger quadtree buckets</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="TrakEM2.html#How_much_RAM_should_I_allocate_to_the_JVM_for_Fiji_to_run_TrakEM2.3F"><span class="tocnumber">6</span> <span class="toctext">How much RAM should I allocate to the JVM for Fiji to run TrakEM2?</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="TrakEM2.html#Examples"><span class="tocnumber">7</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="TrakEM2.html#Publication"><span class="tocnumber">8</span> <span class="toctext">Publication</span></a></li>
+</ul>
+</div>
+</div>
+<h2><span class="mw-headline" id="Features">Features</span></h2>
+<ul><li> <b>Segmentation:</b> manually draw areas across stacks, and sketch structures with balls and pipes. Skeletonize entire neuronal arborizations and represent synapses with relational connector objects.</li>
+<li> <b>Measurements:</b> volumes, surfaces, lengths, and also measurements via ImageJ ROIs.</li>
+<li> <b>Image Registration:</b> register floating image tiles to each other using <a href="http://imagej.net/Feature_Extraction" title="Feature Extraction">SIFT</a> and global optimization algorithms.</li>
+<li> <b>3D Visualization:</b> interacting with the <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D Viewer</a> plugin, TrakEM2 displays image volumes and 3D meshes of all kinds.</li>
+<li> <b>Image Annotation:</b> floating text labels.</li>
+<li> <b>Semantic segmentation:</b> order segmentations in tree hierarchies, whose template is exportable for reuse in other, comparable projects.</li></ul>
+<p>TrakEM2 interacts with the <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D Viewer</a> for visualization of image volumes and 3D meshes.
+</p>
+<h2><span class="mw-headline" id="TrakEM2_in_Fiji">TrakEM2 in Fiji</span></h2>
+<ul><li> Create new projects from "File - New - TrakEM2 (blank)"</li>
+<li> Open an existing project by dragging its .xml file onto the toolbar, or via "File - Open".</li></ul>
+<h2><span class="mw-headline" id="Documentation">Documentation</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/howto.html">How to</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/trakem2_manual.html">Manual</a></li>
+<li> <a href="http://imagej.net/TrakEM2_tutorials" title="TrakEM2 tutorials">TrakEM2 tutorials</a> with video tutorials.</li>
+<li> Examples of <a href="http://imagej.net/TrakEM2_Scripting" title="TrakEM2 Scripting">scripting in TrakEM2</a>.</li>
+<li> Writing <a href="http://imagej.net/TrakEM2_TPlugIn" title="TrakEM2 TPlugIn">plugins for TrakEM2</a>.</li></ul>
+<h2><span class="mw-headline" id="Running_fiji_for_heavy-duty.2C_memory-intensive.2C_high-performance_TrakEM2_tasks">Running fiji for heavy-duty, memory-intensive, high-performance TrakEM2 tasks</span></h2>
+<p>The following configuration has been tested in a machine with 8 CPU cores and 16 Gb of RAM, running Ubuntu 8.04 "Hardy", with a 1.6.0_16 or newer JVM:
+</p>
+<pre>./ImageJ-linux64 -Xms10g -Xmx10g -Xincgc -XX:MaxPermSize=256m -XX:PermSize=256m
+-XX:NewRatio=5 -XX:CMSTriggerRatio=50 -XX:+UseCompressedOops --
+</pre>
+<p>Put all the above in one line.
+</p><p>What the JVM flags mean:
+</p>
+<ul><li> -Xms10g&#160;: use an initial heap size of 10 Gb (i.e. start fiji with 10 Gb of RAM preallocated to it)</li>
+<li> -Xmx10g: use a maximum heap size of 10 Gb. Note it's the same amount as the intial heap size, so that the heap cannot be resized.</li>
+<li> -Xincgc&#160;: use the incremental garbage collector. Clean up unused memory in the concurrent mark-sweep generation (i.e. not the super-new generation of allocated objects) using parallel threads.</li>
+<li> -XX:MaxPermSize=256m&#160;: set the heap size allocated to objects that don't need to be garbage often to 256 Mb. The default is only 32 Mb, which proves insufficient.</li>
+<li> -XX:PermSize=256m&#160;: preallocate the heap for the permanent objects directly to the desired maximum, 256 Mb, so it doesn't ever have to be resized.</li>
+<li> -XX:NewRatio=5&#160;: Set the ratio of ephemeral versus more long-lived objects to 5 (the default is 9 or more in 64-bit Sun JVMs).</li>
+<li> -XX:CMSTriggerRatio=50&#160;: run the parallel garbage collector when the ratio of free versus non-free heap space is 50&#160;% (the default is 92% in 64-bit JVM, which may incur in pauses and undesirable full sweeps).</li>
+<li> -XX:+UseCompressedOops&#160;: use 32-bit pointers when possible, in a 64-bit JVM. This can cut the memory footprint by half in many cases.</li>
+<li> The ending double hyphen "--" is to specify all of these are JVM arguments, not fiji/ImageJ arguments.</li></ul>
+<p><br />
+With the above settings, we have succesfully registered 33,000 image tiles corresponding to 459 serial sections, using the "Align multi-layer mosaic" TrakEM2 command.
+</p>
+<h2><span class="mw-headline" id="Preparing_TrakEM2_for_best_performance">Preparing TrakEM2 for best performance</span></h2>
+<h3><span class="mw-headline" id="For_fastest_browsing_through_layers">For fastest browsing through layers</span></h3>
+<p>Right-click on the canvas and choose "Display - Properties...". Then make sure that:
+</p>
+<ul><li> "snapshots mode" is set to "Disabled", or at most to "Outlines".</li>
+<li> "Prepaint" is not checked, so that it is disabled.</li></ul>
+<h3><span class="mw-headline" id="For_importing_large_collections_of_images_and_editing_them_immediately_afterwards">For importing large collections of images and editing them immediately afterwards</span></h3>
+<p>The goal is to avoid generating mipmaps multiple times, which may be very time consuming.
+</p><p>Right-click on the canvas and choose "Display - Properties...". Then make sure that:
+</p>
+<ul><li> "enable mipmaps" is not checked, so that it is disabled.</li></ul>
+<p>Beware that <b>you will not be able to browse quickly</b> through layers while importing, given that mipmaps will not be generated.
+</p><p>Now to correct the contrast, first <b>re-enable mipmaps</b> by going again to "Display - Properties..." and checking the "enable mipmaps" checkbox. Then you have two general (non-exclusive) options:
+</p><p>A. Use the built-in commands from the right-click menu, such as:
+</p>
+<ul><li> "Adjust images - Enhance contrast layer-wise"</li>
+<li> "Adjust images - Set min and max layer-wise"</li></ul>
+<p>B. Create a preprocessor script and set it to all images. For example, a <a href="http://imagej.net/Beanshell_Scripting" class="mw-redirect" title="Beanshell Scripting">beanshell</a> script to run <a href="http://imagej.net/CLAHE" class="mw-redirect" title="CLAHE">CLAHE</a> on each image. In the script, the <i>patch</i> and <i>imp</i> variables exist automatically, and represent the <a rel="nofollow" class="external text" href="https://fiji.sc/javadoc/ini/trakem2/display/Patch.html">Patch</a> instance and the <a rel="nofollow" class="external text" href="https://fiji.sc/javadoc/ij/ImagePlus.html">ImagePlus</a> instance that the Patch wraps, respectively.
+</p>
+<pre class="brush:java">
+import ij.IJ;
+IJ.run(imp, "Enhance Local Contrast (CLAHE)", "blocksize=127"
+   + " histogram=256 maximum=3 mask=*None* fast_(less_accurate)");
+</pre>
+<p>To set the script to all images, save the above to a file named "whatever.bsh" (notice the filename extension ".bsh") and then right-click on the TrakEM2 canvas and choose "Script - Set preprocessor script layer-wise", and choose the whole range of layers. This will set the script to every image of every layer, and trigger mipmap regeneration for every image. When TrakEM2 loads the image, the script will run on the image before TrakEM2 ever sees its contents.
+</p><p>The preprocessor script gives you maximum power: do whatever you want with the image. For example, <a href="http://imagej.net/Jython_Scripting_Examples#Correct_illumination_in_a_stack:_apply_the_illumination_of_one_slice_to_all_others" title="Jython Scripting Examples"> normalize the image</a> relative to a known good mean and standard deviation for your data set.
+</p>
+<h3><span class="mw-headline" id="For_regenerating_mipmaps_the_fastest_possible">For regenerating mipmaps the fastest possible</span></h3>
+<p>The default generation of mipmaps is done with are averaging, and is pretty fast. Still, you may want to consider parallelizing it: go to "Project - Properties...", and set the mipmap threads to the number of cores in your machine, for example 12.
+</p><p>Stop reading if you are satisfied with the default quality of scaled images in TrakEM2.
+</p><p>If you choose to generate mipmaps using Gaussians, go to "Project - Properties...", and set the mipmaps mode to "Gaussian". Then, you must take care of the following:
+</p><p>In TrakEM2 0.9a and later, the mipmaps machinery can use a multi-threaded Gaussian implementation now present in the latest ImageJ. This means that now there are two sets of threads:
+</p>
+<ol>
+ <li>The set of threads, where each thread regenerates the mipmap pyramid of a single image.</li>
+ <li>The set of threads that performs Gaussian blurring for downsampling, for each scaling iteration in the generation of the mipmap pyramid.</li>
+</ol>
+<p>If your machine has 12 cores, the default settings will use 1 thread for mipmaps and 12 threads for gaussian blurring. This may not fit your data properties: you may end up waiting long times for mipmap generation if your images are small.
+</p><p>Two strategies are possible for accelerating Gaussian-based generation of mipmaps:
+</p>
+<ul>
+ <li><b>Strategy A</b>: your data consists of large images (over 4000x4000). Right-click on the TrakEM2 display and choose "Project - Properties...", and set the mipmap threads to 1 (the default). Now, mipmaps will be regenerated for one single image at a time, using 12 threads (given 12 cores) for computing the Gaussians.</li>
+ <li><b>Strategy B</b>: your data consists of small images (smaller than 4000x4000). Go to the Fiji window and select "Edit - Options - Memory &amp; Threads...", and set the number of threads to 1. Then, go to "Project - Properties...", and set the mipmap threads to 12. Now, mipmaps will be regenerated for 12 images at a time (given 12 cores), using a single thread for each to compute the Gaussians.</li>
+</ul>
+<p>Use <b>strategy A</b> as well if your computer has little RAM, or if access to the images is slow and contentious (such as if the data lives in a USB hard drive). That's why the default is one single thread for generating mipmaps.
+</p><p>If you change the method for generating mipmaps to a non-Gaussian method, the above situation does not occur. Set the number of threads for regenerating mipmaps to the number of cores, or less if your computer doesn't have much RAM.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Faster_XML_loading_and_less_memory_consumption_with_larger_quadtree_buckets">Faster XML loading and less memory consumption with larger quadtree buckets</span></h3>
+<p>Besides choosing an appropriate mipmap generation strategy for large images, make sure that you set as well the bucket size appropriately.
+</p><p>What is a bucket in TrakEM2: each layer (each section) has an internal <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Quadtree">quadtree</a> to be able to find an object (e.g. an image) under the mouse, or to be able to quickly find images that overlap with other images. In other words, to be able to perform fast spatial queries such as finding the list of all images that intersect a given rectangle.
+</p><p>If the bucket size is small (the default is 4096 pixels on the side, and a bucket is then a square of 4096x4096 pixels, which could be considered quite small), then in combination with a very large canvas size there will be way too many buckets generated. <b>Will take a lot of time and also consume a lot of memory</b>.
+</p><p>If your sections only have about 100 images each, and images are somewhat large (say, each has dimensions of 8096x8096 pixels), then set the bucket size to a much larger value than the default, for example to 100000. Effectively there will be only one bucket.
+</p><p>Small buckets make sense when there are many small objects in a layer or many small zdisplayable objects. In that situation, such as a single image per layer, but many smaller Ball or Pipe or AreaList objects on it, then go for the default bucket size (4096) or smaller. Otherwise, go for big or even very big, effectively removing the buckets functionality and reducing to list search, which is just fine for small lists of images like about 100.
+</p><p>When registering/aligning a collection of 400,000 images spread over 5,000 sections, it makes sense to make the buckets large (like 40960, 10x the default, or even larger than that).
+</p><p>Setting the bucket size to a large value will reduce XML loading time <b>a lot</b>.
+</p><p>To set the bucket size, right-click and choose "Display - Properties ..." and write in the bucket size value.
+</p>
+<h2><span class="mw-headline" id="How_much_RAM_should_I_allocate_to_the_JVM_for_Fiji_to_run_TrakEM2.3F">How much RAM should I allocate to the JVM for Fiji to run TrakEM2?</span></h2>
+<p>Use a computer that follows this rule of thumb: take the largest single 2D image in your dataset, then multiply its size by 10, and make sure that every core of your CPU has at least that much RAM available to it.
+</p><p>For example, for a 4096x4096 16-bit image you will need at least 335 Mb
+per core, so at least 5.4 Gb of RAM for 16 cores. 8 Gb would likely work
+better. 32 Gb will be a pleasure to use.
+</p><p>As for a graphics card buy the largest you can afford, both in computing
+power and in internal memory.
+</p>
+<h2><span class="mw-headline" id="Examples">Examples</span></h2>
+<div class="thumb tleft"><div class="thumbinner" style="width:234px;"><a href="http://imagej.net/File:Trakem2-snap.jpg" class="image"><img alt="" src="../_images/1/1f/Trakem2-snap.jpg" width="232" height="174" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Trakem2-snap.jpg" class="internal" title="Enlarge"></a></div>TrakEM2: 359 montages of 13x13 tiles of 2048x2048 pixels each.</div></div></div>
+<div class="thumb tleft"><div class="thumbinner" style="width:234px;"><a href="http://imagej.net/File:TrakEM2_Display.png" class="image"><img alt="" src="../_images/f/f0/TrakEM2_Display.png" width="232" height="178" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:TrakEM2_Display.png" class="internal" title="Enlarge"></a></div>TrakEM2 Display showing 9 images in a layer, where 2 images and one floating text label (set to 30% transparency) are selected (pink and white frames; white is the active one – note the corresponding pink and blue coloration of the object panels on the left). The Navigator (bottom left) paints a red frame to indicate the area currently displayed in the canvas (right).</div></div></div>
+<div class="thumb tleft"><div class="thumbinner" style="width:234px;"><a href="http://imagej.net/File:3D-Viewer.jpg" class="image"><img alt="" src="../_images/9/9c/3D-Viewer.jpg" width="232" height="246" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:3D-Viewer.jpg" class="internal" title="Enlarge"></a></div>3D Viewer: hardware-accelerated 3D visualization of image stacks as volumes, orthoslices and meshes. Above, secondary lineages of <i>Drosophila</i> third instar larval brain segmented in TrakEM2.</div></div></div>
+<div class="thumb tleft"><div class="thumbinner" style="width:234px;"><a href="http://imagej.net/File:TrakEM2-trees.png" class="image"><img alt="" src="../_images/e/ed/TrakEM2-trees.png" width="232" height="134" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:TrakEM2-trees.png" class="internal" title="Enlarge"></a></div>The three TrakEM2 trees, as an interface for editing and visualizing the three internal TrakEM2 data structures.</div></div></div>
+<div class="thumb tleft"><div class="thumbinner" style="width:234px;"><a href="http://imagej.net/File:Clahe-live-filter.jpg" class="image"><img alt="" src="../_images/0/02/Clahe-live-filter.jpg" width="232" height="95" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Clahe-live-filter.jpg" class="internal" title="Enlarge"></a></div>Effect of the <a href="http://imagej.net/Enhance_Local_Contrast_(CLAHE)" title="Enhance Local Contrast (CLAHE)">CLAHE</a> live filter in TrakEM2. Data with high dynamic range is displayed with perceptually boosted local contrast. <a href="http://imagej.net/Enhance_Local_Contrast_(CLAHE)" title="Enhance Local Contrast (CLAHE)">CLAHE parameters</a> are relative to display pixels and, therefore, will not result in an effective bandpass when zooming out largely on statically pre-processed images.</div></div></div>
+<div class="thumb tleft"><div class="thumbinner" style="width:234px;"><a href="http://imagej.net/File:Neuronal-arbors-1.png" class="image"><img alt="" src="../_images/b/b8/Neuronal-arbors-1.png" width="232" height="177" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Neuronal-arbors-1.png" class="internal" title="Enlarge"></a></div>Neuronal arbors reconstructed with TrakEM2 using the <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/trakem2_manual.html#trees">treeline</a> segmentation type.</div></div></div>
+<div class="thumb tleft"><div class="thumbinner" style="width:234px;"><a href="http://imagej.net/File:TrakEM2-arealists.png" class="image"><img alt="" src="../_images/5/57/TrakEM2-arealists.png" width="232" height="159" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:TrakEM2-arealists.png" class="internal" title="Enlarge"></a></div>Neuronal arbors from serial section electron microscopy reconstructed with TrakEM2 using the <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/data.html">manually segmentated data set</a>.</div></div></div>
+<div class="thumb tleft"><div class="thumbinner" style="width:234px;"><a href="http://imagej.net/File:TrakEM2-display-2.png" class="image"><img alt="" src="../_images/6/6a/TrakEM2-display-2.png" width="232" height="171" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:TrakEM2-display-2.png" class="internal" title="Enlarge"></a></div><strong class="selflink">TrakEM2</strong> showing one section of a serial section transmission electron microscopy (ssTEM) data set, with numerous neuronal arbors reconstructed using <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/trakem2_manual.html#trees">treelines</a> and <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/trakem2_manual.html#connectors">connectors</a> (for synapses).</div></div></div>
+<div class="thumb tleft"><div class="thumbinner" style="width:234px;"><a href="http://imagej.net/File:TrakEM2_Display_segmentations.png" class="image"><img alt="" src="../_images/3/3d/TrakEM2_Display_segmentations.png" width="232" height="179" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:TrakEM2_Display_segmentations.png" class="internal" title="Enlarge"></a></div>Example TrakEM2 segmentations, including Ball, Pipe, Profile, AreaList and floating text labels.</div></div></div>
+<div style="clear:left;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Publication">Publication</span></h2>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=TrakEM2+software+for+neural+circuit+reconstruction.&amp;rft.aulast=Cardona&amp;rft.aufirst=A.&amp;rft.date=2012&amp;rft.volume=7%286%29&amp;rft.pages=e38011&amp;rft_id=info:pmid/22723842&amp;rft_id=http%3A%2F%2Fdx.doi.org%2F10.1371%2Fjournal.pone.0038011"><cite id="CITEREFCardonaSaalfeldSchindelinArganda-Carreras2012">Cardona, A.; Saalfeld, S.&#32;&amp; Schindelin, J.&#32;et al.&#32;(2012),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1371/journal.pone.0038011">TrakEM2 software for neural circuit reconstruction.</a>",&#32;<i>PloS one</i>&#32;<b>7(6)</b>:  e38011, PMID 22723842<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://dx.doi.org/10.1371/journal.pone.0038011">http://dx.doi.org/10.1371/journal.pone.0038011</a>&gt;</span></cite></span> (<a rel="nofollow" class="external text" href="http://scholar.google.com/scholar?cluster=2577882229249708240">on Google Scholar</a>).</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074025
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.164 seconds
+Real time usage: 0.169 seconds
+Preprocessor visited node count: 4507/1000000
+Preprocessor generated node count: 17363/1000000
+Post‐expand include size: 12602/2097152 bytes
+Template argument size: 3069/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  123.921      1 - -total
+ 78.10%   96.778      1 - Template:ComponentStats:sc.fiji:TrakEM2
+ 76.91%   95.310      1 - Template:Component
+ 66.06%   81.856     16 - Template:Person
+ 20.04%   24.840      1 - Template:Publication
+ 13.64%   16.905      1 - Template:Citation
+ 11.11%   13.772      1 - Template:Citation/core
+  1.36%    1.680      1 - Template:GitHub
+  1.16%    1.442      1 - Template:Project
+  0.98%    1.220      1 - Template:Maven
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=TrakEM2&amp;oldid=41407">http://imagej.net/index.php?title=TrakEM2&amp;oldid=41407</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=TrakEM2&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Registration" title="Category:Registration">Registration</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:TrakEM2" title="Category:TrakEM2">TrakEM2</a></li><li><a href="http://imagej.net/Category:Image_annotation" title="Category:Image annotation">Image annotation</a></li><li><a href="http://imagej.net/Category:Neuroanatomy" title="Category:Neuroanatomy">Neuroanatomy</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=TrakEM2" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=TrakEM2" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/TrakEM2" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/TrakEM2" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=TrakEM2&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=TrakEM2&amp;oldid=41407" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=TrakEM2&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":345});});</script>
+		</body>
+		</html>
+		

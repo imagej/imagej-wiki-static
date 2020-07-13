@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>3D Viewer: Display a Stack - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"3D_Viewer:_Display_a_Stack","wgTitle":"3D Viewer: Display a Stack","wgCurRevisionId":40822,"wgRevisionId":40822,"wgArticleId":11028,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"3D_Viewer:_Display_a_Stack","wgRelevantArticleId":11028,"wgRequestId":"21fc03a67b1ab155892a9936","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="(Return to the Developer Documentation page)&#10;(Return to the main 3D_Viewer page)"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="3D Viewer: Display a Stack"/>
+
+	<meta property="og:description" content="(Return to the Developer Documentation page)&#10;(Return to the main 3D_Viewer page)"/>
+
+	<meta property="og:url" content="http://imagej.net/3D_Viewer:_Display_a_Stack"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-3D_Viewer_Display_a_Stack rootpage-3D_Viewer_Display_a_Stack skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="./3D_Viewer:_Display_a_Stack.html#bodyContent">Skip to content</a>, 			<a href="./3D_Viewer:_Display_a_Stack.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="./3D_Viewer:_Display_a_Stack.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/3D_Viewer:_Display_a_Stack" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:3D_Viewer:_Display_a_Stack&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=3D_Viewer:_Display_a_Stack&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=3D_Viewer:_Display_a_Stack&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>3D Viewer: Display a Stack</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>(Return to the <a href="http://imagej.net/3D_Viewer:_Developer_Documentation" title="3D Viewer: Developer Documentation">Developer Documentation</a> page)<br />
+(Return to the main <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D_Viewer</a> page)
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="How_to_create_a_universe_and_display_an_image_stack_as_volume_rendering.2C_orthoslices.2C_isosurface_or_surface_plot">How to create a universe and display an image stack as volume rendering, orthoslices, isosurface or surface plot</span></h2>
+<p>You can download example source code for this HowTo <a href="http://imagej.net/3D_Viewer:_Example_code" title="3D Viewer: Example code">here</a>.
+</p><p>Creating a virtual universe and displaying an image stack in it is only a matter of a few steps.
+</p><p>The first thing to do is to open an image stack:
+</p>
+<pre class="brush:java">
+      // Open an image
+      String path = "/home/bene/PhD/brains/template.tif";
+      ImagePlus imp = IJ.openImage(path);
+      new StackConverter(imp).convertToGray8();
+</pre>
+<p>Then a virtual universe is created and displayed in a window:
+</p>
+<pre class="brush: java; first-line: 25; font-size: '100%';">
+      // Create a universe and show it
+      Image3DUniverse univ = new Image3DUniverse();
+      univ.show();
+</pre>
+<p>A 3D object (=Content) is created and added to the universe by the following line of code:
+</p>
+<pre class="brush: java; first-line: 29; font-size: '100%';">
+      // Add the image as a volume rendering
+      Content c = univ.addVoltex(imp);
+</pre>
+<p>In this case, the stack is displayed as a volume rendering. Volume renderings are created here by putting 2D slices of the stack one behind another. Different planes are thereby separated according to the pixel dimensions of the image. To each voxel, a transparency value is assigned, depending on its intensity. Black voxels are thereby fully transparent, whereas white ones are fully opaque.
+</p><p>There exist 4 types of Contents: Volume Renderings, Orthoslices, Isosurfaces and Surface Plots. Contents which were created from an ImagePlus can be transferred from one display type into another:
+</p>
+<pre class="brush: java; first-line: 33; font-size: '100%';">
+      // Display the image as orthslices
+      c.displayAs(Content.ORTHO);
+</pre>
+<p>Orthoslices are three orthogonal slices through the volume.
+</p><p>Contents can be removed from the universe, identified by their name:
+</p>
+<pre class="brush: java; first-line: 37; font-size: '100%';">
+      // Remove the Content
+      univ.removeContent(c.getName());
+</pre>
+<p>Here we add the stack as an isosurface:
+</p>
+<pre class="brush: java; first-line: 41; font-size: '100%';">
+      // Add an isosurface
+      c = univ.addMesh(imp);
+</pre>
+<p>Isosurfaces are surfaces which are generated here by applying the marching cubes algorithm. This algorithm assumes that there is one intensity value in the stack which separates a 3D object from its background. Therefore,
+the generated surface has theoretically everywhere the same (iso-)value. This value, also called the threshold of the surface, is adjustable, as will be seen later.
+</p><p>Finally, a Content can be displayed as a surface plot. A surface plot is a 3D representation of a 2D slide, where the 3rd dimension is formed by the image intensity;
+</p>
+<pre class="brush: java; first-line: 48; font-size: '100%';">
+      c = univ.addSurfacePlot(imp);
+</pre>
+<p>It is possible to remove all the contents of the universe together and to close the universe:
+</p>
+<pre class="brush: java; first-line: 51; font-size: '100%';">
+      // remove all contents
+      univ.removeAllContents();
+
+      // close
+      univ.close();
+</pre>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Important_methods_of_the_universe_class_for_handling_Contents">Important methods of the universe class for handling Contents</span></h3>
+<p>The following methods exist for <b>adding new Contents</b>:
+In general, the methods exist in 2 forms, one short form and one long form;
+the long form takes as parameters:
+</p>
+<ul><li> <b>image:</b> the image to display</li>
+<li> <b>color:</b> a color for the newly created Content</li>
+<li> <b>name:</b> a (unique) name</li>
+<li> <b>threshold:</b> a threshold, which defines the isovalue of the surface</li>
+<li> <b>resampling factor:</b> downsampling factor, to speed up rendering.</li></ul>
+<p><br />
+In the short form, the missing parameters are set to their default values, which are:
+</p>
+<ul><li> <b>color:</b> null</li>
+<li> <b>name:</b> the title of the image</li>
+<li> <b>threshold:</b> defined by the return value of <code>Content.getDefaultThreshold()</code></li>
+<li> <b>resampling factor:</b> defined by the return value of <code>Content.getDefaultResamplingFactor()</code></li></ul>
+<pre class="brush: java; first-line: 1; font-size: '100%';">
+      public Content addContent(ImagePlus image, int type);
+      public Content addContent(ImagePlus image, Color3f color, String name,
+            int thresh, boolean[] channels, int resf, int type);
+
+      public Content addVoltex(ImagePlus image);
+      public Content addVoltex(ImagePlus image, Color3f color,
+            String name, int thresh, boolean[] channels, int resamplingF);
+
+      public Content addOrthoslice(ImagePlus image);
+      public Content addOrthoslice(ImagePlus image, Color3f color,
+            String name, int thresh, boolean[] channels, int resamplingF);
+
+      public Content addSurfacePlot(ImagePlus image);
+      public Content addSurfacePlot(ImagePlus image, Color3f color,
+            String name, int thresh, boolean[] channels, int resamplingF);
+
+      public Content addMesh(ImagePlus img);
+      public Content addMesh(ImagePlus image, Color3f color, String name,
+            int threshold, boolean[] channels, int resamplingF);
+
+      public Content addContent(Content c);
+</pre>
+<p>The important methods for <b>removing Contents</b> are:
+</p>
+<pre class="brush: java; first-line: 1; font-size: '100%';">
+      public void removeAllContents();
+      public void removeContent(String name);
+</pre>
+<p>And for <b>retrieving Contents</b>, there exist:
+</p>
+<pre class="brush: java; first-line: 1; font-size: '100%';">
+      public Iterator contents();
+      public Collection getContents();
+      public Content getContent(String name);
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064438
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.008 seconds
+Real time usage: 0.008 seconds
+Preprocessor visited node count: 88/1000000
+Preprocessor generated node count: 232/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=3D_Viewer:_Display_a_Stack&amp;oldid=40822">http://imagej.net/index.php?title=3D_Viewer:_Display_a_Stack&amp;oldid=40822</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 October 2019, at 05:22.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=3D_Viewer:_Display_a_Stack&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=3D+Viewer%3A+Display+a+Stack" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=3D+Viewer%3A+Display+a+Stack" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/3D_Viewer:_Display_a_Stack" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/3D_Viewer:_Display_a_Stack" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=3D_Viewer:_Display_a_Stack&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=3D_Viewer:_Display_a_Stack&amp;oldid=40822" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=3D_Viewer:_Display_a_Stack&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":161});});</script>
+		</body>
+		</html>
+		

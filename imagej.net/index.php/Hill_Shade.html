@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Hill Shade - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Hill_Shade","wgTitle":"Hill Shade","wgCurRevisionId":45416,"wgRevisionId":45416,"wgArticleId":12235,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Hill_Shade","wgRelevantArticleId":12235,"wgRequestId":"16218a924e3d0fff951b35c1","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Produces relief shading as in topographic maps, assuming that the pixel value is the height of a surface at the given position (x, y)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Hill Shade"/>
+
+	<meta property="og:description" content="Produces relief shading as in topographic maps, assuming that the pixel value is the height of a surface at the given position (x, y)."/>
+
+	<meta property="og:url" content="http://imagej.net/Hill_Shade"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Hill_Shade rootpage-Hill_Shade skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Hill_Shade.html#bodyContent">Skip to content</a>, 			<a href="Hill_Shade.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Hill_Shade.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Hill_Shade" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Hill_Shade&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Hill_Shade&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Hill_Shade&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Hill Shade</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Hill_Shade.html#Hill_Shade"><span class="tocnumber">1</span> <span class="toctext">Hill Shade</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Hill_Shade.html#Description"><span class="tocnumber">1.1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Hill_Shade.html#Dialog_parameters"><span class="tocnumber">1.2</span> <span class="toctext">Dialog parameters</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Hill_Shade.html#Tips"><span class="tocnumber">1.3</span> <span class="toctext">Tips</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Hill_Shade.html#Version_History"><span class="tocnumber">1.4</span> <span class="toctext">Version History</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Hill_Shade.html#Usage"><span class="tocnumber">1.5</span> <span class="toctext">Usage</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Hill_Shade.html#Related_Links"><span class="tocnumber">1.6</span> <span class="toctext">Related Links</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Hill_Shade">Hill Shade</span></h1>
+<p><b>Produces relief shading as in topographic maps, assuming that the pixel value is the height of a surface at the given position (x, y).</b>
+</p>
+<h2><span class="mw-headline" id="Description">Description</span></h2>
+<p>The plugin needs an 8-bit, 16-bit or float (=32-bit) input image; pixel value (height) calibration of 8-bit and 16-bit input images is taken into account. The plugin produces a new 8-bit grayscale output image, irrespective of the type of input image. Preview is shown as an overlay of the input image, however.
+</p><p>The math behind it: When 'Nonlinear Contrast' and 'Half Brightness for Flat Areas' are off, the brightness of the output image is proportional to the cosine of the angle between the direction perpendicular to surface and the direction to the light source (sun), i.e., the surface is shows <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Lambertian_reflectance">Lambertian reflectance</a>.  If that angle is 90 degrees or more, i.e. if the slope that is directed away from the sun, the output is black. It is assumed that the "Mountains" do not cast a shadow, however.
+</p>
+<h2><span class="mw-headline" id="Dialog_parameters">Dialog parameters</span></h2>
+<div class="MediaTransformError" style="width: 739px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<ul><li> <b>x Pixel Size</b>  - Size of one pixel in x direction, in the same units as the height (pixel value).</li>
+<li> <b>y Pixel Size</b>  - Size of one pixel in y direction, in the same units as the height (pixel value).</li>
+<li> <b>Elevation of Sun</b> - height of the light source in degrees, typically between 30 and 60</li>
+<li> <b>Azimuth of Sun</b> - direction to the light source in degrees, 0 is north, 90 east etc.</li>
+<li> <b>Nonlinear Contrast</b> - when &gt; 0, contrast for gentle slopes gets enhanced. Typical values are 1-5.</li>
+<li> <b>Half Brightness for Horizontal</b> - when selected, a gamma correction is applied to the output, such that a horizontal plane will appear with half brightness (pixel value = 128), irrespective of the elevation of the sun. When not selected, the pixel value of a horizontal plane will be roughly 256*sin(Sun_Elevation). In that case, a horizontal plane gets half brighness only at sun elevation of 30°, the output gets brighter if the sun elevation is higher, and darker if it is lower.</li></ul>
+<h2><span class="mw-headline" id="Tips">Tips</span></h2>
+<div class="floatright"><a href="http://imagej.net/File:Hillshade-overlay-example.jpg" class="image" title="Topographic map created by superposition, click to enlarge"><img alt="Topographic map created by superposition, click to enlarge" src="../_images/3/37/Hillshade-overlay-example.jpg" width="280" height="340" /></a></div>
+<ul><li> If the slopes are very gentle, you can try setting smaller values of the pixel size to enhance the contrast.</li>
+<li> To create an output like a topographic map, display the input (elevation data) with a suitable lookup table and superimpose the hill shade output:
+<ul><li> Run <i>Hill Shade</i>.</li>
+<li> Convert the input image to RGB.</li>
+<li> Use Process&gt;Image Calculator with 'Operation=Average' to combine the input image and the shaded image.</li>
+<li> Typically, you will then want to enhance the colors a bit, using Image&gt;Adjust&gt;Color Balance.</li>
+<li> The image at the right shows an example, based on Space Shuttle Radar Topography Mission data of the area around Austria's highest mountain, the Großglockner.</li></ul></li>
+<li> Such a superimposed map can be also loaded as 'Texture' when using the [<a rel="nofollow" class="external text" href="http://rsb.info.nih.gov/ij/plugins/surface-plot-3d.html%7CInteractive">3D surface plot</a>] plugin.</li></ul>
+<h2><span class="mw-headline" id="Version_History">Version History</span></h2>
+<ul><li> 2014-Nov-22 Michael Schmid: enhanced version of the plugin released on the ImageJ mailing list a few days earlier</li></ul>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<ul><li> Copy <a rel="nofollow" class="external text" href="https://imagejdocu.tudor.lu/_media/plugin/filter/hill_shade/hill_shade.java">Hill_Shade.java</a> into the ImageJ plugins folder or a subfolder thereof (make sure you name the downloaded file ”Hill_Shade.java”; uppercase/lowercase matters).</li>
+<li> Compile with “Compile and run”.</li>
+<li> Alternatively, directly save the compiled class file <a href="http://imagej.net/_images/d/dc/Hill_Shade.class" class="internal" title="Hill Shade.class">Hill_Shade.class</a> into the ImageJ/plugins directory or an immediate subdirectory thereof. Again, make sure that you name the file correctly.</li></ul>
+<h2><span class="mw-headline" id="Related_Links">Related Links</span></h2>
+<ul><li> Find out the elevation and azimuth of the Sun (or Moon) at any day/time for a given location:  <a rel="nofollow" class="external free" href="http://aa.usno.navy.mil/data/docs/AltAz.php">http://aa.usno.navy.mil/data/docs/AltAz.php</a></li>
+<li> Get elevation maps for a given place at this website: <a rel="nofollow" class="external free" href="http://srtm.csi.cgiar.org/SELECTION/inputCoord.asp">http://srtm.csi.cgiar.org/SELECTION/inputCoord.asp</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072439
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.028 seconds
+Preprocessor visited node count: 26/1000000
+Preprocessor generated node count: 32/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Hill_Shade&amp;oldid=45416">http://imagej.net/index.php?title=Hill_Shade&amp;oldid=45416</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 20 May 2020, at 06:40.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Hill_Shade&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Hill+Shade" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Hill+Shade" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Hill_Shade" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Hill_Shade" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Hill_Shade&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Hill_Shade&amp;oldid=45416" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Hill_Shade&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":238});});</script>
+		</body>
+		</html>
+		

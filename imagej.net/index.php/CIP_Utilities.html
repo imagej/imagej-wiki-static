@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>CIP Utilities - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"CIP_Utilities","wgTitle":"CIP Utilities","wgCurRevisionId":37959,"wgRevisionId":37959,"wgArticleId":10250,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"CIP_Utilities","wgRelevantArticleId":10250,"wgRequestId":"3e169c25cf503270e4be629b","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This page provides user documentation for the utility functions of the CIP package"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="CIP Utilities"/>
+
+	<meta property="og:description" content="This page provides user documentation for the utility functions of the CIP package"/>
+
+	<meta property="og:url" content="http://imagej.net/CIP_Utilities"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-CIP_Utilities rootpage-CIP_Utilities skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="CIP_Utilities.html#bodyContent">Skip to content</a>, 			<a href="CIP_Utilities.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="CIP_Utilities.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/CIP_Utilities" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:CIP_Utilities&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=CIP_Utilities&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=CIP_Utilities&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>CIP Utilities</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="CIP_Utilities.html#measure"><span class="tocnumber">1</span> <span class="toctext"><b>measure</b></span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="CIP_Utilities.html#show"><span class="tocnumber">2</span> <span class="toctext"><b>show</b></span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="CIP_Utilities.html#region"><span class="tocnumber">3</span> <span class="toctext"><b>region</b></span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="CIP_Utilities.html#toIJ1"><span class="tocnumber">4</span> <span class="toctext"><b>toIJ1</b></span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="CIP_Utilities.html#toIJ2"><span class="tocnumber">5</span> <span class="toctext"><b>toIJ2</b></span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="CIP_Utilities.html#spacing"><span class="tocnumber">6</span> <span class="toctext"><b>spacing</b></span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="CIP_Utilities.html#unit"><span class="tocnumber">7</span> <span class="toctext"><b>unit</b></span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="CIP_Utilities.html#axes"><span class="tocnumber">8</span> <span class="toctext"><b>axes</b></span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="CIP_Utilities.html#list"><span class="tocnumber">9</span> <span class="toctext"><b>list</b></span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="CIP_Utilities.html#help"><span class="tocnumber">10</span> <span class="toctext"><b>help</b></span></a></li>
+</ul>
+</div>
+
+<p><br />
+This page provides user documentation for the utility functions of the <a href="http://imagej.net/CIP" title="CIP">CIP</a> package
+</p><p>One can found additionnal information on the function parameters (type, optionnal/required, positionnal/named) on the <a href="http://imagej.net/CIP_Parameters" title="CIP Parameters">parameters documentation</a> page.
+</p><p>to acess another category of CIP functions:
+<a href="http://imagej.net/CIP_Format" title="CIP Format">Format</a>, 
+<a href="http://imagej.net/CIP_Filter" title="CIP Filter">Filter</a>, 
+<a href="http://imagej.net/CIP_Math" title="CIP Math">Math</a>, 
+<a href="http://imagej.net/CIP_Segmentation" title="CIP Segmentation">Segment</a>, 
+<strong class="selflink">Assess</strong>,
+<a href="http://imagej.net/CIP_Experimental" title="CIP Experimental">Experimental</a>.
+</p>
+<h1><span class="mw-headline" id="measure"><b>measure</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+This function performs measures in image and region and return them as a table.
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+</p><p>&#160;&#160;&#160;&#160;<code>outputTable = cip.measure( inputImage* ,measures*, unit, prefix )</code><br />
+&#160;&#160;&#160;&#160;perform the specified measures on the entire input image.
+</p><p>&#160;&#160;&#160;&#160;<code>outputTable = cip.measure( regions* ,measures*, source, unit, prefix )</code><br />
+&#160;&#160;&#160;&#160;perform the specified measures for each of the provided region. if provided the source image is used for intensity measure.<br />
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>inputImage*</b>&#160;: the image to measure<br />
+&#160;&#160;&#160;&#160;<b>regions*</b>&#160;: a region or list of regions to be measured.<br />
+&#160;&#160;&#160;&#160;<b>measures*</b>&#160;: a string or a list of strings taken from {'min', 'max', 'mean', 'stddev', 'median', 'position', 'boundary', 'size'}  and representing the measure to be performed<br />
+&#160;&#160;&#160;&#160;<b>source</b>&#160;: a image that will be used to perform the intensity based measure if the input is of type region. if not provided the measure will be done on the input object intensity<br />
+&#160;&#160;&#160;&#160;<b>unit</b>&#160;: is a boolean value indicating to use or not the image pixel size. Default is true.<br />
+&#160;&#160;&#160;&#160;<b>prefix</b>&#160;: is a string that will be set at the beginning of each column header in the output. It can be used for instance to differentiate measures performed on the same object with different source image. Default is an empty string.
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>outputTable</b>: the measures table. Each column represent one of the requested measure while the first column provides a reference to the measures object. Each row contains the measures performed for a particular object.
+</p><p><span style="font-size:110%"><b>Example</b></span><br />
+&#160;&#160;&#160;&#160;<code>regions = cip.region(labelMap)</code><br />
+&#160;&#160;&#160;&#160;<code>table = cip.measure(regions,  ’size’ , ’nuclei’ )</code><br />
+&#160;&#160;&#160;&#160;<code>cip.show( table )</code><br />
+In the first line labelMap is the left image in the illustration below. In the second line, 'size' is the measure performed, 'nuclei' is used to customize region names (see object column in the illustration below).
+</p>
+<div class="floatnone"><a href="http://imagej.net/File:CIP_measure.PNG" class="image"><img alt="CIP measure.PNG" src="../_images/6/6a/CIP_measure.PNG" width="400" height="177" /></a></div><br />
+<p><span style="font-size:110%"><b>Implementation</b></span><br />
+The measure function instanciate a toolbox adapted for the object to measure. the toolbox can receive new measures tools to extend the existing measure set.
+</p>
+<h1><span class="mw-headline" id="show"><b>show</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+show display CIP data within IJ1 component: hyperstack viewer, results table and log window. this ensures easy communication and reuse of the data by the rest of imageJ ecosystem.
+</p><p><span style="font-size:110%"><b>Signature: image</b></span><br />
+&#160;&#160;&#160;&#160;<code>handle = cip.show( inputImage* , color )</code><br />
+&#160;&#160;&#160;&#160;will display an hyperstack viewer with the name of the image and the requested color luts.
+</p><p>&#160;&#160;&#160;&#160;<b>inputImage*</b>: the image to display.<br />
+&#160;&#160;&#160;&#160;<b>color</b>: a string or a list of string representing a Look Up Table available in ImageJ menu. For basic colors using the first letter of the lut is enough ('r' in place of 'red' or 'rgb' in place of ['red','green','blue']).
+</p><p><span style="font-size:110%"><b>Signature: region</b></span><br />
+&#160;&#160;&#160;&#160;<code>cip.show( region*, handle, color, width, scalar, reset )</code><br />
+&#160;&#160;&#160;&#160; will add region contours to the overlay of the image pointed by handle and with the specified properties: color, width, scalars.
+</p><p>&#160;&#160;&#160;&#160;<b>region</b>: a region or list of regions. this works with bot 2d and 3d regions.<br />
+&#160;&#160;&#160;&#160;<b>handle</b>: a string with the name of the window where region(s) will be displayed. if no string is provided, region will be shown on the image currently in focus in ImageJ.<br />
+&#160;&#160;&#160;&#160;<b>color</b>: a string representing a colors or a lut available in imageJ menu. default is 'lila'. Colors have priority on lut of the same name.<br />
+&#160;&#160;&#160;&#160;<b>width</b>: a scalar representing contour width in point. default is 1.<br />
+&#160;&#160;&#160;&#160;<b>scalars</b>: a list of scalars representing a region attribute and being used to choose region color in the lut. default is [1,2,..., n] where n is the number of region provided as input.<br />
+&#160;&#160;&#160;&#160;<b>reset</b>: a boolean indication whether or not to reset the overlay. The default is false.
+</p><p><span style="font-size:110%"><b>Signature: table</b></span><br />
+&#160;&#160;&#160;&#160;<code>handle = cip.show( inputTable* , handle, reset)</code><br />
+&#160;&#160;&#160;&#160; will display an IJ1 results table with same headers and rows as the input table.
+</p><p>&#160;&#160;&#160;&#160;<b>table</b>: a table to display.<br />
+&#160;&#160;&#160;&#160;<b>handle</b>: a string with the name of the results table where the data will be appended.<br />
+&#160;&#160;&#160;&#160;<b>reset</b>: a boolean indication whether or not to reset the results table. The default is false.
+</p><p><span style="font-size:110%"><b>Signature: string</b></span><br />
+&#160;&#160;&#160;&#160;<code>handle = cip.show( message* )</code><br />
+&#160;&#160;&#160;&#160; will display the message in IJ1 log window.
+</p><p>&#160;&#160;&#160;&#160;<b>message</b> a string to display in the IJ1 log window.
+</p><p><span style="font-size:110%"><b>Signature: track (Experimental)</b></span><br />
+&#160;&#160;&#160;&#160;<code>cip.show( TrackmateModel*, image, mode, track style, track depth )</code><br />
+&#160;&#160;&#160;&#160; will display tracks detected with trackmate or cip.track in trackscheme or overlaid in an hyperstack viewer.
+</p><p>&#160;&#160;&#160;&#160;<b>TrackMateModel*</b> a TrackMate model object returned by cip.track or created with the trackmate api.<br />
+&#160;&#160;&#160;&#160;<b>image</b> an image on which the track can be displayed, if not provided an empty image the same size as the one used for the tracking will be used.<br />
+&#160;&#160;&#160;&#160;<b>mode</b> a string in {<u>'image'</u>,'trackscheme','all'}. default is 'image'. When image is chosen tract are displayed in image overlay. With 'trackscheme' the trackscheme ui is used to display the tracks.<br />
+&#160;&#160;&#160;&#160;<b>track style</b> a string in {<u>'all'</u>,'local','backward','forward','selection'}. 'all' is the default. depending of the value the track are shown entirely ('all'), a few step before('backward') or after ('forward') current time, both before and after ('local').<br />
+&#160;&#160;&#160;&#160;<b>track depth</b> a scalar defining the number of step draw in 'local', 'backward' and 'forward' track style. Default is 10.
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>handle</b>: a string with the name of the created results table or image window.
+</p><p><span style="font-size:110%"><b>Example</b></span><br />
+This example demonstrate how to label a gray level image and overlay the contour of the detected region on orignal image.<br />
+&#160;&#160;&#160;&#160;<code>labelMap = cip.label(img, 'threshold', 500)</code><br />
+&#160;&#160;&#160;&#160;<code>regions = cip.region(labelMap)</code><br />
+&#160;&#160;&#160;&#160;<code>h = cip.show(img) 	# display img</code><br />
+&#160;&#160;&#160;&#160;<code>cip.show(h, regions, 'glasbey' ) 	# overlay the region contour to img</code><br />
+</p>
+<div class="floatnone"><a href="http://imagej.net/File:CIP_show_region.PNG" class="image"><img alt="CIP show region.PNG" src="../_images/d/d7/CIP_show_region.PNG" width="650" height="195" /></a></div><br />
+<p>An example script displaying tracks can found <a rel="nofollow" class="external text" href="https://github.com/benoalo/CIP/blob/master/scripts/tracking_cip.py">here</a>
+</p><p><span style="font-size:110%"><b>Implementation</b></span><br />
+The show function relies on IJ1 component as a starting point as this is the way data are displayed when downloading a fresh version of Fiji. this also ensure that this data can easily be seen and processed the usual way by any imageJ plugins.
+</p>
+<h1><span class="mw-headline" id="region"><b>region</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+This function is a converter is that IJ1 or IJ2 object and convert them to CIP regions.
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+&#160;&#160;&#160;&#160;<code>region = cip.region( image, name )</code><br />
+&#160;&#160;&#160;&#160; will convert an image to a region or a list of region.
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>image</b>&#160;: an image that will be interpreted as a mask if it has boolean type or as a label image otherwise.<br />
+&#160;&#160;&#160;&#160;<b>name</b>&#160;: a string that will be used to name the region. if there are multiple region the name will be appended with a scalar to differentiate the regions.
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>region</b>: a region if the input is boolean a list of region otherwise.
+</p>
+<h1><span class="mw-headline" id="toIJ1"><b>toIJ1</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+Is a converter that converts image to ImagePlus and CIP regions to rois.
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+</p><p>&#160;&#160;&#160;&#160;<code> IJ1_image = cip.gauss( image*)</code><br />
+&#160;&#160;&#160;&#160;converts an image (of any type) to an ImagePlus.
+</p><p>&#160;&#160;&#160;&#160;<code> IJ1_roi = cip.gauss( region*)</code><br />
+&#160;&#160;&#160;&#160;converts a region (of any type) to Rois.
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>image</b>&#160;: the image to convert to IJ1 ImagePlus.<br />
+&#160;&#160;&#160;&#160;<b>region</b>: a region or a list of region to convert to a list of list of Rois (where each list of Rois represents the 2d contours of a 3D object)
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>IJ1_image</b>&#160;: and ImagePlus version of the input image<br />
+&#160;&#160;&#160;&#160;<b>IJ1_rois</b>&#160;: a list of list of Rois. each of the input region will be represented by a list of Rois where each Roi is the contour of a 2d  section through the region.
+</p>
+<h1><span class="mw-headline" id="toIJ2"><b>toIJ2</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+Converts an image (of any type handled by CIP) to an IJ2 Dataset and a region (of any type handled by CIP) to an Imglib2 IterableRegion.
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+</p><p>&#160;&#160;&#160;&#160;<code>IJ2_image = cip.toIJ2( image* )</code><br />
+&#160;&#160;&#160;&#160;converts an image to an IJ2 Dataset.
+</p><p>&#160;&#160;&#160;&#160;<code>IJ2_region = cip.toIJ2( region* )</code><br />
+&#160;&#160;&#160;&#160;converts an image to an ImgLib2 IterableRegion.
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>image*</b>&#160;: an image to convert<br />
+&#160;&#160;&#160;&#160;<b>region*</b>: a region or a list of region to convert
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>IJ2_image</b>: an image of type Dataset<br />
+&#160;&#160;&#160;&#160;<b>IJ2_region</b>: a list of Iterable region
+</p>
+<h1><span class="mw-headline" id="spacing"><b>spacing</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+Retrieves the pixel size of the input image
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+&#160;&#160;&#160;&#160;<code> pixelSize = cip.spacing( inputImage* )</code>
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>inputImage*</b>&#160;: the image process<br />
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>pixelSize</b>&#160;: a list of scalars representing the input image pixel size along each image dimension <br />
+</p>
+<h1><span class="mw-headline" id="unit"><b>unit</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+Retrieves the units of the input image
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+&#160;&#160;&#160;&#160;<code> units = cip.unit( inputImage* )</code>
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>inputImage*</b>&#160;: the image to process<br />
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>units</b>&#160;: a list of string representing the input image unit along each image dimension <br />
+</p>
+<h1><span class="mw-headline" id="axes"><b>axes</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+Retrieves the axes names of the input image
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+&#160;&#160;&#160;&#160;<code> axseName = cip.axes( inputImage* )</code>
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>inputImage*</b>&#160;: the image process<br />
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>axesName</b>&#160;: a list of string representing the input image axes names along each image dimension <br />
+</p>
+<h1><span class="mw-headline" id="list"><b>list</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+utility functions creating a Java list of object from a list of object.
+</p><p>The function was created for a technical reason. In Jython passing a list to CIP function (i.e. a java function) can be wrongly interpreted causing problem down the line. To avoid that list(...) converts a list of object to a java list of object.
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+&#160;&#160;&#160;&#160;<code>a list of scalar = cip.list(  scalar1 , scalar2, ... )</code><br />
+&#160;&#160;&#160;&#160;<code>a list of scalar = cip.list( [scalar1 , scalar2, ...] )</code><br />
+&#160;&#160;&#160;&#160;converts a list of scalar to a java list of scalars
+</p><p>&#160;&#160;&#160;&#160;<code>a list of scalar = cip.list(  string1 , string2, ... )</code><br /> 
+&#160;&#160;&#160;&#160;<code>a list of scalar = cip.list( [string1 , string2, ...] )</code><br />
+&#160;&#160;&#160;&#160;converts a list of string to a java list of string
+</p><p><br />
+</p>
+<h1><span class="mw-headline" id="help"><b>help</b></span></h1>
+<p>TODO
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064709
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.048 seconds
+Real time usage: 0.052 seconds
+Preprocessor visited node count: 84/1000000
+Preprocessor generated node count: 136/1000000
+Post‐expand include size: 372/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    1.044      1 - Template:CIP_Navigation
+100.00%    1.044      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=CIP_Utilities&amp;oldid=37959">http://imagej.net/index.php?title=CIP_Utilities&amp;oldid=37959</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 29 May 2018, at 07:46.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=CIP_Utilities&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=CIP+Utilities" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=CIP+Utilities" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/CIP_Utilities" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/CIP_Utilities" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=CIP_Utilities&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=CIP_Utilities&amp;oldid=37959" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=CIP_Utilities&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":328});});</script>
+		</body>
+		</html>
+		

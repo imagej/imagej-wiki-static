@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Cover Maker - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Cover_Maker","wgTitle":"Cover Maker","wgCurRevisionId":41225,"wgRevisionId":41225,"wgArticleId":1567,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials","Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Cover_Maker","wgRelevantArticleId":1567,"wgRequestId":"c82e008cb4f5e1edac0aeaab","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","mediawiki.page.gallery.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.page.gallery.styles%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="There are many online or offline solutions available for reconstructing images in this way, some of them undoubtedly more sophisticated than the CoverMaker. The CoverMaker is open source, integrated into Fiji and so can serve as platform for exploring the associated image analysis questions. Everyone is welcome to improve the code and the algorithms, contribute more image databases and show off the results of their experiments."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Cover Maker"/>
+
+	<meta property="og:description" content="There are many online or offline solutions available for reconstructing images in this way, some of them undoubtedly more sophisticated than the CoverMaker. The CoverMaker is open source, integrated into Fiji and so can serve as platform for exploring the associated image analysis questions. Everyone is welcome to improve the code and the algorithms, contribute more image databases and show off the results of their experiments."/>
+
+	<meta property="og:url" content="http://imagej.net/Cover_Maker"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Cover_Maker rootpage-Cover_Maker skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Cover_Maker.html#bodyContent">Skip to content</a>, 			<a href="Cover_Maker.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Cover_Maker.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Cover_Maker" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Cover_Maker&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Cover_Maker&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Cover_Maker&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Cover Maker</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>CoverMaker (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Tomancak" title="User:Tomancak">Pavel Tomancak</a>, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Tomancak" title="User:Tomancak">Pavel Tomancak</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/blob/master/plugins/Examples/CoverMaker/Cover_Maker.py">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> 27/05/2012
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> 29/06/2012
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Category:Plugins</a>
+</td></tr>
+
+</table>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Cover_Maker.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Cover_Maker.html#Gallery"><span class="tocnumber">2</span> <span class="toctext">Gallery</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Cover_Maker.html#How_does_it_work"><span class="tocnumber">3</span> <span class="toctext">How does it work</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Cover_Maker.html#CoverMaker_Tutorial"><span class="tocnumber">4</span> <span class="toctext">CoverMaker Tutorial</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Cover_Maker.html#Prepare_CoverMaker_Database"><span class="tocnumber">5</span> <span class="toctext">Prepare CoverMaker Database</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="Cover_Maker.html#Input.2FSearch.2FOutput"><span class="tocnumber">5.1</span> <span class="toctext">Input/Search/Output</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Cover_Maker.html#Potential_problems"><span class="tocnumber">5.2</span> <span class="toctext">Potential problems</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Cover_Maker.html#Databases"><span class="tocnumber">6</span> <span class="toctext">Databases</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Cover_Maker.html#Implementation_and_Acknowledgements"><span class="tocnumber">7</span> <span class="toctext">Implementation and Acknowledgements</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Cover_Maker.html#Future_work"><span class="tocnumber">8</span> <span class="toctext">Future work</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Cover_Maker.html#References"><span class="tocnumber">9</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+</div>
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:152px;"><div class="MediaTransformError" style="width: 150px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Nature_cover.png" class="internal" title="Enlarge"></a></div>Nature cover for the paper on the developmental hourglass <sup id="cite_ref-Kalinka_and_Varga2010_1-0" class="reference"><a href="Cover_Maker.html#cite_note-Kalinka_and_Varga2010-1">&#91;1&#93;</a></sup>.</div></div></div>This project explores the algorithms for reconstructing scientific images as a combination of other scientific images drawing from a large database of scientific imagery. The resulting image can be visually stunning given that a large database with good balance of colors is available. One such database consisting of about 66,000 images of gene expression patterns in Drosophila embryogenesis is provided <a href="Cover_Maker.html#Databases">here</a> as a starting point. The results of the plugin can be used as material for cover art such as for example the Nature cover on the right.
+<p><br />
+There are many online or offline solutions available for reconstructing images in this way, some of them undoubtedly more sophisticated than the CoverMaker. The CoverMaker is open source, integrated into Fiji and so can serve as platform for exploring the associated image analysis questions. Everyone is welcome to improve the code and the algorithms, contribute more image databases and show off the results of their experiments.
+</p><p><br />
+Please note that the Nature cover was NOT made with the CoverMaker plugin, but it inspired its subsequent development. Below we show the template image depicting the famous Ernst Haeckel embryo drawings and the resulting output image generated using the CoverMaker. For more examples jump to the <a href="Cover_Maker.html#Gallery">Gallery</a> section.
+</p>
+<table>
+<tr>
+<td>
+<div class="thumb tleft"><div class="thumbinner" style="width:352px;"><a href="http://imagej.net/File:Haeckel_embryos_white.png" class="image"><img alt="" src="../_images/8/85/Haeckel_embryos_white.png" width="350" height="306" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Haeckel_embryos_white.png" class="internal" title="Enlarge"></a></div><b>Drawing of Haeckel embryos.</b> For afficionados this is in fact Romanes' 1892 copy of the <a href="http://en.wikipedia.org/wiki/Ernst_Haeckel" class="extiw" title="wikipedia:Ernst Haeckel">Ernst Haeckel</a> drawing. If you consider Haeckel a fraud, think again and start by reading the excellent Robert J. Richards book "<a rel="nofollow" class="external text" href="http://www.amazon.com/The-Tragic-Sense-Life-Evolutionary/dp/0226712141">The Tragic Sense of Life</a>".</div></div></div>
+</td>
+<td>
+<div class="thumb tleft"><div class="thumbinner" style="width:352px;"><a href="http://imagej.net/File:Haeckel_embryos_cover.png" class="image"><img alt="" src="../_images/a/ab/Haeckel_embryos_cover.png" width="350" height="304" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Haeckel_embryos_cover.png" class="internal" title="Enlarge"></a></div><b>CoverMaker rendition of Haeckel embryos</b> The image was generated using a database of 66,579 images of gene expression pattern during Drosophila embryogenesis visualized by histochemical RNA in situ hybridization.<sup id="cite_ref-Tomancak2002_2-0" class="reference"><a href="Cover_Maker.html#cite_note-Tomancak2002-2">&#91;2&#93;</a></sup><sup id="cite_ref-Tomancak2007_3-0" class="reference"><a href="Cover_Maker.html#cite_note-Tomancak2007-3">&#91;3&#93;</a></sup></div></div></div>
+</td></tr></table>
+<h2><span class="mw-headline" id="Gallery">Gallery</span></h2>
+<p>Here are some example CoverMaker images. Feel free to <a rel="nofollow" class="external text" href="mailto:tomancak@mpi-cbg.de">send</a> your experiments particularly if you make it on the cover&#160;;-).
+</p>
+<ul class="gallery mw-gallery-traditional">
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:15px auto;"><a href="http://imagej.net/File:Bioessays_backcover.jpg" class="image"><img alt="" src="../_images/2/2b/Bioessays_backcover.jpg" width="90" height="120" /></a></div></div>
+			<div class="gallerytext">
+<p>Backcover of Bioessays featuring famous drawing of early Drosophila embryogenesis by Victoria Foe
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:15px auto;"><a href="http://imagej.net/File:Methods_cover_2014_small.jpg" class="image"><img alt="" src="../_images/4/43/Methods_cover_2014_small.jpg" width="90" height="120" /></a></div></div>
+			<div class="gallerytext">
+<p>Cover of Methods journal focused on Drosophila, edited by Nobert Perrimon
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:15px auto;"><a href="http://imagej.net/File:Bioimage_Informatics_cover.jpg" class="image"><img alt="" src="../_images/9/96/Bioimage_Informatics_cover.jpg" width="86" height="120" /></a></div></div>
+			<div class="gallerytext">
+<p>Cover of Bioimage Informatics 2012 conference brochure
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:15px auto;"><a href="http://imagej.net/File:NM_cover.jpg" class="image"><img alt="" src="../_images/a/a5/NM_cover.jpg" width="91" height="120" /></a></div></div>
+			<div class="gallerytext">
+<p>Cover of July 2012 Issue of Nature Methods containing focus on Bioimage Informatics
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:28px auto;"><a href="http://imagej.net/File:Cover_suggestion_5_fullres.jpg" class="image"><img alt="" src="../_images/b/bf/Cover_suggestion_5_fullres.jpg" width="120" height="94" /></a></div></div>
+			<div class="gallerytext">
+<p>high-resolution version of Nature Methods cover
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:27.5px auto;"><a href="http://imagej.net/File:Microscope_cover.png" class="image"><img alt="" src="../_images/4/46/Microscope_cover.png" width="120" height="95" /></a></div></div>
+			<div class="gallerytext">
+<p>Open clipart microscope
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:43px auto;"><a href="http://imagej.net/File:Runt_fish_1.png" class="image"><img alt="" src="../_images/a/a9/Runt_fish_1.png" width="120" height="64" /></a></div></div>
+			<div class="gallerytext">
+<p>Runt expression pattern at cellular blastoderm stage of Drosophila embryogenesis
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:15px auto;"><a href="http://imagej.net/File:Cover_suggestion_1.jpg" class="image"><img alt="" src="../_images/3/31/Cover_suggestion_1.jpg" width="108" height="120" /></a></div></div>
+			<div class="gallerytext">
+<p>Cover suggestion for Focus on Bioimage Informatics - logos
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:47px auto;"><a href="http://imagej.net/File:Ovary_cover_test.jpg" class="image"><img alt="" src="../_images/5/59/Ovary_cover_test.jpg" width="120" height="56" /></a></div></div>
+			<div class="gallerytext">
+<p>Stage 10 Drosophila egg chamber
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:32.5px auto;"><a href="http://imagej.net/File:Example_cover_embryo.png" class="image"><img alt="" src="../_images/9/95/Example_cover_embryo.png" width="120" height="85" /></a></div></div>
+			<div class="gallerytext">
+<p>Dorsal ectoderm expression at blastoderm satge
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:16px auto;"><a href="http://imagej.net/File:ImageJ2_cover.jpg" class="image"><img alt="" src="../_images/c/cc/ImageJ2_cover.jpg" width="120" height="118" /></a></div></div>
+			<div class="gallerytext">
+<p>ImageJ2 logo
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:23px auto;"><a href="http://imagej.net/File:Haeckel_embryos_cover.png" class="image"><img alt="" src="../_images/a/ab/Haeckel_embryos_cover.png" width="120" height="104" /></a></div></div>
+			<div class="gallerytext">
+<p>Haeckel embryos
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 155px"><div style="width: 155px">
+			<div class="thumb" style="width: 150px;"><div style="margin:16px auto;"><a href="http://imagej.net/File:Fiji_cover.png" class="image"><img alt="" src="../_images/d/d7/Fiji_cover.png" width="120" height="118" /></a></div></div>
+			<div class="gallerytext">
+<p>Fiji logo
+</p>
+			</div>
+		</div></li>
+</ul>
+<h2><span class="mw-headline" id="How_does_it_work">How does it work</span></h2>
+<p>The principle is very simple. One divides the template image into tiles that have the same pixel dimensions as the down-sampled database images (for instance 12 by 9 pixels as is the case in the provided image database). The program then systematically goes through the small tiles of the template image placing the database images that show best pixel wise color matching. We do this by summing the squared pixel-wise and color-wise differences between the template and all the database images and selecting the database image with the lowest sum (i.e. difference). There are other possible metrics, but this one works well for the embryo database.
+</p><p>The template image gets cropped to the dimensions that are compatible with the tile size (i.e. for 12x9 tiles the dimensions have to be divisible by 12 and 9 respectively). Every database image is used only once and so, as the build-up progresses, the database can get 'exhausted' for a particular color and shape. To minimize this effect we place the tiles randomly into the image.
+</p><p>The tricky part is to prepare the database. We provide a <a href="Cover_Maker.html#Databases">pre-computed database</a> based on the embryo <i>in situ</i> data containing 12x9 pixels tiles. You can generate your own databases using the <a href="Cover_Maker.html#Prepare_CoverMaker_Database">Prepare CoverMaker Database</a> script that scours a file system and down-samples all available RGB jpegs to the desired tile dimensions.
+</p><p>Finally, for printing poster size images, the plugin will generate in the second step of its operation (after the output image has been formed at the original resolution of the template image) an arbitrarily large output image at desired dpi resolution using the database of original images available <a href="Cover_Maker.html#Databases">here</a> or generated by you using the <a href="Cover_Maker.html#Prepare_CoverMaker_Database">Prepare CoverMaker Database</a> script.
+</p>
+<h2><span class="mw-headline" id="CoverMaker_Tutorial">CoverMaker Tutorial</span></h2>
+<table>
+
+<tr>
+<td>
+<p>We will start by opening an image that will serve as template. For the time being it needs to be an RGB image. It can have any dimensions, however consider that larger images will require many more tiles to fill up, it will take long and the effect will be less visible. Fiji logo shown on the right is a good start. Alternatively one of the Fiji sample images such as the clown.jpg gives good results quickly.
+</p><p><i>Note:</i> I would recommend having only one image opened before proceeding further.
+</p>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:152px;"><a href="http://imagej.net/File:Fiji_logo_in_Fiji.png" class="image"><img alt="" src="../_images/9/90/Fiji_logo_in_Fiji.png" width="150" height="154" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Fiji_logo_in_Fiji.png" class="internal" title="Enlarge"></a></div><b>Template image</b></div></div></div>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>
+<p>Now we launch the CoverMaker python script by going to Plugins -&gt; Examples -&gt; CoverMaker -&gt; Cover Maker. (Or typing 'l' and searching with keyword 'cover').
+</p><p>A basic dialog box will appear prompting us to select the image database by clicking on <b>Browse</b> and locating in the file system the <a href="Cover_Maker.html#Databases">tif file</a> containing down-sampled images. The tif file is called 12_9.tif indicating that the images have been scaled to the 12x9 pixel dimension. This is the default tile size. If you use a different database with different aspect ratio please change the default <b>tile width and height</b> in the dialog box.
+</p><p>Next <b>click ok</b> and the reconstruction will start. As a first step the template image will be cropped to the size that is multiple of the tile width and height (not shown, see <a href="Cover_Maker.html#Future_work">Future work</a> for comment on the cropping issue.   
+</p><p>Below we monitor the progress of building the cover
+</p>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:CoverMaker_dialog_1.png" class="image"><img alt="" src="../_images/4/46/CoverMaker_dialog_1.png" width="300" height="154" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:CoverMaker_dialog_1.png" class="internal" title="Enlarge"></a></div><b>The initial CoverMaker dialog box</b></div></div></div>
+</td>
+<td>
+</td></tr></table>
+<table>
+
+<tr>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Cover_buildup_1.png" class="image"><img alt="" src="../_images/6/65/Cover_buildup_1.png" width="120" height="125" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Cover_buildup_1.png" class="internal" title="Enlarge"></a></div><b>Starting</b></div></div></div>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Cover_buildup_2.png" class="image"><img alt="" src="../_images/8/8b/Cover_buildup_2.png" width="120" height="125" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Cover_buildup_2.png" class="internal" title="Enlarge"></a></div><b>Progress 1</b></div></div></div>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Cover_buildup_3.png" class="image"><img alt="" src="../_images/f/fd/Cover_buildup_3.png" width="120" height="125" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Cover_buildup_3.png" class="internal" title="Enlarge"></a></div><b>Progress 2</b></div></div></div>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Cover_buildup_4.png" class="image"><img alt="" src="../_images/5/5e/Cover_buildup_4.png" width="120" height="125" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Cover_buildup_4.png" class="internal" title="Enlarge"></a></div><b>Almost there</b></div></div></div>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Cover_buildup_5.png" class="image"><img alt="" src="../_images/a/a9/Cover_buildup_5.png" width="120" height="125" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Cover_buildup_5.png" class="internal" title="Enlarge"></a></div><b>Finished Cover</b></div></div></div>
+</td>
+<td>
+</td></tr></table>
+<table>
+
+<tr>
+<td>
+<p>After the reconstruction finishes a second dialog box pops up. Here we have an option to <b>Cancel</b> the program, the finished low resolution image will remain opened and can be saved using normal Fiji procedures. 
+</p><p>If we like the result of the experiment, we can save it at high resolution using the original images. We can decide on the final <b>resolution</b> of the output image in dpi, specify the <b>width or height in pixels or inches</b>. The fields are linked and should update while we are editing the different parameters.
+</p><p>Next we need to click on <b>Browse</b> and locate the <a href="Cover_Maker.html#Databases">zip file</a> containing the originals. Finally we click on <b>ok</b> and the building of the final high resolution output image will commence as shown below. Note that now the image grows sequentially since we already know where to place the images from the initial run and the <a href="Cover_Maker.html#How_does_it_work">randomization</a> is no longer necessary.
+</p>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:CoverMaker_dialog_2.png" class="image"><img alt="" src="../_images/1/16/CoverMaker_dialog_2.png" width="300" height="179" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:CoverMaker_dialog_2.png" class="internal" title="Enlarge"></a></div><b>The second CoverMaker dialog box for saving high resolution output</b></div></div></div>
+</td></tr></table>
+<table>
+
+<tr>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Hires_cover_buildup_1.png" class="image"><img alt="" src="../_images/3/35/Hires_cover_buildup_1.png" width="120" height="121" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Hires_cover_buildup_1.png" class="internal" title="Enlarge"></a></div><b>Starting</b></div></div></div>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Hires_cover_buildup_2.png" class="image"><img alt="" src="../_images/b/b2/Hires_cover_buildup_2.png" width="120" height="121" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Hires_cover_buildup_2.png" class="internal" title="Enlarge"></a></div><b>Progress 1</b></div></div></div>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Hires_cover_buildup_3.png" class="image"><img alt="" src="../_images/6/6f/Hires_cover_buildup_3.png" width="120" height="121" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Hires_cover_buildup_3.png" class="internal" title="Enlarge"></a></div><b>Progress 2</b></div></div></div>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Hires_cover_buildup_4.png" class="image"><img alt="" src="../_images/0/09/Hires_cover_buildup_4.png" width="120" height="121" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Hires_cover_buildup_4.png" class="internal" title="Enlarge"></a></div><b>Almost there</b></div></div></div>
+</td>
+<td>
+<div class="thumb tright"><div class="thumbinner" style="width:122px;"><a href="http://imagej.net/File:Hires_cover_buildup_5.png" class="image"><img alt="" src="../_images/2/25/Hires_cover_buildup_5.png" width="120" height="121" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Hires_cover_buildup_5.png" class="internal" title="Enlarge"></a></div><b>Finished Cover</b></div></div></div>
+</td>
+<td>
+</td></tr></table>
+<p>When we zoom in on the final output image that was generated in this case at 300dpi and compare with the initial reconstructed image we will see the database images with much greater detail. The image can be made almost arbitrarily large and printed as a large poster. <i>Note</i>: the downsampler we use does not do a good job upsampling, thus when the originals are too small for a given dpi size combination artifacts in the output image will occur (grid of lines). This exception is currently not handled properly.
+</p>
+<table>
+
+<tr>
+<td> <div class="thumb tright"><div class="thumbinner" style="width:242px;"><a href="http://imagej.net/File:Lowres_zoomin.png" class="image"><img alt="" src="../_images/d/d7/Lowres_zoomin.png" width="240" height="245" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Lowres_zoomin.png" class="internal" title="Enlarge"></a></div><b>Close up on the Initial low resolution image</b></div></div></div>
+</td>
+<td> <div class="thumb tright"><div class="thumbinner" style="width:242px;"><a href="http://imagej.net/File:Hires_zoomin.png" class="image"><img alt="" src="../_images/2/28/Hires_zoomin.png" width="240" height="242" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Hires_zoomin.png" class="internal" title="Enlarge"></a></div><b>Close up on the final high resolution image</b></div></div></div>
+</td></tr></table>
+<h2><span class="mw-headline" id="Prepare_CoverMaker_Database">Prepare CoverMaker Database</span></h2>
+<p>In many ways preparing the image databases is a trickier business than actually performing the reconstruction. The aim of the <b>Prepare_CoverMaker_Database.py</b> script (Plugins -&gt; Examples -&gt; Cover Maker -&gt; Prepare Cover Maker Database) is to explore your local filesystem for RGB images that could be used to build a database. As many things can go wrong in the process, it should be considered experimental.
+</p>
+<h3><span class="mw-headline" id="Input.2FSearch.2FOutput">Input/Search/Output</span></h3>
+<p>Before we start searching for images we must decide on the dominant aspect ratio present in our image set. Obviously, since the tiles have all the same dimensions, different aspect ratios of input images would cause deformation during down-sampling to that common tile dimension. Fortunately, since CoverMaker is targeting scientific imaging, in most cases a large image database will have a uniform or one dominant aspect ratio. 
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="http://imagej.net/File:Create_database_dialog.png" class="image"><img alt="" src="../_images/f/f1/Create_database_dialog.png" width="200" height="123" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Create_database_dialog.png" class="internal" title="Enlarge"></a></div><b>Input and output parameters dialog</b></div></div></div>
+<p>The user must also specify the <b>aspect ratio</b> and <b>base directory</b> under which the images are to be found. 
+</p><p>The output parameters are the <b>minimum and maximum tile width and height</b> of the downsampled tiles. These should be compatible with the aspect ratio (for convenience the width and height are linked in the Dialog box). Users can specify a range of tile dimensions (by specifying minimum and maximum widths and heights) and the script will generate scalings between those bound in increments of one pixel. Note that the range should not be very broad (typically between 10 and 20 pixels). When the minimum and maximum are the same only single tile size will be generated. 
+</p><p>Finally the user must specify the <b>originals width and height</b> to which the images should be scaled. If these dimensions are the same as the dominant image dimensions on the filesystem, no scaling will occur, however this will duplicate every image encountered during the search. The resulting zip archive could become too large. Note that the images need not be very large as they will be scaled down again when CoverMaker outputs the final image at reasonable resolution. 
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="http://imagej.net/File:CoverMaker_database_log.png" class="image"><img alt="" src="../_images/3/31/CoverMaker_database_log.png" width="200" height="135" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:CoverMaker_database_log.png" class="internal" title="Enlarge"></a></div><b>Progress log</b></div></div></div>
+<p>The script will then recursively traverse the directory tree under this root looking for images with extensions <i>jpeg</i>, <i>jpe</i> and <i>jpg</i>. The extensions to be searched are currently hardcoded. During the search the script will write into ImageJ log the images it encountered and what is being done with them. Hopefully most images will have the matching aspect ratio specified above and will be scaled. Images with different aspect ratios will be skipped. 
+</p><p>The output of the script are two types of files:
+</p>
+<ul>
+<li>tif stacks containing downsampled image tiles of the specified dimensions (the naming convention is width_height.tif, i.e. for 12x9 pixel tiles 12_9.tif). Separate tif file for each output tile size will be generated</li>
+<li>one zip archive of the original images scaled to the size specified in the parameters <b>original width</b> and <b>original height</b> (note that this file should NOT be unzipped)</li>
+</ul>
+<p>Both output files are saved in the <b>base directory</b>. They can be directly used in the CoverMaker plugin.
+</p>
+<h3><span class="mw-headline" id="Potential_problems">Potential problems</span></h3>
+<p>Sometimes an image with jpeg like extension is not in fact an jpeg. The script currently checks if the image has three channels and skips the image if this is not the case. However, in my experience, a lot of unexpected things can happen when exploring large filesystems with diverse imagery. Finally, as the searching of a large filesystem can take some time, random errors, corrupted images or insufficient memory can cause the script to crash.
+</p><p>Catching these errors is the challenge for future improvements of the script.
+</p>
+<h2><span class="mw-headline" id="Databases">Databases</span></h2>
+<p>Currently we provide a single database of images prepared for CoverMaker. The database contains 81,751 images of <i>Drosophila melanogaster</i> embryos stained by RNA <i>in situ</i> hybridization with probes for about 6000 genes. The images have been scaled to the size of 12x9 pixels resulting in a tif stack that can serve as input for the CoverMaker plugin.  Additionally, in order to save the high resolution images you will need the matching zip archive of original images.
+</p>
+<table class="wikitable" style="text-align: center;">
+<tr>
+<td> Database type </td>
+<td> scaled tiles </td>
+<td> originals (DO NOT unzip)
+</td></tr>
+<tr>
+<td> Drosophila Embryo <i>in situ</i> </td>
+<td> <a rel="nofollow" class="external text" href="https://fiji.sc/samples/12_9.tif">12_9.tif</a>  (16.6MB) </td>
+<td> <a rel="nofollow" class="external text" href="https://fiji.sc/samples/originals.zip">originals.zip</a> (1.45GB)
+</td></tr></table>
+<p><b>Important note&#160;:</b> Do not unzip the orinals.zip archive. The CoverMaker is able to extract the relevant images.
+</p><p>More scientific databases to come.... Feel free to <a rel="nofollow" class="external text" href="mailto:tomancak@mpi-cbg.de">send</a> me yours.
+</p>
+<h2><span class="mw-headline" id="Implementation_and_Acknowledgements">Implementation and Acknowledgements</span></h2>
+<p>The plugin was written as a Jython script during the <a href="http://imagej.net/2011_Hackathon_in_Madison" title="2011 Hackathon in Madison">Madison ImageJ2/Fiji hackathon in January 2011</a>. The heavy lifting is performed using <a href="http://imagej.net/Jython_Scripting#Inline_java_code_inside_jython:_the_Weaver" title="Jython Scripting">in lined</a> Java code snippet courtesy of <a href="http://imagej.net/User:Albertcardona" title="User:Albertcardona">Albert Cardona</a>. All the large scale downsampling is done using <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> proper <a href="http://imagej.net/Downsample" title="Downsample">downsampler</a>. <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a> has helped a lot with the Dialog Listeners and will maintain the plugin for posterity.
+</p><p>BTW, this plugin and its genesis is a great example of the power of Fiji and the hackathons. I came to the hackathon not knowing anything about python and with only basic knowledge of Java and the ImageJ code base. In ten days I had the plugin written, probably driving the Fiji geeks crazy with my constant basic (or downright stupid) questions. But the take home message for biologists is - it can be done!
+</p>
+<h2><span class="mw-headline" id="Future_work">Future work</span></h2>
+<p>There is clearly room for improvement. Here is what comes to my mind, but feel free to suggest more features or, even better, go ahead and implement them.
+</p>
+<ul>
+<li>implement, test and evaluate more color metrics</li>
+<li>research optimization strategies for the placement of the tiles</li>
+<li>avoid the need to crop the template by employing a proper out of bounds strategy</li>
+<li>implement different tile geometries (like for instance hexagons)</li>
+<li>port it all into Java and particularly ImgLib2 for better performance (hopefully)</li>
+</ul>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ol class="references">
+<li id="cite_note-Kalinka_and_Varga2010-1"><span class="mw-cite-backlink"><a href="Cover_Maker.html#cite_ref-Kalinka_and_Varga2010_1-0">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Gene+expression+divergence+recapitulates+the+developmental+hourglass+model&amp;rft.aulast=A.T.+Kalinka%2C+K.+Varga%2C+D.T.+Gerrard%2C+S.W.+Preibisch%2C+D.L.+Corcoran%2C+J.+Jarrels%2C+U.+Ohler%2C+C.M.+Bergman%2C+P.+Tomancak&amp;rft.date=2010&amp;rft.volume=468&amp;rft.issue=7325&amp;rft.pages=811%26ndash%3B844&amp;rft_id=info:doi/doi%3A10.1038%2Fnature09634"><cite id="CITEREFA.T._Kalinka.2C_K._Varga.2C_D.T._Gerrard.2C_S.W._Preibisch.2C_D.L._Corcoran.2C_J._Jarrels.2C_U._Ohler.2C_C.M._Bergman.2C_P._Tomancak2010">A.T. Kalinka, K. Varga, D.T. Gerrard, S.W. Preibisch, D.L. Corcoran, J. Jarrels, U. Ohler, C.M. Bergman, P. Tomancak&#32;(2010),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/doi%3A10.1038%2Fnature09634">Gene expression divergence recapitulates the developmental hourglass model</a>",&#32;<i>Nature</i>&#32;<b>468</b>&#xa0;(7325):  811&#8211;844<span class="printonly">, DOI doi:10.1038/nature09634</span></cite></span>
+</span>
+</li>
+<li id="cite_note-Tomancak2002-2"><span class="mw-cite-backlink"><a href="Cover_Maker.html#cite_ref-Tomancak2002_2-0">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Systematic+determination+of+patterns+of+gene+expression+during+Drosophila+embryogenesis.&amp;rft.aulast=P.+Tomancak%2C+A.+Beaton%2C+R.+Weiszmann%2C+E.+Kwan%2C+S.+Shu%2C+S.E.+Lewis%2C+S.+Richards%2C+M.+Ashburner%2C+V.+Hartenstein%2C+S.E.+Celniker%2C+G.M.+Rubin&amp;rft.date=2002&amp;rft.volume=3&amp;rft.issue=12&amp;rft.pages=88%26ndash%3B88"><cite id="CITEREFP._Tomancak.2C_A._Beaton.2C_R._Weiszmann.2C_E._Kwan.2C_S._Shu.2C_S.E._Lewis.2C_S._Richards.2C_M._Ashburner.2C_V._Hartenstein.2C_S.E._Celniker.2C_G.M._Rubin2002">P. Tomancak, A. Beaton, R. Weiszmann, E. Kwan, S. Shu, S.E. Lewis, S. Richards, M. Ashburner, V. Hartenstein, S.E. Celniker, G.M. Rubin&#32;(2002),&#32;"Systematic determination of patterns of gene expression during Drosophila embryogenesis.",&#32;<i>Genome Biology</i>&#32;<b>3</b>&#xa0;(12):  88&#8211;88</cite></span>
+</span>
+</li>
+<li id="cite_note-Tomancak2007-3"><span class="mw-cite-backlink"><a href="Cover_Maker.html#cite_ref-Tomancak2007_3-0">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Global+analysis+of+patterns+of+gene+expression+during+Drosophila+embryogenesis.&amp;rft.aulast=P.+Tomancak%2C+B.P.+Berman%2C+A.+Beaton%2C+R.+Weiszmann%2C+E.+Kwan%2C+V.+Hartenstein%2C+S.E.+Celniker%2C+G.M.+Rubin&amp;rft.date=2007&amp;rft.volume=8&amp;rft.issue=7&amp;rft.pages=145%26ndash%3B145"><cite id="CITEREFP._Tomancak.2C_B.P._Berman.2C_A._Beaton.2C_R._Weiszmann.2C_E._Kwan.2C_V._Hartenstein.2C_S.E._Celniker.2C_G.M._Rubin2007">P. Tomancak, B.P. Berman, A. Beaton, R. Weiszmann, E. Kwan, V. Hartenstein, S.E. Celniker, G.M. Rubin&#32;(2007),&#32;"Global analysis of patterns of gene expression during Drosophila embryogenesis.",&#32;<i>Genome Biology</i>&#32;<b>8</b>&#xa0;(7):  145&#8211;145</cite></span>
+</span>
+</li>
+</ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064926
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.132 seconds
+Real time usage: 0.134 seconds
+Preprocessor visited node count: 2022/1000000
+Preprocessor generated node count: 10726/1000000
+Post‐expand include size: 13502/2097152 bytes
+Template argument size: 5875/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   94.636      1 - -total
+ 33.79%   31.979      3 - Template:Cite_journal
+ 30.18%   28.565      3 - Template:Citation/core
+ 21.14%   20.010      6 - Template:Person
+ 20.48%   19.379      1 - Template:Infobox
+  2.26%    2.143      3 - Template:Link
+  1.60%    1.511      1 - Template:GitHub
+  1.13%    1.068      1 - Template:TOC
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Cover_Maker&amp;oldid=41225">http://imagej.net/index.php?title=Cover_Maker&amp;oldid=41225</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Cover_Maker&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Cover+Maker" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Cover+Maker" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Cover_Maker" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Cover_Maker" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Cover_Maker&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Cover_Maker&amp;oldid=41225" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Cover_Maker&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":330});});</script>
+		</body>
+		</html>
+		

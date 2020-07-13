@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>StackObjectCombiner - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"StackObjectCombiner","wgTitle":"StackObjectCombiner","wgCurRevisionId":41337,"wgRevisionId":41337,"wgArticleId":3209,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"StackObjectCombiner","wgRelevantArticleId":3209,"wgRequestId":"0dd43da7dee266cc56696894","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Because of the cubic cost of the 3D segmentation (in memory and processing) with Ilastik, it is not possible to work on full stacks of EM images in once.&#10;To be fully segmented, the stack need to be cut in parts. But this operation will cut some objects in 2 or more parts, and the objects will lost the coordinate system of the original stack.&#10;The purpose of this plugin is to replace the objects in their original position, and provide a tool that will allow a user to merge 3D objects that have been cut."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="StackObjectCombiner"/>
+
+	<meta property="og:description" content="Because of the cubic cost of the 3D segmentation (in memory and processing) with Ilastik, it is not possible to work on full stacks of EM images in once.&#10;To be fully segmented, the stack need to be cut in parts. But this operation will cut some objects in 2 or more parts, and the objects will lost the coordinate system of the original stack.&#10;The purpose of this plugin is to replace the objects in their original position, and provide a tool that will allow a user to merge 3D objects that have been cut."/>
+
+	<meta property="og:url" content="http://imagej.net/StackObjectCombiner"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-StackObjectCombiner rootpage-StackObjectCombiner skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="StackObjectCombiner.html#bodyContent">Skip to content</a>, 			<a href="StackObjectCombiner.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="StackObjectCombiner.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/StackObjectCombiner" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:StackObjectCombiner&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=StackObjectCombiner&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=StackObjectCombiner&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>StackObjectCombiner</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="StackObjectCombiner.html#Stack_Object_Combiner"><span class="tocnumber">1</span> <span class="toctext">Stack Object Combiner</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="StackObjectCombiner.html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="StackObjectCombiner.html#Presentation_of_the_interface"><span class="tocnumber">3</span> <span class="toctext">Presentation of the interface</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="StackObjectCombiner.html#Example"><span class="tocnumber">4</span> <span class="toctext">Example</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="StackObjectCombiner.html#Reference"><span class="tocnumber">5</span> <span class="toctext">Reference</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="StackObjectCombiner.html#Contact"><span class="tocnumber">6</span> <span class="toctext">Contact</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="StackObjectCombiner.html#Licence"><span class="tocnumber">7</span> <span class="toctext">Licence</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Stack_Object_Combiner">Stack Object Combiner</span></h2>
+<p>Because of the cubic cost of the 3D segmentation (in memory and processing) with <a rel="nofollow" class="external text" href="http://ilastik.org/">Ilastik</a>, it is not possible to work on full stacks of EM images in once.<br />
+To be fully segmented, the stack need to be cut in parts. But this operation will cut some objects in 2 or more parts, and the objects will lost the coordinate system of the original stack.<br />
+The purpose of this plugin is to replace the objects in their original position, and provide a tool that will allow a user to merge 3D objects that have been cut.<br />
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p><span style="color:#FF0000"> Bug with memory watch parameter, increase it so its not a limit for the plugin anymore (higher than what IJ is allowed to have, e.g. 8000 if IJ is allowed to have 8GBytes)</span>
+</p><p>The plugin can be found on the github <a rel="nofollow" class="external text" href="https://github.com/Tom-TBT/StackObjectCombiner/releases">project</a> in the release tab (please take the lattest version of the plugin). <br />
+Download the .jar file and place it in the plugin folder of ImageJ. <br />
+This plugin also need the 
+<a rel="nofollow" class="external text" href="https://mvnrepository.com/artifact/org.apache.commons/commons-math3">apache common maths</a> librairy. If you use Fiji, this librairy is already included. If you use ImageJ, download the lattest version and put the .jar file into ImageJ/plugins/jars/
+</p>
+<h2><span class="mw-headline" id="Presentation_of_the_interface">Presentation of the interface</span></h2>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:SOC_Window.png" class="image"><img alt="SOC Window.png" src="../_images/8/8c/SOC_Window.png" width="1000" height="587" /></a></div></div>
+<p>Here is the Interface of Stack Object Combiner. The window contain several boxes, that allow you to set the different parameters and that give you an overview of the meshes.<br /><br />
+</p>
+<div class="MediaTransformError" style="width: 511px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> Folder selection box<br />This is the Folder Box. Choose the folder containing your meshes. To work only with certain meshes inside this folder, use the "Name pattern" function. Write the characters that the file contains, and click on "Actualise". The pattern can be a <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>. <br />Finally "Actualise" allow you to refresh the folder, for example if you have deleted or added files.
+<div class="MediaTransformError" style="width: 587px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> Shift box<br />
+<p>In the shift box, set the positions and dimensions of the cubes. To shift the meshes at their coordinates in the reconstructed volume, give the values of the shift in X, Y and Z. (See the illustration bellow to see to what each value correspond). X, Y and Z correspond respectively to the width, height and depth of the stack A (don't confuse the width, height and depth of the whole volume that you also have to give here, with the width, height and depth of the volume A that match the values of Shift X, Y and Z).<br />
+Once these values are set, click on "Shift" to shift all the meshes listed. To shift back the mesh to their original positions, click on "Unshift".<br />
+The values you give here will be used later to merge the meshes. For automatic merging, you have to give the width, height and depth of the whole volume.<br />
+<a href="http://imagej.net/File:SOC_cubeDimensions.png" class="image"><img alt="SOC cubeDimensions.png" src="../_images/e/ef/SOC_cubeDimensions.png" width="400" height="251" /></a> <a href="http://imagej.net/File:SOC_cubeSplitting.png" class="image"><img alt="SOC cubeSplitting.png" src="../_images/d/df/SOC_cubeSplitting.png" width="500" height="279" /></a>
+</p><p><a href="http://imagej.net/File:SOC_meshes.png" class="image"><img alt="SOC meshes.png" src="../_images/1/13/SOC_meshes.png" width="250" height="330" /></a> Meshes listing box<br />
+In this box, the meshes are placed in the list corresponding to the different volumes. To be listed, the prefix of the mesh name must match the volume name. For example, a dendrite that need to be placed in the A volume can be called A_dendrite.obj (a_dendrite also work). Note that the "_" after the letter is necessary for the object to be recognized by the plugin.<br />
+</p>
+<div class="MediaTransformError" style="width: 265px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> Automatic merging box<br />
+<p>This box contain the different parameters to merge the meshes automatically. The parameters correspond to constants inside the plugin, and changing them can help to resolve malfunctioning of the plugin. Here is a description of the different parameters:<br />
+</p>
+<ul>
+<li>Border min affinity: Range [0 - 1] It is the threshold value above which two meshes have similar properties. In automatic merging mode, the plugin compute for each border of the meshes the perimeter, the volume and the position of the barycentre. A similarity value is computed between the borders. If it's higher than the parameter, the borders are compatible for merging.</li>
+<li>Border separation: The borders of the meshes have to be decomposed into fragments to be located on only one side of the volume. This parameter help to separate the borders. If the message "Error while separating the borders" appear, increase this parameter.</li>
+<li>Distance window: It is the distance between the vertices of the meshes and the splits. The quality of the border separation can be modified with this parameter.</li>
+<li>Vertex pairing: When two borders are compatible, new faces have to be created. This value represent the size of the sets of vertices combined together. These sets are useful to prevent the formation of aberrant faces between the meshes.</li>
+<li>Memory watch: If the memory available goes bellow this value, the plugin will remove from the memory all the meshes previously processed to make space. But then the plugin will need to reload all the meshes when it will come to the final step. (value in MByte)  <span style="color:#FF0000">Bug with this parameter, increase it so its not a limit for the plugin anymore (higher than what IJ is allowed to have, e.g. 8000 if IJ is allowed to have 8GBytes)</span></li>
+</ul>
+<p>Once that the parameters have been set, click on "Automatic merging". A trace of the merging will appear in the log.
+</p>
+<div class="MediaTransformError" style="width: 263px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> Manual merging box<br />
+<p>The manual merging is the older implementation of the plugin. The automatic version should be more efficient and reliable than this version. However if the automatic version don't properly pair the meshes, using the manual merging can give you different results. The way the borders are detected and paired is different, and with this mode you choose which two objects you want to fuse together.<br />
+Here is the description of the parameters:<br />
+</p>
+<ul>
+<li>Border min affinity: The same as the one used in the automatic version. However here the treshold is applied here only against the length of the borders.</li>
+<li>Center distance: The tolerance for the distance of the centers of the borders (the center is calculated as the mean position of the vertices of the border, and so it is not very reliable). Only applied to circular borders.</li>
+<li>Distance window: The same as the one used in the automatic version.</li>
+<li>Tail length: The number of vertices removed from the ends of a linear borders. Due to the distance to the split, some artefact can appear on the end of the linear borders. This parameter help to fix this.</li>
+<li>Vertex pairing: The same as the one used in the automatic version.</li>
+</ul>
+<p>Once the parameters are set, add the meshes you want to fuse. Select them in the list and click on the "&gt;&gt;&gt;" button. You can also use the shortcut "A" to add a mesh highlighted.<br />
+Finally click on the "Merge" button or use the shortcut "S".
+</p>
+<h2><span class="mw-headline" id="Example">Example</span></h2>
+<p>During this example, you can look at the different step with the <a rel="nofollow" class="external text" href="https://fiji.sc/3D_Viewer">3DViewer</a>, or with <a rel="nofollow" class="external text" href="https://www.blender.org/">Blender</a>.
+</p>
+<ol>
+<li>Download the meshes of a mitochondria in the shape of a donut divided in 4 parts <a href="http://imagej.net/_images/e/ed/MitoDonut_Meshes.zip" class="internal" title="MitoDonut Meshes.zip">Media:MitoDonut Meshes.zip</a></li>
+<li>Launch the plugin, and give the directory containing the .obj file</li>
+<li>X shift&#160;: 192 &#160;&#160;&#160;Y shift&#160;: 214 &#160;&#160;&#160;Z shift&#160;: 500</li>
+<li>Width&#160;: 600 &#160;&#160;&#160;Height&#160;: 600 &#160;&#160;&#160;Depth&#160;: 600</li>
+<li>Click on the Shift button to shift the meshes.</li>
+<li>Now merge the meshes with the Automatic merging button, or two by two with the manual merging.</li>
+<li>Look at the result</li>
+</ol>
+<h2><span class="mw-headline" id="Reference">Reference</span></h2>
+<p>This plugin haven't been published yet, but if you want to cite you can always refer to it as 
+T. Boissonnet,"Stack Object Combiner plugin for ImageJ", <a rel="nofollow" class="external free" href="https://imagej.net/StackObjectCombiner">https://imagej.net/StackObjectCombiner</a>, October 2015
+</p>
+<h2><span class="mw-headline" id="Contact">Contact</span></h2>
+<p>For any suggestions, questions, problems or just to give feedback, please feel free to contact Tom Boissonnet at tom.boissonnet@embl.it
+</p>
+<h2><span class="mw-headline" id="Licence">Licence</span></h2>
+<p>This program is <b>free software</b>; you can redistribute it and/or modify it under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073458
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.046 seconds
+Preprocessor visited node count: 28/1000000
+Preprocessor generated node count: 36/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=StackObjectCombiner&amp;oldid=41337">http://imagej.net/index.php?title=StackObjectCombiner&amp;oldid=41337</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=StackObjectCombiner&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=StackObjectCombiner" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=StackObjectCombiner" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/StackObjectCombiner" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/StackObjectCombiner" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=StackObjectCombiner&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=StackObjectCombiner&amp;oldid=41337" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=StackObjectCombiner&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":263});});</script>
+		</body>
+		</html>
+		

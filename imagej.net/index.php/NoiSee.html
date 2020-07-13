@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>NoiSee - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"NoiSee","wgTitle":"NoiSee","wgCurRevisionId":38491,"wgRevisionId":38491,"wgArticleId":10362,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"NoiSee","wgRelevantArticleId":10362,"wgRequestId":"08b0081981c613faf0d1b674","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.page.gallery.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.page.gallery.styles%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="NoiSee - An easy-to-use ImageJ macro suite for measuring SNR (signal-to-noise ratio) of confocal microscopes."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="NoiSee"/>
+
+	<meta property="og:description" content="NoiSee - An easy-to-use ImageJ macro suite for measuring SNR (signal-to-noise ratio) of confocal microscopes."/>
+
+	<meta property="og:url" content="http://imagej.net/NoiSee"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-NoiSee rootpage-NoiSee skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="NoiSee.html#bodyContent">Skip to content</a>, 			<a href="NoiSee.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="NoiSee.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/NoiSee" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:NoiSee&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=NoiSee&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=NoiSee&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>NoiSee</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"><a href="http://imagej.net/File:Noisee-logo.png" class="image"><img alt="Noisee-logo.png" src="../_images/f/f2/Noisee-logo.png" width="96" height="96" /></a></div>NoiSee (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Cellkai" title="User:Cellkai">Kai Schleicher</a>, <a href="http://imagej.net/User:Ehrenfeu" title="User:Ehrenfeu">Niko Ehrenfeuchter</a>
+</td></tr>
+<tr>
+<th> Update site
+</th>
+<td> <a href="http://imagej.net/Following_an_update_site" title="Following an update site">NoiSee</a>
+</td></tr>
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Ehrenfeu" title="User:Ehrenfeu">Niko Ehrenfeuchter</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imcf/noisee/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> 2018
+</td></tr>
+
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a>
+</td></tr>
+
+</table>
+<p><br />
+</p><p><b>NoiSee</b> - An easy-to-use ImageJ macro suite for measuring SNR (signal-to-noise ratio) of confocal microscopes.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="NoiSee.html#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="NoiSee.html#Usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="NoiSee.html#Bead_Method"><span class="tocnumber">2.1</span> <span class="toctext">Bead Method</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="NoiSee.html#Fluorescein_Method"><span class="tocnumber">2.2</span> <span class="toctext">Fluorescein Method</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="NoiSee.html#Example"><span class="tocnumber">3</span> <span class="toctext">Example</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="NoiSee.html#Bead_Method_Example_Results"><span class="tocnumber">3.1</span> <span class="toctext">Bead Method Example Results</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="NoiSee.html#Fluorescein_Method_Example_Results"><span class="tocnumber">3.2</span> <span class="toctext">Fluorescein Method Example Results</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="NoiSee.html#Citation"><span class="tocnumber">4</span> <span class="toctext">Citation</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Installation">Installation</span></h1>
+<p><a href="http://imagej.net/Following_an_update_site" title="Following an update site">Enable the NoiSee update site</a> and restart Fiji.
+</p>
+<h1><span class="mw-headline" id="Usage">Usage</span></h1>
+<p>NoiSee consists of two independent macros, one for each type of analysis:
+</p>
+<ul><li> The <b>Beads Method</b> for a time-lapse acquisition of fluorescent beads. NOTE: this method will <b>NOT</b> work for sub-resolution beads! The beads should have a diameter of at least <b>ten</b> pixels in the acquired image.</li></ul>
+<ul><li> The <b>Fluorescein Method</b> for an acquisition of a fluorescent solution and a dark field (i.e. "<i>laser off</i>") image, both single frame (no Z-stack, no time-lapse).</li></ul>
+<h2><span class="mw-headline" id="Bead_Method">Bead Method</span></h2>
+<p>Type "<i>NoiSee</i>" in the quick search bar, select "<i>Bead Analysis</i>" and click "<i>Run</i>". Otherwise, you can also locate the NoiSee macros in the Plugins &gt; NoiSee menu.
+</p><p>First, the parameters dialog will appear with the following input fields / options:
+</p>
+<div class="MediaTransformError" style="width: 508px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<ul><li> In the image field specify the path to a time lapse beads image.
+<ul><li> The input file format has to be readable by <a href="http://imagej.net/Bio-Formats" title="Bio-Formats">Bio-Formats</a>.</li>
+<li> Data is expected to be 2D+t, with the focus (Z-plane) set to the center of the beads. If unsure, check our provided <a rel="nofollow" class="external text" href="https://sites.imagej.net/NoiSee/samples/beads.ome.tif">beads sample data</a> to see how to adjust your acquisition accordingly.</li>
+<li> All result files generated by NoiSee will be placed in a new sub-folder located in the same directory as the input image.</li></ul></li>
+<li> The approximate beads diameter has to be specified in pixels. NoiSee uses the "<i>Find Maxima</i>" function to automatically detect beads above a certain intensity threshold that needs to be roughly estimated. Starting values for this estimate depend on the detector type used, e.g. 50 for PMTs, 10 for Hybrid detectors in photon counting mode.
+<ul><li> If not all beads are identified the estimate should be lower.</li>
+<li> If peaks other than beads are identified the estimate should be higher.</li></ul></li>
+<li> <i>Note: While NoiSee tries to exclude hot pixels and overexposed beads, these would ideally be already avoided during imaging.</i></li>
+<li> Choose whether you wish to create kymographs. We recommend to do so as they are useful to inspect sample drift and bleaching.</li>
+<li> NoiSee can further save additional data (individual measurements per bead) as txt-files.</li>
+<li> All images and plots created by NoiSee can optionally be saved in a PDF report.</li>
+<li> ROIs used for measurements are available from the ROI manger and can additionally be visualized as extra images.</li>
+<li> Press "<i>OK</i>" and wait for NoiSee to finish its calculations.</li>
+<li> A summary of all NoiSee results is automatically saved as a txt-file.</li></ul>
+<h2><span class="mw-headline" id="Fluorescein_Method">Fluorescein Method</span></h2>
+<p>Start NoiSee as above but select the "<i>Fluorescein Analysis</i>" method.
+</p><p>The parameters dialog will show with the following input fields / options:
+</p>
+<div class="MediaTransformError" style="width: 460px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<ul><li> Specify the path to the dark image and fluorescein image.
+<ul><li> All result files generated by NoiSee will be placed in a new sub-folder located in the same directory as the input image.</li></ul></li>
+<li> Again all images and plots created by NoiSee can optionally be saved in a PDF report.</li>
+<li> Press "<i>OK</i>" and wait for NoiSee to finish its calculations as presented in the screenshot below.</li></ul>
+<h1><span class="mw-headline" id="Example">Example</span></h1>
+<p>We provide a small set of <a rel="nofollow" class="external text" href="https://sites.imagej.net/NoiSee/samples/">sample data</a> to demonstrate the usage of the macros and to give you an idea how the input data is supposed to look like.
+</p>
+<h2><span class="mw-headline" id="Bead_Method_Example_Results">Bead Method Example Results</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="https://sites.imagej.net/NoiSee/samples/beads.ome.tif">Fluorescent Beads Sample Image</a> (1.3 Mb)</li></ul>
+<p>Running the beads macro on the above sample data will give the following results:
+</p>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 113.33333333333px"><div style="width: 113.33333333333px">
+			<div class="thumb" style="width: 111.33333333333px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Noisee-Beads-Original-Data.png" class="image"><img alt="" src="../_images/1/12/Noisee-Beads-Original-Data.png" width="112" height="120" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 92px"><div class="gallerytext">
+<p>Beads Input Data
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 118px"><div style="width: 118px">
+			<div class="thumb" style="width: 116px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Noisee-Beads-SNR.png" class="image"><img alt="" src="../_images/a/ac/Noisee-Beads-SNR.png" width="116" height="120" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 96px"><div class="gallerytext">
+<p>SNR
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 154px"><div style="width: 154px">
+			<div class="thumb" style="width: 152px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Noisee-Beads-Kymographs.png" class="image"><img alt="" src="../_images/5/51/Noisee-Beads-Kymographs.png" width="152" height="120" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 132px"><div class="gallerytext">
+<p>Kymographs
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 97.333333333333px"><div style="width: 97.333333333333px">
+			<div class="thumb" style="width: 95.333333333333px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Noisee-Beads-Plots.png" class="image"><img alt="" src="../_images/f/f5/Noisee-Beads-Plots.png" width="96" height="120" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 76px"><div class="gallerytext">
+<p>SNR Plots
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<h2><span class="mw-headline" id="Fluorescein_Method_Example_Results">Fluorescein Method Example Results</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="https://sites.imagej.net/NoiSee/samples/fluorescein.ome.tif">Fluorescein Sample Image</a> (300 Kb)</li>
+<li> <a rel="nofollow" class="external text" href="https://sites.imagej.net/NoiSee/samples/darkfield.ome.tif">Dark Field Sample Image</a> (55 Kb)</li></ul>
+<p>Running the fluorescein macro on the above sample data will give the following results:
+</p>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 116.66666666667px"><div style="width: 116.66666666667px">
+			<div class="thumb" style="width: 114.66666666667px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Noisee-Fluorescein-Original-Data.png" class="image"><img alt="" src="../_images/e/ee/Noisee-Fluorescein-Original-Data.png" width="115" height="120" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 95px"><div class="gallerytext">
+<p>Fluorescein Input Data
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 116.66666666667px"><div style="width: 116.66666666667px">
+			<div class="thumb" style="width: 114.66666666667px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Noisee-Fluorescein-Darkfield.png" class="image"><img alt="" src="../_images/4/4e/Noisee-Fluorescein-Darkfield.png" width="115" height="120" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 95px"><div class="gallerytext">
+<p>Dark Field Input Data
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 116.66666666667px"><div style="width: 116.66666666667px">
+			<div class="thumb" style="width: 114.66666666667px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Noisee-Fluorescein-Absolute-Signal.png" class="image"><img alt="" src="../_images/e/e5/Noisee-Fluorescein-Absolute-Signal.png" width="115" height="120" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 95px"><div class="gallerytext">
+<p>Absolute Signal
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 144px"><div style="width: 144px">
+			<div class="thumb" style="width: 142px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Noisee-Fluorescein-Histogram.png" class="image"><img alt="" src="../_images/6/67/Noisee-Fluorescein-Histogram.png" width="142" height="120" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 122px"><div class="gallerytext">
+<p>Histogram of the Absolute Signal
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<h1><span class="mw-headline" id="Citation">Citation</span></h1>
+<p>Please note that NoiSee is based on a publication. If you use it for related
+research please be so kind to cite our work:
+</p><p><i>Alexia Ferrand, Kai D Schleicher, Nikolaus Ehrenfeuchter, Wolf Heusermann, Oliver Biehlmaier</i>:
+<b>Signal-to-Noise ratio made easy: A tool to assess your confocal performance</b>
+<a rel="nofollow" class="external text" href="https://doi.org/10.1101/291500">bioRxiv 291500</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073042
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.052 seconds
+Real time usage: 0.058 seconds
+Preprocessor visited node count: 280/1000000
+Preprocessor generated node count: 4008/1000000
+Post‐expand include size: 1345/2097152 bytes
+Template argument size: 519/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   14.395      1 - Template:Infobox
+100.00%   14.395      1 - -total
+ 64.40%    9.270      3 - Template:Person
+ 11.39%    1.639      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=NoiSee&amp;oldid=38491">http://imagej.net/index.php?title=NoiSee&amp;oldid=38491</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 6 September 2018, at 05:17.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=NoiSee&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=NoiSee" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=NoiSee" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/NoiSee" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/NoiSee" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=NoiSee&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=NoiSee&amp;oldid=38491" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=NoiSee&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.page.gallery","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":273});});</script>
+		</body>
+		</html>
+		

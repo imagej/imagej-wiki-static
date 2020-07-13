@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>SampEn2D - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"SampEn2D","wgTitle":"SampEn2D","wgCurRevisionId":33966,"wgRevisionId":33966,"wgArticleId":3596,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"SampEn2D","wgRelevantArticleId":3596,"wgRequestId":"a3a8a566713f22916fd34ca9","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="A PlugIn for the two-dimensional Sample Entroy method, which the algorithm was published at Biomedical Physics &amp;amp; Engineering Express article weblink."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="SampEn2D"/>
+
+	<meta property="og:description" content="A PlugIn for the two-dimensional Sample Entroy method, which the algorithm was published at Biomedical Physics &amp;amp; Engineering Express article weblink."/>
+
+	<meta property="og:url" content="http://imagej.net/SampEn2D"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-SampEn2D rootpage-SampEn2D skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="SampEn2D.html#bodyContent">Skip to content</a>, 			<a href="SampEn2D.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="SampEn2D.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/SampEn2D" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:SampEn2D&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=SampEn2D&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=SampEn2D&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>SampEn2D</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Two-dimensional Sample Entropy (SampEn2D) PlugIn (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Acsenrafilho" title="User:Acsenrafilho">Antonio Carlos da S. Senra Filho</a> (<a rel="nofollow" class="external autonumber" href="mailto:acsenrafilho@gmail.com">[1]</a>)
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Acsenrafilho" title="User:Acsenrafilho">Antonio Carlos da S. Senra Filho</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/CSIM-Toolkits/ImageJ/tree/master/plugins/SampleEntropy-2D/">GitHub CSIM-ImageJ SampEn2D repository</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> June 23<sup>rd</sup>, 2016
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> June 23<sup>rd</sup>, 2016
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> experimental, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a>, <a href="http://imagej.net/index.php?title=Category:Pattern_Recognition&amp;action=edit&amp;redlink=1" class="new" title="Category:Pattern Recognition (page does not exist)">Pattern Recognition</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="SampEn2D.html#Two-dimensional_Sample_Entropy"><span class="tocnumber">1</span> <span class="toctext">Two-dimensional Sample Entropy</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="SampEn2D.html#Description"><span class="tocnumber">2</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="SampEn2D.html#Parameters_set"><span class="tocnumber">3</span> <span class="toctext">Parameters set</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="SampEn2D.html#Indicated_Usage"><span class="tocnumber">4</span> <span class="toctext">Indicated Usage</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="SampEn2D.html#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Two-dimensional_Sample_Entropy">Two-dimensional Sample Entropy</span></h2>
+<p>A PlugIn for the two-dimensional Sample Entroy method, which the algorithm was published at Biomedical Physics &amp; Engineering Express article <a rel="nofollow" class="external text" href="http://dx.doi.org/10.1088/2057-1976/2/4/045002">weblink</a>. 
+</p>
+<h2><span class="mw-headline" id="Description">Description</span></h2>
+<p>The extension of SampEn for a two-dimensional method was developed so as to maintain the original purpose of SampEn, i.e. an irregularity measure. In short, SampEn. quantifies the probability that m-length similar patterns will still be similar for m+1. Two patterns are considered similar if each corresponding point within the patterns are distant at most r from each other. This probability can be achieved by computing the total number of m and (m+1)- length patterns matches. The ratio between those values gives the conditional probability of finding (m+1)-length similar patterns, given they are similar for m.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Parameters_set">Parameters set</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:SampEn2D-gui.png" class="image"><img alt="" src="../_images/7/73/SampEn2D-gui.png" width="300" height="205" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:SampEn2D-gui.png" class="internal" title="Enlarge"></a></div>SampEn2D GUI.</div></div></div>
+<p>Basically, the common parameters that are used for adjust the SampEn2D method are the m and r. The m parameters is responsible to set the window size that is used to search the matching patterns all over the image. The r parameters is the tolerance parameter, i.e. as r rises the matching criteria became more permissive. Also, the r parameter is given is relationship with the stantard variation (SD) given by the image pixels intensity, where it is set by the percentual allowance over the image SD.
+Usually, the pair (m,r) is set with the values m=1 and r=0.1, but the correct parameter adjust is crucial to each application. See the <a rel="nofollow" class="external text" href="http://dx.doi.org/10.1088/2057-1976/2/4/045002">journal article</a> and <a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109/EMBC.2014.6944339">conference report</a> to have an starting point to correctly choose those parameters.
+</p>
+<h2><span class="mw-headline" id="Indicated_Usage">Indicated Usage</span></h2>
+<p>Some studies were already made with different image set. At this moment, the SampEn2D obtained a promising results over histological images, which could be seem in the Reference section.
+In general, the SampEn2D method is a method that measure the regularity level presented as a global feature. Also, this method is able to be applied over any 2D digital image, which offer an broad range of applications. 
+</p>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<p>Here is a list of paper related with the SampEn2D method. Please, cite our method if you use it in your own research.
+</p>
+<ul><li> Silva, L.E.V. et al., 2016. Two-dimensional sample entropy: assessing image texture through irregularity. Biomedical Physics &amp; Engineering Express, 2(4), p.45002. DOI: 10.1088/2057-1976/2/4/045002.</li></ul>
+<ul><li> Silva, L.E.V. da et al., 2014. Two-dimensional sample entropy analysis of rat sural nerve aging. In Annual International Conference of the IEEE Engineering in Medicine and Biology Society. IEEE, pp. 3345–3348. DOI: 10.1109/EMBC.2014.6944339</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073309
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.045 seconds
+Preprocessor visited node count: 144/1000000
+Preprocessor generated node count: 3906/1000000
+Post‐expand include size: 1813/2097152 bytes
+Template argument size: 1040/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   12.467      1 - Template:Infobox
+100.00%   12.467      1 - -total
+ 59.13%    7.372      2 - Template:Person
+ 13.97%    1.742      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=SampEn2D&amp;oldid=33966">http://imagej.net/index.php?title=SampEn2D&amp;oldid=33966</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 11 July 2017, at 12:26.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=SampEn2D&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=SampEn2D" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=SampEn2D" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/SampEn2D" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/SampEn2D" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=SampEn2D&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=SampEn2D&amp;oldid=33966" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=SampEn2D&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":282});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Hough Circle Transform - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Hough_Circle_Transform","wgTitle":"Hough Circle Transform","wgCurRevisionId":38714,"wgRevisionId":38714,"wgArticleId":6452,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Analysis","Feature Extraction"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Hough_Circle_Transform","wgRelevantArticleId":6452,"wgRequestId":"ed26716c4c2106dbe3272d17","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="A Hough circle transform is an image transform that allows for circular objects to be extracted from an image, even if the circle is incomplete.  The transform is also selective for circles, and will generally ignore elongated ellipses.  The transform effectively searches for objects with a high degree of radial symmetry, with each degree of symmetry receiving one &quot;vote&quot; in  the search space.  By searching a 3D Hough search space, the transform can measure the centroid and radius of each circlular object in an image."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Hough Circle Transform"/>
+
+	<meta property="og:description" content="A Hough circle transform is an image transform that allows for circular objects to be extracted from an image, even if the circle is incomplete.  The transform is also selective for circles, and will generally ignore elongated ellipses.  The transform effectively searches for objects with a high degree of radial symmetry, with each degree of symmetry receiving one &quot;vote&quot; in  the search space.  By searching a 3D Hough search space, the transform can measure the centroid and radius of each circlular object in an image."/>
+
+	<meta property="og:url" content="http://imagej.net/Hough_Circle_Transform"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Hough_Circle_Transform rootpage-Hough_Circle_Transform skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Hough_Circle_Transform.html#bodyContent">Skip to content</a>, 			<a href="Hough_Circle_Transform.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Hough_Circle_Transform.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Hough_Circle_Transform" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Hough_Circle_Transform&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Hough_Circle_Transform&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Hough_Circle_Transform&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Hough Circle Transform</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Hough Circle Transform (plugin)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Llamero" title="User:Llamero">Benjamin Smith</a>
+</td></tr>
+<tr>
+<th> Update site
+</th>
+<td> <a href="http://imagej.net/Following_an_update_site" title="Following an update site">UCB Vision Sciences</a>
+</td></tr>
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Llamero" title="User:Llamero">Benjamin Smith</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/llamero/Local_Hough_Circle/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> February 4<sup>th</sup>, 2017
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> September 21<sup>st</sup>, 2018 (v1.0.0)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a>, <a href="http://imagej.net/Category:Feature_Extraction" title="Category:Feature Extraction">Feature Extraction</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Hough_Circle_Transform.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Hough_Circle_Transform.html#Image_Processing_Workflow"><span class="tocnumber">2</span> <span class="toctext">Image Processing Workflow</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Hough_Circle_Transform.html#Step_0:_Convert_XYZ.28T.29_data_to_XY.28T.29_data"><span class="tocnumber">2.1</span> <span class="toctext">Step 0: Convert XYZ(T) data to XY(T) data</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Hough_Circle_Transform.html#Step_1:_Find_Edges"><span class="tocnumber">2.2</span> <span class="toctext">Step 1: Find Edges</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Hough_Circle_Transform.html#Step_2:_Threshold"><span class="tocnumber">2.3</span> <span class="toctext">Step 2: Threshold</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Hough_Circle_Transform.html#Step_3:_Run_the_Hough_Transform"><span class="tocnumber">2.4</span> <span class="toctext">Step 3: Run the Hough Transform</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Hough_Circle_Transform.html#Running_the_Hough_Circle_Transform_Plugin"><span class="tocnumber">3</span> <span class="toctext">Running the Hough Circle Transform Plugin</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="Hough_Circle_Transform.html#GUI_Mode"><span class="tocnumber">3.1</span> <span class="toctext">GUI Mode</span></a>
+<ul>
+<li class="toclevel-3 tocsection-9"><a href="Hough_Circle_Transform.html#Easy_Mode"><span class="tocnumber">3.1.1</span> <span class="toctext"><i>Easy Mode</i></span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="Hough_Circle_Transform.html#Advanced_Mode"><span class="tocnumber">3.1.2</span> <span class="toctext"><i>Advanced Mode</i></span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-11"><a href="Hough_Circle_Transform.html#Search_Parameters"><span class="tocnumber">3.2</span> <span class="toctext">Search Parameters</span></a>
+<ul>
+<li class="toclevel-3 tocsection-12"><a href="Hough_Circle_Transform.html#Minimum.2Fmaximum_search_radius"><span class="tocnumber">3.2.1</span> <span class="toctext"><i>Minimum/maximum search radius</i></span></a></li>
+<li class="toclevel-3 tocsection-13"><a href="Hough_Circle_Transform.html#Radius_search_increment"><span class="tocnumber">3.2.2</span> <span class="toctext"><i>Radius search increment</i></span></a></li>
+<li class="toclevel-3 tocsection-14"><a href="Hough_Circle_Transform.html#Maximum_number_of_circles_to_be_found"><span class="tocnumber">3.2.3</span> <span class="toctext"><i>Maximum number of circles to be found</i></span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="Hough_Circle_Transform.html#Hough_score_threshold"><span class="tocnumber">3.2.4</span> <span class="toctext"><i>Hough score threshold</i></span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="Hough_Circle_Transform.html#Hough_transform_resolution"><span class="tocnumber">3.2.5</span> <span class="toctext"><i>Hough transform resolution</i></span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="Hough_Circle_Transform.html#Clear_neighbors_radius_ratio"><span class="tocnumber">3.2.6</span> <span class="toctext"><i>Clear neighbors radius ratio</i></span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="Hough_Circle_Transform.html#Reduce_transform_resolution"><span class="tocnumber">3.2.7</span> <span class="toctext"><i>Reduce transform resolution</i></span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-19"><a href="Hough_Circle_Transform.html#Local_Search_Parameters"><span class="tocnumber">3.3</span> <span class="toctext">Local Search Parameters</span></a>
+<ul>
+<li class="toclevel-3 tocsection-20"><a href="Hough_Circle_Transform.html#Minimum_number_of_circles_to_be_found"><span class="tocnumber">3.3.1</span> <span class="toctext"><i>Minimum number of circles to be found</i></span></a></li>
+<li class="toclevel-3 tocsection-21"><a href="Hough_Circle_Transform.html#Local_radius_search_bandwidth_.28.2B.2F-_previous_radius.29"><span class="tocnumber">3.3.2</span> <span class="toctext"><i>Local radius search bandwidth (+/- previous radius)</i></span></a></li>
+<li class="toclevel-3 tocsection-22"><a href="Hough_Circle_Transform.html#Local_search_radius_for_position_of_next_centroid"><span class="tocnumber">3.3.3</span> <span class="toctext"><i>Local search radius for position of next centroid</i></span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-23"><a href="Hough_Circle_Transform.html#Output_Options:"><span class="tocnumber">3.4</span> <span class="toctext">Output Options:</span></a>
+<ul>
+<li class="toclevel-3 tocsection-24"><a href="Hough_Circle_Transform.html#Raw_Hough_transform_series"><span class="tocnumber">3.4.1</span> <span class="toctext"><i>Raw Hough transform series</i></span></a></li>
+<li class="toclevel-3 tocsection-25"><a href="Hough_Circle_Transform.html#Circle_centroid.28s.29_marked_on_the_original_image"><span class="tocnumber">3.4.2</span> <span class="toctext"><i>Circle centroid(s) marked on the original image</i></span></a></li>
+<li class="toclevel-3 tocsection-26"><a href="Hough_Circle_Transform.html#Map_of_circle_radius_at_centroids_.28pixel_intensity_.3D_circle_radius.29"><span class="tocnumber">3.4.3</span> <span class="toctext"><i>Map of circle radius at centroids (pixel intensity = circle radius)</i></span></a></li>
+<li class="toclevel-3 tocsection-27"><a href="Hough_Circle_Transform.html#Map_of_circle_score_at_centroids_.28pixel_intensity_.3D_circle_score.29"><span class="tocnumber">3.4.4</span> <span class="toctext"><i>Map of circle score at centroids (pixel intensity = circle score)</i></span></a></li>
+<li class="toclevel-3 tocsection-28"><a href="Hough_Circle_Transform.html#Export_measurements_to_the_results_table"><span class="tocnumber">3.4.5</span> <span class="toctext"><i>Export measurements to the results table</i></span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-29"><a href="Hough_Circle_Transform.html#Installing_the_Plugin"><span class="tocnumber">4</span> <span class="toctext">Installing the Plugin</span></a></li>
+<li class="toclevel-1 tocsection-30"><a href="Hough_Circle_Transform.html#Acknowledgements"><span class="tocnumber">5</span> <span class="toctext">Acknowledgements</span></a></li>
+<li class="toclevel-1 tocsection-31"><a href="Hough_Circle_Transform.html#Bug_Report"><span class="tocnumber">6</span> <span class="toctext">Bug Report</span></a></li>
+<li class="toclevel-1 tocsection-32"><a href="Hough_Circle_Transform.html#License"><span class="tocnumber">7</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>A <a href="http://en.wikipedia.org/wiki/Circle_Hough_Transform" class="extiw" title="wikipedia:Circle Hough Transform">Hough circle transform</a> is an image transform that allows for circular objects to be extracted from an image, even if the circle is incomplete.  The transform is also selective for circles, and will generally ignore elongated ellipses.  The transform effectively searches for objects with a high degree of radial symmetry, with each degree of symmetry receiving one "vote" in  the search space.  By searching a 3D Hough search space, the transform can measure the centroid and radius of each circlular object in an image.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:Hough_Intro2.png" class="image"><img alt="" src="../_images/9/9c/Hough_Intro2.png" width="1000" height="491" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Hough_Intro2.png" class="internal" title="Enlarge"></a></div><b>Hough circle transform is specific to circular objects.</b> <i>Left Panel:</i> This panel shown the input data for the Hough circle transform. The data includes (clockwise from top left) a circle (radius 37 pixels), a square (length 37 pixels), an ellipse (minor axis 37 pixels), and a sectored circle (radius 37 pixels).  <i>Right Panel:</i> This panel shows the output of a 24 step Hough circle transform. As you can see, the circle and the sectored circle converge to local maxima, while the square and ellipse do not, show the specificity of the transform for circular objects.</div></div></div></div>
+<p>The method works by transforming an image around in a circle.  Each time a transformed pixel with an intensity greater than zero lands on a Cartesian coordinate, that coordinate gets one vote.  As the image continues to be transformed in a circle of a given radius, if a circle in the image has the same radius, then votes will accumulate at the centroid of this circle.  Therefore, by finding the maxima in the transform (points with the highest number of votes) you can find the centroid of circles within the image. A Hough circle transform can also be used to find circles of an unknown radius by searching a 3D transform space, where the the third dimension is the range of radii to be tested.  
+</p>
+<h2><span class="mw-headline" id="Image_Processing_Workflow">Image Processing Workflow</span></h2>
+<p>The Hough circle transform finds circles based on the rotational symmetry of the perimeter.  Therefore, the data needs to be converted to this format for the transform to work.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:Data_Setup.png" class="image"><img alt="" src="../_images/d/d8/Data_Setup.png" width="1000" height="342" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Data_Setup.png" class="internal" title="Enlarge"></a></div><b>Data processing steps to perform a Hough circle transform on an XYZ stack.</b> <i>Panel 1:</i> Create an average intensity projection of the XYZ stack to generate a 2D projection. <i>Panel 2:</i> Use the "Find Edges" tool to preserve just the perimeter of each object. <i>Panel 3:</i> Threshold the image from panel 2 and create a binary mask. <i>Panel 4:</i> Run the Hough circle transform.</div></div></div></div>
+<h3><span class="mw-headline" id="Step_0:_Convert_XYZ.28T.29_data_to_XY.28T.29_data">Step 0: Convert XYZ(T) data to XY(T) data</span></h3>
+<p>If the data is a 3D stack, then collapse the data to 2D space using a maximum, sum, or average intensity projection.  The plugin can handle multiple frames (time-points) in a stack, but it can only search in 2D space.
+</p>
+<h3><span class="mw-headline" id="Step_1:_Find_Edges">Step 1: Find Edges</span></h3>
+<p>If the circular objects are solid rather than hollow, take the derivative of the image by running: <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Find Edges</span></em></span>.  This will preserve just the perimeter of each object.
+</p>
+<h3><span class="mw-headline" id="Step_2:_Threshold">Step 2: Threshold</span></h3>
+<p>The algorithm does not weight the transform based on the intensity of the pixels, as this would result in bright, non-circular objects getting a very high score.  Therefore, any pixel with an intensity &gt; 0 is given one vote per transform.  This means that any pixel you do not want to be part of the transform needs to be set to zero, which is best done by thresholding the image and creating a mask by running: <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Threshold</span></em></span>.  After choosing the right threshold for the data press "Apply" to create a mask with an inverting LUT (0 is white, 255 is black).  The LUT can be changed back to a normal gray-scale by going to <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Lookup Tables </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Grays</span></em></span>.
+</p>
+<h3><span class="mw-headline" id="Step_3:_Run_the_Hough_Transform">Step 3: Run the Hough Transform</span></h3>
+<p>Now you are ready to run the Hough transform (see below for detailed information on the various options).  If the number of circles is unknown or varies from frame to frame, then the best option is to set the search to one circle and perform the transform with the output set to show the results table, and the centroids marked on the original image.  This will give you the highest Hough score in the whole image, and will allow you to confirm that the circle found is correct and what its score was.  If the circle is incorrect, adjust the search parameters to narrow the Hough search space.  
+</p><p>If the circle found is correct, then gradually reduce the threshold until all the circles in the image are found.  This will give you the upper threshold bound.  Continue to decrease the threshold until an errant circle is detected, this will give you the lower threshold bound.  Set the threshold between the upper and lower bounds, and then run the transform on the full data set.
+</p>
+<h2><span class="mw-headline" id="Running_the_Hough_Circle_Transform_Plugin">Running the Hough Circle Transform Plugin</span></h2>
+<p>The plugin runs on the current active image, and can also process stacks, but it cannot handle hyperstacks.  The plugin is also recordable for macro implementation, and multi-threaded to fast searching on the 3D Hough space.  The plugin can be cancelled at any time by either pressing the "Cancel" button in the GUI or pressing the "Escape" key.
+</p><p>The plugin has two separate algorithms available:
+</p><p><b>Full Hough Transform: </b>
+This algorithm performs a full Hough circle transform on every frame.  The algorithm then searches for the highest scoring circle first, then the second highest, and so on.  When a circle is found, the Hough transform space is cleared out around the found circle to prevent the same circle from being found repeatedly.  This parameter can be adjusted to allow for increasing degrees of overlap between neighboring circles.
+</p><p><b>Local Hough Transform: </b>
+This algorithm is designed for high-speed tracking of circles in a time-lapse series.  The algorithm performs the full Hough circle transform on the first frame to find the initial radius and position of each circle.  In subsequent frames, the algorithm then only performs a Hough transform near the centroid of each circle in subsequent frames.  If the number of found circles drops below the minimum number of specified circles, the algorithm performs a full Hough circle transform on the next frame to try and find any circles missed in the local search.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:Hough_GUI2.png" class="image"><img alt="" src="../_images/e/e9/Hough_GUI2.png" width="1000" height="384" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Hough_GUI2.png" class="internal" title="Enlarge"></a></div><b>Hough Circle Transform GUI configurations</b> <i>Panel 1:</i> Hough Circle transform - Easy Mode <i>Panel 2:</i> Hough Circle transform - Advanced Mode <i>Panel 3:</i> Local Hough Circle transform - Easy Mode <i>Panel 4:</i> Local Hough Circle transform - Advanced Mode</div></div></div></div>
+<h3><span class="mw-headline" id="GUI_Mode">GUI Mode</span></h3>
+<p>The GUI has two available modes, "Easy" and "Advanced." 
+</p>
+<h4><span class="mw-headline" id="Easy_Mode"><i>Easy Mode</i></span></h4>
+<p>This mode uses the minimal number of user input values necessary to run the transform.  The remaining parameters are all defaulted to the most conservative values, such that all circles matching the criteria are found.  To retrieve the default values, run the GUI in easy mode with the recorder turned on: <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Macros </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Record...</span></em></span> This will return the value for every argument used in the search.
+</p>
+<h4><span class="mw-headline" id="Advanced_Mode"><i>Advanced Mode</i></span></h4>
+<p>This mode is intended for a more fine tuned search, such as to better adapt the search space to your data, and/or increase the speed of the Hough transform.  In this mode, all of the available search parameters are available, and the option to see the Raw Hough transform output also becomes available.
+</p>
+<hr />
+<h3><span class="mw-headline" id="Search_Parameters">Search Parameters</span></h3>
+<p>The Hough circle plugin is designed to be adaptable to a variety of segmentation tasks, and as such, there are seven search parameters that can be adjusted to tune the search space.
+</p>
+<h4><span class="mw-headline" id="Minimum.2Fmaximum_search_radius"><i>Minimum/maximum search radius</i></span></h4>
+<p>The minimum and maximum search radii are the lower and upper cutoff for the radii you expect to find in the image.  Ideally, you want to make the Hough search space as specific as possible, so be sure to set these values to specifically the range of radii you expect to find in your data.
+</p>
+<h4><span class="mw-headline" id="Radius_search_increment"><i>Radius search increment</i></span></h4>
+<p>This determines the radius step size to use when creating the 3D Hough space from the minimum radius to the maximum radius.  This allows a trade-off between speed and resolution, where larger steps will give a linear increase in speed, but also decrease the precision of the measured radii.
+</p><p>NOTE: This option is only available in advanced mode.  In easy mode, this value defaults to 1.
+</p>
+<h4><span class="mw-headline" id="Maximum_number_of_circles_to_be_found"><i>Maximum number of circles to be found</i></span></h4>
+<p>This option sets the upper limit for the number of circles that can be found in the search.  If there are fewer than the specified number of circles in the image with a score above the threshold (see below), then the algorithm will only return the number of circles that were above the threshold. Since the Hough space search starts with the highest scoring circle, and then the second highest, and so on, if there are a greater number of circles with
+a score above the threshold than the limit set in "Maximum number of circles to be found", only the highest scoring circles will be returned. This value is capped at 65535, since this is the largest number of circle IDs that can be generated at a 16-bit resolution.
+</p><p>NOTE: This option is only available in advanced mode.  In easy mode, this value defaults to 65535.
+</p>
+<h4><span class="mw-headline" id="Hough_score_threshold"><i>Hough score threshold</i></span></h4>
+<p>This option sets the minimum cutoff for the Hough score (i.e. ratio of votes) that a circle can have to count as a valid object.  This value is described as the following ratio: 
+</p>
+<dl><dd><img class="mwe-math-fallback-image-inline tex" alt="\text{Hough score}=\left ( \frac{\text{number of votes}}{\text{transform resolution}} \right )" src="../_images/math/1/a/3/1a34e7cad2a50fcb05cc3e07f439dcf3.png" /></dd></dl>
+<p>Since the maximum number of votes a circle can receive is the transform resolution (i.e. every transform resulted in a vote), the highest score a circle can receive is 1.0.  Thus, the lower the score threshold, the more tolerant the search will be of incomplete and/or imperfect circles.
+</p>
+<h4><span class="mw-headline" id="Hough_transform_resolution"><i>Hough transform resolution</i></span></h4>
+<p>This option sets the number of steps in each circle transform.  To reduce unnecessary computation, if the resolution is set arbitrarily high (such as the default value of 1000), the algorithm will automatically find the nearest number of unique transforms possible (i.e. unique integer x,y coordinates) for the maximum radius, and will use this value as the actual resolution in the transform series (NOTE: This option can be turned off in Advanced Mode: see "Reduce transform resolution").  Reducing the resolution below the maximum value can greatly speed up the algorithm, but it will also decrease the transform's specificity and sensitivity.
+</p><p>NOTE: This option is only available in advanced mode.  In easy mode, this value defaults to 1000.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:Resolution_Figure.png" class="image"><img alt="" src="../_images/8/88/Resolution_Figure.png" width="1000" height="195" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Resolution_Figure.png" class="internal" title="Enlarge"></a></div><b>Effect of transform resolution on distinguishing various n-gons.</b>  <i>Panel 1</i> shows a circle and three regular polygons: a 4-gon, 8-gon, and 16-gon. <i>Panel 2</i> shows a Hough circle transform with four steps. Since all the shapes are radially symmetrical with 90° rotations, they all have an equal peak score at their centroids.  <i>Panel 3</i> shows a Hough circle transform with eight steps. Since the circle, 8-gon, and 16-gon radially symmetrical with 45° rotations, they all have an equal peak score at their centroids. These shapes have a higher score at their centroids than the 4-gon, because it lacks 45° radial symmetry.  <i>Panel 4</i> shows a Hough circle transform with sixteen steps. Only the circle and 16-gon are radially symmetrical at this resolution, so their centroids have equally high scores, while the 4-gon and 8-gon have significantly lower scores.  <i>Panel 5</i> shows a Hough circle transform with 400 steps. The centroid of the circle now has a higher score than all of the other shapes, allowing for the circle to be distinguished even from the 16-gon.</div></div></div></div>
+<h4><span class="mw-headline" id="Clear_neighbors_radius_ratio"><i>Clear neighbors radius ratio</i></span></h4>
+<p>The 3D Hough search space approaches a local maxima.  Therefore, when a circle is found, the space around the local maxima needs to be removed to prevent the circle from being found a second time.  The radius of the Hough search space that is cleared is defined as a ratio of the radius of the circle found, meaning that large circles clear out more Hough search space than small circles.  
+</p><p>By default, this ratio is set to be one, meaning that a circle of the same size and location as the one found is cleared from the entire search space.  This has the effect of eliminating all potential centroids within one radius of the found centroid.  This effectively excludes overlapping circles of a similar radius from the search.  To allow overlapping circles, this ratio can be reduced.  A ratio of "0" will result in the same circle being found repeatedly.  This means that perfectly concentric circles cannot be found in one run of the plugin, and rather need to be found iteratively by removing the found circles from the image and re-running the plugin.
+</p><p>NOTE: This option is only available in advanced mode.  In easy mode, this value defaults to 1.0.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:1002px;"><a href="http://imagej.net/File:Clear_Ratio2.png" class="image"><img alt="" src="../_images/1/1e/Clear_Ratio2.png" width="1000" height="496" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Clear_Ratio2.png" class="internal" title="Enlarge"></a></div><b>Adjusting the clear radius ratio to find overlapping circles.</b>   The left panel shows the input data with a single circle on top and a pair of overlapping circles below. The next panel shows the resulting Hough circle transform (24 steps).  The top right pair of panels show the effect of a clear ratio of 1.0, where when the first overlapping circle is found, the centroid of the neighboring circle is removed, resulting in only two high scoring circles being found.  The bottom right pair of panels show the effect of a clear ratio of 0.2, where when the first overlapping circle is found, only its centroid is removed and the neighboring centroid is preserved for the neighboring circle to also be found, resulting in all three circles being found.</div></div></div></div>
+<h4><span class="mw-headline" id="Reduce_transform_resolution"><i>Reduce transform resolution</i></span></h4>
+<p>Since all images will be pixels in a Cartesian coordinate system, transforms can only be to discrete integer coordinates (i.e. x=5,y=10).  Therefore, with an infinitely fine resolution, then when the next step of a transform is rounded to the nearest integer coordinate, it is possible that these are the same coordinates as the previous transform step.  This means that when the transform is performed, it will perform identical transformations for both these steps.  
+</p><p>To speed up a Hough transform, you can find and remove all of the redundant transform steps before performing the transform, keeping only the set of unique transform steps.  The plugin performs this  check by removing all redundant transform steps for the maximum search radius, and then setting this as the new resolution for the subsequent radii.  This means the smaller radii will perform redundant transforms, but this is essential to ensure that each radius gets and equal number of voting rounds (or else large circles will always score higher than small circles).
+</p><p>While speeding up the algorithm, the trade-off is that the transform steps are distributed anisotropically for the maximum radius (all subsequent radii will be isotropic).  Unchecking this box will result in the transform perform all of the specified transform steps, which can be be very computationally intensive for high resolution values.
+</p><p>NOTE: This option is only available in advanced mode.  In easy mode, this option is selected by default.
+</p>
+<hr />
+<h3><span class="mw-headline" id="Local_Search_Parameters">Local Search Parameters</span></h3>
+<p>When using a Hough Transform to track circular objects over time, such as with pupil dilation or eye tracking, it is highly inefficient to calculate the full Hough Space and then search the full Hough space, since you know the object in the current frame is going to be roughly in the same position and have roughly the same radius as the corresponding object in the previous frame.
+</p><p>The local search algorithm takes advantage of this <i>a priori</i> information to greatly reduce the volume of the transform and search space in subsequent frames, allowing for many orders of magnitude increase in processing speed.
+</p><p>The local search algorithm is comprised of three sub-algorithms, depending on the state of the prior frame:
+</p><p><b>Full - </b>For the first frame, a "full" Hough circle transform (the standard algorithm) is performed to find the initial radius and position of each circular object in the frame (up to the maximum number of circles set). The full Hough transform will also be used if the number of circular objects found in a given frame is 0.
+</p><p><b>Local - </b>If the number of circular objects in the previous frame is greater than or equal to the minimum number of objects set, then the algorithm will use an exclusively local search to find the same circular objects in the next frame.  The local algorithm performs a transform of only the nearby Hough space of the object found in the last frame, and then searches only this local space for the same object in the current frame.
+</p><p><b>Partial Local - </b> If the number of circular objects in the previous frame is less than the minimum number of objects set but greater than 0, then the algorithm will use a a hybrid search.  A full Hough transform will be performed such that any missing circles will now be found.  However, so speed up the search, the algorithm will first search locally within the Hough space for the same circular objects found in the previous frame, and then will search the entire Hough space for any remaining circular objects.
+</p><p><br />
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:896px;"><div class="MediaTransformError" style="width: 894px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Local_Search.png" class="internal" title="Enlarge"></a></div><b>Local versus full Hough transform.</b>   The left panel shows the input data with a single circle in the center of the image with a radius of 50 pixels.  The center panel shows orthogonal projections of the full 3D Hough space.  The radius search range was 10-110 pixels. The left panel shows a local Hough transform of the same circle, with a search area of 20x20 pixels, and a radius search range of +/- 10 pixels of the original circle radius.  NOTE: In Hough space, the Z-dimension is the radius of the transform.</div></div></div></div>
+<h4><span class="mw-headline" id="Minimum_number_of_circles_to_be_found"><i>Minimum number of circles to be found</i></span></h4>
+<p>This value represents the minimum number of circles the Hough circle transform will search for before switching to using the partial or full search algorithms to find missing circles.  For example, if the transform found 20 circles in the first frame, and the minimum is set to 10, then the algorithm will tolerate loosing track of 10 of the original circles before searching the full Hough space for the missing circles.  
+</p>
+<h4><span class="mw-headline" id="Local_radius_search_bandwidth_.28.2B.2F-_previous_radius.29"><i>Local radius search bandwidth (+/- previous radius)</i></span></h4>
+<p>This value allows you to set the Z-axis of the local Hough search space. For example, if in your data you do not expect the radius of any circular object to change by more than 10 pixels in a single frame, then you would narrow the local search by entering 10.  The local search will then search for a circular object of the same radius as in the previous frame +/- 10 pixels.
+</p><p>NOTE: This option is only available in advanced mode.  In easy mode, this value defaults to the total radius search range (maximum search radius - minimum search radius).
+</p>
+<h4><span class="mw-headline" id="Local_search_radius_for_position_of_next_centroid"><i>Local search radius for position of next centroid</i></span></h4>
+<p>This value allows you to set the x,y axis search radius.  For example, if in your data you do not expect the position of any circular object to change by more than 10 pixels in a single frame, then you would narrow the local search by entering 10.  The local search will then search for a circular object of the same position as in the previous frame +/- 10 pixels.
+</p><p>NOTE: This option is only available in advanced mode.  In easy mode, this value defaults to the minimum search radius.
+</p>
+<hr />
+<h3><span class="mw-headline" id="Output_Options:">Output Options:</span></h3>
+<p>The plugin contains several output options to both visualize the transform, as well as export the results of the analysis.
+</p>
+<h4><span class="mw-headline" id="Raw_Hough_transform_series"><i>Raw Hough transform series</i></span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:102px;"><a href="http://imagej.net/File:Raw_Output.png" class="image"><img alt="Raw Output.png" src="../_images/2/22/Raw_Output.png" width="100" height="161" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Raw_Output.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<p>This option will output a stack where each slice is the transform for specified radius.  Each slice is also labelled with the radius (in pixels) and resolution in the header.  If the inputted data was a multi-frame stack,
+then the transform will return a hyperstack, where the Z-dimension is each radius tested, and the T-dimension is each frame in the movie.
+</p><p>To save memory, the Hough scores are set to an 8-bit scale, with the highest score in the transform search space getting a value of 255 (i.e. no saturation).  If the inputted data was a movie, each frame will be rescaled independently.  However, while the scores are down-sampled to an 8-bit scale, a Hough transform adds an extra dimension to your dataset, so be sure you will have sufficient RAM if your movie and search space are large.
+</p><p>NOTE: This option is only available in advanced mode.  this value defaults to 1.0. 
+</p>
+<h4><span class="mw-headline" id="Circle_centroid.28s.29_marked_on_the_original_image"><i>Circle centroid(s) marked on the original image</i></span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:102px;"><a href="http://imagej.net/File:Mask_Output.png" class="image"><img alt="Mask Output.png" src="../_images/8/85/Mask_Output.png" width="100" height="162" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Mask_Output.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<p>This option will draw a cross-hair pattern on each centroid found within the image, overlaid on a mask of the original image.  This output is especially useful for optimizing the Hough seach parameters.  The header of the image contains the number of circles that were found within the image.  If the inputted data was not a mask, it will calculate a mask with a threshold of 1.
+</p><p>If the inputted data was a multi-frame stack, then the transform will return a stack, where the Z-dimension is each frame in the movie, and the header will show the number of circles found in each frame.
+</p>
+<h4><span class="mw-headline" id="Map_of_circle_radius_at_centroids_.28pixel_intensity_.3D_circle_radius.29"><i>Map of circle radius at centroids (pixel intensity = circle radius)</i></span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:102px;"><a href="http://imagej.net/File:Radius_Output2.png" class="image"><img alt="Radius Output2.png" src="../_images/f/f4/Radius_Output2.png" width="100" height="162" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Radius_Output2.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<p>This option returns an image where the centroid of each circle is marked by a single pixel whose intensity is equal to the radius of the circle, with the header of the image showing the number of circles that was found. To save memory, the image is formatted to 16-bit, meaning that the largest radius it can show is 65535 pixels.  If you need to export larger radii, export the results to a results table (see below).
+</p><p>If the inputted data was a multi-frame stack, then the transform will return a stack, where the Z-dimension is each frame in the movie, and the header will show the number of circles found in each frame.
+</p>
+<h4><span class="mw-headline" id="Map_of_circle_score_at_centroids_.28pixel_intensity_.3D_circle_score.29"><i>Map of circle score at centroids (pixel intensity = circle score)</i></span></h4>
+<p>This output is identical to the radius output (see above), however the pixel intensity is the Hough Score.  To save memory, the image is formatted to 16-bit, meaning that the highest score it can show is 65535.
+</p>
+<h4><span class="mw-headline" id="Export_measurements_to_the_results_table"><i>Export measurements to the results table</i></span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/File:Results_Output.png" class="image"><img alt="Results Output.png" src="../_images/e/ec/Results_Output.png" width="250" height="127" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Results_Output.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<p>This will output the results of the transform to the results table.  The measurements exported are: 1) the X and Y coordinates of each centroid, 2) the radius (in pixels) of each circle, 3) the Hough score for each circle, 4) the number of circles found within that frame, 5) the actual resolution that the transform used (this is also effectively the highest Hough score possible), and 6) the frame in which the circle was found.
+</p><p>If no circles were found in a frame, than that frame is excluded from the results table.
+</p>
+<h2><span class="mw-headline" id="Installing_the_Plugin">Installing the Plugin</span></h2>
+<p>The Hough Circle Transform plugin is part of the <a href="http://imagej.net/index.php?title=UCB_Vision_Sciences&amp;action=edit&amp;redlink=1" class="new" title="UCB Vision Sciences (page does not exist)">UCB Vision Sciences</a> library. To install it, you just need to <a href="http://imagej.net/How_to_follow_a_3rd_party_update_site#Add_update_sites" class="mw-redirect" title="How to follow a 3rd party update site"> add</a> the UCB Vision Sciences update site:
+</p><p>1) Select <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update...</span></em></span> from the Fiji menu to start the updater.
+</p><p>2) Click on <i>Manage update sites</i>. This brings up a dialog where you can activate additional update sites.
+</p><p>3) Activate the <a href="http://imagej.net/index.php?title=UCB_Vision_Sciences&amp;action=edit&amp;redlink=1" class="new" title="UCB Vision Sciences (page does not exist)">UCB Vision Sciences</a> update site and close the dialog. Now you should see additional jar files for download.
+</p><p>4) Click <i>Apply changes</i> and restart Fiji.
+</p><p>You should now find the plugin under the sub-menu <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> UCB Vision Sciences </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Hough Circle Transform</span></em></span>.
+</p><p>NOTE: Hough Circle Transform is only one of the plugins included in the <a href="http://imagej.net/index.php?title=UCB_Vision_Sciences&amp;action=edit&amp;redlink=1" class="new" title="UCB Vision Sciences (page does not exist)">UCB Vision Sciences</a> suite. By following these installation steps, you will be installing as well the rest of plugins in the suite.
+</p>
+<h2><span class="mw-headline" id="Acknowledgements">Acknowledgements</span></h2>
+<p>This plugin is a modified version of the Hough circle transform implemented by <a rel="nofollow" class="external text" href="https://imagej.nih.gov/ij/plugins/hough-circles.html">Hemerson Pistori and Eduardo Rocha Costa</a>.  The transform algorithm was based off of an original implementation by <a rel="nofollow" class="external text" href="http://www.markschulze.net/">Mark Schulze</a>.
+</p><p>This plugin was developed as part of the University of California, Berkeley Vision Sciences core grant NIH P30EY003176.
+</p>
+<h2><span class="mw-headline" id="Bug_Report">Bug Report</span></h2>
+<p>April 5, 2018 - Fixed bug where the clear radius ratio was ignored.
+</p><p>September 21, 2018 - Fixed bug where repeated calls to the plugin would result in a memory leak.
+</p>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is <b>free software</b>; you can redistribute it and/or modify it under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.,
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072443
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.076 seconds
+Real time usage: 0.077 seconds
+Preprocessor visited node count: 797/1000000
+Preprocessor generated node count: 4788/1000000
+Post‐expand include size: 4162/2097152 bytes
+Template argument size: 1088/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   33.873      1 - -total
+ 46.64%   15.800      1 - Template:Infobox
+ 32.98%   11.171      6 - Template:Bc
+ 30.57%   10.355      2 - Template:Person
+  9.96%    3.374     10 - Template:Arrow
+  5.08%    1.721      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Hough_Circle_Transform&amp;oldid=38714">http://imagej.net/index.php?title=Hough_Circle_Transform&amp;oldid=38714</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 9 November 2018, at 07:40.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Hough_Circle_Transform&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li><li><a href="http://imagej.net/Category:Feature_Extraction" title="Category:Feature Extraction">Feature Extraction</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Hough+Circle+Transform" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Hough+Circle+Transform" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Hough_Circle_Transform" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Hough_Circle_Transform" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Hough_Circle_Transform&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Hough_Circle_Transform&amp;oldid=38714" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Hough_Circle_Transform&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":279});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,2997 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Comparison of Matlab functions and Ops - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Comparison_of_Matlab_functions_and_Ops","wgTitle":"Comparison of Matlab functions and Ops","wgCurRevisionId":23424,"wgRevisionId":23424,"wgArticleId":4572,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Comparison_of_Matlab_functions_and_Ops","wgRelevantArticleId":4572,"wgRequestId":"4892d2a8e1c7bad94aaac34b","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Comparison of Matlab functions and Ops"/>
+
+	<meta property="og:url" content="http://imagej.net/Comparison_of_Matlab_functions_and_Ops"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Comparison_of_Matlab_functions_and_Ops rootpage-Comparison_of_Matlab_functions_and_Ops skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Comparison_of_Matlab_functions_and_Ops.html#bodyContent">Skip to content</a>, 			<a href="Comparison_of_Matlab_functions_and_Ops.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Comparison_of_Matlab_functions_and_Ops.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Comparison_of_Matlab_functions_and_Ops" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Comparison_of_Matlab_functions_and_Ops&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Comparison_of_Matlab_functions_and_Ops&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Comparison_of_Matlab_functions_and_Ops&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Comparison of Matlab functions and Ops</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This page is under active development.
+<ul><li> The intention is to help developers switch from MATLAB to Ops by showing equivalent operations. </td></li></ul>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Comparison_of_Matlab_functions_and_Ops.html#Import.2C_Export.2C_and_Conversion"><span class="tocnumber">1</span> <span class="toctext">Import, Export, and Conversion</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Comparison_of_Matlab_functions_and_Ops.html#Read_and_Write_Image_Data_from_Files"><span class="tocnumber">1.1</span> <span class="toctext">Read and Write Image Data from Files</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Comparison_of_Matlab_functions_and_Ops.html#Read_and_Write_Image_Data_from_DICOM_Files"><span class="tocnumber">1.2</span> <span class="toctext">Read and Write Image Data from DICOM Files</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Comparison_of_Matlab_functions_and_Ops.html#High_Dynamic_Range_Images"><span class="tocnumber">1.3</span> <span class="toctext">High Dynamic Range Images</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Comparison_of_Matlab_functions_and_Ops.html#Large_Image_Files"><span class="tocnumber">1.4</span> <span class="toctext">Large Image Files</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Comparison_of_Matlab_functions_and_Ops.html#Image_Type_Conversion"><span class="tocnumber">1.5</span> <span class="toctext">Image Type Conversion</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Comparison_of_Matlab_functions_and_Ops.html#Color"><span class="tocnumber">1.6</span> <span class="toctext">Color</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Comparison_of_Matlab_functions_and_Ops.html#Synthetic_Images"><span class="tocnumber">1.7</span> <span class="toctext">Synthetic Images</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Comparison_of_Matlab_functions_and_Ops.html#Display_and_Exploration"><span class="tocnumber">2</span> <span class="toctext">Display and Exploration</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="Comparison_of_Matlab_functions_and_Ops.html#Basic_Display"><span class="tocnumber">2.1</span> <span class="toctext">Basic Display</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Comparison_of_Matlab_functions_and_Ops.html#Interactive_Exploration_with_the_Image_Viewer_App"><span class="tocnumber">2.2</span> <span class="toctext">Interactive Exploration with the Image Viewer App</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Comparison_of_Matlab_functions_and_Ops.html#Build_Interactive_Tools"><span class="tocnumber">2.3</span> <span class="toctext">Build Interactive Tools</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="Comparison_of_Matlab_functions_and_Ops.html#Geometric_Transformation.2C_Spatial_Referencing.2C_and_Image_Registration"><span class="tocnumber">3</span> <span class="toctext">Geometric Transformation, Spatial Referencing, and Image Registration</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="Comparison_of_Matlab_functions_and_Ops.html#Geometric_Transformations"><span class="tocnumber">3.1</span> <span class="toctext">Geometric Transformations</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="Comparison_of_Matlab_functions_and_Ops.html#Spatial_Referencing"><span class="tocnumber">3.2</span> <span class="toctext">Spatial Referencing</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="Comparison_of_Matlab_functions_and_Ops.html#Automatic_Registration"><span class="tocnumber">3.3</span> <span class="toctext">Automatic Registration</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Comparison_of_Matlab_functions_and_Ops.html#Control_Point_Registration"><span class="tocnumber">3.4</span> <span class="toctext">Control Point Registration</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-18"><a href="Comparison_of_Matlab_functions_and_Ops.html#Image_Enhancement"><span class="tocnumber">4</span> <span class="toctext">Image Enhancement</span></a>
+<ul>
+<li class="toclevel-2 tocsection-19"><a href="Comparison_of_Matlab_functions_and_Ops.html#Contrast_Adjustment"><span class="tocnumber">4.1</span> <span class="toctext">Contrast Adjustment</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="Comparison_of_Matlab_functions_and_Ops.html#Image_Filtering"><span class="tocnumber">4.2</span> <span class="toctext">Image Filtering</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="Comparison_of_Matlab_functions_and_Ops.html#Morphological_Operations"><span class="tocnumber">4.3</span> <span class="toctext">Morphological Operations</span></a></li>
+<li class="toclevel-2"><a href="Comparison_of_Matlab_functions_and_Ops.html#Deblurring"><span class="tocnumber">4.4</span> <span class="toctext">Deblurring</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Comparison_of_Matlab_functions_and_Ops.html#ROI-Based_Processing"><span class="tocnumber">4.5</span> <span class="toctext">ROI-Based Processing</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="Comparison_of_Matlab_functions_and_Ops.html#Neighborhood_and_Block_Processing"><span class="tocnumber">4.6</span> <span class="toctext">Neighborhood and Block Processing</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="Comparison_of_Matlab_functions_and_Ops.html#Image_Arithmetic"><span class="tocnumber">4.7</span> <span class="toctext">Image Arithmetic</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-25"><a href="Comparison_of_Matlab_functions_and_Ops.html#Image_Analysis"><span class="tocnumber">5</span> <span class="toctext">Image Analysis</span></a>
+<ul>
+<li class="toclevel-2 tocsection-26"><a href="Comparison_of_Matlab_functions_and_Ops.html#Object_Analysis"><span class="tocnumber">5.1</span> <span class="toctext">Object Analysis</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href="Comparison_of_Matlab_functions_and_Ops.html#Region_and_Image_Properties"><span class="tocnumber">5.2</span> <span class="toctext">Region and Image Properties</span></a></li>
+<li class="toclevel-2 tocsection-28"><a href="Comparison_of_Matlab_functions_and_Ops.html#Texture_Analysis"><span class="tocnumber">5.3</span> <span class="toctext">Texture Analysis</span></a></li>
+<li class="toclevel-2 tocsection-29"><a href="Comparison_of_Matlab_functions_and_Ops.html#Image_Quality"><span class="tocnumber">5.4</span> <span class="toctext">Image Quality</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="Comparison_of_Matlab_functions_and_Ops.html#Image_Segmentation"><span class="tocnumber">5.5</span> <span class="toctext">Image Segmentation</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="Comparison_of_Matlab_functions_and_Ops.html#Image_Transforms"><span class="tocnumber">5.6</span> <span class="toctext">Image Transforms</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-32"><a href="Comparison_of_Matlab_functions_and_Ops.html#3D_Volumetric_Image_Processing"><span class="tocnumber">6</span> <span class="toctext">3D Volumetric Image Processing</span></a></li>
+<li class="toclevel-1 tocsection-33"><a href="Comparison_of_Matlab_functions_and_Ops.html#Code_Generation"><span class="tocnumber">7</span> <span class="toctext">Code Generation</span></a></li>
+<li class="toclevel-1 tocsection-34"><a href="Comparison_of_Matlab_functions_and_Ops.html#GPU_Computing"><span class="tocnumber">8</span> <span class="toctext">GPU Computing</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Import.2C_Export.2C_and_Conversion">Import, Export, and Conversion</span></h2>
+<h3><span class="mw-headline" id="Read_and_Write_Image_Data_from_Files">Read and Write Image Data from Files</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/imread.html"><code>imread</code></a>
+</td>
+<td> Read image from graphics file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/imwrite.html"><code>imwrite</code></a>
+</td>
+<td> Write image to graphics file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/imfinfo.html"><code>imfinfo</code></a>
+</td>
+<td> Information about graphics file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/nitfinfo.html"><code>nitfinfo</code></a>
+</td>
+<td> Read metadata from National Imagery Transmission Format
+<p>(NITF) file
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/nitfread.html"><code>nitfread</code></a>
+</td>
+<td> Read image from NITF file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dpxinfo.html"><code>dpxinfo</code></a>
+</td>
+<td> Read metadata from DPX file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dpxread.html"><code>dpxread</code></a>
+</td>
+<td> Read DPX image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/analyze75info.html"><code>analyze75info</code></a>
+</td>
+<td> Read metadata from header file of Analyze 7.5 data set
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/analyze75read.html"><code>analyze75read</code></a>
+</td>
+<td> Read image data from image file of Analyze 7.5 data set
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/interfileinfo.html"><code>interfileinfo</code></a>
+</td>
+<td> Read metadata from Interfile file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/interfileread.html"><code>interfileread</code></a>
+</td>
+<td> Read images in Interfile format
+</td></tr></table>
+<h3><span class="mw-headline" id="Read_and_Write_Image_Data_from_DICOM_Files">Read and Write Image Data from DICOM Files</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dicomanon.html"><code>dicomanon</code></a>
+</td>
+<td> Anonymize DICOM file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dicomdict.html"><code>dicomdict</code></a>
+</td>
+<td> Get or set active DICOM data dictionary
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dicomdisp.html"><code>dicomdisp</code></a>
+</td>
+<td>  Display DICOM file structure
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dicominfo.html"><code>dicominfo</code></a>
+</td>
+<td> Read metadata from DICOM message
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dicomlookup.html"><code>dicomlookup</code></a>
+</td>
+<td> Find attribute in DICOM data dictionary
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dicomread.html"><code>dicomread</code></a>
+</td>
+<td> Read DICOM image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dicomuid.html"><code>dicomuid</code></a>
+</td>
+<td> Generate DICOM unique identifier
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dicomwrite.html"><code>dicomwrite</code></a>
+</td>
+<td> Write images as DICOM files
+</td></tr></table>
+<h3><span class="mw-headline" id="High_Dynamic_Range_Images">High Dynamic Range Images</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/hdrread.html"><code>hdrread</code></a>
+</td>
+<td> Read high dynamic range (HDR) image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/hdrwrite.html"><code>hdrwrite</code></a>
+</td>
+<td> Write Radiance high dynamic range (HDR) image file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/makehdr.html"><code>makehdr</code></a>
+</td>
+<td> Create high dynamic range image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/tonemap.html"><code>tonemap</code></a>
+</td>
+<td> Render high dynamic range image for viewing
+</td></tr></table>
+<h3><span class="mw-headline" id="Large_Image_Files">Large Image Files</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ImageAdapter.html"><code>ImageAdapter</code></a>
+</td>
+<td> Interface for image I/O
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/isrset.html"><code>isrset</code></a>
+</td>
+<td> Check if file is R-Set
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/openrset.html"><code>openrset</code></a>
+</td>
+<td> Open R-Set file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rsetwrite.html"><code>rsetwrite</code></a>
+</td>
+<td> Create reduced resolution data set from image file
+</td></tr></table>
+<h3><span class="mw-headline" id="Image_Type_Conversion">Image Type Conversion</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/gray2ind.html"><code>gray2ind</code></a>
+</td>
+<td> Convert grayscale or binary image to indexed image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ind2gray.html"><code>ind2gray</code></a>
+</td>
+<td> Convert indexed image to grayscale image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/mat2gray.html"><code>mat2gray</code></a>
+</td>
+<td> Convert matrix to grayscale image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/rgb2gray.html"><code>rgb2gray</code></a>
+</td>
+<td> Convert RGB image or colormap to grayscale
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ind2rgb.html"><code>ind2rgb</code></a>
+</td>
+<td> Convert indexed image to RGB image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/label2rgb.html"><code>label2rgb</code></a>
+</td>
+<td> Convert label matrix into RGB image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/demosaic.html"><code>demosaic</code></a>
+</td>
+<td> Convert Bayer pattern encoded image to truecolor image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imbinarize.html"><code>imbinarize</code></a>
+</td>
+<td> Binarize image by thresholding
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imquantize.html"><code>imquantize</code></a>
+</td>
+<td> Quantize image using specified quantization levels and
+<p>output values
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/multithresh.html"><code>multithresh</code></a>
+</td>
+<td>  Multilevel image thresholds using Otsu's method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/adaptthresh.html"><code>adaptthresh</code></a>
+</td>
+<td> Adaptive image threshold using local first-order statistics
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/otsuthresh.html"><code>otsuthresh</code></a>
+</td>
+<td> Global histogram threshold using Otsu's method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/graythresh.html"><code>graythresh</code></a>
+</td>
+<td> Global image threshold using Otsu's method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/grayslice.html"><code>grayslice</code></a>
+</td>
+<td> Convert grayscale image to indexed image using multilevel
+<p>thresholding
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/im2double.html"><code>im2double</code></a>
+</td>
+<td> Convert image to double precision
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2int16.html"><code>im2int16</code></a>
+</td>
+<td> Convert image to 16-bit signed integers
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2java2d.html"><code>im2java2d</code></a>
+</td>
+<td> Convert image to Java buffered image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2single.html"><code>im2single</code></a>
+</td>
+<td> Convert image to single precision
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2uint16.html"><code>im2uint16</code></a>
+</td>
+<td> Convert image to 16-bit unsigned integers
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2uint8.html"><code>im2uint8</code></a>
+</td>
+<td> Convert image to 8-bit unsigned integers
+</td></tr></table>
+<h3><span class="mw-headline" id="Color">Color</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rgb2lab.html"><code>rgb2lab</code></a>
+</td>
+<td> Convert RGB to CIE 1976 L*a*b*
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rgb2ntsc.html"><code>rgb2ntsc</code></a>
+</td>
+<td> Convert RGB color values to NTSC color space
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rgb2xyz.html"><code>rgb2xyz</code></a>
+</td>
+<td> Convert RGB to CIE 1931 XYZ
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rgb2ycbcr.html"><code>rgb2ycbcr</code></a>
+</td>
+<td> Convert RGB color values to YCbCr color space
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/lab2rgb.html"><code>lab2rgb</code></a>
+</td>
+<td> Convert CIE 1976 L*a*b* to RGB
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/lab2xyz.html"><code>lab2xyz</code></a>
+</td>
+<td> Convert CIE 1976 L*a*b* to CIE 1931 XYZ
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/xyz2lab.html"><code>xyz2lab</code></a>
+</td>
+<td> Convert CIE 1931 XYZ to CIE 1976 L*a*b*
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/xyz2rgb.html"><code>xyz2rgb</code></a>
+</td>
+<td> Convert CIE 1931 XYZ to RGB
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ycbcr2rgb.html"><code>ycbcr2rgb</code></a>
+</td>
+<td> Convert YCbCr color values to RGB color space
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ntsc2rgb.html"><code>ntsc2rgb</code></a>
+</td>
+<td> Convert NTSC values to RGB color space
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/lab2double.html"><code>lab2double</code></a>
+</td>
+<td> Convert L*a*b* data to double
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/lab2uint16.html"><code>lab2uint16</code></a>
+</td>
+<td> Convert L*a*b* data to uint16
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/lab2uint8.html"><code>lab2uint8</code></a>
+</td>
+<td> Convert L*a*b* data to uint8
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/xyz2double.html"><code>xyz2double</code></a>
+</td>
+<td> Convert XYZ color values to double
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/xyz2uint16.html"><code>xyz2uint16</code></a>
+</td>
+<td> Convert XYZ color values to uint16
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iccfind.html"><code>iccfind</code></a>
+</td>
+<td> Search for ICC profiles
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iccread.html"><code>iccread</code></a>
+</td>
+<td> Read ICC profile
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iccroot.html"><code>iccroot</code></a>
+</td>
+<td> Find system default ICC profile repository
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iccwrite.html"><code>iccwrite</code></a>
+</td>
+<td> Write ICC color profile to disk file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/isicc.html"><code>isicc</code></a>
+</td>
+<td> True for valid ICC color profile
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/makecform.html"><code>makecform</code></a>
+</td>
+<td> Create color transformation structure
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/applycform.html"><code>applycform</code></a>
+</td>
+<td> Apply device-independent color space transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/imapprox.html"><code>imapprox</code></a>
+</td>
+<td> Approximate indexed image by reducing number of colors
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/colorcloud.html"><code>colorcloud</code></a>
+</td>
+<td> Display 3-D color gamut as point cloud in specified color
+<p>space
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/whitepoint.html"><code>whitepoint</code></a>
+</td>
+<td> XYZ color values of standard illuminants
+</td></tr></table>
+<h3><span class="mw-headline" id="Synthetic_Images">Synthetic Images</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/checkerboard.html"><code>checkerboard</code></a>
+</td>
+<td> Create checkerboard image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/phantom.html"><code>phantom</code></a>
+</td>
+<td> Create head phantom image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imnoise.html"><code>imnoise</code></a>
+</td>
+<td> Add noise to image
+</td></tr></table>
+<h2><span class="mw-headline" id="Display_and_Exploration">Display and Exploration</span></h2>
+<h3><span class="mw-headline" id="Basic_Display">Basic Display</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imshow.html"><code>imshow</code></a>
+</td>
+<td> Display image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/montage.html"><code>montage</code></a>
+</td>
+<td> Display multiple image frames as rectangular montage
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/immovie.html"><code>immovie</code></a>
+</td>
+<td> Make movie from multiframe image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/implay.html"><code>implay</code></a>
+</td>
+<td> Play movies, videos, or image sequences
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/warp.html"><code>warp</code></a>
+</td>
+<td> Display image as texture-mapped surface
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptgetpref.html"><code>iptgetpref</code></a>
+</td>
+<td> Get values of Image Processing Toolbox preferences
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptprefs.html"><code>iptprefs</code></a>
+</td>
+<td> Display Image Processing Toolbox Preferences dialog box
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptsetpref.html"><code>iptsetpref</code></a>
+</td>
+<td> Set Image Processing Toolbox preferences or display
+<p>valid values
+</p>
+</td></tr></table>
+<h3><span class="mw-headline" id="Interactive_Exploration_with_the_Image_Viewer_App">Interactive Exploration with the Image Viewer App</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imtool.html"><code>imtool</code></a>
+</td>
+<td> Image Viewer app
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imageinfo.html"><code>imageinfo</code></a>
+</td>
+<td> Image Information tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcontrast.html"><code>imcontrast</code></a>
+</td>
+<td> Adjust Contrast tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imdisplayrange.html"><code>imdisplayrange</code></a>
+</td>
+<td> Display Range tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imdistline.html"><code>imdistline</code></a>
+</td>
+<td> Distance tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impixelinfo.html"><code>impixelinfo</code></a>
+</td>
+<td> Pixel Information tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impixelinfoval.html"><code>impixelinfoval</code></a>
+</td>
+<td> Pixel Information tool without text label
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impixelregion.html"><code>impixelregion</code></a>
+</td>
+<td> Pixel Region tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/immagbox.html"><code>immagbox</code></a>
+</td>
+<td> Magnification box for scroll panel
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imoverview.html"><code>imoverview</code></a>
+</td>
+<td> Overview tool for image displayed in scroll panel
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptgetpref.html"><code>iptgetpref</code></a>
+</td>
+<td> Get values of Image Processing Toolbox preferences
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptprefs.html"><code>iptprefs</code></a>
+</td>
+<td> Display Image Processing Toolbox Preferences dialog box
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptsetpref.html"><code>iptsetpref</code></a>
+</td>
+<td> Set Image Processing Toolbox preferences or display
+<p>valid values
+</p>
+</td></tr></table>
+<h3><span class="mw-headline" id="Build_Interactive_Tools">Build Interactive Tools</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imageinfo.html"><code>imageinfo</code></a>
+</td>
+<td> Image Information tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcolormaptool.html"><code>imcolormaptool</code></a>
+</td>
+<td> Choose Colormap tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcontrast.html"><code>imcontrast</code></a>
+</td>
+<td> Adjust Contrast tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcrop.html"><code>imcrop</code></a>
+</td>
+<td> Crop image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imdisplayrange.html"><code>imdisplayrange</code></a>
+</td>
+<td> Display Range tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imdistline.html"><code>imdistline</code></a>
+</td>
+<td> Distance tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impixelinfo.html"><code>impixelinfo</code></a>
+</td>
+<td> Pixel Information tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impixelinfoval.html"><code>impixelinfoval</code></a>
+</td>
+<td> Pixel Information tool without text label
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impixelregion.html"><code>impixelregion</code></a>
+</td>
+<td> Pixel Region tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impixelregionpanel.html"><code>impixelregionpanel</code></a>
+</td>
+<td> Pixel Region tool panel
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/immagbox.html"><code>immagbox</code></a>
+</td>
+<td> Magnification box for scroll panel
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imoverview.html"><code>imoverview</code></a>
+</td>
+<td> Overview tool for image displayed in scroll panel
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imoverviewpanel.html"><code>imoverviewpanel</code></a>
+</td>
+<td> Overview tool panel for image displayed in scroll panel
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imsave.html"><code>imsave</code></a>
+</td>
+<td> Save Image Tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imscrollpanel.html"><code>imscrollpanel</code></a>
+</td>
+<td> Scroll panel for interactive image navigation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imellipse.html"><code>imellipse</code></a>
+</td>
+<td> Create draggable ellipse
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfreehand.html"><code>imfreehand</code></a>
+</td>
+<td> Create draggable freehand region
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imline.html"><code>imline</code></a>
+</td>
+<td> Create draggable, resizable line
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impoint.html"><code>impoint</code></a>
+</td>
+<td> Create draggable point
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impoly.html"><code>impoly</code></a>
+</td>
+<td> Create draggable, resizable polygon
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imrect.html"><code>imrect</code></a>
+</td>
+<td> Create draggable rectangle
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imroi.html"><code>imroi</code></a>
+</td>
+<td> Region-of-interest (ROI) base class
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/getline.html"><code>getline</code></a>
+</td>
+<td> Select polyline with mouse
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/getpts.html"><code>getpts</code></a>
+</td>
+<td> Specify points with mouse
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/getrect.html"><code>getrect</code></a>
+</td>
+<td> Specify rectangle with mouse
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/getimage.html"><code>getimage</code></a>
+</td>
+<td> Image data from axes
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/getimagemodel.html"><code>getimagemodel</code></a>
+</td>
+<td> Image model object from image object
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imagemodel.html"><code>imagemodel</code></a>
+</td>
+<td> Image Model object
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/axes2pix.html"><code>axes2pix</code></a>
+</td>
+<td> Convert axes coordinates to pixel coordinates
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imattributes.html"><code>imattributes</code></a>
+</td>
+<td> Information about image attributes
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgca.html"><code>imgca</code></a>
+</td>
+<td> Get current axes containing image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgcf.html"><code>imgcf</code></a>
+</td>
+<td> Get current figure containing image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgetfile.html"><code>imgetfile</code></a>
+</td>
+<td> Display Open Image dialog box
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imhandles.html"><code>imhandles</code></a>
+</td>
+<td> Get all image objects
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptaddcallback.html"><code>iptaddcallback</code></a>
+</td>
+<td> Add function handle to callback list
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptcheckhandle.html"><code>iptcheckhandle</code></a>
+</td>
+<td> Check validity of handle
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptgetapi.html"><code>iptgetapi</code></a>
+</td>
+<td> Get Application Programmer Interface (API) for handle
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptGetPointerBehavior.html"><code>iptGetPointerBehavior</code></a>
+</td>
+<td> Retrieve pointer behavior from graphics object
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ipticondir.html"><code>ipticondir</code></a>
+</td>
+<td> Directories containing IPT and MATLAB icons
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptPointerManager.html"><code>iptPointerManager</code></a>
+</td>
+<td> Create pointer manager in figure
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptremovecallback.html"><code>iptremovecallback</code></a>
+</td>
+<td> Delete function handle from callback list
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptSetPointerBehavior.html"><code>iptSetPointerBehavior</code></a>
+</td>
+<td> Store pointer behavior structure in graphics object
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptwindowalign.html"><code>iptwindowalign</code></a>
+</td>
+<td> Align figure windows
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/makeConstrainToRectFcn.html"><code>makeConstrainToRectFcn</code></a>
+</td>
+<td> Create rectangularly bounded drag constraint function
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/truesize.html"><code>truesize</code></a>
+</td>
+<td> Adjust display size of image
+</td></tr></table>
+<h2><span class="mw-headline" id="Geometric_Transformation.2C_Spatial_Referencing.2C_and_Image_Registration">Geometric Transformation, Spatial Referencing, and Image Registration</span></h2>
+<h3><span class="mw-headline" id="Geometric_Transformations">Geometric Transformations</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcrop.html"><code>imcrop</code></a>
+</td>
+<td> Crop image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imresize.html"><code>imresize</code></a>
+</td>
+<td> Resize image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imrotate.html"><code>imrotate</code></a>
+</td>
+<td> Rotate image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imtranslate.html"><code>imtranslate</code></a>
+</td>
+<td> Translate image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impyramid.html"><code>impyramid</code></a>
+</td>
+<td> Image pyramid reduction and expansion
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imwarp.html"><code>imwarp</code></a>
+</td>
+<td> Apply geometric transformation to image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fitgeotrans.html"><code>fitgeotrans</code></a>
+</td>
+<td> Fit geometric transformation to control point pairs
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imtransform.html"><code>imtransform</code></a>
+</td>
+<td> Apply 2-D spatial transformation to image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/findbounds.html"><code>findbounds</code></a>
+</td>
+<td> Find output bounds for spatial transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fliptform.html"><code>fliptform</code></a>
+</td>
+<td> Flip input and output roles of TFORM structure
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/makeresampler.html"><code>makeresampler</code></a>
+</td>
+<td> Create resampling structure
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/maketform.html"><code>maketform</code></a>
+</td>
+<td> Create spatial transformation structure (TFORM)
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/tformarray.html"><code>tformarray</code></a>
+</td>
+<td> Apply spatial transformation to N-D array
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/tformfwd.html"><code>tformfwd</code></a>
+</td>
+<td> Apply forward spatial transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/tforminv.html"><code>tforminv</code></a>
+</td>
+<td> Apply inverse spatial transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/checkerboard.html"><code>checkerboard</code></a>
+</td>
+<td> Create checkerboard image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/affine2d.html"><code>affine2d</code></a>
+</td>
+<td> 2-D Affine Geometric Transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/affine3d.html"><code>affine3d</code></a>
+</td>
+<td> 3-D Affine Geometric Transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/projective2d.html"><code>projective2d</code></a>
+</td>
+<td> 2-D Projective Geometric Transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/images.geotrans.PiecewiseLinearTransformation2D.html"><code>images.geotrans.PiecewiseLinearTransformation2D</code></a>
+</td>
+<td> 2-D piecewise linear geometric transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/images.geotrans.PolynomialTransformation2D.html"><code>images.geotrans.PolynomialTransformation2D</code></a>
+</td>
+<td> 2-D Polynomial Geometric Transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/images.geotrans.LocalWeightedMeanTransformation2D.html"><code>images.geotrans.LocalWeightedMeanTransformation2D</code></a>
+</td>
+<td> 2-D Local Weighted Mean Geometric Transformation
+</td></tr></table>
+<h3><span class="mw-headline" id="Spatial_Referencing">Spatial Referencing</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imwarp.html"><code>imwarp</code></a>
+</td>
+<td> Apply geometric transformation to image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregister.html"><code>imregister</code></a>
+</td>
+<td> Intensity-based image registration
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregtform.html"><code>imregtform</code></a>
+</td>
+<td>   Estimate geometric transformation that aligns two 2-D
+<p>or 3-D images
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imshow.html"><code>imshow</code></a>
+</td>
+<td> Display image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imshowpair.html"><code>imshowpair</code></a>
+</td>
+<td> Compare differences between images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfuse.html"><code>imfuse</code></a>
+</td>
+<td> Composite of two images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imref2d.html"><code>imref2d</code></a>
+</td>
+<td> Reference 2-D image to world coordinates
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imref3d.html"><code>imref3d</code></a>
+</td>
+<td> Reference 3-D image to world coordinates
+</td></tr></table>
+<h3><span class="mw-headline" id="Automatic_Registration">Automatic Registration</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregister.html"><code>imregister</code></a>
+</td>
+<td> Intensity-based image registration
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregconfig.html"><code>imregconfig</code></a>
+</td>
+<td> Configurations for intensity-based registration
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregtform.html"><code>imregtform</code></a>
+</td>
+<td>   Estimate geometric transformation that aligns two 2-D
+<p>or 3-D images
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregcorr.html"><code>imregcorr</code></a>
+</td>
+<td> Estimates geometric transformation that aligns two 2-D
+<p>images using phase correlation
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregdemons.html"><code>imregdemons</code></a>
+</td>
+<td> Estimate displacement field that aligns two 2-D or 3-D
+<p>images
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfuse.html"><code>imfuse</code></a>
+</td>
+<td> Composite of two images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imshowpair.html"><code>imshowpair</code></a>
+</td>
+<td> Compare differences between images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/registration.metric.MattesMutualInformation.html"><code>registration.metric.MattesMutualInformation</code></a>
+</td>
+<td> Mattes mutual information metric configuration object
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/registration.metric.MeanSquares.html"><code>registration.metric.MeanSquares</code></a>
+</td>
+<td> Mean square error metric configuration object
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/registration.optimizer.RegularStepGradientDescent.html"><code>registration.optimizer.RegularStepGradientDescent</code></a>
+</td>
+<td> Regular step gradient descent optimizer configuration
+<p>object
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/registration.optimizer.OnePlusOneEvolutionary.html"><code>registration.optimizer.OnePlusOneEvolutionary</code></a>
+</td>
+<td> One-plus-one evolutionary optimizer configuration object
+</td></tr></table>
+<h3><span class="mw-headline" id="Control_Point_Registration">Control Point Registration</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/cpselect.html"><code>cpselect</code></a>
+</td>
+<td> Control Point Selection Tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fitgeotrans.html"><code>fitgeotrans</code></a>
+</td>
+<td> Fit geometric transformation to control point pairs
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/cpcorr.html"><code>cpcorr</code></a>
+</td>
+<td> Tune control-point locations using cross correlation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/cpstruct2pairs.html"><code>cpstruct2pairs</code></a>
+</td>
+<td> Convert CPSTRUCT to valid pairs of
+<p>control points
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/normxcorr2.html"><code>normxcorr2</code></a>
+</td>
+<td> Normalized 2-D cross-correlation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/cp2tform.html"><code>cp2tform</code></a>
+</td>
+<td> Infer spatial transformation from control point pairs
+</td></tr></table>
+<h2><span class="mw-headline" id="Image_Enhancement">Image Enhancement</span></h2>
+<h3><span class="mw-headline" id="Contrast_Adjustment">Contrast Adjustment</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imadjust.html"><code>imadjust</code></a>
+</td>
+<td> Adjust image intensity values or colormap
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcontrast.html"><code>imcontrast</code></a>
+</td>
+<td> Adjust Contrast tool
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imsharpen.html"><code>imsharpen</code></a>
+</td>
+<td> Sharpen image using unsharp masking
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/locallapfilt.html"><code>locallapfilt</code></a>
+</td>
+<td> Fast Local Laplacian Filtering of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/localcontrast.html"><code>localcontrast</code></a>
+</td>
+<td> Edge-aware local contrast manipulation of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/localtonemap.html"><code>localtonemap</code></a>
+</td>
+<td> Render HDR image for viewing while enhancing local contrast
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/histeq.html"><code>histeq</code></a>
+</td>
+<td> Enhance contrast using histogram equalization
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/adapthisteq.html"><code>adapthisteq</code></a>
+</td>
+<td> Contrast-limited adaptive histogram equalization (CLAHE)
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imhistmatch.html"><code>imhistmatch</code></a>
+</td>
+<td> Adjust histogram of image to match N-bin histogram of
+<p>reference image 
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/decorrstretch.html"><code>decorrstretch</code></a>
+</td>
+<td> Apply decorrelation stretch to multichannel image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/stretchlim.html"><code>stretchlim</code></a>
+</td>
+<td> Find limits to contrast stretch image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/intlut.html"><code>intlut</code></a>
+</td>
+<td> Convert integer values using lookup table
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imnoise.html"><code>imnoise</code></a>
+</td>
+<td> Add noise to image
+</td></tr></table>
+<h3><span class="mw-headline" id="Image_Filtering">Image Filtering</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfilter.html"><code>imfilter</code></a>
+</td>
+<td> N-D filtering of multidimensional images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgaussfilt.html"><code>imgaussfilt</code></a>
+</td>
+<td> 2-D Gaussian filtering of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgaussfilt3.html"><code>imgaussfilt3</code></a>
+</td>
+<td> 3-D Gaussian filtering of 3-D images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fspecial.html"><code>fspecial</code></a>
+</td>
+<td> Create predefined 2-D filter
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imguidedfilter.html"><code>imguidedfilter</code></a>
+</td>
+<td> Guided filtering of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/normxcorr2.html"><code>normxcorr2</code></a>
+</td>
+<td> Normalized 2-D cross-correlation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/wiener2.html"><code>wiener2</code></a>
+</td>
+<td> 2-D adaptive noise-removal filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/medfilt2.html"><code>medfilt2</code></a>
+</td>
+<td> 2-D median filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/medfilt3.html"><code>medfilt3</code></a>
+</td>
+<td> 3-D median filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ordfilt2.html"><code>ordfilt2</code></a>
+</td>
+<td> 2-D order-statistic filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/stdfilt.html"><code>stdfilt</code></a>
+</td>
+<td> Local standard deviation of image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rangefilt.html"><code>rangefilt</code></a>
+</td>
+<td> Local range of image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/entropyfilt.html"><code>entropyfilt</code></a>
+</td>
+<td> Local entropy of grayscale image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/nlfilter.html"><code>nlfilter</code></a>
+</td>
+<td> General sliding-neighborhood operations
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/gabor.html"><code>gabor</code></a>
+</td>
+<td> Create Gabor filter or Gabor filter bank
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgaborfilt.html"><code>imgaborfilt</code></a>
+</td>
+<td>  Apply Gabor filter or set of filters to 2-D image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imboxfilt.html"><code>imboxfilt</code></a>
+</td>
+<td> 2-D box filtering of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imboxfilt3.html"><code>imboxfilt3</code></a>
+</td>
+<td> 3-D box filtering of 3-D images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/integralImage.html"><code>integralImage</code></a>
+</td>
+<td> Calculate integral image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/integralImage3.html"><code>integralImage3</code></a>
+</td>
+<td> Calculate 3-D integral image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/integralBoxFilter.html"><code>integralBoxFilter</code></a>
+</td>
+<td> 2-D box filtering of integral images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/integralBoxFilter3.html"><code>integralBoxFilter3</code></a>
+</td>
+<td> 3-D box filtering of 3-D integral images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwareafilt.html"><code>bwareafilt</code></a>
+</td>
+<td> Extract objects from binary image by size
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwpropfilt.html"><code>bwpropfilt</code></a>
+</td>
+<td> Extract objects from binary image using properties
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/padarray.html"><code>padarray</code></a>
+</td>
+<td> Pad array
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/freqz2.html"><code>freqz2</code></a>
+</td>
+<td> 2-D frequency response
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fsamp2.html"><code>fsamp2</code></a>
+</td>
+<td> 2-D FIR filter using frequency sampling
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ftrans2.html"><code>ftrans2</code></a>
+</td>
+<td> 2-D FIR filter using frequency transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fwind1.html"><code>fwind1</code></a>
+</td>
+<td> 2-D FIR filter using 1-D window method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fwind2.html"><code>fwind2</code></a>
+</td>
+<td> 2-D FIR filter using 2-D window method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/convmtx2.html"><code>convmtx2</code></a>
+</td>
+<td> 2-D convolution matrix
+</td></tr></table>
+<h3><span class="mw-headline" id="Morphological_Operations">Morphological Operations</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwhitmiss.html"><code>bwhitmiss</code></a>
+</td>
+<td> Binary hit-miss operation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwmorph.html"><code>bwmorph</code></a>
+</td>
+<td> Morphological operations on binary images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwulterode.html"><code>bwulterode</code></a>
+</td>
+<td> Ultimate erosion
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwareaopen.html"><code>bwareaopen</code></a>
+</td>
+<td> Remove small objects from binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imbothat.html"><code>imbothat</code></a>
+</td>
+<td> Bottom-hat filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imclearborder.html"><code>imclearborder</code></a>
+</td>
+<td> Suppress light structures connected to image border
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imclose.html"><code>imclose</code></a>
+</td>
+<td> Morphologically close image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imdilate.html"><code>imdilate</code></a>
+</td>
+<td> Dilate image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imerode.html"><code>imerode</code></a>
+</td>
+<td> Erode image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imextendedmax.html"><code>imextendedmax</code></a>
+</td>
+<td> Extended-maxima transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imextendedmin.html"><code>imextendedmin</code></a>
+</td>
+<td> Extended-minima transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfill.html"><code>imfill</code></a>
+</td>
+<td> Fill image regions and holes
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imhmax.html"><code>imhmax</code></a>
+</td>
+<td> H-maxima transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imhmin.html"><code>imhmin</code></a>
+</td>
+<td> H-minima transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imimposemin.html"><code>imimposemin</code></a>
+</td>
+<td> Impose minima
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imopen.html"><code>imopen</code></a>
+</td>
+<td> Morphologically open image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imreconstruct.html"><code>imreconstruct</code></a>
+</td>
+<td> Morphological reconstruction
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregionalmax.html"><code>imregionalmax</code></a>
+</td>
+<td> Regional maxima
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregionalmin.html"><code>imregionalmin</code></a>
+</td>
+<td> Regional minima
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imtophat.html"><code>imtophat</code></a>
+</td>
+<td> Top-hat filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/watershed.html"><code>watershed</code></a>
+</td>
+<td> Watershed transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/conndef.html"><code>conndef</code></a>
+</td>
+<td> Create connectivity array
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptcheckconn.html"><code>iptcheckconn</code></a>
+</td>
+<td> Check validity of connectivity argument
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/applylut.html"><code>applylut</code></a>
+</td>
+<td> Neighborhood operations on binary images using lookup
+<p>tables
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwlookup.html"><code>bwlookup</code></a>
+</td>
+<td>  Nonlinear filtering using lookup tables
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/makelut.html"><code>makelut</code></a>
+</td>
+<td> Create lookup table for use with bwlookup
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/strel.html"><code>strel</code></a>
+</td>
+<td> Morphological structuring element
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/offsetstrel.html"><code>offsetstrel</code></a>
+</td>
+<td> Morphological offset structuring element
+</td></tr></table>
+<h3 id="btdrz6j-1"><span class="mw-headline" id="Deblurring">Deblurring</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/deconvblind.html"><code>deconvblind</code></a>
+</td>
+<td> Deblur image using blind deconvolution
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/deconvlucy.html"><code>deconvlucy</code></a>
+</td>
+<td> Deblur image using Lucy-Richardson method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/deconvreg.html"><code>deconvreg</code></a>
+</td>
+<td> Deblur image using regularized filter
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/deconvwnr.html"><code>deconvwnr</code></a>
+</td>
+<td> Deblur image using Wiener filter
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/edgetaper.html"><code>edgetaper</code></a>
+</td>
+<td> Taper discontinuities along image edges
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/otf2psf.html"><code>otf2psf</code></a>
+</td>
+<td> Convert optical transfer function to point-spread function
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/psf2otf.html"><code>psf2otf</code></a>
+</td>
+<td> Convert point-spread function to optical transfer function
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/padarray.html"><code>padarray</code></a>
+</td>
+<td> Pad array
+</td></tr></table>
+<h3><span class="mw-headline" id="ROI-Based_Processing">ROI-Based Processing</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/roipoly.html"><code>roipoly</code></a>
+</td>
+<td> Specify polygonal region of interest (ROI)
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/poly2mask.html"><code>poly2mask</code></a>
+</td>
+<td> Convert region of interest (ROI) polygon to region mask
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/regionfill.html"><code>regionfill</code></a>
+</td>
+<td> Fill in specified regions in image using inward interpolation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/roicolor.html"><code>roicolor</code></a>
+</td>
+<td> Select region of interest (ROI) based on color
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/roifilt2.html"><code>roifilt2</code></a>
+</td>
+<td> Filter region of interest (ROI) in image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imellipse.html"><code>imellipse</code></a>
+</td>
+<td> Create draggable ellipse
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfreehand.html"><code>imfreehand</code></a>
+</td>
+<td> Create draggable freehand region
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impoly.html"><code>impoly</code></a>
+</td>
+<td> Create draggable, resizable polygon
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imrect.html"><code>imrect</code></a>
+</td>
+<td> Create draggable rectangle
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imroi.html"><code>imroi</code></a>
+</td>
+<td> Region-of-interest (ROI) base class
+</td></tr></table>
+<h3><span class="mw-headline" id="Neighborhood_and_Block_Processing">Neighborhood and Block Processing</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ImageAdapter.html"><code>ImageAdapter</code></a>
+</td>
+<td> Interface for image I/O
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/blockproc.html"><code>blockproc</code></a>
+</td>
+<td> Distinct block processing for image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bestblk.html"><code>bestblk</code></a>
+</td>
+<td> Determine optimal block size for block processing
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/nlfilter.html"><code>nlfilter</code></a>
+</td>
+<td> General sliding-neighborhood operations
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/col2im.html"><code>col2im</code></a>
+</td>
+<td> Rearrange matrix columns into blocks
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/colfilt.html"><code>colfilt</code></a>
+</td>
+<td> Columnwise neighborhood operations
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2col.html"><code>im2col</code></a>
+</td>
+<td> Rearrange image blocks into columns
+</td></tr></table>
+<h3><span class="mw-headline" id="Image_Arithmetic">Image Arithmetic</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imabsdiff.html"><code>imabsdiff</code></a>
+</td>
+<td> Absolute difference of two images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imadd.html"><code>imadd</code></a>
+</td>
+<td> Add two images or add constant to image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imapplymatrix.html"><code>imapplymatrix</code></a>
+</td>
+<td> Linear combination of color channels
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcomplement.html"><code>imcomplement</code></a>
+</td>
+<td> Complement image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imdivide.html"><code>imdivide</code></a>
+</td>
+<td> Divide one image into another or divide image by constant
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imlincomb.html"><code>imlincomb</code></a>
+</td>
+<td> Linear combination of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/immultiply.html"><code>immultiply</code></a>
+</td>
+<td> Multiply two images or multiply image by constant
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imsubtract.html"><code>imsubtract</code></a>
+</td>
+<td> Subtract one image from another or subtract constant from
+<p>image
+</p>
+</td></tr></table>
+<h2><span class="mw-headline" id="Image_Analysis">Image Analysis</span></h2>
+<h3><span class="mw-headline" id="Object_Analysis">Object Analysis</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwboundaries.html"><code>bwboundaries</code></a>
+</td>
+<td> Trace region boundaries in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwtraceboundary.html"><code>bwtraceboundary</code></a>
+</td>
+<td> Trace object in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/visboundaries.html"><code>visboundaries</code></a>
+</td>
+<td> Plot region boundaries
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/edge.html"><code>edge</code></a>
+</td>
+<td> Find edges in intensity image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfindcircles.html"><code>imfindcircles</code></a>
+</td>
+<td> Find circles using circular Hough transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/viscircles.html"><code>viscircles</code></a>
+</td>
+<td> Create circle
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgradient.html"><code>imgradient</code></a>
+</td>
+<td>  Gradient magnitude and direction of an image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgradientxy.html"><code>imgradientxy</code></a>
+</td>
+<td>   Directional gradients of an image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgradient3.html"><code>imgradient3</code></a>
+</td>
+<td> Find 3-D gradient magnitude and direction of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgradientxyz.html"><code>imgradientxyz</code></a>
+</td>
+<td> Find the directional gradients of a 3-D image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/hough.html"><code>hough</code></a>
+</td>
+<td> Hough transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/houghlines.html"><code>houghlines</code></a>
+</td>
+<td> Extract line segments based on Hough transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/houghpeaks.html"><code>houghpeaks</code></a>
+</td>
+<td> Identify peaks in Hough transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/qtdecomp.html"><code>qtdecomp</code></a>
+</td>
+<td> Quadtree decomposition
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/qtgetblk.html"><code>qtgetblk</code></a>
+</td>
+<td> Block values in quadtree decomposition
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/qtsetblk.html"><code>qtsetblk</code></a>
+</td>
+<td> Set block values in quadtree decomposition
+</td></tr></table>
+<h3><span class="mw-headline" id="Region_and_Image_Properties">Region and Image Properties</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/regionprops.html"><code>regionprops</code></a>
+</td>
+<td>  Measure properties of image regions
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwarea.html"><code>bwarea</code></a>
+</td>
+<td> Area of objects in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwareafilt.html"><code>bwareafilt</code></a>
+</td>
+<td> Extract objects from binary image by size
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwconncomp.html"><code>bwconncomp</code></a>
+</td>
+<td> Find connected components in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwconvhull.html"><code>bwconvhull</code></a>
+</td>
+<td> Generate convex hull image from binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwdist.html"><code>bwdist</code></a>
+</td>
+<td> Distance transform of binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwdistgeodesic.html"><code>bwdistgeodesic</code></a>
+</td>
+<td> Geodesic distance transform of binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bweuler.html"><code>bweuler</code></a>
+</td>
+<td> Euler number of binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwperim.html"><code>bwperim</code></a>
+</td>
+<td> Find perimeter of objects in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwpropfilt.html"><code>bwpropfilt</code></a>
+</td>
+<td> Extract objects from binary image using properties
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwselect.html"><code>bwselect</code></a>
+</td>
+<td> Select objects in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/graydist.html"><code>graydist</code></a>
+</td>
+<td> Gray-weighted distance transform of grayscale image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcontour.html"><code>imcontour</code></a>
+</td>
+<td> Create contour plot of image data
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imhist.html"><code>imhist</code></a>
+</td>
+<td> Histogram of image data
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impixel.html"><code>impixel</code></a>
+</td>
+<td> Pixel color values
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/improfile.html"><code>improfile</code></a>
+</td>
+<td> Pixel-value cross-sections along line segments
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/corr2.html"><code>corr2</code></a>
+</td>
+<td> 2-D correlation coefficient
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/mean2.html"><code>mean2</code></a>
+</td>
+<td> Average or mean of matrix elements
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/std2.html"><code>std2</code></a>
+</td>
+<td> Standard deviation of matrix elements
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwlabel.html"><code>bwlabel</code></a>
+</td>
+<td> Label connected components in 2-D binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwlabeln.html"><code>bwlabeln</code></a>
+</td>
+<td> Label connected components in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/labelmatrix.html"><code>labelmatrix</code></a>
+</td>
+<td> Create label matrix from bwconncomp structure
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwpack.html"><code>bwpack</code></a>
+</td>
+<td> Pack binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwunpack.html"><code>bwunpack</code></a>
+</td>
+<td> Unpack binary image
+</td></tr></table>
+<h3><span class="mw-headline" id="Texture_Analysis">Texture Analysis</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/entropy.html"><code>entropy</code></a>
+</td>
+<td> Entropy of grayscale image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/entropyfilt.html"><code>entropyfilt</code></a>
+</td>
+<td> Local entropy of grayscale image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rangefilt.html"><code>rangefilt</code></a>
+</td>
+<td> Local range of image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/stdfilt.html"><code>stdfilt</code></a>
+</td>
+<td> Local standard deviation of image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/graycomatrix.html"><code>graycomatrix</code></a>
+</td>
+<td> Create gray-level co-occurrence matrix from image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/graycoprops.html"><code>graycoprops</code></a>
+</td>
+<td> Properties of gray-level co-occurrence matrix
+</td></tr></table>
+<h3><span class="mw-headline" id="Image_Quality">Image Quality</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/immse.html"><code>immse</code></a>
+</td>
+<td>  Mean-squared error
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/psnr.html"><code>psnr</code></a>
+</td>
+<td> Peak Signal-to-Noise Ratio (PSNR)
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ssim.html"><code>ssim</code></a>
+</td>
+<td> Structural Similarity Index (SSIM) for measuring image
+<p>quality 
+</p>
+</td></tr></table>
+<h3><span class="mw-headline" id="Image_Segmentation">Image Segmentation</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/activecontour.html"><code>activecontour</code></a>
+</td>
+<td>  Segment image into foreground and background using active
+<p>contour
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imsegfmm.html"><code>imsegfmm</code></a>
+</td>
+<td> Binary image segmentation using Fast Marching Method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imseggeodesic.html"><code>imseggeodesic</code></a>
+</td>
+<td>  Segment image into two or three regions using geodesic
+<p>distance-based color segmentation
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/gradientweight.html"><code>gradientweight</code></a>
+</td>
+<td> Calculate weights for image pixels based on image gradient
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/graydiffweight.html"><code>graydiffweight</code></a>
+</td>
+<td> Calculate weights for image pixels based on grayscale
+<p>intensity difference
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/grayconnected.html"><code>grayconnected</code></a>
+</td>
+<td>  Select contiguous image region with similar gray values
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/graythresh.html"><code>graythresh</code></a>
+</td>
+<td> Global image threshold using Otsu's method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/multithresh.html"><code>multithresh</code></a>
+</td>
+<td>  Multilevel image thresholds using Otsu's method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/otsuthresh.html"><code>otsuthresh</code></a>
+</td>
+<td> Global histogram threshold using Otsu's method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/adaptthresh.html"><code>adaptthresh</code></a>
+</td>
+<td> Adaptive image threshold using local first-order statistics
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/boundarymask.html"><code>boundarymask</code></a>
+</td>
+<td> Find region boundaries of segmentation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/superpixels.html"><code>superpixels</code></a>
+</td>
+<td> 2-D superpixel oversegmentation of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/superpixels3.html"><code>superpixels3</code></a>
+</td>
+<td> 3-D superpixel oversegmentation of 3-D image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imoverlay.html"><code>imoverlay</code></a>
+</td>
+<td> Burn binary mask into 2-D image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/label2idx.html"><code>label2idx</code></a>
+</td>
+<td> Convert label matrix to cell array of linear indices
+</td></tr></table>
+<h3><span class="mw-headline" id="Image_Transforms">Image Transforms</span></h3>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwdist.html"><code>bwdist</code></a>
+</td>
+<td> Distance transform of binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwdistgeodesic.html"><code>bwdistgeodesic</code></a>
+</td>
+<td> Geodesic distance transform of binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/graydist.html"><code>graydist</code></a>
+</td>
+<td> Gray-weighted distance transform of grayscale image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/hough.html"><code>hough</code></a>
+</td>
+<td> Hough transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dct2.html"><code>dct2</code></a>
+</td>
+<td> 2-D discrete cosine transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/dctmtx.html"><code>dctmtx</code></a>
+</td>
+<td> Discrete cosine transform matrix
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fan2para.html"><code>fan2para</code></a>
+</td>
+<td> Convert fan-beam projections to parallel-beam
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fanbeam.html"><code>fanbeam</code></a>
+</td>
+<td> Fan-beam transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/idct2.html"><code>idct2</code></a>
+</td>
+<td> 2-D inverse discrete cosine transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ifanbeam.html"><code>ifanbeam</code></a>
+</td>
+<td> Inverse fan-beam transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iradon.html"><code>iradon</code></a>
+</td>
+<td> Inverse Radon transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/para2fan.html"><code>para2fan</code></a>
+</td>
+<td> Convert parallel-beam projections to fan-beam
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/radon.html"><code>radon</code></a>
+</td>
+<td> Radon transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/fft2.html"><code>fft2</code></a>
+</td>
+<td> 2-D fast Fourier transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/fftshift.html"><code>fftshift</code></a>
+</td>
+<td> Shift zero-frequency component to center of spectrum
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/ifft2.html"><code>ifft2</code></a>
+</td>
+<td> 2-D inverse fast Fourier transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/ifftshift.html"><code>ifftshift</code></a>
+</td>
+<td> Inverse FFT shift
+</td></tr></table>
+<h2><span class="mw-headline" id="3D_Volumetric_Image_Processing">3D Volumetric Image Processing</span></h2>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imboxfilt3.html"><code>imboxfilt3</code></a>
+</td>
+<td> 3-D box filtering of 3-D images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgaussfilt3.html"><code>imgaussfilt3</code></a>
+</td>
+<td> 3-D Gaussian filtering of 3-D images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgradient3.html"><code>imgradient3</code></a>
+</td>
+<td> Find 3-D gradient magnitude and direction of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregdemons.html"><code>imregdemons</code></a>
+</td>
+<td> Estimate displacement field that aligns two 2-D or 3-D
+<p>images
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/integralBoxFilter3.html"><code>integralBoxFilter3</code></a>
+</td>
+<td> 3-D box filtering of 3-D integral images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/IntegralImage3.html"><code>IntegralImage3</code></a>
+</td>
+<td> Calculate 3-D integral image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/medfilt3.html"><code>medfilt3</code></a>
+</td>
+<td> 3-D median filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/superpixels3.html"><code>superpixels3</code></a>
+</td>
+<td> 3-D superpixel oversegmentation of 3-D image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imref3d.html"><code>imref3d</code></a>
+</td>
+<td> Reference 3-D image to world coordinates
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/affine3d.html"><code>affine3d</code></a>
+</td>
+<td> 3-D Affine Geometric Transformation
+</td></tr></table>
+<h2><span class="mw-headline" id="Code_Generation">Code Generation</span></h2>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/adaptthresh.html"><code>adaptthresh</code></a>
+</td>
+<td> Adaptive image threshold using local first-order statistics
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/boundarymask.html"><code>boundarymask</code></a>
+</td>
+<td> Find region boundaries of segmentation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwareaopen.html"><code>bwareaopen</code></a>
+</td>
+<td> Remove small objects from binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwboundaries.html"><code>bwboundaries</code></a>
+</td>
+<td> Trace region boundaries in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwconncomp.html"><code>bwconncomp</code></a>
+</td>
+<td> Find connected components in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwdist.html"><code>bwdist</code></a>
+</td>
+<td> Distance transform of binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bweuler.html"><code>bweuler</code></a>
+</td>
+<td> Euler number of binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwlabel.html"><code>bwlabel</code></a>
+</td>
+<td> Label connected components in 2-D binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwlookup.html"><code>bwlookup</code></a>
+</td>
+<td>  Nonlinear filtering using lookup tables
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwmorph.html"><code>bwmorph</code></a>
+</td>
+<td> Morphological operations on binary images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwpack.html"><code>bwpack</code></a>
+</td>
+<td> Pack binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwperim.html"><code>bwperim</code></a>
+</td>
+<td> Find perimeter of objects in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwselect.html"><code>bwselect</code></a>
+</td>
+<td> Select objects in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwtraceboundary.html"><code>bwtraceboundary</code></a>
+</td>
+<td> Trace object in binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwunpack.html"><code>bwunpack</code></a>
+</td>
+<td> Unpack binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/conndef.html"><code>conndef</code></a>
+</td>
+<td> Create connectivity array
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/demosaic.html"><code>demosaic</code></a>
+</td>
+<td> Convert Bayer pattern encoded image to truecolor image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/edge.html"><code>edge</code></a>
+</td>
+<td> Find edges in intensity image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fitgeotrans.html"><code>fitgeotrans</code></a>
+</td>
+<td> Fit geometric transformation to control point pairs
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/fspecial.html"><code>fspecial</code></a>
+</td>
+<td> Create predefined 2-D filter
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/getrangefromclass.html"><code>getrangefromclass</code></a>
+</td>
+<td> Default display range of image based on its class
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/grayconnected.html"><code>grayconnected</code></a>
+</td>
+<td>  Select contiguous image region with similar gray values
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/histeq.html"><code>histeq</code></a>
+</td>
+<td> Enhance contrast using histogram equalization
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/hough.html"><code>hough</code></a>
+</td>
+<td> Hough transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/houghlines.html"><code>houghlines</code></a>
+</td>
+<td> Extract line segments based on Hough transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/houghpeaks.html"><code>houghpeaks</code></a>
+</td>
+<td> Identify peaks in Hough transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/hsv2rgb.html"><code>hsv2rgb</code></a>
+</td>
+<td> Convert HSV colormap to RGB colormap
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/im2double.html"><code>im2double</code></a>
+</td>
+<td> Convert image to double precision
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2int16.html"><code>im2int16</code></a>
+</td>
+<td> Convert image to 16-bit signed integers
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2single.html"><code>im2single</code></a>
+</td>
+<td> Convert image to single precision
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2uint16.html"><code>im2uint16</code></a>
+</td>
+<td> Convert image to 16-bit unsigned integers
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2uint8.html"><code>im2uint8</code></a>
+</td>
+<td> Convert image to 8-bit unsigned integers
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imabsdiff.html"><code>imabsdiff</code></a>
+</td>
+<td> Absolute difference of two images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imadjust.html"><code>imadjust</code></a>
+</td>
+<td> Adjust image intensity values or colormap
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imbinarize.html"><code>imbinarize</code></a>
+</td>
+<td> Binarize image by thresholding
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imbothat.html"><code>imbothat</code></a>
+</td>
+<td> Bottom-hat filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imboxfilt.html"><code>imboxfilt</code></a>
+</td>
+<td> 2-D box filtering of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imclearborder.html"><code>imclearborder</code></a>
+</td>
+<td> Suppress light structures connected to image border
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imclose.html"><code>imclose</code></a>
+</td>
+<td> Morphologically close image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcomplement.html"><code>imcomplement</code></a>
+</td>
+<td> Complement image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcrop.html"><code>imcrop</code></a>
+</td>
+<td> Crop image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imdilate.html"><code>imdilate</code></a>
+</td>
+<td> Dilate image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imerode.html"><code>imerode</code></a>
+</td>
+<td> Erode image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imextendedmax.html"><code>imextendedmax</code></a>
+</td>
+<td> Extended-maxima transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imextendedmin.html"><code>imextendedmin</code></a>
+</td>
+<td> Extended-minima transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfill.html"><code>imfill</code></a>
+</td>
+<td> Fill image regions and holes
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfilter.html"><code>imfilter</code></a>
+</td>
+<td> N-D filtering of multidimensional images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfindcircles.html"><code>imfindcircles</code></a>
+</td>
+<td> Find circles using circular Hough transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgaborfilt.html"><code>imgaborfilt</code></a>
+</td>
+<td>  Apply Gabor filter or set of filters to 2-D image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgaussfilt.html"><code>imgaussfilt</code></a>
+</td>
+<td> 2-D Gaussian filtering of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgradient3.html"><code>imgradient3</code></a>
+</td>
+<td> Find 3-D gradient magnitude and direction of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgradientxyz.html"><code>imgradientxyz</code></a>
+</td>
+<td> Find the directional gradients of a 3-D image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imhist.html"><code>imhist</code></a>
+</td>
+<td> Histogram of image data
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imhmax.html"><code>imhmax</code></a>
+</td>
+<td> H-maxima transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imhmin.html"><code>imhmin</code></a>
+</td>
+<td> H-minima transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imlincomb.html"><code>imlincomb</code></a>
+</td>
+<td> Linear combination of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/immse.html"><code>immse</code></a>
+</td>
+<td>  Mean-squared error
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imopen.html"><code>imopen</code></a>
+</td>
+<td> Morphologically open image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imoverlay.html"><code>imoverlay</code></a>
+</td>
+<td> Burn binary mask into 2-D image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/impyramid.html"><code>impyramid</code></a>
+</td>
+<td> Image pyramid reduction and expansion
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imquantize.html"><code>imquantize</code></a>
+</td>
+<td> Quantize image using specified quantization levels and
+<p>output values
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/imread.html"><code>imread</code></a>
+</td>
+<td> Read image from graphics file
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imreconstruct.html"><code>imreconstruct</code></a>
+</td>
+<td> Morphological reconstruction
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregionalmax.html"><code>imregionalmax</code></a>
+</td>
+<td> Regional maxima
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregionalmin.html"><code>imregionalmin</code></a>
+</td>
+<td> Regional minima
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imresize.html"><code>imresize</code></a>
+</td>
+<td> Resize image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imrotate.html"><code>imrotate</code></a>
+</td>
+<td> Rotate image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imtophat.html"><code>imtophat</code></a>
+</td>
+<td> Top-hat filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imtranslate.html"><code>imtranslate</code></a>
+</td>
+<td> Translate image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imwarp.html"><code>imwarp</code></a>
+</td>
+<td> Apply geometric transformation to image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/integralBoxFilter.html"><code>integralBoxFilter</code></a>
+</td>
+<td> 2-D box filtering of integral images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/integralImage.html"><code>integralImage</code></a>
+</td>
+<td> Calculate integral image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/intlut.html"><code>intlut</code></a>
+</td>
+<td> Convert integer values using lookup table
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptcheckmap.html"><code>iptcheckmap</code></a>
+</td>
+<td> Check validity of colormap
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iptcheckconn.html"><code>iptcheckconn</code></a>
+</td>
+<td> Check validity of connectivity argument
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/lab2rgb.html"><code>lab2rgb</code></a>
+</td>
+<td> Convert CIE 1976 L*a*b* to RGB
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/label2rgb.html"><code>label2rgb</code></a>
+</td>
+<td> Convert label matrix into RGB image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/label2idx.html"><code>label2idx</code></a>
+</td>
+<td> Convert label matrix to cell array of linear indices
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/mean2.html"><code>mean2</code></a>
+</td>
+<td> Average or mean of matrix elements
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/medfilt2.html"><code>medfilt2</code></a>
+</td>
+<td> 2-D median filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/multithresh.html"><code>multithresh</code></a>
+</td>
+<td>  Multilevel image thresholds using Otsu's method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ordfilt2.html"><code>ordfilt2</code></a>
+</td>
+<td> 2-D order-statistic filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/otsuthresh.html"><code>otsuthresh</code></a>
+</td>
+<td> Global histogram threshold using Otsu's method
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/padarray.html"><code>padarray</code></a>
+</td>
+<td> Pad array
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/psnr.html"><code>psnr</code></a>
+</td>
+<td> Peak Signal-to-Noise Ratio (PSNR)
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/regionprops.html"><code>regionprops</code></a>
+</td>
+<td>  Measure properties of image regions
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/rgb2gray.html"><code>rgb2gray</code></a>
+</td>
+<td> Convert RGB image or colormap to grayscale
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/rgb2hsv.html"><code>rgb2hsv</code></a>
+</td>
+<td> Convert RGB colormap to HSV colormap
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rgb2lab.html"><code>rgb2lab</code></a>
+</td>
+<td> Convert RGB to CIE 1976 L*a*b*
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rgb2ycbcr.html"><code>rgb2ycbcr</code></a>
+</td>
+<td> Convert RGB color values to YCbCr color space
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/stretchlim.html"><code>stretchlim</code></a>
+</td>
+<td> Find limits to contrast stretch image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/superpixels.html"><code>superpixels</code></a>
+</td>
+<td> 2-D superpixel oversegmentation of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/superpixels3.html"><code>superpixels3</code></a>
+</td>
+<td> 3-D superpixel oversegmentation of 3-D image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/watershed.html"><code>watershed</code></a>
+</td>
+<td> Watershed transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ycbcr2rgb.html"><code>ycbcr2rgb</code></a>
+</td>
+<td> Convert YCbCr color values to RGB color space
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imref2d.html"><code>imref2d</code></a>
+</td>
+<td> Reference 2-D image to world coordinates
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imref3d.html"><code>imref3d</code></a>
+</td>
+<td> Reference 3-D image to world coordinates
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/affine2d.html"><code>affine2d</code></a>
+</td>
+<td> 2-D Affine Geometric Transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/projective2d.html"><code>projective2d</code></a>
+</td>
+<td> 2-D Projective Geometric Transformation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/strel.html"><code>strel</code></a>
+</td>
+<td> Morphological structuring element
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/offsetstrel.html"><code>offsetstrel</code></a>
+</td>
+<td> Morphological offset structuring element
+</td></tr></table>
+<h2><span class="mw-headline" id="GPU_Computing">GPU Computing</span></h2>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwdist.html"><code>bwdist</code></a>
+</td>
+<td> Distance transform of binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwlabel.html"><code>bwlabel</code></a>
+</td>
+<td> Label connected components in 2-D binary image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwlookup.html"><code>bwlookup</code></a>
+</td>
+<td>  Nonlinear filtering using lookup tables
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/bwmorph.html"><code>bwmorph</code></a>
+</td>
+<td> Morphological operations on binary images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/corr2.html"><code>corr2</code></a>
+</td>
+<td> 2-D correlation coefficient
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/edge.html"><code>edge</code></a>
+</td>
+<td> Find edges in intensity image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/histeq.html"><code>histeq</code></a>
+</td>
+<td> Enhance contrast using histogram equalization
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/im2double.html"><code>im2double</code></a>
+</td>
+<td> Convert image to double precision
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2single.html"><code>im2single</code></a>
+</td>
+<td> Convert image to single precision
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2uint8.html"><code>im2uint8</code></a>
+</td>
+<td> Convert image to 8-bit unsigned integers
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/im2uint16.html"><code>im2uint16</code></a>
+</td>
+<td> Convert image to 16-bit unsigned integers
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imabsdiff.html"><code>imabsdiff</code></a>
+</td>
+<td> Absolute difference of two images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imadjust.html"><code>imadjust</code></a>
+</td>
+<td> Adjust image intensity values or colormap
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imbothat.html"><code>imbothat</code></a>
+</td>
+<td> Bottom-hat filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imclose.html"><code>imclose</code></a>
+</td>
+<td> Morphologically close image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imcomplement.html"><code>imcomplement</code></a>
+</td>
+<td> Complement image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imdilate.html"><code>imdilate</code></a>
+</td>
+<td> Dilate image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imerode.html"><code>imerode</code></a>
+</td>
+<td> Erode image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfill.html"><code>imfill</code></a>
+</td>
+<td> Fill image regions and holes
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imfilter.html"><code>imfilter</code></a>
+</td>
+<td> N-D filtering of multidimensional images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgradient.html"><code>imgradient</code></a>
+</td>
+<td>  Gradient magnitude and direction of an image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imgradientxy.html"><code>imgradientxy</code></a>
+</td>
+<td>   Directional gradients of an image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imhist.html"><code>imhist</code></a>
+</td>
+<td> Histogram of image data
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imlincomb.html"><code>imlincomb</code></a>
+</td>
+<td> Linear combination of images
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imnoise.html"><code>imnoise</code></a>
+</td>
+<td> Add noise to image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/ycbcr2rgb.html"><code>ycbcr2rgb</code></a>
+</td>
+<td> Convert YCbCr color values to RGB color space
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imopen.html"><code>imopen</code></a>
+</td>
+<td> Morphologically open image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imreconstruct.html"><code>imreconstruct</code></a>
+</td>
+<td> Morphological reconstruction
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imregdemons.html"><code>imregdemons</code></a>
+</td>
+<td> Estimate displacement field that aligns two 2-D or 3-D
+<p>images
+</p>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imresize.html"><code>imresize</code></a>
+</td>
+<td> Resize image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imrotate.html"><code>imrotate</code></a>
+</td>
+<td> Rotate image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imshow.html"><code>imshow</code></a>
+</td>
+<td> Display image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/imtophat.html"><code>imtophat</code></a>
+</td>
+<td> Top-hat filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/iradon.html"><code>iradon</code></a>
+</td>
+<td> Inverse Radon transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/mat2gray.html"><code>mat2gray</code></a>
+</td>
+<td> Convert matrix to grayscale image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/mean2.html"><code>mean2</code></a>
+</td>
+<td> Average or mean of matrix elements
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/medfilt2.html"><code>medfilt2</code></a>
+</td>
+<td> 2-D median filtering
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/normxcorr2.html"><code>normxcorr2</code></a>
+</td>
+<td> Normalized 2-D cross-correlation
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/padarray.html"><code>padarray</code></a>
+</td>
+<td> Pad array
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/radon.html"><code>radon</code></a>
+</td>
+<td> Radon transform
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/regionprops.html"><code>regionprops</code></a>
+</td>
+<td>  Measure properties of image regions
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/matlab/ref/rgb2gray.html"><code>rgb2gray</code></a>
+</td>
+<td> Convert RGB image or colormap to grayscale
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/rgb2ycbcr.html"><code>rgb2ycbcr</code></a>
+</td>
+<td> Convert RGB color values to YCbCr color space
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/std2.html"><code>std2</code></a>
+</td>
+<td> Standard deviation of matrix elements
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/stdfilt.html"><code>stdfilt</code></a>
+</td>
+<td> Local standard deviation of image
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.mathworks.com/help/images/ref/stretchlim.html"><code>stretchlim</code></a>
+</td>
+<td> Find limits to contrast stretch image
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064901
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.272 seconds
+Real time usage: 0.272 seconds
+Preprocessor visited node count: 6987/1000000
+Preprocessor generated node count: 17381/1000000
+Post‐expand include size: 62337/2097152 bytes
+Template argument size: 15679/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  169.792      1 - -total
+ 59.62%  101.223    531 - Template:Matlab
+  2.11%    3.591      1 - Template:Notice
+  1.59%    2.700      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Comparison_of_Matlab_functions_and_Ops&amp;oldid=23424">http://imagej.net/index.php?title=Comparison_of_Matlab_functions_and_Ops&amp;oldid=23424</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 29 September 2016, at 09:00.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Comparison_of_Matlab_functions_and_Ops&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Comparison+of+Matlab+functions+and+Ops" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Comparison+of+Matlab+functions+and+Ops" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Comparison_of_Matlab_functions_and_Ops" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Comparison_of_Matlab_functions_and_Ops" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Comparison_of_Matlab_functions_and_Ops&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Comparison_of_Matlab_functions_and_Ops&amp;oldid=23424" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Comparison_of_Matlab_functions_and_Ops&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":433});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>TreeJ - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"TreeJ","wgTitle":"TreeJ","wgCurRevisionId":21280,"wgRevisionId":21280,"wgArticleId":3656,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Analysis"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"TreeJ","wgRelevantArticleId":3656,"wgRequestId":"d1abf234b1977e6e5c5f6214","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This plugin contains an interface to reconstruct interactively and recursively a cell lineage from a static labeled image.&#10;It allows to&amp;#160;:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="TreeJ"/>
+
+	<meta property="og:description" content="This plugin contains an interface to reconstruct interactively and recursively a cell lineage from a static labeled image.&#10;It allows to&amp;#160;:"/>
+
+	<meta property="og:url" content="http://imagej.net/TreeJ"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-TreeJ rootpage-TreeJ skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="TreeJ.html#bodyContent">Skip to content</a>, 			<a href="TreeJ.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="TreeJ.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/TreeJ" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:TreeJ&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=TreeJ&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=TreeJ&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>TreeJ</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>TreeJ (ImageJ and Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/L-EL">Elise Laruelle</a>, Philippe Andrey, Jean-Christophe Palauqui, Alain Trubuil
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/L-EL">Elise Laruelle</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/L-EL/TreeJ/raw/master/TreeJ_-1.0.0-SNAPSHOT.jar">TreeJ_-1.0.0-SNAPSHOT.jar</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/L-EL/TreeJ/">on GitHub</a>
+</td></tr>
+
+
+
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a>, <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a>
+</td></tr>
+
+</table>
+<p><br />
+</p><p>This plugin contains an interface to reconstruct interactively and recursively a cell lineage from a static labeled image.
+It allows to&#160;:
+</p>
+<ul><li> merge two sister cells on the image </li>
+<li> construct a lineage tree displayed on the interface</li>
+<li> annotate the constructed tree</li>
+<li> extract some set of images related to TreeJ functions</li>
+<li> save as a tree file compatible with other tree viewer and/or TreeJ</li></ul>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:TreeJExample.png" class="image"><img alt="TreeJExample.png" src="../_images/a/aa/TreeJExample.png" width="900" height="874" /></a></div></div>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="TreeJ.html#Usage"><span class="tocnumber">1</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="TreeJ.html#Input"><span class="tocnumber">1.1</span> <span class="toctext">Input</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="TreeJ.html#Tree_construction"><span class="tocnumber">1.2</span> <span class="toctext">Tree construction</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="TreeJ.html#Tree_annotation"><span class="tocnumber">1.3</span> <span class="toctext">Tree annotation</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="TreeJ.html#Image_output"><span class="tocnumber">1.4</span> <span class="toctext">Image output</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="TreeJ.html#Tree"><span class="tocnumber">1.5</span> <span class="toctext">Tree</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="TreeJ.html#Example"><span class="tocnumber">1.6</span> <span class="toctext">Example</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="TreeJ.html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+</ul>
+</div>
+</div>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<h4><span class="mw-headline" id="Input">Input</span></h4>
+<p>TreeJ should be launched on a 2D or 3D labeled image (8 bits, 16 bits or 32 bits). The labeling can be discontinuous and watershed lines, if present, are not a problem. The region labels with zero are considered as the background.
+</p>
+<hr />
+<h4><span class="mw-headline" id="Tree_construction">Tree construction</span></h4>
+<p>To link two sister cells (in <i>Pair cells</i> panel):
+</p>
+<ul><li> click on them on the image, it actualizes the corresponding fields (Label1 and Label2)</li>
+<li> or write label numbers in fields <b>Label1</b> and <b>Label2</b></li></ul>
+<p><b>Apply</b> to validate the pairing
+</p><p><b>Reset</b> to put fields in their initial state.
+</p><p><br />
+To make a modification (in <i>Unpair or tag</i> panel): 
+</p>
+<ul><li> select the erroneous mother cell with click+Ctrl (or Click+pom on MACOS) and </li>
+<li> or  write the label number in the Label field</li></ul>
+<p>Validate with the <b>Unpair</b> button.
+</p>
+<hr />
+<h4><span class="mw-headline" id="Tree_annotation">Tree annotation</span></h4>
+<ul><li> if Tag field is filled during linking action, the created mother cell will have the tag</li>
+<li> select the cell (Ctrl+click| pom+click) or enter its label number in the label field of the <i>unpair and tag</i> panel and enter the tag in the field "Tag"</li></ul>
+<p><b>Apply</b> to validate the tagging.
+</p>
+<hr />
+<h4><span class="mw-headline" id="Image_output">Image output</span></h4>
+<ul><li> TreeJ doesn't modify the input image. To extract the modified shown image&#160;: use <b>Current view</b></li>
+<li> an image of cells from a <b>Substree</b> </li>
+<li> an image of all cells coming from a mother tagged with the wanted tag</li></ul>
+<hr />
+<h4><span class="mw-headline" id="Tree">Tree</span></h4>
+<p>To saved tree information, two possible formats&#160;:
+</p>
+<ul><li> <b>.treeV</b> home made format, compatible as input of TreeJ. Contains tree and tag information</li>
+<li> <b>.nwk</b> [<a rel="nofollow" class="external text" href="http://evolution.genetics.washington.edu/phylip/newicktree.html">newick tree</a>], compatible as input of TreeJ, but contains only the tree information</li></ul>
+<p>The drawing tree can be exported to a PDF file (named with the input image name) with the <b>Export to PDF</b> button.
+</p>
+<hr />
+<h4><span class="mw-headline" id="Example">Example</span></h4>
+<p>From a segmented image of an Arabidospsi thaliana embryo of 122 cells (FigA), a cell lineage have been backtracked until the 16 cell stage configuration. 
+</p>
+<ul><li> <b>Current view</b> extraction gives the figB, as TreeJ merges sister cells. We see the eight external domains, and there are eight internal domains like shown on the figD (obtain with the external layer and suspensor removing).</li>
+<li> For each domain we can reconstruct the lineage and obtain a tree with TreeJ (see Fig right&#160;: a tree of an external apical domain).  </li>
+<li> We tagged internal domains of the embryo and extracted the corresponding image them with <b>From Tag</b> (figC). </li></ul>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 913px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>Download <a rel="nofollow" class="external text" href="https://github.com/L-EL/TreeJ/raw/master/TreeJ_-1.0.0-SNAPSHOT.jar">.jar</a> and put into "plugin" directory of ImageJ or Fiji directory. Reload ImageJ/Fiji and TreeJ will be accessible in the <span><em><span style="border-bottom:1px dotted #ccc;"> Plugin </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> TreeJ</span></em></span> menu.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713074038
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.048 seconds
+Real time usage: 0.049 seconds
+Preprocessor visited node count: 190/1000000
+Preprocessor generated node count: 1503/1000000
+Post‐expand include size: 1555/2097152 bytes
+Template argument size: 759/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   11.951      1 - -total
+ 54.29%    6.488      1 - Template:Infobox
+ 33.47%    4.000      1 - Template:Bc
+ 17.84%    2.132      1 - Template:GitHub
+ 10.07%    1.204      1 - Template:Arrow
+  9.88%    1.180      1 - Template:TOC
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=TreeJ&amp;oldid=21280">http://imagej.net/index.php?title=TreeJ&amp;oldid=21280</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 26 July 2016, at 04:50.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=TreeJ&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=TreeJ" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=TreeJ" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/TreeJ" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/TreeJ" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=TreeJ&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=TreeJ&amp;oldid=21280" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=TreeJ&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":324});});</script>
+		</body>
+		</html>
+		

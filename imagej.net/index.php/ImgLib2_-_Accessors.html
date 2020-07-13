@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>ImgLib2 - Accessors - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"ImgLib2_-_Accessors","wgTitle":"ImgLib2 - Accessors","wgCurRevisionId":36600,"wgRevisionId":36600,"wgArticleId":1537,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"ImgLib2_-_Accessors","wgRelevantArticleId":1537,"wgRequestId":"bcbc7c467b0f485bc71550cb","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="In ImgLib2, images are manipulated using Accessors.&#10;For pixel images, you can think of an accessor as a movable reference to a pixel."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="ImgLib2 - Accessors"/>
+
+	<meta property="og:description" content="In ImgLib2, images are manipulated using Accessors.&#10;For pixel images, you can think of an accessor as a movable reference to a pixel."/>
+
+	<meta property="og:url" content="http://imagej.net/ImgLib2_-_Accessors"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-ImgLib2_-_Accessors rootpage-ImgLib2_-_Accessors skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="ImgLib2_-_Accessors.html#bodyContent">Skip to content</a>, 			<a href="ImgLib2_-_Accessors.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="ImgLib2_-_Accessors.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/ImgLib2_-_Accessors" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:ImgLib2_-_Accessors&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=ImgLib2_-_Accessors&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=ImgLib2_-_Accessors&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>ImgLib2 - Accessors</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  ImgLib2
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2" title="ImgLib2">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_Benchmarks" title="ImgLib2 Benchmarks">Benchmarks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_FAQ" title="ImgLib2 FAQ">FAQ</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tutorials
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Getting_Started" title="ImgLib2 - Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Accessors</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Accessibles" title="ImgLib2 - Accessibles">Accessibles</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_Examples" title="ImgLib2 Examples">ImgLib2 Examples</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Introductory_Workshop" title="ImgLib2 - Introductory Workshop">Introductory Workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Advanced_Programming_Workshop" title="ImgLib2 - Advanced Programming Workshop">Advanced Programming Workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Into_ImgLib_-_Generic_Image_Processing_in_Java" title="Into ImgLib - Generic Image Processing in Java">Into ImgLib - Generic Image Processing in Java</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Creating_Imglib2_images_in_MATLAB" title="Creating Imglib2 images in MATLAB">Creating Imglib2 images in MATLAB</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Development
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImgLib2" title="Developing ImgLib2">Developing ImgLib2</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_Discussion" title="ImgLib2 Discussion">ImgLib2 Discussion</a>
+</td></tr></table>
+</td></tr></table>
+<div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/ImgLib2" title="ImgLib2"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the ImgLib2 multidimensional image processing library. Click the logo for details." src="../_images/0/0a/Imglib2-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="ImgLib2_-_Accessors.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="ImgLib2_-_Accessors.html#RandomAccess"><span class="tocnumber">2</span> <span class="toctext">RandomAccess</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="ImgLib2_-_Accessors.html#Notes"><span class="tocnumber">2.1</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="ImgLib2_-_Accessors.html#A_Taste_of_Generic_Algorithms"><span class="tocnumber">3</span> <span class="toctext">A Taste of Generic Algorithms</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="ImgLib2_-_Accessors.html#Notes_2"><span class="tocnumber">3.1</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="ImgLib2_-_Accessors.html#Cursor"><span class="tocnumber">4</span> <span class="toctext">Cursor</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="ImgLib2_-_Accessors.html#Generic_version"><span class="tocnumber">4.1</span> <span class="toctext">Generic version</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="ImgLib2_-_Accessors.html#Notes_3"><span class="tocnumber">4.2</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="ImgLib2_-_Accessors.html#Accessors_for_Continuous_Coordinates"><span class="tocnumber">5</span> <span class="toctext">Accessors for Continuous Coordinates</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="ImgLib2_-_Accessors.html#A_RealRandomAccess_to_Render_Mandelbrot_Fractals"><span class="tocnumber">5.1</span> <span class="toctext">A RealRandomAccess to Render Mandelbrot Fractals</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="ImgLib2_-_Accessors.html#Notes_4"><span class="tocnumber">5.2</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>In ImgLib2, images are manipulated using <i>Accessors</i>.
+For pixel images, you can think of an accessor as a movable reference to a pixel.
+</p>
+<ul><li> You can move it around the image (for example make it reference a pixel at specific coordinates).</li>
+<li> You can de-reference it to get the pixel value.</li>
+<li> And of course, you can ask its current position.</li></ul>
+<p>The accessors provided by ImgLib2 typically implement <b>Cursor</b> or <b>RandomAccess</b>.
+<b>Cursor</b> and <b>RandomAccess</b> are aggregations of interfaces covering the above three points.
+A simplified UML diagram for the interface hierarchy is shown below.
+(The simplification is with respect to real-coordinate interfaces for continuous images that are left out for now.)
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:Imglib2-accessors-simplified-integer.png" class="image" title="Simplified UML for ImgLib2 accessor interfaces"><img alt="Simplified UML for ImgLib2 accessor interfaces" src="../_images/4/43/Imglib2-accessors-simplified-integer.png" width="775" height="374" /></a></div></div>
+<p><br />
+ImgLib2 supports two basic access patterns:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RandomAccess.html">RandomAccess</a> provides n-dimensional random access through the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Positionable.html">Positionable</a> interface. It can be positioned at arbitrary integer coordinates.</li>
+<li> <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Cursor.html">Cursor</a> provides iteration through the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Iterator.html">Iterator</a> interface. It can be moved forward to visit all pixels of the image once.</li></ul>
+<p>Both, <b>RandomAccess</b> and <b>Cursor</b> implement the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Sampler.html">Sampler</a> interface which allows to access pixel values.
+Both implement the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Localizable.html">Localizable</a> interface which allows to retrieve the accessors current pixel coordinates.
+Both inherit (through <b>Localizable</b>) the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/EuclideanSpace.html">EuclideanSpace</a> interval which allows to get the number of dimensions of the image.
+</p><p>Note, that <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Sampler.html">Sampler</a>, <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RandomAccess.html">RandomAccess</a>, and <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Cursor.html">Cursor</a>
+have a type paramer <b>&lt;T&gt;</b> that refers to the value type of the underlying image.
+</p>
+<h2><span class="mw-headline" id="RandomAccess">RandomAccess</span></h2>
+<p><a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RandomAccess.html">RandomAccess</a> provides n-dimensional random access
+through the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Positionable.html">Positionable</a> interface.
+It can be used to access pixels at arbitrary integer coordinates.
+The following code uses a <b>RandomAccess</b> to draw some white pixels into an image.
+</p>
+<pre class="brush:java">
+import java.util.Random;
+
+import net.imglib2.RandomAccess;
+import net.imglib2.img.Img;
+import net.imglib2.img.array.ArrayImgFactory;
+import net.imglib2.img.display.imagej.ImageJFunctions;
+import net.imglib2.type.numeric.integer.UnsignedByteType;
+
+public class DrawWhitePixels
+{
+	public static void main( final String[] args )
+	{
+		final int[] dimensions = new int[] { 400, 320 };
+		final Img&lt; UnsignedByteType &gt; img = new ArrayImgFactory&lt; UnsignedByteType &gt;()
+			.create( dimensions, new UnsignedByteType() );
+
+		final RandomAccess&lt; UnsignedByteType &gt; r = img.randomAccess();
+		final Random random = new Random();
+		for ( int i = 0; i &lt; 1000; ++i )
+		{
+			final int x = ( int ) ( random.nextFloat() * img.max( 0 ) );
+			final int y = ( int ) ( random.nextFloat() * img.max( 1 ) );
+			r.setPosition( x, 0 );
+			r.setPosition( y, 1 );
+			final UnsignedByteType t = r.get();
+			t.set( 255 );
+		}
+
+		ImageJFunctions.show( img );
+	}
+}
+</pre>
+<p>In lines <i>013-015</i> we create a 8-bit gray-level image,
+in line <i>029</i> we show the result (like in the <a href="http://imagej.net/ImgLib2_-_Getting_Started#Opening_And_Displaying_Image_Files" title="ImgLib2 - Getting Started"> previous example</a>).
+</p><p>In line <i>017</i> we create a <b>RandomAccess</b> to the image.
+<b>Img</b> implements the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RandomAccessible.html">RandomAccessible</a> interface, thus we can use <b>randomAccess()</b>
+to obtain one.
+The <b>RandomAccess</b> has the same generic type, <b>UnsignedByteType</b>, as the image.
+</p>
+<pre class="brush:java">
+final RandomAccess&lt; UnsignedByteType &gt; r = img.randomAccess();
+</pre>
+<p>In the <b>for</b> loop (lines <i>019-027</i>) we set 1000 random pixels to the value 255 (white).
+First we obtain the <i>x</i>, <i>y</i> coordinates of a random pixel within the image boundaries.
+</p>
+<pre class="brush:java">
+final int x = ( int ) ( random.nextFloat() * img.max( 0 ) );
+final int y = ( int ) ( random.nextFloat() * img.max( 1 ) );
+</pre>
+<p>Then we position the <b>RandomAccess</b> at those coordinates.
+</p>
+<pre class="brush:java">
+r.setPosition( x, 0 );
+r.setPosition( y, 1 );
+</pre>
+<p>The <b>setPosition()</b> method (from the <b>Positionable</b> interface) takes two parameters: the coordinate and the dimension.
+So we set the coordinate in dimension 0 to the value <i>x</i>, and we set the coordinate in dimension 1 to the value <i>y</i>.
+</p><p>After the <b>RandomAccess</b> has been positioned correctly, we can <b>get()</b> the pixel at that coordinate.
+</p>
+<pre class="brush:java">
+final UnsignedByteType t = r.get();
+</pre>
+<p>We get an instance of the pixel value type <b>UnsignedByteType</b> that acts as a reference to the pixel.
+We set the pixel value via this reference
+</p>
+<pre class="brush:java">
+t.set( 255 );
+</pre>
+<h3><span class="mw-headline" id="Notes">Notes</span></h3>
+<ul><li> <b>get()</b> is defined in the <b>Sampler</b> interface, so you can obtain pixel references from a <b>Cursor</b> in exactly the same way.</li>
+<li> Often, the <b>T</b> obtained from <b>Sampler&lt;T&gt;.get()</b> is a proxy object that is re-used internally. You should assume that moving the accessor invalidates the proxy. If you want to keep a permanent reference to a pixel, use the <b>Sampler&lt;T&gt;.copy()</b> method. In the above example, this would return a copy of the RandomAccess refering to the same pixel.</li>
+<li> The <b>Positionable</b>, <b>Localizable</b>, &#8230; interfaces are not restricted to accessors. In fact, many ImgLib2 entities are <b>Localizable</b>.  For instance, the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib/Point.html">Point</a> class implements <b>Positionable</b> and <b>Localizable</b>, and simply represents a n-dimensional coordinate.   In your own code, whenever you have something that can provide coordinates, you should consider implementing <b>Localizable</b>.</li></ul>
+<h2><span class="mw-headline" id="A_Taste_of_Generic_Algorithms">A Taste of Generic Algorithms</span></h2>
+<p>Before we move on to the "other" accessor, <i>Cursor</i>, let's consider a generalization of the previous example.
+Let's say we like setting random pixels, and because we plan to do this a lot in the future, we extract this functionality into a method.
+</p><p>Easy enough. But what if we want to apply the method to images of another value type, e.g. <b>DoubleType</b> or <b>ARGBType</b>?
+What if we want to apply it to a 3D image?
+ImgLib2 allows you to write code that handles of this transparently.
+In the following we write a function, that sets 1000 random pixels to "white", no matter what.
+</p><p>Let's take it step by step, starting from the original non-generic version.
+First, we extract a set-1000-pixels method for 2D <b>Img&lt;UnsignedByteType&gt;</b>.
+</p>
+<pre class="brush:java">
+public static void draw( final Img&lt; UnsignedByteType &gt; img )
+{
+	final RandomAccess&lt; UnsignedByteType &gt; r = img.randomAccess();
+	final Random random = new Random();
+	for ( int i = 0; i &lt; 1000; ++i )
+	{
+		final int x = ( int ) ( random.nextFloat() * img.max( 0 ) );
+		final int y = ( int ) ( random.nextFloat() * img.max( 1 ) );
+		r.setPosition( x, 0 );
+		r.setPosition( y, 1 );
+		final UnsignedByteType t = r.get();
+		t.set( 255 );
+	}
+}
+</pre>
+<p>We can add a generic parameter to the method handle arbitrary value types <b>T</b>.
+We want something like
+</p>
+<pre class="brush:java">
+public static &lt; T &gt; void draw( final Img&lt; T &gt; img )
+{ ... }
+</pre>
+<p>However, for a generic <b>T</b>, we no longer know what "white" is. 255 will certainly not do.
+So we need to pass the "white" value into the method.
+</p>
+<pre class="brush:java">
+public static &lt; T &gt; void draw( final Img&lt; T &gt; img, final T white )
+{ ... }
+</pre>
+<p>Furthermore, we need a way to set a pixel to this value.
+Note, that the <b>Sampler.get()</b> method provides a <i>reference</i> to the pixel.
+Changing that reference won't do any good, and there is no <b>Sampler.set()</b> method!
+We need to ensure that we can use the reference to change the pixel value.
+</p><p>At the root of the ImgLib2 type hierarchy lies <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Type.html">Type</a>.
+A type <b>T</b> extending <b>Type&lt;T&gt;</b> must have a <b>set( T )</b> method, which is exactly what we need.
+So we make our method only accept those <b>T'</b>s.
+</p>
+<pre class="brush:java">
+public static &lt; T extends Type&lt; T &gt; &gt; void draw( final Img&lt; T &gt; img, final T white )
+{ ... }
+</pre>
+<p>Replacing the <b>UnsignedByteType</b> with the generic <b>T</b>, and using <b>white</b> instead of 255,
+we obtain a more general version of <b>draw()</b>.
+</p>
+<pre class="brush:java">
+public class DrawWhitePixelsGeneric
+{
+	public static &lt; T extends Type&lt; T &gt; &gt; void draw( final Img&lt; T &gt; img, final T white )
+	{
+		final RandomAccess&lt; T &gt; r = img.randomAccess();
+		final Random random = new Random();
+		for ( int i = 0; i &lt; 1000; ++i )
+		{
+			final int x = ( int ) ( random.nextFloat() * img.max( 0 ) );
+			final int y = ( int ) ( random.nextFloat() * img.max( 1 ) );
+			r.setPosition( x, 0 );
+			r.setPosition( y, 1 );
+			final T t = r.get();
+			t.set( white );
+		}
+	}
+
+	public static void main( final String[] args )
+	{
+		final int[] dimensions = new int[] { 400, 320 };
+		final Img&lt; UnsignedByteType &gt; img = new ArrayImgFactory&lt; UnsignedByteType &gt;()
+			.create( dimensions, new UnsignedByteType() );
+		draw( img, new UnsignedByteType( 255 ) );
+		ImageJFunctions.show( img );
+	}
+}
+</pre>
+<p>Note, that we have to pass <b>new UnsignedByteType( 255 )</b> when calling <b>draw()</b>.
+</p><p>Next, lets think about dimensionality independence.
+Instead of <b>setPosition()</b> for just dimensions 0 and 1, we can do so for as many dimensions as the image happens to have.
+We get the number of dimensions using
+</p>
+<pre class="brush:java">
+final int n = img.numDimensions();
+</pre>
+<p>(<b>Img</b> also extends <b>EuclideanSpace</b>).
+</p><p>We loop over all dimensions when setting the position of the <b>RandomAccess</b>:
+</p>
+<pre class="brush:java">
+for ( int d = 0; d &lt; n; ++d )
+{
+	final int x = ( int ) ( random.nextFloat() * img.max( d ) );
+	r.setPosition( x, d );
+}
+</pre>
+<p>Setting the position dimension-by-dimension may be inefficient, because the <b>RandomAccess</b> might need to modify internal state
+with each <b>setPosition()</b> call.
+Instead, we may pass a <b>int[]</b> or <b>long[]</b> array comprising the coordinates to set the position at once.
+</p><p>Now the method looks like this:
+</p>
+<pre class="brush:java">
+public static &lt; T extends Type&lt; T &gt; &gt; void draw( final Img&lt; T &gt; img, final T white )
+{
+	final int n = img.numDimensions();
+	final long[] pos = new long[ n ];
+
+	final RandomAccess&lt; T &gt; r = img.randomAccess();
+	final Random random = new Random();
+	for ( int i = 0; i &lt; 1000; ++i )
+	{
+		for ( int d = 0; d &lt; n; ++d )
+			pos[ d ] = ( int ) ( random.nextFloat() * img.max( d ) );
+		r.setPosition( pos );
+		final T t = r.get();
+		t.set( white );
+	}
+}
+</pre>
+<p>Finally, there is no need to restrict ourselves to <b>Img</b>.
+After all, we do not need many of the features of <b>Img</b>.
+We need be able to get a <b>RandomAccess</b>, so we need <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RandomAccessible.html">RandomAccessible&lt;T&gt;</a>.
+We need to be able to get the number of dimensions and the extent in every dimension, so we need <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Interval.html">Interval</a>.
+These two are conveniently gathered in <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RandomAccessibleInterval.html">RandomAccessibleInterval&lt;T&gt;</a>.
+So lets make that
+</p>
+<pre class="brush:java">
+public static &lt; T extends Type&lt; T &gt; &gt;
+	void draw( final RandomAccessibleInterval&lt; T &gt; img, final T white )
+{ ... }
+</pre>
+<p>Now we are able to apply <b>draw()</b> to many ImgLib2 constructs that are not pixel <b>Img</b>s.
+For instance there are Views that employ on-the-fly coordinate transforms, sampled and interpolated data, etc.
+</p><p>However, with great power comes great responsibility&#8230;
+Taking a general <b>Interval</b> means that we no longer can assume that the interval starts at coordinates <i>(0,0,&#8230;,0)</i>.
+Thus we need to make a final modification to correctly draw between <i>min</i> and <i>max</i> of the interval.
+</p>
+<pre class="brush:java">
+import java.util.Random;
+
+import net.imglib2.RandomAccess;
+import net.imglib2.RandomAccessibleInterval;
+import net.imglib2.img.Img;
+import net.imglib2.img.array.ArrayImgFactory;
+import net.imglib2.img.display.imagej.ImageJFunctions;
+import net.imglib2.type.Type;
+import net.imglib2.type.numeric.ARGBType;
+import net.imglib2.type.numeric.integer.IntType;
+import net.imglib2.type.numeric.integer.UnsignedByteType;
+
+public class DrawWhitePixelsGeneric
+{
+	public static &lt; T extends Type&lt; T &gt; &gt;
+		void draw( final RandomAccessibleInterval&lt; T &gt; img, final T white )
+	{
+		final int n = img.numDimensions();
+		final long[] min = new long[ n ];
+		img.min( min );
+		final long[] scale = new long[ n ];
+		for ( int d = 0; d &lt; n; ++d )
+			scale[ d ] = img.max( d ) - min[ d ];
+		final long[] pos = new long[ n ];
+
+		final RandomAccess&lt; T &gt; r = img.randomAccess();
+		final Random random = new Random();
+		for ( int i = 0; i &lt; 1000; ++i )
+		{
+			for ( int d = 0; d &lt; n; ++d )
+				pos[ d ] = min[ d ] + ( long ) ( random.nextFloat() * scale[ d ] );
+			r.setPosition( pos );
+			r.get().set( white );
+		}
+	}
+
+	public static void main( final String[] args )
+	{
+		final Img&lt; ARGBType &gt; img = new ArrayImgFactory&lt; ARGBType &gt;()
+			.create( new int[] {400, 320, 100}, new ARGBType() );
+		draw( img, new ARGBType( 0xffffffff ) );
+		ImageJFunctions.show( img );
+	}
+}
+</pre>
+<p>And we used it on a 3D <b>ARGBType</b> image (which means a color image with red/green/blue/alpha values). Ta daaaaaa&#8230;
+</p>
+<h3><span class="mw-headline" id="Notes_2">Notes</span></h3>
+<ul><li> Besides <b>setPosition()</b> in a single or all dimensions, you can also relatively move a <b>RandomAccess</b> in one or all dimensions, or move the <b>RandomAccess</b> pixel-wise in one dimension   (Have a look at the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Positionable.html">Positionable</a> API doc!)  Which of those is most efficient depends on the situation.</li>
+<li> There is a <b>setPosition()</b> version which takes a <b>Localizable</b>. Often a situation occurs where you want to position accessor <i>a</i> to the same location as accessor <i>b</i>. In this situation you can avoid localizing <i>b</i> into an array and using that array to set the position of <i>a</i>. You can simply <b>a.setPosition( b )</b> because <i>b</i> is <b>Localizable</b>.</li>
+<li> By <i>image</i>, we do not necessarily mean <i>pixel image</i>.</li>
+<li> we use the generic parameter <b>&lt; T extends Type&lt; T &gt; &gt;</b> instead of <b>&lt; Type &gt;</b> throughout ImgLib2 since that allows us to be more type-safe. Imagine implementing an <b>add(a, b)</b> method for a certain type: using the simpler generic parameter would not allow us to enforce both parameters to have the same subclass of <b>Type</b>!</li>
+<li> we create as many variables as possible outside of the loop (in particular, objects) since creating objects costs a bit of execution time and can easily dominate the performance of the algorithm if one is not careful about it.</li></ul>
+<h2><span class="mw-headline" id="Cursor">Cursor</span></h2>
+<p>A <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Cursor.html">Cursor</a> can be used to visit all pixels of an image once.
+However, the <b>Cursor</b> concept is not limited to pixel images.  A <b>Cursor</b> can be used to iterate every collection of <b>Localizable</b> samples.
+</p><p><b>Cursor</b> provides iteration through the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Iterator.html">net.imglib2.Iterator</a> interface.
+<b>Iterator.fwd()</b> advances the cursor.
+<b>Iterator.hasNext()</b> returns true if the cursor can be advanced further.
+Initially, a <b>Cursor</b> points before the first element. You have to call <b>fwd()</b> once to move to the first element.
+</p><p>Note, that the ImgLib2 <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Iterator.html">net.imglib2.Iterator</a> interface is different from
+Java's <a rel="nofollow" class="external text" href="http://docs.oracle.com/javase/6/docs/api/index.html?java/util/Iterator.html">java.util.Iterator</a>.
+However, for convenience, <b>Cursor</b> implements <b>java.util.Iterator</b> as well.
+</p><p>Just like RandomAccess, <b>Cursor</b> extends <b>Sampler</b>, so you can <b>get()</b> the value of the current pixel (respectively sample).
+It also implements <b>Localizable</b>, so you can query the coordinates of the current sample.
+</p><p>Let's look at an example:
+We load an image and find the maximum value (the intensity of the brightest pixel).
+</p>
+<pre class="brush:java">
+import net.imglib2.Cursor;
+import net.imglib2.img.Img;
+import net.imglib2.img.array.ArrayImgFactory;
+import net.imglib2.io.ImgIOException;
+import net.imglib2.io.ImgOpener;
+import net.imglib2.type.numeric.integer.UnsignedByteType;
+
+public class FindMaximumValue
+{
+	public static void main( final String[] args ) throws ImgIOException
+	{
+		final Img&lt; UnsignedByteType &gt; img = new ImgOpener().openImg( "graffiti.tif",
+			new ArrayImgFactory&lt; UnsignedByteType &gt;(), new UnsignedByteType() );
+		final Cursor&lt; UnsignedByteType &gt; cursor = img.cursor();
+		int max = 0;
+		while ( cursor.hasNext() )
+		{
+			cursor.fwd();
+			final UnsignedByteType t = cursor.get();
+			max = Math.max( t.get(), max );
+		}
+		System.out.println( "max = " + max );
+	}
+}
+</pre>
+<p>In line <i>014</i> we get a <b>Cursor</b> from the image.
+In lines <i>016-021</i> we iterate the image using <b>hasNext()</b> and <b>fwd()</b>.
+In line <i>019</i> we <i>get()</i> the value at the current position.
+Again, this is an instance of the pixel value type UnsignedByteType that acts as a reference to the pixel.
+</p><p>Cursor implements <b>java.util.Iterator</b> which has the <i>next()</i> method.
+This is a combination of <i>fwd()</i> and <i>get()</i>.
+Instead of
+</p>
+<pre class="brush:java">
+cursor.fwd();
+final UnsignedByteType t = cursor.get();
+</pre>
+<p>we could write
+</p>
+<pre class="brush:java">
+final UnsignedByteType t = cursor.next();
+</pre>
+<p>For even more syntactic sugar, every <b>IterableInterval</b> (such as <b>Img</b>) implements <a rel="nofollow" class="external text" href="http://docs.oracle.com/javase/6/docs/api/index.html?java/lang/Iterable.html">java.lang.Iterable</a>.
+This allows to use the Java <b>for-each</b> loop and replace the lengthy <b>while</b> loop like so:
+</p>
+<pre class="brush:java">
+for( UnsignedByteType t&#160;: img )
+	max = Math.max( t.get(), max );
+</pre>
+<p>However, note that in this construct the <b>Cursor</b> is hidden and you can not use it to get the current location.
+Therefore, you will often use the <b>while</b> form.
+</p><p>Let's extend the previous example. Now we are also interested in the coordinates of the maximum.
+<b>Cursor</b> extends the <b>Localizable</b> interface which provides methods to get the current location either
+dimension-by-dimension or all at once. (Have a look at the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Localizable.html">Localizable</a> API doc!)
+</p>
+<pre class="brush:java">
+import net.imglib2.Cursor;
+import net.imglib2.img.Img;
+import net.imglib2.img.array.ArrayImgFactory;
+import net.imglib2.io.ImgIOException;
+import net.imglib2.io.ImgOpener;
+import net.imglib2.type.numeric.integer.UnsignedByteType;
+
+public class FindMaximumValueAndLocation
+{
+	public static void main( final String[] args ) throws ImgIOException
+	{
+		final Img&lt; UnsignedByteType &gt; img = new ImgOpener().openImg( "graffiti.tif",
+			new ArrayImgFactory&lt; UnsignedByteType &gt;(), new UnsignedByteType() );
+		final Cursor&lt; UnsignedByteType &gt; cursor = img.cursor();
+		int max = 0;
+		final long[] pos = new long[2];
+		while ( cursor.hasNext() )
+		{
+			cursor.fwd();
+			final UnsignedByteType t = cursor.get();
+			if ( t.get() &gt; max )
+			{
+				max = t.get();
+				cursor.localize( pos );
+			}
+		}
+		System.out.println( "max = " + max );
+		System.out.println( "found at ( " + pos[0] + ", " + pos[1] + ")" );
+	}
+}
+</pre>
+<p>In line <i>016</i> we create a <b>long[]</b> position field which is updated (<i>024</i>) everytime a better <i>max</i> value is found.
+Here, we use a 2D position field, because we know, that the position is 2D.
+</p>
+<h3><span class="mw-headline" id="Generic_version">Generic version</span></h3>
+<p>Let's look at a generic version of the <i>maximum-finding</i> example.
+</p>
+<pre class="brush:java">
+import net.imglib2.Cursor;
+import net.imglib2.IterableInterval;
+import net.imglib2.img.Img;
+import net.imglib2.img.array.ArrayImgFactory;
+import net.imglib2.io.ImgIOException;
+import net.imglib2.io.ImgOpener;
+import net.imglib2.type.Type;
+import net.imglib2.type.numeric.integer.UnsignedByteType;
+
+public class FindMaximumValueAndLocationGeneric
+{
+	public static &lt; T extends Comparable&lt; T &gt; &gt;
+			Cursor&lt; T &gt; findmax( final IterableInterval&lt; T &gt; iterable )
+	{
+		final Cursor&lt; T &gt; cursor = iterable.cursor();
+		cursor.fwd();
+		Cursor&lt; T &gt; max = cursor.copyCursor();
+		while ( cursor.hasNext() )
+			if ( cursor.next().compareTo( max.get() ) &gt; 0 )
+				max = cursor.copyCursor();
+		return max;
+	}
+
+	public static void main( final String[] args ) throws ImgIOException
+	{
+		final Img&lt; UnsignedByteType &gt; img = new ImgOpener().openImg( "graffiti.tif",
+			new ArrayImgFactory&lt; UnsignedByteType &gt;(), new UnsignedByteType() );
+		final Cursor&lt; UnsignedByteType &gt; max = findmax( img );
+		System.out.println( "max = " + max.get().get() );
+		System.out.println( "found at ( " + max.getLongPosition( 0 ) + ", " +
+											max.getLongPosition( 1 ) + ")" );
+	}
+}
+</pre>
+<p>We define the method <b>findmax</b> as
+</p>
+<pre class="brush:java">
+public static &lt; T extends Comparable&lt; T &gt; &gt;
+		Cursor&lt; T &gt; findmax( final IterableInterval&lt; T &gt; iterable )
+</pre>
+<p>First, note that we do not take an <b>Img&lt;T&gt;</b> as the parameter, because that would be too restrictive.
+All we need is something that is iterable. Because we can easily put interval bounds on every iterable
+set of Localizables, ImgLib2 does not define an <b>Iterable</b> super-interface for <b>IterableInterval</b>.
+So <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/IterableInterval.html">IterableInterval&lt;T&gt;</a> is the most general we can go here.
+</p><p>For finding the maximum, the only restriction we have to put on type <b>T</b> is that it is comparable.
+</p><p>The return value of <b>findmax</b> is a <b>Cursor&lt;T&gt;</b>.
+Instead of creating a new class that represents a tuple of maximum value and coordinates, we simply
+return a <b>Cursor</b> positioned at the maximum.
+</p><p>To remember the maximum, we simply take a new copy of the iterating cursor whenever a better <i>max</i> value is found.
+</p>
+<pre class="brush:java">
+if ( cursor.next().compareTo( max.get() ) &gt; 0 )
+	max = cursor.copyCursor();
+</pre>
+<p>Remember that <b>next()</b> is equivalent to <b>fwd()</b> followed by <b>get()</b>.
+So, <b>cursor.next()</b> returns the current <b>T</b>.
+</p><p>Lines <i>028-031</i> show how to use <b>findmax</b> and get the maximum value and coordinates from the resulting <b>Cursor</b>.
+For a change, we used the dimension-by-dimension <b>getLongPosition()</b> of the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Localizable.html">Localizable</a> interface.
+</p>
+<h3><span class="mw-headline" id="Notes_3">Notes</span></h3>
+<ul><li> The iteration order is subject to implementation, specialized for each memory layout to minimize access time.  For example, an <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/img/array/ArrayImg.html">ArrayImg</a> has a different iteration order from a <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/cell/CellImg.html">CellImg</a>.  This is nicely illustrated in <a href="http://imagej.net/ImgLib2_Examples#Example_2b_-_Duplicating_an_Img_using_a_different_ImgFactory" title="ImgLib2 Examples"> ImgLib2 Example 2b - Duplicating an Img using a different ImgFactory </a>.</li>
+<li> Typically, there are two variants of Cursors available.  One that calculates its location per each iteration and one that calculates it only per localization request.  The former is more efficient when localization occurs frequently, the latter otherwise. In the <i>maximum-finding</i> example, we use the latter because localization is only required once after the maximum has been found.  The former one could be obtained using <b>localizingCursor()</b> instead of <b>cursor()</b> (see <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/IterableInterval.html">IterableInterval</a> API doc.)</li>
+<li> <b>copyCursor()</b> is a work-around to circumvent a <i>javac</i> bug with covariant return type overriding (see <a rel="nofollow" class="external text" href="http://bugs.sun.com/view_bug.do?bug_id=6656332">bug report</a>). In the future (with JDK7) every <b>Sampler</b> can be copied using <b>copy()</b> instead of having specialised <b>copyCursor()</b>, <b>copyRandomAccess()</b>, &#8230; methods.</li></ul>
+<h2><span class="mw-headline" id="Accessors_for_Continuous_Coordinates">Accessors for Continuous Coordinates</span></h2>
+<p>ImgLib2 is not restricted to rasterized images and integer coordinates
+It also supports continuous images and real-valued coordinates.
+Examples where this is appropriate are
+</p>
+<ul><li> an interpolated image, where an interpolated value can be obtained at any real coordinate. Note that this is a bounded, but continuous image. Thus it is not iterable.</li>
+<li> a procedurally generated image, where a value can be computed at any real coordinate (continuous, unbounded, non-iterable).</li>
+<li> collections of samples taken at arbitrary real coordinates (discrete, bounded, iterable).</li></ul>
+<p>The following image shows the UML diagram for the ImgLib2 accessor interface hierarchy.
+The real-coordinate counterparts that were missing in the simplified version <a href="http://imagej.net/ImgLib2_-_Accessors#Introduction" title="ImgLib2 - Accessors"> above</a> are highlighted.
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 775px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p><br />
+Real equivalents of the <b>Positionable</b> and <b>Localizable</b> interfaces have been added by which real-valued coordinates can be accessed.
+</p><p>Something that is <a rel="nofollow" class="external text" href="https://javadoc.scijava.org/ImgLib2/net/imglib2/RealPositionable.html">RealPositionable</a>, can be positioned at real coordinates.
+There are methods to set absolute or relative position, for a single or all dimensions, in analogy to the integer <b>Positionable</b>.
+You can also set a <b>RealPositionable</b> to the location of a <b>RealLocalizable</b>.
+Note that <a rel="nofollow" class="external text" href="https://javadoc.scijava.org/ImgLib2/net/imglib2/RealPositionable.html">RealPositionable</a> extends <b>Positionable</b>, which is quite natural:
+Whenever something can be positioned at arbitrary real coordinates, of course it can be positioned to integer coordinates as well.
+</p><p><a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RealLocalizable.html">RealLocalizable</a> allows to get a real coordinate from an accessor.
+Again, this is completely analogous to the integer <b>Localizable</b>.
+In this case, the inheritance relationship is the other way around -
+<b>Localizable</b> extends <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RealLocalizable.html">RealLocalizable</a>.
+Something that is able to provide its integer coordinates is always able to provide them as real coordinates too.
+</p><p>In Combination with <b>Sampler</b>, we obtain random-access and iteration accessor interfaces.
+<a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RealRandomAccess.html">RealRandomAccess</a> provides n-dimensional random access
+through the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RealPositionable.html">RealPositionable</a> interface.
+<a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RealCursor.html">RealCursor</a> provides iteration through the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/Iterator.html">Iterator</a> interface.
+</p><p>Both, <b>RealRandomAccess</b> and <b>RealCursor</b> are <b>RealLocalizable</b>.
+Note that the inheritance relationship of <b>Localizable</b> and <b>RealLocalizable</b> propagates to the cursors.
+Every <b>Cursor</b> is also a <b>RealCursor</b> (because it can provide its current integer coordinates as real coordinates as well).
+There is no such relationship between <b>RandomAccess</b> and <b>RealRandomAccess</b>.
+</p>
+<h3><span class="mw-headline" id="A_RealRandomAccess_to_Render_Mandelbrot_Fractals">A RealRandomAccess to Render Mandelbrot Fractals</span></h3>
+<p>Let's look at an example.
+The following code defines a <b>RealRandomAccess</b> which computes the <a href="http://en.wikipedia.org/wiki/Mandelbrot_set" class="extiw" title="wikipedia:Mandelbrot set">Mandelbrot set</a>.
+More precisely, our <b>RealRandomAccess</b> can be positioned at an arbitray 2D coordinate in the complex plane.
+When we <b>get()</b> its value, it computes an iteration count for its current position using an <a href="http://en.wikipedia.org/wiki/Mandelbrot_set#Escape_time_algorithm" class="extiw" title="wikipedia:Mandelbrot set">Escape time algorithm</a>
+</p>
+<pre class="brush:java">
+import net.imglib2.RealPoint;
+import net.imglib2.RealRandomAccess;
+import net.imglib2.type.numeric.integer.UnsignedByteType;
+
+public class MandelbrotRealRandomAccess extends RealPoint
+		implements RealRandomAccess&lt; UnsignedByteType &gt;
+{
+	final UnsignedByteType t;
+
+	public MandelbrotRealRandomAccess()
+	{
+		super( 2 ); // number of dimensions is 2
+		t = new UnsignedByteType();
+	}
+
+	public static final int mandelbrot( final double re0, final double im0,
+			final int maxIterations )
+	{
+		double re = re0;
+		double im = im0;
+		int i = 0;
+		for (&#160;; i &lt; maxIterations; ++i )
+		{
+			final double squre = re * re;
+			final double squim = im * im;
+			if ( squre + squim &gt; 4 )
+				break;
+			im = 2 * re * im + im0;
+			re = squre - squim + re0;
+		}
+		return i;
+	}
+
+	@Override
+	public UnsignedByteType get()
+	{
+		t.set( mandelbrot( position[ 0 ], position[ 1 ], 255 ) );
+		return t;
+	}
+
+	@Override
+	public MandelbrotRealRandomAccess copyRealRandomAccess()
+	{
+		return copy();
+	}
+
+	@Override
+	public MandelbrotRealRandomAccess copy()
+	{
+		final MandelbrotRealRandomAccess a = new MandelbrotRealRandomAccess();
+		a.setPosition( this );
+		return a;
+	}
+}
+</pre>
+<p>First of all, note that we extend <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RealPoint.html">RealPoint</a>.
+Instead of implementing the interface <b>RealRandomAccess&lt; UnsignedByteType &gt;</b>, we make use of this class
+	which has most of the required methods implemented already.
+Actually, all we are left with is to implement the <b>Sampler&lt; UnsignedByteType &gt;</b> interface.
+ImgLib2 provides several such abstract implementations to minimize development time for new accessor types.
+The UML diagram below shows <b>MandelbrotRealRandomAccess</b> and the derivative hierarchy of its parent classes.
+</p><p>The value (iteration count) at a 2D position <i>(re0,im0)</i> is computer in the static method <b>mandelbrot()</b> in lines <i>016-032</i>.
+When calling it, we set the maximum number of iterations to 255.
+Thus we can use <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib/UnsignedByteType.html">UnsignedByteType</a> as the value type of our accessor.
+Therefore, we implement the interface <b>RealRandomAccess&lt; UnsignedByteType &gt;</b>.
+</p><p>In the constructor in lines <i>010-014</i>, we call the super class constructor to initialise a 2-dimensional <b>RealPoint</b>.
+We create the <b>UnsignedByteType</b> member  <i>t</i> (declared in line <i>008</i>) which will store the value that is returned by <b>get()</b>.
+</p><p>Our super class <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RealPoint.html">RealPoint</a> implements the <b>RealPositionable</b> and <b>RealLocalizable</b>.
+We have access to the current position through the <b>double[] position</b> field inherited from <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib2/RealLocalizable.html">RealLocalizable</a>.
+In <b>get()</b> (lines <i>035-038</i>) we use it to compute the value at the current position.
+The value is stored in <b>t</b> which is returned.
+</p><p>Finally, we provide the <b>copy()</b> and <b>copyRealRandomAccess()</b> methods to complete the <b>RealRandomAccess</b> interface implementation.
+A copied accessor is supposed to refer to the same position and value, therefore we <b>setPosition</b> in line <i>051</i>.
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 775px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p><br />
+Now let's use the <b>MandelbrotRealRandomAccess</b> to render a pixel image:
+</p>
+<pre class="brush:java">
+import net.imglib2.Cursor;
+import net.imglib2.RealLocalizable;
+import net.imglib2.RealRandomAccess;
+import net.imglib2.img.Img;
+import net.imglib2.img.array.ArrayImgFactory;
+import net.imglib2.img.display.imagej.ImageJFunctions;
+import net.imglib2.type.numeric.integer.UnsignedByteType;
+
+public class DrawMandelbrot
+{
+	public static void main( final String[] args )
+	{
+		final int[] dimensions = new int[] { 600, 400 };
+		final Img&lt; UnsignedByteType &gt; img = new ArrayImgFactory&lt; UnsignedByteType &gt;()
+			.create( dimensions, new UnsignedByteType() );
+
+		final RealRandomAccess&lt;UnsignedByteType&gt; mb = new MandelbrotRealRandomAccess();
+
+		final double scale = 0.005;
+		final double[] offset = new double[] { -2, -1 };
+
+		final Cursor&lt; UnsignedByteType &gt; cursor = img.localizingCursor();
+		while( cursor.hasNext() )
+		{
+			cursor.fwd();
+			for ( int d = 0; d &lt; 2; ++d )
+				mb.setPosition( scale * cursor.getIntPosition( d ) + offset[ d ], d );
+			cursor.get().set( mb.get() );
+		}
+
+		ImageJFunctions.show( img );
+	}
+}
+</pre>
+<p>We start by creating a 600&#215;400 <b>UnsignedByteType</b> pixel image (lines <i>013-015</i>).
+This is the target image into which we will render the mandelbrot fractal and which we will eventually display on screen (line <i>031</i>).
+</p><p>We create a <b>MandelbrotRealRandomAccess</b> which will provide samples from the fractal at arbitray positions.
+</p>
+<pre class="brush:java">
+final RealRandomAccess&lt; UnsignedByteType &gt; mb = new MandelbrotRealRandomAccess();
+</pre>
+<p>We render the fractal by iterating and setting the pixels of the target image (lines <i>022-029</i>).
+In this case, we use a localizing <b>Cursor</b> because we need the cursor's position at every pixel.
+</p>
+<pre class="brush:java">
+final Cursor&lt; UnsignedByteType &gt; cursor = img.localizingCursor();
+</pre>
+<p>The current coordinates of the cursor are transferred to the <b>RealRandomAccess</b> using a scale factor and an offset.
+(Scale and offset are defined in lines <i>019-020</i>.)
+We set the coordinates dimension-by-dimension:
+</p>
+<pre class="brush:java">
+for ( int d = 0; d &lt; 2; ++d )
+	mb.setPosition( scale * cursor.getIntPosition( d ) + offset[ d ], d );
+</pre>
+<p>Finally, we get a reference to the current pixel, and set it to the
+value computed by the <b>MandelbrotRealRandomAccess</b>.
+</p>
+<pre class="brush:java">
+cursor.get().set( mb.get() );
+</pre>
+<p><b>cursor.get()</b> gives the <b>UnsignedByteType</b> reference to the value under the cursor.
+<b>mb.get()</b> gives the <b>UnsignedByteType</b> reference to the value computed by the <b>MandelbrotRealRandomAccess</b>.
+Then we <b>set()</b> the value of the former to the value of the latter.
+</p><p>When you run the code you will see this:
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:Mandelbrot-1.png" class="image" title="Mandelbrot fractal"><img alt="Mandelbrot fractal" src="../_images/0/09/Mandelbrot-1.png" width="300" height="222" /></a></div></div>
+<p>Because we have a <b>RealRandomAccess</b> you can zoom in indefinitely (until you hit the <b>double</b> precision limit).
+If you like, you can play around with the scale and offset values.
+Here is another example obtained with
+</p>
+<pre class="brush:java">
+final double scale = 0.000125;
+final double[] offset = new double[] { -1.3875, 0.045 };
+</pre>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:Mandelbrot-2.png" class="image" title="Mandelbrot fractal"><img alt="Mandelbrot fractal" src="../_images/3/3a/Mandelbrot-2.png" width="300" height="222" /></a></div></div>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Notes_4">Notes</span></h3>
+<ul><li> In line <i>017</i> we used a <b>RealRandomAccess&lt; UnsignedByteType &gt;</b> variable just to emphasize again the interface implemented by <b>MandelbrotRealRandomAccess</b>.  In real code, you would probably use the actual type.</li>
+<li> Sampling from a transformed <b>RealRandomAccess</b> to create a pixel image is a quite common task.  ImgLib2 provides a framework for on-the-fly transformations, which will be explained later.</li>
+<li> The <b>RealPositionable</b>, <b>RealLocalizable</b>, &#8230; interfaces are not restricted to accessors.  For example, the <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImgLib-daily/javadoc/index.html?net/imglib/RealPoint.html">RealPoint</a> class implements <b>RealPositionable</b> and <b>RealLocalizable</b>, and simply represents a n-dimensional coordinate.</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072610
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.080 seconds
+Real time usage: 0.081 seconds
+Preprocessor visited node count: 515/1000000
+Preprocessor generated node count: 1427/1000000
+Post‐expand include size: 5447/2097152 bytes
+Template argument size: 2593/2097152 bytes
+Highest expansion depth: 7/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   18.037      1 - -total
+ 74.67%   13.469      1 - Template:ImgLibMenu
+ 53.36%    9.624      1 - Template:Menu
+ 43.38%    7.824      3 - Template:Submenu
+ 19.20%    3.463     13 - Template:MenuItem
+ 14.75%    2.660      2 - Template:Javadoc
+ 11.25%    2.030      1 - Template:Project
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=ImgLib2_-_Accessors&amp;oldid=36600">http://imagej.net/index.php?title=ImgLib2_-_Accessors&amp;oldid=36600</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 5 November 2017, at 14:23.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=ImgLib2_-_Accessors&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=ImgLib2+-+Accessors" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=ImgLib2+-+Accessors" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/ImgLib2_-_Accessors" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/ImgLib2_-_Accessors" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=ImgLib2_-_Accessors&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=ImgLib2_-_Accessors&amp;oldid=36600" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=ImgLib2_-_Accessors&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":318});});</script>
+		</body>
+		</html>
+		

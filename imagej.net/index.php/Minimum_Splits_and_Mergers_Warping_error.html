@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Minimum Splits and Mergers Warping error - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Minimum_Splits_and_Mergers_Warping_error","wgTitle":"Minimum Splits and Mergers Warping error","wgCurRevisionId":7905,"wgRevisionId":7905,"wgArticleId":1398,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Segmentation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Minimum_Splits_and_Mergers_Warping_error","wgRelevantArticleId":1398,"wgRequestId":"d1e12ddebc5b7fb17e0ffbef","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="When segmenting images with multiple objects, one might decide that some errors are not relevant compared to others. One of the advantages of the  warping error is that it allows us to focus on only some desired types of topological errors&amp;#91;1&amp;#93;."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Minimum Splits and Mergers Warping error"/>
+
+	<meta property="og:description" content="When segmenting images with multiple objects, one might decide that some errors are not relevant compared to others. One of the advantages of the  warping error is that it allows us to focus on only some desired types of topological errors&amp;#91;1&amp;#93;."/>
+
+	<meta property="og:url" content="http://imagej.net/Minimum_Splits_and_Mergers_Warping_error"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Minimum_Splits_and_Mergers_Warping_error rootpage-Minimum_Splits_and_Mergers_Warping_error skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Minimum_Splits_and_Mergers_Warping_error.html#bodyContent">Skip to content</a>, 			<a href="Minimum_Splits_and_Mergers_Warping_error.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Minimum_Splits_and_Mergers_Warping_error.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Minimum_Splits_and_Mergers_Warping_error" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Minimum_Splits_and_Mergers_Warping_error&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Minimum_Splits_and_Mergers_Warping_error&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Minimum_Splits_and_Mergers_Warping_error&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Minimum Splits and Mergers Warping error</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Splits-vs-Mergers-classic-warping-error.png" class="image"><img alt="" src="../_images/1/10/Splits-vs-Mergers-classic-warping-error.png" width="300" height="284" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Splits-vs-Mergers-classic-warping-error.png" class="internal" title="Enlarge"></a></div>Figure 1: example of splits vs mergers curve detected using the warping error metric.</div></div></div>
+<p>When segmenting images with multiple objects, one might decide that some errors are not relevant compared to others. One of the advantages of the <a href="http://imagej.net/Topology_preserving_warping_error" title="Topology preserving warping error"> warping error</a> is that it allows us to focus on only some desired types of topological errors<sup id="cite_ref-Viren2010_1-0" class="reference"><a href="Minimum_Splits_and_Mergers_Warping_error.html#cite_note-Viren2010-1">&#91;1&#93;</a></sup>. 
+</p><p>Here we propose a metric that takes only into account the <b>number of splits and mergers</b> produced while comparing two different labelings.
+</p><p>Given a set of original (binary) labels and its corresponding proposed (grayscale, i.e., probability map) labels, we can display the number of splits and mergers as a function of the threshold used to binarize the proposed labels (see Figure 1). 
+</p><p>In the classic <a href="http://imagej.net/Topology_preserving_warping_error" title="Topology preserving warping error"> warping error</a>, all pixels belonging to a topological error add to the final metric value. To make the result more intuitive, one can filter those pixels and select only the ones in which we are interested on, in our case, splits and mergers. This way, the metric value will correspond to the number of pixels of each split and merger divided by the total number of pixels. In other words, the metric represents the number of pixels that are needed to correct the segmentation.
+</p>
+<h2><span class="mw-headline" id="2D_implementation_in_Fiji">2D implementation in Fiji</span></h2>
+<p>The minimum splits and mergers warping error metric is implemented for 2D images in the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> library. Here is an example of how to use it in <a href="http://imagej.net/Beanshell_Scripting" class="mw-redirect" title="Beanshell Scripting">Beanshell script</a>:
+</p>
+<pre class="brush:java">
+import trainableSegmentation.metrics.WarpingError;
+
+// original labels
+originalLabels = IJ.openImage("/path/original-labels.tif");
+
+// proposed (new) labels
+proposedLabels = IJ.openImage("/path/proposed-labels.tif");
+
+// assign original labels and proposal to the metric
+metric = new WarpingError( originalLabels, proposedLabels );
+
+// calculate metric for thresholds 0.0 to 0.9, in steps of 0.1
+IJ.log("\nCalculating warping error by minimizing splits and mergers...");
+metric = new WarpingError( originalLabels, proposedLabels );    
+warpingError = metric.getMinimumSplitsAndMergersErrorValue( 0.0, 0.9, 0.1, false );
+
+// print results
+IJ.log("  Warping error = " + warpingError);
+IJ.log("  # errors (splits + mergers pixels) = " + Math.round(warpingError * originalLabels.getWidth() * originalLabels.getHeight() * originalLabels.getImageStackSize() ) );
+
+
+</pre>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ol class="references">
+<li id="cite_note-Viren2010-1"><span class="mw-cite-backlink"><a href="Minimum_Splits_and_Mergers_Warping_error.html#cite_ref-Viren2010_1-0">↑</a></span> <span class="reference-text"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Boundary+Learning+by+Optimization+with+Topological+Constraints&amp;rft.aulast=V.+Jain%2C+B.+Bollmann%2C+M.+Richardson%2C+D.R.+Berger%2C+M.N.+Helmstaedter%2C+K.L.+Briggman%2C+W.+Denk%2C+J.B.+Bowden%2C+J.M.+Mendenhall%2C+W.C.+Abraham%2C%0A%09K.M.+Harris%2C+N.+Kasthuri%2C+K.J.+Hayworth%2C+R.+Schalek%2C+J.C.+Tapia%2C+J.W.+Lichtman%2C+S.H.+Seung&amp;rft.date=2010&amp;rft.pages=pp.+2488-2495&amp;rft_id=info:doi/10.1109%2FCVPR.2010.5539950"><cite id="CITEREFV._Jain.2C_B._Bollmann.2C_M._Richardson.2C_D.R._Berger.2C_M.N._Helmstaedter.2C_K.L._Briggman.2C_W._Denk.2C_J.B._Bowden.2C_J.M._Mendenhall.2C_W.C._Abraham.2C.0A.09K.M._Harris.2C_N._Kasthuri.2C_K.J._Hayworth.2C_R._Schalek.2C_J.C._Tapia.2C_J.W._Lichtman.2C_S.H._Seung2010">V. Jain, B. Bollmann, M. Richardson, D.R. Berger, M.N. Helmstaedter, K.L. Briggman, W. Denk, J.B. Bowden, J.M. Mendenhall, W.C. Abraham,
+	K.M. Harris, N. Kasthuri, K.J. Hayworth, R. Schalek, J.C. Tapia, J.W. Lichtman, S.H. Seung&#32;(2010),&#32;<i><a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109%2FCVPR.2010.5539950">Boundary Learning by Optimization with Topological Constraints</a></i>, IEEE Conference on Computer Vision and Pattern Recognition, pp. 2488-2495<span class="printonly">, DOI 10.1109/CVPR.2010.5539950</span></cite></span>
+</span>
+</li>
+</ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073009
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.045 seconds
+Preprocessor visited node count: 417/1000000
+Preprocessor generated node count: 6326/1000000
+Post‐expand include size: 5821/2097152 bytes
+Template argument size: 2899/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   17.687      1 - Template:Cite_journal
+100.00%   17.687      1 - -total
+ 80.52%   14.241      1 - Template:Citation/core
+  5.94%    1.050      1 - Template:Link
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Minimum_Splits_and_Mergers_Warping_error&amp;oldid=7905">http://imagej.net/index.php?title=Minimum_Splits_and_Mergers_Warping_error&amp;oldid=7905</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 12 June 2013, at 05:21.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Minimum_Splits_and_Mergers_Warping_error&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Minimum+Splits+and+Mergers+Warping+error" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Minimum+Splits+and+Mergers+Warping+error" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Minimum_Splits_and_Mergers_Warping_error" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Minimum_Splits_and_Mergers_Warping_error" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Minimum_Splits_and_Mergers_Warping_error&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Minimum_Splits_and_Mergers_Warping_error&amp;oldid=7905" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Minimum_Splits_and_Mergers_Warping_error&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":264});});</script>
+		</body>
+		</html>
+		

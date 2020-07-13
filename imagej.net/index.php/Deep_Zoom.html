@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Deep Zoom - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Deep_Zoom","wgTitle":"Deep Zoom","wgCurRevisionId":40229,"wgRevisionId":40229,"wgArticleId":2306,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Unmaintained"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Deep_Zoom","wgRelevantArticleId":2306,"wgRequestId":"535ae8cf66003a1c879144a4","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The Deep Zoom Plugin is useful for exporting a large image to the Deep Zoom format.  It builds an HTML and an XML file and an associated collection of folders for different zoom levels containing image tiles.  If these are created within or moved to a folder on a web server, the image can subsequently be viewed, zoomed, and panned over the 'Net in a browser window.  (It can also be viewed from the local filesystem in a browser window.)"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Deep Zoom"/>
+
+	<meta property="og:description" content="The Deep Zoom Plugin is useful for exporting a large image to the Deep Zoom format.  It builds an HTML and an XML file and an associated collection of folders for different zoom levels containing image tiles.  If these are created within or moved to a folder on a web server, the image can subsequently be viewed, zoomed, and panned over the 'Net in a browser window.  (It can also be viewed from the local filesystem in a browser window.)"/>
+
+	<meta property="og:url" content="http://imagej.net/Deep_Zoom"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Deep_Zoom rootpage-Deep_Zoom skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Deep_Zoom.html#bodyContent">Skip to content</a>, 			<a href="Deep_Zoom.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Deep_Zoom.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Deep_Zoom" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Deep_Zoom&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Deep_Zoom&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Deep_Zoom&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Deep Zoom</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Deep Zoom (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a rel="nofollow" class="external text" href="http://loci.wisc.edu/people/aivar-grislis">Aivar Grislis</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/uw-loci/deep-zoom-plugin/">on GitHub</a>
+</td></tr>
+
+
+<tr>
+<th> Development status
+</th>
+<td> inactive
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Import-Export" title="Category:Import-Export">Import-Export</a>
+</td></tr>
+
+</table>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="Deep_Zoom.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-1"><a href="Deep_Zoom.html#Limitations"><span class="tocnumber">2</span> <span class="toctext">Limitations</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Deep_Zoom.html#Installation"><span class="tocnumber">3</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Deep_Zoom.html#Description"><span class="tocnumber">4</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Deep_Zoom.html#See_also"><span class="tocnumber">5</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<div class="floatright"><a href="http://imagej.net/File:Deep-zoom-1.png" class="image"><img alt="Deep-zoom-1.png" src="../_images/b/b8/Deep-zoom-1.png" width="300" height="289" /></a></div>
+<div class="floatright"><a href="http://imagej.net/File:Deep-zoom-2.png" class="image"><img alt="Deep-zoom-2.png" src="../_images/3/32/Deep-zoom-2.png" width="400" height="351" /></a></div>
+<p>The Deep Zoom Plugin is useful for exporting a large image to the <a href="http://en.wikipedia.org/wiki/Deep_Zoom" class="extiw" title="wikipedia:Deep Zoom">Deep Zoom</a> format.  It builds an HTML and an XML file and an associated collection of folders for different zoom levels containing image tiles.  If these are created within or moved to a folder on a web server, the image can subsequently be viewed, zoomed, and panned over the 'Net in a browser window.  (It can also be viewed from the local filesystem in a browser window.)
+</p><p>It has also been useful as a testbed for developing ideas for a chained plugins architecture for ImageJ.
+</p><p>The current version uses <a rel="nofollow" class="external text" href="http://seadragon.com/developer/ajax/">Seadragon Ajax</a> to display the zoomable pannable image.  Deep Zoom ordinarily uses Microsoft's <a rel="nofollow" class="external text" href="http://www.microsoft.com/silverlight/">Silverlight</a> browser plugin for Windows and OS X; there is a <a rel="nofollow" class="external text" href="http://www.go-mono.com/moonlight/">Moonlight</a> implementation available for Linux.  It would be possible to have a checkbox to create a Silverlight version of the HTML, which might offer smoother zoom &amp; pan.
+</p><p>This plugin uses <a rel="nofollow" class="external text" href="https://github.com/uw-loci/deep-zoom-plugin/blob/master/src/main/java/com/centerkey/utils/BareBonesBrowserLaunch.java">BareBonesBrowserLaunch</a> to launch a new browser window.
+</p>
+<h2><span class="mw-headline" id="Limitations">Limitations</span></h2>
+<p>The plugin currently has a bug in that it creates an excess number of levels, which are not needed for display.
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>The plugin can be downloaded from the <a href="http://imagej.net/SciJava_Maven_repository" class="mw-redirect" title="SciJava Maven repository">SciJava Maven repository</a> as <a rel="nofollow" class="external text" href="https://maven.scijava.org/#nexus-search;gav~loci~deep_zoom-plugin">loci:deep_zoom-plugin</a>.
+</p><p>Copy the plugin jar to ImageJ's plugins folder.  Once restarted the plugin will appear in ImageJ's 'File/Save As...' menu as 'Deep Zoom...'.
+</p>
+<h2><span class="mw-headline" id="Description">Description</span></h2>
+<p>The first screenshot shows the user interface for the plugin:
+</p>
+<ul><li> 'Output folder' is the folder on your local filesystem to build the Deep Zoom files and folders.</li>
+<li> 'HTML file name' is the name of the HTML file in the browser.  Several HTML files may coexist in the same output folder.</li>
+<li> 'HTML title' will be the title of the window in a browser (which gets saved as a bookmark name).</li>
+<li> 'Image window width' and 'Image window height' specify the size of the image window in the browser.</li>
+<li> 'Launch browser' controls whether or not the plugin should pop up a browser to view the results.</li>
+<li> 'URL (optional)' can be used if your output folder is on a web server.  Then the browser views the results from your web server.</li>
+<li> On my Mac I have my output folder set to '/Users/aivar/Sites' and URL set to <code><a rel="nofollow" class="external free" href="http://0.0.0.0/~aivar">http://0.0.0.0/~aivar</a></code>.</li>
+<li> The dropdown list for 'Implementation' is for experimental purposes (and will be removed from the final version of the plugin).  For now the default 'CHAINED' option is best.  To read more about the different implementations see below.</li></ul>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<p>These are implementation details of some of the experimental code in the plugin.  This section is temporary and links are liable to get out of date.
+</p><p>The CHAINED, SINGLEINSTANCE, and MULTIINSTANCE 'Implementation' options exercise different experimental ways to chain chunks of code together.  For this plugin there is a chunk of code that generates levels of the image by successively scaling the image in half.  Another chunk takes a level version and splits it up into tiles.  Another chunk takes a tile and writes it to the appropriate folder with the appropriate name.
+</p><p>With CHAINED each chunk is given the next chunk to send its output to.  So execution proceeds on a single thread.  Tiles are created, written out, the image is scaled down, and so on.
+</p><p>With SINGLEINSTANCE there is a single instance of each chunk which has its own thread to process images.  Inputs and outputs of each chunk are named and chained together.  There is a Java BlockingQueue for each chained image that funnels output images to inputs.
+</p><p>MULTIINSTANCE is similar to SINGLEINSTANCE except that every time a set of input images is available a new instance of the chunk, with its own thread, processes them.
+</p><p>The CHAINED code is <a rel="nofollow" class="external text" href="https://github.com/uw-loci/deep-zoom-plugin/tree/master/src/main/java/loci/chainableplugin">here</a>.  SINGLEINSTANCE and MULTIINSTANCE both use the same package <a rel="nofollow" class="external text" href="https://github.com/uw-loci/deep-zoom-plugin/tree/master/src/main/java/loci/multiinstanceplugin">here</a>.  (There's also some experimental workflow code in this project <a rel="nofollow" class="external text" href="https://github.com/uw-loci/deep-zoom-plugin/tree/master/src/main/java/loci/deepzoom/workflow">here</a>, tested <a rel="nofollow" class="external text" href="https://github.com/uw-loci/deep-zoom-plugin/tree/master/src/test/java/loci/workflow">here</a>.  This creates a workflow/pipeline of components (chunks of code or plugins) with named input and output images chained together.  A workflow may be a component.  Workflows can be saved/restored to/from XML.)
+</p><p>(Currently both SINGLEINSTANCE and MULTIINSTANCE versions pop up the browser window before the file/folder structure is completely written.  So to actually view the image in the browser you have to wait and refresh.)
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064946
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.038 seconds
+Preprocessor visited node count: 126/1000000
+Preprocessor generated node count: 871/1000000
+Post‐expand include size: 1199/2097152 bytes
+Template argument size: 569/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.659      1 - -total
+ 92.70%    5.246      1 - Template:Infobox
+ 35.18%    1.991      2 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Deep_Zoom&amp;oldid=40229">http://imagej.net/index.php?title=Deep_Zoom&amp;oldid=40229</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 9 July 2019, at 10:27.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Deep_Zoom&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Unmaintained" title="Category:Unmaintained">Unmaintained</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Deep+Zoom" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Deep+Zoom" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Deep_Zoom" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Deep_Zoom" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Deep_Zoom&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Deep_Zoom&amp;oldid=40229" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Deep_Zoom&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":229});});</script>
+		</body>
+		</html>
+		

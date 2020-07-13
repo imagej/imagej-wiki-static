@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Ellipse split - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Ellipse_split","wgTitle":"Ellipse split","wgCurRevisionId":41234,"wgRevisionId":41234,"wgArticleId":3336,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Ellipse_split","wgRelevantArticleId":3336,"wgRequestId":"50902c80ead6c691313c179f","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The ellipse splitting plugin splits binary objects which could approximated by an ellipse. The used ellipse fitting algorithm was proposed in"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Ellipse split"/>
+
+	<meta property="og:description" content="The ellipse splitting plugin splits binary objects which could approximated by an ellipse. The used ellipse fitting algorithm was proposed in"/>
+
+	<meta property="og:url" content="http://imagej.net/Ellipse_split"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Ellipse_split rootpage-Ellipse_split skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Ellipse_split.html#bodyContent">Skip to content</a>, 			<a href="Ellipse_split.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Ellipse_split.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Ellipse_split" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Ellipse_split&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Ellipse_split&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Ellipse_split&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Ellipse split</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Ellipse Splitting Plugin (Fiji/ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> ij-ellipsesplit.jar <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-ellipsesplit/releases/latest">[1</a>]
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> Github <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-ellipsesplit">[2</a>]
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> v0.4.0 (15 May 2016)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Ellipse_split.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Ellipse_split.html#Examples"><span class="tocnumber">2</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Ellipse_split.html#Parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Ellipse_split.html#Installation"><span class="tocnumber">4</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Ellipse_split.html#How_to_cite"><span class="tocnumber">5</span> <span class="toctext">How to cite</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>The ellipse splitting plugin splits binary objects which could approximated by an ellipse. The used ellipse fitting algorithm was proposed in 
+</p><p><i>A. Fitzgibbon, M. Pilu, and R. B. Fisher, “Direct least square fitting of ellipses,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 21, no. 5, pp. 476–480, May 1999.</i>
+</p><p>Here we used the implementation of <a rel="nofollow" class="external text" href="https://fiji.sc/BoneJ">BoneJ</a>.
+</p><p>The generall approach of the ellipse fitting plugin is as follows:
+</p>
+<pre>1. Given the binary input image I
+2. Then image W is the split using ImageJ's watershed approach
+3. XOR I and W to get all watershed lines L
+4. Extract all contours in W using ijblob
+5. Remove those parts of the contours which are neighbor of L
+6. Fit an ellipse to each remaining contour part
+7. Merge ellipses if possible
+8. Filter ellipses by geometric features
+</pre>
+<h2><span class="mw-headline" id="Examples">Examples</span></h2>
+<p>Suppose you have the following input image:
+</p><p><a href="http://imagej.net/File:Ellipsesplit_input.png" class="image"><img alt="Ellipsesplit input.png" src="../_images/b/b1/Ellipsesplit_input.png" width="300" height="328" /></a>
+</p><p>Then the watershed approach (<i>Process -&gt; Binary -&gt; Watershed</i>) would give this result:
+</p><p><a href="http://imagej.net/File:Ellipsesplit_watershed.png" class="image"><img alt="Ellipsesplit watershed.png" src="../_images/e/ec/Ellipsesplit_watershed.png" width="300" height="328" /></a>
+</p><p>The ellipse splitting plugin applied to the input image will combine the watershed result and direct ellipse fitting. This leads to the following result:
+</p>
+<div class="MediaTransformError" style="width: 510px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Furthermore it outputs several important features:
+</p><p><a href="http://imagej.net/File:Ellipsesplit_resultstable.png" class="image"><img alt="Ellipsesplit resultstable.png" src="../_images/2/2f/Ellipsesplit_resultstable.png" width="600" height="177" /></a>
+</p>
+<h2><span class="mw-headline" id="Parameters">Parameters</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:345px;"><div class="MediaTransformError" style="width: 343px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:EllipseSplit.png" class="internal" title="Enlarge"></a></div>GUI of Ellipse Split Plugin</div></div></div>
+<p><b>Binary splitted image:</b> If set to "Use standard watershed" it will use ImageJ's watershed technique to split the binary object. If there are better techniques for splitting available, you could select here the binary image splitted by that technique.
+</p><p><b>Add to manager:</b> (true/false) If true, the ellipses will be added to the ROI manager.
+</p><p><br />
+<b>Add to results table:</b> (true/false) If true, some geometrical features of the ellipses will be added to the results table.
+</p><p><b>Overlap threshold in&#160;%:</b> If the image is oversegmentated, two ellipses could belong the same real object. If that is the case, it is likely that the ellipses are strongly overlapping. In those cases the ellipses will be merged. The <i>overlap threshold in&#160;%</i> is the proportion of one ellipse containing another ellipse. 
+</p><p><b>Major axis length:</b> The length of major axis.
+</p><p><b>Minor axix length:</b> The length of minor axis.
+</p><p><b>Aspect ratio:</b> Ratio of Major axis length and minor axis length.
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>Simply turn on the <a rel="nofollow" class="external text" href="https://fiji.sc/How_to_follow_a_3rd_party_update_site">Biomedgroup update site</a>, which includes the ellipse splitting plugin.
+</p><p>If you use ImageJ just copy the ij-ellipessplit.jar file in your plugins folder and copy the <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/geom-java/files/gpcj/">GPCJ 2.2.0 </a>  and the latest <a rel="nofollow" class="external text" href="https://fiji.sc/IJ_Blob">ij-blob</a> jar file into the plugins/jars folder.
+</p>
+<h2><span class="mw-headline" id="How_to_cite">How to cite</span></h2>
+<p>Please get the lastest DOI for this plugin here:
+<a rel="nofollow" class="external free" href="https://zenodo.org/badge/latestdoi/18649/thorstenwagner/ij-ellipsesplit">https://zenodo.org/badge/latestdoi/18649/thorstenwagner/ij-ellipsesplit</a>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713065039
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.060 seconds
+Real time usage: 0.060 seconds
+Preprocessor visited node count: 371/1000000
+Preprocessor generated node count: 3586/1000000
+Post‐expand include size: 1108/2097152 bytes
+Template argument size: 517/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   20.598      1 - -total
+100.00%   20.598      1 - Template:Infobox
+ 79.41%   16.357      2 - Template:Person
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Ellipse_split&amp;oldid=41234">http://imagej.net/index.php?title=Ellipse_split&amp;oldid=41234</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Ellipse_split&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Ellipse+split" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Ellipse+split" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Ellipse_split" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Ellipse_split" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Ellipse_split&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Ellipse_split&amp;oldid=41234" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Ellipse_split&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":272});});</script>
+		</body>
+		</html>
+		

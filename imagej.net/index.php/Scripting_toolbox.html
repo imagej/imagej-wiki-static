@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Scripting toolbox - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Scripting_toolbox","wgTitle":"Scripting toolbox","wgCurRevisionId":31036,"wgRevisionId":31036,"wgArticleId":1298,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Scripting"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Scripting_toolbox","wgRelevantArticleId":1298,"wgRequestId":"a4cdaaee2c19d84dec75a450","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This page is meant to provide small code snippets as a starting point for writing scripts."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushLisp.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Scripting toolbox"/>
+
+	<meta property="og:description" content="This page is meant to provide small code snippets as a starting point for writing scripts."/>
+
+	<meta property="og:url" content="http://imagej.net/Scripting_toolbox"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Scripting_toolbox rootpage-Scripting_toolbox skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Scripting_toolbox.html#bodyContent">Skip to content</a>, 			<a href="Scripting_toolbox.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Scripting_toolbox.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Scripting_toolbox" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Scripting_toolbox&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Scripting_toolbox&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Scripting_toolbox&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Scripting toolbox</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Toolbox</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p>This page is meant to provide small code snippets as a starting point for writing scripts.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> <b>See also:</b>
+<ul><li> Language-specific scripting pages in the right-hand menu.</li>
+<li> <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Scripting comparisons</a> to compare and contrast the languages.</li>
+<li> <a href="http://imagej.net/BAR" title="BAR">Broadly Applicable Routines</a>, a curated collection of snippets.</li>
+<li> Albert Cardona's comprehensive <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/fiji-tutorial/">Fiji Jython tutorial</a> (please note that it is better idea to contribute tutorials to the ImageJ/Fiji wiki directly). </td></li></ul>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+<b>Note:</b> To copy the snippets, just double-click somewhere into the code. If Javascript is enabled, this will automatically select the complete snippet.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Scripting_toolbox.html#Opening_an_image_using_ImageJ"><span class="tocnumber">1</span> <span class="toctext">Opening an image using ImageJ</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Scripting_toolbox.html#Macro"><span class="tocnumber">1.1</span> <span class="toctext">Macro</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Scripting_toolbox.html#Javascript"><span class="tocnumber">1.2</span> <span class="toctext">Javascript</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Scripting_toolbox.html#Python"><span class="tocnumber">1.3</span> <span class="toctext">Python</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Scripting_toolbox.html#Ruby"><span class="tocnumber">1.4</span> <span class="toctext">Ruby</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Scripting_toolbox.html#Clojure"><span class="tocnumber">1.5</span> <span class="toctext">Clojure</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Scripting_toolbox.html#Beanshell"><span class="tocnumber">1.6</span> <span class="toctext">Beanshell</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Scripting_toolbox.html#Opening_an_image_using_Bio-Formats"><span class="tocnumber">2</span> <span class="toctext">Opening an image using Bio-Formats</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="Scripting_toolbox.html#Macro_2"><span class="tocnumber">2.1</span> <span class="toctext">Macro</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Scripting_toolbox.html#Javascript_2"><span class="tocnumber">2.2</span> <span class="toctext">Javascript</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Scripting_toolbox.html#Python_2"><span class="tocnumber">2.3</span> <span class="toctext">Python</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="Scripting_toolbox.html#Opening.2C_processing.2C_and_saving_a_sequence_of_files_in_a_folder"><span class="tocnumber">3</span> <span class="toctext">Opening, processing, and saving a sequence of files in a folder</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="Scripting_toolbox.html#Macro_3"><span class="tocnumber">3.1</span> <span class="toctext">Macro</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="Scripting_toolbox.html#Python_3"><span class="tocnumber">3.2</span> <span class="toctext">Python</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="Scripting_toolbox.html#Wait_a_given_amount_of_time.2C_or_until_user_presses_OK"><span class="tocnumber">4</span> <span class="toctext">Wait a given amount of time, or until user presses OK</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="Scripting_toolbox.html#Macro_4"><span class="tocnumber">4.1</span> <span class="toctext">Macro</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Scripting_toolbox.html#Javascript_3"><span class="tocnumber">4.2</span> <span class="toctext">Javascript</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-18"><a href="Scripting_toolbox.html#Select_multiple_ROIs_from_ROI_manager_and_combine_them"><span class="tocnumber">5</span> <span class="toctext">Select multiple ROIs from ROI manager and combine them</span></a>
+<ul>
+<li class="toclevel-2 tocsection-19"><a href="Scripting_toolbox.html#Macro_5"><span class="tocnumber">5.1</span> <span class="toctext">Macro</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="Scripting_toolbox.html#Javascript_4"><span class="tocnumber">5.2</span> <span class="toctext">Javascript</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="Scripting_toolbox.html#Python_4"><span class="tocnumber">5.3</span> <span class="toctext">Python</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Scripting_toolbox.html#Beanshell_2"><span class="tocnumber">5.4</span> <span class="toctext">Beanshell</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-23"><a href="Scripting_toolbox.html#Unlocking_an_image"><span class="tocnumber">6</span> <span class="toctext">Unlocking an image</span></a>
+<ul>
+<li class="toclevel-2 tocsection-24"><a href="Scripting_toolbox.html#Beanshell_3"><span class="tocnumber">6.1</span> <span class="toctext">Beanshell</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-25"><a href="Scripting_toolbox.html#Scripting_SIFT"><span class="tocnumber">7</span> <span class="toctext">Scripting SIFT</span></a>
+<ul>
+<li class="toclevel-2 tocsection-26"><a href="Scripting_toolbox.html#Beanshell_4"><span class="tocnumber">7.1</span> <span class="toctext">Beanshell</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-27"><a href="Scripting_toolbox.html#Plotting_charts_with_JFreeChart"><span class="tocnumber">8</span> <span class="toctext">Plotting charts with JFreeChart</span></a>
+<ul>
+<li class="toclevel-2 tocsection-28"><a href="Scripting_toolbox.html#Javascript_5"><span class="tocnumber">8.1</span> <span class="toctext">Javascript</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-29"><a href="Scripting_toolbox.html#Writing_out_movie_files_with_JavaCV"><span class="tocnumber">9</span> <span class="toctext">Writing out movie files with JavaCV</span></a>
+<ul>
+<li class="toclevel-2 tocsection-30"><a href="Scripting_toolbox.html#Beanshell_5"><span class="tocnumber">9.1</span> <span class="toctext">Beanshell</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Opening_an_image_using_ImageJ">Opening an image using ImageJ</span></h2>
+<h4><span class="mw-headline" id="Macro">Macro</span></h4>
+<pre class="brush:java">
+path = "/path/to/file";
+open(path);
+</pre>
+<h4><span class="mw-headline" id="Javascript">Javascript</span></h4>
+<pre class="brush:javascript">
+importClass(Packages.ij.IJ);
+
+var path = "/path/to/file";
+var imp = IJ.openImage(path);
+imp.show();
+</pre>
+<h4><span class="mw-headline" id="Python">Python</span></h4>
+<pre class="brush:python">
+from ij import IJ
+
+path = "/path/to/file"
+imp = IJ.openImage(path)
+imp.show()
+</pre>
+<h4><span class="mw-headline" id="Ruby">Ruby</span></h4>
+<pre class="brush:ruby">
+include_class 'ij.IJ'
+
+path = "/path/to/file"
+imp = ij.IJ.openImage(path)
+imp.show
+</pre>
+<h4><span class="mw-headline" id="Clojure">Clojure</span></h4>
+<pre class="brush:lisp">
+(import 'ij.IJ)
+
+(let [path "/path/to/file"
+      imp (IJ/openImage path)]
+  (.show imp))
+</pre>
+<h4><span class="mw-headline" id="Beanshell">Beanshell</span></h4>
+<pre class="brush:java">
+import ij.IJ;
+
+path = "/path/to/file";
+imp = IJ.openImage(path);
+imp.show();
+</pre>
+<h2><span class="mw-headline" id="Opening_an_image_using_Bio-Formats">Opening an image using Bio-Formats</span></h2>
+<h4><span class="mw-headline" id="Macro_2">Macro</span></h4>
+<pre class="brush:java">
+path = "/path/to/file";
+run("Bio-Formats Importer", "open=" + path + " autoscale color_mode=Default view=Hyperstack stack_order=XYCZT");
+</pre>
+<h4><span class="mw-headline" id="Javascript_2">Javascript</span></h4>
+<pre class="brush:javascript">
+importClass(Packages.loci.plugins.BF);
+
+var path = "/path/to/file";
+var imps = BF.openImagePlus(path);
+
+imps[0].show();
+</pre>
+<p>or, with more options:
+</p>
+<pre class="brush:javascript">
+importClass(Packages.loci.plugins.BF);
+importClass(Packages['loci.plugins.in.ImporterOptions']); // 'in' is a reserved word, hence the different syntax
+importClass(Packages.loci.common.Region);
+
+
+var path = "/path/to/file";
+var options = new ImporterOptions();
+options.setId(path);
+options.setAutoscale(true);
+options.setCrop(true);
+options.setCropRegion(0, new Region(x, y, w. h));
+options.setColorMode(ImporterOptions.COLOR_MODE_COMPOSITE);
+var imps = BF.openImagePlus(options);
+
+imps[0].show();
+</pre>
+<h4><span class="mw-headline" id="Python_2">Python</span></h4>
+<p>See also <a rel="nofollow" class="external text" href="https://gist.github.com/ctrueden/6282856">this python example script</a>
+</p><p><br />
+</p>
+<ul><li> Ruby</li></ul>
+<ul><li> Clojure</li></ul>
+<ul><li> Beanshell</li></ul>
+<h2><span class="mw-headline" id="Opening.2C_processing.2C_and_saving_a_sequence_of_files_in_a_folder">Opening, processing, and saving a sequence of files in a folder</span></h2>
+<h4><span class="mw-headline" id="Macro_3">Macro</span></h4>
+<pre class="brush:java">
+input = getDirectory("Input directory");
+output = getDirectory("Output directory");
+
+Dialog.create("File type");
+Dialog.addString("File suffix: ", ".tif", 5);
+Dialog.show();
+suffix = Dialog.getString();
+
+processFolder(input);
+
+function processFolder(input) {
+	list = getFileList(input);
+	for (i = 0; i &lt; list.length; i++) {
+		if(File.isDirectory(list[i]))
+			processFolder("" + input + list[i]);
+		if(endsWith(list[i], suffix))
+			processFile(input, output, list[i]);
+	}
+}
+
+function processFile(input, output, file) {
+	// do the processing here by replacing
+	// the following two lines by your own code
+	print("Processing: " + input + file);
+	open(input + file);
+	print("Saving to: " + output);
+	saveAs("TIFF", output+file);
+	close();
+}</pre>
+<p>See also the tutorial <i><a href="http://imagej.net/How_to_apply_a_common_operation_to_a_complete_directory" title="How to apply a common operation to a complete directory">How to apply a common operation to a complete directory</a></i>.
+</p>
+<h4><span class="mw-headline" id="Python_3">Python</span></h4>
+<pre class="brush:python">
+import os
+from ij import IJ, ImagePlus
+from ij.gui import GenericDialog
+ 
+def run():
+  srcDir = IJ.getDirectory("Input_directory")
+  if not srcDir:
+    return
+  dstDir = IJ.getDirectory("Output_directory")
+  if not dstDir:
+    return
+  gd = GenericDialog("Process Folder")
+  gd.addStringField("File_extension", ".tif")
+  gd.addStringField("File_name_contains", "")
+  gd.addCheckbox("Keep directory structure when saving", True)
+  gd.showDialog()
+  if gd.wasCanceled():
+    return
+  ext = gd.getNextString()
+  containString = gd.getNextString()
+  keepDirectories = gd.getNextBoolean()
+  for root, directories, filenames in os.walk(srcDir):
+    for filename in filenames:
+      # Check for file extension
+      if not filename.endswith(ext):
+        continue
+      # Check for file name pattern
+      if containString not in filename:
+        continue
+      process(srcDir, dstDir, root, filename, keepDirectories)
+
+def process(srcDir, dstDir, currentDir, fileName, keepDirectories):
+  print "Processing:"
+  
+  # Opening the image
+  print "Open image file", fileName
+  imp = IJ.openImage(os.path.join(currentDir, fileName))
+  
+  # Put your processing commands here!
+  
+  # Saving the image
+  saveDir = currentDir.replace(srcDir, dstDir) if keepDirectories else dstDir
+  if not os.path.exists(saveDir):
+    os.makedirs(saveDir)
+  print "Saving to", saveDir
+  IJ.saveAs(imp, "Tiff", os.path.join(saveDir, fileName));
+  imp.close()
+
+run()
+</pre>
+<ul><li> Javascript</li></ul>
+<ul><li> Ruby</li></ul>
+<ul><li> Clojure</li></ul>
+<ul><li> Beanshell</li></ul>
+<h2><span class="mw-headline" id="Wait_a_given_amount_of_time.2C_or_until_user_presses_OK">Wait a given amount of time, or until user presses OK</span></h2>
+<h4><span class="mw-headline" id="Macro_4">Macro</span></h4>
+<pre class="brush:java">
+wait(100);
+</pre>
+<p>or
+</p>
+<pre class="brush:java">
+waitForUser();
+</pre>
+<h4><span class="mw-headline" id="Javascript_3">Javascript</span></h4>
+<pre class="brush:javascript">
+Thread.sleep(100);
+</pre>
+<p>or
+</p>
+<pre class="brush:javascript">
+new WaitForUserDialog("Action required", "Please press OK when done.").show();
+</pre>
+<ul><li> Python</li></ul>
+<ul><li> Ruby</li></ul>
+<ul><li> Clojure</li></ul>
+<ul><li> Beanshell</li></ul>
+<h2><span class="mw-headline" id="Select_multiple_ROIs_from_ROI_manager_and_combine_them">Select multiple ROIs from ROI manager and combine them</span></h2>
+<h4><span class="mw-headline" id="Macro_5">Macro</span></h4>
+<pre class="brush:java">
+roiManager("select", newArray(0,2,4));
+roiManager("AND");
+</pre>
+<h4><span class="mw-headline" id="Javascript_4">Javascript</span></h4>
+<pre class="brush:javascript">
+importClass(Packages.ij.plugin.frame.RoiManager);
+
+rm = RoiManager.getInstance();
+rm.setSelectedIndexes([0,2,4]);
+rm.runCommand("AND");
+</pre>
+<h4><span class="mw-headline" id="Python_4">Python</span></h4>
+<pre class="brush:python">
+from ij.plugin.frame import RoiManager
+
+rm = RoiManager.getInstance()
+rm.setSelectedIndexes([0, 2, 4])
+rm.runCommand("AND")
+</pre>
+<h4><span class="mw-headline" id="Beanshell_2">Beanshell</span></h4>
+<pre class="brush:java">
+import ij.plugin.frame.RoiManager;
+
+rm = RoiManager.getInstance();
+rm.setSelectedIndexes(new int[] { 0, 2, 4});
+rm.runCommand("AND");
+</pre>
+<ul><li> Ruby</li></ul>
+<ul><li> Clojure</li></ul>
+<h2><span class="mw-headline" id="Unlocking_an_image">Unlocking an image</span></h2>
+<p>Sometimes things go wrong and all you see is "blabla.jpg is locked" when you try to process the image in some way. Then all you can do is to force-unlock the image, like so:
+</p>
+<h4><span class="mw-headline" id="Beanshell_3">Beanshell</span></h4>
+<pre class="brush:java">
+IJ.getImage().unlock();
+</pre>
+<h2><span class="mw-headline" id="Scripting_SIFT">Scripting <a href="http://imagej.net/Feature_Extraction" title="Feature Extraction">SIFT</a></span></h2>
+<p>The <i>Scale-Invariant Feature Transform</i> poses a relatively powerful way to reduce the complexity when trying to find matching parts of large images. Fiji has an implementation of this algorithm which you can use like so:
+</p>
+<h4><span class="mw-headline" id="Beanshell_4">Beanshell</span></h4>
+<pre class="brush:java">
+import java.util.ArrayList;
+
+import mpicbg.ij.SIFT;
+import mpicbg.imagefeatures.Feature;
+import mpicbg.imagefeatures.FloatArray2DSIFT;
+
+param = new FloatArray2DSIFT.Param();
+sift = new SIFT(new FloatArray2DSIFT(param));
+features = new ArrayList();
+// ''ip'' refers to an ImageProcessor
+sift.extractFeatures(ip, features);
+
+// print coordinates
+for (Feature feature&#160;: features)
+    print("x: " + feature.location[0] + ", y: " + feature.location[1]);
+</pre>
+<p>For more information, please browse the <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/MPI-CBG/index.html?mpicbg/imagefeatures/Feature.html">Javadoc of the Feature class</a>.
+</p>
+<h2><span class="mw-headline" id="Plotting_charts_with_JFreeChart">Plotting charts with JFreeChart</span></h2>
+<p><a rel="nofollow" class="external text" href="http://www.jfree.org/jfreechart/">JFreeChart</a> is a Java library for creating various charts. You can create charts as interactive JFrames, display them as an ImagePlus, or write them to SVG format.
+</p>
+<h4><span class="mw-headline" id="Javascript_5">Javascript</span></h4>
+<pre class="brush:javascript">
+/* Javascript to test JFreeChart functionality */
+
+importPackage(Packages.org.jfree.chart);
+importPackage(Packages.org.jfree.chart.plot);
+importPackage(Packages.org.jfree.chart.axis);
+importPackage(Packages.org.jfree.chart.encoders);
+importPackage(Packages.org.jfree.chart.renderer.category);
+
+importPackage(Packages.java.awt);
+importPackage(Packages.java.awt.geom);
+importPackage(Packages.java.io);
+
+importPackage(Packages.org.jfree.ui);
+importPackage(Packages.org.jfree.data.category);
+importPackage(Packages.org.jfree.data.statistics);
+
+importPackage(Packages.org.apache.batik.dom);
+importPackage(Packages.org.apache.batik.svggen);
+
+var dataset = new DefaultStatisticalCategoryDataset();
+
+// dataset.add(Mean, StdDev, "Series", "Condition")
+dataset.add(15.0, 2.4, "Row 1", "Column 1");
+dataset.add(15.0, 4.4, "Row 1", "Column 2");
+dataset.add(13.0, 2.1, "Row 1", "Column 3");
+dataset.add(7.0, 1.3, "Row 1", "Column 4");
+dataset.add(2.0, 2.4, "Row 2", "Column 1");
+dataset.add(18.0, 4.4, "Row 2", "Column 2");
+dataset.add(28.0, 2.1, "Row 2", "Column 3");
+dataset.add(17.0, 1.3, "Row 2", "Column 4");
+
+var chart = ChartFactory.createLineChart(
+	null,					// chart title
+	"Treatment",				// domain axis label
+	"Measurement",				// range axis label
+	dataset,				// data
+	PlotOrientation.VERTICAL,		// orientation
+	false,					// include legend
+	true,					// tooltips
+	false					// urls
+);
+
+// set the background color for the chart...
+chart.setBackgroundPaint(Color.white);
+
+var plot = chart.getPlot();
+plot.setBackgroundPaint(Color.white);
+plot.setRangeGridlinesVisible(false);
+plot.setAxisOffset(RectangleInsets.ZERO_INSETS);
+
+// customise the range axis...
+var rangeAxis = plot.getRangeAxis();
+rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+rangeAxis.setAutoRangeIncludesZero(true);
+rangeAxis.setRange(0, 40);
+
+// customise the renderer...
+var renderer = new StatisticalBarRenderer();
+renderer.setErrorIndicatorPaint(Color.black);
+renderer.setSeriesOutlinePaint(0,Color.black);
+renderer.setSeriesOutlinePaint(1,Color.black);
+renderer.setSeriesPaint(0,Color.black);
+renderer.setSeriesPaint(1,Color.white);
+renderer.setItemMargin(0.0);
+plot.setRenderer(0,renderer);
+
+renderer.setDrawBarOutline(true);
+
+bi = chart.createBufferedImage(600, 400);
+
+imp = new ImagePlus("Chart Test", bi);
+imp.show();
+
+// Create SVG image
+// Get a DOMImplementation and create an XML document
+var domImpl = GenericDOMImplementation.getDOMImplementation();
+var document = domImpl.createDocument(null, "svg", null);
+
+// Create an instance of the SVG Generator
+var svgGenerator = new SVGGraphics2D(document);
+
+// draw the chart in the SVG generator
+var bounds = new Rectangle(600, 400);
+chart.draw(svgGenerator, bounds);
+
+var dir = IJ.getDirectory("Where should the svg file be saved?");
+// Write svg file
+var svgFile = new File(dir + "test.svg");
+var outputStream = new FileOutputStream(svgFile);
+var out = new OutputStreamWriter(outputStream, "UTF-8");
+svgGenerator.stream(out, true /* use css */);
+outputStream.flush();
+outputStream.close();
+</pre>
+<h2><span class="mw-headline" id="Writing_out_movie_files_with_JavaCV">Writing out movie files with JavaCV</span></h2>
+<p><a rel="nofollow" class="external text" href="https://github.com/bytedeco/javacv">JavaCV</a> is a Java wrapper around OpenCV and FFMPEG. You will have to unpack the libraries into <tt>ImageJ.app/lib/&lt;platform&gt;/</tt> (or <tt>Fiji.app/lib/&lt;platform&gt;/</tt>) to let JavaCV find the native libraries (e.g. unpack ffmpeg-macosx-x86_64.jar's <tt>.dylib</tt> files directly into <tt>ImageJ.app/lib/macosx/</tt>) <b>before</b> starting ImageJ/Fiji.
+</p>
+<h4><span class="mw-headline" id="Beanshell_5">Beanshell</span></h4>
+<pre class="brush:java">
+/*
+ * A simple example how to write out a movie from a possibly virtual
+ * image stack using JavaCV.
+ * 
+ * Licensed under CC-BY-SA 4.0 
+ * by Johannes Schindelin on September 16th, 2014
+ */
+
+path = "/tmp/change-this-name.flv";
+frameRate = 25.0;
+videoBitrate = 400 * 1000;
+
+// if you have not installed JavaCV into your jars/ directory:
+import java.io.File;
+binDir = new File(System.getProperty("user.home")
+	+ "/Downloads/javacv-bin/");
+if (binDir.isDirectory()) {
+	jars = binDir.list();
+	for (String jar&#160;: jars) {
+		if (jar.endsWith(".jar")) {
+			addClassPath(new File(binDir, jar).getPath());
+		}
+	}
+}
+
+// use JavaCV to write out the currently active 3D image
+import ij.IJ;
+import org.bytedeco.javacv.FFmpegFrameRecorder;
+import org.bytedeco.javacpp.opencv_core.IplImage;
+
+void saveImageAsMovie(image, path, frameRate, videoBitrate) {
+	if (image == null) {
+		IJ.error("No active image!");
+		return;
+	}
+
+	width = image.getWidth();
+	height = image.getHeight();
+	stack = image.getStack();
+
+	recorder = FFmpegFrameRecorder.createDefault(path,
+		(int) width, (int) height);
+	recorder.setFormat("flv");
+	recorder.setFrameRate(frameRate);
+	recorder.setVideoBitrate(videoBitrate);
+	recorder.start();
+
+	for (slice = 1; slice &lt;= stack.getSize(); slice++) {
+		ip = stack.getProcessor(slice);
+		recorder.record(IplImage.createFrom(ip.getBufferedImage()));
+	}
+
+	recorder.stop();
+	recorder.release();
+}
+
+try {
+	saveImageAsMovie(IJ.getImage(), path, frameRate, videoBitrate);
+} catch (Throwable t) {
+	IJ.handleException(t);
+}
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073344
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.072 seconds
+Real time usage: 0.073 seconds
+Preprocessor visited node count: 668/1000000
+Preprocessor generated node count: 1469/1000000
+Post‐expand include size: 10967/2097152 bytes
+Template argument size: 6354/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   27.240      1 - -total
+ 84.10%   22.910      1 - Template:Learn
+ 73.50%   20.022      1 - Template:Menu
+ 65.31%   17.790      4 - Template:Submenu
+ 33.23%    9.053     39 - Template:MenuItem
+ 15.46%    4.210      1 - Template:Notice
+ 10.58%    2.881      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Scripting_toolbox&amp;oldid=31036">http://imagej.net/index.php?title=Scripting_toolbox&amp;oldid=31036</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 12 May 2017, at 04:32.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Scripting_toolbox&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Scripting+toolbox" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Scripting+toolbox" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Scripting_toolbox" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Scripting_toolbox" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Scripting_toolbox&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Scripting_toolbox&amp;oldid=31036" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Scripting_toolbox&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":289});});</script>
+		</body>
+		</html>
+		

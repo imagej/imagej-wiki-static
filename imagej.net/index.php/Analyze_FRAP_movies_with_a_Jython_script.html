@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Analyze FRAP movies with a Jython script - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Analyze_FRAP_movies_with_a_Jython_script","wgTitle":"Analyze FRAP movies with a Jython script","wgCurRevisionId":19247,"wgRevisionId":19247,"wgArticleId":1155,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Jython","Scripting"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Analyze_FRAP_movies_with_a_Jython_script","wgRelevantArticleId":1155,"wgRequestId":"c162927e8d90a20aa108cec3","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Here is a Jython script that does the analysis of a FRAP movie. It was developed during the Image Processing School Pilsen 2009, and updated to modern Fiji."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Analyze FRAP movies with a Jython script"/>
+
+	<meta property="og:description" content="Here is a Jython script that does the analysis of a FRAP movie. It was developed during the Image Processing School Pilsen 2009, and updated to modern Fiji."/>
+
+	<meta property="og:url" content="http://imagej.net/Analyze_FRAP_movies_with_a_Jython_script"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Analyze_FRAP_movies_with_a_Jython_script rootpage-Analyze_FRAP_movies_with_a_Jython_script skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Analyze_FRAP_movies_with_a_Jython_script.html#bodyContent">Skip to content</a>, 			<a href="Analyze_FRAP_movies_with_a_Jython_script.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Analyze_FRAP_movies_with_a_Jython_script.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Analyze_FRAP_movies_with_a_Jython_script" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk"><a href="http://imagej.net/Talk:Analyze_FRAP_movies_with_a_Jython_script" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Analyze_FRAP_movies_with_a_Jython_script&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Analyze_FRAP_movies_with_a_Jython_script&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Analyze FRAP movies with a Jython script</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>Here is a <a href="http://imagej.net/Category:Jython" title="Category:Jython">Jython</a> script that does the analysis of a FRAP movie. It was developed during the <a href="http://imagej.net/Image_Processing_School_Pilsen_2009" title="Image Processing School Pilsen 2009">Image Processing School Pilsen 2009</a>, and updated to modern Fiji.
+</p><p>Once the user has loaded a good FRAP movie, <a href="http://imagej.net/Correcting_drift_in_FRAP_experiments" title="Correcting drift in FRAP experiments">well aligned with no drift</a>, and has specified the ROI for the FRAP zone and another for the control zone, it should be possible to automate the analysis of the FRAP curve. This is what this script aims to do:
+</p>
+<ul><li> Load a movie</li>
+<li> Draw a ROI for the FRAP zone, and store it as the <b>first</b> ROI in the ROI manager (by pressing the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">T</kbd> key)</li>
+<li> Do the same for a control zone, out of the FRAP zone</li></ul>
+<p>Then load this script in the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a>, choose <span><em><span style="border-bottom:1px dotted #ccc;"> Language </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Python</span></em></span>, and run it. It will measure the FRAP intensity for all frames, try to find the FRAP frame (by finding the one with the minimal FRAP ROI intensity), and fit the FRAP curve by an increasing exponential. The parameters of the fit can be then read in the log window, and the FRAP curve and its fit are plotted. Careful:the background is taken as the intensity in the FRAP region just after the FRAP pulse.
+</p><p>This script uses only ImageJ functions for everything, but could be tuned to use more fancy Fiji-included plotting library, such as JFreeChart.
+</p><p><br />
+</p>
+<pre class="brush:python">
+import java.awt.Color as Color
+from ij import WindowManager as WindowManager
+from ij.plugin.frame import RoiManager as RoiManager
+from ij.process import ImageStatistics as ImageStatistics
+from ij.measure import Measurements as Measurements
+from ij import IJ as IJ
+from ij.measure import CurveFitter as CurveFitter
+from ij.gui import Plot as Plot
+from ij.gui import PlotWindow as PlotWindow
+import math
+
+# Get ROIs
+roi_manager = RoiManager.getInstance()
+roi_list    = roi_manager.getRoisAsArray()
+
+# We assume first one is FRAP roi, the 2nd one is normalizing roi.
+roi_FRAP    = roi_list[0];
+roi_norm    = roi_list[1];
+
+# Specify up to what frame to fit and plot.
+n_slices = 30
+
+# Get current image plus and image processor
+current_imp  = WindowManager.getCurrentImage()
+stack        = current_imp.getImageStack()
+calibration  = current_imp.getCalibration()
+
+#############################################
+
+# Collect intensity values
+
+# Create empty lists of number
+If = []  # Frap values
+In = []  # Norm values
+
+# Loop over each slice of the stack
+for i in range(0, n_slices):
+ 
+    # Get the current slice 
+    ip = stack.getProcessor(i+1)
+ 
+    # Put the ROI on it
+    ip.setRoi(roi_FRAP)
+ 
+    # Make a measurement in it
+    stats = ImageStatistics.getStatistics(ip, Measurements.MEAN, calibration);
+    mean  = stats.mean
+ 
+    # Store the measurement in the list
+    If.append( mean  )
+
+ 	# Do the same for non-FRAPed area
+    ip.setRoi(roi_norm)
+    stats = ImageStatistics.getStatistics(ip, Measurements.MEAN, calibration);
+    mean = stats.mean
+    In.append( mean  )
+ 
+# Gather image parameters
+frame_interval = calibration.frameInterval
+time_units = calibration.getTimeUnit()
+IJ.log('For image ' + current_imp.getTitle() )
+IJ.log('Time interval is ' + str(frame_interval) + ' ' + time_units)
+ 
+# Find minimal intensity value in FRAP and bleach frame
+min_intensity = min( If )
+bleach_frame = If.index( min_intensity )
+IJ.log('FRAP frame is ' + str(bleach_frame+1) + ' at t = ' + str(bleach_frame * frame_interval) + ' ' + time_units )
+ 
+# Compute mean pre-bleach intensity
+mean_If = 0.0
+mean_In = 0.0
+for i in range(bleach_frame):         # will loop until the bleach time
+    mean_If = mean_If + If[i]
+    mean_In = mean_In + In[i]
+mean_If = mean_If / bleach_frame
+mean_In = mean_In / bleach_frame
+ 
+# Calculate normalized curve
+normalized_curve = []
+for i in range(n_slices):
+    normalized_curve.append( (If[i] - min_intensity) / (mean_If - min_intensity)   *   mean_In / In[i] )
+    
+x = [i * frame_interval for i in range( n_slices ) ] 
+y = normalized_curve
+
+xtofit = [ i * frame_interval for i in range( n_slices - bleach_frame ) ]
+ytofit = normalized_curve[ bleach_frame&#160;: n_slices ]
+ 
+# Fitter
+fitter = CurveFitter(xtofit, ytofit)
+fitter.doFit(CurveFitter.EXP_RECOVERY_NOOFFSET)
+IJ.log("Fit FRAP curve by " + fitter.getFormula() )
+param_values = fitter.getParams()
+IJ.log( fitter.getResultString() )
+ 
+# Overlay fit curve, with oversampling (for plot)
+xfit = [ (t / 10.0  + bleach_frame) * frame_interval for t in range(10 * len(xtofit) ) ]
+yfit = []
+for xt in xfit:
+    yfit.append( fitter.f( fitter.getParams(), xt - xfit[0]) )
+
+ 
+plot = Plot("Normalized FRAP curve for " + current_imp.getTitle(), "Time ("+time_units+')', "NU", [], [])
+plot.setLimits(0, max(x), 0, 1.2 );
+plot.setLineWidth(2)
+
+
+plot.setColor(Color.BLACK)
+plot.addPoints(x, y, Plot.LINE)
+plot.addPoints(x,y,PlotWindow.X);
+
+ 
+plot.setColor(Color.RED)
+plot.addPoints(xfit, yfit, Plot.LINE)
+
+plot.setColor(Color.black);
+plot_window =  plot.show()
+
+
+# Output FRAP parameters
+thalf = math.log(2) / param_values[1]
+mobile_fraction = param_values[0]
+
+str1 = ('Half-recovery time =&#160;%.2f ' + time_units)&#160;% thalf
+IJ.log( str1 )
+str2 = "Mobile fraction =&#160;%.1f&#160;%%"&#160;% (100 * mobile_fraction)
+IJ.log( str2 )
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064514
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.056 seconds
+Real time usage: 0.057 seconds
+Preprocessor visited node count: 574/1000000
+Preprocessor generated node count: 6003/1000000
+Post‐expand include size: 2151/2097152 bytes
+Template argument size: 196/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   46.127      1 - -total
+ 89.37%   41.223      1 - Template:Key
+ 78.91%   36.397      1 - Template:Key_press/core
+ 10.35%    4.775      1 - Template:Bc
+  4.93%    2.274      1 - Template:Linear-gradient
+  3.91%    1.803      1 - Template:Box-shadow
+  3.19%    1.470      1 - Template:Arrow
+  2.87%    1.323      1 - Template:Border-radius
+  1.14%    0.528      1 - Template:Linear-gradient/legacy
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Analyze_FRAP_movies_with_a_Jython_script&amp;oldid=19247">http://imagej.net/index.php?title=Analyze_FRAP_movies_with_a_Jython_script&amp;oldid=19247</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 18 January 2016, at 10:10.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Analyze_FRAP_movies_with_a_Jython_script&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Jython" title="Category:Jython">Jython</a></li><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Analyze+FRAP+movies+with+a+Jython+script" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Analyze+FRAP+movies+with+a+Jython+script" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Analyze_FRAP_movies_with_a_Jython_script" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Analyze_FRAP_movies_with_a_Jython_script" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Analyze_FRAP_movies_with_a_Jython_script&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Analyze_FRAP_movies_with_a_Jython_script&amp;oldid=19247" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Analyze_FRAP_movies_with_a_Jython_script&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":266});});</script>
+		</body>
+		</html>
+		

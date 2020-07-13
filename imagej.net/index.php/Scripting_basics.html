@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Scripting basics - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Scripting_basics","wgTitle":"Scripting basics","wgCurRevisionId":44259,"wgRevisionId":44259,"wgArticleId":4638,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Scripting_basics","wgRelevantArticleId":4638,"wgRequestId":"8f3d915c44ae323a60f2bc7e","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="ImageJ and Fiji are able to run scripts written in different languages. Besides all the differences the approach on how to use the API of ImageJ is similar for all of them. This article will introduce the basic concepts and is valid for all scripting languages."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Scripting basics"/>
+
+	<meta property="og:description" content="ImageJ and Fiji are able to run scripts written in different languages. Besides all the differences the approach on how to use the API of ImageJ is similar for all of them. This article will introduce the basic concepts and is valid for all scripting languages."/>
+
+	<meta property="og:url" content="http://imagej.net/Scripting_basics"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Scripting_basics rootpage-Scripting_basics skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Scripting_basics.html#bodyContent">Skip to content</a>, 			<a href="Scripting_basics.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Scripting_basics.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Scripting_basics" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Scripting_basics&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Scripting_basics&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Scripting_basics&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Scripting basics</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Basics of script writing</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Scripting_basics.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Scripting_basics.html#Importing_classes.2C_services_and_functions"><span class="tocnumber">2</span> <span class="toctext">Importing classes, services and functions</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Scripting_basics.html#Get_an_image_and_perform_an_action"><span class="tocnumber">3</span> <span class="toctext">Get an image and perform an action</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Scripting_basics.html#Opening_images"><span class="tocnumber">4</span> <span class="toctext">Opening images</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Scripting_basics.html#ImagePlus.2C_ImageStack_and_ImageProcessor_Conversion"><span class="tocnumber">5</span> <span class="toctext">ImagePlus, ImageStack and ImageProcessor Conversion</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Scripting_basics.html#Loop_over_Roi_in_Roi_Manager"><span class="tocnumber">6</span> <span class="toctext">Loop over Roi in Roi Manager</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Scripting_basics.html#Calling_a_script_from_another_script"><span class="tocnumber">7</span> <span class="toctext">Calling a script from another script</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="Scripting_basics.html#Using_ImageJ1_commands"><span class="tocnumber">7.1</span> <span class="toctext">Using ImageJ1 commands</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Scripting_basics.html#Using_ImageJ2_command"><span class="tocnumber">7.2</span> <span class="toctext">Using ImageJ2 command</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="Scripting_basics.html#Calling_external_programs"><span class="tocnumber">8</span> <span class="toctext">Calling external programs</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Scripting_basics.html#Links"><span class="tocnumber">9</span> <span class="toctext">Links</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>ImageJ and Fiji are able to run scripts written in <a rel="nofollow" class="external text" href="https://imagej.net/Scripting#Supported_languages">different languages</a>. Besides all the differences the approach on how to use the <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/">API of ImageJ</a> is similar for all of them. This article will introduce the basic concepts and is valid for all scripting languages.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> The examples are written in Groovy, but they are easy to adapt for any other scripting language ImageJ supports. For the ImageJ1 macro language, refer to the dedicated section in Languages. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Importing_classes.2C_services_and_functions">Importing classes, services and functions</span></h1>
+<p>Using scripting, one can access a huge number of classes and functions available in Fiji.<br />
+The most common ones are provided by the ImageJ and ImageJ2 API.<br />
+To access them, one use classical <code>import</code> statements (see below).<br /> 
+In Fiji, some functionalities are also provided by so-called Services from scijava, which can be  accessed using the <code>#@</code> notations (also used to collect some input from the user).<br />
+For instance you might come across the <code>PrefService</code> responsible for the storage in memory of previously entered values.
+</p>
+<pre class="brush:java">
+#@ PrefService pref // Importing the prefservice under the variable name pref
+#@ ImagePlus imp    // Assigning the currently opened image to variable imp
+
+import ij.IJ // classical ImageJ1 import statement
+</pre>
+<h1><span class="mw-headline" id="Get_an_image_and_perform_an_action">Get an image and perform an action</span></h1>
+<p>First we want to learn different ways to select an image and perform an action on it. In <a href="http://imagej.net/ImageJ1" title="ImageJ1">ImageJ1</a> the image is represented by an <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/ImageJ1/ij/ImagePlus.html">ImagePlus</a> object. The recommended way to select an ImagePlus object is to use <a href="http://imagej.net/Script_parameters" class="mw-redirect" title="Script parameters">Script Parameters</a>:
+</p>
+<pre class="brush:java">
+#@ ImagePlus imp
+#@ Integer(label='Filter radius',description='The sigma of the gaussian filter.',value=2) sig
+
+print(imp)
+
+import ij.IJ
+
+IJ.run(imp, "Gaussian Blur...", "sigma=" + sig)
+</pre>
+<p>Script Parameters are placed at the beginning of the script file. If only one <code>@ImagePlus</code> is used, the front most image is selected. A second Script Parameter is used to get the radius of the gaussion filter. By using <code>print(imp)</code> we verify, that an ImagePlus object is assigned to the variable.
+</p><p>To perform an operation on the selected image, we use <code>IJ.run()</code>. Therefore we have to import the <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/ImageJ1/ij/IJ.html">class IJ</a>. There are three different versions of the <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/ImageJ1/ij/IJ.html#run(java.lang.String)">run() method</a> of these we need the one with three parameters. The first parameter is the image to perform the action on, the second parameters defines the action (called <b>command</b>) and the last parameter is used to configure the action (here we set the filter radius). The easiest way to find a command is to use the <a href="http://imagej.net/Introduction_into_Macro_Programming#The_recorder" title="Introduction into Macro Programming">Recorder</a>.
+</p><p>The second approach is similar to how to perform this operation using the <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">macro language</a>:
+</p>
+<pre class="brush:java">
+import ij.IJ
+
+imp = IJ.getImage()
+sig = IJ.getNumber('Filter radius:', 2)
+IJ.run(imp, "Gaussian Blur...", "sigma=" + sig)
+</pre>
+<p>The first step is to select the front most image by using IJ's method <code>getImage()</code>. The second step is to use the method <code>getNumber()</code> to show up a dialog to enter the filter radius. Running the filter is the same as in the previous example.
+</p><p>Finally we want to use the <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/ImageJ1/ij/WindowManager.html">WindowManager</a> to select the front most image:
+</p>
+<pre class="brush:java">
+import ij.IJ
+import ij.WindowManager
+
+imp = WindowManager.getCurrentImage()
+sig = IJ.getNumber('Filter radius:', 2)
+IJ.run(imp, "Gaussian Blur...", "sigma=" + sig)
+</pre>
+<p>This is nearly identical to the use of <code>IJ.getImage()</code> and therefore not recommended. The WindowManager class contains some useful methods that can be used to select more than one image (e.g. <code>getImageTitles()</code> and <code>getIDList()</code>.
+</p>
+<h1><span class="mw-headline" id="Opening_images">Opening images</span></h1>
+<p>In ImageJ there are many different ways to open images (or more general datasets). We want to introduce some of them.
+</p><p>The first example uses the <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/SCIFIO/io/scif/services/DatasetIOService.html">DatasetIOService</a>. It is part of <a href="http://imagej.net/SCIFIO" title="SCIFIO">SCIFIO</a>, a flexible framework for <b>SC</b>ientific <b>I</b>mage <b>F</b>ormat <b>I</b>nput and <b>O</b>utput. Two types of image files are opened. The first one is an example image, downloaded from the Internet. The second image can be chosen by the user. Both datasets are displayed using the <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/SciJava/org/scijava/ui/UIService.html">UIService</a> that is part of the <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> project.
+</p>
+<pre class="brush:java">
+#@ DatasetIOService ds
+#@ UIService ui
+#@ String(label='Image URL', value='http://wsr.imagej.net/images/clown.jpg') fileUrl
+#@ File(label='local image') file
+
+// Load a sample file from the internet and a local file of your choice.
+dataset1 = ds.open(fileUrl)
+dataset2 = ds.open(file.getAbsolutePath())
+// Display the datasets.
+ui.show(dataset1)
+ui.show(dataset2)
+</pre>
+<p>If a script only depends on ImageJ1 functionality, one can use the function <code>IJ.openImage()</code>. It will return an ImagePlus object.
+</p>
+<pre class="brush:java">
+#@ String(label='Image URL', value='http://wsr.imagej.net/images/clown.jpg') fileUrl
+#@ File(label='local image') file
+
+import ij.IJ
+
+// Load a sample file from the internet and a local file of your choice.
+imagePlus1 = IJ.openImage(fileUrl)
+imagePlus2 = IJ.openImage(file.getAbsolutePath())
+// Display the datasets.
+imagePlus1.show()
+imagePlus2.show()
+</pre>
+<p><code>IJ.openImage()</code> is based on the class <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/ImageJ1/ij/io/Opener.html">ij.io.Opener</a>. You can use it directly to open images and other files (e.g. text files). The example uses the class <a rel="nofollow" class="external text" href="http://javadoc.imagej.net/ImageJ1/ij/io/OpenDialog.html">ij.io.OpenDialog</a> to select a file. This is an alternative to the usage of the Scripting Parameter <code>@File</code>.
+</p>
+<pre class="brush:java">
+import ij.io.Opener
+import ij.io.OpenDialog
+
+// Use the OpenDialog to select a file.
+filePath = new OpenDialog('Select an image file').getPath()
+// Open the selected file.
+imagePlus = new Opener().openImage(filePath)
+// Display the ImagePlus.
+imagePlus.show()
+</pre>
+<h1><span class="mw-headline" id="ImagePlus.2C_ImageStack_and_ImageProcessor_Conversion">ImagePlus, ImageStack and ImageProcessor Conversion</span></h1>
+<p>When working with the ImageJ API you will run into the problem that you have e.g. a ImageProcessor, but what you need right now is a ImagePlus.  
+</p><p>To convert one to another use these commands:
+</p>
+<pre class="brush:java">
+
+// ImagePlus to ImageProcessor:
+ip = imp.getProcessor()
+
+// ImageProcessor to ImagePlus:
+imp = new ImagePlus('title', ip)
+
+// ImagePlus to ImageStack:
+stack = imp.getImageStack()
+
+// ImageStack to ImagePlus:
+imp = ImagePlus('title', stack)
+
+// ImageStack to ImageProcessor:
+ip = stack.getProcessor(nframe)
+
+// ImageProcessor to ImageStack:
+stack.addSlice(ip)
+</pre>
+<p>The following scheme depicts the relations between the different classes.
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:Image_Class_Hierarchy.png" class="image"><img alt="Image Class Hierarchy.png" src="../_images/f/f5/Image_Class_Hierarchy.png" width="600" height="309" /></a></div></div>
+<h1><span class="mw-headline" id="Loop_over_Roi_in_Roi_Manager">Loop over Roi in Roi Manager</span></h1>
+<p>This small IJmacro scriptlet loops over the roi in the Roi Manager, selecting one at a time.
+</p>
+<pre class="brush:java">
+for (i = 0; i &lt; roiManager("count"); i++){
+     roiManager("Select", i);
+     // do some operation
+}
+</pre>
+<p>In Jython and other scripting languages this looks like.
+</p>
+<pre class="brush:python">
+from ij.plugin.frame import RoiManager
+
+# Get number of ROIs
+RM = RoiManager.getInstance()
+n = RM.getCount()
+
+for i in range(n):
+   roi = RM.getRoi(i)
+</pre>
+<p>Since version 1.52v11 of ImageJ, one can directly loop over the roi in a RoiManager as followed
+</p>
+<pre class="brush:python">
+from ij.plugin.frame import RoiManager
+
+# Assume a RoiManager is opened
+for roi in RoiManager.getInstance():
+	print roi
+</pre>
+<h1><span class="mw-headline" id="Calling_a_script_from_another_script">Calling a script from another script</span></h1>
+<p>There are different ways to call a script from another script.<br />
+Generally, the called script is executed in the same thread than the calling script, which means that the calling script will wait that the called script terminates before going on with the rest of the execution. 
+</p>
+<h2><span class="mw-headline" id="Using_ImageJ1_commands">Using ImageJ1 commands</span></h2>
+<p>ImageJ offers the possibility to call a plugin, macro or script within another one.<br />
+If the plugin is already part of the Menu, the simple command <code>run(PluginName, string Arguments)</code> (or <code>IJ.run</code> for other scripting languages) as returned by the macro-recorder will work. 
+</p><p>However when one wants to call a home-made local macro that is not part of the ImageJ menu, one uses a different command (see below).<br />
+Here the example of a mainMacro calling a subMacro.
+</p><p>- mainMacro
+</p>
+<pre class="brush:java">
+IJ.log("Hello world, I'm mainMacro");
+runMacro("C:/structure/temp/subMacro.ijm");
+</pre>
+<p>- subMacro
+</p>
+<pre class="brush:java">
+IJ.log("Hello world, I'm subMacro");
+</pre>
+<p>It is also possible to pass arguments to the subMacro, it works similar to the command line execution.<br />
+The subMacro needs to use <code>getArgument()</code> (or <code>IJ.imageJ.getArgs</code> of the ImageJ API) to recover the string of argument passed to it.
+</p><p>- mainMacro
+</p>
+<pre class="brush:java">
+IJ.log("Hello world, I'm mainMacro");
+runMacro("C:/structure/temp/subMacro.ijm", "Arg1,Arg2");
+</pre>
+<p>- subMacro
+</p>
+<pre class="brush:java">
+Arguments = getArgument()
+IJ.log(Arguments);
+</pre>
+<p>The command <code>runMacro</code> works only for ijm macro.<br />
+To call a script written in another scripting languages, one should use the <code>runMacroFile(PathToScript, Arguments)</code> (respectively <code>IJ.runMacroFile</code> of the ImageJ API). Still using the <code>getArgument</code> to pass the variables from mainScript to subScript.
+</p><p>This 1st option is however limited to ImageJ1 code style, meaning that one cannot use script parameters, or call any service in subScript.<br />
+Luckily ImageJ2 also have is own way to call a script within a script.
+</p>
+<h2><span class="mw-headline" id="Using_ImageJ2_command">Using ImageJ2 command</span></h2>
+<p>One can use the ScriptService from scijava to run a script within a script.<br />
+Here the example of a mainScript calling a subScript both in Jython.
+</p><p>- mainScript.py
+</p>
+<pre class="brush:python">
+#@ ScriptService scriptService
+from ij import IJ
+
+IJ.log("Hello world, I'm mainScript");
+Arguments = ["some_string", "val1", "some_int", 5]
+scriptService.run(r"SomePath/subScript.py", True, Arguments);
+</pre>
+<p>- subScript.py
+</p>
+<pre class="brush:python">
+#@ String (label="some_string") some_string
+#@ Integer (label="some_int") some_int
+IJ.log(some_string)
+IJ.log(str(some_int))
+</pre>
+<p>subScript must use #@ Script Parameters for the inputs, and mainScript pass the arguments to subScript as a list of <code>field, value</code> 
+</p>
+<h1><span class="mw-headline" id="Calling_external_programs">Calling external programs</span></h1>
+<p>Similar to the macro language, one can use the <code>exec</code> method available via <a rel="nofollow" class="external text" href="https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html">java.lang.Runtime</a> class.<br />
+Note that the code below execute the external program and directly execute the rest of the script. It does not wait for the external process to finish (which is also possible by doing some extra command on the <code>proc</code> object).<br />
+In Jython this looks like:
+</p>
+<pre class="brush:python">
+from java.lang import Runtime
+
+run = Runtime.getRuntime()
+
+# Option 1: provide a single string command
+proc = run.exec("someCommand")
+
+# Option 2: Provide a string array of command and argument
+proc = run.exec(["someExe", "Arg1", "Arg2"]) 
+
+print("Done")
+</pre>
+<h1><span class="mw-headline" id="Links">Links</span></h1>
+<ul><li> <a rel="nofollow" class="external text" href="https://imagej.net/Developing_Plugins_for_ImageJ_1.x#ImageJ.27s_API">ImageJ API examples</a></li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/imagej/tutorials/tree/master/howtos/src/main/java/howto">ImageJ tutorials repository</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073342
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.076 seconds
+Real time usage: 0.077 seconds
+Preprocessor visited node count: 553/1000000
+Preprocessor generated node count: 1291/1000000
+Post‐expand include size: 10519/2097152 bytes
+Template argument size: 5906/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   28.586      1 - -total
+ 84.14%   24.051      1 - Template:Learn
+ 73.52%   21.016      1 - Template:Menu
+ 65.29%   18.665      4 - Template:Submenu
+ 33.71%    9.637     39 - Template:MenuItem
+ 15.29%    4.370      1 - Template:Notice
+ 10.84%    3.098      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Scripting_basics&amp;oldid=44259">http://imagej.net/index.php?title=Scripting_basics&amp;oldid=44259</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 1 April 2020, at 05:13.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Scripting_basics&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Scripting+basics" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Scripting+basics" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Scripting_basics" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Scripting_basics" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Scripting_basics&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Scripting_basics&amp;oldid=44259" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Scripting_basics&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":284});});</script>
+		</body>
+		</html>
+		

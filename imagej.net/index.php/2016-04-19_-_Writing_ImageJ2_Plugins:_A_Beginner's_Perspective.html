@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>2016-04-19 - Writing ImageJ2 Plugins: A Beginner's Perspective - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective","wgTitle":"2016-04-19 - Writing ImageJ2 Plugins: A Beginner's Perspective","wgCurRevisionId":41193,"wgRevisionId":41193,"wgArticleId":3472,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["News","ImageJ2"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective","wgRelevantArticleId":3472,"wgRequestId":"d730c0d5eb2a95c1f5e9d3ea","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Before you consider to write your own plugin for ImageJ, please note that writing a script has a much lower barrier to entry than Java plugin development."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushYaml.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="2016-04-19 - Writing ImageJ2 Plugins: A Beginner's Perspective"/>
+
+	<meta property="og:description" content="Before you consider to write your own plugin for ImageJ, please note that writing a script has a much lower barrier to entry than Java plugin development."/>
+
+	<meta property="og:url" content="http://imagej.net/2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-2016-04-19_-_Writing_ImageJ2_Plugins_A_Beginner_s_Perspective rootpage-2016-04-19_-_Writing_ImageJ2_Plugins_A_Beginner_s_Perspective skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#bodyContent">Skip to content</a>, 			<a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>2016-04-19 - Writing ImageJ2 Plugins: A Beginner's Perspective</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> The following article was written by <a href="http://imagej.net/User:Scrivello" title="User:Scrivello">Karl-Heinz Kunzelmann</a> as he researched how to write plugins for <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a>. It is reproduced here as a <a href="http://imagej.net/News" title="News">News</a> post in the hope that it may help others, particularly during 2016 while the information continues to be most accurate and relevant. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Writing_ImageJ2_Plugins:_A_Beginner.27s_Perspective"><span class="tocnumber">1</span> <span class="toctext">Writing ImageJ2 Plugins: A Beginner's Perspective</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Preamble"><span class="tocnumber">1.1</span> <span class="toctext">Preamble</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Finding_information"><span class="tocnumber">1.2</span> <span class="toctext">Finding information</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Configure_your_environment"><span class="tocnumber">1.3</span> <span class="toctext">Configure your environment</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Using_NetBeans_without_Maven"><span class="tocnumber">1.4</span> <span class="toctext">Using NetBeans without Maven</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Build_ImageJ_with_NetBeans.2C_Git_and_Maven"><span class="tocnumber">1.5</span> <span class="toctext">Build ImageJ with NetBeans, Git and Maven</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Build_the_ImageJ_Tutorial_Plugin_with_IntelliJ_IDEA.2C_Git_and_Maven"><span class="tocnumber">1.6</span> <span class="toctext">Build the ImageJ Tutorial Plugin with IntelliJ IDEA, Git and Maven</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Details_of_Writing_Plugins"><span class="tocnumber">2</span> <span class="toctext">Details of Writing Plugins</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Tutorials"><span class="tocnumber">2.1</span> <span class="toctext">Tutorials</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Getting_Started"><span class="tocnumber">2.2</span> <span class="toctext">Getting Started</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Additional_sample_plugins"><span class="tocnumber">2.3</span> <span class="toctext">Additional sample plugins</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#.22One_file_to_bind_them_all.22:_parent_pom.xml_files"><span class="tocnumber">2.4</span> <span class="toctext">"One file to bind them all": parent pom.xml files</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Further_readings"><span class="tocnumber">2.5</span> <span class="toctext">Further readings</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Other_References"><span class="tocnumber">3</span> <span class="toctext">Other References</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Appendix"><span class="tocnumber">4</span> <span class="toctext">Appendix</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#How_do_I_find_dependencies.3F"><span class="tocnumber">4.1</span> <span class="toctext">How do I find dependencies?</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Manage_Java_versions"><span class="tocnumber">4.2</span> <span class="toctext">Manage Java versions</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Where_can_I_find_example_plugins.3F"><span class="tocnumber">4.3</span> <span class="toctext">Where can I find example plugins?</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#What_is_the_directory_structure_for_a_plugin.3F"><span class="tocnumber">4.4</span> <span class="toctext">What is the directory structure for a plugin?</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#What_does_a_minimal_pom.xml_look_like.3F"><span class="tocnumber">4.5</span> <span class="toctext">What does a minimal pom.xml look like?</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Are_the_underscores_still_needed_for_plugins_to_be_visible_in_IJ_or_Fiji.3F"><span class="tocnumber">4.6</span> <span class="toctext">Are the underscores still needed for plugins to be visible in IJ or Fiji?</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Make_the_plugins_appear_in_the_menus"><span class="tocnumber">4.7</span> <span class="toctext">Make the plugins appear in the menus</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#NetBeans:_what_is_the_difference_between_Ant_and_Maven.3F_Or:_build.xml_vs._pom.xml"><span class="tocnumber">4.8</span> <span class="toctext">NetBeans: what is the difference between Ant and Maven? Or: build.xml vs. pom.xml</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#How_to_migrate_an_existing_project_to_a_Maven_project.3F"><span class="tocnumber">4.9</span> <span class="toctext">How to migrate an existing project to a Maven project?</span></a></li>
+<li class="toclevel-2 tocsection-25"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Enable_the_ImageJ_1.x_UI.2C_instead_of_the_ImageJ2_Swing_UI"><span class="tocnumber">4.10</span> <span class="toctext">Enable the ImageJ 1.x UI, instead of the ImageJ2 Swing UI</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#What_is_it_all_about_with_this_Java_6_and_Java_8_stuff.3F"><span class="tocnumber">4.11</span> <span class="toctext">What is it all about with this Java 6 and Java 8 stuff?</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Make_a_redistributable_package_from_a_locally_customized_Fiji"><span class="tocnumber">4.12</span> <span class="toctext">Make a redistributable package from a locally customized Fiji</span></a></li>
+<li class="toclevel-2 tocsection-28"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Tests_wit_JUnit5"><span class="tocnumber">4.13</span> <span class="toctext">Tests wit JUnit5</span></a></li>
+<li class="toclevel-2 tocsection-29"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Continuous_Integration_with_Travis_CI"><span class="tocnumber">4.14</span> <span class="toctext">Continuous Integration with Travis CI</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#JavaFX_JAR_not_found"><span class="tocnumber">4.15</span> <span class="toctext">JavaFX JAR not found</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="./2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner's_Perspective.html#Log4j_warning_in_IntelliJ_IDEA"><span class="tocnumber">4.16</span> <span class="toctext">Log4j warning in IntelliJ IDEA</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h1><span class="mw-headline" id="Writing_ImageJ2_Plugins:_A_Beginner.27s_Perspective">Writing ImageJ2 Plugins: A Beginner's Perspective</span></h1>
+<h2><span class="mw-headline" id="Preamble">Preamble</span></h2>
+<p>Before you consider to write your own <a href="http://imagej.net/Plugin" class="mw-redirect" title="Plugin">plugin</a> for <a href="http://imagej.net/ImageJ" title="ImageJ">ImageJ</a>, please note that writing a <a href="http://imagej.net/Script" class="mw-redirect" title="Script">script</a> has a much lower barrier to entry than Java plugin development.
+</p><p>Also you may want to have a look at <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">Introduction_into_Macro_Programming</a> as an easy way to automate repetitive tasks with existing tools and plugins.
+</p>
+<h2><span class="mw-headline" id="Finding_information">Finding information</span></h2>
+<ul><li> The top-level source of information is <a href="http://imagej.net/Welcome" title="Welcome">the ImageJ wiki</a>.</li>
+<li> The <a href="http://imagej.net/Development" title="Development">Development</a> page is the best portal for aspiring ImageJ developers.</li>
+<li> <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> is available at: <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej/">imagej/imagej</a></li>
+<li> <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a> is available at: <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/">fiji/fiji</a></li>
+<li> For additional help, use the <a href="http://imagej.net/ImageJ_Forum" class="mw-redirect" title="ImageJ Forum">ImageJ Forum</a>.</li></ul>
+<p>The search engines will point you to both <a rel="nofollow" class="external free" href="https://imagej.net/">https://imagej.net/</a> and <a rel="nofollow" class="external free" href="http://developer.imagej.net/">http://developer.imagej.net/</a>. Avoid using <a rel="nofollow" class="external free" href="http://developer.imagej.net/">http://developer.imagej.net/</a> for anything these days. It is a legacy site, in the process of being totally phased out. If you are looking for downloads, see the <a href="http://imagej.net/Downloads" title="Downloads">Downloads</a> page.
+</p>
+<h2><span class="mw-headline" id="Configure_your_environment">Configure your environment</span></h2>
+<p>You will need:
+</p>
+<ul><li> Java</li>
+<li> <a href="http://imagej.net/IDE" class="mw-redirect" title="IDE">IDE</a> (for example: <a href="http://imagej.net/Eclipse" class="mw-redirect" title="Eclipse">Eclipse</a>, <a href="http://imagej.net/NetBeans" class="mw-redirect" title="NetBeans">NetBeans</a> or <a href="http://imagej.net/IntelliJ_IDEA" class="mw-redirect" title="IntelliJ IDEA">IntelliJ_IDEA</a>)  is highly recommended</li>
+<li> <a href="http://imagej.net/Git" title="Git">Git</a></li>
+<li> <a href="http://imagej.net/Maven" title="Maven">Apache Maven</a></li>
+<li> <a href="http://imagej.net/Source_code" title="Source code">ImageJ2 source code</a> is an optional help</li></ul>
+<p>Environments used for testing this guide:
+</p>
+<ul><li> Debian Jessie | macOS 10.14.x</li>
+<li> OpenJDK 1.8.x</li>
+<li> NetBeans IDE version 8.0.2 | IntelliJ IDEA 2019.2.2 (Community Edition)</li>
+<li> Git 2.x</li>
+<li> Apache Maven 3.x</li></ul>
+<p><a href="http://imagej.net/Git" title="Git">Git</a> is a source-code-management system with revision control.
+</p><p><a href="http://imagej.net/Maven" title="Maven">Maven</a> is a build automation tool used primarily for Java projects.
+</p><p>Both Git and Maven have build in support in current versions of the IDEs mentioned above.
+</p><p>Earlier versions of the ImageJ wiki <a href="http://imagej.net/Project_management" title="Project management">mentioned another software tool</a>, called <a href="http://imagej.net/Jenkins" title="Jenkins">Jenkins</a>, which is according to Wikipedia "an open source continuous integration tool written in Java". This tool was later replaced by a similar working service called <a href="http://imagej.net/Travis_CI" class="mw-redirect" title="Travis CI">Travis CI</a>. Tools like Maven and Travis CI make it more complicated for casual developers to understand the workflow of ImageJ Plugin development at the beginning. However, these tools are well maintained by the community so that you will not have to think about them too much initially and they facilitate the programming process.    
+For example, concerning "Travis CI" it is enough to know that "Continuous Integration" means merging all developer working copies to a shared mainline several times a day. Here the work of multiple developers is compiled and tested on a single machine to ensure that the combined code produces a working project at any time. For the development of a single plugin for our personal use we can ignore "Travis CI" for the moment. It will be important if you want to share your plugin in the ImageJ updater or even contribute to the ImageJ project.
+</p><p>All <a href="http://imagej.net/Source_code" title="Source code">source code</a> is on <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>. As ImageJ nowadays is a rather complex project its development is split into several <a href="http://imagej.net/Architecture" title="Architecture">ImageJ subprojects</a>. For a beginner it is hard to understand the interaction of the different available projects which all contribute under the label "<a href="http://imagej.net/SciJava" title="SciJava">SciJava</a>" to ImageJ2. The nice thing is, that Maven will help to pull in the necessary code from all ImageJ subprojects automatically with the help of configurations files which are supplied by the ImageJ2 developer community. The ImageJ wiki provides a very first overview of the <a href="http://imagej.net/Architecture" title="Architecture">SciJava ecosystem</a> of ImageJ2.
+</p><p>To make Maven work we need so called <code>pom.xml</code> files. These configuration file contains information about the project and various configuration details used by Maven to build the project(s).   
+The <code>pom.xml</code> files help to organize everything needed to build ImageJ. You can use any Maven-based project you want with that approach, not just ImageJ. So e.g. you can import <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/">fiji/fiji</a> that way, or an individual plugin such as <a rel="nofollow" class="external text" href="https://github.com/fiji/AnalyzeSkeleton/">fiji/AnalyzeSkeleton</a>.
+</p><p>In general, there are two alternative strategies to develop your plugin:
+</p>
+<ul><li> Use your IDE without Maven</li>
+<li> Use your IDE with Maven</li></ul>
+<h2><span class="mw-headline" id="Using_NetBeans_without_Maven">Using NetBeans without Maven</span></h2>
+<p>When you build your own plugins with an IDE, the ImageJ project will link in all plugins as precompiled JAR dependencies (JAR files are archives for java projects).
+</p><p>Download the current JAR files, e.g. <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/ImageJ/lastSuccessfulBuild/artifact/target/">imagej-2.0.0-SNAPSHOT-all.jar</a>, which you intend to use as library in your local project.
+</p><p>You could also use the JAR file to compile your own plugins, which are distributed in the <code>Fiji.app/plugins</code> directory.
+</p><p>If you download Fiji via <a href="http://imagej.net/Fiji/Downloads" title="Fiji/Downloads">Fiji/Downloads</a> then take care to select the right version of Fiji. The most prominent download option on top of the page is compiled with JDK 1.8, while you can download so-called "life-line" versions at the bottom of the page which are compiled with JDK 1.6 to ensure compatibility with older plugins not supported by the ImageJ2 Team. For details <a href="http://imagej.net/2015-12-22_-_The_road_to_Java_8" title="2015-12-22 - The road to Java 8">look here</a>.
+</p><p>In any case you need to open a new project, assign the project name, its directory location and add the JAR files as libraries.
+</p>
+<ul><li> <span><em><span style="border-bottom:1px dotted #ccc;">File</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">New Project</span></em></span>: Java Application (Project Name, Project Location)</li>
+<li> Right click on the Project in the tree view <span><em><span style="border-bottom:1px dotted #ccc;">window</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Properties</span></em></span></li>
+<li> <span><em><span style="border-bottom:1px dotted #ccc;">Libraries</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Add JAR/Folder</span></em></span>: point to the JAR files you downloaded for ImageJ/Fiji.</li></ul>
+<p>A somewhat outdated but rather detailed description how to work with an older version of NetBeans (version 6.7) including bit of customization of the <code>build.xml</code> file can be found <a rel="nofollow" class="external text" href="http://www.dent.med.uni-muenchen.de/~kkunzelm/htdocs/6_software-netbeans.html">here</a>.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Please consider:
+Using JAR works for local development, but it will cause you various problems later. For example, if you share your source code, you will need to commit this JAR along with your NetBeans project files to your repository, to ensure everyone else uses the same version of ImageJ that you do. </td>
+
+
+</tr>
+</table></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Build_ImageJ_with_NetBeans.2C_Git_and_Maven">Build ImageJ with NetBeans, Git and Maven</span></h2>
+<p>Using Maven to develop your plugins is a much better approach. You will not have to commit any JAR files to source control. You can pin your code to fixed, known versions of its dependencies that will provide <a href="http://imagej.net/Reproducible_builds" class="mw-redirect" title="Reproducible builds">reproducible builds</a> for many years to come.
+</p><p>Getting the ImageJ sources in NetBeans should be as simple as importing the source from the Git repository.
+</p><p>The following was adapted from the <a href="http://imagej.net/Developing_ImageJ_in_NetBeans" title="Developing ImageJ in NetBeans">Developing ImageJ in NetBeans</a> page.
+</p><p>Import and build the project:
+</p>
+<ul><li> Run NetBeans</li>
+<li> Choose <span><em><span style="border-bottom:1px dotted #ccc;">Team</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Git</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Clone...</span></em></span> from the NetBeans menu</li>
+<li> For the Repository URL, enter: <code><a rel="nofollow" class="external free" href="https://github.com/fiji/fiji">https://github.com/fiji/fiji</a></code> or alternatively enter <code><a rel="nofollow" class="external free" href="https://github.com/imagej/imagej">https://github.com/imagej/imagej</a></code></li>
+<li> Click Next, check the <code>master*</code> branch, then Next again, then Finish</li>
+<li> When prompted, click Open Project... in case of Error Messages click on "Resolve".</li></ul>
+<p>Launch the program:
+</p>
+<ul><li> Expand the "ImageJ Projects" project, then "Modules"</li>
+<li> Expand the "ImageJ POM: User Interface" module</li>
+<li> Double-click the "ImageJ Application" project to open it</li>
+<li> Right-click the "ImageJ Application" project and choose "Run"</li>
+<li> On the Main Class dialog, choose "net.imagej.Main"</li>
+<li> To expand the projects you can also right click on the top-level "ImageJ Projects" and choose "Open Required Projects" (and "Close Required Projects" to close). During development you must select "Open Required Projects" before you can successfully do "Find Usages" in the "Open Projects" scope.</li></ul>
+<p>Do not expect to find the ImageJ sources after cloning <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej/">imagej/imagej</a> or <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/">fiji/fiji</a>.
+</p><p>If you want to look at the source code to study how to program image analysis algorithms then you will need to clone other GitHub projects.
+</p><p>The repository <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej1/">imagej/imagej1</a>, for example, contains the source code of <a href="http://imagej.net/ImageJ_1.x" class="mw-redirect" title="ImageJ 1.x">ImageJ 1.x</a>, but it does not use Maven. The <a href="http://imagej.net/ImageJA" title="ImageJA">ImageJA</a> project at <a rel="nofollow" class="external text" href="https://github.com/imagej/ImageJA/">imagej/ImageJA</a> is a Mavenized version of ImageJ 1.x with a clean Git history. For curious people like me: the "A" in ImageJA was originally used for "Applet" and to differentiate the project from ImageJ itself.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Side note: I am not expert NetBeans user, therefore I could not figure out another way:
+To import several projects from GitHub I always had to close all open project in NetBeans before I could import another project. If somebody knows a better way, please add here. </td>
+
+
+</tr>
+</table></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Build_the_ImageJ_Tutorial_Plugin_with_IntelliJ_IDEA.2C_Git_and_Maven">Build the ImageJ Tutorial Plugin with IntelliJ IDEA, Git and Maven</span></h2>
+<p><b>Setup IntelliJ</b>
+</p>
+<ul><li> Make sure you have a version of Java SDK 1.8.x installed</li>
+<li> Make sure to activate Maven and Git Plugins when installing IntelliJ</li>
+<li> However these plugins can be activated in the main settings at any time</li></ul>
+<p><b>Import and build the project:</b>
+</p>
+<ul><li> Run IntelliJ IDEA</li>
+<li> Choose <span><em><span style="border-bottom:1px dotted #ccc;">File</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">New</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Project from Version Control</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Git</span></em></span> from the main menu</li></ul>
+<p><i>ImageJ 1.x Plugin</i> 
+</p>
+<ul><li> For the Repository URL, enter: <code><a rel="nofollow" class="external free" href="https://github.com/imagej/example-legacy-plugin.git">https://github.com/imagej/example-legacy-plugin.git</a></code> and choose a local folder you want the project to be stored in</li></ul>
+<p><i>ImageJ2 Plugin</i>   
+</p>
+<ul><li> For the Repository URL, enter: <code><a rel="nofollow" class="external free" href="https://github.com/imagej/tutorials.git">https://github.com/imagej/tutorials.git</a></code> and choose a local folder you want the project to be stored in</li></ul>
+<p><b>Import</b>
+</p>
+<ul><li> Click Clone and all sources will be downloaded and opened as a new Project</li>
+<li> If IntelliJ asks to import all Maven changes you have to allow this</li>
+<li> Expand the Maven window which can be found on one of the edges in the IntelliJ window and select your project </li>
+<li> Here you can right-click and "Run Maven Build" or alternatively press the green arrow above it in the Maven window to build your project</li>
+<li> The build process will generate two <code>.jar</code> file under <i>[project_name]/targets/</i> that can be installed in your local ImageJ installation</li></ul>
+<h1><span class="mw-headline" id="Details_of_Writing_Plugins">Details of Writing Plugins</span></h1>
+<h2><span class="mw-headline" id="Tutorials">Tutorials</span></h2>
+<ul><li> For ImageJ 1.x: <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">Introduction into Developing Plugins</a> and <a rel="nofollow" class="external text" href="https://github.com/imagej/example-legacy-plugin">Example Legacy Plugin</a></li>
+<li> For ImageJ2: <a href="http://imagej.net/Writing_plugins" title="Writing plugins">Writing plugins</a> (Note: The instruction "Update your parent POM" in <a href="http://imagej.net/Writing_plugins#Update_your_POM" title="Writing plugins">Writing plugins#Update_your_POM</a> just means that the version number should be adjusted to reflect the latest available version of the parent POM file on GitHub.)</li>
+<li> <a href="http://imagej.net/ImgLib2_Examples" title="ImgLib2 Examples">ImgLib2 Examples</a></li>
+<li> <a href="http://imagej.net/Developing_ImgLib2" title="Developing ImgLib2">Developing ImgLib2</a></li>
+<li> <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a></li></ul>
+<h2><span class="mw-headline" id="Getting_Started">Getting Started</span></h2>
+<p>Start from an existing plugin as a template:
+</p>
+<ul><li> For ImageJ 1.x plugins: <a rel="nofollow" class="external text" href="https://github.com/imagej/minimal-ij1-plugin/">imagej/minimal-ij1-plugin</a></li>
+<li> For ImageJ2 plugins: <a rel="nofollow" class="external text" href="https://github.com/imagej/tutorials/blob/master/maven-projects/simple-commands">simple-commands in imagej/tutorials</a></li></ul>
+<p>Import it as a sample project into your IDE and modify this project according to your needs:
+</p>
+<ul><li> NetBeans: <span><em><span style="border-bottom:1px dotted #ccc;">File</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Open Project</span></em></span></li></ul>
+<p>The following lines are copied/cited from the <code>README.md</code> file of the <code>minimal-ij1-plugin</code>:
+</p>
+<ul><li> Edit the <code>pom.xml</code> file and change
+<ul><li> the <code>artifactId</code>
+<ul><li> Note: for ImageJ 1.x plugins the <code>artifactId</code> should contain a <code>_</code> character. If you write an ImageJ2 command (like the ones linked above in <code>simple-commands</code> tutorial) then the underscore is unnecessary.</li></ul></li>
+<li> the <code>groupId</code>
+<ul><li> You should put a <code>groupId</code>. It is misleading to leave it off, because then <code>net.imagej</code> (or <code>sc.fiji</code> if you used <code>pom-fiji</code> as parent) will be inherited. And your project is probably not a core ImageJ project.</li></ul></li>
+<li> the <code>version</code> (note that you typically want to use a version number ending in <code>-SNAPSHOT</code> to mark it as a work in progress rather than a final version)</li>
+<li> the <code>dependencies</code> (read how to specify the correct <code>groupId</code>/<code>artifactId</code>/<code>version</code> triplet here)</li>
+<li> the <code>developer</code> information</li>
+<li> the <code>scm</code> information</li></ul></li>
+<li> Remove the <code>Process_Pixels.java</code> file and add your own <code>.java</code> files to <code>src/main/java/&lt;package&gt;/</code> (if you need supporting files&#8212;like icons&#8212;in the resulting <code>.jar</code> file, put them into <code>src/main/resources/</code>)</li>
+<li> Edit <code>src/main/resources/plugins.config</code>
+<ul><li> This is only needed for ImageJ 1.x plugins. For ImageJ2 commands, the information is provided by the <code>@Plugin</code> annotation at the top of the Java class.</li></ul></li>
+<li> Replace the contents of <code>README.md</code> with information about your project.</li></ul>
+<h2><span class="mw-headline" id="Additional_sample_plugins">Additional sample plugins</span></h2>
+<p><a rel="nofollow" class="external text" href="https://github.com/imagej/tutorials/">imagej/tutorials</a>
+</p><p>The imagej/tutorials are structured as individual projects. The files can live in a directory on its own outside the ImageJ or Fiji project. The <code>pom.xml</code> files of the <code>imagej/tutorials</code> pull in all the necessary dependencies for compiling via Maven.
+</p>
+<h2><span class="mw-headline" id=".22One_file_to_bind_them_all.22:_parent_pom.xml_files">"One file to bind them all": parent <code>pom.xml</code> files</span></h2>
+<p>As the projects get more complex, read about the <a href="http://imagej.net/Architecture#Maven_component_structure" title="Architecture">Maven component structure of ImageJ/SciJava</a> and something which is called "<a href="http://imagej.net/Bill_of_Materials" class="mw-redirect" title="Bill of Materials">Bill of Materials</a>" or just BOM. A "BOM" is a list of dependencies at particular versions which are believed to be mutually compatible. The complexity of ImageJ/SciJava's dependencies is a tribute to the different organizations which are contributing with their independent projects to ImageJ/SciJava. There are several "parent" pom.xml files which are independently maintained for example by the ImageJ, <a href="http://imagej.net/ImgLib2" title="ImgLib2">ImgLib2</a> or <a href="http://imagej.net/SCIFIO" title="SCIFIO">SCIFIO</a> organizations. Each of these organizations has developed source code components which depend on components within the other two organizations. This complicated network of dependencies is managed with the help of the parent <code>pom.xml</code> files, i.e. <code>pom-imagej</code>, <code>pom-fiji</code>, <code>pom-imglib2</code> etc. (see a list of all on the <a href="http://imagej.net/Architecture#Maven_component_structure" title="Architecture">ImageJ Architecture page</a>).
+</p><p>Initially I could not figure out where to put one of these <code>pom-xxx</code> files to use it as parent POM. I erroneously thought it should be downloaded from GitHub and copied somewhere in my ImageJ projects folders. However, one does not have to take care of the parent POM file at all! You just have to refer to it in the local <code>pom.xml</code> file of your intended plugin project in the section <code>&lt;parent&gt;</code>.
+</p>
+<pre class="brush:xml">
+&lt;parent&gt;
+  &lt;groupId&gt;net.imagej&lt;/groupId&gt;
+  &lt;artifactId&gt;pom-imagej&lt;/artifactId&gt;
+  &lt;version&gt;15.1.0&lt;/version&gt;
+  &lt;relativePath /&gt;
+&lt;/parent&gt;
+</pre>
+<p>If <code>pom-imagej</code> is the parent POM file, then the local <code>pom.xml</code> could override the following configuration sections:
+</p>
+<pre class="brush:xml">
+&lt;name&gt;
+&lt;description&gt;
+&lt;url&gt;
+&lt;inceptionYear&gt;
+&lt;organization&gt;
+&lt;licenses&gt;
+&lt;developers&gt;
+&lt;contributors&gt;
+&lt;scm&gt;
+&lt;issueManagement&gt;
+&lt;ciManagement&gt;
+</pre>
+<p>In the local <code>pom.xml</code> at least the sections:
+</p>
+<pre class="brush:xml">
+&lt;groupId&gt;
+&lt;artifactId&gt;
+&lt;version&gt;
+</pre>
+<p>should be changed. Optionally also:
+</p>
+<pre class="brush:xml">
+&lt;name&gt;
+&lt;description&gt;
+&lt;url&gt;
+</pre>
+<p>Finally add at least one of the following dependencies for ImageJ plugin support:   
+</p>
+<pre class="brush:xml">
+&lt;dependencies&gt;
+	// support for ImageJ2 plugins
+	&lt;dependency&gt;
+	    &lt;groupId&gt;net.imagej&lt;/groupId&gt;
+	    &lt;artifactId&gt;imagej&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+	// support for ImageJ 1.x plugins
+	&lt;dependency&gt;
+	    &lt;groupId&gt;net.imagej&lt;/groupId&gt;
+	    &lt;artifactId&gt;ij&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;
+</pre>
+<h2><span class="mw-headline" id="Further_readings">Further readings</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="https://github.com/imagej/minimal-ij1-plugin/blob/master/README.md">README.md</a> of the <a rel="nofollow" class="external text" href="https://github.com/imagej/minimal-ij1-plugin">Minimal Maven based ImageJ 1.x plugin</a></li>
+<li> Learn more about <a href="http://imagej.net/Maven#How_to_find_a_dependency.27s_groupId.2FartifactId.2Fversion_.28GAV.29.3F" title="Maven">ImageJ/SciJava dependencies</a></li>
+<li> <a href="http://imagej.net/Maven_-_Frequently_Asked_Questions" title="Maven - Frequently Asked Questions">ImageJ Maven FAQ</a></li></ul>
+<h1><span class="mw-headline" id="Other_References">Other References</span></h1>
+<ul><li> <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/java3d-issue-bonej-with-latest-fiji-version-problem-solved/1151">ImageJ Forum Thread 1151</a></li>
+<li> <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/guide-to-make-a-plugin-as-official-fiji-plugin/1290">ImageJ Forum Thread 1290</a></li>
+<li> <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/ij1-or-ij2-style-for-plugin-development/1364">ImageJ Forum Thread 1364</a></li></ul>
+<ul><li> Git tutorial: <a rel="nofollow" class="external text" href="https://try.github.io/levels/1/challenges/1">Git in 15 min</a></li>
+<li> Web interface for git: <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a></li></ul>
+<p>and all other links cited in the text!
+</p>
+<h1><span class="mw-headline" id="Appendix">Appendix</span></h1>
+<h2><span class="mw-headline" id="How_do_I_find_dependencies.3F">How do I find dependencies?</span></h2>
+<p>You can search by class for Maven artifacts. For example, <a rel="nofollow" class="external text" href="http://maven.imagej.net/#nexus-search;classname~ij.plugin.PlugIn">search for <code>ij.plugin.PlugIn</code></a>. There is also a "Find Jar For Class" helper script in Fiji which does a similar thing for JAR files currently on ImageJ's classpath.
+</p><p>If you are comfortable with command-line tools, you can also use the <a rel="nofollow" class="external text" href="https://maven.apache.org/plugins/maven-dependency-plugin/">Maven Dependency Plugin</a> which enables you to do things like download local copies of the dependency jars for inspection.
+</p><p>Also <a rel="nofollow" class="external text" href="https://mvnrepository.com">mvnrepository.com</a> is a good resource to find repositories with code you can easily copy and paste in your <code>pom.xml</code>.
+</p>
+<h2><span class="mw-headline" id="Manage_Java_versions">Manage Java versions</span></h2>
+<p>On Linux several java version can be installed. Select the preferred version in a terminal window (e.g. bash):
+</p>
+<pre class="brush:bash">
+update-alternatives --config java
+</pre>
+<p>Note: It might be necessary to use <code>sudo</code>.
+</p><p>If necessary, tell NetBeans to use JDK 1.8 as the default JRE for new projects (i. e. on Debian Linux: <span><em><span style="border-bottom:1px dotted #ccc;">Project Properties</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Build</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Compile...</span></em></span> <code>/usr/lib/jvm/java-1.8.0-openjdk-amd64</code>) or alternatively set the <code>netbeans_jdkhome</code> property in your NetBeans config file. It should be in the local NetBeans directory, for example <code>./netbeans-8.0/netbeans.conf</code>.
+</p>
+<h2><span class="mw-headline" id="Where_can_I_find_example_plugins.3F">Where can I find example plugins?</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="https://github.com/imagej/tutorials/">ImageJ Tutorials</a>
+<ul><li> In NetBeans: <span><em><span style="border-bottom:1px dotted #ccc;">Team</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Git</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Clone</span></em></span></li>
+<li> Repository URL: <a rel="nofollow" class="external free" href="https://github.com/imagej/tutorials">https://github.com/imagej/tutorials</a></li>
+<li> Edit "destination" directory</li>
+<li> Next</li>
+<li> Select <code>master*</code></li>
+<li> Next</li>
+<li> Finish</li></ul></li></ul>
+<h2><span class="mw-headline" id="What_is_the_directory_structure_for_a_plugin.3F">What is the directory structure for a plugin?</span></h2>
+<p>This text was adapted from the <a href="http://imagej.net/Maven" title="Maven">Maven</a> page.
+</p><p>The directory structure of a very simple demo project looks like:
+</p>
+<pre>
+DemoPlugin
+|-- pom.xml
+|-- src
+|  &#160;!-- main
+|       |-- java
+|       |  &#160;!-- MyPlugin.java
+|      &#160;!-- resources
+|          &#160;!-- lena.tif
+</pre>
+<p>After compiling your java files, Maven automatically generates the content of the <code>target</code> folder. Therefore: never commit any files from <code>target</code> to Git! You can tell Git to ignore these files by using a <a rel="nofollow" class="external text" href="https://help.github.com/articles/ignoring-files/">.gitignore</a> file (usually you start by copying <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej/blob/95722503b4d2243b2818f8a7b5c2cdf863c5da69/.gitignore">an existing one</a> from another project) 
+</p>
+<pre>
+!-- target
+    |-- classes
+    |   |-- lena.tif
+    |   |-- META-INF
+    |   |  &#160;!-- json
+    |   |      &#160;!-- org.scijava.plugin.Plugin
+    |  &#160;!-- MyPlugin.class
+    |-- generated-sources
+    |  &#160;!-- annotations
+    |-- maven-status
+    |  &#160;!-- maven-compiler-plugin
+    |      &#160;!-- compile
+    |          &#160;!-- default-compile
+    |               |-- createdFiles.lst
+    |              &#160;!-- inputFiles.lst
+   &#160;!-- test-classes
+</pre>
+<p>In general:
+</p><p>Put your <code>.java</code> files under <code>src/main/java/</code> and the other files you need to be included into <code>src/main/resources/</code>.
+</p><p>Should you want to apply the best practices called "regression tests" or even "test-driven development" put your tests' <code>.java</code> files to <code>src/test/java/</code> and the non-<code>.java</code> files you might require go into <code>src/test/resources/</code>.
+</p><p>More information about Maven's standard directory layout can be found on the <a rel="nofollow" class="external text" href="https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven website</a>.
+</p>
+<h2><span class="mw-headline" id="What_does_a_minimal_pom.xml_look_like.3F">What does a minimal <code>pom.xml</code> look like?</span></h2>
+<p>This text was adapted from the <a href="http://imagej.net/Maven" title="Maven">Maven</a> page.
+</p><p>This is a very simple example:
+</p>
+<pre class="brush:xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+  http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;org.mywebsite&lt;/groupId&gt;
+  &lt;artifactId&gt;my-uber-library&lt;/artifactId&gt;
+  &lt;version&gt;2.0.0-SNAPSHOT&lt;/version&gt;
+&lt;/project&gt;
+</pre>
+<p>The first 6 lines are of course just a way to say "Hi, Maven? How are you today? This is what I would like you to do...".
+</p><p>The only relevant parts are the <code>groupId</code>, which by convention is something like the inverted domain name (similar to the Java package convention), the name of the artifact to build (it will be put into <code>target/</code>, under the name <code>&lt;artifactId&gt;-&lt;version&gt;.jar</code>). And of course the version.
+</p><p>While the example <code>pom.xml</code> above shows the general idea, for ImageJ more details have to be considered. Therefore it is better to start with an existing <code>pom.xml</code> file, for example the one from <a rel="nofollow" class="external text" href="https://github.com/imagej/minimal-ij1-plugin/">imagej/minimal-ij1-plugin</a>. Copy it to your project and modify it as needed.
+</p>
+<h2><span class="mw-headline" id="Are_the_underscores_still_needed_for_plugins_to_be_visible_in_IJ_or_Fiji.3F">Are the underscores still needed for plugins to be visible in IJ or Fiji?</span></h2>
+<p>From <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/mavenization-and-debugging-in-eclipse/1020">ImageJ Forum Thread 1020</a>:
+</p><p>Underscores are needed if your plugin is an ImageJ 1.x style plugin. I.e.: does it implement <code>ij.plugin.PlugIn</code> or <code>ij.plugin.filter.PlugInFilter?</code> Then put an underscore in your JAR file and/or in your class name.
+</p><p>If you write an ImageJ2 command plugin (i.e.: implement the <code>org.scijava.command.Command</code> interface, with an <code>@Plugin</code> annotation) then the underscore is no longer necessary.
+</p>
+<h2><span class="mw-headline" id="Make_the_plugins_appear_in_the_menus">Make the plugins appear in the menus</span></h2>
+<p>Example, which sets the <code>plugins.dir</code> property so that the plugin appears in the menus when launched from an IDE:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="https://github.com/imagej/minimal-ij1-plugin/blob/master/src/main/java/Process_Pixels.java#L176-L180">Process_Pixels.java</a></li></ul>
+<p>Setting <code>plugins.dir</code> is only necessary for ImageJ 1.x style plugins. If you write an ImageJ2 command, it should appear in the menus regardless.
+</p>
+<h2><span class="mw-headline" id="NetBeans:_what_is_the_difference_between_Ant_and_Maven.3F_Or:_build.xml_vs._pom.xml">NetBeans: what is the difference between Ant and Maven? Or: <code>build.xml</code> vs. <code>pom.xml</code></span></h2>
+<p>From <a rel="nofollow" class="external text" href="http://stackoverflow.com/a/15122181">StackOverflow #15121928</a>:
+</p>
+<blockquote>
+<p>Ant is a build tool primarily, this means it knows how to compile and package source code and run tests, but has no ability to manage project dependencies. Ant uses build.xml files to define where to find the source code and which steps to take to build your project.
+</p><p>Maven is more than just a build tool, it is a project management tool. It allows you to define dependencies in the <code>pom.xml</code> proect definition, as well build, test and distribute the application. It also allows sub projects, parent projects and there exist many plugins for many other features. Maven will automatically download the dependencies and manages these dependencies between projects.
+</p>
+</blockquote>
+<p>Maven is declarative, whereas Ant is procedural. In Ant, you say "do X, then do Y, then do Z." Whereas in Maven, you say "my code is here, my resources are there, and please use these plugins." One advantage of the latter is that Maven provides a standardized build sequence (called the "build lifecycle") making it compatible with all the major IDEs.
+</p>
+<h2><span class="mw-headline" id="How_to_migrate_an_existing_project_to_a_Maven_project.3F">How to migrate an existing project to a Maven project?</span></h2>
+<p><b>In Netbeans</b>       
+</p><p>Adapted from <a rel="nofollow" class="external text" href="http://stackoverflow.com/q/7548008">StackOverflow #7548008</a>:
+</p>
+<ul><li> Backup your project.</li>
+<li> Create a new project with name <code>NewMavenProject</code>.</li>
+<li> Close your original project.</li>
+<li> Copy the <code>pom.xml</code> from <a rel="nofollow" class="external text" href="https://github.com/imagej/minimal-ij1-plugin/">imagej/minimal-ij1-plugin</a> or other appropriate template.</li>
+<li> Modify the <code>pom.xml</code>'s project specific settings (e.g. project name, dependencies).</li>
+<li> Delete the <code>build.xml</code> and the whole <code>nbproject</code> folder.</li>
+<li> Move and rename the folder to <code>src/main/newproject</code> (<code>newproject</code> is the new name).</li>
+<li> Move <code>src/java</code> to <code>src/main/java</code>.</li>
+<li> Open your project again in NetBeans. It should be a Maven project now.</li>
+<li> Delete the unnecessary <code>NewMavenProject</code> project.</li></ul>
+<p><br />
+<b>In IntelliJ IDEA</b>    
+</p>
+<ul><li> Create a new Maven Project with <span><em><span style="border-bottom:1px dotted #ccc;">File</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">New Project</span></em></span></li>
+<li> Select Maven on the left and click <i>Next</i></li>
+<li> Choose your custom GroupID (eg. com.yourwebsite) and an ArtifactID as single identifier for this project (eg. project_name) </li>
+<li> Note that for ImageJ 1.x Plugins a "_" in the project name/ identifier is required for ImageJ 1.x Plugins</li>
+<li> The project structure required by Maven will be created for you</li>
+<li> For Git support (recommended): <span><em><span style="border-bottom:1px dotted #ccc;">VCS</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Import into Version Control</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Git</span></em></span></li>
+<li> Copy all <code>.java</code> files into <i>[project_name]/src/main/java</i></li>
+<li> Copy your <code>plugins.config</code> file into <i>[project_name]/src/main/resources</i></li>
+<li> In the main project directory <i>[project_name]/</i> you can find a <code>pom.xml</code> which has to be edited like the example shown in the previous chapter</li>
+<li> If your IDE asks to import all Maven changes you have to allow this</li>
+<li> Expand the Maven window which can be found on one of the edges in the IntelliJ window and select your project </li>
+<li> Here you can right-click and <i>Run Maven Build</i> or alternatively press the green arrow above it in the Maven window to build your project</li>
+<li> The build process will generate two <code>.jar</code> file under <i>[project_name]/targets/</i></li></ul>
+<h2><span class="mw-headline" id="Enable_the_ImageJ_1.x_UI.2C_instead_of_the_ImageJ2_Swing_UI">Enable the ImageJ 1.x UI, instead of the ImageJ2 Swing UI</span></h2>
+<p>From <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/ij1-or-ij2-style-for-plugin-development/1364/3">ImageJ Forum Thread 1364</a>:
+</p><p>Add the following dependency to your POM:
+</p>
+<pre class="brush:xml">
+&lt;dependency&gt;
+  &lt;groupId&gt;net.imagej&lt;/groupId&gt;
+  &lt;artifactId&gt;imagej-legacy&lt;/artifactId&gt;
+  &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+</pre>
+<p>That will enable the ImageJ 1.x UI, instead of the ImageJ2 Swing UI which is otherwise the default.
+</p>
+<h2><span class="mw-headline" id="What_is_it_all_about_with_this_Java_6_and_Java_8_stuff.3F">What is it all about with this Java 6 and Java 8 stuff?</span></h2>
+<p>From <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/java3d-issue-bonej-with-latest-fiji-version-problem-solved/1151/6">ImageJ Forum Thread 1151</a>:
+</p><p>The current situation with respect to Java 6 vs. Java 8, as well as the ramifications there regarding Java 3D, is basically:
+</p>
+<ul><li> If you download "vanilla" <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> (author's note: in the context of software "vanilla" means software used as originally distributed without any customizations or updates applied to them) from the <a href="http://imagej.net/Downloads" title="Downloads">Downloads</a> page, you get a "Java 8" version from February 2016.</li>
+<li> If you <a href="http://imagej.net/Fiji/Downloads" title="Fiji/Downloads">download the latest Fiji</a> you get the newest "Java 8" version&#8212;i.e., with Java-8 update site. This includes the Java 3D 1.6 (SciJava fork) along with all Fiji plugins (except for <a href="http://imagej.net/TrakEM2" title="TrakEM2">TrakEM2</a>) updated to work with it.</li>
+<li> If you <a href="http://imagej.net/Fiji/Downloads#Life-Line_Fiji_versions" title="Fiji/Downloads">download a Life-Line version of Fiji</a> and fully update it, you'll have the newest (probably the final) "Java 6" version including the latest Java-6-compatible plugin versions. No Java 3D until you run the <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D Viewer</a> for the first time and it gets auto-installed. Those plugin versions are frozen: the ImageJ/Fiji developers are in the process of migrating everything to Java 8, and are only uploading new versions of everything to the Java-8 update site now, to avoid breaking the stable Java-6 versions of everything.</li></ul>
+<p>Ultimately, the ImageJ/Fiji developers will push all the Java-8 stuff back to the core ImageJ and Fiji sites. But not until the ImageJ/Fiji developers add a launch check that verifies your version of Java is new enough—and if not, tells you how to upgrade it. Ihe ImageJ/Fiji developers will definitely archive the final Java-6-compatible versions of ImageJ and Fiji when they complete that transition.
+</p><p>Note: You can check the Java version as <a href="http://imagej.net/Troubleshooting#Checking_the_Java_version" title="Troubleshooting">described here</a>.
+</p><p>More information can be read here: <a href="http://imagej.net/2015-12-22_-_The_road_to_Java_8" title="2015-12-22 - The road to Java 8">2015-12-22 - The road to Java 8</a>
+</p>
+<h2><span class="mw-headline" id="Make_a_redistributable_package_from_a_locally_customized_Fiji">Make a redistributable package from a locally customized Fiji</span></h2>
+<p>Turn your local customized Fiji into a redistributable package that can then be installed on other machines e.g. in your lab: use the <a href="http://imagej.net/Make_Fiji_Package" title="Make Fiji Package">Make Fiji Package</a> command.
+</p>
+<h2><span class="mw-headline" id="Tests_wit_JUnit5">Tests wit JUnit5</span></h2>
+<p>In IntelliJ IDEA you may want to make sure that the JUnit5 Plugin is activated. The next step would be to append the following lines to your <code>pom.xml</code> file:
+</p>
+<pre class="brush:xml">
+&lt;dependency&gt; 
+&lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+    &lt;artifactId&gt;junit-jupiter-engine&lt;/artifactId&gt;
+    &lt;version&gt;5.5.1&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.junit.platform&lt;/groupId&gt;
+    &lt;artifactId&gt;junit-platform-runner&lt;/artifactId&gt;
+    &lt;version&gt;1.5.1&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;!-- fix maven tests --&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+            &lt;version&gt;3.0.0-M3&lt;/version&gt;
+            &lt;configuration&gt;
+                &lt;excludes&gt;
+                    &lt;exclude&gt;some test to exclude here&lt;/exclude&gt;
+                &lt;/excludes&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</pre>
+<p><b>Note:</b> if you want to test GUI tests with TravisCI you have to activate a virtual display as described in the Travis CI chapter.
+</p>
+<h2><span class="mw-headline" id="Continuous_Integration_with_Travis_CI">Continuous Integration with Travis CI</span></h2>
+<p>If you want to share your plugin in the ImageJ updater automatically <a href="http://imagej.net/Automatic_Update_Site_Uploads" title="Automatic Update Site Uploads">Automatic Update Site Uploads</a>, contribute to the ImageJ project <a href="http://imagej.net/Fiji/Contribution_requirements" title="Fiji/Contribution requirements">Fiji/Contribution requirements</a> or work in a team with multiple developers, you may want to build, test and deploy your Plugin with <a href="http://imagej.net/Travis_CI" class="mw-redirect" title="Travis CI">Travis CI</a>. If you are hosting your code in a public <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a> repository this service is free for you. After signing in with your <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a> account you can activate single repositories for <a href="http://imagej.net/Travis_CI" class="mw-redirect" title="Travis CI">Travis CI</a>. Travis then automatically clones your repository with every change and runs a build according to the <code>.travis.yml</code> configuration file in your root directory.
+</p>
+<pre class="brush:yml">
+	# specify compiler
+	language: java
+	sudo: false # faster builds
+	jdk: openjdk8
+	
+	# maven build
+	install: true
+	script: mvn clean verify
+	
+	# cache maven dir for performance
+	cache:
+	  directories:
+	    - $HOME/.m2
+</pre>
+<p>In case you are working with GUI tests, you may want to activate a virtual display as well:
+</p>
+<pre class="brush:yml">
+	# virtual display variable for gui tests
+		dist: xenial
+		services:
+		  - xvfb
+</pre>
+<h2><span class="mw-headline" id="JavaFX_JAR_not_found">JavaFX JAR not found</span></h2>
+<p>Add this to your pom.xml:
+</p>
+<pre class="brush:xml">
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;!-- Fix JavaFX support --&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;com.zenjava&lt;/groupId&gt;
+                &lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;8.8.3&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;mainClass&gt;your.package.with.Launcher&lt;/mainClass&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+</pre>
+<h2><span class="mw-headline" id="Log4j_warning_in_IntelliJ_IDEA">Log4j warning in IntelliJ IDEA</span></h2>
+<p>Some of the tutorials seem to be missing a configuration file for Log4. IntelliJ will warn you about this as soon as you try to try to build the project:
+</p>
+<pre class="brush:plain">
+log4j:WARN No appenders could be found for logger (org.bushe.swing.event.EventService).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+</pre>
+<p>The missing config file is called <code>log4j.xml</code> and has to be located in  <code>.../src/main/resources/</code>:
+</p>
+<pre class="brush:xml">
+&lt;!DOCTYPE log4j:configuration SYSTEM "log4j.dtd"&gt;
+&lt;log4j:configuration debug="true" xmlns:log4j='http://jakarta.apache.org/log4j/'&gt;
+
+    &lt;appender name="fileAppender" class="org.apache.log4j.RollingFileAppender"&gt;
+        &lt;param name="File" value="demoApplication.log"/&gt;
+        &lt;layout class="org.apache.log4j.PatternLayout"&gt;
+            &lt;param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss}&#160;%-5p&#160;%c{1}:%L -&#160;%m%n" /&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+
+    &lt;root&gt;
+        &lt;priority value ="debug"&gt;&lt;/priority&gt;
+        &lt;appender-ref ref="fileAppender"&gt;&lt;/appender-ref&gt;
+    &lt;/root&gt;
+
+&lt;/log4j:configuration&gt;
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064404
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.096 seconds
+Real time usage: 0.098 seconds
+Preprocessor visited node count: 1571/1000000
+Preprocessor generated node count: 5699/1000000
+Post‐expand include size: 8895/2097152 bytes
+Template argument size: 2830/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   48.702      1 - -total
+ 33.58%   16.355     10 - Template:Bc
+ 29.24%   14.241      2 - Template:Notice
+ 27.97%   13.620      3 - Template:Ambox
+ 19.94%    9.711     14 - Template:GitHub
+ 18.75%    9.134      1 - Template:Person
+  9.76%    4.754     16 - Template:Arrow
+  5.06%    2.464      1 - Template:Warning
+  3.81%    1.856      1 - Template:TOC
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective&amp;oldid=41193">http://imagej.net/index.php?title=2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective&amp;oldid=41193</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:53.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:News" title="Category:News">News</a></li><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=2016-04-19+-+Writing+ImageJ2+Plugins%3A+A+Beginner%27s+Perspective" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=2016-04-19+-+Writing+ImageJ2+Plugins%3A+A+Beginner%27s+Perspective" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective&amp;oldid=41193" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=2016-04-19_-_Writing_ImageJ2_Plugins:_A_Beginner%27s_Perspective&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":297});});</script>
+		</body>
+		</html>
+		

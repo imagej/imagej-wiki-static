@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>ParticleSizer - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"ParticleSizer","wgTitle":"ParticleSizer","wgCurRevisionId":41302,"wgRevisionId":41302,"wgArticleId":3601,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"ParticleSizer","wgRelevantArticleId":3601,"wgRequestId":"2d81f919ce1c0712c681d82b","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The ParticleSizer script was developed to automatically measures the distributions of the characteristic size and shape properties of a nanomaterial. In the scope of implementing the European Commission definition of a nanomaterial, the minimal external dimension of the primary particles of a particulate material is assessed as the minimal feret diameter from electron microscopy images. Other size and shape parameters are measured simultaneously."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="ParticleSizer"/>
+
+	<meta property="og:description" content="The ParticleSizer script was developed to automatically measures the distributions of the characteristic size and shape properties of a nanomaterial. In the scope of implementing the European Commission definition of a nanomaterial, the minimal external dimension of the primary particles of a particulate material is assessed as the minimal feret diameter from electron microscopy images. Other size and shape parameters are measured simultaneously."/>
+
+	<meta property="og:url" content="http://imagej.net/ParticleSizer"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-ParticleSizer rootpage-ParticleSizer skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="ParticleSizer.html#bodyContent">Skip to content</a>, 			<a href="ParticleSizer.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="ParticleSizer.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/ParticleSizer" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:ParticleSizer&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=ParticleSizer&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=ParticleSizer&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>ParticleSizer</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>ParticleSizer (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+<tr>
+<th> Update site
+</th>
+<td> <a href="http://imagej.net/Following_an_update_site" title="Following an update site">Biomedgroup &amp; ParticleSizer</a>
+</td></tr>
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> ParticleSizer_.jar <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-particlesizer/releases/latest">[1</a>]
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> Github <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-particlesizer">[2</a>]
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> v1.0.7 (28. Ocotober 2016)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="ParticleSizer.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="ParticleSizer.html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="ParticleSizer.html#Settings"><span class="tocnumber">3</span> <span class="toctext">Settings</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="ParticleSizer.html#How_to_find_optimal_settings"><span class="tocnumber">3.1</span> <span class="toctext">How to find optimal settings</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="ParticleSizer.html#Use_the_ParticleSizer_with_the_NanoDefiner_e-tool"><span class="tocnumber">4</span> <span class="toctext">Use the ParticleSizer with the NanoDefiner e-tool</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="ParticleSizer.html#Examples"><span class="tocnumber">5</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="ParticleSizer.html#Gold_8_nm.2C_Settings:_Default"><span class="tocnumber">5.1</span> <span class="toctext">Gold 8 nm, Settings: Default</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="ParticleSizer.html#Gold_8_nm.2C_Settings:_.2BEllipse_fitting_mode"><span class="tocnumber">5.2</span> <span class="toctext">Gold 8 nm, Settings: +Ellipse fitting mode</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="ParticleSizer.html#Gold_10_nm.2C_Settings:_.2BMin._OTB_difference.3D30"><span class="tocnumber">5.3</span> <span class="toctext">Gold 10 nm, Settings: +Min. OTB difference=30</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="ParticleSizer.html#Kaolin.2C_Settings:_.2BSingle_particle_mode"><span class="tocnumber">5.4</span> <span class="toctext">Kaolin, Settings: +Single particle mode</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="ParticleSizer.html#How_to_cite"><span class="tocnumber">6</span> <span class="toctext">How to cite</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="ParticleSizer.html#Acknowledgements"><span class="tocnumber">7</span> <span class="toctext">Acknowledgements</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Purpose">Purpose</span></h1>
+<p>The ParticleSizer script was developed to automatically measures the distributions of the characteristic size and shape properties of a nanomaterial. In the scope of implementing the European Commission definition of a nanomaterial, the minimal external dimension of the primary particles of a particulate material is assessed as the minimal feret diameter from electron microscopy images. Other size and shape parameters are measured simultaneously.
+</p>
+<h1><span class="mw-headline" id="Installation">Installation</span></h1>
+<p>The ParticleSizer script combines a number of different plugins. The most easy way (and at the moment the only way) is to <a rel="nofollow" class="external text" href="https://imagej.net/How_to_follow_a_3rd_party_update_site">follow</a> Biomedgroup &amp; ParticleSizer <a rel="nofollow" class="external text" href="https://imagej.net/Update_Sites">update site</a>. 
+</p><p>It is recommended to install R to get better plots. When this point is skipped, a
+stripped-down plot will be shown:
+</p>
+<ol><li> Download the latest R: <a rel="nofollow" class="external free" href="https://cran.uni-muenster.de/">https://cran.uni-muenster.de/</a>
+<ol><li> Download the Rserver package: <a rel="nofollow" class="external free" href="https://rforge.net/bin/windows/contrib/3.0/Rserve_1.8-0.zip">https://rforge.net/bin/windows/contrib/3.0/Rserve_1.8-0.zip</a></li>
+<li> Download the MASS package: <a rel="nofollow" class="external free" href="https://cran.r-project.org/bin/windows/contrib/3.2/MASS_7.3-45.zip">https://cran.r-project.org/bin/windows/contrib/3.2/MASS_7.3-45.zip</a></li>
+<li> Start R and select the packages downloaded in 1. and 2. via "Start Packages -&gt; Install packages from local zip files"</li></ol></li>
+<li> Open Fiji, start the ParticleSizer Settings Manager and the R path to the R binary.</li></ol>
+<p>You can now start the ParticleSizer via <i>Plugins -&gt; NanoDefine -&gt; ParticleSizer</i>
+</p>
+<h1><span class="mw-headline" id="Settings">Settings</span></h1>
+<b>Segmentation:</b><div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Psizer_gui.png" class="image"><img alt="Psizer gui.png" src="../_images/1/1c/Psizer_gui.png" width="300" height="473" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Psizer_gui.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<ul><li> Circular window radius: This is a parameter of the local thresholding technique. The ParticleSizer does not use a global threshold to binarize the image. Instead it uses a local threshold which is estimated for a specific circular region with the configured radius.</li>
+<li> Rolling ball radius: The background is removed by rolling a ball with this radius over the surface (intensity interpreded as hight) of the image. It should be at least as large as the largest object in image which does not belongs to the background.</li>
+<li> Min. OTB intensity difference: Objects which have an object-to-background (OTB) intensity difference in the noise-reduced and background subtracted image lower than this threshold are considered as artefacts and are removed.</li>
+<li> Use watershed for irregular structures: If selected, the mode for irregular structures is used.</li>
+<li> Irregular watershed convexity threshold: The threshold determines, when splitted agglomerated is counted as “primary particle”. If the convexity of particle is greater than this threshold, the splitting is stopped for this object. If the convexity is smaller than this value, then the ParticleSizer tries to split the particle again</li>
+<li> Use single particle mode: If selected, the single particle mode is used.</li>
+<li> Use ellipse fitting mode: If selected, the ellipse fitting mode is used.</li></ul>
+<p><b>Shape constraints:</b>
+</p>
+<ul><li> Minimal area: Minimum area in pixels. Particles smaller than this threshold are removed.</li>
+<li> Minimal feret min: Minimal feret diameter in pixel. Particles smaller than this threshold are removed.</li>
+<li> Minimal convexity: The convexity is defined as the ratio of the perimeter of the convex hull of the particle and the perimeter of the particle. It lies between 0 and 1. The convexity increases with larger values. Particles smaller than this threshold are removed.</li>
+<li> Minimal solidity: Defined as the ratio of the particle area and the area of the convex hull of the particle. It lies between 0 and 1. The solidity increases with larger values. Particles smaller than this threshold are removed.</li></ul>
+<p><b>Ellipse shape constraints:</b>
+</p>
+<ul><li> Minimal long axis length: The length in pixels of the major direction of the fitted ellipse. Ellipses smaller than this threshold are removed.</li>
+<li> Minimal short axis length: The length in pixels of the minor direction of the fitted ellipse. Ellipses smaller than this threshold are removed.</li>
+<li> Maximal aspect ratio: Ratio of the length of major and minor axis. Ellipses with an aspect ratio larger than this value are removed.</li></ul>
+<p><b>Misc:</b>
+</p>
+<ul><li> Smoothing factor: It sometimes occurs that the estimated standard deviation of the noise is lower than the true value. The smoothing factor is a multiplicative factor for the estimated standard deviation.</li>
+<li> Show binary result: If selected the ParticleSizer shows the binary result.</li>
+<li> Ask me to select a region: If selected, the software allows you to select a specific region to analyse.</li>
+<li> Record process: If this checkbox is selected, a new image stack opens at the end of the analysis which contain images of every single step the particle</li></ul>
+<p>sizer made. If an image stack is analysed, than only the only the processing of the first image is recorded.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="How_to_find_optimal_settings">How to find optimal settings</span></h2>
+<p>We distinguish two particle types:
+</p>
+<ul><li> E: Ellipsoidal particles </li>
+<li> I: Irregular but convex particles </li></ul>
+<p>These particles could show some overlapping. We destinguish four different classes:
+</p>
+<ul><li> N: No overlapping </li>
+<li> T: Touching </li>
+<li> S: Slightly overlapping</li>
+<li> H: High or complete overlapping</li></ul>
+<p>Combining both information, we could give the following adivices (as a rule of thumb):
+</p>
+<ul><li> N+E or T+E -&gt; Keep the default settings</li>
+<li> N+I or T+I or S+I  -&gt; Activate the irregular watershed</li>
+<li> S+E -&gt; Activate ellipse fitting</li>
+<li> H -&gt; Activate single particle mode</li></ul>
+<h1><span class="mw-headline" id="Use_the_ParticleSizer_with_the_NanoDefiner_e-tool">Use the ParticleSizer with the NanoDefiner e-tool</span></h1>
+<p>The ParticleSizer supports the <a rel="nofollow" class="external text" href="https://labs.inf.fh-dortmund.de/NanoDefiner/?anchor=version#version">NanoDefiner e-tool</a>. After the analysis of a dataset is finished, you can select the results table and export the cummulative mass function of the feret min diamater by "Results &gt; Export CMF". The exported file can be uploaded to the <a rel="nofollow" class="external text" href="https://labs.inf.fh-dortmund.de/NanoDefiner/?anchor=version#version">NanoDefiner e-tool</a>.
+</p>
+<h1><span class="mw-headline" id="Examples">Examples</span></h1>
+<h2><span class="mw-headline" id="Gold_8_nm.2C_Settings:_Default">Gold 8 nm, Settings: Default</span></h2>
+<p><a href="http://imagej.net/File:Gold_nooverlay.png" class="image"><img alt="Gold nooverlay.png" src="../_images/f/fa/Gold_nooverlay.png" width="300" height="301" /></a>
+<a href="http://imagej.net/File:Gold_overlay.png" class="image"><img alt="Gold overlay.png" src="../_images/4/4d/Gold_overlay.png" width="300" height="301" /></a>
+<a href="http://imagej.net/File:Hist_gold_normal.png" class="image"><img alt="Hist gold normal.png" src="../_images/2/24/Hist_gold_normal.png" width="300" height="272" /></a>
+</p>
+<h2><span class="mw-headline" id="Gold_8_nm.2C_Settings:_.2BEllipse_fitting_mode">Gold 8 nm, Settings: +Ellipse fitting mode</span></h2>
+<p><a href="http://imagej.net/File:Gold_nooverlay.png" class="image"><img alt="Gold nooverlay.png" src="../_images/f/fa/Gold_nooverlay.png" width="300" height="301" /></a>
+<a href="http://imagej.net/File:Gold_overlay_ellipsefitting.png" class="image"><img alt="Gold overlay ellipsefitting.png" src="../_images/8/86/Gold_overlay_ellipsefitting.png" width="300" height="300" /></a>
+<a href="http://imagej.net/File:Gold_overlay_ellipsefitting_size.png" class="image"><img alt="Gold overlay ellipsefitting size.png" src="../_images/d/df/Gold_overlay_ellipsefitting_size.png" width="300" height="272" /></a>
+</p>
+<h2><span class="mw-headline" id="Gold_10_nm.2C_Settings:_.2BMin._OTB_difference.3D30">Gold 10 nm, Settings: +Min. OTB difference=30</span></h2>
+<p><a href="http://imagej.net/File:10nm_gold_nooverlay.png" class="image"><img alt="10nm gold nooverlay.png" src="../_images/e/e0/10nm_gold_nooverlay.png" width="300" height="300" /></a>
+<a href="http://imagej.net/File:10nm_gold_overlay.png" class="image"><img alt="10nm gold overlay.png" src="../_images/a/a3/10nm_gold_overlay.png" width="300" height="300" /></a>
+<a href="http://imagej.net/File:10nm_gold_overlay_size.png" class="image"><img alt="10nm gold overlay size.png" src="../_images/1/18/10nm_gold_overlay_size.png" width="300" height="272" /></a>
+</p>
+<h2><span class="mw-headline" id="Kaolin.2C_Settings:_.2BSingle_particle_mode">Kaolin, Settings: +Single particle mode</span></h2>
+<p><a href="http://imagej.net/File:Kaolin_ohne_overlay.png" class="image"><img alt="Kaolin ohne overlay.png" src="../_images/9/90/Kaolin_ohne_overlay.png" width="300" height="300" /></a>
+<a href="http://imagej.net/File:Kaolin_overlay.png" class="image"><img alt="Kaolin overlay.png" src="../_images/f/f6/Kaolin_overlay.png" width="300" height="300" /></a>
+<a href="http://imagej.net/File:Kaolin_size_distr.png" class="image"><img alt="Kaolin size distr.png" src="../_images/d/db/Kaolin_size_distr.png" width="300" height="272" /></a>
+</p><p><br />
+</p>
+<h1><span class="mw-headline" id="How_to_cite">How to cite</span></h1>
+<p>A publication is in preparation. 
+</p><p>You can use Zenodo to cite the lastest release of the ParticleSizer:
+<a rel="nofollow" class="external free" href="https://zenodo.org/badge/latestdoi/18649/thorstenwagner/ij-particlesizer">https://zenodo.org/badge/latestdoi/18649/thorstenwagner/ij-particlesizer</a>
+</p><p>As example: Thorsten Wagner. (2016). ij-particlesizer: ParticleSizer 1.0.1. Zenodo. 10.5281/zenodo.56457
+</p>
+<h1><span class="mw-headline" id="Acknowledgements">Acknowledgements</span></h1>
+<p>The development of the ParticleSizer has received funding from the European Union Seventh Framework Programme (FP7/2007-2013)
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073112
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.052 seconds
+Real time usage: 0.057 seconds
+Preprocessor visited node count: 405/1000000
+Preprocessor generated node count: 3626/1000000
+Post‐expand include size: 1256/2097152 bytes
+Template argument size: 567/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   15.138      1 - -total
+100.00%   15.138      1 - Template:Infobox
+ 77.16%   11.680      2 - Template:Person
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=ParticleSizer&amp;oldid=41302">http://imagej.net/index.php?title=ParticleSizer&amp;oldid=41302</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=ParticleSizer&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=ParticleSizer" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=ParticleSizer" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/ParticleSizer" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/ParticleSizer" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=ParticleSizer&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=ParticleSizer&amp;oldid=41302" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=ParticleSizer&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":237});});</script>
+		</body>
+		</html>
+		

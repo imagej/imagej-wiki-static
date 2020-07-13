@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>2015-12-22 - The road to Java 8 - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"2015-12-22_-_The_road_to_Java_8","wgTitle":"2015-12-22 - The road to Java 8","wgCurRevisionId":41192,"wgRevisionId":41192,"wgArticleId":3348,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["ImageJ2","Fiji","News"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"2015-12-22_-_The_road_to_Java_8","wgRelevantArticleId":3348,"wgRequestId":"e4b604f3a75cff391234c3f5","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="For many reasons, ImageJ needs to switch to Java 8. Hence, in recent months, the ImageJ team at LOCI has been taking steps toward migrating ImageJ and Fiji toward Java 8. This week marks a significant milestone in that effort:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="2015-12-22 - The road to Java 8"/>
+
+	<meta property="og:description" content="For many reasons, ImageJ needs to switch to Java 8. Hence, in recent months, the ImageJ team at LOCI has been taking steps toward migrating ImageJ and Fiji toward Java 8. This week marks a significant milestone in that effort:"/>
+
+	<meta property="og:url" content="http://imagej.net/2015-12-22_-_The_road_to_Java_8"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-2015-12-22_-_The_road_to_Java_8 rootpage-2015-12-22_-_The_road_to_Java_8 skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="2015-12-22_-_The_road_to_Java_8.html#bodyContent">Skip to content</a>, 			<a href="2015-12-22_-_The_road_to_Java_8.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="2015-12-22_-_The_road_to_Java_8.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/2015-12-22_-_The_road_to_Java_8" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:2015-12-22_-_The_road_to_Java_8&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=2015-12-22_-_The_road_to_Java_8&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=2015-12-22_-_The_road_to_Java_8&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>2015-12-22 - The road to Java 8</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="float: right; padding-left: 1em"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="2015-12-22_-_The_road_to_Java_8.html#Key_points_about_ImageJ.27s_Java_8_migration_strategy"><span class="tocnumber">1</span> <span class="toctext">Key points about ImageJ's Java 8 migration strategy</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="2015-12-22_-_The_road_to_Java_8.html#How_to_update"><span class="tocnumber">2</span> <span class="toctext">How to update</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="2015-12-22_-_The_road_to_Java_8.html#Components_which_have_already_migrated"><span class="tocnumber">3</span> <span class="toctext">Components which have already migrated</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="2015-12-22_-_The_road_to_Java_8.html#Conflicting_update_sites"><span class="tocnumber">4</span> <span class="toctext">Conflicting update sites</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="2015-12-22_-_The_road_to_Java_8.html#Feedback"><span class="tocnumber">5</span> <span class="toctext">Feedback</span></a></li>
+</ul>
+</div>
+</div>
+<p>For <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej/issues/135">many reasons</a>, ImageJ needs to switch to Java 8. Hence, in recent months, the ImageJ team at <a href="http://imagej.net/LOCI" title="LOCI">LOCI</a> has been <a href="http://imagej.net/2015-06-15_-_Major_updates_in_the_works" title="2015-06-15 - Major updates in the works">taking steps toward migrating ImageJ and Fiji toward Java 8</a>. This week marks a significant milestone in that effort:
+</p>
+<ol><li> Several ImageJ and Fiji components migrated to Java 7 or 8; and</li>
+<li> A new Java-8 <a href="http://imagej.net/Update_site" class="mw-redirect" title="Update site">update site</a> was created, which offers the latest releases of these components.</li></ol>
+<h2><span class="mw-headline" id="Key_points_about_ImageJ.27s_Java_8_migration_strategy">Key points about ImageJ's Java 8 migration strategy</span></h2>
+<ol><li> Individual ImageJ and Fiji components are being migrated to Java 7 or Java 8 as needed (see below for a current list).</li>
+<li> The <b>ImageJ</b> and <b>Fiji</b> update site will continue to ship the final Java-6-compatible versions of these components.</li>
+<li> Updates for components which require Java 7 or 8 will be provided using the new <b>Java-8</b> update site—not the <b>ImageJ</b> or <b>Fiji</b> update sites.</li></ol>
+<h2><span class="mw-headline" id="How_to_update">How to update</span></h2>
+<ul><li> If you <b>still need Java 6, do nothing.</b>
+<ul><li> You will keep receiving updates of the latest Java-6-compatible component versions.</li>
+<li> But you will no longer receive updates for components which have migrated to Java 7 or 8.</li></ul></li>
+<li> If you <b>want the latest updates</b>, <a href="http://imagej.net/FAQ#How_do_I_launch_ImageJ_with_a_different_version_of_Java.3F" class="mw-redirect" title="FAQ">update your ImageJ installation to use Java 8</a> and then <a href="http://imagej.net/How_to_follow_a_3rd_party_update_site" class="mw-redirect" title="How to follow a 3rd party update site">enable the Java-8 update site</a>.
+<ul><li> <b>Make sure you switch your ImageJ over to Java 8 <i>before</i> enabling the Java-8 update site!</b></li></ul></li></ul>
+<h2><span class="mw-headline" id="Components_which_have_already_migrated">Components which have already migrated</span></h2>
+<p>The following ImageJ and Fiji components now require a minimum Java version of Java 7 or Java 8:
+</p>
+<table class="program">
+<tr>
+<th> Component
+</th>
+<th> Requires
+</th>
+<th> Why?
+</th>
+<th> Latest version
+</th>
+<th> Final Java 6 version
+</th></tr>
+<tr>
+<td colspan="5" class="section-minor"> <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">imagej-ops</a>
+</td>
+<td> Java 8
+</td>
+<td> See <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-ops/commit/0137b89b5265a1cd6a26ffbe1b36d1e6e2ccdbeb">0137b89b</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-ops/releases/tag/imagej-ops-0.24.1">0.24.1</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-ops/releases/tag/imagej-ops-0.23.0">0.23.0</a>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-ui-swing/">imagej-ui-swing</a>
+</td>
+<td> Java 8
+</td>
+<td> Depends on imagej-ops
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-ui-swing/releases/tag/imagej-ui-swing-0.17.1">0.17.1</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-ui-swing/releases/tag/imagej-ui-swing-0.16.0">0.16.0</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/ImageJ2" title="ImageJ2">imagej</a>
+</td>
+<td> Java 8
+</td>
+<td> Depends on imagej-ops
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej/releases/tag/imagej-2.0.0-rc-44">2.0.0-rc-44</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej/releases/tag/imagej-2.0.0-rc-43">2.0.0-rc-43</a>
+</td></tr>
+<tr>
+<td colspan="5" class="section-minor"> <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/ImgLib1" class="mw-redirect" title="ImgLib1">legacy-imglib1</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on mines-jtk
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/legacy-imglib1/releases/tag/legacy-imglib1-1.1.5">1.1.5</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/legacy-imglib1/releases/tag/legacy-imglib1-1.1.4-DEPRECATED">1.1.4-DEPRECATED</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/3D_Blob_Segmentation" title="3D Blob Segmentation">3D_Blob_Segmentation</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on 3D_Viewer
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/3D_Blob_Segmentation/releases/tag/3D_Blob_Segmentation-3.0.0">3.0.0</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/3D_Blob_Segmentation/releases/tag/3D_Blob_Segmentation-2.0.2">2.0.2</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D_Viewer</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dcore</a> and <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dutils</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/3D_Viewer/releases/tag/3D_Viewer-4.0.1">4.0.1</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/3D_Viewer/releases/tag/3D_Viewer-3.1.0">3.1.0</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/Descriptor-based_registration_(2d/3d)" title="Descriptor-based registration (2d/3d)">Descriptor_based_registration</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on SPIM_Registration, mines-jtk, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dcore</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Descriptor_based_registration/releases/tag/Descriptor_based_registration-2.0.12">2.0.12</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Descriptor_based_registration/releases/tag/Descriptor_based_registration-2.0.11">2.0.11</a>
+</td></tr>
+<tr>
+<td> Fiji_Developer
+</td>
+<td> Java 8
+</td>
+<td> Depends on imagej-ui-swing
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Fiji_Developer/releases/tag/Fiji_Developer-2.0.4">2.0.4</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Fiji_Developer/releases/tag/Fiji_Developer-2.0.3">2.0.3</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/Multiview-Reconstruction" title="Multiview-Reconstruction">SPIM_Registration</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on 3D_Viewer, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dcore</a>, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dutils</a>, legacy-imglib1
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/SPIM_Registration/releases/tag/SPIM_Registration-4.0.0">4.0.0</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/SPIM_Registration/releases/tag/SPIM_Registration-3.0.5">3.0.5</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/Simple_Neurite_Tracer" class="mw-redirect" title="Simple Neurite Tracer">Simple_Neurite_Tracer</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on 3D_Viewer, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dcore</a>, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dutils</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Simple_Neurite_Tracer/releases/tag/Simple_Neurite_Tracer-3.0.0">3.0.0</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Simple_Neurite_Tracer/releases/tag/Simple_Neurite_Tracer-2.0.4">2.0.4</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate_</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on 3D_Viewer, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dcore</a>, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dutils</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/releases/tag/TrackMate_-3.0.0">3.0.0</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/releases/tag/TrackMate_-2.8.1">2.8.1</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable_Segmentation</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on mines-jtk
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Trainable_Segmentation/releases/tag/Trainable_Segmentation-3.0.0">3.0.0</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Trainable_Segmentation/releases/tag/Trainable_Segmentation-2.3.0">2.3.0</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/Fiji_Archipelago#TrakEM2_Archipelago" class="mw-redirect" title="Fiji Archipelago">TrakEM2_Archipelago</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on Simple_Neurite_Tracer, legacy-imglib1 (via TrakEM2)
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/TrakEM2_Archipelago/releases/tag/TrakEM2_Archipelago-2.0.1">2.0.1</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/TrakEM2_Archipelago/releases/tag/TrakEM2_Archipelago-2.0.0">2.0.0</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/VIB_Protocol" title="VIB Protocol">VIB_</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on 3D_Viewer, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dcore</a>, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dutils</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/VIB/releases/tag/VIB_-3.0.0">3.0.0</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/VIB/releases/tag/VIB_-2.0.3">2.0.3</a>
+</td></tr>
+<tr>
+<td> <a href="http://imagej.net/Volume_Calculator" title="Volume Calculator">Volume Calculator</a>
+</td>
+<td> Java 7
+</td>
+<td> Depends on 3D_Viewer, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dcore</a>, <a rel="nofollow" class="external text" href="https://github.com/scijava/java3d-core/">j3dutils</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Volume_Calculator/releases/tag/Volume_Calculator-2.0.0">2.0.0</a>
+</td>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Volume_Calculator/releases/tag/Volume_Calculator-1.0.2">1.0.2</a>
+</td></tr></table>
+<h2><span class="mw-headline" id="Conflicting_update_sites">Conflicting update sites</span></h2>
+<p>It is the responsibility of individual update site maintainers to decide if and when they follow this migration process. The following <a href="http://imagej.net/Update_sites" class="mw-redirect" title="Update sites">update sites</a> are known to cause conflicts when enabled with the <b>Java-8</b> update site. If your workflow requires components from these sites, we do not recommend enabling the <b>Java-8</b> update site.
+</p><p><i>Note:</i> if you are a maintainer of one of these update sites and need any guidance on how to update your project to comply with the <b>Java-8</b> update site, please contact us on the <a href="http://imagej.net/Help" title="Help">ImageJ forum</a>.
+</p>
+<table class="wikitable">
+
+<tr>
+<td style="vertical-align: bottom;"><b>Name</b>
+</td>
+<td style="vertical-align: bottom;"><b>Site</b>
+</td>
+<td style="vertical-align: bottom;"><b>Maintainer</b>
+</td>
+<td style="vertical-align: bottom;"><b>Issue</b>
+</td></tr>
+<tr valign="top">
+<td><b>ClearVolume</b>
+</td>
+<td><a rel="nofollow" class="external free" href="http://sites.imagej.net/ClearVolume/">http://sites.imagej.net/ClearVolume/</a>
+</td>
+<td><a href="http://imagej.net/index.php?title=User:ClearVolume&amp;action=edit&amp;redlink=1" class="new" title="User:ClearVolume (page does not exist)">ClearVolume</a>
+</td>
+<td><a rel="nofollow" class="external text" href="https://fiji.sc/bugzilla/show_bug.cgi?id=1209">BugZilla #1209</a>
+</td></tr></table>
+<h2><span class="mw-headline" id="Feedback">Feedback</span></h2>
+<p>Please post any comments to the <a href="http://imagej.net/Help" title="Help">ImageJ forum</a>. Thank you for the continued feedback and support!
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064401
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.056 seconds
+Real time usage: 0.059 seconds
+Preprocessor visited node count: 1619/1000000
+Preprocessor generated node count: 2698/1000000
+Post‐expand include size: 11453/2097152 bytes
+Template argument size: 2588/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   38.482      1 - -total
+ 89.24%   34.341     46 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2015-12-22_-_The_road_to_Java_8&amp;oldid=41192">http://imagej.net/index.php?title=2015-12-22_-_The_road_to_Java_8&amp;oldid=41192</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:53.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=2015-12-22_-_The_road_to_Java_8&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li><li><a href="http://imagej.net/Category:Fiji" title="Category:Fiji">Fiji</a></li><li><a href="http://imagej.net/Category:News" title="Category:News">News</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=2015-12-22+-+The+road+to+Java+8" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=2015-12-22+-+The+road+to+Java+8" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/2015-12-22_-_The_road_to_Java_8" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/2015-12-22_-_The_road_to_Java_8" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=2015-12-22_-_The_road_to_Java_8&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=2015-12-22_-_The_road_to_Java_8&amp;oldid=41192" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=2015-12-22_-_The_road_to_Java_8&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":261});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Gnu Plot - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Gnu_Plot","wgTitle":"Gnu Plot","wgCurRevisionId":45556,"wgRevisionId":45556,"wgArticleId":12682,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plotting","Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Gnu_Plot","wgRelevantArticleId":12682,"wgRequestId":"097ebf54b3df09d46da8eefd","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The Gnu_Plot plugin provides the glue between ImageJ and Gnuplot.  The main impetus for developing this plugin was that ImageJ is great at interrogating imaging data, Gnuplot is excellent at generating publishable plots, and I'm lazy. The trouble was in having to extract the plottable data, either from a ResultsTable or through a Java plugin, and then pasting into a ascii editor, save, run gnuplot from a terminal, display output image, and repeat. I prefer to just click a button after finding better plottable data or mucking with the Gnuplot script."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Gnu Plot"/>
+
+	<meta property="og:description" content="The Gnu_Plot plugin provides the glue between ImageJ and Gnuplot.  The main impetus for developing this plugin was that ImageJ is great at interrogating imaging data, Gnuplot is excellent at generating publishable plots, and I'm lazy. The trouble was in having to extract the plottable data, either from a ResultsTable or through a Java plugin, and then pasting into a ascii editor, save, run gnuplot from a terminal, display output image, and repeat. I prefer to just click a button after finding better plottable data or mucking with the Gnuplot script."/>
+
+	<meta property="og:url" content="http://imagej.net/Gnu_Plot"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Gnu_Plot rootpage-Gnu_Plot skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Gnu_Plot.html#bodyContent">Skip to content</a>, 			<a href="Gnu_Plot.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Gnu_Plot.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Gnu_Plot" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Gnu_Plot&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Gnu_Plot&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Gnu_Plot&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Gnu Plot</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Gnu_Plot (ImageJ1)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Fred Damen
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> Gnu_Plot.jar
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://imagej.net/_images/2/23/Gnu_Plot.zip">Gnu_Plot.zip</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> 1 April 2020
+</td></tr>
+
+<tr>
+<th> Development status
+</th>
+<td> stable
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/index.php?title=Category:Plotting&amp;action=edit&amp;redlink=1" class="new" title="Category:Plotting (page does not exist)">Plotting‏‎</a>
+</td></tr>
+
+</table>
+<p><br />
+</p><p>The Gnu_Plot plugin provides the glue between ImageJ and Gnuplot.  The main impetus for developing this plugin was that ImageJ is great at interrogating imaging data, Gnuplot is excellent at generating publishable plots, and I'm lazy. The trouble was in having to extract the plottable data, either from a ResultsTable or through a Java plugin, and then pasting into a ascii editor, save, run gnuplot from a terminal, display output image, and repeat. I prefer to just click a button after finding better plottable data or mucking with the Gnuplot script.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Gnu_Plot.html#Features"><span class="tocnumber">1</span> <span class="toctext">Features</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Gnu_Plot.html#Example"><span class="tocnumber">1.1</span> <span class="toctext">Example</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="Gnu_Plot.html#Methods"><span class="tocnumber">2</span> <span class="toctext">Methods</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Gnu_Plot.html#Coding_Goodies"><span class="tocnumber">3</span> <span class="toctext">Coding Goodies</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Gnu_Plot.html#Install"><span class="tocnumber">4</span> <span class="toctext">Install</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Gnu_Plot.html#Licence"><span class="tocnumber">5</span> <span class="toctext">Licence</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Gnu_Plot.html#ChangeLog"><span class="tocnumber">6</span> <span class="toctext">ChangeLog</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Gnu_Plot.html#Known_Bugs"><span class="tocnumber">7</span> <span class="toctext">Known Bugs</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Features">Features</span></h2>
+<p><a href="http://imagej.net/File:Gnu_Plot.jpg" class="image" title="&quot;Gnu_Plot GUI&quot;"><img alt="&quot;Gnu_Plot GUI&quot;" src="../_images/c/cb/Gnu_Plot.jpg" width="400" height="303" /></a>
+</p><p>When run as a plugin Gnu_Plot will collect both the Gnuplot script and data and run this through the gnuplot executable as stdin, and read the image from stdout and display it in a ImagePlus window, and display any errors from stderr in the Log window.
+<br /><b>Plot Title</b> will be the title given to any script or image windows created.
+<br /><b>Gnuplot Script</b> is an Editor window that can be either, a fresh script, a script read from disk, or an existing Editor window.
+<br /><b>$data#</b> the <i>inline/here document</i> plottable datasets can be, unspecified, a PlotWindow, or, a ResultsTable. More that one dataset can be specified. 
+<br />The Gnu_Plot window can be left opened and new scripts or datasets can be discovered for subsequent selection.
+<br /><b>Generate Plot</b> will collect the selected information, send it through gnuplot, and present the results. You can have all but the last generated plot image retained, if desired.
+<br /><b>View Complete Input</b> will collect the selected information and present it in an Editor window. Great to for debugging or saving if the output needs to be reproduced later and you will forget where the data came from exactly, like me; the input is a comment added to the script file.
+<br /><b>Test compatibility</b> will run a very simple Gnuplot script that should produce a graphical depiction of the options for the specified terminal; input will be placed after 'set terminal ' in the script.  Not all terminals are supported everywhere, and/or, you may not have gnuplot executable installed as this plugin expects, see the Log window.
+</p>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<p>Let's say you want to see the histogram of a phase image in polar format.
+<br />1) Click <i>List</i> Button on the bottom of the <i>Histogram</i> window.
+<br />2) Start the <i>Gnu_Plot</i> plugin.
+<br />3) Select <i>&lt;new&gt;</i> for the <b>GNUPlot Script</b>.
+<br />4) Copy/Paste this script into the <i>Editor</i> window.
+</p>
+<blockquote>
+<p><br />set terminal pngcairo size 512,512
+<br />stats '$data0' using 3 name 'y' nooutput
+<br />set polar
+<br />set angles radians
+<br />unset key
+<br />unset xtics
+<br />unset ytics
+<br />set border 0
+<br />set size square
+<br />set grid polar ls 12
+<br />set xrange [-y_max*1.1:y_max*1.1]
+<br />set yrange [-y_max*1.1:y_max*1.1]
+<br />set ttics ('-2π' -2*pi, '-π' -pi, 0, 'π' pi, '2π' 2*pi)
+<br />plot "$data0" using 2:3 with linespoints
+</p>
+</blockquote>
+<p><br />5) Select <i>Histogram of ...</i> for <b>$data0</b>
+<br />6) Click on <b>Generate Plot</b>
+</p>
+<h2><span class="mw-headline" id="Methods">Methods</span></h2>
+<p><code>public static String gnuplot()</code>
+<br /><code>public static String gnuplot(String gp)</code>
+<br />Identify the gnuplot executable, if needed.
+</p><p><code>public static ImagePlus process(String gps, String title)</code>
+<br /><code>public static boolean processAndDisplay(String gps, String title)</code>
+<br />Generate plot from complete Gnuplot script.
+</p><p><code>public static String plotgs(String code, double[][]... arrs)</code>
+<br /><code>public static String plotgs(String code, float[][]... arrs)</code>
+<br />Generate complete plot script. Each <code>arrs</code> pass(ed) in will generate a separate <i>here-document</i> data block.
+</p><p><code>public static ImagePlus plot(String title, String code, double[][]... arrs)</code>
+<br /><code>public static ImagePlus plot(String title, String code, float[][]... arrs)</code>
+<br />Generate ImagePlus. Each <code>arrs</code> pass(ed) in will generate a separate <i>here-document</i> data block.
+</p>
+<h2><span class="mw-headline" id="Coding_Goodies">Coding Goodies</span></h2>
+<p>Generating data, running it through another executable, and using the output.
+</p><p>Dynamically updating Choice(s).
+</p>
+<h2><span class="mw-headline" id="Install">Install</span></h2>
+<p>Unzip <a rel="nofollow" class="external text" href="https://imagej.net/_images/2/23/Gnu_Plot.zip">Gnu_Plot.zip</a> into ImageJ1 plugins (File&gt;Show Folder&gt;Plugins) or plugins/jars directories.  Source code is in jar file.
+<br /><b>Edit&gt;Options&gt;Gnu_Plot...</b> Configure location of gnuplot executable.
+<br /><b>Anaylze&gt;Tools&gt;Gnu_Plot...</b> Runs Gnu_Plot.
+</p>
+<h2><span class="mw-headline" id="Licence">Licence</span></h2>
+<p>GPL distribution licence.
+</p>
+<h2><span class="mw-headline" id="ChangeLog">ChangeLog</span></h2>
+<p>1 April 2020 Initial version.
+</p>
+<h2><span class="mw-headline" id="Known_Bugs">Known Bugs</span></h2>
+<p>Let me know.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072416
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.033 seconds
+Preprocessor visited node count: 106/1000000
+Preprocessor generated node count: 583/1000000
+Post‐expand include size: 826/2097152 bytes
+Template argument size: 299/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    4.038      1 - Template:Infobox
+100.00%    4.038      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Gnu_Plot&amp;oldid=45556">http://imagej.net/index.php?title=Gnu_Plot&amp;oldid=45556</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 26 May 2020, at 21:21.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Gnu_Plot&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/index.php?title=Category:Plotting&amp;action=edit&amp;redlink=1" class="new" title="Category:Plotting (page does not exist)">Plotting</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Gnu+Plot" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Gnu+Plot" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Gnu_Plot" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Gnu_Plot" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Gnu_Plot&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Gnu_Plot&amp;oldid=45556" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Gnu_Plot&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":233});});</script>
+		</body>
+		</html>
+		

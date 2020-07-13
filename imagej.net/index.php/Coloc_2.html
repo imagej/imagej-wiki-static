@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Coloc 2 - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Coloc_2","wgTitle":"Coloc 2","wgCurRevisionId":41220,"wgRevisionId":41220,"wgArticleId":1999,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Colocalization","Color processing","Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Coloc_2","wgRelevantArticleId":1999,"wgRequestId":"ebc54867820e3aaf1d229926","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Coloc 2 is Fiji's plugin for colocalization analysis. It implements and performs the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Coloc 2"/>
+
+	<meta property="og:description" content="Coloc 2 is Fiji's plugin for colocalization analysis. It implements and performs the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing."/>
+
+	<meta property="og:url" content="http://imagej.net/Coloc_2"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Coloc_2 rootpage-Coloc_2 skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Coloc_2.html#bodyContent">Skip to content</a>, 			<a href="Coloc_2.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Coloc_2.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Coloc_2" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Coloc_2&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Coloc_2&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Coloc_2&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Coloc 2</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Coloc 2<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Coloc_2">https://imagej.net/Coloc_2</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Colocalisation_Analysis/releases/tag/Colocalisation_Analysis-3.0.0">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Colocalisation_Analysis~3.0.0~~~kw,versionexpand">3.0.0</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Wed May 03 13:28:06 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>, <a href="http://imagej.net/User:Kazimiers" title="User:Kazimiers">Tom Kazimiers</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> <a href="http://imagej.net/User:Etarena" title="User:Etarena">Ellen Dobson</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:Kazimiers" title="User:Kazimiers">Tom Kazimiers</a>, <a href="http://imagej.net/User:Etarena" title="User:Etarena">Ellen Dobson</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>, <a href="http://imagej.net/User:Kazimiers" title="User:Kazimiers">Tom Kazimiers</a>, <a href="http://imagej.net/User:Etarena" title="User:Etarena">Ellen Dobson</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>, <a href="http://imagej.net/User:Etarena" title="User:Etarena">Ellen Dobson</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:White" title="User:White">Daniel James White</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Eglinger" title="User:Eglinger">Jan Eglinger</a>, <a rel="nofollow" class="external text" href="https://github.com/leonardicus">Leonardo Guizzetti</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="Coloc_2.html#What_is_Coloc_2"><span class="tocnumber">1</span> <span class="toctext">What is Coloc 2</span></a></li>
+<li class="toclevel-1 tocsection-1"><a href="Coloc_2.html#How_to_use_Coloc_2"><span class="tocnumber">2</span> <span class="toctext">How to use Coloc 2</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Coloc_2.html#Pitfalls_of_the_Manders_and_Costes_methods"><span class="tocnumber">3</span> <span class="toctext">Pitfalls of the Manders and Costes methods</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Coloc_2.html#The_auto_threshold_calculation_method_can_fail_if_fed_inappropriate_information"><span class="tocnumber">3.1</span> <span class="toctext">The auto threshold calculation method can fail if fed inappropriate information</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Coloc_2.html#Effect_of_noise_on_Pearson.27s_and_Manders.27_coefficients"><span class="tocnumber">3.2</span> <span class="toctext">Effect of noise on Pearson's and Manders' coefficients</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Coloc_2.html#Fluorescence_emission_bleed_through_looks_like_perfect_colocalization"><span class="tocnumber">3.3</span> <span class="toctext">Fluorescence emission bleed through looks like perfect colocalization</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Coloc_2.html#Regions_of_interest_.28ROIs.29"><span class="tocnumber">3.4</span> <span class="toctext">Regions of interest (ROIs)</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Coloc_2.html#Other_pitfalls"><span class="tocnumber">3.5</span> <span class="toctext">Other pitfalls</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Coloc_2.html#Release_Notes.2C_Newly_Added_Features_and_Squashed_Bugs"><span class="tocnumber">3.6</span> <span class="toctext">Release Notes, Newly Added Features and Squashed Bugs</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Coloc_2.html#Ideas_List"><span class="tocnumber">3.7</span> <span class="toctext">Ideas List</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="What_is_Coloc_2">What is Coloc 2</span></h1>
+<p>Coloc 2 is Fiji's plugin for colocalization analysis. It implements and performs the pixel intensity correlation over space methods of <a href="http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient" class="extiw" title="wikipedia:Pearson product-moment correlation coefficient">Pearson</a>, <a href="http://imagej.net/_images/2/24/Manders.pdf" class="internal" title="Manders.pdf">Manders</a>, <a href="http://imagej.net/_images/e/e2/Costes_etalColoc.pdf" class="internal" title="Costes etalColoc.pdf">Costes</a>, <a href="http://imagej.net/_images/9/9e/LietAlColoc.pdf" class="internal" title="LietAlColoc.pdf">Li</a> and more, for scatterplots, analysis, automatic thresholding and statistical significance testing.
+</p><p>Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.
+</p><p><span style="color:red">There are many nuances and pitfalls to colocalization analysis. As such, we strongly recommend you read the <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis">Colocalization Analysis</a> section of the <a href="http://imagej.net/Cookbook" title="Cookbook">Cookbook</a> before attempting to use Coloc 2!</span>
+</p>
+<h1><span class="mw-headline" id="How_to_use_Coloc_2">How to use Coloc 2</span></h1>
+<ol><li> Read the original papers describing the analysis you are about to perform.
+<ol><li> Don't treat this tool as a black box - try to understand what the strengths and limitations are and what the results could mean. 
+<ol><li><a href="http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient" class="extiw" title="wikipedia:Pearson product-moment correlation coefficient">Pearson's correlation, r</a></li>
+<li><a href="http://imagej.net/_images/2/24/Manders.pdf" class="internal" title="Manders.pdf">Manders paper</a></li>
+<li><a href="http://imagej.net/_images/e/e2/Costes_etalColoc.pdf" class="internal" title="Costes etalColoc.pdf">Costes paper</a></li>
+<li><a href="http://imagej.net/_images/9/9e/LietAlColoc.pdf" class="internal" title="LietAlColoc.pdf">Li paper</a></li></ol></li></ol></li>
+<li> Open images to analyze. 
+<ol><li> You need a 2 color channel image. If the image has more than 2 channels, identify the two you want to analyze with each other, then split the channels into separate images (Image- Color - Split Channels)</li>
+<li> Z stacks work fine. But time series will fail until that is fixed. For now, please split the time series into a numbered set of images and analyse those one by one. See <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/issues/6">https://github.com/fiji/Colocalisation_Analysis/issues/6</a>  </li></ol></li>
+<li> You probably want to analyze only some region of interest (ROI), there are 2 ways to do that:
+<ol><li> Select a region of interest with one of the ImageJ selection tools, in one of the images. 
+<ol><li> If the image is a z stack, then the ROI applies in all "slices" of the stack. </li></ol></li>
+<li>You can have a third "binary mask" image, with the same x,y,z dimensions as the 2 images to be analyzed:
+<ol><li> where the mask image is white (255 pixel value for an 8 bit greyscale image) colocalization will be analyzed for those pixels only. Where it is black (zero pixel value), the pixels will be ignored: not included in the analysis. </li>
+<li> you can use a z stack as a 3D mask... it's up to you how you make that mask image, manually or by some automated method. </li></ol></li></ol></li>
+<li> Launch the Coloc 2 plugin from the menu item: Analyze - Colocalization Analysis - Coloc 2 
+<ol><li> or use the command finder: press L then start typing Coloc, then choose the plugin with the arrow keys and hit enter, or double mouse click it to launch the plugin. </li></ol></li>
+<li> In the plugin's graphical user interface (GUI) choose the 2 images you want to analyze in the first 2 drop down lists.
+<ol><li> Select the images according to which you want to be channel 1 and which to be channel 2. </li>
+<li> In the third drop down list selection, select the image/channel you want to use that has the correct ROI or mask image
+<ol><li> remember: for the mask image - it must have the same xyz dimensions (number of pixels and slices) as the other 2 images. </li></ol></li></ol></li>
+<li> Choose which "Algorithms" are run and which statistics you wish to calculate, and if you want to save the "standardized" PDF result file, when the OK button is pressed.
+<ol><li> Numerical results and image names are dumped into the ImageJ Log window as comma separated values, so you can copy paste, or save the log window contents, to then import them into whatever statistical package or spreadsheet in which you wish to analyze the results. </li>
+<li> Turn the options on/off by clicking the selection button at the left of the Algorithm description</li>
+<li> Also choose the approximate size of the point spread function (PSF) in your images, as well as the number of iterations to run the Costes statistical significance test (We suggest a large number... the larger the number, the longer the analysis will take. Do, at the very very least, 10 iterations (100 would be better).)
+<ol><li> You should know approximately how big the PSF is (in pixels) in your images. </li>
+<li> If you don't, go back and read about: What is the PSF? Why is it important in colocalization analysis? (for instance: read the <a href="http://imagej.net/_images/e/e2/Costes_etalColoc.pdf" class="internal" title="Costes etalColoc.pdf">Costes paper</a> )</li>
+<li> This size determines what size of image 'chunks' are shuffled in the randomization process. (PSF-sized image pieces make physical sense, as that's the size of the smallest features visible in the image.) </li></ol></li></ol></li>
+<li> Click OK to run the analysis.</li>
+<li> The results gui will open showing a table of numbers and one of several images
+<ol><li> the images can be chosen on the Dropdown list. </li>
+<li> You can see the 2 Li plots, a scatterplot or 2D histogram with regression line, and input images and Roi.
+<ol><li> the scatter plot uses fire colour look up table. </li>
+<li> the log checkbox allows display of images with or without log scaling, useful for eg. the scatterplot</li></ol></li></ol></li>
+<li> You will be asked if you want to save the results as a PDF file (if the "Show Save PDF dialog" button was checked. So tell it where to save the PDF. This is standard output format, so you can compare with your friends,  same vs. same.
+<ol><li> Feel free to tell us what things you think should be included in this standardized PDF output file and how it should be formatted. HTML? XML? Plain text?</li></ol></li></ol>
+<h1><span class="mw-headline" id="Pitfalls_of_the_Manders_and_Costes_methods">Pitfalls of the Manders and Costes methods</span></h1>
+<h2><span class="mw-headline" id="The_auto_threshold_calculation_method_can_fail_if_fed_inappropriate_information">The auto threshold calculation method can fail if fed inappropriate information</span></h2>
+<p>That means it does not like images with high zero offset, where no light detected still gives a large non zero pixel value. For instance, from a digital camera's zero offset/bias, or a confocal PMT's offset when incorrectly set. Also, a high, flat non specific background causes the same problem. These all add a constant number to the intensity values of each pixel, offsetting and obscuring the true proportionality relationship with the "concentration" of the fluorescent dye detected at each pixel. If pixels that contain no real (specific) signal have large intensity values, the algorithm, not knowing about the non zero intensity offset in all pixels, assumes the offset is real signal to be dealt with, and can reach a result for the thresholds where one or both of them is below the value of the lowest intensity value present in that colour channel of the image. This means that ALL of that channel's pixels are considered to be colocalised, then the Manders' Coefficients that you get will reflect that aberrant, unrealistic situation. In these cases, the background and/or offset should be carefully removed/subtracted before running the Coloc 2 or <a href="http://imagej.net/Colocalization_Threshold" title="Colocalization Threshold">Colocalization Threshold</a> plugin. The images below are an example of this situation, using the badly behaved data set: <a rel="nofollow" class="external text" href="https://fiji.sc/samples/150707_WTstack.lsm">150707_WTstack.lsm</a>. Note that the values for M1 and tM1 are the same! This should not be the case. You can see the green channel threshold is wrongly set below the intensity where the image data intensities actually start.
+</p><p>Notice: the image contains large areas of background, with similar low values of pixel intensities in both channels. This means there is strong correlation in the background areas, which interferes with the interesting biological correlation in the high signal areas where the biology is located. This means it is important to set a biologically relevant region of interest (ROI) and not analyse the whole image. We must avoid analyzing the highly correlated, but uninteresting, background areas. See the section below...
+</p><p><a href="http://imagej.net/File:BadOffsetConfusesCostesAutoThreshold.png" class="image"><img alt="BadOffsetConfusesCostesAutoThreshold.png" src="../_images/3/39/BadOffsetConfusesCostesAutoThreshold.png" width="300" height="474" /></a>
+</p>
+<h2><span class="mw-headline" id="Effect_of_noise_on_Pearson.27s_and_Manders.27_coefficients">Effect of noise on Pearson's and Manders' coefficients</span></h2>
+<p>In the case of perfect colocalization, where the intensities of the 2 channels are always perfectly correlated: Low red with low green, and high green with high red, the scatterplot would have all the data points falling on a straight diagonal line, since the green intensity would always be in proportion to the red! However, that is the ideal case and real biological data is noisy! Noise (be it from the dyes not staining every single molecule, or from statistical photon shot noise from recording the signal from too few photons, or from other electronics noise sources) will cause the pixel intensities to deviate from the perfect/true case, to be lower or higher than they really are on average. This causes scatter in the distribution of the data points in the scatterplot, perpendicular to the line of regression fit. So you can see the noise by looking at how spread or tight the scatterplot points are from the linear regression line. Also, since Manders' coefficients are measuring correlation, and noise lowers the similarity of two identical signals, noise lowers the Manders' coefficients to less than they should be for an image with very low noise. The same is true for Pearson's correlation. So for the same object under the microscope, noisier images will appear to give less colocalization than a clean, low noise, image. That means you can't compare different images with different signal:noise levels, unless you have some way of estimating the noise and correcting for it.
+</p><p>Background and digital offset should be subtracted (this doesn't affect Pearson's but does affect other measurements), and noise should be filtered out, suppressed or best avoided by collecting as many photons as possible. Deconvolution is a great way to restore images to give a better estimate of the real fluorophore spatial distribution by suppressing noise and removing the offset or background, while improving contrast and dynamic range by equalizing the spatial frequency response up to the objective lens resolution limit. Confocal images should also be deconvolved, not only widefield images, especially in the case of low signal and high noise.
+</p>
+<h2><span class="mw-headline" id="Fluorescence_emission_bleed_through_looks_like_perfect_colocalization">Fluorescence emission bleed through looks like perfect colocalization</span></h2>
+<p>As is often true for DAPI nuclear stain and GFP dye pairs, when images are captured at the same time, with both dyes being excited and detected simultaneously, fluorescence emission bleed through gives misleading results, as the signal from the DAPI also appears in the GFP detection channel! Where there is more DAPI, there is also more signal in the GFP channel. This looks like really good colocalization, but of course it is totally false! It is a problem with the imaging systems not being set up correctly or not used correctly. This can also happen with many other dye combinations, if they have overlapping emission spectra. Always check your spectra. You can do that here: <a rel="nofollow" class="external text" href="http://probes.invitrogen.com/servlets/spectraviewer">Invitrogen Fluorescent Dye Spectra Viewer</a>. To be safe, check your emission filter sets don't allow in the wrong signal, and do <b>"sequential imaging"</b>, so you only excite and image one dye at a time. 
+</p><p><a href="http://imagej.net/File:ColocBleedThru.png" class="image"><img alt="ColocBleedThru.png" src="../_images/2/2d/ColocBleedThru.png" width="300" height="464" /></a>
+</p>
+<h2><span class="mw-headline" id="Regions_of_interest_.28ROIs.29">Regions of interest (ROIs)</span></h2>
+<p>Whether or not to consider zero - zero pixels as part of the interesting data for the algorithms to deal with. If you think about it, in a fluorescence image there is typically quite a large area which is black in both channels. For instance where there is space between cells, or just no signal in either channel since that area is not part of an interesting area of the sample. A philosophical point but a significant one: Why bother taking images of black areas? Why bother analyzing black areas for colocalisation?  Surely you are not interested in those regions, as they contain no information of use to you? If you perform these pixel intensity correlation methods and include zero zero pixels, then of course these pixels have a very high correlation! They have the same value. But they are totally uninteresting! Sure, the auto threshold method excludes them from the tM1 and tM2 figures, but why include them in the first place? Probably better not to include them unless there is a good reason to do that. Why not just image the area, or just analyze the area where your biology is happening? If you analyse an image with large areas of close to zero and zero intensities, then the autothreshold method will tend to lower the thresholds to include more of that non interesting background. If you image the same sample, but only image a patch of the interesting part, say cytoplasm, then the autothreshold will probably give higher thresholds, and exclude more non interesting background, so the thresholded Manders coefficients will better reflect the biologically interesting parts of the image data - right? You can analyze only a region of interest by making an ROI then selecting the use ROI option in the plugin. You can use a regular shape (rectangle or ellipse) or even a freehand ROI to manually select the interesting part of the image and ignore the part you know is background. Yes, this is a subjective decision, so be careful! You can see in the following example screenshot that for the same misbehaving data set, using an ROI which roughly gets just the cell, the thresholds were calculated properly and the tM1 and tM2 are sensible and lower than 1.00:  
+</p><p><a href="http://imagej.net/File:ColocWithROI.png" class="image"><img alt="ColocWithROI.png" src="../_images/5/51/ColocWithROI.png" width="300" height="474" /></a>
+</p>
+<h2><span class="mw-headline" id="Other_pitfalls">Other pitfalls</span></h2>
+<p>Please see the <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis">Colocalization Analysis</a> page for further discussion of precautions.
+</p>
+<h2><span class="mw-headline" id="Release_Notes.2C_Newly_Added_Features_and_Squashed_Bugs">Release Notes, Newly Added Features and Squashed Bugs</span></h2>
+<p>The definitive list of new features and fixes is the source code history as shown by the GIT history here: <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/commits/master">https://github.com/fiji/Colocalisation_Analysis/commits/master</a>
+This is just an easy way to check, a casual list for users, and might not be up to date. 
+These might not yet all be in the version of the Coloc_2 plugin released into the imageJ/Fiji updater; you can see that version listed in the command finder in the file column. Latest released into Fiji updater versions are tagged as releases on GITHUB, eg. <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/releases">https://github.com/fiji/Colocalisation_Analysis/releases</a> 
+</p>
+<ol><li> Version 2.0.2 in Fiji updater -  26.Feb.2015
+<ol><li> 27-Jan-2015 commit 863fdbeaf7785759ed1c8e9357b7dd67f6d79996 Implement  implement code to make sure autothreshold results are the same regardless of image channel order. A slightly earlier commit also added a unit test for this: CommutativityTest.java</li></ol></li></ol>
+<ol><li> Version 2.1.0 in Fiji updater - 02.Sep.2015
+<ol><li> 08-2015 Fix bug in Manders' split coefficient calculations when using thresholds. <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/commit/e4a3a6ec36e0e878d40e1b1114f68deaccd41cde">https://github.com/fiji/Colocalisation_Analysis/commit/e4a3a6ec36e0e878d40e1b1114f68deaccd41cde</a></li>
+<li> 08-2015 Fixed in fiji master github repo by commit <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/commit/492b846c032bd85651ffce7b52c96b3520eff6bb">https://github.com/fiji/Colocalisation_Analysis/commit/492b846c032bd85651ffce7b52c96b3520eff6bb</a>:
+<ol><li> if 2D histogram regression finds a y intercept that is below zero it gives the too high warning "Warning! y-intercept high - The absolute y-intercept of the auto threshold regression line is high. Maybe you should use a ROI, maybe do a background subtraction in both channels" So should change warning text to too high or too low depending on if its positive or negative.</li></ol></li>
+<li> 08-2015 Fixed in fiji master github repo by commit <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/commit/4cfc8861f05f277075c3fb7881ebf0d7e54c67c3">https://github.com/fiji/Colocalisation_Analysis/commit/4cfc8861f05f277075c3fb7881ebf0d7e54c67c3</a>:
+<ol><li> Numerical results and image stats are currently spewed into the IJ.log window. This is done separately from the way results are put into the simple results display window or the PDF output. So there three differently formatted results outputs with different stuff in them. Different ResultsHandler implementations like PDF or Simple can and do show a different selection of results. This is over complicated, so it should be made into one thing, that outputs the same numerical results and stats values, in the same order in all ResultsHander implementations: GUI display and PDF output, and also the IJ.log. Can reuse the ValueResults class for all three by doing the same thing in each. 
+<ol><li> commit <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/commit/a493b2c88a14f4f6403451aeee6989bf7a2becfb">https://github.com/fiji/Colocalisation_Analysis/commit/a493b2c88a14f4f6403451aeee6989bf7a2becfb</a> Make IJ.log writing only happen once and only in the default ResultHandler that's always used. </li>
+<li> commits <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/commit/e833597d7d8a7b4d3db747512f6048d67d61d120">https://github.com/fiji/Colocalisation_Analysis/commit/e833597d7d8a7b4d3db747512f6048d67d61d120</a> and <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/commit/75184e88cd6c1e0914ec87caebe97494002bcd4e">https://github.com/fiji/Colocalisation_Analysis/commit/75184e88cd6c1e0914ec87caebe97494002bcd4e</a> Get the Coloc job name from the DataContainer image names, and also add the mark/ROI ID to the job name in case there are multiple ROIs. </li></ol></li></ol></li>
+<li> 08-2015 Fixed in fiji master github repo commit <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/commit/6318f0f29ba6fd938674225a43cdba4c0909acc6">https://github.com/fiji/Colocalisation_Analysis/commit/6318f0f29ba6fd938674225a43cdba4c0909acc6</a>:
+<ol><li> Running as imageJ macro command fails because of the parameter: show_"save_pdf"_dialog. Probably the "" are messing up the run(Coloc_2, "params"); text string parameters. So need to get rid of the "" around save_pdf.</li></ol></li></ol></li></ol>
+<ol><li> After version 2.1.0
+<ol><li> 09-2015 Fixed in fiji master github repo commit: Coloc Job filed and result nanme in output fixed to be more sensible formatting, with a label and a value like all other results</li></ol></li></ol>
+<h2><span class="mw-headline" id="Ideas_List">Ideas List</span></h2>
+<p>Coloc_2 issue tracker is found on GITHUB.com, along with the source code; bugs can be reported there:
+<a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/issues?q=is%3Aopen+is%3Aissue">https://github.com/fiji/Colocalisation_Analysis/issues?q=is%3Aopen+is%3Aissue</a>
+</p><p>Open Bug reports and other open issues can be seen here: <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/issues?q=is%3Aopen+is%3Aissue">https://github.com/fiji/Colocalisation_Analysis/issues?q=is%3Aopen+is%3Aissue</a>
+</p><p>Fixed bugs and resolved issues can be seen in the above section and in more detail in the issue tracker: <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/issues?q=is%3Aissue+is%3Aclosed">https://github.com/fiji/Colocalisation_Analysis/issues?q=is%3Aissue+is%3Aclosed</a>
+</p><p>The contents of the old 'to do' list and design notes can be found here: <a rel="nofollow" class="external free" href="https://github.com/fiji/Colocalisation_Analysis/wiki/DesignNotes">https://github.com/fiji/Colocalisation_Analysis/wiki/DesignNotes</a>
+</p><p>This list is for more random, vague, or uncertain ideas, which are not yet well enough thought through to be adequately defined as solvable issues in the tracker on GITHUB.com. 
+</p>
+<ol><li> Running as macro command in a loop, need to use macro commands to save the IJ.log window results, then clear the log window before the next set of results are sent there. Add words to documentation to explain that. Should test if this kind of thing works using string concatenation tobconstruct the long string of coloc_2 parameters. Perhaps better to do it in python or beanshell. </li></ol>
+<p>"
+This kind of macro will prompt you for a directory and get you a list of all files in
+that directory, stored in an array called 'files' (or whatever arbitrary
+name you choose):
+</p><p><br />
+You can then refer to consecutive files using consecutive numbers in the
+array index, e.g.: files[0] and files[1].
+Use a for loop to go through the entire list:
+</p><p><br />
+</p>
+<pre> dir = getDirectory();
+ files = getFileList(dir);
+ for(i = 0; i &lt; files.length - 1; i++){
+    open(dir + files[i]);
+    open(dir + files[i+1]);
+     Split channels
+     run(Coloc_2, "i-ch1, i-ch2, etc....")
+     Close opened images
+     Save ij.log
+     Clear ij.log
+ }
+</pre>
+<p>"
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064830
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.156 seconds
+Real time usage: 0.156 seconds
+Preprocessor visited node count: 4774/1000000
+Preprocessor generated node count: 4754/1000000
+Post‐expand include size: 6444/2097152 bytes
+Template argument size: 1847/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  121.641      1 - -total
+100.00%  121.641      1 - Template:ComponentStats:sc.fiji:Colocalisation_Analysis
+ 99.04%  120.477      1 - Template:Component
+ 85.71%  104.261     18 - Template:Person
+  1.46%    1.781      1 - Template:GitHub
+  1.19%    1.442      1 - Template:Project
+  1.00%    1.212      1 - Template:Maven
+  0.91%    1.113      1 - Template:DevStatus
+  0.85%    1.029      1 - Template:SupportStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Coloc_2&amp;oldid=41220">http://imagej.net/index.php?title=Coloc_2&amp;oldid=41220</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Coloc_2&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Colocalization" title="Category:Colocalization">Colocalization</a></li><li><a href="http://imagej.net/Category:Color_processing" title="Category:Color processing">Color processing</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Coloc+2" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Coloc+2" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Coloc_2" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Coloc_2" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Coloc_2&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Coloc_2&amp;oldid=41220" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Coloc_2&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":345});});</script>
+		</body>
+		</html>
+		

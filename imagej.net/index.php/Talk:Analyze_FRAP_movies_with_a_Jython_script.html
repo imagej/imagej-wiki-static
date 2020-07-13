@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Talk:Analyze FRAP movies with a Jython script - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"Talk","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":1,"wgPageName":"Talk:Analyze_FRAP_movies_with_a_Jython_script","wgTitle":"Analyze FRAP movies with a Jython script","wgCurRevisionId":20987,"wgRevisionId":20987,"wgArticleId":3614,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Talk:Analyze_FRAP_movies_with_a_Jython_script","wgRelevantArticleId":3614,"wgRequestId":"41a80c203784bf83faf1eade","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="this seems to be broken on linux 64 bit java 1.8, ij 1.51c&amp;#160;?&#10;is the import wrong?&#10;Dan"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Analyze FRAP movies with a Jython script"/>
+
+	<meta property="og:description" content="this seems to be broken on linux 64 bit java 1.8, ij 1.51c&amp;#160;?&#10;is the import wrong?&#10;Dan"/>
+
+	<meta property="og:url" content="http://imagej.net/Talk:Analyze_FRAP_movies_with_a_Jython_script"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-1 ns-talk page-Talk_Analyze_FRAP_movies_with_a_Jython_script rootpage-Talk_Analyze_FRAP_movies_with_a_Jython_script skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="./Talk:Analyze_FRAP_movies_with_a_Jython_script.html#bodyContent">Skip to content</a>, 			<a href="./Talk:Analyze_FRAP_movies_with_a_Jython_script.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="./Talk:Analyze_FRAP_movies_with_a_Jython_script.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main"><a href="http://imagej.net/Analyze_FRAP_movies_with_a_Jython_script" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="selected"><a href="http://imagej.net/Talk:Analyze_FRAP_movies_with_a_Jython_script" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Talk:Analyze_FRAP_movies_with_a_Jython_script&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Talk:Analyze_FRAP_movies_with_a_Jython_script&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Talk:Analyze FRAP movies with a Jython script</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>this seems to be broken on linux 64 bit java 1.8, ij 1.51c&#160;?
+is the import wrong?
+Dan
+</p>
+<pre>
+Started New_.py at Tue Jun 28 12:45:12 CEST 2016
+Traceback (most recent call last):
+  File "New_.py", line 40, in &lt;module&gt;
+	at ij.ImageStack.getProcessor(ImageStack.java:269)
+	at sun.reflect.GeneratedMethodAccessor32.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+
+java.lang.IllegalArgumentException: java.lang.IllegalArgumentException: Argument out of range: 11
+
+	at org.python.core.Py.JavaError(Py.java:495)
+	at org.python.core.Py.JavaError(Py.java:488)
+	at org.python.core.PyReflectedFunction.__call__(PyReflectedFunction.java:188)
+	at org.python.core.PyReflectedFunction.__call__(PyReflectedFunction.java:204)
+	at org.python.core.PyObject.__call__(PyObject.java:404)
+	at org.python.core.PyObject.__call__(PyObject.java:408)
+	at org.python.core.PyMethod.__call__(PyMethod.java:124)
+	at org.python.pycode._pyx1.f$0(New_.py:127)
+	at org.python.pycode._pyx1.call_function(New_.py)
+	at org.python.core.PyTableCode.call(PyTableCode.java:165)
+	at org.python.core.PyCode.call(PyCode.java:18)
+	at org.python.core.Py.runCode(Py.java:1275)
+	at org.scijava.plugins.scripting.jython.JythonScriptEngine.eval(JythonScriptEngine.java:76)
+	at org.scijava.script.ScriptModule.run(ScriptModule.java:174)
+	at org.scijava.module.ModuleRunner.run(ModuleRunner.java:167)
+	at org.scijava.module.ModuleRunner.call(ModuleRunner.java:126)
+	at org.scijava.module.ModuleRunner.call(ModuleRunner.java:65)
+	at org.scijava.thread.DefaultThreadService$2.call(DefaultThreadService.java:191)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalArgumentException: Argument out of range: 11
+	at ij.ImageStack.getProcessor(ImageStack.java:269)
+	at sun.reflect.GeneratedMethodAccessor32.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.python.core.PyReflectedFunction.__call__(PyReflectedFunction.java:186)
+	... 19 more
+</pre>
+<p><br />
+</p>
+<hr />
+<p>Sorry, I can't reproduce (on Win7, Java8, ImageJ 2.0.0-rc-49/1.51d)
+</p><p>What are the steps you were taking? What update sites do you have activated?
+</p><p>--<a href="http://imagej.net/User:Eglinger" title="User:Eglinger">eglinger</a> (<a href="http://imagej.net/index.php?title=User_talk:Eglinger&amp;action=edit&amp;redlink=1" class="new" title="User talk:Eglinger (page does not exist)">talk</a>) 06:03, 28 June 2016 (CDT)
+</p><p><br />
+</p>
+<hr />
+<p>Oh, wait:
+</p>
+<pre>
+Caused by: java.lang.IllegalArgumentException: Argument out of range: 11
+	at ij.ImageStack.getProcessor(ImageStack.java:269)
+</pre>
+<p>Let me guess: you were running the script on a 10-frame stack and didn't adjust the line:
+</p>
+<pre># Specify up to what frame to fit and plot.
+n_slices = 30
+</pre>
+<p><br />
+Right?
+</p><p>In the future, let's post discussions like this one on the <a rel="nofollow" class="external text" href="http://forum.imagej.net/">forum</a>, where the chance is higher that someone else than the last author of this page will actually respond.
+</p><p>--<a href="http://imagej.net/User:Eglinger" title="User:Eglinger">eglinger</a> (<a href="http://imagej.net/index.php?title=User_talk:Eglinger&amp;action=edit&amp;redlink=1" class="new" title="User talk:Eglinger (page does not exist)">talk</a>) 06:11, 28 June 2016 (CDT)
+</p>
+<hr />
+<p>yes that's it!
+I should have read it first!!!!
+Dan
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073540
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.008 seconds
+Real time usage: 0.007 seconds
+Preprocessor visited node count: 7/1000000
+Preprocessor generated node count: 44/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Talk:Analyze_FRAP_movies_with_a_Jython_script&amp;oldid=20987">http://imagej.net/index.php?title=Talk:Analyze_FRAP_movies_with_a_Jython_script&amp;oldid=20987</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 28 June 2016, at 06:13.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Talk:Analyze_FRAP_movies_with_a_Jython_script&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Talk%3AAnalyze+FRAP+movies+with+a+Jython+script" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Talk%3AAnalyze+FRAP+movies+with+a+Jython+script" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Talk:Analyze_FRAP_movies_with_a_Jython_script" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Talk:Analyze_FRAP_movies_with_a_Jython_script" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Talk:Analyze_FRAP_movies_with_a_Jython_script&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Talk:Analyze_FRAP_movies_with_a_Jython_script&amp;oldid=20987" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Talk:Analyze_FRAP_movies_with_a_Jython_script&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":182});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>FAST - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"FAST","wgTitle":"FAST","wgCurRevisionId":41237,"wgRevisionId":41237,"wgArticleId":10493,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Analysis","Segmentation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"FAST","wgRelevantArticleId":10493,"wgRequestId":"f9c7e1a4a976b2f15d680e0d","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This ImageJ macro automates tasks (open, set threshold, save Region Of Interest, measure) to process a set of single-channel fluorescence images."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="FAST"/>
+
+	<meta property="og:description" content="This ImageJ macro automates tasks (open, set threshold, save Region Of Interest, measure) to process a set of single-channel fluorescence images."/>
+
+	<meta property="og:url" content="http://imagej.net/FAST"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-FAST rootpage-FAST skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="FAST.html#bodyContent">Skip to content</a>, 			<a href="FAST.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="FAST.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/FAST" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:FAST&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=FAST&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=FAST&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>FAST</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="FAST.html#Fluorescence_image_AnalysiS_Tool:_FAST"><span class="tocnumber">1</span> <span class="toctext"><b>F</b>luorescence image <b>A</b>nalysi<b>S</b> <b>T</b>ool: FAST</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="FAST.html#Description"><span class="tocnumber">1.1</span> <span class="toctext">Description</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="FAST.html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="FAST.html#Image_Processing"><span class="tocnumber">3</span> <span class="toctext">Image Processing</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="FAST.html#Step_1:_Auto_processing_of_images_within_the_selected_work_directory"><span class="tocnumber">3.1</span> <span class="toctext">Step 1: Auto processing of images within the selected work directory</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="FAST.html#Step_2:_User_confirmation_of_selected_Regions_Of_Interest_and_measure"><span class="tocnumber">3.2</span> <span class="toctext">Step 2: User confirmation of selected Regions Of Interest and measure</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="FAST.html#Startup_Options"><span class="tocnumber">4</span> <span class="toctext">Startup Options</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="FAST.html#Validation_of_selected_Regions_Of_Interest"><span class="tocnumber">5</span> <span class="toctext">Validation of selected Regions Of Interest</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="FAST.html#Related_Resources"><span class="tocnumber">6</span> <span class="toctext">Related Resources</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Fluorescence_image_AnalysiS_Tool:_FAST"><b>F</b>luorescence image <b>A</b>nalysi<b>S</b> <b>T</b>ool: FAST</span></h2>
+<h3><span class="mw-headline" id="Description">Description</span></h3>
+<p>This ImageJ macro automates tasks (open, set threshold, save Region Of Interest, measure) to process a set of single-channel fluorescence images.
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>Requirements:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="https://imagej.net/Downloads">ImageJ</a> v1.49o or newer.</li>
+<li> <a rel="nofollow" class="external text" href="https://www.openmicroscopy.org/bio-formats/downloads/">Bio-Formats 5.x</a> or newer.</li></ul>
+<div id="bioformat" style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> Saving <i>bioformats_package.jar</i> in .\ImageJ.app\plugins\ seems to be the best way to use the macro in stable conditions.</div>
+<p><br />
+Use the ImageJ Updater and see the instructions <a rel="nofollow" class="external text" href="https://imagej.net/How_to_follow_a_3rd_party_update_site">How to follow a 3rd party update site</a> select FAST (<a rel="nofollow" class="external free" href="http://sites.imagej.net/FAST">http://sites.imagej.net/FAST</a>) from the available site list.
+</p><p>New commands should then appear in ImageJ '<span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> FAST </span></em></span>' menu.
+</p>
+<h2><span class="mw-headline" id="Image_Processing">Image Processing</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:502px;"><a href="http://imagej.net/File:FAST_Processing.png" class="image"><img alt="" src="../_images/a/a1/FAST_Processing.png" width="500" height="281" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:FAST_Processing.png" class="internal" title="Enlarge"></a></div>Description of the Image processing pipeline of FAST macro.</div></div></div>
+<h3><span class="mw-headline" id="Step_1:_Auto_processing_of_images_within_the_selected_work_directory">Step 1: Auto processing of images within the selected work directory</span></h3>
+<ol><li> List all files containing user-defined extension (e.g. czi - zvi - tif - nd2) within selected directory and sub-directories.</li>
+<li> Apply the user-defined threshold (default 290) then analyse pixels above the threshold.</li>
+<li> Group pixels above the threshold in one Region Of Interest and save this ROI in a zip file in the image directory.</li></ol>
+<h3><span class="mw-headline" id="Step_2:_User_confirmation_of_selected_Regions_Of_Interest_and_measure">Step 2: User confirmation of selected Regions Of Interest and measure</span></h3>
+<ol><li> Open images one by one to check the auto-selected ROI.</li>
+<li> User can confirm the ROI, modify it directly or remove image from further analysis.</li>
+<li> Measure of fluorescence in selected ROI.</li></ol>
+<h2><span class="mw-headline" id="Startup_Options">Startup Options</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:269px;"><div class="MediaTransformError" style="width: 267px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:FAST_Options.png" class="internal" title="Enlarge"></a></div>Options dialog box</div></div></div>
+<p>The macro displays a dialog box to set analysis options:
+</p>
+<dl><dt> <b>File type</b>&#160;</dt>
+<dd> Select image type between CZI (Carl Zeiss Image), ZVI (Zeiss Vision Image), ND2 (Nikon) or TIFF (Tagged Image File Format).<br />'Other' allow to enter a specific file extension.</dd>
+<dt> <b>Threshold value</b>&#160;</dt>
+<dd> Set threshold value for pixel intensity, segmenting the image into features of interest (above threshold) and background.</dd></dl>
+<div id="Threshold" style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> <i><b>Threshold value must be defined for each acquisition system (microscope + camera + exposure time + file-type)</b></i>.</div>
+<p><br />
+</p>
+<dl><dt> <b>Create ROIs</b>&#160;</dt>
+<dd> Step 1, analyses pixels above the user-defined threshold value and automatically saves Regions Of Interest zip file in the image directory.</dd>
+<dt> <b>Measure ROIs</b>&#160;</dt>
+<dd> Step 2 of image analysis to check individually and measure previously created ROIs. (With Step 1 unchecked and Step 2 checked, user can reanalyse previous data).</dd>
+<dt> <b>Overwrite existing ROIs</b>&#160;</dt>
+<dd> If selected, the macro will overwrite ROIs zip files without prompting the user every time.</dd>
+<dt> <b>Silent Mode</b>&#160;</dt>
+<dd> If selected, the macro will measure the ROI of all images without prompting the user every time. Useful for reanalysis of previous data.</dd>
+<dt> <b>Restart Mode</b>&#160;</dt>
+<dd> When auto processing is cancelled accidentally, this mode checks the last ROI created and restart analysis from this point.</dd></dl>
+<h2><span class="mw-headline" id="Validation_of_selected_Regions_Of_Interest">Validation of selected Regions Of Interest</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="http://imagej.net/File:FAST_ROI-check.png" class="image"><img alt="" src="../_images/7/72/FAST_ROI-check.png" width="200" height="203" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:FAST_ROI-check.png" class="internal" title="Enlarge"></a></div>User validation of defined ROI</div></div></div>
+<p>After completion of Step 1 of image processing, images and their corresponding ROIs need to be validated by the user.
+</p><p>Each image and the corresponding ROI are opened automatically.
+An options dialog box is displayed.
+</p>
+<ul><li> If the area is correct the user must click <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">OK</kbd> to proceed with next image.</li>
+<li> If the area contains non-specific signal, select <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Yes</kbd> to <i>redefine area manually</i> and edit the ROI.</li>
+<li> The dialog box allows to exclude current image from analysis (e.g. blurred image).</li></ul>
+<p>Just select the radio button option needed then click <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">OK</kbd> or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">⏎ENTER</kbd> to continue.
+</p><p><br />
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="http://imagej.net/File:FAST_ROI-edition.png" class="image"><img alt="" src="../_images/e/e7/FAST_ROI-edition.png" width="200" height="131" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:FAST_ROI-edition.png" class="internal" title="Enlarge"></a></div>Dialog box to redefine area</div></div></div>
+<p>If you selected to <i>redefine area manually</i>, a new dialog box is displayed to get access to the ImageJ toolbar and modify the selection. The user-defined threshold is then automatically applied.
+</p>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:502px;"><a href="http://imagej.net/File:FAST_Thr-ROI.png" class="image"><img alt="" src="../_images/4/4f/FAST_Thr-ROI.png" width="500" height="156" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:FAST_Thr-ROI.png" class="internal" title="Enlarge"></a></div>Example of thresholded image and corrected ROI</div></div></div></div>
+Select the appropriate tool in ImageJ toolbar: <div class="MediaTransformError" style="width: 29px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> Freehand (default) OR <div class="MediaTransformError" style="width: 29px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> Wand tool.
+<ul><li> To remove non-specific fluorescence, use selected tool and hold <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⎇</span> Alt</kbd> while unwanted area to remove it from ROI.</li>
+<li> To add area to the previously selected ROI, hold <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd> while selecting new area to add.</li></ul>
+<p><br />
+Click <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">OK</kbd> to confirm the new ROI.
+Fluorescence is then measured and the ROI zip file is automatically updated.
+</p>
+<div id="Selection" style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> In case the selection is empty after manual correction, the macro discards the image from analysis.</div>
+<p><br />
+</p><p>After completion of Step 2, a list of all measured images with filename is displayed in the Result Table window of ImageJ.
+</p><p>This table is automatically saved as a <i>csv</i> file in the work directory selected at startup.
+</p>
+<h2><span class="mw-headline" id="Related_Resources">Related Resources</span></h2>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the <a rel="nofollow" class="external text" href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a> as published by the Free Software Foundation. <a rel="nofollow" class="external text" href="https://imagej.net/User:C.TURI%C3%88S">Comments or improvements are welcome</a>. It is distributed in the hope that it will be useful, but <b>"AS IS" without warranty of any kind</b>. See the <a rel="nofollow" class="external text" href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a> for more details.
+</p><p>This program has been developed within the framework of the <a rel="nofollow" class="external text" href="http://www.oecd.org/chemicalsafety/testing/oecd-guidelines-testing-chemicals-related-documents.htm">OECD Work plan for the Test Guidelines Programme (TGP)</a> - Project  2.46:  New  Test Guideline  for  the  Detection  of  Endocrine  Active  Substances,  acting  through estrogen receptors using transgenic cyp 19a1b-GFP Zebrafish Embryos (EASZY assay).
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713065056
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.128 seconds
+Real time usage: 0.129 seconds
+Preprocessor visited node count: 3089/1000000
+Preprocessor generated node count: 6311/1000000
+Post‐expand include size: 15830/2097152 bytes
+Template argument size: 1644/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   93.825      1 - -total
+ 89.42%   83.901      7 - Template:Key_press
+ 79.09%   74.210      7 - Template:Key_press/core
+  6.20%    5.816      3 - Template:Tip
+  4.70%    4.405     10 - Template:Box-shadow
+  3.52%    3.302      7 - Template:Linear-gradient
+  3.37%    3.166      1 - Template:Bc
+  2.12%    1.990     10 - Template:Border-radius
+  1.05%    0.981      1 - Template:Arrow
+  0.88%    0.826      2 - Template:Unicode
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=FAST&amp;oldid=41237">http://imagej.net/index.php?title=FAST&amp;oldid=41237</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=FAST&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=FAST" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=FAST" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/FAST" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/FAST" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=FAST&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=FAST&amp;oldid=41237" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=FAST&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":325});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Developing using native libraries - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Developing_using_native_libraries","wgTitle":"Developing using native libraries","wgCurRevisionId":29287,"wgRevisionId":29287,"wgArticleId":1125,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Outdated","Development"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Developing_using_native_libraries","wgRelevantArticleId":1125,"wgRequestId":"cc1be417787220a6888ec1ff","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Sometimes, you may want to use 3rd party libraries that are not available as Java components, but only as native libraries."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Developing using native libraries"/>
+
+	<meta property="og:description" content="Sometimes, you may want to use 3rd party libraries that are not available as Java components, but only as native libraries."/>
+
+	<meta property="og:url" content="http://imagej.net/Developing_using_native_libraries"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Developing_using_native_libraries rootpage-Developing_using_native_libraries skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Developing_using_native_libraries.html#bodyContent">Skip to content</a>, 			<a href="Developing_using_native_libraries.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Developing_using_native_libraries.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Developing_using_native_libraries" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Developing_using_native_libraries&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Developing_using_native_libraries&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Developing_using_native_libraries&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Developing using native libraries</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Development
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Development" title="Development">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Philosophy" title="Philosophy">Philosophy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Architecture" title="Architecture">Architecture</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Source_code" title="Source code">Source code</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Project_management" title="Project management">Project management</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Coding_style" title="Coding style">Coding style</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging" title="Debugging">Debugging</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tools
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git" title="Git">Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Maven" title="Maven">Maven</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/IDEs" title="IDEs">IDEs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Travis" title="Travis">Travis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/AppVeyor" title="AppVeyor">AppVeyor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Dotfiles" title="Dotfiles">Dotfiles</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Guides
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Writing_plugins" title="Writing plugins">Writing plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_contribute_to_an_existing_plugin_or_library" title="How to contribute to an existing plugin or library">Contributing to a plugin</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Distribution" title="Distribution">Distributing your plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Development_Lifecycle" title="Development Lifecycle">Development lifecycle</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Building_a_POM" title="Building a POM">Building a POM</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImageJ_in_Eclipse" title="Developing ImageJ in Eclipse">Developing with Eclipse</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging_Exercises" title="Debugging Exercises">Hands-on debugging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_ops" title="Adding new ops">Adding new ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_formats" title="Adding new formats">Adding new formats</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Using native libraries</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_developers" title="Tips for developers">Tips for developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_C%2B%2B_developers" title="Tips for C++ developers">Tips for C++ developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">ImageJ 1.x plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Versioning" title="Versioning">Versioning</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Logging" title="Logging">Logging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Uber-JAR" title="Uber-JAR">Uber-JARs</a>
+</td></tr></table>
+</td></tr></table>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Developing_using_native_libraries.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Developing_using_native_libraries.html#Disadvantages_of_using_native_libraries"><span class="tocnumber">1.1</span> <span class="toctext">Disadvantages of using native libraries</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Developing_using_native_libraries.html#JNA_vs_JNI"><span class="tocnumber">1.2</span> <span class="toctext">JNA vs JNI</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="Developing_using_native_libraries.html#JNA"><span class="tocnumber">2</span> <span class="toctext">JNA</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="Developing_using_native_libraries.html#Functions"><span class="tocnumber">2.1</span> <span class="toctext">Functions</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="Developing_using_native_libraries.html#Specifying_library_search_paths"><span class="tocnumber">2.1.1</span> <span class="toctext">Specifying library search paths</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="Developing_using_native_libraries.html#Constants.2Fenums"><span class="tocnumber">2.1.2</span> <span class="toctext">Constants/enums</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="Developing_using_native_libraries.html#Structures"><span class="tocnumber">2.1.3</span> <span class="toctext">Structures</span></a>
+<ul>
+<li class="toclevel-4 tocsection-9"><a href="Developing_using_native_libraries.html#Accessing_structures_via_pointers"><span class="tocnumber">2.1.3.1</span> <span class="toctext">Accessing structures via pointers</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-10"><a href="Developing_using_native_libraries.html#Passing_structures_by_value"><span class="tocnumber">2.1.4</span> <span class="toctext">Passing structures by value</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-11"><a href="Developing_using_native_libraries.html#Scripting_JNA"><span class="tocnumber">2.2</span> <span class="toctext">Scripting JNA</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="Developing_using_native_libraries.html#JNI"><span class="tocnumber">3</span> <span class="toctext">JNI</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="Developing_using_native_libraries.html#First_steps"><span class="tocnumber">3.1</span> <span class="toctext">First steps</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="Developing_using_native_libraries.html#Support_in_ImageJ"><span class="tocnumber">3.2</span> <span class="toctext">Support in ImageJ</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="Developing_using_native_libraries.html#Using_the_Java_Native_Interface_from_C"><span class="tocnumber">3.3</span> <span class="toctext">Using the Java Native Interface from C</span></a>
+<ul>
+<li class="toclevel-3 tocsection-16"><a href="Developing_using_native_libraries.html#Calling_the_JNI_API"><span class="tocnumber">3.3.1</span> <span class="toctext">Calling the JNI API</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="Developing_using_native_libraries.html#Calling_methods_and_accessing_fields"><span class="tocnumber">3.3.2</span> <span class="toctext">Calling methods and accessing fields</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="Developing_using_native_libraries.html#Some_tips"><span class="tocnumber">3.3.3</span> <span class="toctext">Some tips</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-19"><a href="Developing_using_native_libraries.html#JNI_Example"><span class="tocnumber">3.4</span> <span class="toctext">JNI Example</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="Developing_using_native_libraries.html#Caveats"><span class="tocnumber">3.5</span> <span class="toctext">Caveats</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="Developing_using_native_libraries.html#Further_reading"><span class="tocnumber">3.6</span> <span class="toctext">Further reading</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This section is out of date, potentially misleading or invalid. Be careful with any instructions here. When in doubt, <a href="http://imagej.net/Help" title="Help">ask for help from the community</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>Sometimes, you may want to use 3rd party libraries that are not available as Java components, but only as native libraries.
+</p><p>There are two options available to make use of native libraries: <a rel="nofollow" class="external text" href="http://jna.java.net/">JNA</a> and JNI (see below for detailed descriptions).
+</p>
+<h2><span class="mw-headline" id="Disadvantages_of_using_native_libraries">Disadvantages of using native libraries</span></h2>
+<p>Even if JNA and JNI provide some convenience for using native libraries, there are substantial downsides of using native libraries:
+</p>
+<ul><li> Using native libraries flies in the face of the platform independence of Java</li></ul>
+<dl><dd> Even if ImageJ only supports 32-bit/64-bit Windows, MacOSX and Linux (and PowerPC with MacOSX for the time being), it is a major hassle to maintain them. It also means that you incur the problems with C/C++ where a library compiling successfully on one platform does not at all imply that it compiles on any other platform. There are even examples of C code compiling fine for 32-bit but not for 64-bit CPUs on the very same Operating system.</dd></dl>
+<ul><li> No "Compile once, run everywhere"</li></ul>
+<dl><dd> It is one of Java's greatest strengths that you do not need to compile for every platform you plan (or anyone else plans) to run on. Native libraries take away that advantage.</dd></dl>
+<ul><li> By using native libraries, it is much easier to produce fatal errors that tear down the complete Java virtual machine. Consequently, debugging can be really hard when using native libraries.</li></ul>
+<p>For further arguments to use Java instead of native libraries, see also our <a href="http://imagej.net/Why_Java" class="mw-redirect" title="Why Java">rationale for using Java</a>.
+</p>
+<h2><span class="mw-headline" id="JNA_vs_JNI">JNA vs JNI</span></h2>
+<p>The benefits of JNA over JNI are:
+</p>
+<ul><li> scriptable</li>
+<li> you do not need a C compiler</li>
+<li> a native library can be dropped in for an additional platform without any recompilation</li></ul>
+<p>The benefits of JNI over JNA are:
+</p>
+<ul><li> official part of Java</li>
+<li> way faster</li>
+<li> JNI is "type-safer" (i.e. Java and native code access data via the same type definitions)</li></ul>
+<h1><span class="mw-headline" id="JNA">JNA</span></h1>
+<p>The <a rel="nofollow" class="external text" href="http://jna.java.net/">JNA project</a> (<i>Java Native Access</i>) tries to provide an easy, pure-Java way to access native libraries using their native interface.
+</p>
+<h2><span class="mw-headline" id="Functions">Functions</span></h2>
+<p>To this end, the developer has to define an interface describing in Java terms what functions the library provides. Example:
+</p>
+<pre class="brush:java">
+import com.sun.jna.Library;
+
+public interface C extends Library {
+        public int symlink(String oldpath, String newpath);
+}
+</pre>
+<p>Note:
+</p>
+<ul><li> Even if the package name is <i>com.sun.jna</i>, JNA is not an official part of Java. As a consequence, JNA supports less platforms than official Java itself.</li>
+<li> You do not need to declare all the functions offered by the native library. In this example, only <i>symlink</i> was declared.</li>
+<li> The Java type <i>String</i> is mapped to <i>const char *</i> in the C layer. The same happens for other primitive Java types.</li>
+<li> Since the parameters need to be mapped prior to calling the native function, and mapped back after it returns, and all this mapping is done using reflection, JNA is relatively slow compared to JNI (except when the amount of time spent copying data is outweighed by the processing time spent within the native library).</li>
+<li> There is no guarantee by the compiler that the interface is correct. In fact, you can declare the functions incorrectly very easily, which results in hard crashes of the Java virtual machine.</li>
+<li> Note: to define this interface in <a href="http://imagej.net/Beanshell_Scripting" class="mw-redirect" title="Beanshell Scripting">Beanshell</a>, you need to use the syntax <code>interface C implements Library</code> instead of employing the keyword <code>extends</code>.</li></ul>
+<p>Use the library in this way:
+</p>
+<pre class="brush:java">
+import com.sun.jna.Native;
+
+C c = (C)Native.loadLibrary("c", C.class);
+int result = c.symlink(source, target);
+</pre>
+<h3><span class="mw-headline" id="Specifying_library_search_paths">Specifying library search paths</span></h3>
+<p>If you want to use a library that is not installed in one of the locations your platform looks for libraries by default, you may need to tell JNA where to find the library:
+</p>
+<pre class="brush:java">
+NativeLibrary.addSearchPath("opencv", "C:\\opencv");
+OpenCV openCV = (OpenCV)NativeLibrary.loadLibrary("opencv", OpenCV.class);
+</pre>
+<p>Note: some libraries depend on other libraries. If the dependencies are not in the default library path, it might be not possible to load them from within Java without restarting the virtual machine, depending on the platform. On Linux, e.g. you would need to set the environment variable <i>LD_LIBRARY_PATH</i> accordingly (setting them in the Java process does not help, as the dynamic loader was already initialized and does not respect a change in that variable after initialization).
+</p>
+<h3><span class="mw-headline" id="Constants.2Fenums">Constants/enums</span></h3>
+<p>If the C header defines constants using the <i>#define</i> statement, the constant is nowhere to be found in the compiled native library. Likewise, the C compiler optimizes out the names of enums. Therefore, both constants and enums need to be defined in the interface.
+</p><p>For example, this C header:
+</p>
+<pre class="brush:cpp">
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+#define OFF 0
+#define ON 0xff
+
+enum counter_t {
+        ZERO,
+        ONE,
+        TWO,
+        THREE
+};
+
+extern counter_t get_counter(void);
+#endif
+</pre>
+<p>would need to be handled with a JNA-based interface like this one:
+</p>
+<pre class="brush:java">
+public interface MyLibrary extends Library {
+        public final int OFF = 0;
+        public final int ON = 0xff;
+        public final int ZERO = 0;
+        public final int ONE = 1;
+        public final int TWO = 2;
+        public final int THREE = 3;
+
+        public int get_counter();
+}
+</pre>
+<h3><span class="mw-headline" id="Structures">Structures</span></h3>
+<p>Some functions do not take simple data types as parameters, but so-called <i>structs</i>. These have to be defined as inner static classes of the interface, and they need to extend the class <i>com.sun.jna.Structure</i>:
+</p>
+<pre class="brush:java">
+import com.sun.jna.Library;
+import com.sun.jna.Structure;
+
+public interface C extends Library {
+        public static class timeval implements Structure {
+                long tv_sec, tv_usec;
+        }
+        public static class timezeone implements Structure {
+                int tz_minuteswest, tz_dsttime;
+        }
+        public int gettimeofday(timeval timeval, timezone timezone);
+}
+</pre>
+<p>Some fields of the structures might be fixed-size arrays (e.g. <i>unsigned char path[1024]</i>). These fields should be declared with default initializers in Java (e.g. <i>byte[] path = new byte[1024];</i>).
+</p>
+<h4><span class="mw-headline" id="Accessing_structures_via_pointers">Accessing structures via pointers</span></h4>
+<p>A function you call may return a pointer to a structure. To initialize the fields of a Java version of such a structure, you can use the <i>useMemory(Pointer)</i> and <i>read()</i> methods:
+</p>
+<pre class="brush:java">
+...
+        public static class MyStruct {
+                public MyStruct(Pointer p) {
+                        // cannot use super(p) because of fixed-size array fields
+                        super();
+                        useMemory(p); // set pointer
+                        read(); // initialize fields
+                }
+
+                public MyStruct() {
+                        super();
+                        // handle fixed-size array fields correctly
+                        ensureAllocated();
+                }
+        }
+...
+</pre>
+<p>Note: when the superclass' constructor is called, the fixed-size array fields are not yet initialized. Therefore, the superclass' constructor has no way to handle them correctly: their size is not known. That is the reason why you have to call <i>ensureAllocated()</i> and why you cannot use the superclass' <i>super(Pointer)</i> constructor. Technically, when your struct does not contain fixed-size array fields, you can, but getting used to always avoid the <i>super(Pointer)</i> constructor will help you stay out of trouble.
+</p>
+<h3><span class="mw-headline" id="Passing_structures_by_value">Passing structures by value</span></h3>
+<p>When passing instances of a Structure to a function, memory is allocated and written to automatically, and a pointer is passed.
+</p><p>If you want to pass a Structure by value instead, you have to subclass it and implement the <i>Structure.ByValue</i> interface. This interface is purely a tag, and does not require any additional functions to be defined.
+</p><p>Example:
+</p>
+<pre class="brush:java">
+public class Timespec extends Structure {
+	long tv_sec;
+	long tv_usec;
+}
+
+public class Stat extends Structure {
+	long /* dev_t */      st_dev;     /* ID of device containing file */
+	long /* ino_t */      st_ino;     /* inode number */
+	long /* nlink_t */    st_nlink;   /* number of hard links */
+	int /* mode_t */      st_mode;    /* protection */
+	int /* uid_t */       st_uid;     /* user ID of owner */
+	int /* gid_t */       st_gid;     /* group ID of owner */
+	int __pad0;
+	long /* dev_t */      st_rdev;    /* device ID (if special file) */
+	long /* off_t */      st_size;    /* total size, in bytes */
+	long /* blksize_t */  st_blksize; /* blocksize for file system I/O */
+	int /* blkcnt_t */    st_blocks;  /* number of 512B blocks allocated */
+	Timespec /* time_t */ st_atime;   /* time of last access */
+	Timespec /* time_t */ st_mtime;   /* time of last modification */
+	Timespec /* time_t */ st_ctime;   /* time of last status change */
+}
+
+public class StatByValue extends Stat implements Structure.ByValue {
+	public StatByValue(Stat stat) {
+		super();
+		ensureAllocated();
+		byte[] buffer = new byte[size()];
+		stat.getPointer().read(0, buffer, 0, buffer.length);
+		getPointer().write(0, buffer, 0, buffer.length);
+		read();
+	}
+}
+</pre>
+<h2><span class="mw-headline" id="Scripting_JNA">Scripting JNA</span></h2>
+<p>In <a href="http://imagej.net/Beanshell_Scripting" class="mw-redirect" title="Beanshell Scripting">Beanshell</a>, it is not possible to extend interfaces, so it is not possible to imitate the plain Java way to use JNA. Other scripting languages have similar problems as far as JNA is concerned.
+</p><p>But you can use the <i>getFunction(String)</i> method of <i>NativeLibrary</i> to get a function object, whose methods <i>invokeInt(Object[])</i>, <i>invokePointer(Object[])</i> and friends will allow you to call the function.
+</p><p>If the result is not a basic type, you can use <i>Pointer'</i>s methods to access the data. Beanshell example:
+</p>
+<pre class="brush:java">
+import com.sun.jna.NativeLibrary;
+
+// get the C runtime library
+c = NativeLibrary.getInstance("c");
+
+// retrieve the getenv() function and call it
+getenv = c.getFunction("getenv");
+print(getenv.invokePointer(new Object[] { "HELLO" }).getString(0));
+
+// retrieve and use the setenv() function
+setenv = c.getFunction("setenv");
+print(setenv.invokeInt(new Object[] { "HELLO", "world", new Integer(1) }));
+
+// show that it did something
+print(getenv.invokePointer(new Object[] { "HELLO" }).getString(0));
+
+// note that System.getenv() remains oblivious
+print(System.getenv("HELLO"));
+</pre>
+<p>There can be substantial complications: some function names do not actually refer to functions in the native library, but are redirected to another function by the preprocessor. Example: at least on Linux, <i>lstat()</i> actually calls <i>__lxstat()</i> with additional parameters.
+</p><p>Also, the classes defined in your scripting language of choice might not be applicable for use with JNA. Beanshell, for one, adds two fields that JNA cannot (and should not) handle. As a workaround, you can use <i>Pointer'</i>s <i>get</i> family of methods.
+</p><p>Example:
+</p>
+<pre class="brush:java">
+import com.sun.jna.Memory;
+import com.sun.jna.NativeLibrary;
+
+import java.util.Date;
+
+c = NativeLibrary.getInstance("c");
+lstat = c.getFunction("__lxstat");
+errno = c.getFunction("errno");
+
+path = System.getProperty("imagej.dir");
+print(path);
+stat = new Memory(144);
+result = lstat.invokeInt(new Object[] { new Integer(0), path, stat });
+
+print("result: " + result);
+if (result &lt; 0) {
+	strerror = c.getFunction("strerror");
+	err = errno.getInt(0);
+	error = strerror.invokePointer(new Object[] { new Integer(err) }).getString(0);
+	print("errno: " + error + " (" + err + ")");
+}
+print("blocks: " + stat.getInt(64));
+print("atime: " + new Date(stat.getLong(72) * 1000));
+print("mtime: " + new Date(stat.getLong(88) * 1000));
+print("ctime: " + new Date(stat.getLong(104) * 1000));
+</pre>
+<h1><span class="mw-headline" id="JNI">JNI</span></h1>
+<p>The abbreviation <i>JNI</i> stands for <i>Java Native Interface</i>. It is the original and best supported way to access native libraries from within Java. As such, it is robust but also a bit cumbersome to use.
+</p>
+<h2><span class="mw-headline" id="First_steps">First steps</span></h2>
+<p>Before implementing any native (C or C++) code, you need to declare a native function. Example:
+</p>
+<pre class="brush:java">
+public class Hello_World_JNI {
+        public native void helloWorld();
+}
+</pre>
+<p>This tells the JVM that the method <i>helloWorld()</i> is implemented in a native library (which has to be loaded separately).
+</p><p>The next step is to generate a C header with the declaration of the C function implementing that method:
+</p>
+<pre class="brush:bash">
+javac Hello_World_JNI.java
+javah -classpath . Hello_World_JNI
+</pre>
+<p>Note that the executable <i>javah</i> works on <i>.class</i> files only, hence we have to compile the <i>.java</i> source file first. The output is a <i>.h</i> file.
+</p><p>After this, the code doing the actual work needs to be implemented in a separate <i>.c</i> file. This should include the header file generated by <i>javah</i> and be compiled to a shared library: <i>.dll</i> on Windows, <i>.dylib</i> on MacOSX (Apple's Java also used the extension <i>.jnilib</i>), and <i>.so</i> everywhere else.
+</p><p>Before the native method can be called, the JVM needs to load the native library. There are basically two different methods to do that, <i>System.loadLibrary()</i> and <i>System.load()</i>. The former looks for the library in the system-wide library search path while the latter expects an absolute path to the dynamic link library file. For the purposes of ImageJ, the latter is usually preferred because we want to avoid requiring administrator privileges of our users.
+</p>
+<h2><span class="mw-headline" id="Support_in_ImageJ">Support in ImageJ</span></h2>
+<p>Native libraries located in:
+</p>
+<pre>  <b>&lt;ImageJ-directory&gt;/lib/&lt;platform&gt;/</b>
+</pre>
+<p>will automatically be added to the <b><code>java.library.path</code></b>, exposing them in Java land - where they still need to be loaded. One option for loading is to create a <code>Service</code> that loads the native library in its <code>initialize()</code> method. For example, see the <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-itk/blob/imagej-itk-0.1.0/src/main/java/net/imagej/itk/DefaultImageJItkService.java#L84-L91">ITK compatibility layer</a>.
+</p><p>The Fiji build system also supports native targets by compiling source files whose names end in <i>.c</i> using gcc. If C sources are found, javah will be called and a native library will be compiled using GCC and the resulting shared library will be put into the <i>&lt;fiji-directory&gt;/lib/&lt;platform&gt;/</i> directory.
+</p><p>Finally, the <i>fiji.JNI</i> class in <i>fiji-lib.jar</i> provides convenience methods to load native libraries. Example:
+</p>
+<pre class="brush:java">
+static {
+        JNI.loadLibrary("hello-world");
+}
+</pre>
+<p>See also the <a href="Developing_using_native_libraries.html#JNI_Example">JNI Example</a> below.
+</p>
+<h2><span class="mw-headline" id="Using_the_Java_Native_Interface_from_C">Using the Java Native Interface from C</span></h2>
+<p>There are a couple of things one needs to keep in mind when accessing Java classes, instances and methods from C.
+</p><p>The most important is: Java has its own memory management. In contrast to C, it moves things around when needed. In C, once you have obtained an address to some data, it is the programmer's duty to make sure that the memory range is valid until no variables hold any references (addresses) to that range any longer. To access data stored in the Java Virtual Machine's memory range (the <i>heap</i>), one has to <i>pin</i> those data to a certain memory location and tell the JVM when it is free to move the data again.
+</p><p>Such pinning issues are the nastiest things when working with JNI since it is all too easy to come up with sloppy code that just works by chance during the testing phase.
+</p><p>Every call from Java to a native function passes as first parameter a reference to the JNI environment. This is an opaque pointer to internal state variables that are required for literally every interaction with Java. Example:
+</p>
+<pre class="brush:cpp">
+JNIEXPORT void JNICALL Java_Hello_1World_helloWorld
+    (JNIEnv *env, jclass object, jstring message);
+</pre>
+<p>Typically, you will work a lot with primitive types that are available under the names <i>jbyte, jshort, jint, jlong,</i> etc. These are usually identical with the native C types <i>char, short, int, long</i> (but not always; the devil is in the cross-platform details, as always).
+</p><p>One notable exception is <i>jchar</i> which is _not_ identical to <i>char</i>. The authors of Unix decided in their infinite wisdom that you will only ever need 7 bits, or at most 8 bits, to encode text. The authors of Java knew that this is wrong and therefore <i>jchar</i> refers to 16-bit Unicode characters. In C, you will typically work with UTF-8 (for convenience and to save memory), so make sure you use the <i>*UTF*</i> functions of the JNI API (e.g. <i>NewStringUTF()</i> instead of <i>NewString()</i>).
+</p>
+<h3><span class="mw-headline" id="Calling_the_JNI_API">Calling the JNI API</span></h3>
+<p>There are many functions in the JNI API, and almost all of them are stored as function pointers in the JNIEnv instance. Since many of them need to access the environment to interact with state variables hidden from the user, most calls look like this, passing the environment as first parameter back to the function:
+</p>
+<pre class="brush:cpp">
+(*env)-&gt;NameOfTheFunction(env, ...);
+</pre>
+<h3><span class="mw-headline" id="Calling_methods_and_accessing_fields">Calling methods and accessing fields</span></h3>
+<p>If you need to call a Java method from C, you first need a reference to the class. Note: the class name must be passed in UTF-8 and in the <i>slashed</i> format rather than the dotted one. Example:
+</p>
+<pre class="brush:cpp">
+jclass image_plus_class = (*env)-&gt;FindClass(env, "ij/ImagePlus");
+</pre>
+<p>Primitive types do not have corresponding <i>jclass</i> instances, there are individual accessors for every primitive type where applicable.
+</p><p>Should you need to access arrays, prefix the class name with an opening square bracket, e.g. "[ij/process/ImageProcessor";
+</p><p>Arrays of primitive types are special: the "class names" are upper-case letters such as "B" for <i>byte</i>, "I" for <i>int</i> and (funnily enough) "Z" for <i>boolean</i>. The corresponding array's class name is then "[B", "[I" and "[Z".
+</p><p>The easiest way to determine the class name is to instantiate the class in Java and call <i>instance.getClass().getName()</i> on the instance.
+</p><p>To call a method you need to obtain the method id first:
+</p>
+<pre class="brush:cpp">
+jmethodID get_title_method = (*env)-&gt;GetMethodID(env,
+    image_plus_class, "getTitle", "Ljava/lang/String;()");
+</pre>
+<p>The fourth parameter is the <i>signature</i> specifying the input parameters' and the return value's types. The easiest way to find out what the exact signature is, is to call <i>javap</i> on the class, passing the <i>-s</i> option to show the signatures in addition to the human-digestable information.
+</p><p>Once you have the method id, you can call the method, passing an instance of the corresponding class:
+</p>
+<pre class="brush:cpp">
+(*env)-&gt;CallVoidMethod(env, instance, image, get_title_method);
+</pre>
+<p>The <i>Call&lt;return-type&gt;Method()</i> family of functions take a variable number of arguments. Be very careful to pass the correct number and types of parameters!
+</p>
+<h3><span class="mw-headline" id="Some_tips">Some tips</span></h3>
+<ul><li> Never assume that the reference to a method, or even the JNIEnv parameter are constant between calls to native functions. A very likely source for segmentation faults/access violations that take the complete JVM down.</li></ul>
+<ul><li> Always make sure that you release the memory accessed via JNI as soon as possible. This avoids not only memory leaks but also performance issues due to preventing the JVM's memory management to do its thing.</li></ul>
+<ul><li> For performance, you should minimize the use of <i>FindClass()</i> and <i>GetMethodID()</i>: while Java 7 promises better performance for these functions, still a lot of people work with Java 5 or Java 6 where such calls are slow.</li></ul>
+<ul><li> Pay attention to the compiler's warnings. They are not there just for fun.</li></ul>
+<h2><span class="mw-headline" id="JNI_Example">JNI Example</span></h2>
+<p>There is an example in Fiji's source code: <a rel="nofollow" class="external text" href="https://github.com/imagej/minimal-ij1-plugin/blob/native/src/main/c/JNI_Example.c">on GitHub</a>.
+</p><p>To compile it, simply run
+</p>
+<pre class="brush:bash">
+sh Build.sh plugins/JNI_Example.jar
+</pre>
+<p>That will result in the two files <i>plugins/JNI_Example.jar</i> and <i>lib/&lt;platform&gt;/JNI_Example.&lt;extension&gt;</i> and a new menu item <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> JNI </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> JNI Example</span></em></span>.
+</p><p>It does not do terribly useful things as its primary purpose is to show how things are done in a straight-forward manner.
+</p>
+<h2><span class="mw-headline" id="Caveats">Caveats</span></h2>
+<p>The most important issue is that you should know which platforms (combination of Operating System and architecture, i.e. <i>i386 Windows</i> and <i>x86_64 Windows</i> are different) you need to support and make sure that the native libraries are present. Otherwise your users will see a lot of unhelpful <i>UnsatisfiedLinkError</i> exceptions.
+</p><p>Usually, you should not need to worry about these issues, as Fiji hides them conveniently from you (this is one of Fiji's mission, to hide unnecessarily and annoyingly tedious details).
+</p>
+<ul><li> The C source needs to be compiled with the <i>_JNI_IMPLEMENATION_</i> symbol defined. This is due to Windows which requires <i>.dll</i> files to mark explicitly which symbols are to be offered by the library and which ones need to be imported from another library.</li></ul>
+<ul><li> On Windows, symbols are auto-versioned by default. This interfers with constant names required by JNI. Therefore, you need to compile C sources with the GCC linker option <i>-kill-at</i>. If you ask GCC to link for you, you need to pass that option as <i>-Wl,-kill-at</i>.</li></ul>
+<ul><li> The java property <i>java.library.path</i> needs to be set to the path where the <i>.so</i>, <i>.dylib/.jnilib</i> or <i>.dll</i> files can be found (for Linux/BSD/Haiku/etc, MacOSX and Windows, respectively).</li></ul>
+<ul><li> Additionally to the <i>java.library.path</i> property, the environment variable <i>LD_LIBRARY_PATH</i>, <i>DYLD_LIBRARY_PATH</i> or <i>PATH</i> should be adjusted accordingly on Linux/BSD/Haiku/etc, MacOSX and Windows, respectively.</li></ul>
+<ul><li> If you need to load not only one library, but that library needs to load yet another library, you should set the search path so that the dynamic linker looks in the same directory as the original library, to avoid having to adjust the system-wide search path (which requires administrator privileges). The GCC linker option is called <i>-R$ORIGIN/</i> (note that you must prevent the command-line from expanding the <i>$</i> character).</li></ul>
+<h2><span class="mw-headline" id="Further_reading">Further reading</span></h2>
+<p>For full information on JNI, see <a rel="nofollow" class="external text" href="http://java.sun.com/docs/books/jni/html/jniTOC.html">Sun's/Oracle's programmer guide on JNI</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713065004
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.060 seconds
+Real time usage: 0.059 seconds
+Preprocessor visited node count: 641/1000000
+Preprocessor generated node count: 2223/1000000
+Post‐expand include size: 8675/2097152 bytes
+Template argument size: 4208/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   24.615      1 - -total
+ 54.11%   13.320      1 - Template:DevelopMenu
+ 47.51%   11.695      1 - Template:Menu
+ 42.16%   10.377      3 - Template:Submenu
+ 21.52%    5.297     31 - Template:MenuItem
+ 14.86%    3.659      1 - Template:Bc
+ 13.84%    3.406      1 - Template:Outdated
+ 10.46%    2.576      1 - Template:Warning
+  6.97%    1.717      1 - Template:Ambox
+  5.98%    1.472      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Developing_using_native_libraries&amp;oldid=29287">http://imagej.net/index.php?title=Developing_using_native_libraries&amp;oldid=29287</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:03.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Developing_using_native_libraries&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Outdated" title="Category:Outdated">Outdated</a></li><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Developing+using+native+libraries" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Developing+using+native+libraries" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Developing_using_native_libraries" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Developing_using_native_libraries" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Developing_using_native_libraries&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Developing_using_native_libraries&amp;oldid=29287" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Developing_using_native_libraries&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":264});});</script>
+		</body>
+		</html>
+		

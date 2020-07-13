@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Linux command line tutorial - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Linux_command_line_tutorial","wgTitle":"Linux command line tutorial","wgCurRevisionId":8481,"wgRevisionId":8481,"wgArticleId":1780,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Linux_command_line_tutorial","wgRelevantArticleId":1780,"wgRequestId":"6c758beea9af015ab792f7db","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="We will use SSH (secure shell) to connect to the cluster. On Mac OSX we need to simply open a terminal window (under Applications-&amp;gt;Utilities), on PC we may need to download an ssh client such as Putty."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Linux command line tutorial"/>
+
+	<meta property="og:description" content="We will use SSH (secure shell) to connect to the cluster. On Mac OSX we need to simply open a terminal window (under Applications-&amp;gt;Utilities), on PC we may need to download an ssh client such as Putty."/>
+
+	<meta property="og:url" content="http://imagej.net/Linux_command_line_tutorial"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Linux_command_line_tutorial rootpage-Linux_command_line_tutorial skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Linux_command_line_tutorial.html#bodyContent">Skip to content</a>, 			<a href="Linux_command_line_tutorial.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Linux_command_line_tutorial.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Linux_command_line_tutorial" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Linux_command_line_tutorial&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Linux_command_line_tutorial&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Linux_command_line_tutorial&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Linux command line tutorial</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Linux_command_line_tutorial.html#Connecting_to_the_cluster"><span class="tocnumber">1</span> <span class="toctext">Connecting to  the cluster</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Linux_command_line_tutorial.html#Moving_around"><span class="tocnumber">2</span> <span class="toctext">Moving around</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Linux_command_line_tutorial.html#Manipulating_files"><span class="tocnumber">3</span> <span class="toctext">Manipulating files</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Linux_command_line_tutorial.html#Permissions"><span class="tocnumber">4</span> <span class="toctext">Permissions</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Linux_command_line_tutorial.html#Pipes_and_redirects"><span class="tocnumber">5</span> <span class="toctext">Pipes and redirects</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Linux_command_line_tutorial.html#Misc"><span class="tocnumber">6</span> <span class="toctext">Misc</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Linux_command_line_tutorial.html#Using_it_on_the_cluster"><span class="tocnumber">7</span> <span class="toctext">Using it on the cluster</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Connecting_to_the_cluster">Connecting to  the cluster</span></h2>
+<p>We will use SSH (secure shell) to connect to the cluster. On Mac OSX we need to simply open a terminal window (under Applications-&gt;Utilities), on PC we may need to download an ssh client such as <a rel="nofollow" class="external text" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a>.
+</p><p>In the terminal type:
+</p>
+<pre>ssh madmax.mpi-cbg.de
+</pre>
+<p>and enter your password
+</p>
+<pre>tomancak@madmax.mpi-cbg.de's password: 
+
+</pre>
+<p>Now you are on the cluster
+</p>
+<pre>Last login: Sun May 19 09:01:24 2013 from 10.1.7.16
+"Platform HPC" 3.1 (build 7211) Management Node
+Welcome to the MPI-CBG cluster masternode.
+[tomancak@madmax ~]$
+</pre>
+<h2><span class="mw-headline" id="Moving_around">Moving around</span></h2>
+<p><b>pwd</b> - <i>print working directory</i>
+</p>
+<pre>[tomancak@madmax ~]$ pwd
+/home/tomancak
+</pre>
+<p><b> cd </b> - <i>change directory</i>
+</p>
+<pre>[tomancak@madmax ~]$ cd /projects
+[tomancak@madmax projects]$ pwd
+/projects
+</pre>
+<p><b>~</b> - <i>tilda</i> means home directory
+</p>
+<pre>[tomancak@madmax projetcs]$ cd ~
+[tomancak@madmax ~]$ pwd
+/home/tomancak
+</pre>
+<p><b>/</b> - <i>slash</i> demarcates directories and by itself means the root directory
+</p>
+<pre>[tomancak@madmax ~]$ cd /
+[tomancak@madmax /]$ pwd
+/
+</pre>
+<p><b>.</b> - current directory, if we want to for example execute a script in the current directory we do it like this:
+</p>
+<pre>./executable_script
+
+</pre>
+<p>This tells the interpreter to look for the file executable_script in the current directory and not somewhere else.
+</p><p><b>..</b> - one directory up
+</p>
+<pre>[tomancak@madmax projects]$ cd ..
+[tomancak@madmax /]
+</pre>
+<p><b> pressing tab </b> - auto-completion, we don't need to type long names of directories, start typing the name and press <b>tab</b> and the linux system will either auto-complete or show you the options you have
+</p>
+<pre>[tomancak@madmax ~]$ cd /projects/toman + press tab
+[tomancak@madmax ~]$ cd /projects/tomancak_lightsheet
+[tomancak@madmax tomancak_lightsheet]$
+</pre>
+<h2><span class="mw-headline" id="Manipulating_files">Manipulating files</span></h2>
+<p><b>ls</b>
+</p><p><b>more</b>
+</p><p><b>tail</b>
+</p><p><b>nano</b>
+</p><p><b>mv</b>
+</p><p><b>cp</b>
+</p><p><b>scp</b>
+</p><p><b>rm</b>
+</p><p><b>mkdir</b>
+</p><p><b>rmdir</b>
+</p><p><b>gunzip</b>
+</p><p><b>tar</b>
+</p>
+<h2><span class="mw-headline" id="Permissions">Permissions</span></h2>
+<p><b>chmod</b>
+</p><p><b>su</b>
+</p><p><b>sudo</b>
+</p>
+<h2><span class="mw-headline" id="Pipes_and_redirects">Pipes and redirects</span></h2>
+<p><b>|</b>
+</p><p><b>&gt;</b>
+</p><p><b>wc</b>
+</p>
+<h2><span class="mw-headline" id="Misc">Misc</span></h2>
+<p><b>which</b>
+</p><p><b>top</b>
+</p><p><b>watch</b>
+</p><p><b>grep</b>
+</p><p><b>sort</b>
+</p><p><b>find</b>
+</p><p><b>man</b>
+</p>
+<h2><span class="mw-headline" id="Using_it_on_the_cluster">Using it on the cluster</span></h2>
+<p>Here we put all of that goodness to work to make our life on a cluster easier.
+</p><p>Once we submit the jobs we want to monitor the progress. For example <b>bjobs -r</b> gives us an output summarising our running jobs. If there are many its not that useful. How about counting them?
+</p>
+<pre>bjobs -r | wc -l
+160
+</pre>
+<p>More useful, we have 160 jobs running. Still how about the pending ones? We can do that:
+</p>
+<pre>bjobs -r | grep PEND | wc -l
+40
+</pre>
+<p>Ok 40. Now, how many jobs actually finished successfully? Lets say they create some <i>.tif</i> files a few directories down
+</p>
+<pre>ls ../../output/*.tif | wc -l
+200
+</pre>
+<p>Good, looks like 200 are finished. Its tempting to keep pressing enter on those commands but its also tiresome. Using
+</p>
+<pre>watch -n5 'ls ../../output/*.tif | wc -l' 
+</pre>
+<p>outputs continuously
+</p>
+<pre>Every 5.0s: ls ../../output/*.tif | wc -l                                                                                             
+Mon May 20 21:16:37 2013
+180
+</pre>
+<p>i.e. we get the number of files automatically updated every 5 seconds (without the -n paramater every 2s by default).
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072849
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.008 seconds
+Real time usage: 0.010 seconds
+Preprocessor visited node count: 26/1000000
+Preprocessor generated node count: 32/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Linux_command_line_tutorial&amp;oldid=8481">http://imagej.net/index.php?title=Linux_command_line_tutorial&amp;oldid=8481</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 19 August 2013, at 08:19.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Linux_command_line_tutorial&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Linux+command+line+tutorial" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Linux+command+line+tutorial" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Linux_command_line_tutorial" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Linux_command_line_tutorial" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Linux_command_line_tutorial&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Linux_command_line_tutorial&amp;oldid=8481" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Linux_command_line_tutorial&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":249});});</script>
+		</body>
+		</html>
+		

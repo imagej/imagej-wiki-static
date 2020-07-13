@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>A Tutorial for using OpenCL in ImageJ - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"A_Tutorial_for_using_OpenCL_in_ImageJ","wgTitle":"A Tutorial for using OpenCL in ImageJ","wgCurRevisionId":40450,"wgRevisionId":40450,"wgArticleId":9787,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Outdated"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"A_Tutorial_for_using_OpenCL_in_ImageJ","wgRelevantArticleId":9787,"wgRequestId":"19e636683c6b42eb6a6b2b1f","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This tutorial is meant to help you leverage OpenCL from Java for use with ImageJ."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="A Tutorial for using OpenCL in ImageJ"/>
+
+	<meta property="og:description" content="This tutorial is meant to help you leverage OpenCL from Java for use with ImageJ."/>
+
+	<meta property="og:url" content="http://imagej.net/A_Tutorial_for_using_OpenCL_in_ImageJ"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-A_Tutorial_for_using_OpenCL_in_ImageJ rootpage-A_Tutorial_for_using_OpenCL_in_ImageJ skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#bodyContent">Skip to content</a>, 			<a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/A_Tutorial_for_using_OpenCL_in_ImageJ" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:A_Tutorial_for_using_OpenCL_in_ImageJ&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=A_Tutorial_for_using_OpenCL_in_ImageJ&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=A_Tutorial_for_using_OpenCL_in_ImageJ&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>A Tutorial for using OpenCL in ImageJ</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This tutorial was written in 2010-11, and contains out-of-date or no-longer-accurate information. A potential alternative for using OpenCL in ImageJ is <a rel="nofollow" class="external text" href="https://imagej.net/Clij">CLIJ</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+This tutorial is meant to help you leverage OpenCL from Java for use with ImageJ.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Background"><span class="tocnumber">1</span> <span class="toctext">Background</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Setting_up_the_Development_Machine"><span class="tocnumber">2</span> <span class="toctext">Setting up the Development Machine</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Setting_up_OpenCL"><span class="tocnumber">3</span> <span class="toctext">Setting up OpenCL</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Setting_up_OpenCL_for_ATI"><span class="tocnumber">3.1</span> <span class="toctext">Setting up OpenCL for ATI</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Setting_up_OpenCL_for_NVidia"><span class="tocnumber">3.2</span> <span class="toctext">Setting up OpenCL for NVidia</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Setting_up_Eclipse_and_needed_plugins_on_Ubuntu"><span class="tocnumber">4</span> <span class="toctext">Setting up Eclipse and needed plugins on Ubuntu</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Downloading_and_running_the_ImageJ_OpenCL_examples"><span class="tocnumber">5</span> <span class="toctext">Downloading and running the ImageJ OpenCL examples</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Understanding_platform-specific_JOCL_native_libraries"><span class="tocnumber">6</span> <span class="toctext">Understanding platform-specific JOCL native libraries</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#SobelFilter_example"><span class="tocnumber">7</span> <span class="toctext">SobelFilter example</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Understanding_ImageJ_.2B_OpenCL"><span class="tocnumber">8</span> <span class="toctext">Understanding ImageJ + OpenCL</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#ImageJ_OpenCL:_An_incremental_approach_to_applying_OpenCL"><span class="tocnumber">9</span> <span class="toctext">ImageJ OpenCL: An incremental approach to applying OpenCL</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#OpenCL_ImageJ_plugins_following_enterprise_java_patterns"><span class="tocnumber">10</span> <span class="toctext">OpenCL ImageJ plugins following enterprise java patterns</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Hosting_OpenCL-accelerated_algorithms_using_Oracle.27s_GlassfishV3"><span class="tocnumber">11</span> <span class="toctext">Hosting OpenCL-accelerated algorithms using Oracle's GlassfishV3</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#GPU_Based_Processing_Techniques_and_the_ImageJ_Architecture"><span class="tocnumber">12</span> <span class="toctext">GPU Based Processing Techniques and the ImageJ Architecture</span></a>
+<ul>
+<li class="toclevel-2 tocsection-15"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Introduction"><span class="tocnumber">12.1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Background_on_the_use_of_ImgLib"><span class="tocnumber">12.2</span> <span class="toctext">Background on the use of ImgLib</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Introduction_to_GPU_processing_pipeline"><span class="tocnumber">12.3</span> <span class="toctext">Introduction to GPU processing pipeline</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Metric.2FMethod"><span class="tocnumber">12.4</span> <span class="toctext">Metric/Method</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="A_Tutorial_for_using_OpenCL_in_ImageJ.html#Implementation"><span class="tocnumber">12.5</span> <span class="toctext">Implementation</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Background">Background</span></h2>
+<p>To use OpenCL from Java in ImageJ we rely on <a rel="nofollow" class="external text" href="http://jogamp.org/deployment/webstart/">JOCL</a>. JOCL is written on top of a low level JNI API to make using OpenCL a bit easier. The OpenCL code you write can also leverage JOCL to accelerate execution of ImageJ plugins from Java. We have created an <a rel="nofollow" class="external text" href="https://github.com/uw-loci/opencl-decon">OpenCL deconvolution</a> example to demonstrate compute acceleration using OpenCL (both locally and remotely as a binary web service).
+</p>
+<h2><span class="mw-headline" id="Setting_up_the_Development_Machine">Setting up the Development Machine</span></h2>
+<p>We set up an Ubuntu based development machine for OpenCL development and testing. OSX 10.6, Windows 64/32, and Linux 64/32 pass the tests and are supported by this package. Here are the steps for setting up Ubuntu:
+</p>
+<ul>
+<li>Obtain an ISO for Ubuntu 10.04</li>
+<li>Install Ubuntu on the target machine.</li>
+<li>Install g++ with: 
+<pre class="brush:shell">
+sudo apt-get install g++
+</pre>
+</li>
+<li>Install needed development libs with:
+<pre class="brush:shell">
+sudo apt-get install freeglut3-dev
+sudo apt-get install libxi-dev
+sudo apt-get install libxmu-dev
+</pre>
+</li>
+</ul>
+<h2><span class="mw-headline" id="Setting_up_OpenCL">Setting up OpenCL</span></h2>
+<p>You will need to install OpenCL for your OpenCL enabled hardware if it does not come installed as part of the OS.
+</p>
+<h3><span class="mw-headline" id="Setting_up_OpenCL_for_ATI">Setting up OpenCL for ATI</span></h3>
+<p>If you have ATI GPU hardware, check out <a rel="nofollow" class="external text" href="http://developer.amd.com/gpu/AMDAPPSDK/downloads/Pages/default.aspx">these instructions</a>.
+</p>
+<h3><span class="mw-headline" id="Setting_up_OpenCL_for_NVidia">Setting up OpenCL for NVidia</span></h3>
+<p>For NVidia hardware, install development drivers, CUDA Toolkit, and GPU Computing SDK code samples by following <a rel="nofollow" class="external text" href="http://developer.download.nvidia.com/compute/cuda/3_2_prod/docs/Getting_Started_Linux.pdf">these installation instructions</a>.
+</p><p>Use the wget tool for downloading the three needed install files from NVidia's download site.
+</p>
+<pre class="brush:shell">
+wget http://developer.download.nvidia.com/compute/cuda/\
+3_2_prod/drivers/devdriver_3.2_linux_64_260.19.26.run
+wget http://developer.download.nvidia.com/compute/cuda/\
+3_2_prod/toolkit/cudatoolkit_3.2.16_linux_64_ubuntu10.04.run
+wget http://developer.download.nvidia.com/compute/cuda/\
+3_2_prod/sdk/gpucomputingsdk_3.2.16_linux.run
+</pre>
+<p>Stop the graphical desktop manager by typing:
+</p>
+<pre class="brush:shell">
+sudo gdm stop
+</pre>
+<p>from the command line.
+</p><p>Install the required files:
+</p>
+<pre class="brush:shell">
+sudo sh devdriver_3.2_linux_64_260.19.26.run
+sudo sh cudatoolkit_3.2.16_linux_64_ubuntu10.04.run
+sh gpucomputingsdk_3.2.16_linux.run
+</pre>
+<p>Per the installation instructions, we setup the environment variables (in <code>.bashrc</code>):
+</p>
+<pre class="brush:shell">
+export LD_LIBRARY_PATH="/usr/local/cuda/lib:/usr/local/cuda/lib64"
+export PATH="/usr/local/cuda/bin"
+</pre>
+<p>Test the installation by compiling and running a few of the NVidia provided OpenCL samples by changing directories to:
+</p>
+<pre class="brush:shell">
+/NVIDIA_GPU_COMPUTING_SDK/C
+</pre>
+<p>and running:
+</p>
+<pre class="brush:shell">
+make
+</pre>
+<p>We ran into an error and ended up editing the file
+</p>
+<pre class="brush:shell">
+/NVIDIA_GPU_COMPUTING_SDK/C/common.mk
+</pre>
+<p>by replacing line 169 with:
+</p>
+<pre class="brush:shell">
+NVCCFLAGS  += --compiler-options -fpermissive
+</pre>
+<p>and re-running:
+</p>
+<pre class="brush:shell">
+make
+</pre>
+<p>Change directories to
+</p>
+<pre class="brush:shell">
+/NVIDIA_GPU_Computing_SDK/C/bin/linux/release
+</pre>
+<p>and run
+</p>
+<pre class="brush:shell">
+./bandwidthtest
+</pre>
+<p>to check the binary CUDA install.
+</p><p>Build the OpenCL examples by changing directories to
+</p>
+<pre class="brush:shell">
+/NVIDIA_GPU_COMPUTING_SDK/OpenCL
+</pre>
+<p>and running:
+</p>
+<pre class="brush:shell">
+make
+</pre>
+<p>Change directories to
+</p>
+<pre class="brush:shell">
+/NVIDIA_GPU_Computing_SDK/OpenCL/bin/linux/release
+</pre>
+<p>to run the OpenCL Bandwidth sample using:
+</p>
+<pre class="brush:shell">
+./oclBandwidthTest
+</pre>
+<h2><span class="mw-headline" id="Setting_up_Eclipse_and_needed_plugins_on_Ubuntu">Setting up Eclipse and needed plugins on Ubuntu</span></h2>
+<p>To configure the development environment, we started by installing the JRE with:
+</p>
+<pre class="brush:shell">
+sudo apt-get install openjdk-6-jdk
+</pre>
+<p>and downloading Eclipse for J2EE Developers from:
+</p>
+<pre class="brush:shell">
+http://www.eclipse.org/downloads/download.php
+</pre>
+<p>and following the Eclipse installation steps.
+</p><p>We added the SVN plugin to Eclipse by clicking on Help-&gt; Install New Software and adding the SVN adapter site:
+</p>
+<pre class="brush:shell">
+http://subclipse.tigris.org/update_1.6.x
+</pre>
+<h2><span class="mw-headline" id="Downloading_and_running_the_ImageJ_OpenCL_examples">Downloading and running the ImageJ OpenCL examples</span></h2>
+<p>The ImageJ OpenCL examples can be imported as an Eclipse project by right clicking in the Package Explorer window and choose Import. Select Git project and add the site:
+</p>
+<pre class="brush:shell">
+https://github.com/uw-loci/opencl-decon
+</pre>
+<p>Import the branch and assign a general project name like imagej-opencl.
+</p><p>The folder structure of the source consists of the following:
+</p>
+<ul><li> <b>src</b> - Java and OpenCL source files (extension .cl) Notice the files fht.cl and sobel.cl in the src directory. When executed, the Java code in provided in the examples compile these the OpenCL for execution. Note: Runtime compilation of the OpenCL source files allows execution on any potential OpenCL enabled device.</li>
+<li> <b>sourcedata</b> - (Point Spread Function) PSF and 3D data used as a small sample data set for the FHT3D Example.</li>
+<li> <b>lib</b> - libraries needed for classes using JOCL, ImageJ, and Hessian 4.0.7</li></ul>
+<p>We have included the necessary JOCL native libraries for Windows 32/64, Apple, and Linux 32/64 platforms inside this directory. To use OpenCL from Java in ImageJ we leverage JOCL. JOCL uses JNI to make calls into the OpenCL API. The OpenCL code you write can also leverage JOCL to accelerate execution of ImageJ plugins from Java. Since each OS has different native JOCL native libraries, the runtime environment must be configured such that the Java code can load the needed native libraries.
+</p>
+<h2><span class="mw-headline" id="Understanding_platform-specific_JOCL_native_libraries">Understanding platform-specific JOCL native libraries</span></h2>
+<p>For these samples, three native libraries are needed: gluegen-rt, jocl, and JOCL-'platform'-'arch'. If you look in the lib folder, you will find -natives-xyz.jar files containing the respective libraries. You need to unzip each of the three jar files and copy the dynamic files (.so, .dylib, or .dll) into the parent directory if they are not already present. Notice the below example where the <code>libgluegen-rt.dylib</code>, <code>libJOCL-apple-x86_64.dylib</code>, and <code>libjocl.dylib</code> files are in the platform specific directory.
+</p>
+<div class="MediaTransformError" style="width: 256px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Then ensure that the platform specific jar is exported during the project build. For example notice that the JOCL-0-1.4-beta1.jar file is referenced in the project. (To see this menu right click the project and choose Properties -&gt; Java Build Path -&gt; Libraries.)
+</p>
+<div class="MediaTransformError" style="width: 641px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Finally, ensure that the platform specific files are exported:
+</p>
+<div class="MediaTransformError" style="width: 679px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Start exploring the examples by viewing the developer comments in the file <code>src/publication/SobelFilterExample.java</code>. Notice the <code>Main()</code> method calls <code>run()</code> which use an <code>awt.Image</code> type as an input parameter. Modify and run the <code>Main()</code> method as a Java application and adjust the VM Arguments (E.g. <code>-Xmx1024m</code>) if needed.
+</p>
+<h2><span class="mw-headline" id="SobelFilter_example">SobelFilter example</span></h2>
+<p>Without modification, <code>SobelFilterExample.java</code> loads an image from a web server, process it locally using OpenCL, and displays the results. There is nothing novel about this example. It simply allows runtime testing of several system configuration steps to ensure working configuration of JOCL and OpenCL native libraries. Modify this example to suite your needs, but please ensure proper JOCL and OpenCL configuration before proceeding.
+</p>
+<h2><span class="mw-headline" id="Understanding_ImageJ_.2B_OpenCL">Understanding ImageJ + OpenCL</span></h2>
+<p>Working within ImageJ: If developing an ImageJ plugin using OpenCL realize that programmatic control is passed to your plugin inside the <code>PlugIn</code> (or <code>PluginFilter</code>) <code>run()</code> method. An example of this can be found in <code>src.demos.OpenCL_SobelFilter.java</code>. For this plugin to run within ImageJ, the JOCL jars and native libraries respective to the target platform will need to be available by the ImageJ class loader. The supporting JOCL native libraries can be copied into the plug-in directory within ImageJ to allow plugin implementations using OpenCL to reference the native libraries provided by the OpenCL installation.
+</p>
+<h2><span class="mw-headline" id="ImageJ_OpenCL:_An_incremental_approach_to_applying_OpenCL">ImageJ OpenCL: An incremental approach to applying OpenCL</span></h2>
+<p>Now that you have demonstrated use of OpenCL from Java and within ImageJ, you may wish to see a compute intensive example demonstrating modification of an existing Java implementation that delegates a portion of its implementation to OpenCL. Take a look at the developer comments in the <code>FHT3D_3D_Deconvolution.java</code> example to see what steps are used for brokering data between Java and OpenCL between steps within an algorithm's implementation.
+</p><p>The approach used to start delegating to OpenCL from an existing Java implementation:
+</p>
+<ol><li> Assess the performance of the existing implementation to identify the most compute intensive region of code</li>
+<li> Develop a test data set before and after that region</li>
+<li> Write OpenCL code that replaces the compute intensive region</li>
+<li> Test to ensure the new OpenCL code generates the same results using the test data</li>
+<li> Add conditional delegation logic to handle runtime compute capabilities</li></ol>
+<h2><span class="mw-headline" id="OpenCL_ImageJ_plugins_following_enterprise_java_patterns">OpenCL ImageJ plugins following enterprise java patterns</span></h2>
+<p>Finally, some users and academic labs are building &quot;<a rel="nofollow" class="external text" href="http://fastra2.ua.ac.be/">GPU Supercomputers</a>&quot; to expose compute resources to a wide range of applications running locally. In this case, you wish to leverage to look at the <code>FHTEJBService</code> and <code>Iterative_Deconvolve_3D_WS</code> classes for an example on how to remotely serve up the your GPU accelerated resources using open source J2EE technologies.
+</p><p>In this example, Hessian Binary Web Services are used to broker data between the Java consumer and the Hessian Servlet. This approach is only recommended for those labs having sufficient throughput between the client application and the OpenCL/GPU servlet host.
+</p>
+<h2><span class="mw-headline" id="Hosting_OpenCL-accelerated_algorithms_using_Oracle.27s_GlassfishV3">Hosting OpenCL-accelerated algorithms using Oracle's GlassfishV3</span></h2>
+<p>Start out with the installation instructions available <a rel="nofollow" class="external text" href="http://www.oracle.com/technetwork/java/javaee/community/index-jsp-139692.html">here</a>.
+</p><p>To set up OpenCL support on Glassfish for deploying the ImageJ/Fiji Java based EJBs, navigate to the system's lib directory (for example: <code>/opt/glassfishv3/glassfish/lib</code>) and install the required jars/native libs.
+</p>
+<pre class="brush:shell">
+sudo wget http://jogamp.org/deployment/webstart/jocl-natives-linux-amd64.jar
+sudo unzip jocl-natives-linux-amd64.jar
+sudo rm -rdf META-INF
+sudo rm jocl-natives-linux-amd64.jar
+sudo wget http://jogamp.org/deployment/webstart/gluegen-rt-natives-linux-amd64.jar
+sudo unzip gluegen-rt-natives-linux-amd64.jar
+sudo rm -rdf META-INF/
+sudo rm gluegen-rt-natives-linux-amd64.jar
+
+sudo wget http://jocl.org/downloads/JOCL-0.1.4-beta1-bin-linux-x86_64.zip
+sudo unzip JOCL-0.1.4-beta1-bin-linux-x86_64.zip
+sudo mv JOCL-0.1.4-beta1-bin-linux-x86_64/*.so .
+sudo mv JOCL-0.1.4-beta1-bin-linux-x86_64/*.jar .
+sudo rm -rdf JOCL-0.1.4-beta1-bin-linux-x86_64
+sudo rm JOCL-0.1.4-beta1-bin-linux-x86_64.zip
+
+sudo wget http://jogamp.org/deployment/webstart/gluegen-rt.jar
+sudo wget http://jogamp.org/deployment/webstart/gluegen.jar
+sudo wget http://jogamp.org/deployment/webstart/jocl.jar
+</pre>
+<p>The only other thing needed to get glassfish setup to support JOCL is to login to the admin console, under <span><em><span style="border-bottom:1px dotted #ccc;"> Common Tasks </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Configuration </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> JVM Settings </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Path Settings</span></em></span>.
+</p><p>Native Library Path Prefix: <code>/opt/glassfishv3/glassfish/lib</code>
+</p>
+<hr />
+<h1><span class="mw-headline" id="GPU_Based_Processing_Techniques_and_the_ImageJ_Architecture">GPU Based Processing Techniques and the ImageJ Architecture</span></h1>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> The following article describes our first effort at GPU computing with ImageJ using OpenCL, in early 2010. The tutorial above is more recent and more complete; the text below is preserved only for historical reasons. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>The primary focus of this paper is to provide an introduction to and evaluation of two common GPU technologies (CUDA and OpenCL) as they could be used within ImageJ. The intent is to provide a light introduction to the software libraries used to perform two basic image processing tasks and present performance metrics that may be useful for deciding future efforts in this area.
+</p><p>Many of the algorithms within ImageJ and ImageJ plug-ins can be implemented to take advantage of GPU and multi-core CPU processors. Having the capability to support plugins that leverage 'many-core hardware processors' poses important architectural issues for ImageJ. An intent of the ImageJ refactoring effort is to implement support for native code integration in a manner that leverages hardware devices 'behind-the-scenes'. Performance is not as important as compatibility with external native libraries and ease of use by non-programming scientists.
+</p><p>Note: The use of 'device' refers to GPU based hardware devices and 'host' refers to GPU based devices.
+</p>
+<h2><span class="mw-headline" id="Background_on_the_use_of_ImgLib">Background on the use of ImgLib</span></h2>
+<p>The future release of ImageJ will adopt the <a rel="nofollow" class="external text" href="http://imglib2.net/">ImgLib</a> generic processing library. A very minor change has been introduced into the ImgLib codebase that allows data to be stored in Java.NIO arrays. The NIO backed arrays are allocated outside of the Java Virtual Machine and allow for a single copy of data to be shared with the native code.
+</p><p>There are several issues that are encountered when developing GPU based code:
+</p>
+<ol><li> Byte ordering differences need consideration when using NIO Buffers and exchanging data between different hardware devices with different byte ordering.</li>
+<li> The amount of available host memory, device memory, number of GPU processors, and the computational capabilities of devices may vary significantly.</li></ol>
+<p>To address these issues, helper methods can be used to dynamically assess a given host's capabilities at runtime. Working memory for the device and host are important along with the performance characteristics for a device. Profiling performance is also important in assessing a device since a device that is shared between several applications may achieve lower performance than if the device is not shared.
+</p><p>When considering how to access GPU resources from Java, several open-source APIs were considered. For the purposes of this evaluation, Olivier Chafik's <a rel="nofollow" class="external text" href="http://code.google.com/p/javacl/">JavaCL</a> was chosen due to its Lesser General Public License.
+</p>
+<h2><span class="mw-headline" id="Introduction_to_GPU_processing_pipeline">Introduction to GPU processing pipeline</span></h2>
+<p>The processing pipeline when using GPUs as compute device in ImageJ involves several steps:
+</p>
+<ol><li> Get the data in native arrays with the needed byte ordering from an imglib object</li>
+<li> Choose a device, compile the kernel, and associate the native arrays with the kernel</li>
+<li> Launch the kernel</li>
+<li> Return the results to a compatible Imglib object</li></ol>
+<h2><span class="mw-headline" id="Metric.2FMethod">Metric/Method</span></h2>
+<p>Sobel filter is a common image processing routine that is used for edge detection. It is ideally suited for this evaluation due to implementation simplicity as well as the GPU code's similarity to the existing open source implementation.
+</p><p>For purposes of timing processing, the 8-bit test image will be loaded into an Imglib NIO backed buffer. The kernel source code is precompiled. The timer is started before the call to execute the kernel and concludes after the results are returned to the Imglib NIO backed buffer. 100 iterations are averaged to determine the recorded value.
+</p><p>Note: It is almost certainly possible to optimize any of the following implementations, however the primary goal of this assessment is not performance.
+</p>
+<h2><span class="mw-headline" id="Implementation">Implementation</span></h2>
+<p>The following code demonstrates a partial implementation of sobel filter within ImageJ:
+</p>
+<pre class="brush:java">
+public byte[] filter(int width, int height, byte[] inputImageArray)
+    {
+        byte[] pixels = new byte[width*height];
+        int p1, p2, p3, p4, p5, p6, p7, p8, p9;
+        int offset, sum1, sum2=0, sum=0;
+        int rowOffset = width;
+
+        for (int y=1; y 255) sum = 255;
+
+                pixels[offset++] = (byte)sum;
+            }
+        }
+        return pixels;
+    }
+</pre>
+<p>There are a few properties that make the above partial implementation ideal for GPU computation. Each resultant pixel's value is independent of those around it. The values consumed in calculating the resultant pixel share a sequential relationship can leverage performance advantages. Several computations are performed for each pixel.
+</p><p>Here is the partial implementation of Sobel filter in OpenCL:
+</p>
+<pre class="brush:plain">
+__kernel void sobel( __global char* input, __global char* output, int width, int height)
+{
+    int x = get_global_id(0);  //find the X id
+    int y = get_global_id(1);  //find the Y id
+    int p[9];  //allocate a local array used for intermediate values
+    int offset = y * width + x;  //determine the offset
+if( x &lt; 1 || y &lt; 1 || x &gt; width - 2 || y &gt; height - 2 )  //is this an edge pixel?
+{
+  output[offset] = 0; //This partial implementation does not calculate edge values
+}
+else
+{
+    p[0] = input[offset - width - 1] &amp; 0xff;
+    p[1] = input[offset - width] &amp; 0xff;
+    p[2] = input[offset - width + 1] &amp; 0xff;
+    p[3] = input[offset - 1] &amp; 0xff;
+    p[4] = input[offset] &amp; 0xff;
+    p[5] = input[offset + 1] &amp; 0xff;
+    p[6] = input[offset + width - 1] &amp; 0xff;
+    p[7] = input[offset + width] &amp; 0xff;
+    p[8] = input[offset + width + 1] &amp; 0xff;
+
+    int sum1 = p[0] + 2*p[1] + p[2] - p[6] - 2*p[7] - p[8];
+    int sum2 = p[0] + 2*p[3] + p[6] - p[2] - 2*p[5] - p[8];
+    float sum3 = sum1*sum1 + sum2*sum2;
+  
+    int sum = sqrt( sum3 );
+    if (sum &gt; 255) sum = 255;
+    output[offset] = (char) sum;  //write the result to the output array
+ }
+};
+</pre>
+<p>The above OpenCL kernel is almost identical to the Java implementation with the exception that an index is used to identify the per value offset (rather than looping through an array). This allows the computation to be spread over many cores and thus provide the potential for speed up.
+</p><p>The following example demonstrates how an image is loaded using Imglib in preparation for GPU computation:
+</p>
+<pre class="brush:java">
+//Create an array container factory
+ArrayContainerFactory arrayContainerFactory = new ArrayContainerFactory();
+
+//Set the backing type to NIO
+arrayContainerFactory.setNIOUse(true);
+
+//Create a image backed by an NIO typed array given an input file
+Image inImg = LOCI.openLOCIFloatType( file.getPath(), arrayContainerFactory );
+</pre>
+<p><code>ArrayContainerFactory.setNIOUse(true)</code> ensures that NIO backed arrays are used. The reason for using NIO backed arrays rather than Java native arrays is due to optimal data sharing between Java and native code as well as for improved throughput between the host and device. Both CUDA and OpenCL benefit from the use of host arrays that are not paged to disk. This type of memory is referred to as paged-locked memory. Section 5.3.1 of &quot;CUDA Programming Guide Version 3.0&quot; has more specific information on this detail.
+</p><p>Note: OpenCL may use page-locked host memory when the &quot;CL_MEM_ALLOC_HOST_PTR&quot; flag is set.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064449
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.048 seconds
+Preprocessor visited node count: 433/1000000
+Preprocessor generated node count: 1401/1000000
+Post‐expand include size: 2415/2097152 bytes
+Template argument size: 948/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   11.493      1 - -total
+ 44.86%    5.156      2 - Template:Warning
+ 41.73%    4.796      1 - Template:Bc
+ 33.73%    3.877      2 - Template:Ambox
+ 15.58%    1.791      3 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=A_Tutorial_for_using_OpenCL_in_ImageJ&amp;oldid=40450">http://imagej.net/index.php?title=A_Tutorial_for_using_OpenCL_in_ImageJ&amp;oldid=40450</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 19 August 2019, at 05:36.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=A_Tutorial_for_using_OpenCL_in_ImageJ&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Outdated" title="Category:Outdated">Outdated</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=A+Tutorial+for+using+OpenCL+in+ImageJ" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=A+Tutorial+for+using+OpenCL+in+ImageJ" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/A_Tutorial_for_using_OpenCL_in_ImageJ" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/A_Tutorial_for_using_OpenCL_in_ImageJ" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=A_Tutorial_for_using_OpenCL_in_ImageJ&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=A_Tutorial_for_using_OpenCL_in_ImageJ&amp;oldid=40450" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=A_Tutorial_for_using_OpenCL_in_ImageJ&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":252});});</script>
+		</body>
+		</html>
+		

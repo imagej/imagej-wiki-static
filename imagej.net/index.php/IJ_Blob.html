@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>IJ Blob - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"IJ_Blob","wgTitle":"IJ Blob","wgCurRevisionId":37529,"wgRevisionId":37529,"wgArticleId":2928,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"IJ_Blob","wgRelevantArticleId":2928,"wgRequestId":"40e6d39f2099cbbfe5e788f6","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The IJBlob library indentifying connected components in binary images. The algorithm used for connected component labeling is:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="IJ Blob"/>
+
+	<meta property="og:description" content="The IJBlob library indentifying connected components in binary images. The algorithm used for connected component labeling is:"/>
+
+	<meta property="og:url" content="http://imagej.net/IJ_Blob"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-IJ_Blob rootpage-IJ_Blob skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="IJ_Blob.html#bodyContent">Skip to content</a>, 			<a href="IJ_Blob.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="IJ_Blob.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/IJ_Blob" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:IJ_Blob&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=IJ_Blob&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=IJ_Blob&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>IJ Blob</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>IJBlob (ImageJ/Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> ij-blob.jar <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-blob/releases/latest">[1</a>]
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> Github <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-blob">[2</a>]
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> v1.4.9 (4 July 2016)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="IJ_Blob.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="IJ_Blob.html#Features_of_IJBlob"><span class="tocnumber">2</span> <span class="toctext">Features of IJBlob</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="IJ_Blob.html#Shape_Features"><span class="tocnumber">3</span> <span class="toctext">Shape Features</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="IJ_Blob.html#Examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="IJ_Blob.html#Example_1:_Extract_the_connected_components_of_an_image_and_read_the_perimeter_of_a_blob"><span class="tocnumber">4.1</span> <span class="toctext">Example 1: Extract the connected components of an image and read the perimeter of a blob</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="IJ_Blob.html#Example_2:_Example_2:_Filter_blobs_by_blob_features"><span class="tocnumber">4.2</span> <span class="toctext">Example 2: Example 2: Filter blobs by blob features</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="IJ_Blob.html#Example_3:_Add_your_own_features"><span class="tocnumber">4.3</span> <span class="toctext">Example 3: Add your own features</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="IJ_Blob.html#Example_4:_Add_detected_blobs_to_the_ROI_manager"><span class="tocnumber">4.4</span> <span class="toctext">Example 4: Add detected blobs to the ROI manager</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="IJ_Blob.html#Who_used_this_plugin.3F"><span class="tocnumber">5</span> <span class="toctext">Who used this plugin?</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>The IJBlob library indentifying connected components in binary images. The algorithm used for connected component labeling is:
+</p><p><i>Chang, F. (2004). A linear-time component-labeling algorithm using contour tracing technique. Computer Vision and Image Understanding, 93(2), 206–220. doi:10.1016/j.cviu.2003.09.002</i>
+</p><p>A connected component is a set of pixels which are connected by its 8-neigherhood and is often called a "blob". An Example:
+</p>
+<div class="MediaTransformError" style="width: 300px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The image above contains 8 marked blobs. Also the holes (and the contours of the holes) of the two Bs and the O are identified. It is also possible to get a color labeled image:
+</p>
+<div class="MediaTransformError" style="width: 300px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>In addition ijblob identifies nested objects:
+</p>
+<div class="MediaTransformError" style="width: 300px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>If you are using IJBlob in a scientific publication, please cite:
+</p><p><i>Wagner, T and Lipinski, H 2013. IJBlob: An ImageJ Library for Connected Component Analysis and Shape Analysis. Journal of Open Research Software 1(1):e6, DOI: <a rel="nofollow" class="external free" href="http://dx.doi.org/10.5334/jors.ae">http://dx.doi.org/10.5334/jors.ae</a></i>
+</p><p>The <a href="http://imagej.net/Shape_Filter" title="Shape Filter">Shape Filter</a> plugin uses the ij-blob library to characterize and filter objects in binary scenes by its shape. Therefore, several features are calculated as shown below.
+</p>
+<h2><span class="mw-headline" id="Features_of_IJBlob">Features of IJBlob</span></h2>
+<ul><li> Filter Framework</li>
+<li> Extract the outer contour of each blob.</li>
+<li> Extracts also all inner contours of each blob (holes).</li>
+<li> Detects nested objects (blob in blob).</li>
+<li> Many shape features</li></ul>
+<h2><span class="mw-headline" id="Shape_Features">Shape Features</span></h2>
+<ul><li> <b>Area</b> (<img class="mwe-math-fallback-image-inline tex" alt="A" src="../_images/math/7/f/c/7fc56270e7a70fa81a5935b72eacbe29.png" />): The area enclosed by the outer contour of an object.</li>
+<li> <b>Area Convex Hull</b> (<img class="mwe-math-fallback-image-inline tex" alt="C" src="../_images/math/0/d/6/0d61f8370cad1d412f80b84d143e1257.png" />): The area enclosed by the convex hull of the outer contour of an object.</li>
+<li> <b>Perimeter</b> (<img class="mwe-math-fallback-image-inline tex" alt="P" src="../_images/math/4/4/c/44c29edb103a2872f519ad0c9a0fdaaa.png" />): The perimeter of the outer contour of an object.</li>
+<li> <b>Perimeter Convex Hull</b> (<img class="mwe-math-fallback-image-inline tex" alt="H" src="../_images/math/c/1/d/c1d9f50f86825a1a2302ec2449c17196.png" />): The perimeter of the convex hull of the particle.</li>
+<li> <b>Feret Diameter</b>: The maximum distance between the two parallel tangents touching the particle outline in all directions.</li>
+<li> <b>Min. Feret Diameter</b>: the minimum distance between the two parallel tangents touching the particle outline in all directions.</li>
+<li> <b>Max. Inscr. Circle Diameter</b>: The diameter of the maximum inscribed circle.</li>
+<li> <b>Long Side Minimum Bounding Rectangle</b>: The larger side of the minimum bounding rectangle.</li>
+<li> <b>Short Side Minimum Bounding Rectangle</b>: The smaller side of the minimum bounding rectangle.</li>
+<li> <b>Aspect Ratio</b>: Defined as <img class="mwe-math-fallback-image-inline tex" alt="L/S" src="../_images/math/6/3/f/63f6556645a5a32a11d942b5d50452da.png" /></li>
+<li> <b>Area to Perimeter Ratio</b>: Defined as <img class="mwe-math-fallback-image-inline tex" alt="A/P" src="../_images/math/6/2/a/62abbf060059d71d75e10610b090e949.png" /></li>
+<li> <b>Circularity</b>: Defined as <img class="mwe-math-fallback-image-inline tex" alt="P^{2}/A" src="../_images/math/3/a/7/3a7cccde2e1538b88d416a1d546329bf.png" /></li>
+<li> <b>Elongation</b>: Defined as <img class="mwe-math-fallback-image-inline tex" alt="1 - S/L" src="../_images/math/c/a/b/cab2b34396e2579d2b60e098256f6652.png" /></li>
+<li> <b>Convexity</b>: Defined as <img class="mwe-math-fallback-image-inline tex" alt="H/P" src="../_images/math/6/4/6/6464b70ff69f5279f2b4ad0a21683130.png" /></li>
+<li> <b>Solidity</b>: Defined as <img class="mwe-math-fallback-image-inline tex" alt="A/C" src="../_images/math/6/5/c/65c6818f1beed0acac61ab4a271ddda2.png" /></li>
+<li> <b>Number of Holes</b>: The number of holes inside an object.</li>
+<li> <b>Thinnes Ratio</b>: Inverse proportional to the circularity. Furthermore it normed. It is defined as <img class="mwe-math-fallback-image-inline tex" alt="4\pi A/P^{2}" src="../_images/math/d/f/5/df5640cfd7ce1b0b2aaecdf634954c68.png" /></li>
+<li> <b>Contour Temperatur</b>: It has a strong relationship to the fractal dimension, defined as <img class="mwe-math-fallback-image-inline tex" alt="\left(log_{2}\left(\frac{2P}{P-H}\right)\right)^{-1}" src="../_images/math/3/9/3/3939cc646a1ef00b6ecae3b104555750.png" /></li>
+<li> <b>Orientation</b>: The orientation of the major axis from in grad (measured counter clockwise from the positive x axis).</li>
+<li> <b>Fractal Box Dimension</b>: Estimated fractal dimension by the box count algorithm. The default box-sizes are “2,3,4,6,8,12,16,32,64”.</li></ul>
+<h1><span class="mw-headline" id="Examples">Examples</span></h1>
+<h2><span class="mw-headline" id="Example_1:_Extract_the_connected_components_of_an_image_and_read_the_perimeter_of_a_blob">Example 1: Extract the connected components of an image and read the perimeter of a blob</span></h2>
+<pre class="brush:java">
+import ij.blob.*;
+...
+private ManyBlobs allBlobs;
+...
+public void someMethod(ImagePlus imp) {
+	ManyBlobs allBlobs = new ManyBlobs(imp); // Extended ArrayList
+        allBlobs.setBackground(0); // 0 for black, 1 for 255
+	allBlobs.findConnectedComponents(); // Start the Connected Component Algorithm
+	allBlobs.get(0).getPerimeter(); // Read the perimeter of a Blob
+}
+</pre>
+<h2><span class="mw-headline" id="Example_2:_Example_2:_Filter_blobs_by_blob_features">Example 2: Example 2: Filter blobs by blob features</span></h2>
+<p>In IJBlob 1.1 a filter framework was introduced. Each build-in blob feature has a static identifier (in this example "GETENCLOSEDAREA") which contains the method name.
+</p>
+<pre class="brush:java">
+import ij.blob.*;
+...
+private ManyBlobs allBlobs;
+...
+public void someMethod(ImagePlus imp) {
+	/* Extended ArrayList */
+	ManyBlobs allBlobs = new ManyBlobs(imp); 
+
+	/* Start the Connected Component Algorithm */
+	allBlobs.findConnectedComponents(); 
+
+	/* Return all blobs with an area between 20 and 100 pixel² */
+	ManyBlobs filteredBlobs = allBlobs.filterBlobs(20,100,		  
+	Blob.GETENCLOSEDAREA); 
+}
+</pre>
+<h2><span class="mw-headline" id="Example_3:_Add_your_own_features">Example 3: Add your own features</span></h2>
+<p>IJBlob 1.1 is easily expandable by your own features. First you have to derive a feature class from the "CustomBlobFeature" class. The feature class can also contain multiple features. With the "getBlob()" method you get the reference to the Blob and have full access to the contour data and the other features.
+<b>Please note: If your feature method have primitive data types (int/float/double) as parameters you have to use the wrapper classes (Integer/Float/Double).</b>
+</p>
+<pre class="brush:java">
+import ij.blob.*;
+public class ExampleBlobFeature extends CustomBlobFeature {
+	public double myFancyFeature(Integer a, Float b){
+		double feature = b*getBlob().getEnclosedArea()*a;
+		return feature;
+	}
+	public int mySecondFancyFeature(Integer a, Double b){
+		int feature = (int)(b*getBlob().getAreaToPerimeterRatio() *a);
+		return feature;
+	}
+}
+</pre>
+<h2><span class="mw-headline" id="Example_4:_Add_detected_blobs_to_the_ROI_manager">Example 4: Add detected blobs to the ROI manager</span></h2>
+<p>Find all blobs:
+</p>
+<pre class="brush:java">
+ManyBlobs allBlobs = new ManyBlobs(imp);
+allBlobs.findConnectedComponents();
+</pre>
+<p>Open the ROI-Manager:
+</p>
+<pre class="brush:java">
+Frame frame = WindowManager.getFrame("ROI Manager");
+if (frame == null)
+	IJ.run("ROI Manager...");
+frame = WindowManager.getFrame("ROI Manager");
+RoiManager roiManager = (RoiManager) frame;
+</pre>
+<p>Convert the outer contour to a ROI and add it to the ROI manager:
+</p>
+<pre class="brush:java">
+for (int i = 0; i &lt; allBlobs.size(); i++) {
+	Polygon p = allBlobs.get(i).getOuterContour();
+	int n = p.npoints;
+	float[] x = new float[p.npoints];
+	float[] y = new float[p.npoints];	
+	for (int j=0; j&lt;n; j++) {
+		x[j] = p.xpoints[j]+0.5f;
+		y[j] = p.ypoints[j]+0.5f;
+	}
+	Roi roi = new PolygonRoi(x,y,n,Roi.TRACED_ROI);				
+	Roi.setColor(Color.green);
+	roiManager.add(imp, roi, i);
+}
+</pre>
+<h1><span class="mw-headline" id="Who_used_this_plugin.3F">Who used this plugin?</span></h1>
+<p>This is a list of publication who used ijblob / shape filter plugin:
+</p><p>Kulbacka, J., Kulbacki, M., Segen, J., Chodaczek, G., Dubinska-Magiera, M., &amp; Saczko, J. (2016). Cellular Nuclei Differentiation Evaluated by Automated Analysis of CLSM Images. Intelligent Information and Database Systems Lecture Notes in Computer Science, 407-416. doi:10.1007/978-3-662-49390-8_40
+</p><p>Ullrich, M., Haša, J., Hanuš, J., Šoóš, M., &amp; Štěpánek, F. (2016). Formation of multi-compartmental particles by controlled aggregation of liposomes. Powder Technology, 295, 115-121. doi:10.1016/j.powtec.2016.03.021
+</p><p>Kuleesha, Y., Puah, W. C., Lin, F., &amp; Wasser, M. (2014). FMAj: A tool for high content analysis of muscle dynamics in Drosophila metamorphosis. BMC Bioinformatics, 15(Suppl 16). doi:10.1186/1471-2105-15-s16-s6
+</p><p>Cinquin, B., Maigre, L., Pinet, E., Chevalier, J., Stavenger, R. A., Mills, S., . . . Pagès, J. (2015). Microspectrometric insights on the uptake of antibiotics at the single bacterial cell level. Sci. Rep. Scientific Reports, 5, 17968. doi:10.1038/srep17968
+</p><p>Starborg, T., Kalson, N. S., Lu, Y., Mironov, A., Cootes, T. F., Holmes, D. F., &amp; Kadler, K. E. (2013). Using transmission electron microscopy and 3View to determine collagen fibril size and three-dimensional organization. Nat Protoc Nature Protocols, 8(7), 1433-1448. doi:10.1038/nprot.2013.086
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072507
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.064 seconds
+Real time usage: 0.068 seconds
+Preprocessor visited node count: 549/1000000
+Preprocessor generated node count: 3962/1000000
+Post‐expand include size: 1042/2097152 bytes
+Template argument size: 451/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   14.945      1 - -total
+100.00%   14.945      1 - Template:Infobox
+ 78.69%   11.760      2 - Template:Person
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=IJ_Blob&amp;oldid=37529">http://imagej.net/index.php?title=IJ_Blob&amp;oldid=37529</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 4 April 2018, at 14:03.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=IJ_Blob&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=IJ+Blob" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=IJ+Blob" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/IJ_Blob" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/IJ_Blob" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=IJ_Blob&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=IJ_Blob&amp;oldid=37529" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=IJ_Blob&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":222});});</script>
+		</body>
+		</html>
+		

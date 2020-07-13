@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Microscope Measurement Tools - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Microscope_Measurement_Tools","wgTitle":"Microscope Measurement Tools","wgCurRevisionId":39987,"wgRevisionId":39987,"wgArticleId":2886,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Registration"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Microscope_Measurement_Tools","wgRelevantArticleId":2886,"wgRequestId":"a749fac166f4e5b89c493d62","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Recall saved calibrations for your microscope's measurement scale and create measurement annotations."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Microscope Measurement Tools"/>
+
+	<meta property="og:description" content="Recall saved calibrations for your microscope's measurement scale and create measurement annotations."/>
+
+	<meta property="og:url" content="http://imagej.net/Microscope_Measurement_Tools"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Microscope_Measurement_Tools rootpage-Microscope_Measurement_Tools skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Microscope_Measurement_Tools.html#bodyContent">Skip to content</a>, 			<a href="Microscope_Measurement_Tools.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Microscope_Measurement_Tools.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Microscope_Measurement_Tools" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Microscope_Measurement_Tools&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Microscope_Measurement_Tools&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Microscope_Measurement_Tools&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Microscope Measurement Tools</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Microscope Measurement Tools (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Demis" title="User:Demis">Demis D. John</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Demis D. John (<a rel="nofollow" class="external text" href="mailto:demis.john@gmail.com">demis.john@gmail.com</a>)
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/demisjohn/Microscope-Measurement-Tools/releases">Download from GitHub/Releases</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/demisjohn/Microscope-Measurement-Tools/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> Sept. 24<sup>th</sup>, 2015
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> 2.3
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> beta
+</td></tr>
+
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/demisjohn/Microscope-Measurement-Tools">Microscope Measurement Tools at GitHub</a>
+</td></tr>
+</table>
+<p><br />
+Recall saved calibrations for your microscope's measurement scale and create measurement annotations.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Microscope_Measurement_Tools.html#Description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Microscope_Measurement_Tools.html#Installation_.26_Usage_Manual"><span class="tocnumber">2</span> <span class="toctext">Installation &amp; Usage Manual</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Microscope_Measurement_Tools.html#Setting_up_your_calibrations"><span class="tocnumber">2.1</span> <span class="toctext">Setting up your calibrations</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Microscope_Measurement_Tools.html#Applying_a_pre-configured_scale_to_your_image"><span class="tocnumber">2.2</span> <span class="toctext">Applying a pre-configured scale to your image</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Microscope_Measurement_Tools.html#Annotating_your_image_with_a_length_measurement"><span class="tocnumber">2.3</span> <span class="toctext">Annotating your image with a length measurement</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Microscope_Measurement_Tools.html#Adding_a_custom_function_to_the_Calibrations_list"><span class="tocnumber">2.4</span> <span class="toctext">Adding a custom function to the Calibrations list</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Microscope_Measurement_Tools.html#Author.28s.29"><span class="tocnumber">3</span> <span class="toctext">Author(s)</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Description">Description</span></h2>
+<p>This set of plugins provides a quick way to save distance/length calibrations for various microscopes/objectives in a simple text file.
+</p><p>You can then choose any of your prior measurement calibrations to be applied to an open image (or all open images), as so:
+</p>
+<div class="MediaTransformError" style="width: 607px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The "Draw Measurement" plugin then allows you to draw a line with the calibrated measurement length, as so:
+</p>
+<div class="MediaTransformError" style="width: 581px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+Three files are included:
+</p>
+<ul><li> <i>Choose_Microscope_Calibration.py</i>
+<ul><li> Opens the "Choose Calibration" window, for setting the measurement scale to a preconfigured value.</li></ul></li>
+<li> <i>Draw_Measurement_-_Line.py</i>
+<ul><li> Converts a Line ROI into a drawn annotation with the measurement length indicated.</li></ul></li>
+<li> <i>Microscope_Calibrations_user_settings.py</i>
+<ul><li> Settings file that contains your pre-configured scale calibrations, along with some settings for drawing annotations (background/text color etc.)</li></ul></li></ul>
+<h2><span class="mw-headline" id="Installation_.26_Usage_Manual">Installation &amp; Usage Manual</span></h2>
+<p>Please see the complete installation &amp; usage instructions here: 
+</p>
+<dl><dd> <a rel="nofollow" class="external text" href="https://github.com/demisjohn/Microscope-Measurement-Tools/blob/master/Microscope%20Meas.%20-%20Calibration%20instructions.pdf"><b>Microscope Meas. - Calibration instructions.pdf</b></a></dd></dl>
+<p>Basic instructions are as follows.
+</p><p>1. Extract the .zip file linked at <a rel="nofollow" class="external text" href="https://github.com/demisjohn/Microscope-Measurement-Tools/releases">GitHub/Releases</a>, and place the resulting <i>Analysis</i> folder inside
+</p>
+<dl><dd> <i>Fiji.app / Plugins / Scripts</i></dd></dl>
+<dl><dd> (If an <i>Analysis</i> folder already exists, do Not overwrite it - you must have another Analysis plugin installed!  Instead, merge the two folders.)</dd></dl>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Setting_up_your_calibrations">Setting up your calibrations</span></h3>
+<p>2. Open an image with a feature of some known length, taken with some microscope/objective that you desire to save a calibration for.
+</p><p>3. Draw a line along the feature of known length.
+</p><p>4. Select the <span><em><span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Set Scale</span></em></span> menu item.
+</p><p>5. Type in the known length in "<i>Known Distance</i>" and record the "<b>Scale</b>" value for this calibration. 
+</p>
+<dl><dd> Perform more calibrations (on other images) if desired, recording the Scale values for each.</dd></dl>
+<p>6. Edit the File 
+</p>
+<dl><dd> <i>Fiji.app / plugins / Scripts / Analyze / Microscope Measurement Tools /</i></dd></dl>
+<dl><dd><dl><dd> <i>Microscope_Calibrations_user_settings.py</i></dd></dl></dd></dl>
+<p>7. Type in the Calibration's Names &amp; Scale values, making sure to match up the list of names with their corresponding calibrations.
+</p>
+<dl><dd> This settings file is an actual python script, so you can edit the lists there using normal Python syntax. eg. functions like <code>myList.append( [ ] )  </code>   or   <code>  myList = ['cm'] * 5</code> etc. will work.</dd></dl>
+<p><br />
+Unfortunately, changes to the settings file may not be automatically picked up by Fiji.
+The workaround is to do the following:
+</p><p>8. Quit Fiji.
+</p><p>9. Delete the "<i>py.class</i>" file in the plugin’s folder:
+</p>
+<dl><dd> <i>Fiji.app / plugins / Scripts / Analyze / Microscope Measurement Tools /</i></dd></dl>
+<dl><dd><dl><dd> <i>Microscope_Calibrations_user_settings$py.class</i></dd></dl></dd></dl>
+<p>10. Open Fiji. It should have picked up the new settings now.
+</p><p>You should only have to do this calibration once, when you do your initial calibration/setup.
+</p>
+<h3><span class="mw-headline" id="Applying_a_pre-configured_scale_to_your_image">Applying a pre-configured scale to your image</span></h3>
+<p>11. Run <span><em><span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Microscope Measurement Tools </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Choose Microscope Calibration</span></em></span> - the pop-up window shows the new names and calibration values you set in your user-settings file.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Annotating_your_image_with_a_length_measurement">Annotating your image with a length measurement</span></h3>
+<p>To draw a measurement annotation, 
+</p><p>1. Draw a "Straight Line" along the feature you want to measure (the length is displayed in the Fiji status bar)
+</p><p>2. Select <span><em><span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Microscope Measurement Tools </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Draw Annotation - Line</span></em></span>.
+</p>
+<dl><dd> The annotation will be drawn directly onto the image.</dd>
+<dd> It is recommended that you work on a copy of your file.  Unfortunately there is currently no Undo feature.  I may try to figure out ho to use the "Overlay" feature to make something like that possible.</dd></dl>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Adding_a_custom_function_to_the_Calibrations_list">Adding a custom function to the Calibrations list</span></h3>
+<p>A sub-folder is included that shows how to implement a custom function in Python, that will be executed to get the scale parameter, and shows up in the Calibrations list.
+</p><p>The example adds a Calibration for a JEOL SEM, which automatically sets the scale based on an accompanying *.txt file.  The functionality could be extended to other scale-calibrations which are difficult to hard-code as a single resolution (other continuously-varying magnifications, like SEM tools etc.).
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Author.28s.29">Author(s)</span></h2>
+<p>This simple python (jython) plugin was created by <a href="http://imagej.net/User:Demis" title="User:Demis">Demis D. John</a>, 2015.
+</p><p>I used the following plugins as inspiration: <a href="http://imagej.net/Correct_3D_drift" class="mw-redirect" title="Correct 3D drift">Correct_3D_drift</a> and <a rel="nofollow" class="external text" href="http://rsb.info.nih.gov/ij/plugins/microscope-scale.html">Microscope Scale</a> (which sadly is no longer easily customizable).
+</p><p>Please see the GitHub page for issues needing coding work, and ideas for improvement.  You are always welcome to contribute code to the GitHub project, it is remarkably simple due to FIJI's excellent Python API!
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073004
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.048 seconds
+Preprocessor visited node count: 397/1000000
+Preprocessor generated node count: 4550/1000000
+Post‐expand include size: 3052/2097152 bytes
+Template argument size: 1189/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   19.841      1 - -total
+ 61.51%   12.204      1 - Template:Infobox
+ 41.16%    8.167      2 - Template:Person
+ 31.70%    6.290      3 - Template:Bc
+ 10.00%    1.985      5 - Template:Arrow
+  8.51%    1.688      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Microscope_Measurement_Tools&amp;oldid=39987">http://imagej.net/index.php?title=Microscope_Measurement_Tools&amp;oldid=39987</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 May 2019, at 01:22.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Microscope_Measurement_Tools&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Registration" title="Category:Registration">Registration</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Microscope+Measurement+Tools" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Microscope+Measurement+Tools" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Microscope_Measurement_Tools" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Microscope_Measurement_Tools" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Microscope_Measurement_Tools&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Microscope_Measurement_Tools&amp;oldid=39987" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Microscope_Measurement_Tools&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":195});});</script>
+		</body>
+		</html>
+		

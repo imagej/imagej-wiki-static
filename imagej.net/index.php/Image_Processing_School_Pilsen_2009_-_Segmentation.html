@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Image Processing School Pilsen 2009 - Segmentation - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Image_Processing_School_Pilsen_2009_-_Segmentation","wgTitle":"Image Processing School Pilsen 2009 - Segmentation","wgCurRevisionId":41258,"wgRevisionId":41258,"wgArticleId":583,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials","Segmentation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Image_Processing_School_Pilsen_2009_-_Segmentation","wgRelevantArticleId":583,"wgRequestId":"9e96d8528350825add1edc9f","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This tutorial is designed to give you a first impression of the segmentation tools available in Fiji. It covers basic thresholding and morphology operations (erode, dilate, open, close), Level Sets, the Simple Neurite Tracer and the Segmentation Editor."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Image Processing School Pilsen 2009 - Segmentation"/>
+
+	<meta property="og:description" content="This tutorial is designed to give you a first impression of the segmentation tools available in Fiji. It covers basic thresholding and morphology operations (erode, dilate, open, close), Level Sets, the Simple Neurite Tracer and the Segmentation Editor."/>
+
+	<meta property="og:url" content="http://imagej.net/Image_Processing_School_Pilsen_2009_-_Segmentation"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Image_Processing_School_Pilsen_2009_-_Segmentation rootpage-Image_Processing_School_Pilsen_2009_-_Segmentation skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Image_Processing_School_Pilsen_2009_-_Segmentation.html#bodyContent">Skip to content</a>, 			<a href="Image_Processing_School_Pilsen_2009_-_Segmentation.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Image_Processing_School_Pilsen_2009_-_Segmentation.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Image_Processing_School_Pilsen_2009_-_Segmentation" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Image_Processing_School_Pilsen_2009_-_Segmentation&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Image_Processing_School_Pilsen_2009_-_Segmentation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Image_Processing_School_Pilsen_2009_-_Segmentation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Image Processing School Pilsen 2009 - Segmentation</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Image_Processing_School_Pilsen_2009_-_Segmentation.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Image_Processing_School_Pilsen_2009_-_Segmentation.html#Thresholding_and_Morphology"><span class="tocnumber">2</span> <span class="toctext">Thresholding and Morphology</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Image_Processing_School_Pilsen_2009_-_Segmentation.html#Level_Set_Plugin"><span class="tocnumber">3</span> <span class="toctext">Level Set Plugin</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Image_Processing_School_Pilsen_2009_-_Segmentation.html#Simple_Neurite_Tracer"><span class="tocnumber">4</span> <span class="toctext">Simple Neurite Tracer</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Image_Processing_School_Pilsen_2009_-_Segmentation.html#Segmentation_Editor"><span class="tocnumber">5</span> <span class="toctext">Segmentation Editor</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>This tutorial is designed to give you a first impression of the segmentation tools available in Fiji. It covers basic thresholding and morphology operations (erode, dilate, open, close), <a href="http://imagej.net/Level_Sets" title="Level Sets">Level Sets</a>, the <a href="http://imagej.net/Simple_Neurite_Tracer" class="mw-redirect" title="Simple Neurite Tracer">Simple Neurite Tracer</a> and the <a href="http://imagej.net/Segmentation_Editor" title="Segmentation Editor">Segmentation Editor</a>.
+</p>
+<h2><span class="mw-headline" id="Thresholding_and_Morphology">Thresholding and Morphology</span></h2>
+<p>Thresholding is a very simple segmentation method. You just specify a gray value and all pixels in the image are classified according to their value being larger or smaller than the threshold.
+</p>
+<ul><li> open the blobs sample image (this image is so popular that it got a hotkey: ctrl+shift b)</li></ul>
+<div class="MediaTransformError" style="width: 275px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<ul><li> now try to segment the blobs with a threshold: Image - Adjust - Threshold</li>
+<li> play a bit with different possible values: 
+<ul><li> What do you notice? </li>
+<li> Which value do you choose and why? </li>
+<li> Imagine you would like to measure the size of the blobs after the segmentation. What do you need to take into account?</li>
+<li> What would be different if you would segment the blobs by hand?</li></ul></li></ul>
+<p>It is hard to segment the image without a very small blobb in the center. We will have a look now on how to get rid of such small blobs.
+The following image shows a possible segmentation and the small annoying blob and some others we do not want to have:
+</p>
+<div class="MediaTransformError" style="width: 581px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>We now want to filter these small blobs using morphology operations. You can find these under Process - Binary
+Besides the basic four operations (erode, dilate, open, close) there is also an options dialog:
+</p>
+<div class="MediaTransformError" style="width: 502px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Here you can specify how often (iterations) the operator (choose in Do drop down menu) should be applied and how big the template is (count).
+Try to play a bit with the parameters. You should at least notice two things:
+</p>
+<ul><li> It is fairly easy to get rid of the small blobs</li>
+<li> It is also possible to change the shape of the blobs. 
+<ul><li> Which shape do they change into?</li>
+<li> Why, do you think, is it this shape?</li>
+<li> Again what does this imply for measurements?</li></ul></li></ul>
+<p>If you want to read more about morphology, I these pages might be useful:
+<a rel="nofollow" class="external free" href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm">http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm</a>
+</p><p>As you have seen, thresholding is a fairly simple method. Let's move on to something more sophisticated.
+</p>
+<h2><span class="mw-headline" id="Level_Set_Plugin">Level Set Plugin</span></h2>
+<p>The Fiji plugin provides two PDE based methods, the more basic fast marching and the advanced active contour algorithm.
+</p><p>Fast marching works similar to a standard flood fill but is more sensitive in the boundary detection. While growing the region it constantly calculates the difference of the current selection to the newly added pixels and either stops if it exceeds a pre selected gray value difference or if it would exceed a certain pre-selected rate of growth. This algorithm is sensitive to leaking - if the object has a gap in the boundary, the selection may leak to the outside of the object.
+</p><p>Level sets advance a contour like a rubber band until the contour hits an object boundary. The rubber band like nature (= curvature) prevents the contour from leaking if there are gaps in the boundary. The strength of the rubber band and a gray level difference can be pre-selected.
+</p><p>The speedy fast marching can be used as input for the slower active contours. If the image is very large, starting with Fast Marching and using the contour from the fast marching to refine the object with Level Sets can significantly speed up the object detection.
+</p><p>For our test we are going to generate our testimage ourselves.
+</p>
+<ul><li> create a new small image (100x100 pixels)</li>
+<li> Now draw a filled black circle on the white background (The fill command is in the Edit menu) </li></ul>
+<div class="MediaTransformError" style="width: 328px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Okay, this image basically is already segmented. But lets just try the rubberband levelset look for a sanity check.
+Open the level set plugin under Plugins - Segmentation (gives an error)
+Seems we have to specify a region first. This is because the level sets need an initial contour that is then refinded. So draw something crude in the circle
+</p>
+<div class="MediaTransformError" style="width: 325px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Now we can open the plugin (Plugins - Segmentation - Level Sets)
+</p><p>You will see the following dialog appear:
+</p>
+<div class="MediaTransformError" style="width: 324px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The fast marching method is not very interesting for our purpose at the moment. You are free to play with it later. For now please uncheck that box.
+</p><p>As you can see there are four parameters to adjust (Advection, Propagation, Curvature, Grayscale tolerance). The good news is that you only have to worry about the last two. 
+For our very simple image the default parameter should work. Just make sure, that you set the "Region expands to" option to outside, if you drew something inside the circle.
+</p>
+<ul><li> Hit that okay button and look at the result</li>
+<li> You can also try to specify a contour outside the circle and let it shrink (remember to choose Region expands to outside then in the dialog)</li></ul>
+<p>So far not very impressive. Let's make this a bit more complicated.
+</p>
+<ul><li> Cut a part out of the black circle by drawing a white ellipse onto it:</li></ul>
+<div class="MediaTransformError" style="width: 324px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Now again try to segment this shape with level sets:
+</p>
+<ul><li> Try to grow a contour from the inside</li>
+<li> And from the outside</li>
+<li> What do you have to do to get a segmentation that fills the gap?</li></ul>
+<div class="MediaTransformError" style="width: 327px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Now take the same image and add some noise (Process - Noise - Add noise)
+</p>
+<ul><li> Can you still get a good segmentation?</li>
+<li> What difficulties arrise?</li></ul>
+<p>If you want to know more about the plugin, you can look at the <a href="http://imagej.net/Level_Sets" title="Level Sets">documentation</a>.
+</p>
+<h2><span class="mw-headline" id="Simple_Neurite_Tracer">Simple Neurite Tracer</span></h2>
+<p>This is a very nice plugin for semi automatic segmentation of thin elongated structures. It is designed to work with fluorecent images of neurons, but I am sure you can find other applications for it too!
+Fortunately Mark has already written a very nice documentation about the plugin. So there is little use in me writing everything again.
+You can find an example data set at: <a rel="nofollow" class="external text" href="https://fiji.sc/cgi-bin/gitweb.cgi?p=VIB.git;a=blob;f=test-images/c061AG-small-section.tif">c061AG-small-section.tif</a>;
+So please have a look at the <a rel="nofollow" class="external text" href="http://homepages.inf.ed.ac.uk/s9808248/imagej/tracer/instructions.html">documentation</a>
+I especially like the <a rel="nofollow" class="external text" href="http://homepages.inf.ed.ac.uk/s9808248/imagej/tracer/step-by-step/">step-by-step guide</a>
+</p><p>In order to try the plugin yourself you can use the sample data provided or try one of the channels of the Neuron example image, that is linked in the File - Open Samples menu.
+</p>
+<h2><span class="mw-headline" id="Segmentation_Editor">Segmentation Editor</span></h2>
+<p>A nice all purpose 3d manual segmentation plugin is the segmentation editor. It even is able to interpolate over sections where you did not provide manual tracks. You can find it under Plugins - Segmentation.
+Also for this plugin there already exists very good <a rel="nofollow" class="external text" href="http://132.187.25.13/home/?category=Download&amp;page=SegmentationEditor">documentation</a>
+</p><p>As you can see, the newer version has two additional buttons:
+</p>
+<div class="MediaTransformError" style="width: 456px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>They are labeled O and C like open and close. Sounds familiar&#160;:-)
+</p><p>In order to have some fun, I recommend to use the head sample file from the File - Open samples menu. 
+You can segment the brain of that guy and afterwards make a nice animation with the volume viewer:
+</p>
+<div class="MediaTransformError" style="width: 525px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Hope you had fun!
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072603
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.037 seconds
+Preprocessor visited node count: 18/1000000
+Preprocessor generated node count: 24/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Image_Processing_School_Pilsen_2009_-_Segmentation&amp;oldid=41258">http://imagej.net/index.php?title=Image_Processing_School_Pilsen_2009_-_Segmentation&amp;oldid=41258</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Image_Processing_School_Pilsen_2009_-_Segmentation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Image+Processing+School+Pilsen+2009+-+Segmentation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Image+Processing+School+Pilsen+2009+-+Segmentation" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Image_Processing_School_Pilsen_2009_-_Segmentation" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Image_Processing_School_Pilsen_2009_-_Segmentation" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Image_Processing_School_Pilsen_2009_-_Segmentation&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Image_Processing_School_Pilsen_2009_-_Segmentation&amp;oldid=41258" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Image_Processing_School_Pilsen_2009_-_Segmentation&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":241});});</script>
+		</body>
+		</html>
+		

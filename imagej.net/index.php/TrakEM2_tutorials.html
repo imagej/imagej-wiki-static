@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>TrakEM2 tutorials - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"TrakEM2_tutorials","wgTitle":"TrakEM2 tutorials","wgCurRevisionId":43104,"wgRevisionId":43104,"wgArticleId":603,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["TrakEM2","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"TrakEM2_tutorials","wgRelevantArticleId":603,"wgRequestId":"91bb21ce8d951dd2863047f8","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="[view on SWITCHtube]"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="TrakEM2 tutorials"/>
+
+	<meta property="og:description" content="[view on SWITCHtube]"/>
+
+	<meta property="og:url" content="http://imagej.net/TrakEM2_tutorials"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-TrakEM2_tutorials rootpage-TrakEM2_tutorials skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="TrakEM2_tutorials.html#bodyContent">Skip to content</a>, 			<a href="TrakEM2_tutorials.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="TrakEM2_tutorials.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/TrakEM2_tutorials" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:TrakEM2_tutorials&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=TrakEM2_tutorials&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=TrakEM2_tutorials&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>TrakEM2 tutorials</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="TrakEM2_tutorials.html#Video_tutorial_on_3D_reconstruction_from_serial_section"><span class="tocnumber">1</span> <span class="toctext">Video tutorial on 3D reconstruction from serial section</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="TrakEM2_tutorials.html#Video_tutorial_on_the_basic_recipe_for_TrakEM2"><span class="tocnumber">2</span> <span class="toctext">Video tutorial on the basic recipe for TrakEM2</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="TrakEM2_tutorials.html#Video_tutorial_on_segmenting.2Foutlining_objects_over_multiple_sections_in_3D"><span class="tocnumber">3</span> <span class="toctext">Video tutorial on segmenting/outlining objects over multiple sections in 3D</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="TrakEM2_tutorials.html#Video_tutorial_on_aligning_sections"><span class="tocnumber">4</span> <span class="toctext">Video tutorial on aligning sections</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="TrakEM2_tutorials.html#Video_tutorial_on_manual_segmentation_modes"><span class="tocnumber">5</span> <span class="toctext">Video tutorial on manual segmentation modes</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="TrakEM2_tutorials.html#Video_tutorial_on_semi-automatic_segmentation"><span class="tocnumber">6</span> <span class="toctext">Video tutorial on semi-automatic segmentation</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="TrakEM2_tutorials.html#Video_tutorial_on_measuring_surfaces_and_volumes"><span class="tocnumber">7</span> <span class="toctext">Video tutorial on measuring surfaces and volumes</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="TrakEM2_tutorials.html#Video_tutorial_on_adding_sections.2Flayers_to_an_existing_project"><span class="tocnumber">8</span> <span class="toctext">Video tutorial on adding sections/layers to an existing project</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="TrakEM2_tutorials.html#Video_tutorial_on_saving_a_project"><span class="tocnumber">9</span> <span class="toctext">Video tutorial on saving a project</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="TrakEM2_tutorials.html#See_Also"><span class="tocnumber">10</span> <span class="toctext">See Also</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Video_tutorial_on_3D_reconstruction_from_serial_section">Video tutorial on 3D reconstruction from serial section</span></h2>
+<p><iframe src="https://tube.switch.ch/embed/c3f982f2" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><p style="font-size: small; margin-top: 0"><a href="https://tube.switch.ch/videos/c3f982f2">[view on SWITCHtube]</a></span></p>
+</p>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Video_tutorial_on_the_basic_recipe_for_TrakEM2">Video tutorial on the basic recipe for TrakEM2</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/TrakEM2_basics_tutorial" title="TrakEM2 basics tutorial"><img alt="" src="../_images/d/d1/Screenshot-TrakEM2_basics_tutorial.png" width="250" height="194" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-TrakEM2_basics_tutorial.png" class="internal" title="Enlarge"></a></div>TrakEM2 basic tutorial</div></div></div>
+<p>This is the <a href="http://imagej.net/TrakEM2_basics_tutorial" title="TrakEM2 basics tutorial">basic tutorial for TrakEM2</a>. <b>If you are new to TrakEM2, please start by watching <a href="http://imagej.net/TrakEM2_basics_tutorial" title="TrakEM2 basics tutorial">this tutorial</a></b>. It includes:
+</p>
+<ul><li> Importing an image stack.</li>
+<li> Registering stack slices manually, using color overlays and affine transforms.</li>
+<li> Defining a template tree structure for your segmentations.</li>
+<li> Segmenting cells across multiple sections.</li>
+<li> 3D visualization.</li></ul>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Video_tutorial_on_segmenting.2Foutlining_objects_over_multiple_sections_in_3D">Video tutorial on segmenting/outlining objects over multiple sections in 3D</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://www.ini.uzh.ch/~acardona/movies/arealist-create-and-edit.mp4"><img alt="" src="../_images/0/06/Arealists-brushing.jpg" width="250" height="140" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Arealists-brushing.jpg" class="internal" title="Enlarge"></a></div>TrakEM2 brushing (This video tutorial was made by Albert Cardona. To visualize it, you need a mp4 player.)</div></div></div>
+<p>This mp4 <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/movies/arealist-create-and-edit.mp4">video tutorial</a> covers:
+</p>
+<ul><li> How to use the PEN tool with "area lists" segmentation type (paint an area, flood-fill, erase, flood-erase).</li>
+<li> How to use ROIs (selections like polygon and freeroi) to edit "area lists".</li></ul>
+<p>See also the list of <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/trakem2_manual.html#edit_arealist">key bindings for AreaList</a>.
+</p>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Video_tutorial_on_aligning_sections">Video tutorial on aligning sections</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/TrakEM2_align_sections_tutorial" title="TrakEM2 align sections tutorial"><img alt="" src="../_images/5/5b/Screenshot-TrakEM2_align_sections_tutorial.png" width="250" height="195" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-TrakEM2_align_sections_tutorial.png" class="internal" title="Enlarge"></a></div>TrakEM2 align sections tutorial</div></div></div>
+<p><a href="http://imagej.net/TrakEM2_align_sections_tutorial" title="TrakEM2 align sections tutorial">This video tutorial</a> is focused on:
+</p>
+<ul><li> Automatically registering sections.</li>
+<li> Selecting feature extraction parameters.</li></ul>
+<p>See also the feature extraction and alignment <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/howto.html#sift_parameters">parameters explained</a>.
+</p>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Video_tutorial_on_manual_segmentation_modes">Video tutorial on manual segmentation modes</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/TrakEM2_segmentation_modes_tutorial" title="TrakEM2 segmentation modes tutorial"><img alt="" src="../_images/d/d2/Screenshot-TrakEM2-Manual-Segmentation-Modes-Tutorial.png" width="250" height="195" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-TrakEM2-Manual-Segmentation-Modes-Tutorial.png" class="internal" title="Enlarge"></a></div>TrakEM2 manual segmentation modes</div></div></div>
+<p><a href="http://imagej.net/TrakEM2_segmentation_modes_tutorial" title="TrakEM2 segmentation modes tutorial">Tutorial on how to manually segment cells using the 3 segmentation modes</a>:
+</p>
+<dl><dt> Overlap</dt>
+<dd> multiple arealists can coexist in space (the normal mode; arealists are independent).</dd>
+<dt> Exclude</dt>
+<dd> when painting in an arealist, do not allow paint to occur over any other existing arealist.</dd>
+<dt> Erode</dt>
+<dd> when painting in an arealist, paint in the current but erase any other arealist.</dd></dl>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Video_tutorial_on_semi-automatic_segmentation">Video tutorial on semi-automatic segmentation</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/TrakEM2_semi-automatic_segmentation_tutorial" title="TrakEM2 semi-automatic segmentation tutorial"><img alt="" src="../_images/d/d9/Screenshot-TrakEM2-tutorial-automatic-segmentation.png" width="250" height="195" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-TrakEM2-tutorial-automatic-segmentation.png" class="internal" title="Enlarge"></a></div>TrakEM2 semi-automatic segmentation</div></div></div>
+<p>In <a href="http://imagej.net/TrakEM2_semi-automatic_segmentation_tutorial" title="TrakEM2 semi-automatic segmentation tutorial">this video tutorial</a> you will learn:
+</p>
+<ul><li> How to segment cells by only one click.</li>
+<li> Fast marching method tool in TrakEM2.</li>
+<li> Selecting segmentation parameters.</li></ul>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Video_tutorial_on_measuring_surfaces_and_volumes">Video tutorial on measuring surfaces and volumes</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/TrakEM2_measurements_tutorial" title="TrakEM2 measurements tutorial"><img alt="" src="../_images/1/10/Screenshot-TrakEM2-tutorial-measure-surfaces.png" width="250" height="196" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-TrakEM2-tutorial-measure-surfaces.png" class="internal" title="Enlarge"></a></div>TrakEM2 measuring surfaces and volumes</div></div></div>
+<p>In <a href="http://imagej.net/TrakEM2_measurements_tutorial" title="TrakEM2 measurements tutorial">this video tutorial</a> you will learn how to:
+</p>
+<ul><li> Extract information from TrakEM2 project objects.</li>
+<li> Save measurements into files.</li></ul>
+<p>See also <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/trakem2_manual.html#measure_arealist">AreaList measurements</a> in the TrakEM2 manual, with figures.
+</p>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Video_tutorial_on_adding_sections.2Flayers_to_an_existing_project">Video tutorial on adding sections/layers to an existing project</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/TrakEM2_add_more_sections/layers_tutorial" title="TrakEM2 add more sections/layers tutorial"><img alt="" src="../_images/8/8e/Screenshot-TrakEM2-tutorial-add-layers.png" width="250" height="195" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-TrakEM2-tutorial-add-layers.png" class="internal" title="Enlarge"></a></div>TrakEM2 adding layers to existing project</div></div></div>
+<p><a href="http://imagej.net/TrakEM2_add_more_sections/layers_tutorial" title="TrakEM2 add more sections/layers tutorial">Here</a> you will learn how to:
+</p>
+<ul><li> Open an image sequence as a virtual stack in Fiji.</li>
+<li> Calibrate the virtual stack.</li>
+<li> Import the virtual stack into TrakEM2 as a sequence of layers (sections), one image per layer.</li></ul>
+<p>In the tutorial, the layers are imported following an existing set of layers, i.e. concatenating to enlarge the collection of sections.
+</p>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Video_tutorial_on_saving_a_project">Video tutorial on saving a project</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/TrakEM2_saving_project_tutorial" title="TrakEM2 saving project tutorial"><img alt="" src="../_images/d/d8/Screenshot-TrakEM2-save-project.png" width="250" height="195" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-TrakEM2-save-project.png" class="internal" title="Enlarge"></a></div>TrakEM2 saving a project</div></div></div>
+<ul><li> <a href="http://imagej.net/TrakEM2_saving_project_tutorial" title="TrakEM2 saving project tutorial">Saving a TrakEM2 project</a> into an .XML file.</li></ul>
+<h2><span class="mw-headline" id="See_Also">See Also</span></h2>
+<ul><li> <a href="http://imagej.net/TrakEM2_Scripting" title="TrakEM2 Scripting">TrakEM2 Scripting</a></li>
+<li> <a href="http://imagej.net/TrakEM2" title="TrakEM2">TrakEM2</a> wiki page</li>
+<li> <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/trakem2.html">TrakEM2 web page</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074034
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.052 seconds
+Real time usage: 0.058 seconds
+Preprocessor visited node count: 76/1000000
+Preprocessor generated node count: 161/1000000
+Post‐expand include size: 304/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    1.901      1 - -total
+ 56.20%    1.068      8 - Template:Clear
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=TrakEM2_tutorials&amp;oldid=43104">http://imagej.net/index.php?title=TrakEM2_tutorials&amp;oldid=43104</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 28 February 2020, at 09:39.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=TrakEM2_tutorials&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:TrakEM2" title="Category:TrakEM2">TrakEM2</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=TrakEM2+tutorials" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=TrakEM2+tutorials" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/TrakEM2_tutorials" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/TrakEM2_tutorials" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=TrakEM2_tutorials&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=TrakEM2_tutorials&amp;oldid=43104" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=TrakEM2_tutorials&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":296});});</script>
+		</body>
+		</html>
+		

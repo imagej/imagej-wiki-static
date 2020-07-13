@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>2011-09-29 - Display framework changes - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"2011-09-29_-_Display_framework_changes","wgTitle":"2011-09-29 - Display framework changes","wgCurRevisionId":35853,"wgRevisionId":35853,"wgArticleId":10018,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["News","ImageJ2"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"2011-09-29_-_Display_framework_changes","wgRelevantArticleId":10018,"wgRequestId":"0dc287a931c1d5f427b9eabd","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The following is a quick technical update on some work I am doing on ImageJ2's display hierarchy. It will mostly be of interest to other IJ2 developers, but I am posting here to give the community a rough idea of where we are going with the display code."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="2011-09-29 - Display framework changes"/>
+
+	<meta property="og:description" content="The following is a quick technical update on some work I am doing on ImageJ2's display hierarchy. It will mostly be of interest to other IJ2 developers, but I am posting here to give the community a rough idea of where we are going with the display code."/>
+
+	<meta property="og:url" content="http://imagej.net/2011-09-29_-_Display_framework_changes"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-2011-09-29_-_Display_framework_changes rootpage-2011-09-29_-_Display_framework_changes skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="2011-09-29_-_Display_framework_changes.html#bodyContent">Skip to content</a>, 			<a href="2011-09-29_-_Display_framework_changes.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="2011-09-29_-_Display_framework_changes.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/2011-09-29_-_Display_framework_changes" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:2011-09-29_-_Display_framework_changes&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=2011-09-29_-_Display_framework_changes&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=2011-09-29_-_Display_framework_changes&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>2011-09-29 - Display framework changes</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> The following is a blog post from <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a> originally published on the ImageJDev web site. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+The following is a quick technical update on some work I am doing on ImageJ2's display hierarchy. It will mostly be of interest to other IJ2 developers, but I am posting here to give the community a rough idea of where we are going with the display code.
+</p><p>Today I investigated how to refactor the display hierarchy to eliminate the UI-specific SwingDatasetView and SwingOverlayView classes. The logic they provide needs to be preserved in the codebase somewhere, but the motivation for the change is that a "DataView" was originally conceived as a UI-agnostic bag of display settings for a Data object. For example, a view on a data object (such as a dataset) can contain per-channel LUTs. It also tracks the current position within the data object in N space, unlike the data object itself.
+</p><p>Refactoring these Swing-specific classes will make implementing plugins that need to output DataViews much easier, in that creating new data views will then be possible in a UI-agnostic way, without adding any potentially clunky DataView factory logic to the system. All the Swing-specific logic can be wrapped into SwingImageDisplay and related helper classes. The relevant code from SwingDatasetView and SwingOverlayView might end up in one or more SwingDataDisplayLink classes or similar—I am still working through it, but expect to have a solution implemented within the next few days.
+</p><p>As part of this refactoring, the Display.update() method will become the workhorse for updating displays onscreen, including any pending structural changes or rebuilds that need to occur. That is, displays must keep track of when/how their constituent data objects change, but not update themselves until update() is called. This allows users of the API to do things like add multiple data objects without triggering an automatic update with each addition.
+</p><p>After the above goals are met, the next steps are:
+</p>
+<ol><li> Reevaluate how DisplayPanel and DisplayWindow fit in to the hierarchy—e.g., there is currently some inconsistency with display logic delegating to the panel and/or the window, and vice versa. We need to have a clear hierarchy and execution flow between these classes, and a clean dependency hierarchy as well with respect to them.</li>
+<li> Remove as much Dataset- and Overlay-specific logic from the ImageDisplay code as possible, generalizing it to the Data interface level. This work is in preparation for the addition of a CompositeData or DataList or similar that will be a tuple of multiple Data objects, allowing the construction of tree structures of data. Such a construct will let us model things like mosaics consisting of tiles, as well as clearly delineate which overlays belong to which datasets, and much more. This goal is really the essence of <a rel="nofollow" class="external text" href="http://trac.imagej.net/ticket/660">ticket 660</a>, but the rest of the above all goes hand in hand as well.</li></ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064251
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.036 seconds
+Preprocessor visited node count: 161/1000000
+Preprocessor generated node count: 3246/1000000
+Post‐expand include size: 744/2097152 bytes
+Template argument size: 235/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   11.657      1 - Template:Notice
+100.00%   11.657      1 - -total
+ 92.08%   10.734      1 - Template:Ambox
+ 67.30%    7.845      1 - Template:Person
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2011-09-29_-_Display_framework_changes&amp;oldid=35853">http://imagej.net/index.php?title=2011-09-29_-_Display_framework_changes&amp;oldid=35853</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 August 2017, at 21:19.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=2011-09-29_-_Display_framework_changes&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:News" title="Category:News">News</a></li><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=2011-09-29+-+Display+framework+changes" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=2011-09-29+-+Display+framework+changes" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/2011-09-29_-_Display_framework_changes" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/2011-09-29_-_Display_framework_changes" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=2011-09-29_-_Display_framework_changes&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=2011-09-29_-_Display_framework_changes&amp;oldid=35853" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=2011-09-29_-_Display_framework_changes&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":226});});</script>
+		</body>
+		</html>
+		

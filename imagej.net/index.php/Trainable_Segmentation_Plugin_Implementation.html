@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Trainable Segmentation Plugin Implementation - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Trainable_Segmentation_Plugin_Implementation","wgTitle":"Trainable Segmentation Plugin Implementation","wgCurRevisionId":41405,"wgRevisionId":41405,"wgArticleId":938,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Segmentation","Tutorials","Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Trainable_Segmentation_Plugin_Implementation","wgRelevantArticleId":938,"wgRequestId":"8bbad648c9df42c66b36fb26","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="DEPRECATION NOTICE: &#10;This page describes the implementation of the deprecated Trainable Segmentation plugin, the previous incarnation of the Trainable Weka Segmentation plugin and library. We encourage users and developers to work with the more advanced and properly maintained Trainable Weka Segmentation instead."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Trainable Segmentation Plugin Implementation"/>
+
+	<meta property="og:description" content="DEPRECATION NOTICE: &#10;This page describes the implementation of the deprecated Trainable Segmentation plugin, the previous incarnation of the Trainable Weka Segmentation plugin and library. We encourage users and developers to work with the more advanced and properly maintained Trainable Weka Segmentation instead."/>
+
+	<meta property="og:url" content="http://imagej.net/Trainable_Segmentation_Plugin_Implementation"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Trainable_Segmentation_Plugin_Implementation rootpage-Trainable_Segmentation_Plugin_Implementation skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Trainable_Segmentation_Plugin_Implementation.html#bodyContent">Skip to content</a>, 			<a href="Trainable_Segmentation_Plugin_Implementation.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Trainable_Segmentation_Plugin_Implementation.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Trainable_Segmentation_Plugin_Implementation" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Trainable_Segmentation_Plugin_Implementation&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_Implementation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_Implementation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Trainable Segmentation Plugin Implementation</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><div style="background:#fdd; padding: 10px 10px 0 10px; border: 1px solid black;">
+<p><b>DEPRECATION NOTICE:</b> 
+This page describes the implementation of the <b>deprecated</b> Trainable Segmentation plugin, the previous incarnation of the <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> plugin and library. We encourage users and developers to work with the more advanced and properly maintained <a href="http://imagej.net/Trainable_Weka_Segmentation" title="Trainable Weka Segmentation">Trainable Weka Segmentation</a> instead.
+</p>
+</div></p>
+<p>This page provides a high level overview of how the <b>deprecated</b> <a href="http://imagej.net/Trainable_Segmentation" class="mw-redirect" title="Trainable Segmentation">Trainable Segmentation</a> plugin (TSP) works.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Trainable_Segmentation_Plugin_Implementation.html#Summary"><span class="tocnumber">1</span> <span class="toctext">Summary</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Trainable_Segmentation_Plugin_Implementation.html#Features"><span class="tocnumber">2</span> <span class="toctext">Features</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Trainable_Segmentation_Plugin_Implementation.html#Gaussian_Blur"><span class="tocnumber">2.1</span> <span class="toctext">Gaussian Blur</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Trainable_Segmentation_Plugin_Implementation.html#Sobel_filter"><span class="tocnumber">2.2</span> <span class="toctext">Sobel filter</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Trainable_Segmentation_Plugin_Implementation.html#Hessian"><span class="tocnumber">2.3</span> <span class="toctext">Hessian</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Trainable_Segmentation_Plugin_Implementation.html#Difference_of_Gaussians"><span class="tocnumber">2.4</span> <span class="toctext">Difference of Gaussians</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Trainable_Segmentation_Plugin_Implementation.html#Membrane_projections"><span class="tocnumber">2.5</span> <span class="toctext">Membrane projections</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Trainable_Segmentation_Plugin_Implementation.html#Mean.2C_Variance.2C_Median.2C_Minimum.2C_Maximum"><span class="tocnumber">2.6</span> <span class="toctext">Mean, Variance, Median, Minimum, Maximum</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Trainable_Segmentation_Plugin_Implementation.html#Classifier"><span class="tocnumber">3</span> <span class="toctext">Classifier</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Summary">Summary</span></h2>
+<p>The plug in creates a set of features for each input image pixel by individually applying various filters (for example, Gaussian blur) to the image. The user then selects sets of pixels in the image and assigns each set to a class (e.g. background, cells, nucleus, spores, cell membranes). The plug in builds a forest of classification trees by bootstrapping the feature data and assigned classes for the user chosen pixels. This is the classifier. The classifier can then be used to segment the trained image and other images by applying the forest to each pixel - the trees 'vote' for which class each pixel belongs to based on its features.
+</p>
+<h2><span class="mw-headline" id="Features">Features</span></h2>
+<p>The plugin creates a stack of images - one image for each feature. For instance, if only Gaussian Blur is selected as a feature, the classifier will be trained on the original image and four blurred images with four different <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> parameters for the Gaussian, so each pixel will have 5 features. If the mean is added as a feature, then each pixel will have nine features (the value of the pixel's location in the original image, four Gaussian blur images, and four mean images with different radii).
+</p>
+<h3><span class="mw-headline" id="Gaussian_Blur"><a href="http://en.wikipedia.org/wiki/Gaussian_blur" class="extiw" title="wikipedia:Gaussian blur">Gaussian Blur</a></span></h3>
+<p>Performs four individual <a rel="nofollow" class="external text" href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/convolve.htm">convolutions</a> with Gaussian <a rel="nofollow" class="external text" href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/convolve.htm">kernels</a> with <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> equal to 1, 2, 4, and 8. The larger the radius the more blurred the image becomes until the pixels are homogeneous.
+</p>
+<h3><span class="mw-headline" id="Sobel_filter"><a href="http://en.wikipedia.org/wiki/Sobel_operator" class="extiw" title="wikipedia:Sobel operator">Sobel filter</a></span></h3>
+<p>Calculates the gradient at each pixel. Gaussian blurs with <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> = 1, 2, 4 and 8 are performed prior to the filter.
+</p>
+<h3><span class="mw-headline" id="Hessian">Hessian</span></h3>
+<p>Calculates a <a href="http://en.wikipedia.org/wiki/Hessian_matrix" class="extiw" title="wikipedia:Hessian matrix">Hessian matrix</a> H at each pixel:
+<img class="mwe-math-fallback-image-inline tex" alt="H(f) = \begin{bmatrix}&#10;\dfrac{\partial^2f}{\partial x^2} &amp; \dfrac{\partial^2f}{\partial x \partial y} \\&#10;\dfrac{\partial^2f}{\partial x \partial y}  &amp; \dfrac{\partial^2f}{\partial y^2} \\&#10;\end{bmatrix}" src="../_images/math/9/e/1/9e106b1e7e41a69f24ae0da7b7bb2630.png" /> 
+</p><p>This is implemented as follows:
+</p>
+<ul><li><img class="mwe-math-fallback-image-inline tex" alt="\dfrac{\partial^2f}{\partial x^2}" src="../_images/math/3/b/a/3bafde413cbbb9dbe87907edf7808ff2.png" />: the X-direction sobel kernel is convolved with the image twice.</li>
+<li><img class="mwe-math-fallback-image-inline tex" alt="\dfrac{\partial^2f}{\partial y^2}" src="../_images/math/3/b/b/3bb4db3a4bdb32e4b36ba783a7743ef0.png" />: the Y-direction sobel kernel is convolved with the image twice.</li>
+<li> <img class="mwe-math-fallback-image-inline tex" alt="\dfrac{\partial^2f}{\partial x \partial y}" src="../_images/math/b/d/3/bd324c29cea789867d4593fcb8bf3725.png" />: the X and Y-direction sobel kernels are each convolved with the image once.</li></ul>
+<p>Prior to the application of any filters, a Gaussian blur with <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> = 1, 2, 4 or 8 is performed.
+The final features used for pixel classification, given the Hessian matrix <img class="mwe-math-fallback-image-inline tex" alt="\begin{bmatrix}a &amp;  b \\ c &amp; d\end{bmatrix}" src="../_images/math/5/3/7/53722b721cc1d7ea00273a10a8c5a467.png" />  are calculated thus:
+</p>
+<ul><li> <img class="mwe-math-fallback-image-inline tex" alt="\sqrt{a^2 + bc + d ^ 2} " src="../_images/math/1/d/f/1df6cee01d8aa13380901db3a49fab8f.png" /></li>
+<li> Trace: <img class="mwe-math-fallback-image-inline tex" alt=" a + d" src="../_images/math/1/2/2/12260c01c4cf53da87ef3974511288da.png" /></li>
+<li> Determinant: <img class="mwe-math-fallback-image-inline tex" alt=" ad - cb" src="../_images/math/6/1/0/6108d3b3b16da08eab8bcc9fec67eb14.png" /></li></ul>
+<h3><span class="mw-headline" id="Difference_of_Gaussians">Difference of Gaussians</span></h3>
+<p>Calculates two Gaussian blur images from the original image and subtracts one from the other. <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> values are again set to 1, 2, 4, and 8, so 6 feature images are added to the stack.
+</p>
+<h3><span class="mw-headline" id="Membrane_projections">Membrane projections</span></h3>
+<p>The initial kernel for this operation is hardcoded as a 19x19 zero matrix with the middle column entries set to 1. Multiple kernels are created by rotating the original kernel by 15 degrees up to a total rotation of 180 degrees, giving 12 kernels. Each kernel is convolved with the image and then the set of 12 images are <a rel="nofollow" class="external text" href="https://imagej.net/docs/menus/image.html#stacks">Z-projected</a> into a single image via 6 methods: 
+</p>
+<ul><li>sum of the pixels in each image</li>
+<li>mean of the pixels in each image</li>
+<li>standard deviation of the pixels in each image</li>
+<li>median of the pixels in each image</li>
+<li>maximum of the pixels in each image</li>
+<li>minimum of the pixels in each image</li></ul>
+<p>Each of the 6 resulting images is a feature. Hence pixels in lines of similarly valued pixels in the image that are different from the average image intensity will stand out in the Z-projections.
+</p>
+<h3><span class="mw-headline" id="Mean.2C_Variance.2C_Median.2C_Minimum.2C_Maximum">Mean, Variance, Median, Minimum, Maximum</span></h3>
+<p>The pixels within a radius of 1, 2, 4, and 8 pixels from the target pixel are subjected to the pertinent operation (mean/min etc.) and the target pixel is set to that value.
+</p><p>Once the selected features have been calculated for each pixel (each feature stored as a separate image) and the user has chosen sets of pixels for each class, the classifier can be trained.
+</p>
+<h2><span class="mw-headline" id="Classifier">Classifier</span></h2>
+<p>The plugin's classifier is the <a rel="nofollow" class="external text" href="http://code.google.com/p/fast-random-forest/">Fast Random Forest</a> (FRF) algorithm, which is based on the (wait for it) <a rel="nofollow" class="external text" href="http://www.springerlink.com/content/u0p06167n6173512/">Random Forest</a> algorithm. The FRF algorithm is a re-implementation of the RF code as implemented in <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a>.
+</p><p>The RF algorithm uses numerous (default 200) <a href="http://en.wikipedia.org/wiki/Decision_tree_learning" class="extiw" title="wikipedia:Decision tree learning">classification trees</a> (CTs) to 'vote' for which class a pixel, with its corresponding set of features, belongs to. The algorithm builds multiple trees from the same dataset by <a href="http://en.wikipedia.org/wiki/Bootstrapping_(statistics)" class="extiw" title="wikipedia:Bootstrapping (statistics)">bootstrapping</a> (sampling with replacement).
+</p><p>Once the classifier is built from the user chosen pixels (with their associated feature data)/class assignments and the entire training image or a new image is staged for classification, each pixel is classified by all the trees and is assigned to the class with the highest 'vote.'
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713074023
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.032 seconds
+Real time usage: 0.033 seconds
+Preprocessor visited node count: 153/1000000
+Preprocessor generated node count: 302/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_Implementation&amp;oldid=41405">http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_Implementation&amp;oldid=41405</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_Implementation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Trainable+Segmentation+Plugin+Implementation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Trainable+Segmentation+Plugin+Implementation" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Trainable_Segmentation_Plugin_Implementation" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Trainable_Segmentation_Plugin_Implementation" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_Implementation&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_Implementation&amp;oldid=41405" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Trainable_Segmentation_Plugin_Implementation&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":264});});</script>
+		</body>
+		</html>
+		

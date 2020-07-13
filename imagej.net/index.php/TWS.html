@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Trainable Weka Segmentation - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Trainable_Weka_Segmentation","wgTitle":"Trainable Weka Segmentation","wgCurRevisionId":41406,"wgRevisionId":41406,"wgArticleId":1299,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Segmentation","Machine Learning","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Trainable_Weka_Segmentation","wgRelevantArticleId":1299,"wgRequestId":"c198f9fae2f713ce2786aacd","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Trainable: this plugin can be trained to learn from the user input and perform later the same task in unknown (test) data."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Trainable Weka Segmentation"/>
+
+	<meta property="og:description" content="Trainable: this plugin can be trained to learn from the user input and perform later the same task in unknown (test) data."/>
+
+	<meta property="og:url" content="http://imagej.net/Trainable_Weka_Segmentation"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Trainable_Weka_Segmentation rootpage-Trainable_Weka_Segmentation skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="TWS.html#bodyContent">Skip to content</a>, 			<a href="TWS.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="TWS.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="TWS.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Trainable_Weka_Segmentation&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Trainable Weka Segmentation</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Trainable Segmentation<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Trainable_Segmentation">https://imagej.net/Trainable_Segmentation</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Trainable_Segmentation/releases/tag/Trainable_Segmentation-3.2.33">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Trainable_Segmentation~3.2.33~~~kw,versionexpand">3.2.33</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Mon May 13 2019 12:01:00 GMT+0100 (CEST)
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Verena" title="User:Verena">Verena Kaynig</a>, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Verena" title="User:Verena">Verena Kaynig</a>, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Albertcardona" title="User:Albertcardona">Albert Cardona</a>, <a href="http://imagej.net/User:Eglinger" title="User:Eglinger">Jan Eglinger</a>, <a rel="nofollow" class="external text" href="https://github.com/frett27">Patrice Freydiere</a>, <a href="http://imagej.net/User:Funke" title="User:Funke">Jan Funke</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:Lindsey" title="User:Lindsey">Larry Lindsey</a>, <a rel="nofollow" class="external text" href="https://github.com/tischi">Christian Tischer</a>, Eibe Frank, Richard Kirkby, Julien Prados, Fran Supek, Len Trigg, Santi Villalba, Yong Wang
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<table>
+<tr>
+<td style="vertical-align:top"><a href="http://imagej.net/File:TWS-pipeline.png" class="image" title="Trainable Weka Segmentation pipeline overview."><img alt="Trainable Weka Segmentation pipeline overview." src="../_images/d/db/TWS-pipeline.png" width="600" height="277" /></a>
+</td></tr></table><div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="TWS.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="TWS.html#The_Graphical_User_Interface"><span class="tocnumber">2</span> <span class="toctext">The Graphical User Interface</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="TWS.html#Training_panel"><span class="tocnumber">2.1</span> <span class="toctext">Training panel</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="TWS.html#Train_classifier"><span class="tocnumber">2.1.1</span> <span class="toctext">Train classifier</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="TWS.html#Toggle_overlay"><span class="tocnumber">2.1.2</span> <span class="toctext">Toggle overlay</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="TWS.html#Create_result"><span class="tocnumber">2.1.3</span> <span class="toctext">Create result</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="TWS.html#Get_probability"><span class="tocnumber">2.1.4</span> <span class="toctext">Get probability</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="TWS.html#Plot_result"><span class="tocnumber">2.1.5</span> <span class="toctext">Plot result</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-9"><a href="TWS.html#Options_panel"><span class="tocnumber">2.2</span> <span class="toctext">Options panel</span></a>
+<ul>
+<li class="toclevel-3 tocsection-10"><a href="TWS.html#Apply_classifier"><span class="tocnumber">2.2.1</span> <span class="toctext">Apply classifier</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="TWS.html#Load_classifier"><span class="tocnumber">2.2.2</span> <span class="toctext">Load classifier</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="TWS.html#Save_classifier"><span class="tocnumber">2.2.3</span> <span class="toctext">Save classifier</span></a></li>
+<li class="toclevel-3 tocsection-13"><a href="TWS.html#Load_data"><span class="tocnumber">2.2.4</span> <span class="toctext">Load data</span></a></li>
+<li class="toclevel-3 tocsection-14"><a href="TWS.html#Save_data"><span class="tocnumber">2.2.5</span> <span class="toctext">Save data</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="TWS.html#Create_new_class"><span class="tocnumber">2.2.6</span> <span class="toctext">Create new class</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="TWS.html#Settings"><span class="tocnumber">2.2.7</span> <span class="toctext">Settings</span></a>
+<ul>
+<li class="toclevel-4 tocsection-17"><a href="TWS.html#Training_features_.282D.29"><span class="tocnumber">2.2.7.1</span> <span class="toctext">Training features (2D)</span></a></li>
+<li class="toclevel-4 tocsection-18"><a href="TWS.html#Training_features_.283D.29"><span class="tocnumber">2.2.7.2</span> <span class="toctext">Training features (3D)</span></a></li>
+<li class="toclevel-4 tocsection-19"><a href="TWS.html#Feature_options"><span class="tocnumber">2.2.7.3</span> <span class="toctext">Feature options</span></a></li>
+<li class="toclevel-4 tocsection-20"><a href="TWS.html#Classifier_options"><span class="tocnumber">2.2.7.4</span> <span class="toctext">Classifier options</span></a></li>
+<li class="toclevel-4 tocsection-21"><a href="TWS.html#Class_names"><span class="tocnumber">2.2.7.5</span> <span class="toctext">Class names</span></a></li>
+<li class="toclevel-4 tocsection-22"><a href="TWS.html#Balance_classes"><span class="tocnumber">2.2.7.6</span> <span class="toctext">Balance classes</span></a></li>
+<li class="toclevel-4 tocsection-23"><a href="TWS.html#Save_feature_stack"><span class="tocnumber">2.2.7.7</span> <span class="toctext">Save feature stack</span></a></li>
+<li class="toclevel-4 tocsection-24"><a href="TWS.html#Result_overlay_opacity"><span class="tocnumber">2.2.7.8</span> <span class="toctext">Result overlay opacity</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-25"><a href="TWS.html#WEKA"><span class="tocnumber">2.2.8</span> <span class="toctext">WEKA</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-26"><a href="TWS.html#Macro_language_compatibility"><span class="tocnumber">2.3</span> <span class="toctext">Macro language compatibility</span></a>
+<ul>
+<li class="toclevel-3 tocsection-27"><a href="TWS.html#Complete_macro_example:"><span class="tocnumber">2.3.1</span> <span class="toctext">Complete macro example:</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-28"><a href="TWS.html#Library_use"><span class="tocnumber">3</span> <span class="toctext">Library use</span></a></li>
+<li class="toclevel-1 tocsection-29"><a href="TWS.html#Versatility"><span class="tocnumber">4</span> <span class="toctext">Versatility</span></a></li>
+<li class="toclevel-1 tocsection-30"><a href="TWS.html#Usage_with_existing_installation_of_Weka"><span class="tocnumber">5</span> <span class="toctext">Usage with existing installation of Weka</span></a></li>
+<li class="toclevel-1 tocsection-31"><a href="TWS.html#Weka_core_version"><span class="tocnumber">6</span> <span class="toctext">Weka core version</span></a></li>
+<li class="toclevel-1 tocsection-32"><a href="TWS.html#Troubleshooting"><span class="tocnumber">7</span> <span class="toctext">Troubleshooting</span></a></li>
+<li class="toclevel-1 tocsection-33"><a href="TWS.html#Citation"><span class="tocnumber">8</span> <span class="toctext">Citation</span></a></li>
+<li class="toclevel-1 tocsection-34"><a href="TWS.html#License"><span class="tocnumber">9</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+</div>
+<p><b>Trainable</b>: this plugin can be trained to learn from the user input and perform later the same task in unknown (test) data.
+</p><p><b>Weka</b>: it makes use of all the powerful tools and classifiers from the latest version of <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a>.
+</p><p><b>Segmentation</b>: it provides a labeled result based on the training of a chosen classifier.
+</p><p><br />
+<b><span style="color:#f80000"> NOTE: </span></b> If you were looking for the Advanced Weka Segmentation plugin, you are in the right place. Advanced Weka Segmentation was renamed as <b>Trainable Weka Segmentation</b> and keeps complete backwards compatibility.
+</p>
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>The <strong class="selflink">Trainable Weka Segmentation</strong> is a Fiji plugin that combines a collection of machine learning algorithms with a set of selected image features to produce pixel-based segmentations. <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> (Waikato Environment for Knowledge Analysis) can itself be called from the plugin. It contains a collection of visualization tools and algorithms for data analysis and predictive modeling, together with graphical user interfaces for easy access to this functionality. As described on their wikipedia site, the advantages of <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> include: 
+</p>
+<ul><li> freely availability under the <a rel="nofollow" class="external text" href="http://www.gnu.org/licenses/gpl.txt">GNU General Public License</a></li></ul>
+<ul><li> portability, since it is fully implemented in the Java programming language and thus runs on almost any modern computing platform </li></ul>
+<ul><li> a comprehensive collection of data preprocessing and modeling techniques </li></ul>
+<ul><li> ease of use due to its graphical user interfaces</li></ul>
+<p><a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> supports several standard <a href="http://en.wikipedia.org/wiki/Data_mining" class="extiw" title="wikipedia:Data mining">data mining</a> tasks, more specifically, data preprocessing, <a href="http://en.wikipedia.org/wiki/Cluster_analysis" class="extiw" title="wikipedia:Cluster analysis">clustering</a>, <a href="http://en.wikipedia.org/wiki/Classification_(machine_learning)" class="extiw" title="wikipedia:Classification (machine learning)">classification</a>, <a href="http://en.wikipedia.org/wiki/Regression_analysis" class="extiw" title="wikipedia:Regression analysis">regression</a>, visualization, and <a href="http://en.wikipedia.org/wiki/Feature_selection" class="extiw" title="wikipedia:Feature selection">feature selection</a>.
+</p><p>The main goal of this plugin is to work as a <b>bridge between the Machine Learning and the Image Processing</b> fields. It provides the framework to use and, more important, <b>compare</b> any available classifier to perform image segmentation based on pixel classification.
+</p>
+<h2><span class="mw-headline" id="The_Graphical_User_Interface">The Graphical User Interface</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:Trainable-Weka-Segmentation-GUI.png" class="image"><img alt="" src="../_images/4/4a/Trainable-Weka-Segmentation-GUI.png" width="400" height="318" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Trainable-Weka-Segmentation-GUI.png" class="internal" title="Enlarge"></a></div>Example of the first look of the plugin window when using it on a TEM image</div></div></div> <strong class="selflink">Trainable Weka Segmentation</strong> runs on any 2D or 3D image (grayscale or color). To use 2D features, you need to select the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Trainable Weka Segmentation</span></em></span>. For 3D features, call the plugin under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Trainable Weka Segmentation 3D</span></em></span>. Both commands will use the same GUI but offer different feature options in their settings.
+<p><br />
+By default, the plugin starts with two classes, i.e. it will produce <b>binary pixel classification</b>. The user can add traces to both classes using the whole set of <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/userguide-19b.html#toc-Section-19">tools for ROI</a> (region of interest) drawing available in Fiji. That includes rectangular, round rectangular, oval, elliptical, brush polygon and freehand selections. By default, the freehand selection tool (of 1 pixel width) is automatically selected. 
+</p><p>The user can pan, zoom in and out, or scroll between slices (if the input image is a stack) in the main canvas as if it were any other Fiji window. On the left side of the canvas there are two panels of buttons, one for the training and one for the general options. On the right side of the image canvas we have a panel with the list of traces for each class and a button to add the current ROI to that specific class. All buttons contain a short explanation of their functionality that is displayed when the cursor lingers over the buttons.
+</p>
+<h3><span class="mw-headline" id="Training_panel">Training panel</span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:TWS-GUI-after-training.png" class="image"><img alt="" src="../_images/c/cd/TWS-GUI-after-training.png" width="400" height="318" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:TWS-GUI-after-training.png" class="internal" title="Enlarge"></a></div>Example of the aspect of the plugin window after training on a TEM image</div></div></div>
+<h4><span class="mw-headline" id="Train_classifier">Train classifier</span></h4>
+<p>This button activates the training process. One trace of two classes is the minimum required to start training. The first time this button is pressed, the features of the input image will be extracted and converted to a set of vectors of float values, which is the format the <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> classifiers are expecting. This step can take some time depending on the size of the images, the number of features and the number of cores of the machine where Fiji is running. The feature calculation is done in a completely multi-thread fashion. The features will be only calculated the first time we train after starting the plugin or after changing any of the feature options.
+</p><p>If the training ends correctly, then the displayed image will be completely segmented and the result will be overlaid with the corresponding class colors.  Notice that all buttons are now enabled, since all their functionalities are possible after training.
+</p><p><b>While training, this button will show the label "STOP"</b>. By clicking on it, the whole training process will be interrupted and the plugin reset to the state previous to the training.
+</p>
+<h4><span class="mw-headline" id="Toggle_overlay">Toggle overlay</span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/File:AWS-Probability-maps.png" class="image"><img alt="" src="../_images/2/2b/AWS-Probability-maps.png" width="250" height="275" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:AWS-Probability-maps.png" class="internal" title="Enlarge"></a></div>Example of resulting probability map displayed as a hyperstack</div></div></div>
+<p>This button activates and deactivates the overlay of the result image. The transparency of the overlay image can be adjusted in the <a href="http://imagej.net/Advanced_Weka_Segmentation#Settings" class="mw-redirect" title="Advanced Weka Segmentation">Settings dialog</a>.
+</p>
+<h4><span class="mw-headline" id="Create_result">Create result</span></h4>
+<p>It creates and displays the resulting image. This image is equivalent to the current overlay (8-bit Color with same class colors). Each pixel is set to the index value of the most likely class (0, 1, 2...).
+</p>
+<h4><span class="mw-headline" id="Get_probability">Get probability</span></h4>
+<p>Based on the current classifier, the probability that each pixel belongs to each class is displayed on a 32-bit hyperstack.
+</p>
+<h4><span class="mw-headline" id="Plot_result">Plot result</span></h4>
+<p>This button calls the <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> core to generate the model performance chart, i.e. the <a href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic" class="extiw" title="wikipedia:Receiver operating characteristic">ROC</a>, <a href="http://en.wikipedia.org/wiki/Precision_and_recall" class="extiw" title="wikipedia:Precision and recall">precision/recall</a>, etc. curves based on the training data. 
+</p><p>These curves allow to visualize the performance of the classifier based on the different thresholds that can be applied to the probability maps.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:AWS-Plot-result.png" class="image"><img alt="" src="../_images/6/6e/AWS-Plot-result.png" width="300" height="239" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:AWS-Plot-result.png" class="internal" title="Enlarge"></a></div>Weka model performance chart. Displayed after clicking on "Plot result"</div></div></div>
+<h3><span class="mw-headline" id="Options_panel">Options panel</span></h3>
+<h4><span class="mw-headline" id="Apply_classifier">Apply classifier</span></h4>
+<p>By clicking on this button we can apply the current classifier to any image or stack of images we have in our file system. Two dialogs will pop up to, first, ask the user for the input image or stack and, second, ask if the result should be displayed <b>as a probability map or a segmentation</b> (final classes). Then the plugin will perform the image segmentation based on the current classifier and ---consequently--- selected features. This may take a while depending on the number and size of the input images and the number of cores of the machine. After finishing, the input image (or stack) and its corresponding segmentation will be displayed.
+</p><p>To convert a <b>probability map</b> into a segmentation, you can use the following Beanshell script from github:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="https://gist.github.com/iarganda/c7fc0a88b8d2737c9d3d">Convert-TWS-probabilities-to-segmentation.bsh</a></li></ul>
+<h4><span class="mw-headline" id="Load_classifier">Load classifier</span></h4>
+<p>Here we can load any previously saved classifier. The plugin will check and adjust the selected features with the attributes of this new classifier. The classifier file format is the one used in <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> (.model).
+</p>
+<h4><span class="mw-headline" id="Save_classifier">Save classifier</span></h4>
+<p>It saves the current classifier into a file, under the standard <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> format (.model). This allows us to store classifiers and apply them later on different sessions.
+</p>
+<h4><span class="mw-headline" id="Load_data">Load data</span></h4>
+<p>Here we can load the data (in <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> format) from previous traces on the same or other image or stack. Again, the plugin will check and force the consistency between the loaded data and the current image, features and classes. The input file format is the standard <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> format: <a rel="nofollow" class="external text" href="http://weka.wikispaces.com/ARFF+%28stable+version%29">ARFF</a>.
+</p>
+<h4><span class="mw-headline" id="Save_data">Save data</span></h4>
+<p>With this button we can save the current trace information into a data file that we can handle later with the plugin or the Weka Explorer itself. The plugin will save the feature vectors derived from the pixels belonging to each trace into an <a rel="nofollow" class="external text" href="http://weka.wikispaces.com/ARFF+%28stable+version%29">ARFF</a> file at a location chosen by the user. Notice the traces (regions of interests selected by the user) are not saved but only their corresponding feature vectors. To save the ROIs, you can simply use the <a rel="nofollow" class="external text" href="https://imagej.net/ij/docs/guide/146-30.html#sub:ROI-Manager...">ROI Manager</a>.
+</p>
+<h4><span class="mw-headline" id="Create_new_class">Create new class</span></h4>
+<p>The default number of classes of the plugin is two, but through this button we can increase up to an arbitrary number. The name of the new classes can be changed on the <a href="TWS.html#Settings" title="Trainable Weka Segmentation">Settings dialog</a>.
+</p>
+<h4><span class="mw-headline" id="Settings">Settings</span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:TWS-settings-dialog-2D.png" class="image"><img alt="" src="../_images/4/44/TWS-settings-dialog-2D.png" width="300" height="489" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:TWS-settings-dialog-2D.png" class="internal" title="Enlarge"></a></div>Settings dialog of the Trainable Weka Segmentation plugin (2D features)</div></div></div>
+<p>The rest of tunable parameters of the plugin can be changed on the Settings dialog, which is displayed when clicking on this button.
+</p>
+<h5><span class="mw-headline" id="Training_features_.282D.29">Training features (2D)</span></h5>
+<p>Here we can select and deselect the training features, which are the key of the learning procedure. The plugin creates a stack of images ---one image for each feature. For instance, if only <a href="http://en.wikipedia.org/wiki/Gaussian_blur" class="extiw" title="wikipedia:Gaussian blur">Gaussian blur</a> is selected as a feature, the classifier will be trained on the original image and some blurred versions to it with different <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> parameters for the Gaussian. <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> is commonly equal to <img class="mwe-math-fallback-image-inline tex" alt="\sigma_\mathrm{min}, 2\sigma_\mathrm{min}, 4\sigma_\mathrm{min},..., 2^{n-1}\sigma_\mathrm{min}" src="../_images/math/5/0/0/500dca50419edddeec5b72d1a0d57900.png" />, where <img class="mwe-math-fallback-image-inline tex" alt="2^{n-1}\sigma_\mathrm{min}\le \sigma_\mathrm{max}" src="../_images/math/2/4/1/2415e550c077e33d1bf65f584a9b91a8.png" />. By default <img class="mwe-math-fallback-image-inline tex" alt="\sigma_\mathrm{min}=1, \sigma_\mathrm{max}=16" src="../_images/math/9/d/5/9d56bfb8165c4d5c13a84428628f5cdd.png" /> and therefore <img class="mwe-math-fallback-image-inline tex" alt="n=5" src="../_images/math/4/4/d/44d21af66b0874d9b45905ea79807cb3.png" />.
+</p><p>If the input image is grayscale, the features will be calculated using double precision (32-bit images). In the case of RGB input images, the features will be RGB as well.
+</p><p>The different available 2D image features are:
+</p>
+<ul><li> <b>Gaussian blur</b>: performs <img class="mwe-math-fallback-image-inline tex" alt="n" src="../_images/math/7/b/8/7b8b965ad4bca0e41ab51de7b31363a1.png" /> individual convolutions with Gaussian kernels with the normal <img class="mwe-math-fallback-image-inline tex" alt="n" src="../_images/math/7/b/8/7b8b965ad4bca0e41ab51de7b31363a1.png" /> variations of <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" />. The larger the radius the more blurred the image becomes until the pixels are homogeneous.</li>
+<li> <b>Sobel filter</b>: calculates an <a href="http://en.wikipedia.org/wiki/Sobel_filter" class="extiw" title="wikipedia:Sobel filter">approximation of the gradient of the image intensity</a> at each pixel. <a href="http://en.wikipedia.org/wiki/Gaussian_blur" class="extiw" title="wikipedia:Gaussian blur">Gaussian blurs</a> with <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> varying as usual are performed prior to the filter.</li>
+<li> <b>Hessian</b>: Calculates a <a href="http://en.wikipedia.org/wiki/Hessian_matrix" class="extiw" title="wikipedia:Hessian matrix">Hessian matrix</a> <img class="mwe-math-fallback-image-inline tex" alt="H" src="../_images/math/c/1/d/c1d9f50f86825a1a2302ec2449c17196.png" /> at each pixel. Prior to the application of any filters, a <a href="http://en.wikipedia.org/wiki/Gaussian_blur" class="extiw" title="wikipedia:Gaussian blur">Gaussian blur</a> with varying <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> is performed. The final features used for pixel classification, given the Hessian matrix <img class="mwe-math-fallback-image-inline tex" alt="\left(\begin{array}{cc}&#10;a &amp; b\\&#10;c &amp; d\end{array}\right)" src="../_images/math/c/7/8/c78ecacdd219a4ddc60fa8cf517a8fc1.png" /> are calculated thus:
+<ul><li> Module: <img class="mwe-math-fallback-image-inline tex" alt="\sqrt{a^{2}+bc+d^{2}}" src="../_images/math/0/8/e/08ea7c17fce791f1017b6376f23db04b.png" />.</li>
+<li> Trace: <img class="mwe-math-fallback-image-inline tex" alt="a+d" src="../_images/math/1/2/2/12260c01c4cf53da87ef3974511288da.png" />.</li>
+<li> Determinant: <img class="mwe-math-fallback-image-inline tex" alt="ad-cb" src="../_images/math/6/1/0/6108d3b3b16da08eab8bcc9fec67eb14.png" />.</li>
+<li> First eigenvalue: <img class="mwe-math-fallback-image-inline tex" alt="\frac{a+d}{2}+\sqrt{\tfrac{4b^{2}+(a-d)^{2}}{2}}" src="../_images/math/6/1/b/61b17ea6aa346c6eb6f9aa9879651486.png" />.</li>
+<li> Second eigenvalue: <img class="mwe-math-fallback-image-inline tex" alt="\frac{a+d}{2}-\sqrt{\tfrac{4b^{2}+(a-d)^{2}}{2}}" src="../_images/math/d/d/4/dd4a46e2d322c6c3e55bd7eb2befed45.png" />.</li>
+<li> Orientation: <img class="mwe-math-fallback-image-inline tex" alt="\frac{1}{2}\arccos\left(4b^{2}+(a-d)^{2}\right)" src="../_images/math/3/9/2/392edec9a9950b03992c09debb5b5196.png" /> This operation returns the orientation for which the second derivative is maximal. It is an angle returned in radians in the range <img class="mwe-math-fallback-image-inline tex" alt="\left[-\frac{\pi}{2},\frac{\pi}{2}\right]" src="../_images/math/7/d/f/7df805d2138d65750eb3118dae741725.png" /> and corresponds to an orientation without direction. The orientation for the minimal second derivative can be obtained by adding (or subtracting) <img class="mwe-math-fallback-image-inline tex" alt="\frac{\pi}{2}" src="../_images/math/d/c/f/dcfd65e77306c010f27fc20371cf83b1.png" />.</li>
+<li> Gamma-normalized square eigenvalue difference: <img class="mwe-math-fallback-image-inline tex" alt="t^{4}(a-d)^{2}\left((a-d)^{2}+4b^{2}\right)" src="../_images/math/7/f/9/7f9a065df21492b040a00522c209a240.png" />, where <img class="mwe-math-fallback-image-inline tex" alt="t=1^{3/4}" src="../_images/math/8/f/6/8f66f318cb22ac76340deb4035e7df7d.png" />.</li>
+<li> Square of Gamma-normalized eigenvalue difference: <img class="mwe-math-fallback-image-inline tex" alt="t^{2}\left((a-d)^{2}+4b^{2}\right)" src="../_images/math/c/d/5/cd52d7add9a4376c765b980aadb584d9.png" />, where <img class="mwe-math-fallback-image-inline tex" alt="t=1^{3/4}" src="../_images/math/8/f/6/8f66f318cb22ac76340deb4035e7df7d.png" />.</li></ul></li>
+<li> <b>Difference of gaussians</b>: calculates two <a href="http://en.wikipedia.org/wiki/Gaussian_blur" class="extiw" title="wikipedia:Gaussian blur">Gaussian blur</a> images from the original image and subtracts one from the other. <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> values are varied as usual, so <img class="mwe-math-fallback-image-inline tex" alt="\frac{n(n-1)}{2}" src="../_images/math/8/9/a/89af6ab8761d961055c49e99223e9cdf.png" /> feature images are added to the stack.</li>
+<li> <b>Membrane projections</b>: enhances membrane-like structures of the image through directional filtering. The initial kernel for this operation is hardcoded as a <img class="mwe-math-fallback-image-inline tex" alt="19\times19" src="../_images/math/2/a/4/2a4329593e0a55e012c46dea62f88fb5.png" /> zero matrix with the middle column entries set to 1. Multiple kernels are created by rotating the original kernel by 6 degrees up to a total rotation of 180 degrees, giving 30 kernels. Each kernel is convolved with the image and then the set of 30 images are Z-projected into a single image via 6 methods:
+<ul><li> sum of the pixels in each image</li>
+<li> mean of the pixels in each image</li>
+<li> standard deviation of the pixels in each image</li>
+<li> median of the pixels in each image</li>
+<li> maximum of the pixels in each image</li>
+<li> minimum of the pixels in each image</li></ul></li></ul>
+<dl><dd> Each of the 6 resulting images is a feature. Hence pixels in lines of similarly valued pixels in the image that are different from the average image intensity will stand out in the Z-projections.</dd></dl>
+<ul><li> <b>Mean, Variance, Median, Minimum, Maximum</b>: the pixels within a radius of <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> pixels from the target pixel are subjected to the pertinent operation (mean/min etc.) and the target pixel is set to that value.</li>
+<li> <b>Anisotropic diffusion</b>: the <a href="http://imagej.net/Anisotropic_Diffusion_2D" title="Anisotropic Diffusion 2D"> anisotropic diffusion filtering</a> from Fiji with <img class="mwe-math-fallback-image-inline tex" alt="20" src="../_images/math/9/8/f/98f13708210194c475687be6106a3b84.png" /> iterations, <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> smoothing per iterations, <img class="mwe-math-fallback-image-inline tex" alt="a_{1}=0.10, 0.35" src="../_images/math/1/f/2/1f293ef6796b60db1677596f0f2e4e9d.png" />, <img class="mwe-math-fallback-image-inline tex" alt="a_{2}=0.9" src="../_images/math/a/0/d/a0d5912b6202ffdcd79c91f77f4853c3.png" />, and an edge threshold set to the membrane size.</li>
+<li> <b>Bilateral filter</b>: is very similar to the Mean filter but better preserves edges while averaging/blurring other parts of the image. The filter accomplishes this task by only averaging the values around the current pixel that are close in color value to the current pixel. The 'closeness' of other neighborhood pixels to the current pixels is determined by the specified threshold. I.e. for a value of 10 each pixel that contributes to the current mean have to be within 10 values of the current pixel. In our case, we combine spatial radius of <img class="mwe-math-fallback-image-inline tex" alt="5" src="../_images/math/e/4/d/e4da3b7fbbce2345d7772b0674a318d5.png" /> and <img class="mwe-math-fallback-image-inline tex" alt="10" src="../_images/math/d/3/d/d3d9446802a44259755d38e6d163e820.png" />, with a range radius of <img class="mwe-math-fallback-image-inline tex" alt="50" src="../_images/math/c/0/c/c0c7c76d30bd3dcaefc96f40275bdc0a.png" /> and <img class="mwe-math-fallback-image-inline tex" alt="100" src="../_images/math/f/8/9/f899139df5e1059396431415e770c6dd.png" />.</li>
+<li> <b>Lipschitz filter</b>: from <a rel="nofollow" class="external text" href="https://imagej.net/plugins/lipschitz/">Mikulas Stencel plugin</a>. This plugin implements Lipschitz cover of an image that is equivalent to a grayscale opening by a cone. The Lipschitz cover can be applied for the elimination of a slowly varying image background by subtraction of the lower Lipschitz cover (a top-hat procedure). A sequential double scan algorithm is used. We use down and top hats combination, with slope <img class="mwe-math-fallback-image-inline tex" alt="s = 5, 10, 15, 20, 25" src="../_images/math/3/3/1/3317fe3a9796e1f93c235b044d137e25.png" />.</li>
+<li> <b>Kuwahara filter</b>: another noise-reduction filter that preserves edges. This is a version of the <a href="http://imagej.net/Linear_Kuwahara" title="Linear Kuwahara"> Kuwahara filter that uses linear kernels</a> rather than square ones. We use the membrane patch size as kernel size, 30 angles and the three different criteria (Variance, Variance / Mean and Variance / Mean^2).</li>
+<li> <b>Gabor filter</b>: at the moment this option may take some time and memory because it generates a very diverse range of <a href="http://en.wikipedia.org/wiki/Gabor_filter" class="extiw" title="wikipedia:Gabor filter">Gabor filters</a> (<b>22</b>). <b> This may undergo changes in the future</b>. The implementation details are included in this <a href="http://imagej.net/Gabor_Filter_script" title="Gabor Filter script">script</a>. The Gabor filter is an edge detection and texture filter, which convolves several kernels at different angles with an image. Each point in a kernel is calculated as <img class="mwe-math-fallback-image-inline tex" alt="\frac{\cos \left(2\pi f \frac{x_p}{s_x}+\psi \right) e^{-0.5 \left( \frac{x_p^2}{\sigma_x^2} + \frac{y_p^2}{\sigma_y^2} \right)} }{ 2\pi \sigma_x \sigma_y }" src="../_images/math/d/6/a/d6ad49488c593706c7541b20b4083ad3.png" />. Gabor filters are band-pass filters and therefore implement a frequency transformation.</li>
+<li> <b>Derivatives filter</b>: calculates high order derivatives of the input image (<img class="mwe-math-fallback-image-inline tex" alt="\frac{d^4}{dx^2dy^2},\frac{d^6}{dx^3dy^3},\frac{d^8}{dx^4dy^4},\frac{d^{10}}{dx^5dy^5}" src="../_images/math/7/9/0/790e7e0cd75456efb966a6b96d6149f7.png" />) using <a href="http://imagej.net/FeatureJ" title="FeatureJ">FeatureJ</a> (it requires enabling the <a href="http://imagej.net/ImageScience" title="ImageScience">ImageScience</a> update site in the updater).</li>
+<li> <b>Laplacian filter</b>: computes the Laplacian of the input image using <a href="http://imagej.net/FeatureJ" title="FeatureJ">FeatureJ</a> (it requires enabling the <a href="http://imagej.net/ImageScience" title="ImageScience">ImageScience</a> update site in the updater). It uses smoothing scale <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" />.</li>
+<li> <b>Structure filter</b>: calculates for all elements in the input image, the eigenvalues (smallest and largest) of the so-called structure tensor using <a href="http://imagej.net/FeatureJ" title="FeatureJ">FeatureJ</a> (it requires enabling the <a href="http://imagej.net/ImageScience" title="ImageScience">ImageScience</a> update site in the updater). It uses smoothing scale <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> and integration scales 1 and 3.</li>
+<li> <b>Entropy</b>: draws a circle of radius <img class="mwe-math-fallback-image-inline tex" alt="r" src="../_images/math/4/b/4/4b43b0aee35624cd95b910189b3dc231.png" /> around each pixel; gets the histogram of that circle split in numBins chunks; then calculates the entropy as <img class="mwe-math-fallback-image-inline tex" alt="\sum_{p~\mathrm{in}~\mathrm{histogram}} -p*\mathrm{log}_2(p)" src="../_images/math/d/1/3/d133247d6efadf7af2c9ae65d43103cd.png" />, where <img class="mwe-math-fallback-image-inline tex" alt="p" src="../_images/math/8/3/8/83878c91171338902e0fe0fb97a8c47a.png" /> is the probability of each chunk in the histogram. numBins is equal to <img class="mwe-math-fallback-image-inline tex" alt="32, 64, 128, 256" src="../_images/math/5/b/2/5b2171f94accee3e1d4fd633b95c0b7e.png" />. <img class="mwe-math-fallback-image-inline tex" alt="r" src="../_images/math/4/b/4/4b43b0aee35624cd95b910189b3dc231.png" /> is equal to <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" />.</li>
+<li> <b>Neighbors</b>: shifts the image in 8 directions by an certain number of pixel, <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" />. Therefore creates <img class="mwe-math-fallback-image-inline tex" alt="8n" src="../_images/math/8/f/d/8fd415ba1e46f09466244069ee79d979.png" /> feature images.</li></ul>
+<p>When using grayscale images, the input image will be also included as a feature. In the case of color (RGB) images, the <b>Hue, Saturation and Brightness</b> will be as well part of the features.
+</p><p>The detailed implementation of these 2D filters can be found in the <a rel="nofollow" class="external text" href="https://github.com/fiji/Trainable_Segmentation/blob/master/src/main/java/trainableSegmentation/FeatureStack.java">source code</a>.
+</p><p><b><span style="color:#f80000">NOTE</b>: The features named <i>Derivatives</i>, <i>Laplacian</i> and <i>Structure</i> belong to the <a href="http://imagej.net/ImageScience" title="ImageScience">ImageScience</a> suite and need to be activated <a rel="nofollow" class="external text" href="https://imagej.net/How_to_follow_a_3rd_party_update_site">by enabling the ImageScience update site in the updater</a>.
+</p>
+<h5><span class="mw-headline" id="Training_features_.283D.29">Training features (3D)</span></h5>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:TWS-3D-Settings-dialog.png" class="image"><img alt="" src="../_images/8/8d/TWS-3D-Settings-dialog.png" width="300" height="404" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:TWS-3D-Settings-dialog.png" class="internal" title="Enlarge"></a></div>Settings dialog for the Trainable Weka Segmentation 3D plugin.</div></div></div>When calling the plugin from the menu command <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Trainable Weka Segmentation 3D</span></em></span> the set of available image features will be as follows:
+<ul><li> <b>Gaussian blur</b>: performs <img class="mwe-math-fallback-image-inline tex" alt="n" src="../_images/math/7/b/8/7b8b965ad4bca0e41ab51de7b31363a1.png" /> individual 3D convolutions with Gaussian kernels with the normal <img class="mwe-math-fallback-image-inline tex" alt="n" src="../_images/math/7/b/8/7b8b965ad4bca0e41ab51de7b31363a1.png" /> variations of <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" />. The larger the radius the more blurred the image becomes until the pixels are homogeneous.</li>
+<li><b>Hessian</b>: using <a href="http://imagej.net/FeatureJ" title="FeatureJ">FeatureJ</a> it computes for each image element (voxel) the eigenvalues of the Hessian, which can be used for example to discriminate locally between plate-like, line-like, and blob-like image structures. More specifically, it calculates the magnitude of the largest, middle and smallest eigenvalue of the Hessian tensor. It requires enabling the <a href="http://imagej.net/ImageScience" title="ImageScience">ImageScience</a> update site in the updater. It uses smoothing scale <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" />.</li>
+<li> <b>Derivatives</b>: calculates high order derivatives of the input image (<img class="mwe-math-fallback-image-inline tex" alt="\frac{d^4}{dx^2dy^2dz^2},\frac{d^6}{dx^3dy^3dz^3},\frac{d^8}{dx^4dy^4dz^4},\frac{d^{10}}{dx^5dy^5dz^5}" src="../_images/math/e/b/1/eb12d2e88c49e02937f8f83ad892f045.png" />) using <a href="http://imagej.net/FeatureJ" title="FeatureJ">FeatureJ</a> (it requires enabling the <a href="http://imagej.net/ImageScience" title="ImageScience">ImageScience</a> update site in the updater).</li>
+<li> <b>Laplacian</b>: computes the Laplacian of the input image using <a href="http://imagej.net/FeatureJ" title="FeatureJ">FeatureJ</a> (it requires enabling the <a href="http://imagej.net/ImageScience" title="ImageScience">ImageScience</a> update site in the updater). It uses smoothing scale <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" />.</li>
+<li> <b>Structure</b>: calculates for all elements in the input image, the eigenvalues (smallest and largest) of the so-called structure tensor using <a href="http://imagej.net/FeatureJ" title="FeatureJ">FeatureJ</a> (it requires enabling the <a href="http://imagej.net/ImageScience" title="ImageScience">ImageScience</a> update site in the updater). It uses smoothing scale <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> and integration scales 1 and 3.</li>
+<li><b>Edges</b>: detects edges using Canny edge detection, which involves computation of the gradient magnitude, suppression of locally non-maximum gradient magnitudes, and (hysteresis) thresholding. Again, this feature uses <a href="http://imagej.net/FeatureJ" title="FeatureJ">FeatureJ</a> so it requires enabling the <a href="http://imagej.net/ImageScience" title="ImageScience">ImageScience</a> update site in the updater. It uses smoothing scale <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" />.</li>
+<li><b>Difference of Gaussian</b>: calculates two <a href="http://en.wikipedia.org/wiki/Gaussian_blur" class="extiw" title="wikipedia:Gaussian blur">Gaussian blur</a> images from the original image and subtracts one from the other. <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> values are varied as usual, so <img class="mwe-math-fallback-image-inline tex" alt="\frac{n(n-1)}{2}" src="../_images/math/8/9/a/89af6ab8761d961055c49e99223e9cdf.png" /> feature images are added to the stack.</li>
+<li> <b>Minimum, Maximum, Mean, Variance, Median</b>: the voxels within a radius of <img class="mwe-math-fallback-image-inline tex" alt="\sigma" src="../_images/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png" /> voxels from the target pixel are subjected to the pertinent operation (mean/min etc.) and the target voxel is set to that value.</li></ul>
+<p><b>Sigma units</b>: all 3D features use a common sigma which is in voxel units. However, since the voxel can be anisotropic, the sigma size will be adjusted accordingly to account for it. Therefore, you need to make sure the input image calibration is correct when you call the plugin.
+</p>
+<h5><span class="mw-headline" id="Feature_options">Feature options</span></h5>
+<ul><li> <b>Membrane thickness</b>: expected value of the membrane thickness, 1 pixel by default. The more accurate, the more precise the filter will be. Only available for 2D features.</li>
+<li> <b>Membrane patch size</b>: this represents the size <img class="mwe-math-fallback-image-inline tex" alt="n \times n" src="../_images/math/6/0/7/607acaa73c762411b20745149a11e90b.png" /> of the field of view for the membrane projection filters. Only available for 2D features.</li>
+<li> <b>Minimum sigma</b>: minimum radius of the isotropic filters used to create the features. By default 1 pixel.</li>
+<li> <b>Maximum sigma</b>: maximum radius of the isotropic filters used to create the features. By default 16 pixels in 2D and 8 pixels in 3D.</li></ul>
+<h5><span class="mw-headline" id="Classifier_options">Classifier options</span></h5>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:AWS-Classifier-selection.png" class="image"><img alt="" src="../_images/c/cf/AWS-Classifier-selection.png" width="300" height="604" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:AWS-Classifier-selection.png" class="internal" title="Enlarge"></a></div>Classifier selection in the Trainable Weka Segmentation <a href="http://imagej.net/Advanced_Weka_Segmentation#Settings" class="mw-redirect" title="Advanced Weka Segmentation">Settings dialog</a>.</div></div></div>
+<p>The default classifier is <a rel="nofollow" class="external text" href="https://code.google.com/p/fast-random-forest/">FastRandomForest</a>, a <b>multi-threaded</b> version of  <a href="http://en.wikipedia.org/wiki/Random_forest" class="extiw" title="wikipedia:Random forest">random forest</a> by <a rel="nofollow" class="external text" href="https://scholar.google.com/citations?user=Rz3rPeUAAAAJ">Fran Supek</a>, initialized with 200 trees and 2 random features per node. However the user can select any available classifier in the <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> by clicking on "Choose" button. By left-clicking on the classifier text we can also edit the classifier options.
+</p><p><b>If you do not find the classifier you want</b>, you might have to install the Weka package that includes it. For that, you need to launch the Weka GUI Chooser (by clicking on the Weka button of the left panel of the plugin GUI) and use the <a href="http://imagej.net/Trainable_Weka_Segmentation_-_How_to_install_new_classifiers" title="Trainable Weka Segmentation - How to install new classifiers"> Weka Package Manager</a> (under <span><em><span style="border-bottom:1px dotted #ccc;"> Tools </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Package manager</span></em></span>). For a step-by-step description on how to install new packages, have a look at this <a href="http://imagej.net/Trainable_Weka_Segmentation_-_How_to_install_new_classifiers" title="Trainable Weka Segmentation - How to install new classifiers">tutorial</a>.
+</p>
+<h5><span class="mw-headline" id="Class_names">Class names</span></h5>
+<p>The classes can be renamed using these text boxes.
+</p>
+<h5><span class="mw-headline" id="Balance_classes">Balance classes</span></h5>
+<p>The classifier uses by the default all the user traces to train. By clicking on this option, we filter first the classes in order to provide a <b>balanced</b> distribution of the samples. This implies that the less numerous classes will duplicate some of their samples and the more populated classes will lose some of their samples for the sake of even distribution. This option is strongly recommended if we want to give the same importance to all classes. An alternative is to use the <a rel="nofollow" class="external text" href="http://weka.wikispaces.com/CostSensitiveClassifier">Weka CostSensitiveClassifier</a> and set a corresponding cost matrix.
+</p>
+<h5><span class="mw-headline" id="Save_feature_stack">Save feature stack</span></h5>
+<p>We can save the features as a stack of images by clicking on this button. It will use the last feature configuration that is available.
+</p>
+<h5><span class="mw-headline" id="Result_overlay_opacity">Result overlay opacity</span></h5>
+<p>This slider sets the opacity of the resulting overlay image. Depending on the image contrast of our input images, we might be interested on adjusting this value.
+</p>
+<h4><span class="mw-headline" id="WEKA">WEKA</span></h4>
+<p>The Weka button launches the Weka GUI Chooser, where we can start all the applications available in <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a>: 
+</p>
+<ul><li> <b>Explorer</b>: an environment for exploring data with <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a>.</li>
+<li> <b>Experimenter</b>: an environment for performing experiments and conducting statistical tests between learning schemes.</li>
+<li> <b>KnowledgeFlow</b>: this environment supports essentially the same functions as the Explorer but with a drag-and-drop interface. One advantage is that it supports incremental learning.</li>
+<li> <b>SimpleCLI</b>: provides a simple command-line interface that allows direct execution of <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> commands for operating systems that do not provide their own command line interface.</li></ul>
+<p>For a complete step-by-step description on how to compare classifiers for image segmentation using the <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a> Explorer, have a look at the <a href="http://imagej.net/Trainable_Weka_Segmentation_-_How_to_compare_classifiers" title="Trainable Weka Segmentation - How to compare classifiers">Trainable Weka Segmentation - How to compare classifiers‎</a> tutorial.
+</p>
+<h3><span class="mw-headline" id="Macro_language_compatibility">Macro language compatibility</span></h3>
+<p><strong class="selflink">Trainable Weka Segmentation</strong> is completely compatible with the popular <a rel="nofollow" class="external text" href="https://imagej.net/developer/macro/macros.html">ImageJ macro language</a>. Each of the buttons in the GUI are macro-recordable and their commands can be reproduced later from a simple macro file.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:752px;"><a href="http://imagej.net/File:AWS-macro-recording.png" class="image"><img alt="" src="../_images/c/ca/AWS-macro-recording.png" width="750" height="552" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:AWS-macro-recording.png" class="internal" title="Enlarge"></a></div>Example of macro recording of the Trainable Weka Segmentation tools.</div></div></div>
+<p>The complete list of commands is as follows:
+</p>
+<ul><li> Start the plugin:</li></ul>
+<pre class="brush:java"> 
+run("Trainable Weka Segmentation"); 
+</pre>
+<ul><li> Add traces (current ROI) to a class:</li></ul>
+<dl><dd>Format: <code>addTrace( class index, slice number )</code></dd></dl>
+<dl><dd>For example, to add the selected ROI of the first slice to the first class, we type:</dd></dl>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.addTrace", "0", "1");
+</pre>
+<ul><li> Train classifier: </li></ul>
+<pre class="brush:java">call("trainableSegmentation.Weka_Segmentation.trainClassifier");
+</pre>
+<ul><li> Toggle overlay:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.toggleOverlay");
+</pre>
+<ul><li> Get the result label image:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.getResult");
+</pre>
+<ul><li> Get probability maps:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.getProbability");
+</pre>
+<ul><li> Plot the model performance curves:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.plotResultGraphs");
+</pre>
+<ul><li> Apply the current classifier to an image or stack:</li></ul>
+<dl><dd>Format: <code>applyClassifier( input directory, input image or stack, show results flag, store results flag, probability maps flag, store folder)</code></dd></dl>
+<dl><dd>Example:</dd></dl>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.applyClassifier",
+"/home/iarganda/data/", "input-image.tif", "showResults=true", 
+"storeResults=false", "probabilityMaps=false", "");
+</pre>
+<ul><li> Load a classifier from file:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.loadClassifier",
+ "/home/iarganda/classifier.model");
+</pre>
+<ul><li> • Save the current classifier into a file:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.saveClassifier",
+ "/home/iarganda/classifier.model");
+</pre>
+<ul><li> • Load previously saved trace data from an ARFF file:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.loadData", "/home/iarganda/data.arff");
+</pre>
+<ul><li> • Save current trace data (feature vectors of traces and classes) into a file:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.saveData", "/home/iarganda/data.arff");
+</pre>
+<ul><li> Create new class:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.createNewClass", "new-class-name");
+</pre>
+<ul><li> Launch Weka:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.launchWeka");
+</pre>
+<ul><li> Enable/disable a specific feature:</li></ul>
+<dl><dd>Format: <code>setFeature( "feature name=true or false" )</code></dd>
+<dd>Example (enable Variance filters):</dd></dl>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.setFeature", "Variance=true");
+</pre>
+<ul><li> Change a class name:</li></ul>
+<dl><dd>Format: <code>changeClassName( class index, class new name )</code></dd>
+<dd>Example (change first class name to "background"):</dd></dl>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.changeClassName", "0", "background");
+</pre>
+<ul><li> Set option to balance the class distributions:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.setClassBalance", "true");
+</pre>
+<ul><li> Set membrane thickness (in pixels):</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.setMembraneThickness", "2");
+</pre>
+<ul><li> Set the membrane patch size (in pixels, NxN):</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.setMembranePatchSize", "16");
+</pre>
+<ul><li> Set the minimum kernel radius (in pixels):</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.setMinimumSigma", "2.0");
+</pre>
+<ul><li> Set the maximum kernel radius (in pixels):</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.setMaximumSigma", "8.0");
+</pre>
+<ul><li> Set a new classifier:</li></ul>
+<dl><dd>Format: <code>setClassifier( classifier class, classifier options )</code></dd>
+<dd>Example (change classifier to NaiveBayes):</dd></dl>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.setClassifier",
+"weka.classifiers.bayes.NaiveBayes", "");
+</pre>
+<ul><li> Set the result overlay opacity:</li></ul>
+<pre class="brush:java">
+call("trainableSegmentation.Weka_Segmentation.setOpacity", "50");
+</pre>
+<h5><span class="mw-headline" id="Complete_macro_example:">Complete macro example:</span></h5>
+<pre class="brush:java">
+// Open Leaf sample
+run("Leaf (36K)");
+
+// start plugin
+run("Trainable Weka Segmentation");
+
+// wait for the plugin to load
+wait(3000);
+selectWindow("Trainable Weka Segmentation v3.2.33");
+
+// add one region of interest to each class
+makeRectangle(367, 0, 26, 94);
+call("trainableSegmentation.Weka_Segmentation.addTrace", "0", "1");
+makeRectangle(186, 132, 23, 166);
+call("trainableSegmentation.Weka_Segmentation.addTrace", "1", "1");
+
+// enable some extra features
+call("trainableSegmentation.Weka_Segmentation.setFeature", "Variance=true");
+call("trainableSegmentation.Weka_Segmentation.setFeature", "Mean=true");
+call("trainableSegmentation.Weka_Segmentation.setFeature", "Minimum=true");
+call("trainableSegmentation.Weka_Segmentation.setFeature", "Maximum=true");
+call("trainableSegmentation.Weka_Segmentation.setFeature", "Median=true");
+
+// change class names
+call("trainableSegmentation.Weka_Segmentation.changeClassName", "0", "background");
+call("trainableSegmentation.Weka_Segmentation.changeClassName", "1", "leaf");
+
+// balance class distributions
+call("trainableSegmentation.Weka_Segmentation.setClassBalance", "true");
+
+// train current classifier
+call("trainableSegmentation.Weka_Segmentation.trainClassifier");
+
+// display probability maps
+call("trainableSegmentation.Weka_Segmentation.getProbability");
+</pre>
+<h2><span class="mw-headline" id="Library_use">Library use</span></h2>
+<p>The plugin GUI is independent from the plugin methods. The methods are implemented in a separate file in a library-style fashion, so they can be called from any other Fiji plugin without having to interact with the GUI. This facilitates its integration with other plugins and allows easy scripting.
+</p><p>For examples on how to use the plugin methods from scripts, have a look at the <a href="http://imagej.net/Scripting_the_Trainable_Segmentation" class="mw-redirect" title="Scripting the Trainable Segmentation">Trainable Weka Segmentation scripting</a> page.
+</p><p>The <b><a rel="nofollow" class="external text" href="http://javadoc.scijava.org/Fiji/?trainableSegmentation/package-summary.html">API</a> of the WekaSegmentation</b> library is available <a rel="nofollow" class="external text" href="http://javadoc.scijava.org/Fiji/?trainableSegmentation/package-tree.html">here</a>.
+</p>
+<h2><span class="mw-headline" id="Versatility">Versatility</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:436px;"><div class="MediaTransformError" style="width: 434px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:TWS-application-examples.png" class="internal" title="Enlarge"></a></div><b>Examples of application of Trainable Weka Segmentation</b>. From left to right and from top to bottom: original image of the <a rel="nofollow" class="external text" href="https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/BSDS300/html/dataset/images/color/42049.html">Berkeley Segmentation Dataset (Test Image #42049 (color)</a>), probability of boundaries after training, semantic segmentation into 3 classes (sky, tree, eagle), and detected object using the probability maps of the semantic segmentation and some post-processing (<a href="http://imagej.net/Level_Sets" title="Level Sets">Level Sets</a> from maximum and bounding box selection).</div></div></div>
+<p>As a <b>pixel classifier</b>, the Trainable Weka Segmentation presents a wide range of applications such as <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Edge_detection">boundary detection</a>, semantic segmentation, or <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Object_detection">object detection</a> and localization. All of them at the distance of a few clicks on the plugin GUI and sometimes in combination with other Fiji tools or plugins.
+</p><p>To see <b>who is using Trainable Weka Segmentation</b> and its multiple applications, you can have a look at <a rel="nofollow" class="external text" href="https://scholar.google.es/scholar?q=%22Trainable+Weka+Segmentation%22+OR+%22Advanced+Weka+Segmentation%22&amp;btnG=&amp;hl=es&amp;as_sdt=0%2C5">these publications</a>.
+</p>
+<h2><span class="mw-headline" id="Usage_with_existing_installation_of_Weka">Usage with existing installation of Weka</span></h2>
+<p>Weka will automatically load plugins installed in <code>~/wekafiles</code>. If you already have an existing installation of weka using Java 1.7 and are seeing an error about <code>"java.lang.UnsupportedClassVersionError: weka/filters/unsupervised/attribute/IndependentComponents: Unsupported major.minor version 51.0"</code>, then you should remove/rename the <code>~/wekafiles</code> folder before running Fiji.
+</p>
+<h2><span class="mw-headline" id="Weka_core_version">Weka core version</span></h2>
+<p>Since the <a rel="nofollow" class="external text" href="https://github.com/fiji/Trainable_Segmentation/releases/tag/v3.2.0">3.2.0 release</a>, <strong class="selflink">Trainable Weka Segmentation</strong> uses Weka 3.9.0+ - development version. If you have problems loading models from previous versions of the plugin/library, most likely you need to recreate the models using the new version (see <a rel="nofollow" class="external text" href="http://forums.pentaho.com/showthread.php?204301-New-Weka-3-6-14-3-8-0-and-3-9-0-releases!">note 1 of the Weka official release</a>).
+</p><p>If you absolutely need to reuse an old model, you can transform it to the new version thanks to a <a rel="nofollow" class="external text" href="http://www.cs.waikato.ac.nz/ml/weka/downloading.html">model migrator tool</a> provided by the Weka developers. For more information, check this <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/weka-segmentation-error-after-update-29-09-16/2898/24?u=iarganda">post in the ImageJ forum</a>.
+</p>
+<h2><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h2>
+<p>For all <b>questions, suggestions, bug reports and problems</b> related to the Trainable Weka Segmentation plugin or library, please use the <a rel="nofollow" class="external text" href="http://forum.imagej.net">ImageJ forum</a> and make sure to <a rel="nofollow" class="external text" href="http://forum.imagej.net/search?q=weka">check previous posts</a> that might have been done covering the same topic.
+</p>
+<h2><span class="mw-headline" id="Citation">Citation</span></h2>
+<p>Please note that <strong class="selflink">Trainable Weka Segmentation</strong> is based on a publication. If you use it successfully for your research please be so kind to cite our work:
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Trainable+Weka+Segmentation%3A+a+machine+learning+tool+for+microscopy+pixel+classification.&amp;rft.aulast=Arganda-Carreras&amp;rft.aufirst=I.&amp;rft.date=2017&amp;rft.volume=33&amp;rft.issue=15&amp;rft.pub=Oxford+Univ+Press&amp;rft_id=info:doi/10.1093%2Fbioinformatics%2Fbtx180&amp;rft_id=info:pmid/28369169&amp;rft_id=https%3A%2F%2Facademic.oup.com%2Fbioinformatics%2Farticle-abstract%2Fdoi%2F10.1093%2Fbioinformatics%2Fbtx180%2F3092362%2FTrainable-Weka-Segmentation-a-machine-learning"><cite id="CITEREFArganda-CarrerasKaynigRuedenEliceiri2017">Arganda-Carreras, I.; Kaynig, V.&#32;&amp; Rueden, C.&#32;et al.&#32;(2017),&#32;"<a rel="nofollow" class="external text" href="https://academic.oup.com/bioinformatics/article-abstract/doi/10.1093/bioinformatics/btx180/3092362/Trainable-Weka-Segmentation-a-machine-learning">Trainable Weka Segmentation: a machine learning tool for microscopy pixel classification.</a>",&#32;<i>Bioinformatics</i>&#32;(Oxford Univ Press)&#32;<b>33</b>&#xa0;(15), PMID 28369169, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1093%2Fbioinformatics%2Fbtx180">10.1093/bioinformatics/btx180</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="https://academic.oup.com/bioinformatics/article-abstract/doi/10.1093/bioinformatics/btx180/3092362/Trainable-Weka-Segmentation-a-machine-learning">https://academic.oup.com/bioinformatics/article-abstract/doi/10.1093/bioinformatics/btx180/3092362/Trainable-Weka-Segmentation-a-machine-learning</a>&gt;</span></cite></span> (<a rel="nofollow" class="external text" href="http://scholar.google.com/scholar?cluster=12995971888361615836">on Google Scholar</a>).</li></ul>
+<p>The <strong class="selflink">Trainable Weka Segmentation</strong> code has its own citable <a rel="nofollow" class="external text" href="http://dx.doi.org/10.5281/zenodo.59290">DOI</a>.
+</p>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is <b>free software</b>; you can redistribute it and/or modify it under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</span>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073539
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.252 seconds
+Real time usage: 0.268 seconds
+Preprocessor visited node count: 6485/1000000
+Preprocessor generated node count: 19816/1000000
+Post‐expand include size: 19739/2097152 bytes
+Template argument size: 5356/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  210.959      1 - -total
+ 64.06%  135.134      1 - Template:ComponentStats:sc.fiji:Trainable_Segmentation
+ 63.17%  133.256      1 - Template:Component
+ 54.91%  115.828     18 - Template:Person
+ 12.74%   26.869      1 - Template:Publication
+  8.74%   18.440      1 - Template:Citation
+  7.16%   15.111      1 - Template:Citation/core
+  3.78%    7.971      4 - Template:Bc
+  1.20%    2.533      7 - Template:Arrow
+  0.83%    1.748      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation&amp;oldid=41406">http://imagej.net/index.php?title=Trainable_Weka_Segmentation&amp;oldid=41406</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Machine_Learning" title="Category:Machine Learning">Machine Learning</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Trainable+Weka+Segmentation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Trainable+Weka+Segmentation" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Trainable_Weka_Segmentation" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Trainable_Weka_Segmentation" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation&amp;oldid=41406" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Trainable_Weka_Segmentation&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":420});});</script>
+		</body>
+		</html>
+		

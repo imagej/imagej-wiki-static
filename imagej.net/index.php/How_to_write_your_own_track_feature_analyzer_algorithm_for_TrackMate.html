@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>How to write your own track feature analyzer algorithm for TrackMate - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate","wgTitle":"How to write your own track feature analyzer algorithm for TrackMate","wgCurRevisionId":17813,"wgRevisionId":17813,"wgArticleId":2100,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate","wgRelevantArticleId":2100,"wgRequestId":"29c844ac2dad2a81bdf7a397","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This article is the second in the series dedicated to extending TrackMate with your own modules. Here we focus on creating feature analyzers: small algorithms that calculate one or several numerical values for the TrackMate results. The previous article focused on writing edge analyzers: algorithms that allocate a numerical value to the link between two spots."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="How to write your own track feature analyzer algorithm for TrackMate"/>
+
+	<meta property="og:description" content="This article is the second in the series dedicated to extending TrackMate with your own modules. Here we focus on creating feature analyzers: small algorithms that calculate one or several numerical values for the TrackMate results. The previous article focused on writing edge analyzers: algorithms that allocate a numerical value to the link between two spots."/>
+
+	<meta property="og:url" content="http://imagej.net/How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate rootpage-How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#bodyContent">Skip to content</a>, 			<a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>How to write your own track feature analyzer algorithm for TrackMate</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="width: 22em; font-size: 90%; text-align: left; float: right; border: 1px dashed #a0a0a0;">
+<tr>
+<th colspan="2" style="font-size: 130%;"> Extending TrackMate
+</th></tr>
+<tr>
+<td>
+<ul><li> <a href="http://imagej.net/How_to_write_your_own_edge_feature_analyzer_algorithm_for_TrackMate" title="How to write your own edge feature analyzer algorithm for TrackMate">How to write your own edge feature analyzer algorithm for TrackMate</a></li>
+<li> <strong class="selflink">How to write your own track feature analyzer algorithm for TrackMate</strong></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_spot_feature_analyzer_algorithm_for_TrackMate" title="How to write your own spot feature analyzer algorithm for TrackMate">How to write your own spot feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_viewer_for_TrackMate" title="How to write your own viewer for TrackMate">How to write your own viewer for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_custom_actions_for_TrackMate" title="How to write custom actions for TrackMate">How to write custom actions for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_detection_algorithm_for_TrackMate" title="How to write your own detection algorithm for TrackMate">How to write your own detection algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_particle-linking_algorithm_for_TrackMate" title="How to write your own particle-linking algorithm for TrackMate">How to write your own particle-linking algorithm for TrackMate</a></li></ul>
+</td></tr></table><a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a> can be extended with new modules covering about everything it does, thanks to several nice features of <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a>. These tutorials explain how to do so. They are best read in order.
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#Track_analyzers"><span class="tocnumber">2</span> <span class="toctext">Track analyzers</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#Track_feature_analyzer_header"><span class="tocnumber">3</span> <span class="toctext">Track feature analyzer header</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#Declaring_features"><span class="tocnumber">4</span> <span class="toctext">Declaring features</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#Accessing_tracks_in_TrackMate"><span class="tocnumber">5</span> <span class="toctext">Accessing tracks in TrackMate</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#Calculating_the_position_of_start_and_end_points"><span class="tocnumber">6</span> <span class="toctext">Calculating the position of start and end points</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#Wrapping_up"><span class="tocnumber">7</span> <span class="toctext">Wrapping up</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate.html#How_to_disable_a_module"><span class="tocnumber">8</span> <span class="toctext">How to disable a module</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>This article is the second in the series dedicated to extending TrackMate with your own modules. Here we focus on creating <b>feature analyzers</b>: small algorithms that calculate one or several numerical values for the TrackMate results. The <a href="http://imagej.net/How_to_write_your_own_edge_feature_analyzer_algorithm_for_TrackMate" title="How to write your own edge feature analyzer algorithm for TrackMate">previous article</a> focused on writing edge analyzers: algorithms that allocate a numerical value to the link between two spots.
+</p><p>In this article, we will create a <b>feature analyzer for tracks</b> that calculate numerical values for whole tracks. To make it simple, and also to answer the request of a colleague, we will make an analyzer that reports the location of the starting and ending points of a track. 
+</p><p>Actually, we will not learn much beyond what we saw previously. The only little change is that our analyzer will generate 6 numerical values instead of 1. 
+We will use the <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> discovery mechanism as before, but just for the sake of it, we will introduce how to <b>disable</b> modules.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Track_analyzers">Track analyzers</span></h2>
+<p>All the track feature analyzers must implement <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/features/track/TrackAnalyzer.java">TrackAnalyzer interface</a>. Like for the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/features/edges/EdgeAnalyzer.java">EdgeAnalyzer</a> interface, it extends both
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/features/FeatureAnalyzer.java">FeatureAnalyzer</a> that helps you declaring what you compute, </li>
+<li> and <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/TrackMateModule.java">TrackMateModule</a>, that is in charge of the integration in TrackMate.</li></ul>
+<p>The only changes for us are two methods specific to tracks:
+</p>
+<pre class="brush:java">public void process( final Collection&lt; Integer &gt; trackIDs, final Model model );</pre>
+<p>the does the actual feature calculation for the specified tracks, and
+</p>
+<pre class="brush:java">public boolean isLocal();</pre> 
+<p>that specified whether the calculation of the features for one track affects only this track or all the tracks. For the discussion on local <i>vs</i> non-local feature analyzers, I report you to the <a href="http://imagej.net/How_to_write_your_own_edge_feature_analyzer_algorithm_for_TrackMate#isLocal.28.29" title="How to write your own edge feature analyzer algorithm for TrackMate">previous article item</a>.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Track_feature_analyzer_header">Track feature analyzer header</span></h2>
+<p>Like all TrackMate modules, you need to annotate your class to make it discoverable by TrackMate. It takes the following shape:
+</p>
+<pre class="brush:java">
+@Plugin( type = TrackAnalyzer.class )
+public class TrackStartSpotAnalyzer implements TrackAnalyzer
+{
+        // etc...
+</pre>
+<p>and that's good enough.
+</p><p><br />
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Declaring_features">Declaring features</span></h2>
+<p>Declaring the features your provide is done as before. This time, a single analyzer returns 6 values, so you need to declare them. Here is the related code:
+</p>
+<pre class="brush:java">
+@Plugin( type = TrackAnalyzer.class )
+public class TrackStartSpotAnalyzer implements TrackAnalyzer
+{
+
+	private static final String KEY = "TRACK_START_SPOT_ANALYZER";
+
+	public static final String TRACK_START_X = "TRACK_START_X";
+
+	public static final String TRACK_START_Y = "TRACK_START_Y";
+
+	public static final String TRACK_START_Z = "TRACK_START_Z";
+
+	public static final String TRACK_STOP_X = "TRACK_STOP_X";
+
+	public static final String TRACK_STOP_Y = "TRACK_STOP_Y";
+
+	public static final String TRACK_STOP_Z = "TRACK_STOP_Z";
+
+	private static final List&lt; String &gt; FEATURES = new ArrayList&lt; String &gt;( 6 );
+
+	private static final Map&lt; String, String &gt; FEATURE_SHORT_NAMES = new HashMap&lt; String, String &gt;( 6 );
+
+	private static final Map&lt; String, String &gt; FEATURE_NAMES = new HashMap&lt; String, String &gt;( 6 );
+
+	private static final Map&lt; String, Dimension &gt; FEATURE_DIMENSIONS = new HashMap&lt; String, Dimension &gt;( 6 );
+
+	static
+	{
+		FEATURES.add( TRACK_START_X );
+		FEATURES.add( TRACK_START_Y );
+		FEATURES.add( TRACK_START_Z );
+		FEATURES.add( TRACK_STOP_X );
+		FEATURES.add( TRACK_STOP_Y );
+		FEATURES.add( TRACK_STOP_Z );
+
+		FEATURE_NAMES.put( TRACK_START_X, "Track start X" );
+		FEATURE_NAMES.put( TRACK_START_Y, "Track start Y" );
+		FEATURE_NAMES.put( TRACK_START_Z, "Track start Z" );
+		FEATURE_NAMES.put( TRACK_STOP_X, "Track stop X" );
+		FEATURE_NAMES.put( TRACK_STOP_Y, "Track stop Y" );
+		FEATURE_NAMES.put( TRACK_STOP_Z, "Track stop Z" );
+
+		FEATURE_SHORT_NAMES.put( TRACK_START_X, "X start" );
+		FEATURE_SHORT_NAMES.put( TRACK_START_Y, "Y start" );
+		FEATURE_SHORT_NAMES.put( TRACK_START_Z, "Z start" );
+		FEATURE_SHORT_NAMES.put( TRACK_STOP_X, "X stop" );
+		FEATURE_SHORT_NAMES.put( TRACK_STOP_Y, "Y stop" );
+		FEATURE_SHORT_NAMES.put( TRACK_STOP_Z, "Z stop" );
+
+		FEATURE_DIMENSIONS.put( TRACK_START_X, Dimension.POSITION );
+		FEATURE_DIMENSIONS.put( TRACK_START_Y, Dimension.POSITION );
+		FEATURE_DIMENSIONS.put( TRACK_START_Z, Dimension.POSITION );
+		FEATURE_DIMENSIONS.put( TRACK_STOP_X, Dimension.POSITION );
+		FEATURE_DIMENSIONS.put( TRACK_STOP_Y, Dimension.POSITION );
+		FEATURE_DIMENSIONS.put( TRACK_STOP_Z, Dimension.POSITION );
+	}
+        
+	/*
+	 * FEATUREANALYZER METHODS
+	 */
+
+	@Override
+	public List&lt; String &gt; getFeatures()
+	{
+		return FEATURES;
+	}
+
+	@Override
+	public Map&lt; String, String &gt; getFeatureShortNames()
+	{
+		return FEATURE_SHORT_NAMES;
+	}
+
+	@Override
+	public Map&lt; String, String &gt; getFeatureNames()
+	{
+		return FEATURE_NAMES;
+	}
+
+	@Override
+	public Map&lt; String, Dimension &gt; getFeatureDimensions()
+	{
+		return FEATURE_DIMENSIONS;
+	}
+</pre>
+<p>Let's compute them now.
+</p><p><br />
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Accessing_tracks_in_TrackMate">Accessing tracks in TrackMate</span></h2>
+<p>In the previous article, we went maybe a bit quickly on how to access data in TrackMate. This is not the goal of this series, but here is a quick recap:
+</p><p>All the track structure is stored in a sub-component of the model called the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/TrackModel.java">TrackModel</a>. It stores the collection of links between two spots that builds a graph, and has some rather complex logic to maintain a list of connected components: the tracks. 
+</p><p>The tracks themselves are indexed by their ID, stored as an <code>int</code>, that has no particular meaning. Once you have the ID of track, you can get the spots it contains with
+</p>
+<pre class="brush:java">trackModel.trackSpots( trackID )</pre>
+<p>and its links (or edges) with 
+</p>
+<pre class="brush:java">trackModel.trackEdges( trackID )</pre>
+<p>Let's exploit this.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Calculating_the_position_of_start_and_end_points">Calculating the position of start and end points</span></h2>
+<p>Well, it is just about retrieving a track and identifying its starting and end points. Here is the whole code for the processing method:
+</p>
+<pre class="brush:java">
+
+	@Override
+	public void process( final Collection&lt; Integer &gt; trackIDs, final Model model )
+	{
+		// The feature model where we store the feature values:
+		final FeatureModel fm = model.getFeatureModel();
+
+		// Loop over all the tracks we have to process.
+		for ( final Integer trackID&#160;: trackIDs )
+		{
+			// The tracks are indexed by their ID. Here is how to get their
+			// content:
+			final Set&lt; Spot &gt; spots = model.getTrackModel().trackSpots( trackID );
+			// Or .trackEdges( trackID ) if you want the edges.
+
+			// This set is NOT ordered. If we want the first one and last one we
+			// have to sort them:
+			final Comparator&lt; Spot &gt; comparator = Spot.frameComparator;
+			final List&lt; Spot &gt; sorted = new ArrayList&lt; Spot &gt;( spots );
+			Collections.sort( sorted, comparator );
+
+			// Extract and store feature values.
+			final Spot first = sorted.get( 0 );
+			fm.putTrackFeature( trackID, TRACK_START_X, Double.valueOf( first.getDoublePosition( 0 ) ) );
+			fm.putTrackFeature( trackID, TRACK_START_Y, Double.valueOf( first.getDoublePosition( 1 ) ) );
+			fm.putTrackFeature( trackID, TRACK_START_Z, Double.valueOf( first.getDoublePosition( 2 ) ) );
+
+			final Spot last = sorted.get( sorted.size() - 1 );
+			fm.putTrackFeature( trackID, TRACK_STOP_X, Double.valueOf( last.getDoublePosition( 0 ) ) );
+			fm.putTrackFeature( trackID, TRACK_STOP_Y, Double.valueOf( last.getDoublePosition( 1 ) ) );
+			fm.putTrackFeature( trackID, TRACK_STOP_Z, Double.valueOf( last.getDoublePosition( 2 ) ) );
+
+			// Et voilà!
+		}
+	}
+</pre>
+<p>The whole code for the analyzer can be found <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate-examples/blob/master/src/main/java/plugin/trackmate/examples/trackanalyzer/TrackStartSpotAnalyzer.java">here</a>.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Wrapping_up">Wrapping up</span></h2>
+<p>Et ca marche&#160;!
+</p><p><a href="http://imagej.net/File:TrackMate_TrackAnalyzerExample.png" class="image"><img alt="TrackMate TrackAnalyzerExample.png" src="../_images/b/b4/TrackMate_TrackAnalyzerExample.png" width="600" height="480" /></a>
+</p><p>In the next article we will build a spot analyzer and complicate things a bit, by introducing the notion of <i>priority</i>. But before this, a short word on how to disable a module.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="How_to_disable_a_module">How to disable a module</span></h2>
+<p>Suppose you have in your code tree a TrackMate module you wish not to use anymore. The trivial way would be to delete its class, but here is another one what allows us to introduce <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> plugin annotation parameters. 
+</p><p>The <code>@Plugin( type = TrackAnalyzer.class )</code> annotation accepts extra parameters on top of the <code>type</code> one. They all take the shape of a <code>key = value</code> pair, and a few of them allow the fine tuning of the TrackMate module integration.
+</p><p>The first one we will see is the <code>enabled</code> value. It accepts a <code>boolean</code> as value and by default it is <code>true</code>. Its usage is obvious:
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> If you want to disable a TrackMate module, add the <code>enabled = false</code> annotation parameter. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+Like this:
+</p>
+<pre class="brush:java">
+@Plugin( type = TrackAnalyzer.class, enabled = false )
+</pre>
+<p>Disabled modules are not even instantiated. They are as good as dead, except that you can change your mind easily. By the way, you can see that the TrackMate source tree has many of these disabled modules...
+</p><p><br />
+</p><p><a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a> (<a href="http://imagej.net/index.php?title=User_talk:JeanYvesTinevez&amp;action=edit&amp;redlink=1" class="new" title="User talk:JeanYvesTinevez (page does not exist)">talk</a>) 14:23, 11 March 2014 (CDT)
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072500
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.047 seconds
+Preprocessor visited node count: 337/1000000
+Preprocessor generated node count: 4025/1000000
+Post‐expand include size: 2747/2097152 bytes
+Template argument size: 909/2097152 bytes
+Highest expansion depth: 4/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   14.808      1 - -total
+ 49.22%    7.288      1 - Template:Person
+ 25.50%    3.776      6 - Template:GitHub
+ 11.88%    1.759      1 - Template:Ambox
+  5.27%    0.781      1 - Template:ExtendingTrackMateTutorials
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate&amp;oldid=17813">http://imagej.net/index.php?title=How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate&amp;oldid=17813</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 8 October 2015, at 13:23.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=How+to+write+your+own+track+feature+analyzer+algorithm+for+TrackMate" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=How+to+write+your+own+track+feature+analyzer+algorithm+for+TrackMate" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate&amp;oldid=17813" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":202});});</script>
+		</body>
+		</html>
+		

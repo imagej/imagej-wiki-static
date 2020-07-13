@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Low Light Tracking Tool - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Low_Light_Tracking_Tool","wgTitle":"Low Light Tracking Tool","wgCurRevisionId":17829,"wgRevisionId":17829,"wgArticleId":1725,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Low_Light_Tracking_Tool","wgRelevantArticleId":1725,"wgRequestId":"18779763cabf816efb513f6a","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This software is a tool for the tracking of low-light sub-resolution objects in fluorescent microscopy. It can be applied in other fields as well. The plugin implements the localization algorithm described in the following paper:&#10;&quot;A Divide and Conquer Strategy for the Maximum Likelihood localization of Low Intensity Objects&quot; by Alexander Krull et al, 2013 Optics Express, Vol. 22, Issue 1, pp. 210-228 (2014)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Low Light Tracking Tool"/>
+
+	<meta property="og:description" content="This software is a tool for the tracking of low-light sub-resolution objects in fluorescent microscopy. It can be applied in other fields as well. The plugin implements the localization algorithm described in the following paper:&#10;&quot;A Divide and Conquer Strategy for the Maximum Likelihood localization of Low Intensity Objects&quot; by Alexander Krull et al, 2013 Optics Express, Vol. 22, Issue 1, pp. 210-228 (2014)."/>
+
+	<meta property="og:url" content="http://imagej.net/Low_Light_Tracking_Tool"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Low_Light_Tracking_Tool rootpage-Low_Light_Tracking_Tool skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Blob_Tracker.html#bodyContent">Skip to content</a>, 			<a href="Blob_Tracker.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Blob_Tracker.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Blob_Tracker.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk"><a href="http://imagej.net/Talk:Low_Light_Tracking_Tool" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Low_Light_Tracking_Tool&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Low_Light_Tracking_Tool&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Low Light Tracking Tool</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Blob Tracking (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Alex-krull" title="User:Alex-krull">Alexander Krull</a>,  <a href="http://imagej.net/User:Damienrj" title="User:Damienrj">Damien Ramunno-Johnson</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Alex-krull" title="User:Alex-krull">Alexander Krull</a>,  <a href="http://imagej.net/User:Damienrj" title="User:Damienrj">Damien Ramunno-Johnson</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external free" href="https://github.com/alex-krull/fiji">https://github.com/alex-krull/fiji</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> May 22<sup>nd</sup>, 2013
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> May 22<sup>nd</sup>, 2013
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> PreRelease, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Tracking" title="Category:Tracking">Tracking</a>
+</td></tr>
+
+</table>
+<p><br />
+</p><p>This software is a tool for the tracking of low-light sub-resolution objects in fluorescent microscopy. It can be applied in other fields as well. The plugin implements the localization algorithm described in the following paper:
+"A Divide and Conquer Strategy for the Maximum Likelihood localization of Low Intensity Objects" by Alexander Krull et al, 2013 Optics Express, Vol. 22, Issue 1, pp. 210-228 (2014).
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Blob_Tracker.html#Installation_of_the_plugin"><span class="tocnumber">1</span> <span class="toctext">Installation of the plugin</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Blob_Tracker.html#Add_the_project.27s_update_site_to_your_Fiji_installation"><span class="tocnumber">1.1</span> <span class="toctext">Add the project's update site to your Fiji installation</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Blob_Tracker.html#Install_the_required_files"><span class="tocnumber">1.2</span> <span class="toctext">Install the required files</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="Blob_Tracker.html#Startup"><span class="tocnumber">2</span> <span class="toctext">Startup</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="Blob_Tracker.html#Load_the_data"><span class="tocnumber">2.1</span> <span class="toctext">Load the data</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Blob_Tracker.html#Start_the_LLTT-plugin"><span class="tocnumber">2.2</span> <span class="toctext">Start the LLTT-plugin</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Blob_Tracker.html#Set_global_options"><span class="tocnumber">2.3</span> <span class="toctext">Set global options</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Blob_Tracker.html#The_User_Interface"><span class="tocnumber">3</span> <span class="toctext">The User Interface</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="Blob_Tracker.html#The_different_windows"><span class="tocnumber">3.1</span> <span class="toctext">The different windows</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Blob_Tracker.html#Navigation"><span class="tocnumber">3.2</span> <span class="toctext">Navigation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="Blob_Tracker.html#Basic_tracking"><span class="tocnumber">4</span> <span class="toctext">Basic tracking</span></a>
+<ul>
+<li class="toclevel-2 tocsection-12"><a href="Blob_Tracker.html#Create_session"><span class="tocnumber">4.1</span> <span class="toctext">Create session</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Blob_Tracker.html#Choose_a_tracking_method"><span class="tocnumber">4.2</span> <span class="toctext">Choose a tracking method</span></a>
+<ul>
+<li class="toclevel-3 tocsection-14"><a href="Blob_Tracker.html#GaussianML"><span class="tocnumber">4.2.1</span> <span class="toctext">GaussianML</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="Blob_Tracker.html#EMCCD-GaussianML"><span class="tocnumber">4.2.2</span> <span class="toctext">EMCCD-GaussianML</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-16"><a href="Blob_Tracker.html#Pick_session_options"><span class="tocnumber">4.3</span> <span class="toctext">Pick session options</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Blob_Tracker.html#Adding_objects_to_track"><span class="tocnumber">4.4</span> <span class="toctext">Adding objects to track</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="Blob_Tracker.html#Edit_individual_objects"><span class="tocnumber">4.5</span> <span class="toctext">Edit individual objects</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="Blob_Tracker.html#Start_tracking"><span class="tocnumber">4.6</span> <span class="toctext">Start tracking</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-20"><a href="Blob_Tracker.html#Working_with_tracking_results"><span class="tocnumber">5</span> <span class="toctext">Working with tracking results</span></a>
+<ul>
+<li class="toclevel-2 tocsection-21"><a href="Blob_Tracker.html#Saving_and_loading"><span class="tocnumber">5.1</span> <span class="toctext">Saving and loading</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Blob_Tracker.html#Deleting_and_manipulating_traces_and_sessions"><span class="tocnumber">5.2</span> <span class="toctext">Deleting and manipulating traces and sessions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-23"><a href="Blob_Tracker.html#Advanced_features"><span class="tocnumber">6</span> <span class="toctext">Advanced features</span></a>
+<ul>
+<li class="toclevel-2 tocsection-24"><a href="Blob_Tracker.html#3D_data"><span class="tocnumber">6.1</span> <span class="toctext">3D data</span></a></li>
+<li class="toclevel-2 tocsection-25"><a href="Blob_Tracker.html#Using_multiscale_tracking_for_fast_moving_objects"><span class="tocnumber">6.2</span> <span class="toctext">Using multiscale tracking for fast moving objects</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-26"><a href="Blob_Tracker.html#Tips"><span class="tocnumber">7</span> <span class="toctext">Tips</span></a></li>
+<li class="toclevel-1 tocsection-27"><a href="Blob_Tracker.html#Hot-keys"><span class="tocnumber">8</span> <span class="toctext">Hot-keys</span></a></li>
+<li class="toclevel-1 tocsection-28"><a href="Blob_Tracker.html#File_format"><span class="tocnumber">9</span> <span class="toctext">File format</span></a></li>
+<li class="toclevel-1 tocsection-29"><a href="Blob_Tracker.html#Example_Data"><span class="tocnumber">10</span> <span class="toctext">Example Data</span></a></li>
+<li class="toclevel-1 tocsection-30"><a href="Blob_Tracker.html#License"><span class="tocnumber">11</span> <span class="toctext">License</span></a>
+<ul>
+<li class="toclevel-2 tocsection-31"><a href="Blob_Tracker.html#Colt_library"><span class="tocnumber">11.1</span> <span class="toctext">Colt library</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Installation_of_the_plugin">Installation of the plugin</span></h1>
+<p>The plugin can be quickly installed via the projects update site. This is unfortunately may not possible if you are using a Fiji version installed via package management system. If you encounter this problem, please use the Fiji version obtainable <a href="http://imagej.net/Downloads" title="Downloads"> here</a>.
+</p>
+<h2><span class="mw-headline" id="Add_the_project.27s_update_site_to_your_Fiji_installation">Add the project's update site to your Fiji installation</span></h2>
+<p>Please refer to the <a href="http://imagej.net/Update_Sites" title="Update Sites"> <b>tutorial</b></a> on how to add our update site to your Fiji installation.
+Our update site has the following URL:
+</p>
+<pre> <b><code>http://sites.imagej.net/Alex-krull/</code></b>
+</pre>
+<div class="MediaTransformError" style="width: 794px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Install_the_required_files">Install the required files</span></h2>
+<div class="MediaTransformError" style="width: 796px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Install or update all 6 items shown above by hitting <b>Apply changes</b>.
+Please restart Fiji afterwards.
+</p>
+<h1><span class="mw-headline" id="Startup">Startup</span></h1>
+<h2><span class="mw-headline" id="Load_the_data">Load the data</span></h2>
+<div class="MediaTransformError" style="width: 172px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>To begin use Fiji to load the data to be used for tracking. Use whichever method you prefer in Fiji. The LLTT-plugin will work with 8-bit, 16-bit and 32-bit-float stacks. Moreover you can use 3D and multichannel hyperstacks.
+If you want to try the LLTT-plugin but do not have the right data at hand, you can download a file with sample data here:
+<a href="http://imagej.net/File:LLTT_BeadsExampleData.zip" title="File:LLTT BeadsExampleData.zip">File:LLTT BeadsExampleData.zip</a>.
+</p>
+<h2><span class="mw-headline" id="Start_the_LLTT-plugin">Start the LLTT-plugin</span></h2>
+<p>After the data is loaded, start the plugin by clicking:
+</p><p><b>plugins-&gt;Tracking-&gt;Low Light Tracking Tool</b>
+</p>
+<div class="MediaTransformError" style="width: 713px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Set_global_options">Set global options</span></h2>
+<p>Upon startup of the plugin you will be asked to enter three values.
+</p>
+<div class="MediaTransformError" style="width: 267px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>They are:
+</p>
+<dl><dt>Intensity Offset</dt>
+<dd>Cameras used in microscopy often add a bias or <b>Intensity Offset</b> in order to avoid potentially negative values caused by read out noise. This quantity should be specified here, in order to obtain optimal tracking results.</dd>
+<dt>EMCCD gain</dt>
+<dd>If you are using an EMCCD camera you should specify the mean <b>EMCCD gain</b> that was used. Otherwise set it to <i>1.0</i>. </dd>
+<dt>Electrons per A/D count</dt>
+<dd>Finally you have to provide the ratio at which the analog digital unit in your camera converts photo electrons into A/D counts. </dd></dl>
+<p>Please consult you camera's specs sheet to obtain this information.
+The <b>EMCCD gain</b> and  <b>Electrons per A/D count</b> are required for tracking with the <a href="Blob_Tracker.html#EMCCD-GaussianML" title="Low Light Tracking Tool"> EMCCD-GaussianML method</a>. The <a href="Blob_Tracker.html#GaussianML" title="Low Light Tracking Tool"> GaussianML method</a> uses these values to correct the measured flux of the object and background.
+</p>
+<h1><span class="mw-headline" id="The_User_Interface">The User Interface</span></h1>
+<h2><span class="mw-headline" id="The_different_windows">The different windows</span></h2>
+<p>When the plugin starts on a 2D image stack you have three windows and the control panel. The main data window lets you move through the slices like normal. On the sides you see the two kymographs, which makes it easier to see movement over time. 
+The control window will help you to organize your tracking activity. 
+</p>
+<div class="MediaTransformError" style="width: 290px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<div class="MediaTransformError" style="width: 659px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>If you would like the windows to become larger or smaller, change the size of the main data window and then select <b>Arrange Windows</b>, from the <b>View</b> menu. Alternatively you can use the <a href="Blob_Tracker.html#Hot-Keys" title="Low Light Tracking Tool"> hot-key</a> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">W</kbd> (when the focus is on the control panel) or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">W</kbd> (when the focus is on one of the other windows).  This will also organize the windows if they have become scattered.
+</p><p>If you close some of the windows you can bring them back using the <b>Windows</b> menu in the control panel.
+If you close the control panel, this will terminate the program. Don't forget to <a href="Blob_Tracker.html#Saving_and_Loading" title="Low Light Tracking Tool"> <b>Save</b></a> your results before.
+</p>
+<h2><span class="mw-headline" id="Navigation">Navigation</span></h2>
+<p>The yellow lines in the kymographs indicate what frame you are currently working on. If you work with 3D data yellow lines in the side projections indicate what slice you are looking at. 
+There are three ways of navigating through your stack or hyper stack:
+</p>
+<ul><li> You can use ImageJ/Fiji slider controls below the main window.</li>
+<li> You can set frame number, slice number and channel number in the control window.</li>
+<li> You can use your middle mouse button to click directly into one of the kymographs to set the frame number. If you are working with 3D data you can click into one of the side projections with your middle mouse button to set the slice number.</li></ul>
+<h1><span class="mw-headline" id="Basic_tracking">Basic tracking</span></h1>
+<h2><span class="mw-headline" id="Create_session">Create session</span></h2>
+<div class="MediaTransformError" style="width: 350px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Click on the <b>New Session</b> button or select from the menu.  The <b>New session</b> window opens.  Here you can pick a name for the session as well as the channel you want to track on. Finally you can choose your tracking method.
+</p>
+<h2><span class="mw-headline" id="Choose_a_tracking_method">Choose a tracking method</span></h2>
+<p>There are currently two tracking algorithms available:
+</p>
+<h3><span class="mw-headline" id="GaussianML">GaussianML</span></h3>
+<p>This algorithm implements the <a href="http://en.wikipedia.org/wiki/Maximum_likelihood_estimator" class="extiw" title="wikipedia:Maximum likelihood estimator">maximum likelihood estimator</a> based on a <a href="http://en.wikipedia.org/wiki/Shot_noise" class="extiw" title="wikipedia:Shot noise">shot noise</a> model. This means it considers the statistics of photon distribution in the image generation process to find the optimal location estimate. In our publication this is referred to as the inner loop.
+</p>
+<h3><span class="mw-headline" id="EMCCD-GaussianML">EMCCD-GaussianML</span></h3>
+<p>This algorithm implements the maximum likelihood estimator based on a more sophisticated model which in addition includes the stochastic amplification process in an <a href="http://en.wikipedia.org/wiki/Electron-multiplying_CCD" class="extiw" title="wikipedia:Electron-multiplying CCD">EMCCD</a> camera. We have shown, that it yields more accurate results in situations with low light levels. In our publication this algorithm is referred to as the <b>Nested Maximum Likelihood Algorithm</b>.
+</p>
+<h2><span class="mw-headline" id="Pick_session_options">Pick session options</span></h2>
+<div class="MediaTransformError" style="width: 220px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>After clicking <b>OK</b>, a new window will open. In this window you can choose a <b>σ</b> value, which denotes the standard deviation (in pixels) of the Gaussian used to approximate the <a href="http://en.wikipedia.org/wiki/Point_spread_function" class="extiw" title="wikipedia:Point spread function">Point Spread Function</a> (PSF) of the tracked objects. If you select <b>Automatic σ</b>, this value is used only as initialization. In this case <b>Min</b> and <b>Max</b> are used as bounds for the estimation. These values will be the default values for all new traces you make in this session.
+</p><p>You also can set your quality threshold.  Smaller numbers are higher quality, while larger numbers are lower quality but faster.
+</p><p>Fixed  <b>σ</b> can be more stable and also faster, this is more so for 3D data.
+All settings can later be altered by clicking on <b>Session Options</b>, under <b>Edit</b>.
+</p>
+<h2><span class="mw-headline" id="Adding_objects_to_track">Adding objects to track</span></h2>
+<p>To add an object in order to track it, make sure the cross hair icon in the Fiji toolbar is selected and then double click roughly on the object you would like to track in the main window. This new object is represented as a circle. An accordant entry will appear in the table in the control panel representing the objects trace. You can select objects by clicking on them in the control panel or directly in the main window. You can then move them around, using drag and drop or edit them. Multiple objects can be selected by holding <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd> when selecting.
+</p>
+<div class="MediaTransformError" style="width: 659px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>You can change a trace's label by clicking on the text in the label field or change the color by clicking on the colored area.
+</p>
+<h2><span class="mw-headline" id="Edit_individual_objects">Edit individual objects</span></h2>
+<p>The default settings made in the session options dialog will only effect new traces. If at this point you find that the parameters you picked were less ideal you can change the parameters with the <b>Edit Object</b> selection from the <b>Edit</b> menu.
+</p>
+<div class="MediaTransformError" style="width: 188px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The settings you make here will effect the selected object in the very frame you are looking at.
+</p>
+<h2><span class="mw-headline" id="Start_tracking">Start tracking</span></h2>
+<p>Only the highlighted objects will be tracked.  So in the example above both are highlighted and will be tracked at the same time.
+To start tracking select at least one trace and click on the <b>Start tracking</b> button or hit the hot-key <b>G</b>. 
+The software will start at the frame you are currently looking at and continue with the following frames until the end of the movie  or until you hit <b>G</b> again or click on <b>Stop tracking</b>
+</p><p>Objects that are very close to each other should generally be tracked jointly by selecting them both before starting to track.
+Objects which are far away from each other should be tracked in individually one after the other.
+</p>
+<h1><span class="mw-headline" id="Working_with_tracking_results">Working with tracking results</span></h1>
+<div class="MediaTransformError" style="width: 585px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>You can watch the trace fill in the kymograph line as the tracking is in progress.  If you see the tracking looks incorrect and lost the object, you can click on <b>Stop Tracking</b> and adjust the object location and the software will resume from the new starting point.
+</p>
+<div class="MediaTransformError" style="width: 682px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The table now contains more information, with the first frame of the trace, and the last frame.  Double clicking on the ID# of the object will jump the frame number to the beginning and end of the trace.
+</p>
+<h2><span class="mw-headline" id="Saving_and_loading">Saving and loading</span></h2>
+<p>The tracking results are already saved automatically by default. You can turn that off by un-checking the <b>Auto Save</b> box. The results can than be saved using the <b>Save</b> button.
+They are by default stored in the directory of the image stack you are working on.
+The file format is described <a href="Blob_Tracker.html#File_format" title="Low Light Tracking Tool"> below</a>.
+When you start the plugin again with the same data file your results will be automatically loaded. 
+You can also reload previously tracked data and undo any unsaved changes by pressing the reload button. If you want to open data which is stored in a different location you can load it by clicking on the address bar and navigating to the data's location. You can then re-track, or examine the data.
+</p>
+<h2><span class="mw-headline" id="Deleting_and_manipulating_traces_and_sessions">Deleting and manipulating traces and sessions</span></h2>
+<p>Using the <b>Merge</b>, <b>Split</b>, <b>Trim</b> and <b>Delete</b> buttons allows you to edit your traces by combining or deleting them. Sessions can be deleted using the '<b>Delete Session'</b> button.
+</p>
+<dl><dt>Merging</dt>
+<dd>One useful application for merging of two traces is if your object disappears periodically but you know that it is not a new object, and would like to combine the two separate traces you create. You have to select at least two traces to merge them.</dd>
+<dt>Splitting</dt>
+<dd>Splitting will do the opposite of merging and make two traces out of one by cutting it at the current frame.</dd>
+<dt>Trimming</dt>
+<dd>Trimming has the same effect as  splitting but it keeps only the first part, while discarding the second.</dd>
+<dt>Deletion</dt>
+<dd>When you delete a trace or a session you will be asked whether to delete the corresponding files as well. If you delete the files the traces will be <b>permanently (!)</b> removed. If you don't delete them, they can be restored using the <b>reload</b> button.</dd></dl>
+<p>Changes done by <b>Merge</b>, <b>Split</b> and <b>Trim</b> can also be undone in this way. They are made permanent only when you hit the <b>Save</b> button or start tracking with the <b>Autosave</b> option activated.
+</p>
+<h1><span class="mw-headline" id="Advanced_features">Advanced features</span></h1>
+<h2><span class="mw-headline" id="3D_data">3D data</span></h2>
+<p>The plugin can be used to track objects in 3D volumes as well. When working with 3D data you will be asked upon startup to provide the <b>ΔZ ratio</b> in addition to the <b>Intensity Offset</b>, <b>EMCCD gain</b> and <b>Electrons per A/D count</b>.
+</p><p>The <b>ΔZ ratio</b> is the slice thickness divided by the pixel width. This value is only used for 3D data.
+Example: My pixel size for my data is 100 nm and my slice thickness is 200 nm. I would then enter a value of 2.
+</p>
+<div class="MediaTransformError" style="width: 425px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>3D data is very similar to 2D data, there are just a few more windows that open when you start. The data window and the kymographs appears, but a second set of windows appear.  A max Z projection window and max Y and X projects. The side projections are useful to place your starting tracking in the correct slice. So before clicking on the object in the data window, change the z to the correct plane first. 
+</p><p>Otherwise, tracking function is the same. It is best to optimize the  σ-value for 3D tracking and then use a fixed value to increase speed.
+</p>
+<div class="MediaTransformError" style="width: 414px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Using_multiscale_tracking_for_fast_moving_objects">Using multiscale tracking for fast moving objects</span></h2>
+<p>If you are trying to track fast moving objects that move over a big distance between two frames, the software might loose the target at some point. To avoid this you can use multiscale tracking, which uses iterative smoothing and down-sampling to find the target in each frame. To start tracking in multiscale mode hit the <b>Multiscale</b>.
+</p><p>You can change the default behavior in the edit menu.
+</p>
+<div class="MediaTransformError" style="width: 194px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The algorithm builds a <a href="http://en.wikipedia.org/wiki/Pyramid_(image_processing)" class="extiw" title="wikipedia:Pyramid (image processing)">pyramid</a> by repetitively smothing the image with a Gaussian kernel with the standard deviation given in the <b>Smoothing σ</b> field and than down-sampling it by a factor  set in the <b>Downscaling</b> field. The pyramid's hight (i.e. the number of repetitions) can be set in the <b>iterations</b> field.
+Localization is than first performed on the top level of the pyramid and repeated until its bottom, which is the original image.
+</p>
+<h1><span class="mw-headline" id="Tips">Tips</span></h1>
+<ul><li> If you want to be able to see the original image data and find your tracking results get in the way, you use the hot-key <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">P</kbd> or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">P</kbd> respectively to hide all overlays (all circles lines and cross-hairs drawn on top of the image).</li>
+<li> If some of the windows appear to bright or to dark use <b>View-&gt;Adjust Brightness/Contrast</b> to correct them.</li>
+<li> You can use <b>File-&gt;Export images</b> to export a sequence of image with the tracking results drawn on top of them. You can use this to create a movie in order to demonstrate your tracking results. In your working directory a new folder named <b>movieMain</b> will be created and filled with images.</li>
+<li> If you have multichannel data, each channel needs its own session.  You can select which sessions are visible by checking their boxes in the <b>Visible Sessions</b> list. You can use the current session drop down menu to switch between sessions.</li>
+<li> You can zoom into the kymographs by moving the cursor over the kymograph window and holding down <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>, while using the scroll wheel on the mouse.</li>
+<li> You can use the <b>optimize</b> button. This will perform the tracking of the selected objects on the single frame you are looking at. You can use this for example with <b>Automatic σ</b> turned on to determine the size of the target's PSF on a single frame.</li></ul>
+<h1><span class="mw-headline" id="Hot-keys">Hot-keys</span></h1>
+<p>There are several hot-keys you can use. You can find the key to press in the menus of the control panel. When the focus is on the control panel you have to press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd> to access hotkeys. When the focus is on one of the other windows this is not necessary.
+</p>
+<h1><span class="mw-headline" id="File_format">File format</span></h1>
+<p>The tracking results are stored in text files with the ending '.trcT'. Each file holds the result of one trace. The structure of the file name is the following:
+</p><p><b>&lt;name of image file&gt;_&lt;name of session&gt;_&lt;label of trace&gt;_&lt;id of trace&gt;.trcT</b>
+</p><p>The files are created in the working directory. Each file begins with some lines starting with '#'. These lines store information for the tracking program they will be ignored by most programs like <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> or gnuplot potentially used to further analyze the data.
+This meta information is followed by columns of data holding the actual tracking results. 
+The columns have the following meaning:
+</p>
+<ul><li> column 1 frame number</li>
+<li> column 2 trace id</li>
+<li> column 3 x-position in pixels</li>
+<li> column 4 y-position in pixels</li>
+<li> column 5 z-position in pixels</li>
+<li> column 6  σ, the standard deviation (in x and y) of the Gaussian used as Point Spread Function PSF</li>
+<li> column 7 the standard deviation (in z) of the Gaussian used as Point Spread Function PSF</li>
+<li> column 8 the maximum value of  σ in case  σ is determined automatically</li>
+<li> column 9 boolean value indicating if  σ was fixed (1) or determined automatically (0)</li>
+<li> column 10 boolean value indicating if object was assumed to be coupled (assumed to have the same flux and  σ) with others.</li>
+<li> column 11 the estimated flux in photons</li>
+<li> column 12 the estimated background flux in photons per pixel</li>
+<li> column 13 the total estimated background flux in the considered window in photons</li>
+<li> column 14 the number of pixels in the considered window</li>
+<li> column 15 the fraction of flux in the considered window assumed to belong to the tracked object</li>
+<li> column 16 the total estimated flux in the considered window</li></ul>
+<h1><span class="mw-headline" id="Example_Data">Example Data</span></h1>
+<p>This link contains the data used to generate this tutorial, and a two channel 3D data set to try.
+<a href="http://imagej.net/_images/7/7d/Example_Data.zip" class="internal" title="Example Data.zip">Media:Example_Data.zip‎</a>
+</p>
+<h1><span class="mw-headline" id="License">License</span></h1>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p><br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+</p>
+<h2><span class="mw-headline" id="Colt_library">Colt library</span></h2>
+<p>We redistribute packages from the <a rel="nofollow" class="external text" href="http://acs.lbl.gov/software/colt/">colt</a> library. They have the following licenses: 
+</p><p>Packages cern.colt* , cern.jet*, cern.clhep
+Copyright (c) 1999 CERN - European Organization for Nuclear Research.
+</p><p>Permission to use, copy, modify, distribute and sell this software and its documentation for any purpose is hereby granted without fee, provided that the above copyright notice appear in all copies and that both that copyright notice and this permission notice appear in supporting documentation. CERN makes no representations about the suitability of this software for any purpose. It is provided "as is" without expressed or implied warranty.
+</p><p>Packages hep.aida.*
+</p><p>Written by Pavel Binko, Dino Ferrero Merlino, Wolfgang Hoschek, Tony Johnson, Andreas Pfeiffer, and others. Check the FreeHEP homepage for more info. Permission to use and/or redistribute this work is granted under the terms of the LGPL License, with the exception that any usage related to military applications is expressly forbidden. The software and documentation made available under the terms of this license are provided with no warranty.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064646
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.156 seconds
+Real time usage: 0.161 seconds
+Preprocessor visited node count: 3321/1000000
+Preprocessor generated node count: 9829/1000000
+Post‐expand include size: 18605/2097152 bytes
+Template argument size: 2067/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  102.593      1 - -total
+ 86.99%   89.241      9 - Template:Key
+ 76.53%   78.514      9 - Template:Key_press/core
+ 11.86%   12.168      1 - Template:Infobox
+  8.54%    8.763      4 - Template:Person
+  4.01%    4.110      9 - Template:Linear-gradient
+  3.99%    4.094      9 - Template:Box-shadow
+  1.84%    1.887      9 - Template:Border-radius
+  1.05%    1.077      5 - Template:Unicode
+  0.44%    0.453      9 - Template:Linear-gradient/legacy
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Low_Light_Tracking_Tool&amp;oldid=17829">http://imagej.net/index.php?title=Low_Light_Tracking_Tool&amp;oldid=17829</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 8 October 2015, at 13:23.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Low_Light_Tracking_Tool&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Low+Light+Tracking+Tool" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Low+Light+Tracking+Tool" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Low_Light_Tracking_Tool" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Low_Light_Tracking_Tool" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Low_Light_Tracking_Tool&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Low_Light_Tracking_Tool&amp;oldid=17829" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Low_Light_Tracking_Tool&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":314});});</script>
+		</body>
+		</html>
+		

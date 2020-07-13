@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Feature Extraction - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Feature_Extraction","wgTitle":"Feature Extraction","wgCurRevisionId":17398,"wgRevisionId":17398,"wgArticleId":150,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Registration","Feature Extraction"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Feature_Extraction","wgRelevantArticleId":150,"wgRequestId":"30b9363d85b696c17a0cefdb","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The plugins &quot;Extract SIFT Correspondences&quot; and &quot;Extract MOPS Correspondences&quot; identify a set of corresponding points of interest in two images and export them as PointRoi.  Interest points are detected using the Difference of Gaussian detector thus providing similarity-invariance.  Corresponding points are best matches from local feature descriptors that are consistent with respect to a common geometric transformation."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Feature Extraction"/>
+
+	<meta property="og:description" content="The plugins &quot;Extract SIFT Correspondences&quot; and &quot;Extract MOPS Correspondences&quot; identify a set of corresponding points of interest in two images and export them as PointRoi.  Interest points are detected using the Difference of Gaussian detector thus providing similarity-invariance.  Corresponding points are best matches from local feature descriptors that are consistent with respect to a common geometric transformation."/>
+
+	<meta property="og:url" content="http://imagej.net/Feature_Extraction"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Feature_Extraction rootpage-Feature_Extraction skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Extract_SIFT_Correspondences.html#bodyContent">Skip to content</a>, 			<a href="Extract_SIFT_Correspondences.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Extract_SIFT_Correspondences.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Extract_SIFT_Correspondences.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Feature_Extraction&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Feature_Extraction&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Feature_Extraction&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Feature Extraction</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="thumb tleft"><div class="thumbinner" style="width:363px;"><a href="http://imagej.net/File:Tem-42-33-f.png" class="image"><img alt="" src="../_images/2/2e/Tem-42-33-f.png" width="361" height="135" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Tem-42-33-f.png" class="internal" title="Enlarge"></a></div>MOPS feature correspondences (example 1)</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:363px;"><a href="http://imagej.net/File:Lab-404-403-f.png" class="image"><img alt="" src="../_images/9/97/Lab-404-403-f.png" width="361" height="135" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Lab-404-403-f.png" class="internal" title="Enlarge"></a></div>MOPS feature correspondences (example 2)</div></div></div>
+<div style="clear:both"></div>
+<table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Feature Extraction SIFT/MOPS (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Stephan Saalfeld (<a rel="nofollow" class="external autonumber" href="mailto:saalfeld@mpi-cbg.de">[1]</a>)
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Stephan Saalfeld
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/axtimwalde/mpicbg/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> 2008
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> September 29<sup>th</sup>, 2009
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Feature_Extraction" title="Category:Feature Extraction">Feature Extraction</a>, <a href="http://imagej.net/Category:Registration" title="Category:Registration">Registration</a>, <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a>
+</td></tr>
+
+</table>
+<p><br />
+The plugins "Extract SIFT Correspondences" and "Extract MOPS Correspondences" identify a set of corresponding points of interest in two images and export them as PointRoi.  Interest points are detected using the <a href="http://en.wikipedia.org/wiki/Blob_detection" class="extiw" title="wikipedia:Blob detection">Difference of Gaussian detector</a> thus providing similarity-invariance.  Corresponding points are best matches from local feature descriptors that are consistent with respect to a common geometric transformation.
+</p><p>The plugins use the <a href="http://en.wikipedia.org/wiki/Scale-invariant_feature_transform" class="extiw" title="wikipedia:Scale-invariant feature transform">Scale Invariant Feature Transform</a> (SIFT) and <a rel="nofollow" class="external text" href="http://research.microsoft.com/research/pubs/view.aspx?msr_tr_id=MSR-TR-2004-133">Multi-Scale Oriented Patches</a> (MOPS) for local feature description.  The thus established matches are filtered using the <a href="http://en.wikipedia.org/wiki/RANSAC" class="extiw" title="wikipedia:RANSAC">Random Sample Consensus</a> (RANSAC).
+</p><p>The extracted sets of corresponding landmarks and the calculated transformations are used in <a href="http://imagej.net/TrakEM2" title="TrakEM2">TrakEM2</a>, <a href="http://imagej.net/Register_Virtual_Stack_Slices" title="Register Virtual Stack Slices">Register Virtual Stack Slices</a> and <a href="http://imagej.net/BUnwarpJ" title="BUnwarpJ">BUnwarpJ</a> for image registration.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Extract_SIFT_Correspondences.html#Parameters"><span class="tocnumber">1</span> <span class="toctext">Parameters</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Extract_SIFT_Correspondences.html#Scale_Invariant_Interest_Point_Detector"><span class="tocnumber">1.1</span> <span class="toctext">Scale Invariant Interest Point Detector</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Extract_SIFT_Correspondences.html#Feature_Descriptor"><span class="tocnumber">1.2</span> <span class="toctext">Feature Descriptor</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Extract_SIFT_Correspondences.html#Geometric_Consensus_Filter"><span class="tocnumber">1.3</span> <span class="toctext">Geometric Consensus Filter</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Extract_SIFT_Correspondences.html#Legal_Notice"><span class="tocnumber">2</span> <span class="toctext">Legal Notice</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Extract_SIFT_Correspondences.html#References"><span class="tocnumber">3</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Parameters">Parameters</span></h2>
+<div class="floatright"><div class="MediaTransformError" style="width: 349px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>
+<h3><span class="mw-headline" id="Scale_Invariant_Interest_Point_Detector">Scale Invariant Interest Point Detector</span></h3>
+<dl><dt>initial gaussian blur</dt>
+<dd>Accurate localization of keypoints requires initial smoothing of the image.  If your images are blurred already, you might lower the initial blur <i>&#963;</i><sub>0</sub> slightly to get more but eventually less stable keypoints.  Increasing <i>&#963;</i><sub>0</sub> increases the computational cost for Gaussian blur, setting it to <i>&#963;</i><sub>0</sub>=3.2px is equivalent to keep <i>&#963;</i><sub>0</sub>=1.6px and use half maximum image size. Tip: Keep the default value <i>&#963;</i><sub>0</sub>=1.6px as suggested by Lowe (2004).</dd>
+<dt>steps per scale octave</dt>
+<dd>Keypoint candidates are extracted at all scales between maximum image size and minimum image size.  This Scale Space is represented in octaves each covering a fixed number of discrete scale steps from <i>&#963;</i><sub>0</sub> to 2<i>&#963;</i><sub>0</sub>.  More steps result in more but eventually less stable keypoint candidates.  Tip: Keep 3 as suggested by Lowe (2004) and do not use more than 10.</dd>
+<dt>minimum image size</dt>
+<dd>The Scale Space stops if the size of the octave would be smaller than minimum image size.  Tip: Increase the minimum size to discard large features (i.e. those extracted from looking at an image from far, such as the overall shape).</dd>
+<dt>maximum image size</dt>
+<dd>The Scale Space starts with the first octave equal or smaller than the maximum image size.  Tip: By reducing the size, fine scaled features will be discarded.  Increasing the size beyond that of the actual images has no effect.</dd>
+<dt>upscale image first</dt>
+<dd>Create the first scale octave with double the size of the original image in order to find features at the original pixel resolution.  Tip: Do this only for very small images and if you desperately need more features.</dd></dl>
+<h3><span class="mw-headline" id="Feature_Descriptor">Feature Descriptor</span></h3>
+<p>Interest points are matched using a local descriptor.  Corresponding interest points have typically very similar local descriptors.
+</p>
+<dl><dt>feature descriptor size</dt>
+<dd>The <b>SIFT</b>-descriptor consists of <i>n</i>&#215;<i>n</i> gradient histograms, each from a 4×4px block. n is this value.  Lowe (2004) uses <i>n</i>=4.  We found larger descriptors with <i>n</i>=8 perform better for Transmission Electron Micrographs from serial sections.</dd>
+<dd>The <b>MOPS</b>-descriptor is simply a <i>n</i>&#215;<i>n</i> intensity patch with normalized intensities.  Brown (2005) suggests <i>n</i>=8.  We found larger descriptors with <i>n</i>&gt;16 perform better for Transmission Electron Micrographs from serial sections.</dd>
+<dt>feature descriptor orientation bins</dt>
+<dd>For <b>SIFT</b>-descriptors, this is the number of orientation bins <i>b</i> per 4&#215;4px block as described above. Tip: Keep the default value <i>b</i>=8 as suggested by Lowe (2004).</dd>
+<dt>closest/ next closest ratio</dt>
+<dd>Correspondence candidates from local descriptor matching are accepted only if the Euclidean distance to the nearest neighbour is significantly smaller than that to the next nearest neighbour.  Lowe (2004) suggests a ratio of <i>r</i>=0.8 which requires some increase when matching things that appear significantly distorted.</dd></dl>
+<h3><span class="mw-headline" id="Geometric_Consensus_Filter">Geometric Consensus Filter</span></h3>
+<dl><dt>maximal alignment error</dt>
+<dd>Matching local descriptors gives many false positives, but true positives are consistent with respect to a common transformation while false positives are not.  This consistent set and the underlying transformation are identified using RANSAC.  This value is the maximal allowed transfer error of a match to be counted as a good one.  Tip: Set this to about 10% of the image size.</dd>
+<dt>minimal inlier ratio</dt>
+<dd>The ratio of the number of true matches to the number of all matches including both true and false used by RANSAC.  0.05 means that minimally 5% of all matches are expected to be good while 0.9 requires that 90% of the matches were good.  Only transformations with this minimal ratio of true consent matches are accepted.  Tip: Do not go below 0.05 (and only if 5% is more than about 7 matches) except with a very small maximal alignment error to avoid wrong solutions.</dd>
+<dt>expected transformation</dt>
+<dd>The expected underlying transformation between both images.  Tip: For serial section microscopy images, this is typically a <b>rigid</b> transformation.</dd></dl>
+<h2><span class="mw-headline" id="Legal_Notice">Legal Notice</span></h2>
+<p>This software embodies methods for which the following patents have been issued:
+</p>
+<ol><li><a rel="nofollow" class="external text" href="http://www.patentstorm.us/patents/6711293.html"><i>"Method and apparatus for identifying scale invariant features in an image and use of same for locating an object in an image"</i></a>, David G. Lowe, US Patent 6,711,293 (March 23, 2004). Asignee: The University of British Columbia.</li>
+<li><a rel="nofollow" class="external text" href="http://www.patentstorm.us/patents/7382897.html"><i>"Multi-image feature matching using multi-scale oriented patches"</i></a>, Matthew Brown, Richard Szeliski, US Patent 7,382,897 (June 3, 2008). Asignee: Microsoft Corporation.</li></ol>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ol><li> Lowe, David G. (2004). <a rel="nofollow" class="external text" href="http://citeseer.ist.psu.edu/lowe04distinctive.html">"Distinctive Image Features from Scale-Invariant Keypoints"</a>. <i>International Journal of Computer Vision</i> <b>60</b> (2): 91&#8211;110. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1023%2FB%3AVISI.0000029664.99615.94">10.1023/B:VISI.0000029664.99615.94</a>.</li>
+<li> Brown, Matthew; Szeliski, Richard; Winder, Simon (2005). <a rel="nofollow" class="external text" href="http://www.cs.ubc.ca/~mbrown/papers/cvpr05.pdf">"Multi-Image Matching Using Multi-Scale Oriented Patches"</a>. <i>Proceedings of the 2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR'05)</i> Volume 1: 510&#8211;517. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109/CVPR.2005.235">10.1109/CVPR.2005.235</a>.</li>
+<li> Fischler, Martin A.; Bolles, Robert C. (1981). "Random sample consensus: a paradigm for model fitting with applications to image analysis and automated cartography". <i>Communications of the ACM</i> <b>24</b> (6): 381&#8211;395. doi:<a rel="nofollow" class="external text" href="http://doi.acm.org/10.1145/358669.358692">10.1145/358669.358692</a></li></ol>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713065054
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.040 seconds
+Real time usage: 0.040 seconds
+Preprocessor visited node count: 134/1000000
+Preprocessor generated node count: 883/1000000
+Post‐expand include size: 1311/2097152 bytes
+Template argument size: 677/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    6.239      1 - -total
+ 87.48%    5.458      1 - Template:Infobox
+ 27.30%    1.703      1 - Template:GitHub
+ 10.88%    0.679      1 - Template:-
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Feature_Extraction&amp;oldid=17398">http://imagej.net/index.php?title=Feature_Extraction&amp;oldid=17398</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 September 2015, at 13:53.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Feature_Extraction&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Registration" title="Category:Registration">Registration</a></li><li><a href="http://imagej.net/Category:Feature_Extraction" title="Category:Feature Extraction">Feature Extraction</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Feature+Extraction" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Feature+Extraction" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Feature_Extraction" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Feature_Extraction" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Feature_Extraction&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Feature_Extraction&amp;oldid=17398" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Feature_Extraction&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":199});});</script>
+		</body>
+		</html>
+		

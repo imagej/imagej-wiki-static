@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>BeanShell Scripting - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"BeanShell_Scripting","wgTitle":"BeanShell Scripting","wgCurRevisionId":27051,"wgRevisionId":27051,"wgArticleId":857,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Scripting"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"BeanShell_Scripting","wgRelevantArticleId":857,"wgRequestId":"e76eb3adbae887e5c4e39f03","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="BeanShell is the scripting language which is similar both to the ImageJ macro language and to Java. In fact, you can even execute almost verbatim Java code, but the common case is to write scripts, i.e. leave out all the syntactic sugar to make your code part of a class."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="BeanShell Scripting"/>
+
+	<meta property="og:description" content="BeanShell is the scripting language which is similar both to the ImageJ macro language and to Java. In fact, you can even execute almost verbatim Java code, but the common case is to write scripts, i.e. leave out all the syntactic sugar to make your code part of a class."/>
+
+	<meta property="og:url" content="http://imagej.net/BeanShell_Scripting"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-BeanShell_Scripting rootpage-BeanShell_Scripting skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="BeanShell_Scripting.html#bodyContent">Skip to content</a>, 			<a href="BeanShell_Scripting.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="BeanShell_Scripting.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/BeanShell_Scripting" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:BeanShell_Scripting&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=BeanShell_Scripting&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=BeanShell_Scripting&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>BeanShell Scripting</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <strong class="selflink">BeanShell</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p><a rel="nofollow" class="external text" href="http://www.beanshell.org/">BeanShell</a> is the scripting language which is similar both to the <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ macro language</a> and to Java. In fact, you can even execute almost verbatim Java code, but the common case is to write <i>scripts</i>, i.e. leave out all the syntactic sugar to make your code part of a class.
+</p><p>BeanShell also does not require strict typing (read: you do not need to declare variables with types), making it easy to turn prototype code into proper Java after seeing that the code works.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="BeanShell_Scripting.html#Quickstart"><span class="tocnumber">1</span> <span class="toctext">Quickstart</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="BeanShell_Scripting.html#Syntax"><span class="tocnumber">2</span> <span class="toctext">Syntax</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="BeanShell_Scripting.html#Variables"><span class="tocnumber">2.1</span> <span class="toctext">Variables</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="BeanShell_Scripting.html#Set_variables.27_values"><span class="tocnumber">2.1.1</span> <span class="toctext">Set variables' values</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="BeanShell_Scripting.html#Using_variables"><span class="tocnumber">2.1.2</span> <span class="toctext">Using variables</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-6"><a href="BeanShell_Scripting.html#Comments"><span class="tocnumber">2.2</span> <span class="toctext">Comments</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="BeanShell_Scripting.html#Further_reading"><span class="tocnumber">2.3</span> <span class="toctext">Further reading</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="BeanShell_Scripting.html#Tips"><span class="tocnumber">3</span> <span class="toctext">Tips</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="BeanShell_Scripting.html#Examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="BeanShell_Scripting.html#Add_CIEL.2Aa.2Ab_numbers_to_the_status_bar"><span class="tocnumber">4.1</span> <span class="toctext">Add CIEL*a*b numbers to the status bar</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Quickstart">Quickstart</span></h1>
+<p>If you are already familiar with Java or the macro language, the syntax of BeanShell will be familiar to you.
+</p><p>The obligatory <i>Hello, World!</i> example:
+</p>
+<pre class="brush:java">
+// This prints 'Hello, World!' to the output area
+print("Hello, World!");
+</pre>
+<p>Variables can be assigned values:
+</p>
+<pre class="brush:java">
+someName = 1;
+someName = "Hello";
+</pre>
+<p>Variables are not strongly typed in BeanShell by default; If you use a variable name without specifying the type of it, you can assign anything to it. Optionally, you can declare variables with a data type, in which case the type is enforced:
+</p>
+<pre class="brush:java">
+String s;
+s = 1; // this fails
+</pre>
+<p>Note: The builtin functions of the ImageJ Macro language are <u>not</u> available in BeanShell.
+</p>
+<h1><span class="mw-headline" id="Syntax">Syntax</span></h1>
+<h2><span class="mw-headline" id="Variables">Variables</span></h2>
+<ul><li> A variable is a placeholder for a changing entity</li>
+<li> Each variable has a name</li>
+<li> Each variable has a value</li>
+<li> Values can be any data type (numeric, text, etc)</li>
+<li> Variables can be assigned new values</li></ul>
+<h3><span class="mw-headline" id="Set_variables.27_values">Set variables' values</span></h3>
+<p>Variables are assigned a value by statements of the form <b>name</b> = <b>value</b> ended by a semicolon. The value can be an expression.
+</p>
+<pre class="brush:java">
+intensity = 255;
+value = 2 * 8 + 1;
+title = “Hello, World!”;
+text = “title”;
+</pre>
+<h3><span class="mw-headline" id="Using_variables">Using variables</span></h3>
+<p>You can set a variable's value to the value of a second variable:
+</p>
+<pre class="brush:java">
+text = title;
+</pre>
+<p>Note that the variable name on the left hand side of the equal sign refers to the variable itself (not its value), but on the right hand side, the variable name refers to the current value stored in the variable.
+</p><p>As soon as the variables are assigned a new value, they simply forget the old value:
+</p>
+<pre class="brush:java">
+x = y;
+y = x;
+</pre>
+<p>After the first statement, <i>x</i> took on the value of <i>y</i>, so that the second statement does not change the value of <i>y</i>.
+</p><p>The right hand side of an assignment can contain complicated expressions:
+</p>
+<pre class="brush:java">
+x = y * y – 2 * y + 3;
+</pre>
+<p>Note that the right hand side needs to be evaluated first before the value is assigned to the variable:
+</p>
+<pre class="brush:java">
+intensity = intensity * 2;
+</pre>
+<p>This statement just doubled the value of <i>intensity</i>.
+</p>
+<h2><span class="mw-headline" id="Comments">Comments</span></h2>
+<p>It is important to use comments in your source code, not only for other people to understand the intent of the code, but also for yourself, when you come back to your code in 6 months. Comments look like this:
+</p>
+<pre class="brush:java">
+// This is a comment trying to help you to
+// remember what you meant to do here:
+a = Math.exp(x * Math.sin(y))
+	+ Math.atan(x * y – a);
+</pre>
+<p>You should <u>not</u> repeat the code in English, but describe the important aspects not conveyed by the code. For example, there might be a bug requiring a workaround, and you might want to explain that in the comments (lest you try to "fix" the workaround).
+</p><p>Comments are often abused to disable code, such as debugging statements
+</p>
+<pre class="brush:java">
+// x = 10; // hard-code x to 10 for now, just for debugging
+</pre>
+<p>If you have a substantial amount of things to say in a comment, you might use multi-line comments:
+</p>
+<pre class="brush:java">
+/*
+ Multi-line comments can be started by a slash
+ followed by a star, and their end is marked
+ by a star followed by a slash:
+*/
+</pre>
+<h2><span class="mw-headline" id="Further_reading">Further reading</span></h2>
+<p>For more information, see BeanShell's <a rel="nofollow" class="external text" href="http://www.beanshell.org/manual/quickstart.html">Quickstart</a> page.
+</p>
+<h1><span class="mw-headline" id="Tips">Tips</span></h1>
+<p>You can <i>source</i> scripts (i.e. interpret another script before continuing to interpret the current script) using this line:
+</p>
+<pre class="brush:java">
+this.interpreter.source("the-other-script.bsh");
+</pre>
+<h1><span class="mw-headline" id="Examples">Examples</span></h1>
+<h2><span class="mw-headline" id="Add_CIEL.2Aa.2Ab_numbers_to_the_status_bar">Add CIEL*a*b numbers to the status bar</span></h2>
+<p>If your monitor is calibrated to <i>sRGB</i>, there is an easy way to do display also the <i>L</i>, <i>a</i> and <i>b</i> values in the status bar:
+</p>
+<pre class="brush:java">
+import color.CIELAB;
+
+import java.awt.Label;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+// IJ1's API does not offer all I want
+setAccessibility(true);
+
+// press Escape on the ImageJ window to stop it
+class Add_CIELab_to_Status extends Thread implements KeyListener {
+	protected ImageJ ij;
+	protected Label status;
+	protected Pattern pattern = Pattern.compile("^.* value=([0-9]*),([0-9]*),([0-9]*)$");
+	protected float[] lab, rgb;
+
+	public Add_CIELab_to_Status() {
+		ij = IJ.getInstance();
+		status = ij.statusLine;
+		ij.addKeyListener(this);
+		lab = new float[3];
+		rgb = new float[3];
+	}
+
+	public void run() {
+		try {
+			for (;;) {
+				String text = status.getText();
+				Matcher matcher = pattern.matcher(text);
+				if (matcher.matches()) {
+					for (int i = 0; i &lt; 3; i++)
+						rgb[i] = Float.parseFloat(matcher.group(i + 1)) / 255;
+					CIELAB.sRGB2CIELAB(rgb, lab);
+					status.setText(text + ", L=" + IJ.d2s(lab[0], 2)
+						+ ",a*=" + IJ.d2s(lab[1], 3) + ",b*=" + IJ.d2s(lab[2], 3));
+				}
+				Thread.sleep(5);
+			}
+		} catch (InterruptedException e) {}
+	}
+ 
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+			ij.removeKeyListener(this);
+			interrupt();
+		}
+	}
+
+	public void keyReleased(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {}
+}
+
+new Add_CIELab_to_Status().start();
+</pre>
+<p>This example starts a new thread (make sure to implement the <i>run()</i> method but actually call the <i>start()</i> method!) which polls the status bar.
+</p><p>It also registers itself as a key listener so it can stop the process when the user hits the Escape key when the main window is in focus.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064600
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.040 seconds
+Real time usage: 0.038 seconds
+Preprocessor visited node count: 457/1000000
+Preprocessor generated node count: 966/1000000
+Post‐expand include size: 9677/2097152 bytes
+Template argument size: 5528/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   20.972      1 - Template:Learn
+100.00%   20.972      1 - -total
+ 87.55%   18.361      1 - Template:Menu
+ 77.95%   16.347      4 - Template:Submenu
+ 40.10%    8.409     39 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=BeanShell_Scripting&amp;oldid=27051">http://imagej.net/index.php?title=BeanShell_Scripting&amp;oldid=27051</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 23 January 2017, at 15:06.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=BeanShell_Scripting&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=BeanShell+Scripting" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=BeanShell+Scripting" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/BeanShell_Scripting" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/BeanShell_Scripting" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=BeanShell_Scripting&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=BeanShell_Scripting&amp;oldid=27051" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=BeanShell_Scripting&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":202});});</script>
+		</body>
+		</html>
+		

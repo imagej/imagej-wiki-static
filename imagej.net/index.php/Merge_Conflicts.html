@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Git Conflicts - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Git_Conflicts","wgTitle":"Git Conflicts","wgCurRevisionId":29410,"wgRevisionId":29410,"wgArticleId":862,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Git"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Git_Conflicts","wgRelevantArticleId":862,"wgRequestId":"875562e399a036b7129eef58","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Sometimes you get merge conflicts when merging or pulling from a branch. Git will then tell you something like"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Git Conflicts"/>
+
+	<meta property="og:description" content="Sometimes you get merge conflicts when merging or pulling from a branch. Git will then tell you something like"/>
+
+	<meta property="og:url" content="http://imagej.net/Git_Conflicts"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Git_Conflicts rootpage-Git_Conflicts skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Merge_Conflicts.html#bodyContent">Skip to content</a>, 			<a href="Merge_Conflicts.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Merge_Conflicts.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Merge_Conflicts.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Git_Conflicts&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Git_Conflicts&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Git_Conflicts&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Git Conflicts</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Git Tutorials
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">Git for dummies</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/EGit" title="EGit">Git in Eclipse (EGit)</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_mini_howto" title="Git mini howto">Git mini howto</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_workshop" title="Git workshop">Git workshop</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Git Conflicts</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">Git topic branches</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Notes" title="Git Notes">Git Notes</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git reflogs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_submodule_tutorial" title="Git submodule tutorial">Git submodule tutorial</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Pinpoint_regressions_with_Git" title="Pinpoint regressions with Git">Pinpoint regressions with Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_publish_a_Git_repository" title="How to publish a Git repository">How to publish a Git repository</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_extract_a_subproject" title="How to extract a subproject">How to extract a subproject</a>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Merge_Conflicts.html#Merge_conflicts"><span class="tocnumber">1</span> <span class="toctext">Merge conflicts</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Merge_Conflicts.html#Resolving_merge_conflicts"><span class="tocnumber">2</span> <span class="toctext">Resolving merge conflicts</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Merge_Conflicts.html#Submodule_conflicts"><span class="tocnumber">2.1</span> <span class="toctext">Submodule conflicts</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="Merge_Conflicts.html#Committing_the_resolution"><span class="tocnumber">3</span> <span class="toctext">Committing the resolution</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Merge_Conflicts.html#Using_an_external_merge_tool"><span class="tocnumber">4</span> <span class="toctext">Using an external merge tool</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Merge_conflicts">Merge conflicts</span></h2>
+<p>Sometimes you get <i>merge conflicts</i> when merging or pulling from a branch. Git will then tell you something like
+</p>
+<pre>CONFLICT (content): Merge conflict in Fakefile
+</pre>
+<p>It also tells you to fix the conflicts and then to commit the result. So how to fix the conflicts?
+</p>
+<h2><span class="mw-headline" id="Resolving_merge_conflicts">Resolving merge conflicts</span></h2>
+<p>First a little background: what is a merge conflict, and how does it happen? A merge conflict usually occurs when your current branch and the branch you want to merge into the current branch have diverged. That is, you have commits in your current branch which are not in the other branch, and vice versa.
+</p><p>Typically, there is one branch point, which is the latest common commit. This is the base commit.
+</p><p>Now, when Git merges the other branch into your current branch, it looks at the differences between the base commit and the current revision, and at the differences between the base commit and the other branch's latest commit. When there are unambiguous differences (i.e. only one side changed a certain piece of code), the changes are applied.
+</p><p>The merge conflicts occur when there are disagreeing changes. In that case, your conflicted file will have so-called <i>conflict markers</i>:
+</p>
+<pre>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+my version
+=======
+the other version
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; deadbeef... This is the tip of the other branch
+</pre>
+<p>Between the <i>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</i> and <i>=======</i>, you will find the version as per the changes in your current branch, relative to the base commit.
+</p><p>Between the <i>=======</i> and <i>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</i>, you will find the version according to the other branch, relative to the base commit.
+</p><p>For convenience, after the <i>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</i> and <i>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</i> markers, you will see hints as to which commit that part of the conflict stems from, <i>HEAD</i> of course being the current revision.
+</p><p>To resolve the conflicts, you have to decide what the end result should be. This is not something you can do without thinking, otherwise Git would have done it for you.
+</p><p>For example, merge conflicts in <i>.gitignore</i> are often resolved by taking both the current version and the other version:
+</p>
+<pre>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+jars/VIB-lib.jar
+=======
+plugins/Gabriels_Plugin.jar
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; badcoffe... Add a new plugin to take over the world
+</pre>
+<p>could resolve into
+</p>
+<pre>jars/VIB-lib.jar
+plugins/Gabriels_Plugin.jar
+</pre>
+<p>But beware: if lines were _removed_, you will have to resolve differently. For example,
+</p>
+<pre>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+jars/Blub.jar
+jars/some-lib.jar
+=======
+plugins/Blub.jar
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; abba123... Move Blub.jar to plugins/
+</pre>
+<p>might want to be resolved to
+</p>
+<pre>jars/some-lib.jar
+plugins/Blub.jar
+</pre>
+<p>So you definitely need to think carefully about the resolution!
+</p>
+<h3><span class="mw-headline" id="Submodule_conflicts">Submodule conflicts</span></h3>
+<p>The previous section talked about file conflicts. But of course, conflicts can occur between diverging submodule versions, too. Example (submodule ImageJA):
+</p>
+<pre>Auto-merging ImageJA
+CONFLICT (submodule): Merge conflict in ImageJA
+</pre>
+<p>As a submodule's "content" in the superproject is the submodule's current commit name, the <i>diff</i> will show you something like this:
+</p>
+<pre>diff --cc ImageJA
+index 6335c9b,d245d31..0000000
+--- a/ImageJA
++++ b/ImageJA
+@@@ -1,1 -1,1 +1,1 @@@
+- Subproject commit 6335c9b0b39aa96001b5f9be665aabe3c854bae6
+ -Subproject commit d245d31d53e1f85264113c99609b8379eaee38ee
+++Subproject commit 7bbce1e02aa3ba1971533441e9a50c75764c8e92
+</pre>
+<p>To resolve this you can either make one of the commits the current one in the submodule and then <i>git add</i> the submodule in the superproject. Or you can use <i> git checkout</i> in the superproject right away:
+</p>
+<pre>git checkout --theirs ImageJA
+</pre>
+<p>or for your version:
+</p>
+<pre>git checkout --ours ImageJA
+</pre>
+<h2><span class="mw-headline" id="Committing_the_resolution">Committing the resolution</span></h2>
+<p>After you resolved all the conflicts (if in doubt, where the conflicts are, just call <i>git diff</i>), add the resolved file contents:
+</p>
+<pre>git add &lt;file&gt;
+</pre>
+<p>and then commit the merge:
+</p>
+<pre>git commit -s
+</pre>
+<h2><span class="mw-headline" id="Using_an_external_merge_tool">Using an external merge tool</span></h2>
+<p>For complicated conflicts, you may find it easier to do the resolution using an external merge tool, which can show three versions of the file side-by-side.  You can do this with:
+</p>
+<pre>git mergetool
+</pre>
+<p>... which will offer you a choice of tools.  Here is a screenshot of using <tt>git mergetool --tool=meld</tt>:
+</p><p><a href="http://imagej.net/File:Meld-example.png" class="image"><img alt="Meld-example.png" src="../_images/9/9d/Meld-example.png" width="750" height="400" /></a>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072959
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.034 seconds
+Preprocessor visited node count: 100/1000000
+Preprocessor generated node count: 194/1000000
+Post‐expand include size: 1508/2097152 bytes
+Template argument size: 691/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.974      1 - Template:GitMenu
+100.00%    5.974      1 - -total
+ 79.93%    4.775      1 - Template:Menu
+ 46.00%    2.748     12 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Git_Conflicts&amp;oldid=29410">http://imagej.net/index.php?title=Git_Conflicts&amp;oldid=29410</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:43.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Git_Conflicts&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Git" title="Category:Git">Git</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Git+Conflicts" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Git+Conflicts" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Git_Conflicts" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Git_Conflicts" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Git_Conflicts&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Git_Conflicts&amp;oldid=29410" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Git_Conflicts&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":191});});</script>
+		</body>
+		</html>
+		

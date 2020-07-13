@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>3View import list - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"3View_import_list","wgTitle":"3View import list","wgCurRevisionId":41197,"wgRevisionId":41197,"wgArticleId":1705,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","TrakEM2"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"3View_import_list","wgRelevantArticleId":1705,"wgRequestId":"ad1ff7a33d8db37a3504b2d8","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The purpose of this plugin is to create a text file with a list of files from Gatan’s 3View montage image stacks. This text file can then be used to automatically import all the images into TrakEM2, as they are, stored in the original directories."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="3View import list"/>
+
+	<meta property="og:description" content="The purpose of this plugin is to create a text file with a list of files from Gatan’s 3View montage image stacks. This text file can then be used to automatically import all the images into TrakEM2, as they are, stored in the original directories."/>
+
+	<meta property="og:url" content="http://imagej.net/3View_import_list"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-3View_import_list rootpage-3View_import_list skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="3View_import_list.html#bodyContent">Skip to content</a>, 			<a href="3View_import_list.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="3View_import_list.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/3View_import_list" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:3View_import_list&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=3View_import_list&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=3View_import_list&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>3View import list</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>3View import list (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Nuno Dias
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Nuno Dias
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://dl.dropboxusercontent.com/u/5200940/3view_import_list.zip">link</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> March 2013
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> March 2013
+</td></tr>
+
+
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="3View_import_list.html#Import_3View_montages_into_TrakEM2:_overview"><span class="tocnumber">1</span> <span class="toctext">Import 3View montages into TrakEM2: overview</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="3View_import_list.html#Installation_instructions"><span class="tocnumber">2</span> <span class="toctext">Installation instructions</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="3View_import_list.html#How_to_use"><span class="tocnumber">3</span> <span class="toctext">How to use</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="3View_import_list.html#Small_print:_what_is_allowed_and_the_known_limitations"><span class="tocnumber">4</span> <span class="toctext">Small print: what is allowed and the known limitations</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="3View_import_list.html#Code"><span class="tocnumber">5</span> <span class="toctext">Code</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="3View_import_list.html#Contact"><span class="tocnumber">6</span> <span class="toctext">Contact</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="3View_import_list.html#Acknowledgements"><span class="tocnumber">7</span> <span class="toctext">Acknowledgements</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="3View_import_list.html#See_Also"><span class="tocnumber">8</span> <span class="toctext">See Also</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Import_3View_montages_into_TrakEM2:_overview">Import 3View montages into TrakEM2: overview</span></h2>
+<p>The purpose of this plugin is to create a text file with a list of files from <a rel="nofollow" class="external text" href="http://www.gatan.com/products/sem_products/products/3View_landing.php">Gatan’s 3View</a> montage image stacks. This text file can then be used to automatically import all the images into TrakEM2, as they are, stored in the original directories.
+</p><p>In montage mode, <a rel="nofollow" class="external text" href="http://www.gatan.com/software/">Gatan’s DigitalMicrograph</a> software saves the files for each tile in their own directory. Taking the example of a 2x3 montage with 10 z slices, at the end of the job there will be 6 folders created, with 10 files each. The folders are named following the pattern ‘Montage_xxx’, where xxx is a number (starting at 000).
+</p><p>This plugin will read all Gatan’s files (.dm3) inside the folders and create a file list in a text document (.txt), in a format suitable for importing into TrakEM2, directly from their original directories. You can move the parent directory from the acquisition computer to any other suitable location, of course. The plugin will also attempt to read metadata from the files to automatically calculate the montage configuration (how many tiles in x and y) and to provide rough coordinates for the image positioning, according to image size and overlap. This information will leave the images roughly in place in the TrakEM2 workspace and makes the next step - stitching the images - much quicker.
+</p>
+<h2><span class="mw-headline" id="Installation_instructions">Installation instructions</span></h2>
+<p>The <a rel="nofollow" class="external text" href="https://fiji.sc/Jython_Scripting#Using_a_jython_script_as_a_plugin">Jython plugin installation rules</a> apply. You must <a rel="nofollow" class="external text" href="https://dl.dropboxusercontent.com/u/5200940/3view_import_list.zip">download</a> and copy 3view_import_list.py and MakeImportList4TrakEM2.py together in the same directory. The third file, TrakEM2_import_list.py is optional (see point 3 below). If you want to call the script from your own code, only the second file is necessary. As a suggestion only, you can follow these steps:
+</p>
+<ol><li> Copy 3view_import_list.py and MakeImportList4TrakEM2.py into Fiji directory \Fiji.app\plugins\Scripts\Plugins\Utilities.</li>
+<li> To make the plugin appear in the menu, you have the option of selecting  <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Scripting </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Refresh Jython Scripts</span></em></span>, <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Refresh Menus</span></em></span> or restarting Fiji. Then the menu entry ‘3View import list’ will appear under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Utilities</span></em></span> (the first Utilities folder...)</li>
+<li> Extra: if you need to use different settings other than file type .dm3, other directory names or change the name of the final text file, you can copy TrakEM2_import_list.py to the same folder and select the plugin with this name from the same menu location.</li></ol>
+<h2><span class="mw-headline" id="How_to_use">How to use</span></h2>
+<ol><li> After selecting the plugin from the Fiji menu:</li>
+<li> Select the parent directory where all the ‘Montage_xxx’ folders are located;</li>
+<li> The plugin <i>would</i> try to produce the final text file without any further input from the user if possible, calculating tile configuration and overlap using metadata from the image files, but this feature is not working at the moment. See bold text below.</li>
+<li> The Fiji log and the status messages in Fiji window will show step-by-step information of what is happening. The whole operation should only take a few seconds. You can use this plugin over a network connection, but the actual importing job (step 6 below) should be done with the files placed in a local hard drive or through an extremely fast data connection, for an optimal performance.</li>
+<li> The text file will be saved in the same directory initially selected by the user.</li>
+<li> To actually use the text file, right-click anywhere in the TrakEM2 workspace (the black area) and select <span><em><span style="border-bottom:1px dotted #ccc;"> Import </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import from text file...</span></em></span> After selecting the file, you should get a window asking for some options. These should be left at default, making sure ‘Column separator’ indicates ‘tab’. TrakEM2 will then ask for the location of the files to be imported and you should provide the parent folder where all the ‘Montage_xxx’ directories are located - the very same one you selected when running this plugin. TrakEM2 will then import every file in the list and create the minimaps for fast loading/zooming. This may take a while.</li></ol>
+<h2><span class="mw-headline" id="Small_print:_what_is_allowed_and_the_known_limitations">Small print: what is allowed and the known limitations</span></h2>
+<ol><li> <b>Reading stage coordinates from the metadata is currently not possible. This means the user will always be asked for the tile configuration and overlap.</b></li>
+<li> You can have other directories at the same level of the montage directories (for example, the TrakEM2 data directory). Also, any sub-directories of those montage directories you may create and their contents will be completely ignored. However, you shouldn’t have directories in the parent directory following the same ‘Montage_xxx’ pattern that are actually not part of the dataset. </li>
+<li> You can have other file formats together with the .dm3 files, those will be ignored.</li>
+<li> All .dm3 files within the montage directories will be added to the list.</li>
+<li> The plugin doesn’t check/care if the number of files is not the same in every directory; what is mandatory is to have at least one file in the first, the second and the last directories.</li>
+<li> If for some reason you need to change the numbering of the directories, just make sure they stay in the same order. Non-consecutive numbering is not a problem; directories will simply be read in ascending order.</li>
+<li>If stage position values cannot be read or the calculated tile configuration doesn’t match the number of detected folders, the plugin will ask the user for the x and y tile number and overlap percentage.</li>
+<li>If you plan to add or modify files inside the acquisition directories, because you need to merge interrupted acquisition jobs for example, you have to modify the numbering so that the final 4 digits of the file name match the z position of the image in the stack. Z positions are not being read from the metadata exactly to accommodate for situations like this.<br />Tip: doing this by hand is tedious and error prone; there are however free software applications that can automate this file renaming job easily.</li>
+<li> If you run the slightly modified version, ‘TrakEM2 import list’, you can choose another file format other than .dm3, choose another folder pattern (these are <a href="http://en.wikipedia.org/wiki/Regular_expression" class="extiw" title="wikipedia:Regular expression">Regular Expression</a> patterns) or a different file name for the final text file. However, the image files still need to have metadata for stage coordinates and pixel dimension (size), in the same units, for the automatic calculations to work. Currently I don’t have any ‘non-automatic’ version that will take all required information for the user.<br />Note 1: The numbering in the files must have 4 digits. I <i>may</i> fix this in the future.<br />Note 2: The file format input is case sensitive: '.tif' is not the same as '.TIF'</li>
+<li> To automate or call the plugin from another script, you need to provide the details mentioned in the previous point. See the file 'TrakEM2_import_list.py' for an example.</li>
+<li> The plugin assumes all files have the same pixel dimension (size).</li>
+<li> The plugin assumes pixels to be square and overlap to be the same in x and y.</li>
+<li> The plugin <i>should</i> work independently of operative system (Linux, Windows, Mac). Feedback is appreciated.</li>
+<li> Because of the 45º angle between the FoV and the X/Y axis in the 3View stage, this plugin will probably fail if provided with a dataset acquired with an angle close to zero (ie, from another system/stage). Because of the behavior indicated in point 7, stripping the files from any stage position metadata would be a way to circumvent this limitation. </li>
+<li>As a bonus, you can also use this plugin to create an import file for a single position z stack; in that case it doesn’t matter where the images came from, as no montage calculations are necessary.<br />Note 1: selecting the 'main' plugin for a situation like this using .dm3 files, you still must have the folder name match the pattern ‘Montage_xxx’.<br />Note 2: to create a single-position file list of images in another file format (.tif files for example) using the 'alternate' ‘TrakEM2 import list’ plugin, you don't need to modify the directory name where you keep the files in the options dialog. You can just submit this name in the 'Directory RegExp' field (no Regular Expression special patterns are necessary). However, you must choose its parent directory in the ‘Choose directory’ dialog, as you would in every case. As an example, if you have your image files in C:\data\images\stack1, you should select the directory C:\data\images\ and submit ‘stack1’ as the 'Directory RegExp' value in the ‘Import parameters’ dialog.</li></ol>
+<h2><span class="mw-headline" id="Code">Code</span></h2>
+<p>3view_import_list.py
+</p>
+<pre class="brush:python">
+import sys
+from ij import IJ
+from ij.io import DirectoryChooser
+from java.lang.System import getProperty
+sys.path.append(getProperty("fiji.dir") + "/plugins/Scripts/plugins/Utilities")
+from MakeImportList4TrakEM2 import make_list
+
+dc = DirectoryChooser('Select 3View dataset base directory')
+folder = dc.getDirectory()
+
+if folder is None:
+	IJ.log('User canceled the folder selection!')
+else:
+	dir_RegExp = 'Montage_\d{3}'
+	list_filename = 'TrakEM2_import.txt'
+	filetype = '.dm3'
+	how_many = make_list(filetype, folder, dir_RegExp, list_filename)
+	IJ.showProgress(1,1) #in case there is an error, the progress bar still disappears
+	IJ.showStatus('Completed. Files added to import list: ' + str(how_many))
+</pre>
+<p>TrakEM2_import_list.py
+</p>
+<pre class="brush:python">
+import sys
+from ij import IJ
+from ij.io import DirectoryChooser
+from ij.gui import GenericDialog
+from java.lang.System import getProperty
+sys.path.append(getProperty("fiji.dir") + "/plugins/Scripts/plugins/Utilities")
+from MakeImportList4TrakEM2 import make_list
+
+def getParameters():  
+  gd = GenericDialog("Import parameters")
+  gd.addStringField("Import list name", "TrakEM2_import.txt")
+  gd.addStringField("Directory RegExp", "Montage_\d{3}")
+  gd.addStringField("Filetype filter", ".tif")
+  gd.showDialog()  
+  #  
+  if gd.wasCanceled():  
+    print "User canceled dialog!"  
+    return  
+  # Read out the options  
+  list_name = gd.getNextString()  
+  reg_exp = gd.getNextString()
+  ftype = gd.getNextString()
+  return list_name, reg_exp, ftype
+
+dc = DirectoryChooser('Select 3View dataset base directory')
+folder2 = dc.getDirectory()
+
+if folder2 is None:
+	IJ.log('User canceled the folder selection!')
+else:
+	param = getParameters()  
+	if param is not None:  
+		list_name, reg_exp, ftype = param
+		how_many = make_list(ftype, folder2, reg_exp, list_name)
+		IJ.showProgress(1,1) #in case there is an error, the progress bar still disappears
+		IJ.showStatus('Completed. Files added to import list: ' + str(how_many))
+</pre>
+<p>MakeImportList4TrakEM2.py
+</p>
+<pre class="brush:python">
+import os, re, math, sys
+from ij import IJ
+from ij.gui import GenericDialog
+from loci.formats import ImageReader, MetadataTools
+
+def read_meta(filen2):
+	rf = ImageReader()
+	meta = MetadataTools.createOMEXMLMetadata()
+	rf.setMetadataStore(meta)
+	rf.setId(filen2)
+	# get stage position:
+	planeCount = meta.getPlaneCount(0)
+	for p in range(planeCount):
+		posX = float(str(meta.getPlanePositionX(0, p)))
+		posY = float(str(meta.getPlanePositionY(0, p)))
+	try:
+		posX, posY
+	except NameError:
+		posX = posY = 0
+	return rf, meta, posX, posY
+
+def getOptions(X, Y, Ol, mnts):
+	IJ.showStatus('Asking user for input...')
+	gd = GenericDialog("Montage configuration")
+	gd.addNumericField("Number of tiles in X", X, 0)  # show 0 decimals
+	gd.addNumericField("Number of tiles in Y", Y, 0)  # show 0 decimals
+	gd.addNumericField("Overlap (%)", Ol, 1)  # show 1 decimal
+	gd.showDialog()  
+	if gd.wasCanceled():
+		IJ.log('User canceled dialog. Text file not created')
+		return
+	# Read the input into variables
+	pos_x = int(gd.getNextNumber())
+	pos_y = int(gd.getNextNumber())
+	if (pos_x * pos_y)&#160;!= mnts:
+		IJ.log('The configuration you provided (' + str(pos_x) + 'X by ' + str(pos_y) + 'Y) and number of detected directories (' + str(mnts) + ') do not match.\nText file not created.')
+		IJ.showMessage('The configuration you provided and number of detected directories do not match.\nText file not created.')
+		return
+	overlp = gd.getNextNumber()
+	return pos_x, pos_y, overlp
+  
+def make_list(filetype, folder, dir_RegExp, list_filename):	
+	IJ.log('--- Begin creating 3View file list for TrakEM2 import ---')
+	IJ.showStatus('Starting...')
+	x_now = y_now = counter1 = 0
+	import_list = ''
+
+	try:
+		f = open(folder + list_filename, 'w') # Save the text file for importing in same root folder, auto overwrite
+	except IOError:
+   		IJ.log('Error: can\'t create file in selected directory')
+   		return
+   	else:
+		IJ.showStatus('Reading directories...')
+   		subdirs = sorted(os.walk(folder).next()[1]) # create list with the contents of the directory, selecting only 1st level directories and sorting them ascending. Sorting is fundamental for correctly reading of stage position values and for correct positioning os the tiles in each montage
+   		subdirs[:] = [sd for sd in subdirs if re.match(dir_RegExp, sd, flags=0)] # filter the dirs that match the RegExp. For 3View the name is 'Montage_xxx'. This allows for some flexibility: users can have other folders together with the stack folders such as TrakEM2 minimaps folder
+   		montage_size = len(subdirs) # count how many dirs were selected - to calculate configuration of montage and progress reporting
+   		if montage_size == 0:
+   			IJ.log('Error: No directories found matching RegExp pattern \'' + dir_RegExp + '\' in ' + folder)
+			return
+   		try:
+   			scnd_dir = subdirs[1] # check if there is more than one folder, setting at the same time the variable for the second (folder in the list) index position - [1]
+   		except IndexError:
+   			# since there is only one folder, move on with settings to create a file list for just one position. The whole else: part below will be skipped
+   			IJ.log('Only one directory detected. Creating file list for single position z-stack')
+   			x_coord = y_coord = 1
+   			x_now = y_now = x_img_size = y_img_size = overlap = 0
+   		else:
+   			IJ.log(str(montage_size) + ' matching directories found in ' + folder)
+   			# get values for calc of montage configuration and overlap
+   			files_2nd_dir = os.listdir(os.path.join(folder,scnd_dir))
+   			files_2nd_dir[:] = [fn1 for fn1 in files_2nd_dir if os.path.isfile(os.path.join(folder,scnd_dir,fn1))and fn1.endswith(filetype)] 
+   			IJ.showStatus('Reading stage coordinates 1/3...')
+			try: # stop if no files are found in the 2nd folder:
+   				r1, meta1, pos2_Xstage, pos2_Ystage = read_meta(os.path.join(folder, scnd_dir, files_2nd_dir[0])) # pick a file from the second folder to read metadata
+   				r1.close()
+   			except IndexError:
+   				IJ.log('Error: the 2nd directory in the list does not contain any files of type ' + filetype)
+   				return
+   			last_dir = subdirs[-1] # pick one file from the last folder to read metadata
+   			files_lastdir = os.listdir(os.path.join(folder,last_dir))
+   			files_lastdir[:] = [fn2 for fn2 in files_lastdir if os.path.isfile(os.path.join(folder,last_dir,fn2))and fn2.endswith(filetype)]
+   			IJ.showStatus('Reading stage coordinates 2/3...')
+   			try:
+   				r2, meta2, posLast_Xstage, posLast_Ystage = read_meta(os.path.join(folder, last_dir, files_lastdir[0]))
+   				r2.close()
+   			except IndexError:
+   				IJ.log('Error: the last directory in the list does not contain any files of type ' + filetype)
+   				return
+   		for d, dirs in enumerate(subdirs):
+   			filenames = sorted(os.listdir(os.path.join(folder,dirs))) # the sorting is just to try and hide the darker, overlap areas of the image to be in front when displaying the montage in TrakEM2. This is probably not necessary if some contrast homogenization is performed after importing
+   			filenames[:] = [fn3 for fn3 in filenames if os.path.isfile(os.path.join(folder,dirs,fn3))and fn3.endswith(filetype)] # make sure there are no dirs ending in desired filetype (one never knows~) and filter for the filetype
+   			filenames_size = len(filenames) # for progress bar only
+   			for p, filen in enumerate(filenames):
+				try: # check if metadata was read already and extract metadata info from the 1st file on the list - if it was not, get this info by executing the except clause. This makes the metadata routine run only once in the beggining. Being nested inside the else: stm above, metadata is only read if it's not a single position aquisition - in this case it wouldn't be necessary. Also, complete calc of overlap and montage configuration
+					overlap
+				except NameError:
+					IJ.showStatus('Reading stage coordinates 3/3...')
+					try:
+						r3, meta3, pos1_Xstage, pos1_Ystage = read_meta(os.path.join(folder, dirs, filen))
+					except IndexError:
+   						IJ.log('Error: the first directory in the list does not contain any files of type ' + filetype)
+   						r3.close()
+   						return
+					IJ.showStatus('Reading more metadata...')
+					x_img_size = r3.getSizeX()
+					y_img_size = r3.getSizeY()
+					r3.close()
+					pSizeX = float(str(meta3.getPixelsPhysicalSizeX(0))) # getPixelsPhysicalSizeX(0) it's an object, and needs both str and float before it can be used in calculations
+					pSizeY = float(str(meta3.getPixelsPhysicalSizeY(0)))
+					IJ.log('Read image size ' + str(x_img_size) + ' X ' + str(y_img_size))
+					IJ.log('Read pixel dimensions ' + str(round(pSizeX * 1000, 1)) + ' X ' + str(round(pSizeY * 1000, 1)) + ' nm')
+					# next 2 are needed to calculate overlap:
+					deltaX1 = pos2_Xstage - pos1_Xstage
+					deltaY1 = pos2_Ystage - pos1_Ystage #only for single column montage
+					# if deltaX1=0 then something went wrong with the metadata reading and the user has to manually input the coordinate values. note that for the case of a single folder deltaX1 would theoretically also be =0 (but this code doesn't even allow for that, since it requires at least 2 folders for the calculation)
+					#(or close to zero - most likely in a case of 'multiple ROI' acquistion (there would be stage movement) instead of 'montage') but that situation was already covered above and at that step the overlap var was initiated; in that situation this whole except NameError: is skipped and no deltaX1 calc is ever performed
+					if deltaX1 == 0:
+						IJ.log('Warning: Could not read stage position from files. Asking for user input')
+						options1 = getOptions(0, 0, 0, montage_size)
+						if options1 is None:
+							overlap = 0 # to prevent "UnboundLocalError: local variable 'overlap' referenced before assignment". Rrom http://docs.python.org/2/reference/simple_stmts.html&#160;: "When return passes control out of a try statement with a finally clause, that finally clause is executed before really leaving the function."
+							return
+						x_coord, y_coord, ovlap1 = options1
+						overlap = 1 - (ovlap1 / 100)
+						IJ.log('User provided montage configuration ' + str(x_coord) + 'X by ' + str(y_coord) + 'Y and ' + str(ovlap1) + '% overlap')
+					# if deltaX1 &gt; 0 means the second position(dir) is in the X axis(to the right instead of down); otherwise the next folder is in the Y axis and therefore a single column montage# this is because the stage is at an angle (45  without scan rotation) with the montage axis This check is not robust enough to accomodate a 0 deg stage (it may not work with images acquired without a significant axis angle in relation to the images, ie, not with 3View)# also: assumes the coordinate system is always the same in relation to the images; if there are invertions, then this check needs to be reworked
+					elif deltaX1 &gt; 0:
+						IJ.showStatus('Calculating parameters...')
+						overlap = round(math.hypot(deltaX1, deltaY1) / float(x_img_size) * pSizeX, 1) # assumes overlap and pixel size to be the same in x and y
+						IJ.log('Calculated overlap: ' + str((1 - round(overlap, 1)) * 100) + '%')
+						# calc max stage movement distance measured between 1st and last montage 'positions'
+						deltaX2 = posLast_Xstage-pos1_Xstage
+						deltaY2 = posLast_Ystage-pos1_Ystage
+						# then to 'convert' the stage distance into 'real' montage span distances some more trig needs to be applied because the 45 deg rotation of the axis relative to the image acquisition (FoV)
+						bigger_angle = math.atan(deltaY2 / deltaX2) # arc tangent in radians
+						smaller_angle = bigger_angle - math.radians(45)
+						# hypotenuse of the rectangle formed between the 1st and the last stage position
+						montage_hyp = math.hypot(deltaX2, deltaY2)
+						# it's a rectangle, the hypotenuse angle will vary. Calcs for x lenght is 'adjecent side', so cos(x) and calcs for y is 'oposite side', so sin(x)
+						montage_Xlenght = round(math.cos(smaller_angle) * montage_hyp, 3)
+						montage_Yheight = round(math.sin(smaller_angle) * montage_hyp, 3)
+						# and finally calculate the number of tiles in the x and y axis, assuming stage movement is reasonably accurate
+						x_coord = int(round(montage_Xlenght / (x_img_size * overlap), 0)) + 1
+						y_coord = int(round(montage_Yheight / (y_img_size * overlap), 0)) + 1
+						IJ.log('Montage configuration calculated to be ' + str(x_coord) + 'X by ' + str(y_coord) + 'Y')
+						if (x_coord * y_coord)&#160;!= montage_size:
+							# create dialog to get user input because the calculated configuration doesn't match the number of folders
+							IJ.log('Warning: Calculated montage configuration and total number of folders found do not match')
+							options2 = getOptions(x_coord, y_coord, overlap, montage_size)
+							if options2 is None:
+								overlap = 0 # to prevent UnboundLocalError: local variable 'overlap' referenced before assignment
+								return
+							x_coord, y_coord, ovlap2 = options2
+							overlap = 1 - (ovlap2 / 100)
+							IJ.log('User provided montage configuration ' + str(x_coord) + 'X by ' + str(y_coord) + 'Y and ' + str(ovlap2) + '% overlap')
+					else:
+						# The alternative is a single column montage and for that case the calculations are more simple
+						IJ.showStatus('Calculating parameters...')
+						overlap = round(math.hypot(deltaX1, deltaY1) / (y_img_size * pSizeY), 1)
+						IJ.log('Calculated overlap: ' + str((1 - overlap) * 100) + '%')
+						x_coord = 1
+						y_coord = montage_size
+						IJ.log('Montage configuration should be ' + str(x_coord) + 'X by ' + str(y_coord) + 'Y')
+				finally:
+					IJ.showStatus('Adding files to import list...')
+					reg_expr4_zval = '.+(\\d{4})\\' + filetype + '$' # RegExp to get the z position (number) from the filename
+					find_zval = re.match(reg_expr4_zval, filen, flags=0) # get the last 4 digits from the filename
+					z_now = int(find_zval.group(1))	# should be the z order/position of the file in the stack. int() removes leading zeros
+					# append the file info to the list ASCII 13=Enter&#160;; 92=\&#160;; 9=TAB
+					import_list = os.path.join(dirs, filen) + chr(9) + str(int(x_now*x_img_size*overlap)) + chr(9) + str(int(y_now*y_img_size*overlap)) + chr(9) + str(z_now) + chr(13) + import_list
+					counter1 += 1
+					progress = int(((((p + 1)/ float(filenames_size)) + d) * 100))
+					IJ.showProgress(progress, montage_size * 100)
+			x_now += 1 # gone through the contents of one folder; before moving to the next, move the montage position counters
+			if (x_now == x_coord): # if all x positions in a row are recorded, reset x and move to next row (y position)
+				y_now += 1
+				x_now = 0
+		f.write(import_list.strip())
+		f.close()
+		IJ.log(str(counter1) + ' entries were written to the file ' + f.name)
+		return counter1
+</pre>
+<h2><span class="mw-headline" id="Contact">Contact</span></h2>
+<p>All comments, questions or suggestions are very welcome. Please send an email to  nuno.dias at emez.ethz.ch or ngdias at ibmc.up.pt.
+</p>
+<h2><span class="mw-headline" id="Acknowledgements">Acknowledgements</span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://loci.wisc.edu/people/curtis-rueden">Curtis Rueden</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/fiji-tutorial/">This page</a> prepared by Albert Cardona</li>
+<li><a rel="nofollow" class="external text" href="https://fiji.sc/Jython_Scripting">This other page</a> prepared by Albert Cardona</li>
+<li>Many, many people who ask and reply to questions about Python all over the Internet</li></ul>
+<h2><span class="mw-headline" id="See_Also">See Also</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.ini.uzh.ch/~acardona/trakem2_manual.html#importing_list">Importing list</a> How the text file should look like.</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064447
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.026 seconds
+Preprocessor visited node count: 348/1000000
+Preprocessor generated node count: 1271/1000000
+Post‐expand include size: 2192/2097152 bytes
+Template argument size: 474/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   11.173      1 - -total
+ 62.98%    7.037      4 - Template:Bc
+ 33.27%    3.717      1 - Template:Infobox
+ 17.88%    1.997      5 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=3View_import_list&amp;oldid=41197">http://imagej.net/index.php?title=3View_import_list&amp;oldid=41197</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:53.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=3View_import_list&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:TrakEM2" title="Category:TrakEM2">TrakEM2</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=3View+import+list" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=3View+import+list" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/3View_import_list" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/3View_import_list" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=3View_import_list&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=3View_import_list&amp;oldid=41197" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=3View_import_list&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":181});});</script>
+		</body>
+		</html>
+		

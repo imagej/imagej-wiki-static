@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>3D Viewer: Custom Surface - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"3D_Viewer:_Custom_Surface","wgTitle":"3D Viewer: Custom Surface","wgCurRevisionId":40834,"wgRevisionId":40834,"wgArticleId":11040,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"3D_Viewer:_Custom_Surface","wgRelevantArticleId":11040,"wgRequestId":"8fd33d84e6eb6b907806b6ef","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="(Return to the Developer Documentation page)&#10;(Return to the main 3D_Viewer page)"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="3D Viewer: Custom Surface"/>
+
+	<meta property="og:description" content="(Return to the Developer Documentation page)&#10;(Return to the main 3D_Viewer page)"/>
+
+	<meta property="og:url" content="http://imagej.net/3D_Viewer:_Custom_Surface"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-3D_Viewer_Custom_Surface rootpage-3D_Viewer_Custom_Surface skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="./3D_Viewer:_Custom_Surface.html#bodyContent">Skip to content</a>, 			<a href="./3D_Viewer:_Custom_Surface.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="./3D_Viewer:_Custom_Surface.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/3D_Viewer:_Custom_Surface" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:3D_Viewer:_Custom_Surface&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=3D_Viewer:_Custom_Surface&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=3D_Viewer:_Custom_Surface&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>3D Viewer: Custom Surface</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>(Return to the <a href="http://imagej.net/3D_Viewer:_Developer_Documentation" title="3D Viewer: Developer Documentation">Developer Documentation</a> page)<br />
+(Return to the main <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D_Viewer</a> page)
+</p><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="./3D_Viewer:_Custom_Surface.html#How_to_display_and_show_custom_surfaces"><span class="tocnumber">1</span> <span class="toctext">How to display and show custom surfaces</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="./3D_Viewer:_Custom_Surface.html#Simple_meshes:_lines.2C_triangles.2C_points.2C_..."><span class="tocnumber">1.1</span> <span class="toctext">Simple meshes: lines, triangles, points, ...</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="./3D_Viewer:_Custom_Surface.html#More_complex_meshes.2C_like_spheres.2C_tubes.2C_etc"><span class="tocnumber">1.2</span> <span class="toctext">More complex meshes, like spheres, tubes, etc</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="./3D_Viewer:_Custom_Surface.html#Display_many_surfaces_efficiently"><span class="tocnumber">1.3</span> <span class="toctext">Display many surfaces efficiently</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="./3D_Viewer:_Custom_Surface.html#The_class_hierarchy_of_the_customnode_package"><span class="tocnumber">1.4</span> <span class="toctext">The class hierarchy of the customnode package</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="./3D_Viewer:_Custom_Surface.html#Full_control_over_custom_nodes"><span class="tocnumber">1.5</span> <span class="toctext">Full control over custom nodes</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="./3D_Viewer:_Custom_Surface.html#Important_methods"><span class="tocnumber">1.6</span> <span class="toctext">Important methods</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="How_to_display_and_show_custom_surfaces">How to display and show custom surfaces</span></h2>
+<p>You can download example source code for this HowTo <a href="http://imagej.net/3D_Viewer:_Example_code" title="3D Viewer: Example code">here</a>.
+</p><p><br />
+Before reading this HowTo, it may be helpful to read <a href="http://imagej.net/3D_Viewer:_Content_Structure" title="3D Viewer: Content Structure">The relation between Content and Universe</a>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Simple_meshes:_lines.2C_triangles.2C_points.2C_...">Simple meshes: lines, triangles, points, ...</span></h3>
+<p>One strength of the viewer is to make displaying custom meshes very straightforward. User-defined points, lines, triangle or quadrangle meshes can be displayed very easily:
+</p>
+<pre class="brush:java; first-line:'26'">
+	// Create a set of points
+	List&lt;Point3f&gt; mesh = new ArrayList&lt;Point3f&gt;();
+	mesh.add(new Point3f(-100, -100, 50));
+	mesh.add(new Point3f(100, -100, 50));
+	mesh.add(new Point3f(0, 100, 50));
+
+	// Create a universe and show it
+	Image3DUniverse univ = new Image3DUniverse();
+	univ.showAttribute(
+			Image3DUniverse.ATTRIBUTE_COORD_SYSTEM, false);
+	univ.show();
+
+	// Add the mesh as points
+	CustomPointMesh cm = new CustomPointMesh(mesh);
+	cm.setColor(new Color3f(0, 1, 0));
+	univ.addCustomMesh(cm, "points");
+	cm.setPointSize(10);
+
+	// Add the mesh as a triangle
+	CustomTriangleMesh tm = new CustomTriangleMesh(mesh);
+	tm.setColor(new Color3f(0, 0, 1));
+	Content c = univ.addCustomMesh(tm, "triangle");
+
+	// Add the mesh as a triangle
+	mesh.add(new Point3f(mesh.get(0))); // to close the path
+	CustomLineMesh lm = new CustomLineMesh(
+			mesh, CustomLineMesh.CONTINUOUS);
+	lm.setColor(new Color3f(1, 0, 0));
+	univ.addCustomMesh(lm, "lines");
+	lm.setLineWidth(5);
+	lm.setPattern(CustomLineMesh.DASH);
+
+	// after adding the CustomMesh to the universe, we have a
+	// reference to the Content, which can be used for further
+	// modification
+	c.setTransparency(0.5f);
+</pre>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="More_complex_meshes.2C_like_spheres.2C_tubes.2C_etc">More complex meshes, like spheres, tubes, etc</span></h3>
+<p>There exist also convenience methods in <code>ImageJ3DUniverse</code> for adding custom meshes, so that it is not necessary create the <code>CustomMesh</code> oneself. The corresponding methods can be found below.
+</p><p>To create more complex meshes, one can use the helper methods of the class <code>Mesh_Maker</code>:
+</p>
+<pre class="brush: java; first-line: 63; font-size: '100%';">
+	// Use Mesh_Maker to create more complex surfaces like spheres,
+	// tubes or discs:
+
+	// define a sphere with center at the origin and radius 50
+	double x = 0, y = 0, z = 30, r = 50;
+	int meridians = 24;
+	int parallels = 24;
+	mesh = Mesh_Maker.createSphere(x, y, z, r, meridians, parallels);
+	Color3f color = null;
+	univ.addTriangleMesh(mesh, color, "sphere");
+</pre>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Display_many_surfaces_efficiently">Display many surfaces efficiently</span></h3>
+<p>Assume for example that one would wish to display 1000 spheres together. One could of course add each sphere individually, but there is a more efficient way:
+</p><p>One can use <code>Mesh_Maker</code> to create a mesh for each of these spheres, and concatenate the resulting lists, so that one obtains one big list, which can then be added as one <code>CustomMesh</code> (in case of spheres this would be a <code>CustomTriangleMesh</code>).
+</p><p>This works only if the type of all the meshes is the same; one can not combine line meshes with point meshes, for example.
+</p><p>There is also another disadvantage; adding each sphere individually means that each sphere is represented as an individual <code>Content</code>, whose attributes can be changed separately. Adding all the spheres as a combined mesh will result in only one <code>Content</code>, whose attributes will affect all the spheres.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="The_class_hierarchy_of_the_customnode_package">The class hierarchy of the <code>customnode</code> package</span></h3>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:582px;"><div class="MediaTransformError" style="width: 580px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:3DViewer-class-diagram-customnode.png" class="internal" title="Enlarge"></a></div>Relation between classes in the <code>customnode</code> package.</div></div></div></div>
+<p><br />
+<code>CustomMeshNode</code> extends <code>ContentNode</code>, and therefore implements all the abstract methods in <code>ContentNode</code>. It has a reference to <code>CustomMesh</code>, which is an abstract class, implemented by <code>CustomPointMesh</code>, <code>CustomLineMesh</code>, <code>CustomTriangleMesh</code> and <code>CustomQuadMesh</code>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Full_control_over_custom_nodes">Full control over custom nodes</span></h3>
+<p><code>CustomMesh</code> implements the basic functions, as well as a default Java3D <code>Appearance</code> object, which is used in the subclasses. Since <code>CustomMesh</code> extends the <code>Shape3D</code> class, it provides a methods <code>setAppearance()</code> and <code>setGeometry()</code>, which give Java3D-experienced users full control over the content of their <code>CustomMeshNode</code>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Important_methods">Important methods</span></h3>
+<p><code><b>Image3DUniverse:</b></code>
+</p>
+<pre class="brush:java; first-line:'1'">
+public Content addCustomMesh(CustomMesh mesh, String name);
+
+public Content addLineMesh(List&lt;Point3f&gt; mesh, Color3f color, String name,
+		boolean strips);
+
+public Content addPointMesh(List&lt;Point3f&gt; mesh, Color3f color, String name);
+
+public Content addQuadMesh(List&lt;Point3f&gt; mesh, Color3f color, String name);
+
+public Content addTriangleMesh(List&lt;Point3f&gt; mesh, Color3f color, String name);
+</pre>
+<p><code><b>CustomMesh:</b></code><br />
+The methods of <code>CustomMesh</code> are inherited by <code>CustomLineMesh</code>, <code>CustomPointMesh</code>,<code>CustomTriangleMesh</code> and <code>CustomQuadMesh</code>. They can be used next to similar functions which are provided by the <code>Content</code> class, once the wrapping <code>Content</code> is created, however, it is recommended to use the methods there.
+</p>
+<pre class="brush: java; first-line: 1; font-size: '100%';">
+	public Color3f getColor();
+
+	public void setColor(Color3f color);
+
+	public float getTransparency();
+
+	public void setTransparency(float transparency);
+
+	public boolean isShaded();
+
+	public void setShaded(boolean b);
+</pre>
+<p><code><b>CustomLineMesh:</b></code>
+</p>
+<pre class="brush: java; first-line: 1; font-size: '100%';">
+	public void setPattern(int pattern);
+	
+	public void setAntiAliasing(boolean b);
+	
+	public void setLineWidth(float w);
+</pre>
+<p><code><b>CustomPointMesh:</b></code>
+</p>
+<pre class="brush: java; first-line: 1; font-size: '100%';">
+	public void setPointSize(float pointsize);
+	
+	public void setAntiAliasing(boolean b);
+</pre>
+<p><code><b>CustomTriangleMesh:</b></code><br />
+no additional methods.
+</p><p><code><b>CustomQuadMesh:</b></code><br />
+no additional methods.
+</p><p><code><b>Mesh_Maker:</b></code>
+</p>
+<pre class="brush: java; first-line: 1; font-size: '100%';">
+	static public List createSphere(double x, double y, double z, double r);
+
+	static public List createSphere(double x, double y, double z, double r,
+				int meridians, int parallels);
+
+	static public List createTube(double[] x,  double[] y,  double[] z,
+				double[] r,  int parallels,  boolean do_resample);
+
+	static public List createDisc(double x, double y, double z,
+				double nx, double ny, double nz,
+				double radius,
+				int edgePoints );
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064437
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.025 seconds
+Preprocessor visited node count: 60/1000000
+Preprocessor generated node count: 172/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=3D_Viewer:_Custom_Surface&amp;oldid=40834">http://imagej.net/index.php?title=3D_Viewer:_Custom_Surface&amp;oldid=40834</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 October 2019, at 06:34.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=3D_Viewer:_Custom_Surface&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=3D+Viewer%3A+Custom+Surface" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=3D+Viewer%3A+Custom+Surface" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/3D_Viewer:_Custom_Surface" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/3D_Viewer:_Custom_Surface" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=3D_Viewer:_Custom_Surface&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=3D_Viewer:_Custom_Surface&amp;oldid=40834" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=3D_Viewer:_Custom_Surface&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":174});});</script>
+		</body>
+		</html>
+		

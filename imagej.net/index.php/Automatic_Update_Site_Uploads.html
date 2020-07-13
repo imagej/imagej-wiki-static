@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Automatic Update Site Uploads - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Automatic_Update_Site_Uploads","wgTitle":"Automatic Update Site Uploads","wgCurRevisionId":40939,"wgRevisionId":40939,"wgArticleId":3372,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Automatic_Update_Site_Uploads","wgRelevantArticleId":3372,"wgRequestId":"99a78f62d9b13a0e5ceaaedd","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Travis CI can be used to automatically build a repository in response to code changes. To ease the maintenance of ImageJ update sites, we can use Travis to automatically upload the latest version of a site. This is done by creating a .travis.yml file in your update site's GitHub repository that does the following:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushYaml.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Automatic Update Site Uploads"/>
+
+	<meta property="og:description" content="Travis CI can be used to automatically build a repository in response to code changes. To ease the maintenance of ImageJ update sites, we can use Travis to automatically upload the latest version of a site. This is done by creating a .travis.yml file in your update site's GitHub repository that does the following:"/>
+
+	<meta property="og:url" content="http://imagej.net/Automatic_Update_Site_Uploads"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Automatic_Update_Site_Uploads rootpage-Automatic_Update_Site_Uploads skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Automatic_Update_Site_Uploads.html#bodyContent">Skip to content</a>, 			<a href="Automatic_Update_Site_Uploads.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Automatic_Update_Site_Uploads.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Automatic_Update_Site_Uploads" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Automatic_Update_Site_Uploads&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Automatic_Update_Site_Uploads&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Automatic_Update_Site_Uploads&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Automatic Update Site Uploads</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This guide is intended for maintaining non-core update sites by automating builds with <a rel="nofollow" class="external text" href="https://travis-ci.org/">Travis CI</a>.<br />
+<ul><li> The <a href="http://imagej.net/How_to_upload_to_core_update_sites" title="How to upload to core update sites">core update sites</a> are updated manually or by <a href="http://imagej.net/Travis_CI" class="mw-redirect" title="Travis CI">Travis CI</a>.</li>
+<li> Travis CI is useful because it can freely build any open source project with minimal effort. </td></li></ul>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Update Sites
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Update_Sites" title="Update Sites">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Following_an_update_site" title="Following an update site">Following an update site</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_set_up_and_populate_an_update_site" title="How to set up and populate an update site">Creating your own update site</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Personal_Update_Site_Terms_of_Service" title="Personal Update Site Terms of Service">Terms of Service for personal update  sites</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Automatically upload your site</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_upload_to_core_update_sites" title="How to upload to core update sites">Uploading to core update sites</a>
+</td></tr>
+<tr>
+<td>  <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">List of update sites</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Update_site_FAQ" title="Update site FAQ">Update site FAQ</a>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Automatic_Update_Site_Uploads.html#Requirements"><span class="tocnumber">1</span> <span class="toctext">Requirements</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Automatic_Update_Site_Uploads.html#Additional_resources"><span class="tocnumber">2</span> <span class="toctext">Additional resources</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Automatic_Update_Site_Uploads.html#Automatic_Uploads_via_Travis_CI"><span class="tocnumber">3</span> <span class="toctext">Automatic Uploads via Travis CI</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Automatic_Update_Site_Uploads.html#Encrypting_your_password"><span class="tocnumber">3.1</span> <span class="toctext">Encrypting your password</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Automatic_Update_Site_Uploads.html#Non-Mavenized_Files"><span class="tocnumber">3.2</span> <span class="toctext">Non-Mavenized Files</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="Automatic_Update_Site_Uploads.html#Caveats"><span class="tocnumber">4</span> <span class="toctext">Caveats</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Automatic_Update_Site_Uploads.html#See_Also"><span class="tocnumber">5</span> <span class="toctext">See Also</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Requirements">Requirements</span></h1>
+<ul><li> An open-source project hosted on <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a></li>
+<li> Logging in to <a rel="nofollow" class="external text" href="https://travis-ci.org/auth">Travis CI</a> with your corresponding GitHub account</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/travis-ci/travis.rb#installation">Travis command line tools</a></li>
+<li> An <a href="http://imagej.net/Special:CreateAccount" title="Special:CreateAccount">account on this wiki</a></li>
+<li> An <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">initialized upload password</a>. (<b>NOTE</b> - <i>not</i> necessarily the same as your Wiki password)</li></ul>
+<h1><span class="mw-headline" id="Additional_resources">Additional resources</span></h1>
+<ul><li> <a rel="nofollow" class="external text" href="https://docs.travis-ci.com/user/getting-started/">Travis CI user guide</a></li></ul>
+<h1><span class="mw-headline" id="Automatic_Uploads_via_Travis_CI">Automatic Uploads via Travis CI</span></h1>
+<p>Travis CI can be used to automatically build a repository in response to code changes. To ease the maintenance of ImageJ update sites, we can use Travis to automatically upload the latest version of a site. This is done by creating a <code>.travis.yml</code> file in your update site's GitHub repository that does the following:
+</p>
+<ol><li> Create a fresh ImageJ.app</li>
+<li> Build the update site's repository and move the required artifacts (e.g. <code>.jars</code>) to their intended locations in the ImageJ.app</li>
+<li> Upload the local update site state to your Wiki update site</li></ol>
+<p>As a starting point you can copy the following <code>.travis.yml</code>&#160;:
+</p>
+<pre class="brush:yaml">
+language: java
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.m2/
+
+install:
+  - mvn package
+
+script:
+  - ./.travis-deploy.sh
+
+branches:
+  only:
+    - master
+</pre>
+<p>and this script <code>.travis-deploy.sh</code>&#160;:
+</p>
+<pre class="brush:bash">
+#!/usr/bin/env sh
+set -e
+
+# Define some variables
+export USER="Username"
+export UPDATE_SITE="Update_Site"
+
+export IJ_PATH="$HOME/Fiji.app"
+export URL="http://sites.imagej.net/$UPDATE_SITE/"
+export IJ_LAUNCHER="$IJ_PATH/ImageJ-linux64"
+export PATH="$IJ_PATH:$PATH"
+
+# Install ImageJ
+mkdir -p $IJ_PATH/
+cd $HOME/
+wget --no-check-certificate https://downloads.imagej.net/fiji/latest/fiji-linux64.zip
+unzip fiji-linux64.zip
+
+# Install the package
+cd $TRAVIS_BUILD_DIR/
+mvn clean install -Dscijava.app.directory=$IJ_PATH -Ddelete.other.versions=true
+
+# Deploy the package
+# Deploy the package
+$IJ_LAUNCHER --update edit-update-site $UPDATE_SITE $URL "webdav:$USER:$WIKI_UPLOAD_PASS" .
+$IJ_LAUNCHER --update update
+$IJ_LAUNCHER --update upload --update-site $UPDATE_SITE --force-shadow jars/YOUR-FILE.jar
+</pre>
+<p>Don't forget to replace 
+</p>
+<pre class="brush:plain">
+export USER="Username"
+export UPDATE_SITE="Update_Site"
+</pre>
+<p>by your informations.
+</p>
+<h2><span class="mw-headline" id="Encrypting_your_password">Encrypting your password</span></h2>
+<p>To upload to your wiki update site, you will need to provide Travis CI with a <code>WIKI_UPLOAD_PASS</code> environment variable, which should evaluate to the <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">upload password</a> of the Wiki account performing the upload. To do so securely, follow the instructions on the <a rel="nofollow" class="external text" href="https://docs.travis-ci.com/user/environment-variables/#Encrypting-Variables-Using-a-Public-Key">encrypting environment variables</a>.
+</p><p>Note that when you run:
+</p>
+<pre class="brush:bash">
+$ travis encrypt WIKI_UPLOAD_PASS=super_secret --add env.matrix
+</pre>
+<p>in your repository, the <code>.travis.yml</code> will automatically be updated appropriately. You can simply commit and push the changes.
+</p>
+<h2><span class="mw-headline" id="Non-Mavenized_Files">Non-Mavenized Files</span></h2>
+<p>Travis CI is capable of building many languages besides Java. If you cannot use Maven with a <code>scijava.app.directory</code> then you need to replace the following line of your <code>.travis.yml</code>:
+</p>
+<pre class="brush:yaml">
+  - mvn clean install -Dscijava.app.directory="$(pwd)" -Ddelete.other.versions=true
+</pre>
+<p>with a sequence of commands that will move your build artifacts to the appropriate <code>/jars</code> or <code>/plugins</code> directory, as appropriate for your update site.
+</p><p>This is also true if you have custom scripts, macros, etc... if these files are not present in the correct locations of the local ImageJ.app, they will appear to have been deleted.
+</p>
+<h1><span class="mw-headline" id="Caveats">Caveats</span></h1>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> <b>USE CAUTION HERE</b>
+<ol><li> You are configuring Travis CI to upload the state of an ImageJ installation to your update site. The current working directory IS the ImageJ.app that will be uploaded. If your build artifacts are not located in the <code>jars</code> or <code>plugins</code> directory, or you don't manually copy scripts to the correct location, ImageJ will see these items as having been deleted—<b>effectively removing all content from your update site.</b> You can mitigate this danger by customizing your <code>.travis-deploy.sh</code> to download your own update site into the base ImageJ.app; only changes to the update site state will be uploaded.</li>
+<li> By default—building the master branch of your repository—your update site will be updated with **every change** to the source code. Although we encourage the master branch to be "<a href="http://imagej.net/Development_Lifecycle#Phase_2:_On_master" title="Development Lifecycle">release ready</a>", a safer practice would be to configure Travis CI to <a rel="nofollow" class="external text" href="https://docs.travis-ci.com/user/customizing-the-build/#Building-Specific-Branches">only build specific branches</a>—and set it to build <a href="http://imagej.net/Reproducible_builds" class="mw-redirect" title="Reproducible builds">release versions</a> only—e.g. with a release version integration branch.</li>
+<li> Using the Maven-based <code>.travis.yml</code> as suggested implies that you are conforming to the managed dependencies of the parent pom.xml. If you are not staying up-to-date with the ImageJ and Fiji update sites (by using the latest ImageJ or Fiji <a href="http://imagej.net/Architecture#Bill_of_Materials" title="Architecture">bill of materials</a>) then this automation may break your own update site. </td></li></ol>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="See_Also">See Also</span></h1>
+<ul><li> <a href="http://imagej.net/Travis" title="Travis">Travis use</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064536
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.056 seconds
+Real time usage: 0.055 seconds
+Preprocessor visited node count: 205/1000000
+Preprocessor generated node count: 548/1000000
+Post‐expand include size: 6562/2097152 bytes
+Template argument size: 4743/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   14.388      1 - -total
+ 42.80%    6.158      1 - Template:UpdateSitesMenu
+ 36.87%    5.305      1 - Template:Notice
+ 34.55%    4.971      2 - Template:Ambox
+ 33.17%    4.772      1 - Template:Menu
+ 18.50%    2.661      8 - Template:MenuItem
+ 15.21%    2.189      1 - Template:Warning
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Automatic_Update_Site_Uploads&amp;oldid=40939">http://imagej.net/index.php?title=Automatic_Update_Site_Uploads&amp;oldid=40939</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 26 November 2019, at 10:44.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Automatic_Update_Site_Uploads&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Automatic+Update+Site+Uploads" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Automatic+Update+Site+Uploads" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Automatic_Update_Site_Uploads" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Automatic_Update_Site_Uploads" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Automatic_Update_Site_Uploads&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Automatic_Update_Site_Uploads&amp;oldid=40939" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Automatic_Update_Site_Uploads&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":276});});</script>
+		</body>
+		</html>
+		

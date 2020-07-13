@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Troubleshooting - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Troubleshooting","wgTitle":"Troubleshooting","wgCurRevisionId":41410,"wgRevisionId":41410,"wgArticleId":3070,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Troubleshooting","wgRelevantArticleId":3070,"wgRequestId":"a7f42fe3588d95446cac0622","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="You can tell which Java version ImageJ is using by clicking the ImageJ status bar and looking for the part that says e.g. &quot;Java 1.8.0_45 [64-bit]&quot;. The relevant number is the one after &quot;Java 1.&quot;—so e.g. &quot;Java 1.8.0_45&quot; or similar indicates Java 8, while &quot;Java 1.7.0_79&quot; or similar indicates Java 7."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Troubleshooting"/>
+
+	<meta property="og:description" content="You can tell which Java version ImageJ is using by clicking the ImageJ status bar and looking for the part that says e.g. &quot;Java 1.8.0_45 [64-bit]&quot;. The relevant number is the one after &quot;Java 1.&quot;—so e.g. &quot;Java 1.8.0_45&quot; or similar indicates Java 8, while &quot;Java 1.7.0_79&quot; or similar indicates Java 7."/>
+
+	<meta property="og:url" content="http://imagej.net/Troubleshooting"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Troubleshooting rootpage-Troubleshooting skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Troubleshooting.html#bodyContent">Skip to content</a>, 			<a href="Troubleshooting.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Troubleshooting.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Troubleshooting" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk"><a href="http://imagej.net/Talk:Troubleshooting" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Troubleshooting&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Troubleshooting&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Troubleshooting</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Help
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Help" title="Help">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Frequently_Asked_Questions" title="Frequently Asked Questions">FAQ</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Troubleshooting</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Bug_reporting_best_practices" title="Bug reporting best practices">How to write bug reports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Report_a_Bug" title="Report a Bug">Report an issue</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Help:Contents" title="Help:Contents">Editing the ImageJ Wiki</a>
+</td></tr></table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Troubleshooting.html#How_to_troubleshoot_problems"><span class="tocnumber">1</span> <span class="toctext">How to troubleshoot problems</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Troubleshooting.html#Checking_the_Java_version"><span class="tocnumber">1.1</span> <span class="toctext">Checking the Java version</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Troubleshooting.html#Launching_ImageJ_from_the_console"><span class="tocnumber">1.2</span> <span class="toctext">Launching ImageJ from the console</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="Troubleshooting.html#If_you_need_more_control"><span class="tocnumber">1.2.1</span> <span class="toctext">If you need more control</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-5"><a href="Troubleshooting.html#The_other_debug_mode"><span class="tocnumber">1.3</span> <span class="toctext">The other debug mode</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Troubleshooting.html#If_ImageJ_freezes_or_hangs"><span class="tocnumber">1.4</span> <span class="toctext">If ImageJ freezes or hangs</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="Troubleshooting.html#The_easy_way"><span class="tocnumber">1.4.1</span> <span class="toctext">The easy way</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="Troubleshooting.html#The_fallback_way"><span class="tocnumber">1.4.2</span> <span class="toctext">The fallback way</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-9"><a href="Troubleshooting.html#If_ImageJ_crashes"><span class="tocnumber">1.5</span> <span class="toctext">If ImageJ crashes</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Troubleshooting.html#If_ImageJ_does_not_start_up"><span class="tocnumber">1.6</span> <span class="toctext">If ImageJ does not start up</span></a>
+<ul>
+<li class="toclevel-3 tocsection-11"><a href="Troubleshooting.html#On_a_fresh_installation"><span class="tocnumber">1.6.1</span> <span class="toctext">On a fresh installation</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="Troubleshooting.html#After_running_the_updater"><span class="tocnumber">1.6.2</span> <span class="toctext">After running the updater</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-13"><a href="Troubleshooting.html#Advanced_debugging_techniques"><span class="tocnumber">1.7</span> <span class="toctext">Advanced debugging techniques</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="Troubleshooting.html#Common_issues"><span class="tocnumber">2</span> <span class="toctext">Common issues</span></a>
+<ul>
+<li class="toclevel-2 tocsection-15"><a href="Troubleshooting.html#The_image_I_loaded_is_displayed_all_black.21_But_it_is_not_black.21"><span class="tocnumber">2.1</span> <span class="toctext">The image I loaded is displayed all black! But it is not black!</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="Troubleshooting.html#The_image_colors_do_not_match_what_I_see_in_other_programs.21_ImageJ_is_wrong.21"><span class="tocnumber">2.2</span> <span class="toctext">The image colors do not match what I see in other programs! ImageJ is wrong!</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Troubleshooting.html#Whenever_I_open_a_file_in_ImageJ.2C_the_file_size_increases_by_a_ridiculous_amount.21"><span class="tocnumber">2.3</span> <span class="toctext">Whenever I open a file in ImageJ, the file size increases by a ridiculous amount!</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="Troubleshooting.html#The_same_plugin_gives_different_results_on_different_machines.21"><span class="tocnumber">2.4</span> <span class="toctext">The same plugin gives different results on different machines!</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-19"><a href="Troubleshooting.html#Common_error_messages"><span class="tocnumber">3</span> <span class="toctext">Common error messages</span></a>
+<ul>
+<li class="toclevel-2 tocsection-20"><a href="Troubleshooting.html#OutOfMemoryError"><span class="tocnumber">3.1</span> <span class="toctext">OutOfMemoryError</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="Troubleshooting.html#NegativeArraySizeException"><span class="tocnumber">3.2</span> <span class="toctext">NegativeArraySizeException</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Troubleshooting.html#UnsupportedClassVersionError"><span class="tocnumber">3.3</span> <span class="toctext">UnsupportedClassVersionError</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="Troubleshooting.html#NoSuchMethodError_or_NoClassDefFoundError"><span class="tocnumber">3.4</span> <span class="toctext">NoSuchMethodError or NoClassDefFoundError</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-24"><a href="Troubleshooting.html#OS_X_issues"><span class="tocnumber">4</span> <span class="toctext">OS X issues</span></a>
+<ul>
+<li class="toclevel-2 tocsection-25"><a href="Troubleshooting.html#Why_does_ImageJ_run_so_slowly.3F"><span class="tocnumber">4.1</span> <span class="toctext">Why does ImageJ run so slowly?</span></a>
+<ul>
+<li class="toclevel-3 tocsection-26"><a href="Troubleshooting.html#Java_painting_bug"><span class="tocnumber">4.1.1</span> <span class="toctext">Java painting bug</span></a></li>
+<li class="toclevel-3 tocsection-27"><a href="Troubleshooting.html#App_Nap"><span class="tocnumber">4.1.2</span> <span class="toctext">App Nap</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="How_to_troubleshoot_problems">How to troubleshoot problems</span></h1>
+<h2><span class="mw-headline" id="Checking_the_Java_version">Checking the Java version</span></h2>
+<p>You can tell which Java version ImageJ is using by clicking the ImageJ <a href="http://imagej.net/Status_bar" class="mw-redirect" title="Status bar">status bar</a> and looking for the part that says e.g. "Java 1.8.0_45 [64-bit]". The relevant number is the one after "Java 1."—so e.g. "Java 1.8.0_45" or similar indicates Java 8, while "Java 1.7.0_79" or similar indicates Java 7.
+</p><p>On OS X, you can use <a rel="nofollow" class="external text" href="https://raw.githubusercontent.com/ctrueden/ctr-scripts/master/java-info">this script</a> to diagnose which versions of Java are installed on your system.
+</p><p>See also <a href="http://imagej.net/Frequently_Asked_Questions#How_do_I_launch_ImageJ_with_a_different_version_of_Java.3F" title="Frequently Asked Questions">How do I launch ImageJ with a different version of Java?</a>.
+</p>
+<h2><span class="mw-headline" id="Launching_ImageJ_from_the_console">Launching ImageJ from the console</span></h2>
+<p>To diagnose problems with ImageJ, it is often helpful to launch it in debug mode:
+</p>
+<ul>
+<li><a href="http://imagej.net/File:Tux.png" class="image"><img alt="Tux.png" src="../_images/a/af/Tux.png" width="20" height="20" /></a> On Linux 64-bit (from a console):
+<pre class="brush:bash">DEBUG=1 $HOME/ImageJ.app/ImageJ-linux64</pre>
+</li>
+<li><a href="http://imagej.net/File:Osx.png" class="image"><img alt="Osx.png" src="../_images/2/22/Osx.png" width="16" height="20" /></a> On OS X (from Terminal):
+<pre class="brush:bash">DEBUG=1 /Applications/ImageJ.app/Contents/MacOS/ImageJ-macosx</pre>
+</li>
+<li><a href="http://imagej.net/File:Win.png" class="image"><img alt="Win.png" src="../_images/2/29/Win.png" width="20" height="20" /></a> On Windows 64-bit:
+<ul>
+<li>Make a copy of <code>ImageJ-win64.exe</code> called <code>debug.exe</code></li>
+<li>Run <code>debug.exe</code></li>
+</ul>
+</li>
+</ul>
+<h3><span class="mw-headline" id="If_you_need_more_control">If you need more control</span></h3>
+<p>You can control the log level more precisely by setting the <code>scijava.log.level</code> system property. E.g., on Linux:
+</p>
+<pre class="brush:bash">$HOME/ImageJ.app/ImageJ-linux64 -Dscijava.log.level=trace --</pre>
+<p>Valid levels include: <code>none</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code> and <code>trace</code>. See the <a href="http://imagej.net/Logging" title="Logging">Logging</a> page for more about SciJava logging.
+</p>
+<h2><span class="mw-headline" id="The_other_debug_mode">The other debug mode</span></h2>
+<p>There is another debug mode, which can be enabled in the <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Misc...</span></em></span> menu, by checking <i>Debug mode</i>. This might reveal different information than using the techniques described above. For maximum debugitude, turn on both!
+</p>
+<h2><span class="mw-headline" id="If_ImageJ_freezes_or_hangs">If ImageJ freezes or hangs</span></h2>
+<p>If ImageJ appears to <a href="http://en.wikipedia.org/wiki/Hang_(computing)" class="extiw" title="wikipedia:Hang (computing)">hang</a>—i.e., it stops responding to inputs—it is often helpful to take a "snapshot" of where the program is at after the hang occurs. This information can give the developers valuable hints about how to fix the problem.
+</p><p>There are two ways to create such a snapshot, known as a "thread dump" or "stack trace".
+</p>
+<h3><span class="mw-headline" id="The_easy_way">The easy way</span></h3>
+<ol><li> Press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">\</kbd> in ImageJ itself. If successful, it will open a new window with the stack trace.</li>
+<li> Press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">A</kbd> to select it, then <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">C</kbd> to copy it to the clipboard.</li></ol>
+<h3><span class="mw-headline" id="The_fallback_way">The fallback way</span></h3>
+<p>If the first method does not work, and you can reproduce the hang:
+</p>
+<ol>
+<li>Launch ImageJ again, this time <a href="Troubleshooting.html#Launching_ImageJ_from_the_console">from the console</a> as described above.
+    <ul>
+    <li><a href="http://imagej.net/File:Win.png" class="image"><img alt="Win.png" src="../_images/2/29/Win.png" width="20" height="20" /></a> On Windows, you will need to download and run <a rel="nofollow" class="external text" href="https://raw.githubusercontent.com/imagej/imagej/master/bin/ImageJ.bat">this batch file</a>, which launches ImageJ with an attached Command Prompt window.</li>
+    </ul>
+</li>
+<li>Generate and copy the stack trace:
+    <ul>
+    <li><a href="http://imagej.net/File:Osx.png" class="image"><img alt="Osx.png" src="../_images/2/22/Osx.png" width="16" height="20" /></a> <a href="http://imagej.net/File:Tux.png" class="image"><img alt="Tux.png" src="../_images/a/af/Tux.png" width="20" height="20" /></a> On non-Windows platforms:
+        <ol>
+        <li>Press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">\</kbd> in the console window to print the stack trace.</li>
+        <li>Select the stack trace by dragging with the left mouse button.</li>
+        <li>Right click and select "Copy" to copy it to the clipboard.</li>
+        </ol>
+    <li><a href="http://imagej.net/File:Win.png" class="image"><img alt="Win.png" src="../_images/2/29/Win.png" width="20" height="20" /></a> On Windows:
+        <ol>
+        <li>Press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⎉</span> Pause</kbd> in the Command Prompt window to print the stack trace. (<b>Note:</b> this shortcut actually uses the <a href="http://en.wikipedia.org/wiki/Break_key" class="extiw" title="wikipedia:Break key">Break key</a>)</li>
+        <li>Click the Command Prompt icon in the upper left corner of the window, and choose <span><em><span style="border-bottom:1px dotted #ccc;">Edit</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Mark</span></em></span>.</li>
+        <li>Select the stack trace by dragging with the left mouse button.</li>
+        <li>Press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⌅</span> Enter</kbd> to copy it to the clipboard.</li>
+        </ol>
+    </li>
+    </ul>
+</li>
+</ol>
+<p>Once you have the stack trace. you can paste it into a <a href="http://imagej.net/Bugs" class="mw-redirect" title="Bugs">bug report</a>!
+</p>
+<h2><span class="mw-headline" id="If_ImageJ_crashes">If ImageJ crashes</span></h2>
+<p>If ImageJ <a href="http://en.wikipedia.org/wiki/Crash_(computing)" class="extiw" title="wikipedia:Crash (computing)">crashes</a>—i.e., the program suddenly terminates, with or without an error message—it is very helpful to identify the steps which can reliably reproduce the crash:
+</p>
+<ul><li> Launch ImageJ <a href="Troubleshooting.html#Launching_ImageJ_from_the_console">from the console</a> as described above.</li>
+<li> Perform the same actions which previously resulted in the crash.</li>
+<li> Take note of any error messages in the console window, which you can copy and paste it into a <a href="http://imagej.net/Bugs" class="mw-redirect" title="Bugs">bug report</a>.</li></ul>
+<h2><span class="mw-headline" id="If_ImageJ_does_not_start_up">If ImageJ does not start up</span></h2>
+<h3><span class="mw-headline" id="On_a_fresh_installation">On a fresh installation</span></h3>
+<p><a href="http://imagej.net/File:Win.png" class="image"><img alt="Win.png" src="../_images/2/29/Win.png" width="20" height="20" /></a> On some 32-bit Windows systems, ImageJ may initially request more memory than Windows can handle. If you launch ImageJ in debug mode (see above), and receive a message like:
+</p>
+<pre class="brush:plain">
+Could not reserve enough space for 1253376KB object heap
+</pre>
+<p>Then you can try the following:
+</p>
+<ul>
+<li>Run Notepad</li>
+<li>Paste in the following:
+<pre class="brush:plain">
+.
+jre\bin\javaw.exe
+-Xmx512m -cp ij.jar ij.ImageJ
+</pre>
+</li>
+<li>Save the file as <code>ImageJ.cfg</code> in your <code>ImageJ.app</code> (or <code>Fiji.app</code>) installation.
+<ul><li>Note that by default, Windows hides file extensions; you may need to <a rel="nofollow" class="external text" href="http://windows.microsoft.com/en-us/windows/show-hide-file-name-extensions">show file extensions</a> before you can successfully name the file <code>ImageJ.cfg</code> as required.</li></ul>
+</li>
+<li>Try running <code>ImageJ-win32.exe</code> again.</li>
+</ul>
+<p>You can replace the <code>512m</code> with however many megabytes of memory you wish to give to ImageJ.
+</p>
+<h3><span class="mw-headline" id="After_running_the_updater">After running the updater</span></h3>
+<p>If the ImageJ window never appears after launching the program, the installation may be corrupted. While the developers of ImageJ make a serious effort to prevent this problem from happening, it is still possible after running the <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update...</span></em></span> command, due to bugs in the <a href="http://imagej.net/Updater" title="Updater">Updater</a>.
+</p><p>The easiest workaround is to <a href="http://imagej.net/Download" class="mw-redirect" title="Download">download</a> a fresh copy of the software.
+</p><p>If you are feeling investigative, you can try <a href="Troubleshooting.html#Launching_ImageJ_from_the_console">launching ImageJ from the console</a> to get more information about why it is failing to start up. After doing that, you will probably see some information printed to the console, which you can paste online to somewhere like <a rel="nofollow" class="external text" href="http://pastebin.com/">Pastebin.com</a>, and write to the <a href="http://imagej.net/Community" class="mw-redirect" title="Community">Community</a> to ask for help deciphering it.
+</p>
+<h2><span class="mw-headline" id="Advanced_debugging_techniques">Advanced debugging techniques</span></h2>
+<p>If you are technically savvy, check out the <a href="http://imagej.net/Debugging" title="Debugging">Debugging</a> page for additional—but more complicated—debugging techniques.
+</p>
+<h1><span class="mw-headline" id="Common_issues">Common issues</span></h1>
+<h2><span class="mw-headline" id="The_image_I_loaded_is_displayed_all_black.21_But_it_is_not_black.21">The image I loaded is displayed all black! But it is not black!</span></h2>
+<p>This problem can arise when 12-bit, 14-bit or 16-bit images are loaded into ImageJ without autoscaling. In that case, the display is scaled to the full 16-bit range (0 - 65535 intensity values), even though the actual data values typically span a much smaller range. For example, on a 12-bit camera, the largest possible intensity value is 4095—but with 0 mapped to black and 65535 mapped to white, 4095 ends up (linearly) mapped to a very very dark gray, nearly invisible to the human eye.
+</p><p>You can fix this by clicking on <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Brightness/Contrast...</span></em></span> and hitting the <i>Auto</i> button.
+</p><p>You can verify whether the actual data is there by moving the mouse over the image, and looking at the pixel probe output in the <a href="http://imagej.net/Getting_Started#The_status_bar" title="Getting Started">status bar area of the main ImageJ window</a>.
+</p>
+<h2><span class="mw-headline" id="The_image_colors_do_not_match_what_I_see_in_other_programs.21_ImageJ_is_wrong.21">The image colors do not match what I see in other programs! ImageJ is wrong!</span></h2>
+<p>In many cases, ImageJ performs autoscaling by default, to improve the contrast of your image. Otherwise, in many cases with scientific images you might see only a black square (see previous question).
+</p><p>You can override the autoscaling using the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-28.html#sub:Adjust">Brightness/Contrast</a> dialog.
+</p><p>It is important to understand that <a href="http://imagej.net/Principles#What_are_pixel_values.3F" title="Principles">your image is a collection of samples, each of which has a numerical intensity value</a>. The unit of these values is rather arbitrary and unspecified, depending on the type and calibration of your detector. Your file is stored with a certain <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-7.html#toc-Section-7">bit depth</a>, meaning these intensities can range from 0 (no light detected) to a particular maximum value (the most light the detector is capable of detecting). For example, 8-bit images have a maximum value of 255, whereas 16-bit images have a maximum of 65535. In practice though, especially with higher bit depths, your detector will not typically record sample intensities across that entire range of values (and if it does record a significant number of values at the maximum, you probably oversaturated your detector, which will skew your analysis!).
+</p><p>Because the full range of values is typically much less than the maximum—e.g., in the case of a 12-bit detector the actual maximum range is 0-4095, and often even smaller in practice—ImageJ performs <b>autoscaling</b> to show you a meaningful or "pretty good" image by default, which is not just a black square (see previous question). That is: it maps the darkest actual intensity in your data to black, and the brightest actual intensity in your data to white. You can override this mapping using the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-28.html#sub:Adjust">Brightness/Contrast</a> dialog under the <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust</span></em></span> menu (shortcut: <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">C</kbd>).
+</p><p>Alternately, to disable autoscaling during initial import, you can use the <a href="http://imagej.net/Bio-Formats" title="Bio-Formats">Bio-Formats</a> plugin to import your data with the "Autoscale" option turned off:
+</p>
+<ul><li> <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Bio-Formats</span></em></span></li>
+<li> Choose your file</li>
+<li> Uncheck the "Autoscale" box</li>
+<li> Click OK</li>
+<li> The data will be scaled to match the maximum of the bit depth, rather than autoscaled.</li></ul>
+<p>Further reading:
+</p>
+<ul><li> <a href="http://imagej.net/Image_Intensity_Processing" title="Image Intensity Processing">Image Intensity Processing</a></li>
+<li> <a href="http://imagej.net/Principles" title="Principles">Image Processing Principles</a></li></ul>
+<h2><span class="mw-headline" id="Whenever_I_open_a_file_in_ImageJ.2C_the_file_size_increases_by_a_ridiculous_amount.21">Whenever I open a file in ImageJ, the file size increases by a ridiculous amount!</span></h2>
+<p>Are you using a <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-7.html#sub:Native-Formats">compressed format</a> such as JPEG, PNG or ZIP? The file size on disk is smaller than the size of the pixels in memory. ImageJ reports this true (uncompressed) size of the image in the subtitle bar of the image window. For example: an uncompressed image of 16000 pixels x 16000 pixels x 32 bit (RGBA) will occupy 976 MB in memory.
+</p><p>Note that <a href="http://imagej.net/Principles#Why_.28lossy.29_JPEGs_should_not_be_used_in_imaging" title="Principles">lossy compression is not suitable for quantitative image analysis</a>.
+</p>
+<h2><span class="mw-headline" id="The_same_plugin_gives_different_results_on_different_machines.21">The same plugin gives different results on different machines!</span></h2>
+<p>While ImageJ strives for <a href="http://imagej.net/Reproducible" class="mw-redirect" title="Reproducible">reproducible</a> analysis, there are many reasons results can differ. Check the following:
+</p>
+<ul><li> Ensure that the version of <a href="http://imagej.net/ImageJ" title="ImageJ">ImageJ</a> is exactly the same on both machines.
+<ul><li> Click the <a href="http://imagej.net/Status_bar" class="mw-redirect" title="Status bar">status bar</a> and you will see something like "ImageJ 2.0.0-rc-26/1.49p".</li>
+<li> If these two values differ between your machines, the versions are not the same.</li>
+<li> See also <a href="http://imagej.net/Frequently_Asked_Questions#How_can_I_verify_that_my_ImageJ_is_really_100.25_up_to_date.3F" title="Frequently Asked Questions">How can I verify that my ImageJ is really 100% up to date?</a>.</li>
+<li> If the two versions of ImageJ match but produce different numerical results, it is a bug—please <a href="http://imagej.net/Report_a_Bug" title="Report a Bug">report it</a>!</li></ul></li>
+<li> Ensure that the <i>options</i> of ImageJ match between the machines.
+<ul><li> A fast way to ensure this is the <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Reset...</span></em></span> command, which resets everything to its default state.</li>
+<li> Alternately, you can check the settings in the following dialog boxes:
+<ul><li> All <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options</span></em></span> dialog boxes</li></ul></li>
+<li> <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Binary </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options...</span></em></span> – a very common culprit of black-vs.-white issues is the "Black background" option.</li>
+<li> <span><em><span style="border-bottom:1px dotted #ccc;"> Process </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> FFT </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> FFT Options...</span></em></span></li>
+<li> <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Overlay </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Overlay Options...</span></em></span></li>
+<li> <span><em><span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Gels </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Gel Analyzer Options...</span></em></span></li>
+<li> Press L for the <a href="http://imagej.net/Command_Finder" class="mw-redirect" title="Command Finder">Command Finder</a> and type "options" and double check any other options you think might be relevant.</li></ul></li>
+<li> If you are running your analysis <a href="http://imagej.net/Headless" title="Headless">headless</a>, there might be a bug in the headless support.
+<ul><li> Try the analysis <i>headless</i> on both machines and see if the results match.</li>
+<li> Try the analysis <i>headless</i> vs. through the GUI on a single machine, and see if the results match.</li>
+<li> If the results differ due to headlessness, it is a bug—please <a href="http://imagej.net/Report_a_Bug" title="Report a Bug">report it</a>!</li></ul></li></ul>
+<h1><span class="mw-headline" id="Common_error_messages">Common error messages</span></h1>
+<h2><span class="mw-headline" id="OutOfMemoryError">OutOfMemoryError</span></h2>
+<div style="float:right; width: 300px; border: 1px solid #ccc; padding: 15px !important; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<p><b>Why does ImageJ not release any memory back to the system?</b>
+</p><p>This is a characteristic of the Java runtime. In many cases, Java <i>never</i> releases memory back to the system, so memory monitors such as Windows Task Manager will always report an ever-growing amount of RAM used by the Java process, until the JVM shuts down.
+</p><p>The best way to monitor ImageJ's actual memory usage is to run the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-31.html#toc-Subsubsection-31.3.5">Monitor Memory...</a> command. You can also click on the ImageJ <a href="http://imagej.net/Status_bar" class="mw-redirect" title="Status bar">status bar</a> to trigger a garbage collection operation, which will typically decrease the memory use.
+</p><p>That said, some articles suggest that you can cause Java to give back free memory to the OS under certain conditions; see:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/q/324499">Java still uses system memory after deallocation of objects and garbage collection</a></li>
+<li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/q/16649601">java.exe process uses more memory and does not free it up</a></li>
+<li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/q/12017437">JVM Memory&#160;: Why memory on task manager difference with JProbe (or JConsole tool)</a></li></ul>
+<p>To be clear, Java does reuse memory when you close and reopen images. The behavior described above is not a memory <i>leak</i> per se. It should be possible to leave ImageJ running for days or weeks at a time doing batch processing and it have it work just fine.
+</p><p>See also:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="http://stackoverflow.com/q/22912063">Automatically release unused memory in ImageJ / Fiji</a></li></ul>
+</div>
+<p>The error means ImageJ ran out of available <a href="http://en.wikipedia.org/wiki/Random-access_memory" class="extiw" title="wikipedia:Random-access memory">computer memory</a> (<i>not</i> hard drive space).
+</p><p>The first thing to do is make sure that ImageJ has a large enough "maximum heap" size:
+</p>
+<ul><li> <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Memory &amp; Threads</span></em></span></li>
+<li> Change "Maximum Memory" to something larger (at most, 1000 MB less than your computer's total RAM).</li>
+<li> Restart ImageJ for the new memory settings to take effect.</li></ul>
+<p>Note that in most cases, the <a href="http://imagej.net/Launcher" title="Launcher">ImageJ launcher</a> will make an initial guess at a reasonable value: ~75% of physical RAM.
+</p><p>You can confirm how much memory is actually available by clicking on the <a href="http://imagej.net/Status_bar" class="mw-redirect" title="Status bar">status bar</a>. You will see a "[used] of [max]" memory message, as pictured here:
+</p>
+<div class="MediaTransformError" style="width: 585px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>If you are already at the limits of your computer's physical memory, the next step would be to add more.
+</p><p><b>If setting this value somehow has no effect:</b> Check for an <a rel="nofollow" class="external text" href="http://www.computerhope.com/issues/ch000549.htm">environment variable</a> called <code>_JAVA_OPTIONS</code> or similar, which is overriding the value. If the variable exists, change the memory value there, or remove the variable completely.
+</p><p><b>About Java garbage collection:</b> Java always automatically calls the garbage collector when the heap is getting full <a rel="nofollow" class="external text" href="http://stackoverflow.com/questions/8719071">[1</a>]. While it is possible to manually invoke the garbage collector by clicking ImageJ's <a href="http://imagej.net/Status_bar" class="mw-redirect" title="Status bar">status bar</a>&#8212;or programmatically by calling <code>run("Collect Garbage")</code> in a macro or <code>System.gc()</code> in a plugin&#8212;it will not solve the fundamental problem of Java actually not having a sufficient amount of memory. (The only exception to this is a rare case where Java decides that garbage collection is happening too slowly, in which case you should see the message "GC overhead limit exceeded" <a rel="nofollow" class="external text" href="http://www.petefreitag.com/item/746.cfm">[2</a>]).
+</p>
+<h2><span class="mw-headline" id="NegativeArraySizeException">NegativeArraySizeException</span></h2>
+<p>This error usually means that your image planes are larger than the maximum supported size.
+</p><p><a href="http://imagej.net/ImageJ1" title="ImageJ1">ImageJ1</a> only supports image planes with <b>2 gigapixels</b> (2^31 = 2147483648 pixels; in case of a square image, the maximum allowed is 46340 x 46340 pixels) or less. If your data has extremely large image planes—e.g., 50000 x 50000 pixels—you may need to analyze region by region. One way to do this is using the "Crop on import" feature of the <a href="http://imagej.net/Bio-Formats" title="Bio-Formats">Bio-Formats</a> plugin.
+</p><p>If you are using Bio-Formats to open a file, however, the size limit is a bit more complicated. Instead of using <code>short[]</code> as in ImageJ1, Bio-Formats store data in <code>byte[]</code> when reading planes. If the source image is in 16 bit or in 32 bit (4 bytes, eg. floating point TIFF), the maximum pixel numbers allowed per plane will be 1/2 (1 gigapixels) or 1/4 (0.5 gigapixels), respectively.
+</p><p><a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> supports larger image planes internally, but uses the <a href="http://imagej.net/ImageJ1" title="ImageJ1">ImageJ1</a> user interface by default, which once again limits visualization to 2 gigapixels. The <a href="http://imagej.net/Contributors" title="Contributors">ImageJ2 team</a> is working to lift these size restrictions; see <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej/issues/87">imagej/imagej#87</a>.
+</p>
+<h2><span class="mw-headline" id="UnsupportedClassVersionError">UnsupportedClassVersionError</span></h2>
+<p>Usually, this error takes the form of "Unsupported major.minor version 52.0" or similar, and indicates you are attempting to use a plugin which requires a newer version of Java than you are running. For example, you may have enabled an <a href="http://imagej.net/Update_site" class="mw-redirect" title="Update site">update site</a> that requires Java 7, but your ImageJ is using Java 6.
+</p><p>Check which version of Java is being used by ImageJ; see <a href="Troubleshooting.html#Checking_the_Java_version">Checking the Java version</a> above.
+</p><p>The number given in the <code>UnsupportedClassVersionError</code> error messages is an internal code, which translates to Java versions as follows:
+</p>
+<table class="wikitable">
+<tr>
+<th> Internal code
+</th>
+<th> Java version
+</th></tr>
+<tr>
+<td> 45.0
+</td>
+<td> JDK 1.1
+</td></tr>
+<tr>
+<td> 46.0
+</td>
+<td> J2SE 1.2
+</td></tr>
+<tr>
+<td> 47.0
+</td>
+<td> J2SE 1.3
+</td></tr>
+<tr>
+<td> 48.0
+</td>
+<td> J2SE 1.4
+</td></tr>
+<tr>
+<td> 49.0
+</td>
+<td> J2SE 5.0
+</td></tr>
+<tr>
+<td> 50.0
+</td>
+<td> Java SE 6
+</td></tr>
+<tr>
+<td> 51.0
+</td>
+<td> Java SE 7
+</td></tr>
+<tr>
+<td> 52.0
+</td>
+<td> Java SE 8
+</td></tr></table>
+<p>See <a href="http://en.wikipedia.org/wiki/Java_version_history" class="extiw" title="wikipedia:Java version history">Java version history</a> for more information about these different versions.
+</p><p>To control the version of Java that ImageJ uses, see <a href="http://imagej.net/Frequently_Asked_Questions#How_do_I_launch_ImageJ_with_a_different_version_of_Java.3F" title="Frequently Asked Questions">How do I launch ImageJ with a different version of Java</a>.
+</p>
+<h2><span class="mw-headline" id="NoSuchMethodError_or_NoClassDefFoundError">NoSuchMethodError or NoClassDefFoundError</span></h2>
+<p>These errors indicate a "version skew" between the software libraries in your ImageJ installation. Most commonly, this situation occurs when multiple <a href="http://imagej.net/Update_sites" class="mw-redirect" title="Update sites">update sites</a> are enabled which ship incompatible versions of those libraries.
+</p><p>The proper fix is for the maintainers of those update sites to reconcile the versions somehow, but as a user you can work around the issue in the meantime by disabling the problematic update site(s). Start from a fresh download of ImageJ, enabling the update sites you want one by one, testing your workflow each time. Once you determine which update site(s) causes the issue, you can create a separate copy of ImageJ with only the problematic site(s) enabled. Although you will no longer have a single ImageJ with all desired functionality enabled, keeping isolated installations will let you continue using all the plugins you need by launching each appropriate copy of ImageJ.
+</p>
+<h1><span class="mw-headline" id="OS_X_issues">OS X issues</span></h1>
+<h2><span class="mw-headline" id="Why_does_ImageJ_run_so_slowly.3F">Why does ImageJ run so slowly?</span></h2>
+<h3><span class="mw-headline" id="Java_painting_bug">Java painting bug</span></h3>
+<p>See the <a href="http://imagej.net/MacOS" title="MacOS">MacOS</a> page.
+</p>
+<h3><span class="mw-headline" id="App_Nap">App Nap</span></h3>
+<p>See the <a href="http://imagej.net/MacOS" title="MacOS">MacOS</a> page.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713074039
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.208 seconds
+Real time usage: 0.213 seconds
+Preprocessor visited node count: 5026/1000000
+Preprocessor generated node count: 8048/1000000
+Post‐expand include size: 36675/2097152 bytes
+Template argument size: 4846/2097152 bytes
+Highest expansion depth: 7/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  153.276      1 - -total
+ 77.23%  118.378      9 - Template:Key
+ 69.66%  106.777     13 - Template:Key_press/core
+ 15.35%   23.525     13 - Template:Bc
+  4.54%    6.959     22 - Template:Arrow
+  3.90%    5.976     14 - Template:Box-shadow
+  3.58%    5.482     13 - Template:Linear-gradient
+  2.78%    4.254      1 - Template:HelpMenu
+  2.04%    3.127      1 - Template:Menu
+  1.66%    2.549     14 - Template:Border-radius
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Troubleshooting&amp;oldid=41410">http://imagej.net/index.php?title=Troubleshooting&amp;oldid=41410</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Troubleshooting&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Troubleshooting" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Troubleshooting" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Troubleshooting" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Troubleshooting" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Troubleshooting&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Troubleshooting&amp;oldid=41410" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Troubleshooting&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":481});});</script>
+		</body>
+		</html>
+		

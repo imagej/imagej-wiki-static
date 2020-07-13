@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>BigStitcher Deconvolution - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"BigStitcher_Deconvolution","wgTitle":"BigStitcher Deconvolution","wgCurRevisionId":37699,"wgRevisionId":37699,"wgArticleId":10406,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"BigStitcher_Deconvolution","wgRelevantArticleId":10406,"wgRequestId":"b58cb086e73a503f28bc013c","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="In BigStitcher we offer deconvolution using a multi-view variant of the iterative Richardson-Lucy algorithm with various optimizations. Details about the previous version of the MultiView deconvolution as well as the corresponding publication with mathematical details can be found at Multi-View_Deconvolution."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="BigStitcher Deconvolution"/>
+
+	<meta property="og:description" content="In BigStitcher we offer deconvolution using a multi-view variant of the iterative Richardson-Lucy algorithm with various optimizations. Details about the previous version of the MultiView deconvolution as well as the corresponding publication with mathematical details can be found at Multi-View_Deconvolution."/>
+
+	<meta property="og:url" content="http://imagej.net/BigStitcher_Deconvolution"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-BigStitcher_Deconvolution rootpage-BigStitcher_Deconvolution skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="BigStitcher_Deconvolution.html#bodyContent">Skip to content</a>, 			<a href="BigStitcher_Deconvolution.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="BigStitcher_Deconvolution.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/BigStitcher_Deconvolution" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:BigStitcher_Deconvolution&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=BigStitcher_Deconvolution&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=BigStitcher_Deconvolution&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>BigStitcher Deconvolution</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="BigStitcher_Deconvolution.html#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="BigStitcher_Deconvolution.html#Usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="BigStitcher_Deconvolution.html#Initialization_with_existing_image"><span class="tocnumber">2.1</span> <span class="toctext">Initialization with existing image</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="BigStitcher_Deconvolution.html#Manual_block_size_setup"><span class="tocnumber">2.2</span> <span class="toctext">Manual block size setup</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="BigStitcher_Deconvolution.html#Blending_.26_grouping_parameters"><span class="tocnumber">2.3</span> <span class="toctext">Blending &amp; grouping parameters</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="BigStitcher_Deconvolution.html#Debug_mode"><span class="tocnumber">2.4</span> <span class="toctext">Debug mode</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="BigStitcher_Deconvolution.html#Deconvolution_on_GPU"><span class="tocnumber">2.5</span> <span class="toctext">Deconvolution on GPU</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="BigStitcher_Deconvolution.html#Usage_of_Previous_version"><span class="tocnumber">3</span> <span class="toctext">Usage of Previous version</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Overview">Overview</span></h2>
+<p>In BigStitcher we offer deconvolution using a multi-view variant of the iterative Richardson-Lucy algorithm with various optimizations. Details about the previous version of the MultiView deconvolution as well as the corresponding publication with mathematical details can be found at <a href="http://imagej.net/Multi-View_Deconvolution" title="Multi-View Deconvolution">Multi-View_Deconvolution</a>.
+</p><p><b>TODO: nice deconvolved image</b> 
+</p><p>The deconvolution can be started by selecting the views you wish to deconvolve and selecting <span><em><span style="border-bottom:1px dotted #ccc;">Processing</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">(MultiView) Deconvolution</span></em></span> in the main menu in <b>MultiView mode</b>.
+</p>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<p>After clicking <b>(MultiView) Deconvolution</b>, you will be presented with a dialog asking for the main parameters for deconvolution:
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_Deconvolution_Main.png" class="image"><img alt="BigStitcher Deconvolution Main.png" src="../_images/f/f1/BigStitcher_Deconvolution_Main.png" width="600" height="677" /></a></div></div>
+<p>Since you are also producing a fused image for the deconvolution, some parameters are the same as in <a href="http://imagej.net/BigStitcher_Fuse" title="BigStitcher Fuse">BigStitcher_Fuse</a>:
+</p>
+<ul><li> the <b>BoundingBox</b> to use for the deconvolved output</li>
+<li> by how much to <b>Downsample</b> the output</li>
+<li> which view combinations to <b>Produce one image for</b></li>
+<li> how to display/save the <b>Fused Image</b></li></ul>
+<p>The other options are (from top to bottom):
+</p>
+<ul><li> <b>Input image(s)</b>: </li>
+<li> <b>Weight image(s)</b>:</li>
+<li> <b>Initialize with</b>: </li>
+<li> <b>Type of iteration</b>: We implemented various optimizations to the iterative deconvolution, which make some assumptions about the data that typically hold for images with high signal-to-noise-ratio (SNR). Using the optimizations speeds up the deconvolution, but might lead to artifacts if the SNR of your images is not high enough.</li>
+<li> <b>Fast sequential iterations (OSEM)</b> and <b>OSEM acceleration</b>: TODO explain...</li>
+<li> <b>Number of iterations</b>: For how many iterations to run the iterative deconvolution.</li>
+<li> <b>Debug mode</b>: In debug mode, we will show intermediate results (deconvolved image every nth iteration) while the deconvolution is still running. You can specify how often to display in a separate dialog (see below).</li>
+<li> <b>Use Tikhonov regularization</b> and <b>Tikhonov parameter</b>: By activating Tikhonov regularization, and setting the Tikhonov parameter to <img class="mwe-math-fallback-image-inline tex" alt="&gt;0" src="../_images/math/f/9/4/f9441c8d317f524f9bd3ccb75b9369c8.png" /> you can penalize large changes in the iterations. This way, the deconvolution is less prone to amplify noise but the results will generally be less sharp.</li>
+<li> <b>Compute</b>: use this to specify <b>block size</b>. We can split the image into blocks and compute the deconvolution block-by-block. This allows you to do deconvolution on systems with less RAM, but will be slower, as we have to use overlapping blocks (smaller blocks will lead to more overlap). You can choose from a few presets or choose to <b>specify block size manually</b> in an extra dialog (see below).</li>
+<li> <b>Compute on</b>: Whether to compute on <b>CPU (Java)</b> or <b>GPU (Nvidia CUDA via JNA)</b>. GPU acceleration can greatly speed up the deconvolution, but you have to manually compile the required libraries and have a CUDA-capable Nvidia GPU in you system (see below for details).</li>
+<li> <b>Adjust blending &amp; grouping parameters</b>: check this to show advanced options for view grouping and blending in a separate dialog (see below).</li></ul>
+<p>The dialog will also preview the memory requirements for the deconvolution (green preview text indicates that ImageJ has enough memory for the process, while red text indicates that the deconvolution will run out of memory and fail - use downsampling or smaller block sizes in that case).
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Initialization_with_existing_image">Initialization with existing image</span></h3>
+<p>If you chose to <b>Initialize from TIFF file</b> in the main dialog, you will be asked to provide the path to the file here, by dragging and dropping the file, selecting it by clicking <b>Browse...</b> or entering the path manually.
+</p><p>You can choose whether to do <b>Exact avg and max computation from input</b> or not. TODO: explain...
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_Deconvolution_fromFile.png" class="image"><img alt="BigStitcher Deconvolution fromFile.png" src="../_images/1/15/BigStitcher_Deconvolution_fromFile.png" width="600" height="178" /></a></div></div>
+<p>Using this option, you can <b>continue a previous deconvolution</b> if you think that additional iterations will improve the results.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Manual_block_size_setup">Manual block size setup</span></h3>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_Deconvolution_blocksize.png" class="image"><img alt="BigStitcher Deconvolution blocksize.png" src="../_images/0/07/BigStitcher_Deconvolution_blocksize.png" width="600" height="564" /></a></div></div>
+<h3><span class="mw-headline" id="Blending_.26_grouping_parameters">Blending &amp; grouping parameters</span></h3>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_Deconvolution_blending.png" class="image"><img alt="BigStitcher Deconvolution blending.png" src="../_images/0/08/BigStitcher_Deconvolution_blending.png" width="600" height="406" /></a></div></div>
+<h3><span class="mw-headline" id="Debug_mode">Debug mode</span></h3>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:BigStitcher_Deconvolution_debug.png" class="image"><img alt="BigStitcher Deconvolution debug.png" src="../_images/e/ea/BigStitcher_Deconvolution_debug.png" width="600" height="299" /></a></div></div>
+<h3><span class="mw-headline" id="Deconvolution_on_GPU">Deconvolution on GPU</span></h3>
+<h2><span class="mw-headline" id="Usage_of_Previous_version">Usage of Previous version</span></h2>
+<p>As this usage guide is still work in progress, please refer to <a href="http://imagej.net/Multi-View_Deconvolution" title="Multi-View Deconvolution">Multi-View_Deconvolution</a> for now.
+</p><p>Go back to the <a href="http://imagej.net/BigStitcher#Documentation" title="BigStitcher">main page</a>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064612
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.037 seconds
+Preprocessor visited node count: 91/1000000
+Preprocessor generated node count: 602/1000000
+Post‐expand include size: 349/2097152 bytes
+Template argument size: 72/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    4.386      1 - -total
+100.00%    4.386      1 - Template:Bc
+ 24.67%    1.082      1 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=BigStitcher_Deconvolution&amp;oldid=37699">http://imagej.net/index.php?title=BigStitcher_Deconvolution&amp;oldid=37699</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 2 May 2018, at 10:48.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=BigStitcher_Deconvolution&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=BigStitcher+Deconvolution" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=BigStitcher+Deconvolution" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/BigStitcher_Deconvolution" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/BigStitcher_Deconvolution" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=BigStitcher_Deconvolution&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=BigStitcher_Deconvolution&amp;oldid=37699" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=BigStitcher_Deconvolution&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":239});});</script>
+		</body>
+		</html>
+		

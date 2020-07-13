@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>How to apply a common operation to a complete directory - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"How_to_apply_a_common_operation_to_a_complete_directory","wgTitle":"How to apply a common operation to a complete directory","wgCurRevisionId":45397,"wgRevisionId":45397,"wgArticleId":515,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"How_to_apply_a_common_operation_to_a_complete_directory","wgRelevantArticleId":515,"wgRequestId":"c7d74db5ebd8594ccf61e82d","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Often you want to  apply a common operation to all images in a given directory. This tutorial tries to help you doing this. In addition, the Script Editor provides a template via  Templates &amp;#160;&amp;#8250;  IJ1 Macro &amp;#160;&amp;#8250;  Process Folder that helps getting started quickly."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="How to apply a common operation to a complete directory"/>
+
+	<meta property="og:description" content="Often you want to  apply a common operation to all images in a given directory. This tutorial tries to help you doing this. In addition, the Script Editor provides a template via  Templates &amp;#160;&amp;#8250;  IJ1 Macro &amp;#160;&amp;#8250;  Process Folder that helps getting started quickly."/>
+
+	<meta property="og:url" content="http://imagej.net/How_to_apply_a_common_operation_to_a_complete_directory"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-How_to_apply_a_common_operation_to_a_complete_directory rootpage-How_to_apply_a_common_operation_to_a_complete_directory skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="How_to_apply_a_common_operation_to_a_complete_directory.html#bodyContent">Skip to content</a>, 			<a href="How_to_apply_a_common_operation_to_a_complete_directory.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="How_to_apply_a_common_operation_to_a_complete_directory.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/How_to_apply_a_common_operation_to_a_complete_directory" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:How_to_apply_a_common_operation_to_a_complete_directory&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=How_to_apply_a_common_operation_to_a_complete_directory&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=How_to_apply_a_common_operation_to_a_complete_directory&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>How to apply a common operation to a complete directory</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="How_to_apply_a_common_operation_to_a_complete_directory.html#How_to_apply_a_common_operation_to_a_complete_directory"><span class="tocnumber">1</span> <span class="toctext">How to apply a common operation to a complete directory</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="How_to_apply_a_common_operation_to_a_complete_directory.html#Step_1:_record_a_macro"><span class="tocnumber">2</span> <span class="toctext">Step 1: record a macro</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="How_to_apply_a_common_operation_to_a_complete_directory.html#Step_2:_Make_the_macro_generic"><span class="tocnumber">3</span> <span class="toctext">Step 2: Make the macro generic</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="How_to_apply_a_common_operation_to_a_complete_directory.html#Step_3:_Iterating_over_all_images_in_a_given_directory"><span class="tocnumber">4</span> <span class="toctext">Step 3: Iterating over all images in a given directory</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="How_to_apply_a_common_operation_to_a_complete_directory.html#Alternative:_Multiple_Image_Processor"><span class="tocnumber">5</span> <span class="toctext">Alternative: Multiple Image Processor</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="How_to_apply_a_common_operation_to_a_complete_directory">How to apply a common operation to a complete directory</span></h2>
+<p>Often you want to  apply a common operation to all images in a given directory. This tutorial tries to help you doing this. In addition, the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a> provides a template via <span><em><span style="border-bottom:1px dotted #ccc;"> Templates </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> IJ1 Macro </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Process Folder</span></em></span> that helps getting started quickly.
+</p>
+<h2><span class="mw-headline" id="Step_1:_record_a_macro">Step 1: record a macro</span></h2>
+<p>First, start the Macro Recorder:
+</p>
+<div class="MediaTransformError" style="width: 717px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>This will open the Macro Recorder window:
+</p>
+<div class="MediaTransformError" style="width: 456px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Now perform the operation on a single image. Make sure that you save the image at the end.
+</p><p>Exmaple: cropping the image. First, select a rectangle:
+</p>
+<div class="MediaTransformError" style="width: 777px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Then crop it.
+</p>
+<div class="MediaTransformError" style="width: 779px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>After saving, the recorder window will show this:
+</p>
+<div class="MediaTransformError" style="width: 778px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Click on the <b>Create</b> button, and you will get this:
+</p>
+<div class="MediaTransformError" style="width: 522px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Step_2:_Make_the_macro_generic">Step 2: Make the macro generic</span></h2>
+<p>The problem now is that this macro contains the verbatim name of the file you saved, but of course, you do not want to save <i>all</i> the files in the direcotry as <i>clown.jpg</i>!
+</p><p>The solution is to wrap the macro in a function which takes a <i>placeholder</i> for the file name.  Let's call that function <i>action</i>:
+</p>
+<pre>function action(output, filename) {
+        makeRectangle(10, 10, 300, 180);
+        run("Crop");
+        saveAs("Jpeg", output + filename);
+}
+</pre>
+<p>As you can see, the full path to the file we saved which was enclosed in quotes by the Recorder (<i>"/home/fiji/images/clown.jpg"</i>) was cut down to the full path to the output directory and the file name appended with a <i>plus</i> operator (<i>output + filename</i>), which are passed as so-called <i>parameters</i> to the function.
+</p><p>The reason is that you want ImageJ to save the processed image with a variable name.  For a single image, the function would be called like this:
+</p>
+<pre>action("home/fiji/output-images/", "bridge.gif");
+</pre>
+<p>Now, let's enhance the function so that it opens the image itself, and also closes the image after it saved the result:
+</p>
+<pre>function action(input, output, filename) {
+        open(input + filename);
+        makeRectangle(10, 10, 300, 180);
+        run("Crop");
+        saveAs("Jpeg", output + filename);
+        close();
+}
+</pre>
+<p>The function takes three parameters now: the input and output directories and the file name.  These need to be three parameters because the image should be saved into a different directory than the original came from (so that the output images will not be mistaken for input images in subsequent runs of the final macro).
+</p>
+<h2><span class="mw-headline" id="Step_3:_Iterating_over_all_images_in_a_given_directory">Step 3: Iterating over all images in a given directory</span></h2>
+<p>After defining the generic <i>action</i> function, you can call it on each image in an input directory:
+</p>
+<pre>input = "/home/fiji/input/";
+output = "/home/fiji/images/";
+
+list = getFileList(input);
+for (i = 0; i &lt; list.length; i++){
+        action(input, output, list[i]);
+}
+</pre>
+<p>Now, this is a little more complicated: First, a variable <i>input</i> is defined. The reason is that the input directory is not only needed to get the list of images, but also to pass to the <i>action</i> function.
+</p><p>To make the macro easier to modify, also the output directory is stored in a variable (with the name <i>output</i>).
+</p><p>The next line defines a variable <i>list</i>, which takes the result of the builtin function <i>getFileList</i>.  The result is a so-called <i>array</i>, a list that contains a number of <i>list.length</i> items, indexed by the numbers <i>0, ..., list.length-1</i>.  These items are the names of the files in the given <i>input</i> directory.
+</p><p>The <i>for</i> loop does nothing else than assigning the integral numbers <i>0, ..., list.length-1</i> to the variable <i>i</i> and executing the lines between { and } with each setting.
+</p><p>The line executed in the <i>for</i> loop calls the <i>action</i> function with the <i>i</i>th file name in the directory list, obtained by <i>list[i]</i>.
+</p><p>Sometimes, ImageJ can get confused when it has to open or close windows and perform operations on them, in which case it can appear as if operations are called out of order.  To prevent that, enable the <i>batch mode</i>:
+</p>
+<pre>input = "/home/fiji/input/";
+output = "/home/fiji/images/";
+
+setBatchMode(true); 
+list = getFileList(input);
+for (i = 0; i &lt; list.length; i++){
+        action(input, output, list[i]);
+}
+</pre>
+<p>setBatchMode(false);
+</p>
+<h2><span class="mw-headline" id="Alternative:_Multiple_Image_Processor">Alternative: Multiple Image Processor</span></h2>
+<p>If your macro does not use the actual name of the image (as e.g. the Image Calculator does), you can use the <i>Multiple Image Processor</i> plugin.
+</p><p>To be able to use this plugin, you need to save the macro into a file; this macro needs to perform the actions directly, i.e. there can be a function in the file, but it must be called after being defined. However, it is usually easier to adjust the output of the Macro Recorder just a little.
+</p><p>In our case, the file would simply contain these lines:
+</p>
+<pre>makeRectangle(10, 10, 300, 180);
+run("Crop");
+</pre>
+<p>Find the <i>Multiple ImageProcessor</i> plugin in the <i>Process</i> menu:
+</p>
+<div class="MediaTransformError" style="width: 526px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>The dialog would need to be filled out like this:
+</p>
+<div class="MediaTransformError" style="width: 525px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072446
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.028 seconds
+Preprocessor visited node count: 85/1000000
+Preprocessor generated node count: 582/1000000
+Post‐expand include size: 506/2097152 bytes
+Template argument size: 78/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    3.616      1 - -total
+100.00%    3.616      1 - Template:Bc
+ 30.12%    1.089      2 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=How_to_apply_a_common_operation_to_a_complete_directory&amp;oldid=45397">http://imagej.net/index.php?title=How_to_apply_a_common_operation_to_a_complete_directory&amp;oldid=45397</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 16 May 2020, at 10:16.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=How_to_apply_a_common_operation_to_a_complete_directory&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=How+to+apply+a+common+operation+to+a+complete+directory" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=How+to+apply+a+common+operation+to+a+complete+directory" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/How_to_apply_a_common_operation_to_a_complete_directory" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/How_to_apply_a_common_operation_to_a_complete_directory" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=How_to_apply_a_common_operation_to_a_complete_directory&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=How_to_apply_a_common_operation_to_a_complete_directory&amp;oldid=45397" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=How_to_apply_a_common_operation_to_a_complete_directory&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":169});});</script>
+		</body>
+		</html>
+		

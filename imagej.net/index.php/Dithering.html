@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Dithering - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Dithering","wgTitle":"Dithering","wgCurRevisionId":11397,"wgRevisionId":11397,"wgArticleId":812,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Segmentation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Dithering","wgRelevantArticleId":812,"wgRequestId":"b10c2e3aa83748cd3a6e0167","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This macro takes an 8 bit greyscale or a 24 bit RGB image and performs dithering using one of the methods supported. &#10;Dithering is a type of half tone thresholding where greyscale (or RGB channel) intensity is converted into a local density of binary pixels. This is ideal for rendering images in devices with a binary output such as printers (greyscale) or with a small number of colours (colour dithering)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Dithering"/>
+
+	<meta property="og:description" content="This macro takes an 8 bit greyscale or a 24 bit RGB image and performs dithering using one of the methods supported. &#10;Dithering is a type of half tone thresholding where greyscale (or RGB channel) intensity is converted into a local density of binary pixels. This is ideal for rendering images in devices with a binary output such as printers (greyscale) or with a small number of colours (colour dithering)."/>
+
+	<meta property="og:url" content="http://imagej.net/Dithering"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Dithering rootpage-Dithering skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Dithering.html#bodyContent">Skip to content</a>, 			<a href="Dithering.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Dithering.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Dithering" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Dithering&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Dithering&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Dithering&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Dithering</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Dithering (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Gabriel Landini
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Gabriel Landini (G.Landini at bham. ac. uk)
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> Dithering_.txt
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> See below
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> v1.0 (17 May 2009)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Dithering.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Dithering.html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Dithering.html#Available_methods"><span class="tocnumber">3</span> <span class="toctext">Available methods</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Dithering.html#Macro_code"><span class="tocnumber">4</span> <span class="toctext">Macro code</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>This macro takes an 8 bit greyscale or a 24 bit RGB image and performs dithering using one of the methods supported. 
+Dithering is a type of half tone thresholding where greyscale (or RGB channel) intensity is converted into a local density of binary pixels. This is ideal for rendering images in devices with a binary output such as printers (greyscale) or with a small number of colours (colour dithering). 
+</p><p>In the case of 24 bit RGB images the macro lets you either apply dithering to the greyscale version of the image or to each of the RGB channels (colour dithering).
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>Copy the source code below and save it into a file called "Dithering_.txt" somewhere in the /Plugins folder. Restarting Fiji or ImageJ will show a new command called "Dithering".
+</p>
+<h2><span class="mw-headline" id="Available_methods">Available methods</span></h2>
+<p>The following methods have been implemented (there are several more): Floyd-Steinberg, Atkinson, Jarvis-Judice-Ninke, Stucki, Bayer_2x2, Bayer_4x4, Bayer_8x8, Clustered_4x4 and Random.<br />
+Scaling dithered images by certain factors introduce numerous artifacts, so it is essential to apply dithering after image resizing.<br />
+Dithering results are best rendered when the image is displayed or printed using small pixels.
+</p><p>The following images have been magnified by a factor of 2 to show the individual pixels. 
+</p>
+<div class="MediaTransformError" style="width: 641px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Macro_code">Macro code</span></h2>
+<pre class="brush:java">
+
+// Dithering
+// G. Landini at bham. ac. uk
+// 17/ May 2009
+
+Dialog.create("Dithering");
+items=newArray("Floyd-Steinberg", "Atkinson", "Jarvis-Judice-Ninke","Stucki",
+        "Bayer_2x2", "Bayer_4x4", "Bayer_8x8", "Clustered_4x4", "Random");
+doColour = false;
+
+Dialog.addChoice("Method", items);
+if (bitDepth==24) Dialog.addCheckbox("Colour dithering", false);
+Dialog.show()&#160;;
+method=Dialog.getChoice();
+if (bitDepth==24)
+   doColour=Dialog.getCheckbox();
+
+setBatchMode(true);
+w=getWidth();
+h=getHeight();
+run("Duplicate...", "title="+method);
+if (bitDepth == 24 &amp;&amp; doColour) {
+   run("RGB Stack");
+   for (i=1; i&lt;4; i++){
+     showProgress(i/4);
+     setSlice(i);
+     dither(method);
+   } 
+   run("RGB Color");
+}
+else{
+  if (bitDepth&gt;8 &amp;&amp;&#160;!doColour) run("8-bit");
+  dither(method);
+}
+setBatchMode(false);
+
+function dither(method) {
+ if (method=="Floyd-Steinberg"){
+  w1=7/16;
+  w2=3/16;
+  w3=5/16;
+  w4=1/16;
+  for (y=0; y&lt;h; y++){
+    for (x=0; x&lt;w; x++){
+      oldpixel = getPixel(x,y);
+      if (oldpixel&lt;128) newpixel=0; else newpixel=255;
+      setPixel(x,y, newpixel);
+      quant_error = oldpixel - newpixel;
+      setPixel(x+1,y, getPixel(x+1,y) + w1 * quant_error);
+      setPixel(x-1,y+1, getPixel(x-1,y+1) + w2 * quant_error);
+      setPixel(x,y+1, getPixel(x,y+1) + w3 * quant_error);
+      setPixel(x+1,y+1, getPixel(x+1,y+1) + w4 * quant_error);
+    }
+  }
+ }
+ else if (method=="Atkinson"){
+  w1=1/8;
+  for (y=0; y&lt;h; y++){
+    for (x=0; x&lt;w; x++){
+      oldpixel = getPixel(x,y);
+      if (oldpixel&lt;128) newpixel = 0; else newpixel=255;
+      setPixel(x,y, newpixel);
+      quant_error = oldpixel - newpixel;
+      setPixel(x+1,y, getPixel(x+1,y) + w1 * quant_error);
+      setPixel(x+2,y, getPixel(x+2,y) + w1 * quant_error);
+      setPixel(x-1,y+1, getPixel(x-1,y+1) + w1 * quant_error);
+      setPixel(x,y+1, getPixel(x,y+1) + w1 * quant_error);
+      setPixel(x+1,y+1, getPixel(x+1,y+1) + w1 * quant_error);
+      setPixel(x,y+2, getPixel(x,y+2) + w1 * quant_error);
+    }
+  }
+ }
+ else if (method=="Jarvis-Judice-Ninke"){
+  w7=7/48;
+  w5=5/48;
+  w3=3/48;
+  w1=1/48;
+  for (y=0; y&lt;h; y++){
+    for (x=0; x&lt;w; x++){
+      oldpixel = getPixel(x,y);
+      if (oldpixel&lt;128) newpixel = 0; else newpixel=255;
+      setPixel(x,y, newpixel);
+      quant_error = oldpixel - newpixel;
+      setPixel(x+1,y, getPixel(x+1,y) + w7 * quant_error);
+      setPixel(x+2,y, getPixel(x+2,y) + w5 * quant_error);
+      setPixel(x-2,y+1, getPixel(x-2,y+1) + w3 * quant_error);
+      setPixel(x-1,y+1, getPixel(x-1,y+1) + w5 * quant_error);
+      setPixel(x,y+1, getPixel(x,y+1) + w7 * quant_error);
+      setPixel(x+1,y+1, getPixel(x+1,y+1) + w5 * quant_error);
+      setPixel(x+2,y+1, getPixel(x+2,y+1) + w3 * quant_error);
+      setPixel(x-2,y+2, getPixel(x-2,y+2) + w1 * quant_error);
+      setPixel(x-1,y+2, getPixel(x-1,y+2) + w3 * quant_error);
+      setPixel(x,y+2, getPixel(x,y+2) + w5 * quant_error);
+      setPixel(x+1,y+2, getPixel(x+1,y+2) + w3 * quant_error);
+      setPixel(x+2,y+2, getPixel(x+2,y+2) + w1 * quant_error);
+    }
+  }
+ }
+ else if (method=="Stucki"){
+  w8= 8/42;
+  w7=7/42;
+  w5=5/42;
+  w4= 4/42;
+  w2=2/42;
+  w1=1/42;
+  for (y=0; y&lt;h; y++){
+    for (x=0; x&lt;w; x++){
+      oldpixel = getPixel(x,y);
+      if (oldpixel&lt;128) newpixel = 0; else newpixel=255;
+      setPixel(x,y, newpixel);
+      quant_error = oldpixel - newpixel;
+      setPixel(x+1,y, getPixel(x+1,y) + w7 * quant_error);
+      setPixel(x+2,y, getPixel(x+2,y) + w5 * quant_error);
+      setPixel(x-2,y+1, getPixel(x-2,y+1) + w2 * quant_error);
+      setPixel(x-1,y+1, getPixel(x-1,y+1) + w4 * quant_error);
+      setPixel(x,y+1, getPixel(x,y+1) + w8 * quant_error);
+      setPixel(x+1,y+1, getPixel(x+1,y+1) + w4 * quant_error);
+      setPixel(x+2,y+1, getPixel(x+2,y+1) + w2 * quant_error);
+      setPixel(x-2,y+2, getPixel(x-2,y+2) + w1 * quant_error);
+      setPixel(x-1,y+2, getPixel(x-1,y+2) + w2 * quant_error);
+      setPixel(x,y+2, getPixel(x,y+2) + w4 * quant_error);
+      setPixel(x+1,y+2, getPixel(x+1,y+2) + w2 * quant_error);
+      setPixel(x+2,y+2, getPixel(x+2,y+2) + w1 * quant_error);
+    }
+  }
+ }
+ else if (method=="Bayer_2x2"){
+  d= newArray(2,3,4,1);
+  for (i=0; i&lt;d.length; i++)
+    d[i]=d[i] * 64 - 1;
+
+  for (y=0; y&lt;h; y++){
+    for (x=0; x&lt;w; x++){
+      if (getPixel(x,y)&gt;=d[(y%2*2+x%2)])
+          newpixel = 255; 
+      else 
+          newpixel=0;
+      setPixel(x,y, newpixel);
+    }
+  }
+ }
+ else if (method=="Bayer_4x4"){
+  d= newArray(0.1250, 1.0000, 0.1875, 0.8125, 0.6250, 0.3750, 0.6875,
+     0.4375,0.2500, 0.8750, 0.0625, 0.9375, 0.7500, 0.5000, 0.5625, 0.3125);
+  for (i=0; i&lt;d.length; i++)
+    d[i]*=255;
+  for (y=0; y&lt;h; y++){
+    for (x=0; x&lt;w; x++){
+      if (getPixel(x,y)&gt;=d[(y%4*4+x%4)])
+          newpixel = 255; 
+      else 
+          newpixel = 0;
+      setPixel(x,y, newpixel);
+    }
+  }
+ }
+ else if (method=="Bayer_8x8"){
+  d= newArray(1, 33,  9, 41, 3,  35, 11, 43, 49, 17, 57, 25, 51, 19, 59, 27, 13, 45, 5, 
+    37, 15, 47, 7, 39, 61, 29, 53, 21, 63, 31, 55, 23, 4, 36, 12, 44, 2, 34, 10, 42, 52,
+    20, 60, 28, 50, 18, 58, 26, 16, 48, 8, 40, 14, 46, 6, 38, 64, 32, 56, 24, 62, 30,
+    54, 22);
+
+  for (i=0; i&lt;d.length; i++)
+    d[i]=d[i] * 4 - 1;
+
+  for (y=0; y&lt;h; y++){
+    for (x=0; x&lt;w; x++){
+      if (getPixel(x,y)&gt;=d[(y%8*8+x%8)])
+          newpixel = 255; 
+      else 
+          newpixel = 0;
+      setPixel(x,y, newpixel);
+
+    }
+  }
+ }
+ else if (method=="Clustered_4x4"){
+  d= newArray(0.7500, 0.3750, 0.6250, 0.2500, 0.0625, 1.0000, 0.8750, 0.4375,
+    0.5000, 0.8125, 0.9375, 0.1250, 0.1875, 0.5625, 0.3125, 0.6875);
+  for (i=0; i&lt;d.length; i++)
+    d[i]*=255;
+
+  for (y=0; y&lt;h; y++){
+    for (x=0; x&lt;w; x++){
+      if (getPixel(x,y)&gt;=d[(y%4*4+x%4)])
+          newpixel = 255; 
+      else 
+          newpixel = 0;
+      setPixel(x,y, newpixel);
+    }
+  }
+ }
+else if (method=="Random"){
+  w1=1/8;
+  for (y=0; y&lt;h; y++){
+    for (x=0; x&lt;w; x++){
+      if(getPixel(x,y)&gt; random*255)
+        setPixel(x,y, 255);
+      else   
+        setPixel(x,y, 0);
+    }
+  }
+ }
+}
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713065024
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.033 seconds
+Preprocessor visited node count: 86/1000000
+Preprocessor generated node count: 563/1000000
+Post‐expand include size: 673/2097152 bytes
+Template argument size: 182/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.253      1 - Template:Infobox
+100.00%    5.253      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Dithering&amp;oldid=11397">http://imagej.net/index.php?title=Dithering&amp;oldid=11397</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 6 August 2014, at 10:39.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Dithering&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Dithering" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Dithering" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Dithering" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Dithering" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Dithering&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Dithering&amp;oldid=11397" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Dithering&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":231});});</script>
+		</body>
+		</html>
+		

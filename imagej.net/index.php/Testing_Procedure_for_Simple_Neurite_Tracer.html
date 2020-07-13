@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Testing Procedure for Simple Neurite Tracer - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Testing_Procedure_for_Simple_Neurite_Tracer","wgTitle":"Testing Procedure for Simple Neurite Tracer","wgCurRevisionId":45569,"wgRevisionId":45569,"wgArticleId":502,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Testing_Procedure_for_Simple_Neurite_Tracer","wgRelevantArticleId":502,"wgRequestId":"5bc8aa9aea1d5cbc5751158c","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This is a set of instructions to follow to test as much of the code as possible in Simple Neurite Tracer.  It does not give complete coverage, but following this before each new release should stop the more obvious problems from getting through.  The coverage results for this procedure with VIB at 6840872c6a492e31caa453a6776d1e9fac26f58d are here."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Testing Procedure for Simple Neurite Tracer"/>
+
+	<meta property="og:description" content="This is a set of instructions to follow to test as much of the code as possible in Simple Neurite Tracer.  It does not give complete coverage, but following this before each new release should stop the more obvious problems from getting through.  The coverage results for this procedure with VIB at 6840872c6a492e31caa453a6776d1e9fac26f58d are here."/>
+
+	<meta property="og:url" content="http://imagej.net/Testing_Procedure_for_Simple_Neurite_Tracer"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Testing_Procedure_for_Simple_Neurite_Tracer rootpage-Testing_Procedure_for_Simple_Neurite_Tracer skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Testing_Procedure_for_Simple_Neurite_Tracer.html#bodyContent">Skip to content</a>, 			<a href="Testing_Procedure_for_Simple_Neurite_Tracer.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Testing_Procedure_for_Simple_Neurite_Tracer.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Testing_Procedure_for_Simple_Neurite_Tracer" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Testing_Procedure_for_Simple_Neurite_Tracer&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Testing_Procedure_for_Simple_Neurite_Tracer&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Testing_Procedure_for_Simple_Neurite_Tracer&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Testing Procedure for Simple Neurite Tracer</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This page is outdated and and likely irrelevant. The latest SNT documentation can be found <a href="http://imagej.net/SNT" title="SNT">here</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+This is a set of instructions to follow to test as much of the code as possible in <a href="http://imagej.net/Simple_Neurite_Tracer" class="mw-redirect" title="Simple Neurite Tracer">Simple Neurite Tracer</a>.  It does not give complete coverage, but following this before each new release should stop the more obvious problems from getting through.  The coverage results for this procedure with VIB at 6840872c6a492e31caa453a6776d1e9fac26f58d are <a rel="nofollow" class="external text" href="https://fiji.sc/~longair/coverage-VIB-6840872c6a492e31caa453a6776d1e9fac26f58d/_files/2b.html">here</a>.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Testing_Procedure_for_Simple_Neurite_Tracer.html#Basic_Tracing"><span class="tocnumber">1</span> <span class="toctext">Basic Tracing</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Testing_Procedure_for_Simple_Neurite_Tracer.html#Saving_and_Loading"><span class="tocnumber">2</span> <span class="toctext">Saving and Loading</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Testing_Procedure_for_Simple_Neurite_Tracer.html#Test_Different_3D_Views"><span class="tocnumber">3</span> <span class="toctext">Test Different 3D Views</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Testing_Procedure_for_Simple_Neurite_Tracer.html#Reuse_an_existing_3D_viewer"><span class="tocnumber">4</span> <span class="toctext">Reuse an existing 3D viewer</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Testing_Procedure_for_Simple_Neurite_Tracer.html#Load_Labels"><span class="tocnumber">5</span> <span class="toctext">Load Labels</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Testing_Procedure_for_Simple_Neurite_Tracer.html#Show_Correspondences_To_Traces"><span class="tocnumber">6</span> <span class="toctext">Show Correspondences To Traces</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Testing_Procedure_for_Simple_Neurite_Tracer.html#SWC_Import"><span class="tocnumber">7</span> <span class="toctext">SWC Import</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Basic_Tracing">Basic Tracing</span></h2>
+<ul><li> Open example-for-tracing.tif</li>
+<li> Run "Simple Neurite Tracer", selecting "Create new 3D Viewer" and "Use three pane view"</li>
+<li> Rotate the 3D view</li>
+<li> Use the slice selector to run through the slices in each pane</li>
+<li> Hold down Shift while moving the red crosshair around in each pane in turn</li>
+<li> Click to start a path</li>
+<li> Cancel Path</li>
+<li> Click to start a path</li>
+<li> Select a further point along the path</li>
+<li> Check with "Shift" that the cyan search progress appears in each pane</li>
+<li> Check that blue path is create in each pane, and in the 3D viewer</li>
+<li> Click "No" to answer the question "Keep new path segment"</li>
+<li> Try again to select a further point along the path</li>
+<li> Click "Abandon Search" half way through the search for the path.</li>
+<li> Try again to select a further point along the path, but allow it to continue to completion</li>
+<li> Click "Yes" to confirm the temporary path</li>
+<li> Check that the red path appears in all panes and the 3D viewer</li>
+<li> Pick a further point and confirm that next segment.</li>
+<li> Click on "Complete Path"</li>
+<li> Check that the magenta path appears in all of the viewers</li>
+<li> Select the path in the Path Window</li>
+<li> Hold down Control and click a point on the existing path where you want a branch point to start</li>
+<li> Add a few more segments to the the new path, complete it normally</li>
+<li> Start a new path at a random point in the stack, and end it on an existing path by holding down Control when you select the final point</li>
+<li> Create a new path that both starts and ends on an exisiting path</li>
+<li> Check that these paths appear sensibly in the Path window</li>
+<li> Try selecting and deselecting the paths in the Path window, check that the right paths are highlighted in each pane and in the 3D viewer</li>
+<li> Turn on the "Only Show Selected Paths" option and do the same, checking that only the selected paths appear</li>
+<li> Turn off the "Only Show Selected Paths"</li>
+<li> Select "2D: parts in nearby slices"</li>
+<li> Look through all the slices to check that they're displayed properly</li>
+<li> Try changing the "slices on either side" parameter and doing the same</li>
+<li> Turn on "Hessian based analysis"</li>
+<li> Add an extra path</li>
+<li> Turn off "Hessian based analysis"</li>
+<li> Click on "Pick Sigma Visually"</li>
+<li> Click on an interesting point in the image</li>
+<li> In the Sigma Palette, try adjusting the maximum, adjusting the slice and click on one of the boxes with a different sigma</li>
+<li> Close the palette and wait for the Gaussian to finish calculating</li>
+<li> Try adding a path</li>
+<li> Turn off "Hessian based analysis"</li>
+<li> Click "Pick Sigma Visually", click in the image, but close the window while the palette is generating to check that this cancels the generation properly</li>
+<li> Click "Pick Sigma Manually" and try setting some values - check that the Gaussian is recalculated and you can trace a new path</li>
+<li> Click on the green rectangle and then change the colour.  Check that the colour changes in the panes and in the 3D Viewer</li>
+<li> Click on the magenta rectangle and then change the colour. Check that the colour changes in the panes and in the 3D Viewer.</li>
+<li> Use "Show / Hide Fill List" and "Show / Hide Path List" to display and hide the two windows</li>
+<li> Select a single path in the Path Window, hold down Shift and click "Fit Volume"</li>
+<li> "Fly Through" the normal path which is fitted</li>
+<li> Select all paths in the Path Window and click "Fit Volume"</li>
+<li> Check that they are all fitted in the 3D Viewer (note bug here: selection is not preserved afterwards)</li>
+<li> Try selectively unfitting two of the paths</li>
+<li> Refit one of them.</li>
+<li> Select a (not top level path) and click "Make Primary"</li>
+<li> Check that the path list is rearranged</li>
+<li> Click on a path and rename it (not bug here: only the non-fitted path's name is changed)</li>
+<li> Delete the path with start and end joins</li>
+<li> Don't quit the tracer but move onto the next set of tests...</li>
+<li> Select a single path and click "Fill Out" (note bug here: panes stop updating due to NPE)</li></ul>
+<pre>Exception in thread "AWT-EventQueue-0" Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
+	at tracing.SearchThread.anyNodeUnderThreshold(SearchThread.java:682)
+	at tracing.SearchThread.drawProgressOnSlice(SearchThread.java:729)
+	at tracing.FillerThread.drawProgressOnSlice(FillerThread.java:365)
+	at tracing.TracerCanvas.drawOverlay(TracerCanvas.java:87)
+</pre>
+<ul><li> (FIXME: add further filling test script here.)</li>
+<li> Click "Cancel Fill"</li>
+<li> Move on to the next section</li></ul>
+<h2><span class="mw-headline" id="Saving_and_Loading">Saving and Loading</span></h2>
+<ul><li> Click "Export as CSV"</li>
+<li> Check that the CSV file has been created properly</li>
+<li> Repeat, checking there's a warning about overwriting and overwriting</li>
+<li> Repeat, checking there's a warning about overwriting and not overwriting</li>
+<li> Click "Save Traces File", save to foo.nonstandard</li>
+<li> Quit the tracer (there should be no "unsaved paths" warning...)</li>
+<li> Close the 3D Viewer</li>
+<li> Start "Simple Neurite Tracer" and select "Create new 3D Viewer" and "Three Pane View"</li>
+<li> Click "Load Traces" and select foo.nonstandard</li>
+<li> Look through the stack and check that all are reloaded, the renamed path is still renamed, etc.</li>
+<li> Add a new path</li>
+<li> Click "Quit Tracer", check that you're warned about unsaved paths - cancel, check that it doesn't quit</li>
+<li> Click "Quit Tracer", check that you're warned about unsaved paths - go ahead and quit</li>
+<li> Rename "foo.nonstandard" to "foo.traces"</li>
+<li> Start "Simple Neurite Tracer" and select "Create new 3D Viewer" and "Three Pane View"</li>
+<li> Click "Load Traces" and check that it offers to load the renamed traces file.</li>
+<li> Click "No", and select it manually.</li>
+<li> Quit the tracer and try again, this time loading the default when it offers.</li></ul>
+<h2><span class="mw-headline" id="Test_Different_3D_Views">Test Different 3D Views</span></h2>
+<ul><li> Load up the traces file, make sure that some paths are fitted, some not</li>
+<li> Try each of the View Paths (3D) options, check they all work</li>
+<li> Change back to surface reconstructions</li></ul>
+<h2><span class="mw-headline" id="Reuse_an_existing_3D_viewer">Reuse an existing 3D viewer</span></h2>
+<ul><li> Select "Show only selected paths", pick two fitted paths</li>
+<li> Change the fitted path colour to something different from the default (e.g. yellow)</li>
+<li> Quit the tracer, don't save</li>
+<li> Select the "image for tracing" in the 3D Viewer, remove it</li>
+<li> With the original ImagePlus as the current image, start the 3D viewer, but select "Reuse 3D Viewer", and pick the existing 3D Viewer</li>
+<li> Add a new path, check that the existing yellow reconstructions are still there</li>
+<li> Quit the tracer and close the 3D Viewer</li></ul>
+<h2><span class="mw-headline" id="Load_Labels">Load Labels</span></h2>
+<ul><li> Load up an image which has a corresponding labels file</li>
+<li> Click "load labels", select the right labels file</li>
+<li> Hover the mouse over different regions and check that the ImageJ status updates to tell you the region's name</li>
+<li> Quit the tracer</li></ul>
+<h2><span class="mw-headline" id="Show_Correspondences_To_Traces">Show Correspondences To Traces</span></h2>
+<ul><li> Load a file for which you have a traces file</li>
+<li> Start the tracer</li>
+<li> Draw a few paths</li>
+<li> Click "Show Corresponding Traces" and select the existing traces file</li>
+<li> Change 3D view to "lines" and check that the correspondences are shown correctly</li>
+<li> Quit the tracer</li></ul>
+<h2><span class="mw-headline" id="SWC_Import">SWC Import</span></h2>
+<ul><li> Load an image file for which you have a corresponding SWC file</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073955
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.029 seconds
+Preprocessor visited node count: 63/1000000
+Preprocessor generated node count: 260/1000000
+Post‐expand include size: 961/2097152 bytes
+Template argument size: 224/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    4.021      1 - Template:SNTDeprecation
+100.00%    4.021      1 - -total
+ 80.63%    3.242      1 - Template:Warning
+ 60.07%    2.415      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Testing_Procedure_for_Simple_Neurite_Tracer&amp;oldid=45569">http://imagej.net/index.php?title=Testing_Procedure_for_Simple_Neurite_Tracer&amp;oldid=45569</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 27 May 2020, at 14:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Testing_Procedure_for_Simple_Neurite_Tracer&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Testing+Procedure+for+Simple+Neurite+Tracer" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Testing+Procedure+for+Simple+Neurite+Tracer" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Testing_Procedure_for_Simple_Neurite_Tracer" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Testing_Procedure_for_Simple_Neurite_Tracer" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Testing_Procedure_for_Simple_Neurite_Tracer&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Testing_Procedure_for_Simple_Neurite_Tracer&amp;oldid=45569" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Testing_Procedure_for_Simple_Neurite_Tracer&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":177});});</script>
+		</body>
+		</html>
+		

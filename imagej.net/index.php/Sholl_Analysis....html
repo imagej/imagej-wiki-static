@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Sholl Analysis - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Sholl_Analysis","wgTitle":"Sholl Analysis","wgCurRevisionId":41330,"wgRevisionId":41330,"wgArticleId":1678,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Citable","Plugins","Analysis","Neuroanatomy"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Sholl_Analysis","wgRelevantArticleId":1678,"wgRequestId":"cceb8ec3a9e0bad1e12f31d2","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="keywords" content="sholl,sholl analysis, plugin,arbor,neuron,morphometry,dendrite, neuroanatomy"/>
+<meta name="description" content="sholl,sholl analysis, plugin,arbor,neuron,morphometry,dendrite,neuroanatomy"/>
+<meta name="description" content="Automated and multithreaded Sholl for direct analysis of fluorescent images and traced morphologies. Features powerful quantifications based on curve fitting. Analysis of data obtained outside of ImageJ is also possible."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Sholl Analysis"/>
+
+	<meta property="og:description" content="Automated and multithreaded Sholl for direct analysis of fluorescent images and traced morphologies. Features powerful quantifications based on curve fitting. Analysis of data obtained outside of ImageJ is also possible."/>
+
+	<meta property="og:url" content="http://imagej.net/Sholl_Analysis"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Sholl_Analysis rootpage-Sholl_Analysis skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Sholl_Analysis....html#bodyContent">Skip to content</a>, 			<a href="Sholl_Analysis....html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Sholl_Analysis....html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Sholl_Analysis....html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Sholl_Analysis&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Sholl_Analysis&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Sholl_Analysis&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Sholl Analysis</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><!-- ADDMETAK c2hvbGwsc2hvbGwgYW5hbHlzaXMsIHBsdWdpbixhcmJvcixuZXVyb24sbW9ycGhvbWV0cnksZGVuZHJpdGUsIG5ldXJvYW5hdG9teQ== --><!-- ADDMETAD c2hvbGwsc2hvbGwgYW5hbHlzaXMsIHBsdWdpbixhcmJvcixuZXVyb24sbW9ycGhvbWV0cnksZGVuZHJpdGUsbmV1cm9hbmF0b215 -->
+</p>
+<div style="float:right;">
+<table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Sholl Analysis<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Sholl">https://imagej.net/Sholl</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/tferr/ASA/releases/tag/Sholl_Analysis-3.6.12">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~ca.mcgill~Sholl_Analysis~3.6.12~~~kw,versionexpand">3.6.12</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Mon Jan 16 23:02:41 CST 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> Tom Maddock
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Tiago" title="User:Tiago">Tiago Ferreira</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> <a href="http://imagej.net/User:Tiago" title="User:Tiago">Tiago Ferreira</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:Tiago" title="User:Tiago">Tiago Ferreira</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Tiago" title="User:Tiago">Tiago Ferreira</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Tiago" title="User:Tiago">Tiago Ferreira</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Tiago" title="User:Tiago">Tiago Ferreira</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> Tom Maddock, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div style="padding-top:17em;padding-left:1.5em;">
+<div style="font-size:175%;border-bottom:1px dotted #ccc;margin-bottom:0.55em;">Quick links</div>
+<dl><dt>Analysis of traced arbors?</dt>
+<dd>Jump to <a href="Sholl_Analysis....html#Analysis_of_Traced_Cells">Traced Cells</a> or <a href="Sholl_Analysis....html#external-traces">Other tracing software</a></dd>
+<dt>Segmentation issues?</dt>
+<dd>Jump to <a href="Sholl_Analysis....html#Cf._Segmentation">Cf. Segmentation</a> or <a href="Sholl_Analysis....html#Pre-processing">Pre-processing</a></dd>
+<dt>Having Problems?</dt>
+<dd>Jump to <a href="Sholl_Analysis....html#FAQ">FAQs</a></dd></dl>
+</div>
+</div><div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Sholl_Analysis....html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Sholl_Analysis....html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Sholl_Analysis....html#Direct_Analysis_of_Images"><span class="tocnumber">3</span> <span class="toctext">Direct Analysis of Images</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Sholl_Analysis....html#Startup_ROI"><span class="tocnumber">3.1</span> <span class="toctext">Startup ROI</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Sholl_Analysis....html#Cf._Segmentation"><span class="tocnumber">3.2</span> <span class="toctext">Cf. Segmentation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="Sholl_Analysis....html#Analysis_of_Traced_Cells"><span class="tocnumber">4</span> <span class="toctext">Analysis of Traced Cells</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Sholl_Analysis....html#Analysis_of_Existing_Profiles"><span class="tocnumber">5</span> <span class="toctext">Analysis of Existing Profiles</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Sholl_Analysis....html#Parameters"><span class="tocnumber">6</span> <span class="toctext">Parameters</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="Sholl_Analysis....html#Definition_of_Shells"><span class="tocnumber">6.1</span> <span class="toctext">Definition of Shells</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Sholl_Analysis....html#Multiple_Samples.2FNoise_Reduction"><span class="tocnumber">6.2</span> <span class="toctext">Multiple Samples/Noise Reduction</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Sholl_Analysis....html#Descriptors_and_Curve_Fitting"><span class="tocnumber">6.3</span> <span class="toctext">Descriptors and Curve Fitting</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Sholl_Analysis....html#Choice_of_Methods"><span class="tocnumber">6.4</span> <span class="toctext">Choice of Methods</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Sholl_Analysis....html#Output_Options"><span class="tocnumber">6.5</span> <span class="toctext">Output Options</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="Sholl_Analysis....html#Sholl_Plots"><span class="tocnumber">7</span> <span class="toctext">Sholl Plots</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="Sholl_Analysis....html#Metrics"><span class="tocnumber">8</span> <span class="toctext">Metrics</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="Sholl_Analysis....html#Metrics_based_on_sampled_data"><span class="tocnumber">8.1</span> <span class="toctext">Metrics based on sampled data</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Sholl_Analysis....html#Metrics_based_on_fitted_data"><span class="tocnumber">8.2</span> <span class="toctext">Metrics based on fitted data</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-18"><a href="Sholl_Analysis....html#Complementary_Tools"><span class="tocnumber">9</span> <span class="toctext">Complementary Tools</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="Sholl_Analysis....html#Pre-processing"><span class="tocnumber">10</span> <span class="toctext">Pre-processing</span></a></li>
+<li class="toclevel-1 tocsection-20"><a href="Sholl_Analysis....html#Batch_Processing"><span class="tocnumber">11</span> <span class="toctext">Batch Processing</span></a>
+<ul>
+<li class="toclevel-2 tocsection-21"><a href="Sholl_Analysis....html#Batch_Analysis_of_Images"><span class="tocnumber">11.1</span> <span class="toctext">Batch Analysis of Images</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Sholl_Analysis....html#Batch_Analysis_of_Tabular_Data"><span class="tocnumber">11.2</span> <span class="toctext">Batch Analysis of Tabular Data</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-23"><a href="Sholl_Analysis....html#Advanced_Usage"><span class="tocnumber">12</span> <span class="toctext">Advanced Usage</span></a></li>
+<li class="toclevel-1 tocsection-24"><a href="Sholl_Analysis....html#Auxiliary_Commands"><span class="tocnumber">13</span> <span class="toctext">Auxiliary Commands</span></a></li>
+<li class="toclevel-1 tocsection-25"><a href="Sholl_Analysis....html#FAQ"><span class="tocnumber">14</span> <span class="toctext">FAQ</span></a></li>
+<li class="toclevel-1 tocsection-26"><a href="Sholl_Analysis....html#Release_Notes_and_Pre-releases"><span class="tocnumber">15</span> <span class="toctext">Release Notes and Pre-releases</span></a></li>
+<li class="toclevel-1 tocsection-27"><a href="Sholl_Analysis....html#Related_Resources"><span class="tocnumber">16</span> <span class="toctext">Related Resources</span></a></li>
+<li class="toclevel-1 tocsection-28"><a href="Sholl_Analysis....html#Publication"><span class="tocnumber">17</span> <span class="toctext">Publication</span></a></li>
+<li class="toclevel-1 tocsection-29"><a href="Sholl_Analysis....html#Citations"><span class="tocnumber">18</span> <span class="toctext">Citations</span></a></li>
+<li class="toclevel-1 tocsection-30"><a href="Sholl_Analysis....html#References"><span class="tocnumber">19</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-31"><a href="Sholl_Analysis....html#License"><span class="tocnumber">20</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+</div>
+<p>Automated and multithreaded Sholl for direct analysis of fluorescent images and traced morphologies. Features powerful quantifications based on curve fitting. Analysis of data obtained outside of ImageJ is also possible.
+</p>
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<span id="CA1CellMask"></span><div class="thumb tright"><div class="thumbinner" style="width:247px;"><div class="MediaTransformError" style="width: 245px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><a href="http://imagej.net/Skeletonize3D" title="Skeletonize3D">Skeletonized</a> hippocampal CA1 cell<sup id="cite_ref-Gross_1-0" class="reference"><a href="Sholl_Analysis....html#cite_note-Gross-1">&#91;1&#93;</a></sup> (juvenile mouse) in which apical and basal dendrites have been analyzed <a href="Sholl_Analysis....html#CA1CellPlot">separately</a> and <a href="Sholl_Analysis....html#Output_Options">color coded</a> according to their Sholl profile. Warmer hues indicate higher number of Intersections (<i>N</i>). <a href="Sholl_Analysis....html#CriticalRadius">Critical radius</a> (<i>r<sub>c</sub></i>) and <a href="Sholl_Analysis....html#MeanValueOfFunction">Mean value</a> (<i>N<sub>av</sub></i>) are indicated.</div></div></div>
+<p>The Sholl technique<sup id="cite_ref-Sholl_2-0" class="reference"><a href="Sholl_Analysis....html#cite_note-Sholl-2">&#91;2&#93;</a></sup> is used to describe neuronal arbors. This plugin can perform Sholl directly on 2D and 3D grayscale images of isolated neurons. Its internal algorithm to collect data is based upon how Sholl analysis is done by hand — it creates a series of concentric <i>shells</i> (circles or spheres) around the focus of a neuronal arbor, and counts how many times connected voxels defining the arbor intersect the sampling shells.
+The major advantages of this plugin over other implementations are:
+</p>
+<ul><li> When analyzing images directly, it does not require previous tracing of the arbor (although it can also analyze <a href="Sholl_Analysis....html#Analysis_of_Traced_Cells">traced arbors</a>)</li>
+<li> It combines <a href="Sholl_Analysis....html#MethodsTable">curve fitting</a> with several <a href="Sholl_Analysis....html#Sholl_Plots">methods</a> to automatically retrieve <a href="Sholl_Analysis....html#Metrics">quantitative descriptors</a> from sampled data, which allows direct statistical comparisons between arbors</li>
+<li> It allows <a href="Sholl_Analysis....html#Multiple_Samples_and_Noise_Reduction">continuous and repeated sampling</a> around user-defined foci</li>
+<li> It allows <a href="Sholl_Analysis....html#Batch_Processing">batch processing</a></li></ul>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>The plugin is distributed with Fiji. It installs several commands under <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">&#160;</span></em></span>. <b>As part of an active effort to <a href="http://imagej.net/2015-12-22_-_The_road_to_Java_8" title="2015-12-22 - The road to Java 8">modernize ImageJ</a> you need to <a href="http://imagej.net/How_to_follow_a_3rd_party_update_site#Add_update_sites" class="mw-redirect" title="How to follow a 3rd party update site"> subscribe</a> to the Java 8 update site to access the latest plugin version</b> (this will also allow you to access the newest <a href="http://imagej.net/2015-12-22_-_The_road_to_Java_8#Components_which_have_already_migrated" title="2015-12-22 - The road to Java 8">ImageJ capabilities</a>). To do so, you can either:
+</p>
+<ul><li> <a href="http://imagej.net/Downloads" title="Downloads">Download the latest Fiji release</a>. Newer releases come pre-bundled with Java 8, and are already subscribed to the <a href="http://imagej.net/User:Java-8" title="User:Java-8">Java-8 update site</a>.</li>
+<li> If you have downloaded Fiji while ago and want to keep your existing installation, you will have to download Java 8 and make your <a href="http://imagej.net/Troubleshooting#Checking_the_Java_version" title="Troubleshooting">Fiji installation aware of it</a>. Then subscribe to the <a href="http://imagej.net/User:Java-8" title="User:Java-8">Java-8 update site</a>.</li></ul>
+<h2><span class="mw-headline" id="Direct_Analysis_of_Images">Direct Analysis of Images</span></h2>
+<p>In this mode (bitmap analysis), the plugin requires a <a href="Sholl_Analysis....html#faq:threshold">binary image or a segmented</a> <a href="Sholl_Analysis....html#faq:image-types">grayscale image</a> (2D or 3D) containing a single neuron.
+</p>
+<ol><li> Segment the neuronal arbor using <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Adjust</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Threshold...</span></em></span> (shortcut: <span style="display:inline-block;"><kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">T</kbd> </span>).</li></ol>
+<dl><dd><dl><dd>N.B.: When using multichannel images, you will have to set the its display mode to <i>Grayscale</i> using <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Color</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Channels Tool...</span></em></span> (<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Z</kbd>), because images displayed as <i>Composites</i> cannot be thresholded.</dd></dl></dd></dl>
+<ol><li> Define the center of analysis using a valid <a href="Sholl_Analysis....html#Startup_ROI">startup ROI</a>.</li>
+<li> Run <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl Analysis...</span></em></span>, adjusting the default <a href="Sholl_Analysis....html#Parameters">Parameters</a> in the dialog prompt.</li>
+<li> Press <i>More&#160;» <a href="Sholl_Analysis....html#Cf._Segmentation">Cf. Segmentation</a></i> to visually inspect the two thresholded phases: <i>arbor</i> and <i>background</i>.</li>
+<li> Problems? Read the  <a href="Sholl_Analysis....html#FAQ">FAQs</a>.</li></ol>
+<div id="Paper" style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> This program is described in <a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v11/n10/full/nmeth.3125.html">Nature methods</a>. The manuscript uses <i>Sholl Analysis</i> to describe and classify morphologically challenging cells and is accompanied by a <a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v11/n10/extref/nmeth.3125-S1.pdf">Supplementary Note</a> that presents the software in greater detail. Please <a href="Sholl_Analysis....html#faq:citing">cite it</a> when acknowledging the plugin in your published research.</div>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Startup_ROI">Startup ROI</span></h3>
+<p>The center of analysis can be specified using one of three possibilities:
+</p>
+<dl><dt>Straight line</dt>
+<dd> A Straight line from the focus of the arbor to its most distal point using the Straight Line Tool. The advantages of using line selections are twofold: 1) Center of analysis and <a href="Sholl_Analysis....html#EndRadius">Ending radius</a> are automatically set, and 2) Horizontal/vertical lines (created by holding <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd> while using the Straight Line Selection Tool) can be used to <a href="Sholl_Analysis....html#Restrict">restrict analysis to sub-regions</a> of the image.</dd>
+<dt>Single point</dt>
+<dd> A single point marking the focus of the arbor using the Point Selection Tool. With single point selections, only the center of analysis is defined. Thus, this option is suitable for <a href="Sholl_Analysis....html#Batch_Processing">batch processing</a> of images with different dimensions with undefined <a href="Sholl_Analysis....html#EndRadius">Ending radius</a>.</dd>
+<dt>Multi-point selection</dt>
+<dd>A Multi-point selection (multi-point counter) in which the first point marks the center of analysis while the remaining points mark (count) the number of primary branches required for the calculation of <a href="Sholl_Analysis....html#SchoenenSampled">ramification indices</a>). Suitable for cases in which <a href="Sholl_Analysis....html#PrimaryBranches">inference from starting radius</a> is not effective.</dd></dl>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:713px;"><div class="MediaTransformError" style="width: 711px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption">Three types of ROIs expected by the plugin when analyzing images directly. Left: Line defining center of analysis (focal point), hemisphere restriction and ending radius. Middle: Single point defining center of analysis. Right: Multi-point selection in which the first point defines the focal point while the remaining points (2 to 5) serve as counters for primary dendrites.</div></div></div></div>
+<h3><span class="mw-headline" id="Cf._Segmentation">Cf. Segmentation</span></h3>
+<p>Press <i>More» Cf. Segmentation</i> to visually confirm which phase of the segmented image will be sampled. This command highlights foreground from background pixels and is particularly useful when analyzing black and white (binary) images or when using the <i>B&amp;W</i> lookup table in the Threshold Widget (<span style="border-bottom:1px dotted #ccc;">Image▷ Adjust▷ Threshold...</span> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">T</kbd>). <i>Cf. Segmentation</i> allows you to ensure that you are measuring neuronal processes and not the interstitial spaces between them. Here is an example using an axonal arbor of a Drosophila olfactory neuron from the <a rel="nofollow" class="external text" href="http://diademchallenge.org">DIADEM</a> dataset<sup id="cite_ref-DIADEM_3-0" class="reference"><a href="Sholl_Analysis....html#cite_note-DIADEM-3">&#91;3&#93;</a></sup>:
+</p>
+<table>
+<tr>
+<td><center><span style="display:inline-block;text-align:center;width:230px">Segmented image</span> <span style="display:inline-block;text-align:center;width:230px"><i>Cf. Segmentation output</i></span> <span style="display:inline-block;text-align:center;width:230px"><i>Intersections mask</i></span></center>
+</td></tr>
+<tr>
+<td><center><div class="center"><div class="floatnone"><a href="http://imagej.net/File:CfSegmentation.png" class="image"><img alt="CfSegmentation.png" src="../_images/e/ee/CfSegmentation.png" width="700" height="277" /></a></div></div></center>
+</td></tr>
+<tr>
+<td><center><b>Top row:</b> Image properly segmented: Arbor is sampled. <b>Bottom row:</b>  Aberrant segmentation (inverted image): Background is sampled.</center>
+<p>Note the reversal of <i><a href="Sholl_Analysis....html#Cf._Segmentation">Cf. Segmentation</a> output</i> and how the <i><a href="Sholl_Analysis....html#Output_Options">intersections mask</a></i> no longer decorates the axonal processes but the interstitial spaces between them. The consequences of the phase inversion are twofold:  1) the program oversamples (cf. hue ramps on upper left of <i>Intersections mask</i>) and 2) the program detects artifacts induced by the edges of the image (cf. top-right and bottom-right corners of mask where intersections are sampled in the absence of real axons at those locations). Also, note that the initial black and white image would <i>look the same</i> under an inverted lookup table  (<span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Lookup Tables</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Invert LUT</span></em></span>).
+</p>
+</td></tr></table>
+<div style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> With binary images, <i>Sholl Analysis</i> treats  zero intensities as the background, independently of the image lookup table or the state of the <i>Black background option</i> in <span style="border-bottom:1px dotted #ccc;">Process▷ Binary▷ Options...</span> As with any other <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-29.html#infobox:blackBackground">ImageJ routine</a>, confusing background with foreground pixels will lead to aberrant results, including: 1) overestimation of branches and 2) artifacts at distances intersecting the boundaries of the image canvas.</div>
+<p><br />
+<span id="Traces"></span>
+</p>
+<h2><span class="mw-headline" id="Analysis_of_Traced_Cells">Analysis of Traced Cells</span></h2>
+<div class="floatright"><a href="http://imagej.net/File:ShollTracingsPrompt.png" class="image" title="Main prompt (version 3.6.8), when input is traced data (Analysis ▷ Sholl ▷ Sholl Analysis (Tracings)...)"><img alt="Main prompt (version 3.6.8), when input is traced data (Analysis ▷ Sholl ▷ Sholl Analysis (Tracings)...)" src="../_images/2/2b/ShollTracingsPrompt.png" width="400" height="359" /></a></div>In this mode, the plugin analyzes reconstructed arbors. This is particularly relevant for stainings that do not allow single-cell resolution. The plugin is macro recordable and <a href="Sholl_Analysis....html#Batch_Processing">batch processing</a> is also possible.
+<ol><li> Run <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl Analysis (Tracings)...</span></em></span> and specify a tracing file (a <code>.swc</code>, a <code>.eswc</code> or a <a href="http://imagej.net/Simple_Neurite_Tracer" class="mw-redirect" title="Simple Neurite Tracer">Simple Neurite Tracer</a> <code>.traces</code> file). If you want, you can also specify the image associated with the reconstruction. This will allow the plugin to use the image's metadata to determine spatial units and x,y,z spacing.</li>
+<li> Choose the center of analysis using the drop down menu in the main prompt listing SWC tags (<i>axon</i>, <i>dendrite</i>, <i>soma</i>, etc.). Note that if your tracings are not tagged you can do so in <a href="http://imagej.net/Simple_Neurite_Tracer" class="mw-redirect" title="Simple Neurite Tracer">Simple Neurite Tracer</a></li>
+<li> Adjust the default <a href="Sholl_Analysis....html#Parameters">Parameters</a></li>
+<li> Problems? Read the  <a href="Sholl_Analysis....html#FAQ">FAQs</a></li></ol>
+<p><br />
+</p>
+<div id="external-traces" style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> You can use  <span><em><span style="border-bottom:1px dotted #ccc;">Sholl Analysis (Tracings)...</span></em></span> to analyze reconstructed data from any software capable of <a rel="nofollow" class="external text" href="http://www.neuronland.org/NLMorphologyConverter/MorphologyFormats/SWC/Spec.html">SWC</a> export such as <a rel="nofollow" class="external text" href="https://sourceforge.net/projects/py3dn/">Py3DN</a>, <a rel="nofollow" class="external text" href="http://www.reading.ac.uk/neuromantic/">Neuromantic</a>, <a rel="nofollow" class="external text" href="http://research.mssm.edu/cnic/tools-ns.html">NeuronStudio</a>, <a rel="nofollow" class="external text" href="http://www.neutracing.com">neuTube</a>, or <a rel="nofollow" class="external text" href="http://www.vaa3d.org/">Vaa3D</a>), not just <a href="http://imagej.net/Simple_Neurite_Tracer" class="mw-redirect" title="Simple Neurite Tracer">Simple Neurite Tracer</a>. In addition, <a rel="nofollow" class="external text" href="http://cng.gmu.edu:8080/Lm/">L-Measure</a>, <a rel="nofollow" class="external text" href="http://neuronland.org/NL.html">NLMorphologyConverter</a> or <a rel="nofollow" class="external text" href="http://www.neuron.yale.edu/neuron/">Neuron</a> can also be used to convert several file formats (including proprietary formats from closed-source commercial software such as Neurolucida®, MicroBrightField, Inc.) into SWC.</div>
+<p><br />
+<span id="Importing"></span>
+</p>
+<h2><span class="mw-headline" id="Analysis_of_Existing_Profiles">Analysis of Existing Profiles</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><div class="MediaTransformError" style="width: 400px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption">Linear plot for CA1 cell <a href="Sholl_Analysis....html#CA1CellMask">described above</a>. Using the soma as center, image was sampled twice using the <a href="Sholl_Analysis....html#Restrict">Restrict analysis to hemicircle/hemisphere</a> option in order to segregate apical from basal dendrites. For convenience, distances for basal branches were assigned negative values. For clarity, the binary image of the arbor was rotated, scaled and overlaid (in green) over the plot canvas. Note that it is also possible to restrict <a href="Sholl_Analysis....html#MethodsTable">curve fitting</a> to a sub-range of distances once <a href="Sholl_Analysis....html#Importing">data is collected</a>.</div></div></div>
+<p>This feature is processed by <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl Analysis (Existing Profile)...</span></em></span>. This command can be used to re-analyze data (replot, modify fitting options, etc.) without having to access the initial image or tracing data.  <a href="Sholl_Analysis....html#Batch_Analysis_of_Tabular_Data">Batch processing</a> is also possible. Noteworthy:
+</p>
+<ul><li> <b>Input data</b>: Any tab or comma delimited text file (.csv, .txt, .xls, .ods) can be used. You can drag &amp; drop these files into the main ImageJ window, import data from the clipboard, or use data from any other table already opened by ImageJ.</li>
+<li> <b>Restricting input data</b>: To restrict measurements to a range of distances (<a href="Sholl_Analysis....html#CA1CellPlot">see related example</a>), select the range of distances you want analyze. You can click the first row in the range, and then drag the mouse to the last row, or by holding down <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd> while selecting the last row in the range. Then,  in the prompt, activate the <i>Restrict analysis to selected rows only</i> checkbox.</li>
+<li> <b>Calculation of <i>Radius step size</i></b>: <a href="Sholl_Analysis....html#StepSize">Radius step size</a> is calculated from the difference between the first two rows in <i>Distance column</i>. This is mainly relevant when choosing <i>Annulus/Spherical shell</i> as <a href="Sholl_Analysis....html#Normalizer">normalizer</a>. </li></ul>
+<h2><span class="mw-headline" id="Parameters">Parameters</span></h2>
+<p>The majority of parameters is shared by all the Analysis commands in the<span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">&#160;</span></em></span> submenu. However, some settings are specific to the type of data used as input: A segmented image, a tracing, or a previously obtained profile. When analyzing images, input values take into account the scale information of the image (which can be set using the <span><em><span style="border-bottom:1px dotted #ccc;">Analyze</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Set Scale...</span></em></span> or <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Properties...</span></em></span> (<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">P</kbd>), the type of image (2D or 3D), and its <a href="Sholl_Analysis....html#Startup_ROI">active ROI</a>.
+</p>
+<h4><span class="mw-headline" id="Definition_of_Shells">Definition of Shells</span></h4>
+<ul><li> <span id="StartRadius"></span><b>Starting radius</b> <sup>&#160;</sup>The radius of the smallest sampling circle/sphere, i.e., the first distance to be sampled.</li>
+<li> <span id="EndRadius"></span><b>Ending radius</b> <sup>&#160;</sup>The radius of the largest (last) sampling circle/sphere. It is automatically calculated if a <a href="Sholl_Analysis....html#Usage">line ROI is used</a>. Note that the specified distance may not be actually sampled, if <i>Radius step size</i> is not a divisor of <i>Ending radius</i>-<i>Starting radius</i>. In this case, the program will choose the largest possible distance smaller than the specified value.<span id="CA1CellPlot"></span></li></ul>
+<p><b>N.B.</b> You can clear <i>Ending radius</i> or set it to <i>NaN</i> ("Not a Number") to sample the entire image. This is particularly useful when <a href="Sholl_Analysis....html#Batch_Processing">batch processing</a> images with different dimensions.
+</p>
+<ul><li> <span id="StepSize"></span><b>Radius step size</b> <sup>&#160;</sup>The sampling interval between radii of consecutive sampling circles/spheres. This value may be set to zero for continuous (1-voxel increment) measurements.</li></ul>
+<p><b>N.B.</b> For stacks with anisotropic voxel size, setting <i>Radius step size</i> to zero, sets the step length to the dimension of the matching isotropic voxel, i.e., the cube root of the product of the voxel dimensions (3D images) or the square root of the product of the pixel dimensions (2D images).
+</p>
+<ul><li> <span id="Restrict"></span><b>Restrict analysis to hemicircle/hemisphere</b> <sup>&#160;</sup>This option is only available when an orthogonal radius has been created (by holding <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd> while using the <span style="border-bottom:1px dotted #ccc;">Straight Line Selection Tool</span>). It can be used to limit the analysis to sub-compartments of the arbor.</li></ul>
+<p><b>N.B.</b> For horizontal lines, this option instructs the algorithm to measure intersections at sites equidistant from the center that have y-coordinates above/below the drawn line. For vertical lines, it instructs the plugin to measure intersections at sites equidistant from the center that have x-coordinates to the left/right of the drawn line.
+</p>
+<div class="floatright"><a href="http://imagej.net/File:BitmapSholl-Prompt_v3.png" class="image" title="Main prompt (version 3.4.1), when input is a segmented image (Analysis ▷ Sholl ▷ Sholl Analysis...)"><img alt="Main prompt (version 3.4.1), when input is a segmented image (Analysis ▷ Sholl ▷ Sholl Analysis...)" src="../_images/4/47/BitmapSholl-Prompt_v3.png" width="320" height="624" /></a></div>
+<h4><span class="mw-headline" id="Multiple_Samples.2FNoise_Reduction">Multiple Samples/Noise Reduction</span></h4>
+<ul><li> <b>Samples per radius <i>(2D images only)</i></b> <sup>&#160;</sup>Defines the number of measurements to be performed at each sampling circumference. These measurements are then combined into a single value according to the chosen <a href="Sholl_Analysis....html#SamplesIntegration">integration method</a>. This strategy, a break from previous approaches, increases the accuracy of non-continuos profiles by diluting out the effect of processes extending tangent to the sampling circumference.</li></ul>
+<dl><dd>Visually, this option can be imagined as the "thickness" of the sampling circumference: e.g., for a radius of 100 pixels and a value of 3 <i>Samples per radius</i>, the final number of intersections would integrate the measurements sampled at distances 99, 100 and 101.</dd></dl>
+<div class="floatright"><a href="http://imagej.net/File:BitmapSholl-TabularPrompt.png" class="image" title="Main prompt (version 3.4.3), when input is tabular data (Analysis ▷ Sholl ▷ Sholl Analysis (Existing Profile)...)"><img alt="Main prompt (version 3.4.3), when input is tabular data (Analysis ▷ Sholl ▷ Sholl Analysis (Existing Profile)...)" src="../_images/3/30/BitmapSholl-TabularPrompt.png" width="320" height="513" /></a></div>
+<dl><dd>Note that it would not make sense to increase the number of samples beyond the length (in pixels) of <i>Radius step size</i>. For this reason, this option is limited to a draconian (and arbitrary) maximum of 10 samples.</dd></dl>
+<ul><li> <span id="SamplesIntegration"></span><b>Samples integration <i>(2D images only)</i></b> <sup>&#160;</sup>The measure of central tendency used to combine intersection counts when multiple <i>Samples per radius</i> are used. Options are <i>Mean</i> (the default), <i>Median</i> or <i>Mode</i>.</li></ul>
+<ul><li> <b>Ignore isolated (6-connected) voxels <i>(3D images only)</i></b> <sup>&#160;</sup>If checked, single isolated voxels intersecting the surface of sampling spheres are not taken into account, which may allow for smoother profiles on noisy image stacks. However, it should be noted that connectivity in the stack volume may not reflect connectivity on the surface of a digitized sphere. Indeed, in certain contexts, it is possible (though unlikely) to obtain higher intersection counts when this filtering option is active.</li></ul>
+<dl><dd>Please keep in mind that this is just a refinement feature, and you should not expect it to mitigate the effects derived from poorly-segmented arbors.</dd></dl>
+<h4><span class="mw-headline" id="Descriptors_and_Curve_Fitting">Descriptors and Curve Fitting</span></h4>
+<ul><li> <span id="EnclosingRadiusCutoff"></span><b>Enclosing radius cutoff</b> The number of intersections to be used in the definition of <a href="Sholl_Analysis....html#EnclosingRadius">Enclosing radius</a>.</li></ul>
+<ul><li> <span id="PrimaryBranches"></span><b>Number of primary branches</b> The number of primary branches (i.e., those originating directly from cell soma when the center of analysis is the perikaryon) to be used in the calculation of <a href="Sholl_Analysis....html#SchoenenSampled">Schoenen ramification indices</a>. It is automatically populated using multi-point counts if a multi-point ROI is <a href="Sholl_Analysis....html#Startup_ROI">detected at startup</a>. Set it to zero (or <i>NaN</i>) to disable calculations of ramification indices.
+<ul><li> <b>Infer from starting radius</b> If checked, the <i>Number of Primary branches</i> is inferred from the count of intersections at <a href="Sholl_Analysis....html#StartRadius">Starting radius</a>.</li></ul></li></ul>
+<ul><li> <b>Fit profile and compute descriptors</b> <sup>&#160;</sup>If checked, data is fitted according to the chosen <a href="Sholl_Analysis....html#Choice_of_Methods">method</a> and appropriate <a href="Sholl_Analysis....html#Metrics">metrics</a> calculated automatically. If unchecked, only sampled data is plotted.
+<ul><li> <b>Show fitting details</b> <sup>&#160;</sup>Choose this option to have all of the parameters of the simplex fitting printed to the Log window. The <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination" class="extiw" title="wikipedia:Coefficient of determination">coefficient of determination</a> (<i>R<sup>2</sup></i>, a measure of goodness of fit) is always stored in the <i>Sholl Results</i> table even when this option is not selected.</li></ul></li></ul>
+<div style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> <a href="Sholl_Analysis....html#Complementary_Tools">Complementary Tools</a> describes how to extend curve fitting beyond default options.</div>
+<p><br />
+</p>
+<h4><span class="mw-headline" id="Choice_of_Methods">Choice of Methods</span></h4>
+<p><span id="Sholl_Methods"></span>The <a href="Sholl_Analysis....html#MethodsTable">type of profile(s)</a> to be obtained. <i>Linear</i> (profile without normalization), or normalized profiles: <i>Linear-norm</i>, <i>Semi-log</i>, or <i>Log-log</i>.
+</p>
+<ul><li> <b>Polynomial</b> <sup>&#160;</sup> Specifies the degree of the <a href="Sholl_Analysis....html#MethodsTable">polynomial</a> to be fitted to the <i>Linear</i> profile<sup id="cite_ref-Stulic_4-0" class="reference"><a href="Sholl_Analysis....html#cite_note-Stulic-4">&#91;4&#93;</a></sup>. While the polynomial of best approximation, or "best fit", should be empirically determined for each analyzed cell type, it is possible to ask the plugin to predict the order of the fitting polynomial (or at least try) using the choice <i>Best fitting degree</i>. In this case, the plugin will loop through all the available choices of polynomials, perform each fit in the background and choose the one with the highest coefficient of determination.</li>
+<li> <b>Most informative</b> <sup>&#160;</sup> Select this option when you cannot predict which type of normalized profile best describes the dataset. If chosen, the plugin will use the <a href="Sholl_Analysis....html#Dratio">Determination ratio</a> to determine which of <i>Semi-log</i> or <i>Log-log</i> methods is more appropriate.  <i>Linear-norm</i> is not performed.<br />The <i>Best fitting degree</i> and <i>Most informative</i> choices are obviously more computer-intensive and can be monitored by activating the <i>Show fitting details</i> checkbox.</li>
+<li> <span id="Normalizer"></span><b>Normalizer</b> The property of the sampling shell to be used in the normalization of <i>Linear-norm</i>, <i>Semi-log</i>, and <i>Log-log</i> profiles. It is <a href="Sholl_Analysis....html#MethodsTable">described below</a>.</li></ul>
+<h4><span class="mw-headline" id="Output_Options">Output Options</span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:ShollResultAsROIs.png" class="image"><img alt="" src="../_images/d/de/ShollResultAsROIs.png" width="400" height="307" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:ShollResultAsROIs.png" class="internal" title="Enlarge"></a></div>Intersection points and sampling shells can be retrieved as ROIs using <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Overlay</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">To ROI Manager</span></em></span>. Intersection points are placed at edges of detected clusters of foreground pixels, not their center.</div></div></div>
+<ul><li> <b>Create intersections mask</b> <sup>&#160;</sup>If checked, a 16/32–bit maximum intensity projection of the analyzed image is generated in which the measured arbor is painted according to its Sholl profile. The type of data (<i>Raw</i>, i.e., sampled or <i>Fitted</i>) is displayed in the image subtitle and can be specified in  <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Metrics &amp; Options...</span></em></span> or using the <i>Options...</i> command in the <i>More»</i> drop-down menu.<br />NB: The default Lookup Table (LUT) used by the mask can be changed using <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Lookup Tables</span></em></span>. The background color [gray level: 0 (black) to 255 (white)] can also be set in <span><em><span style="border-bottom:1px dotted #ccc;">Metrics &amp; Options...</span></em></span>, or at any later point using <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Color</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Edit Lut...</span></em></span> WYSIWYG versions (RGB images) of these masks can be otained using by pressing <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">F</kbd> (<span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Overlay</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Flatten</span></em></span>) or by running <span><em><span style="border-bottom:1px dotted #ccc;">Analyze</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Tools</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Calibration Bar...</span></em></span></li>
+<li> <b>Overlay sampling shells and intersection points<i> (2D images only)</i></b> <sup>&#160;</sup>If checked, two sets of ROIS are added to the image overlay: 1) concentric shells matching sampled distances (circular ROIs or composite ROIs when using hemicircles); and 2) Multipoint ROIs at intersection sites between shells and clusters of foreground pixels.</li>
+<li> <b>Save results to</b> <sup>&#160;</sup> If checked, all the results (with the exception of the <i><a href="Sholl_Analysis....html#Metrics">Sholl Table</a></i>) are saved to the specified directory. These include: 1) Sholl plots (saved as PNG images), 2) A table containing detailed data and 3) The Sholl mask. Files are named after the image filename and analysis method. Saving options can be specified in <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Metrics &amp; Options...</span></em></span> (<i>Options...</i> command in the <i>More»</i> drop-down menu).
+<ul><li> <b>Do not display saved files</b> If checked, saved files are directly saved to disk and are not displayed. Activate this option when <a href="Sholl_Analysis....html#Batch_Processing">batch processing</a> files.</li></ul></li></ul>
+<div style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> In the dialog prompts of <i>Sholl Analysis</i>, bold headings are clickable URLs pointing to the respective sections of this manual. In addition, relevant tooltips are displayed in the ImageJ status bar when specifying key options.</div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Sholl_Plots">Sholl Plots</span></h2>
+<center>
+<span id="ShollPlots"></span><div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 701px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+</center>
+<p><b><i>Linear</i>, <i>Linear-norm</i>, <i>Semi-log</i> and <i>Log-log</i> profiles for the ddaC cell (<span><em><span style="border-bottom:1px dotted #ccc;">File</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Open Samples</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">ddaC Neuron</span></em></span>), version 3.0</b>.
+Most of the retrieved <a href="Sholl_Analysis....html#Metrics_based_on_fitted_data">metrics</a> are automatically highlighted by the plugin. <i>Linear profile</i>: <a href="Sholl_Analysis....html#MeanValueOfFunction">Mean value</a> (horizontal grid line) and <a href="Sholl_Analysis....html#Centroid">Centroid</a> (colored mark). Logarithmic profiles: The <a href="Sholl_Analysis....html#ShollDecay">Sholl regression coefficient</a> (also known as Sholl decay) can be retrieved by linear regression using either the full range of data (blue line) or data within percentiles 10–90 (red line).  For this particular cell type, the Semi-log method is more <a href="Sholl_Analysis....html#Dratio">informative</a> when compared to the Log-log method.
+</p><p><span id="MethodsTable"></span>
+</p>
+<table style="padding: 60px;" rules="rows">
+<tr>
+<th align="Center"> &#160;
+</th>
+<th style="height: 2em;"> Method
+</th>
+<th> Fit
+</th>
+<th> Description
+</th></tr>
+<tr>
+<td> <span id="eq1">(1)</span>&#160;&#160;
+</td>
+<td style="white-space:nowrap"> Linear
+</td>
+<td style="white-space:nowrap">&#160;&#160; <i>N</i> = a + br + cr<sup>2</sup> + dr<sup>3</sup>  + er<sup>4</sup> + fr<sup>5</sup> + ... + xr<sup>n</sup>&#160;&#160;
+</td>
+<td> &#160;&#160;&#160;<br />Outputs a <i>N vs Distance</i> profile. Data is fitted to a polynomial function<sup id="cite_ref-Stulic_4-1" class="reference"><a href="Sholl_Analysis....html#cite_note-Stulic-4">&#91;4&#93;</a></sup>. <a href="Sholl_Analysis....html#CriticalRadius">Critical radius</a>, <a href="Sholl_Analysis....html#CriticalValue">Critical value</a> and <a href="Sholl_Analysis....html#MeanValueOfFunction">Mean value of function</a> are calculated<br />&#160;
+</td></tr>
+<tr>
+<td> <span id="eq2">(2)</span>&#160;&#160;
+</td>
+<td style="white-space:nowrap">  Linear-norm
+</td>
+<td style="white-space:nowrap">&#160;&#160; <i>N/S</i> = a r<sup>b</sup>
+</td>
+<td> &#160;<br />Outputs a <i>N/S vs Distance</i> profile. Points are fitted to a power function. It is an intermediate representation of the data that can be used to gauge the choice of <a href="Sholl_Analysis....html#Normalizer">normalizer</a>. Once plotted under a logarithmic scale the Linear-norm curve is similar to the Semi-log profile<br />&#160;
+</td></tr>
+<tr>
+<td> <span id="eq3">(3)</span>&#160;&#160;
+</td>
+<td style="white-space:nowrap">  Semi-log
+</td>
+<td style="white-space:nowrap">&#160;&#160; log(<i>N/S</i>) = -k r + m
+</td>
+<td>&#160;<br />Outputs a <i>log(N/S) vs Distance</i> profile. A linear regression is fitted to the sampled data. The <a href="Sholl_Analysis....html#ShollDecay">Sholl regression coefficient</a> (<i>k</i>) is calculated<br />&#160;
+</td></tr>
+<tr>
+<td> <span id="eq4">(4)</span>&#160;&#160;
+</td>
+<td style="white-space:nowrap"> Log-log
+</td>
+<td style="white-space:nowrap">&#160;&#160;  log(<i>N/S</i>) = -k × log(r) + m
+</td>
+<td>&#160;<br />Outputs a <i>log(N/S) vs log(Distance)</i> profile. Data is also fitted to a straight line. This is an alternative approach<sup id="cite_ref-Ristanovic_5-0" class="reference"><a href="Sholl_Analysis....html#cite_note-Ristanovic-5">&#91;5&#93;</a></sup> of obtaining a relevant <a href="Sholl_Analysis....html#ShollDecay">regression coefficient</a>, when the Semi-log method returns a poor fit<br />&#160;
+</td></tr>
+<tr>
+<td>
+</td></tr></table>
+<p><br />
+<span style="display: inline-block; width: 25px"><i><b>N</b></i></span> For 2D images, the <u>N</u>umber of clusters of pixels (8–connected) intersecting the circumference of radius <i>r</i><br />
+<span style="display: inline-block; width: 25px">&#160;</span> For 3D images, the <u>N</u>umber of clusters of voxels (26-connected) intersecting the surface of the sphere of radius <i>r</i>
+</p><p><span style="display: inline-block; width: 25px"><i><b>r</b></i></span> Distance from center of analysis (<u>r</u>adius of Sholl circle/sphere)
+</p><p><span style="display: inline-block; width: 25px"><i><b>log</b></i></span> Natural logarithm, the logarithm to the base <i>e</i>
+</p><p><span style="display: inline-block; width: 25px"><i><b>S</b></i></span>The <a href="Sholl_Analysis....html#Choice_of_Methods">chosen property </a> of the sampling shell to be used in the normalization of <i>Linear-norm</i>, <i>Semi-log</i>, and <i>Log-log</i> profiles.<br /> <span style="display: inline-block; width: 25px">&#160;</span>For 2D images, the <i>Perimeter</i> of the sampling circumference (2πr) or the <i>Area</i> of the corresponding circle (πr<sup>2</sup>)<br /> <span style="display: inline-block; width: 25px">&#160;</span>For 3D images, the <i>Surface</i> of the sampling sphere (4πr<sup>2</sup>) or its respective <i>Volume</i> (4/3πr<sup>3</sup>)<br />
+</p><p><b>N.B.</b> A third <a href="Sholl_Analysis....html#Normalizer">normalization option</a> is also available when performing <a href="Sholl_Analysis....html#StepSize">non-continuous sampling</a>: <i>Annulus</i>/<i>Spherical shell</i>. In this case, the normalization is performed against the area of the annulus formed between the circumferences at <i>r</i> ± <i>Radius step size</i>/2 (2D images), or against the volume between the two spheres at <i>r</i> ± <i>Radius step size</i>/2 (3D images).<br />
+</p>
+<h2><span class="mw-headline" id="Metrics">Metrics</span></h2>
+<p>Morphometric descriptors and other properties of the arbor are printed to a dedicated table named <i>Sholl Results</i>. Output is fully customizable using <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Metrics &amp; Options...</span></em></span> or using the <i>Options...</i> command in the <i>More»</i> drop-down menu. The first columns log analysis parameters: <i>Image Directory</i>, <i>filename</i> and <i>voxel unit</i>, <i>Channel</i>, <i>Lower</i> and <i>Upper Threshold levels</i>, <i>X,Y</i> (in pixels) and <i>Z</i> (slice number) coordinates of center of analysis, <i>Starting</i> and <i>Ending radius</i>, <i>Radius step</i>, <i>Number of Samples per Radius</i>, etc. Other parameters are described below.
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 775px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<h3><span class="mw-headline" id="Metrics_based_on_sampled_data">Metrics based on sampled data</span></h3>
+<div class="floatright"><a href="http://imagej.net/File:ShollOptionsPrompt.png" class="image" title="Metrics &amp; Options prompt (version 3.6.4)"><img alt="Metrics &amp; Options prompt (version 3.6.4)" src="../_images/0/09/ShollOptionsPrompt.png" width="350" height="425" /></a></div>
+<dl><dt>Intersecting radii</dt>
+<dd>The number of sampling radii intersecting the arbor at least once.</dd></dl>
+<dl><dt>Sum of intersections (<i>Sum inters.</i>)<span id="Sum"></span></dt>
+<dd>The sum of all intersections.</dd></dl>
+<dl><dt>Mean of intersections (<i>Mean inters.</i>)<span id="MeanInters"></span></dt>
+<dd><i>Sum inters.</i> divided by <i>Intersecting radii</i>.</dd>
+<dd> See also <a href="Sholl_Analysis....html#MeanValueOfFunction">Mean value</a>, <a href="Sholl_Analysis....html#faq:AUC">FAQ</a></dd></dl>
+<dl><dt>Median of intersections (<i>Median Inters.</i>)</dt>
+<dd>The median value of sampled intersections.</dd></dl>
+<dl><dt>Skewness<span id="Skewness"></span></dt>
+<dd>The <a href="http://en.wikipedia.org/wiki/Skewness" class="extiw" title="wikipedia:Skewness">skewness</a> of the sampled data, an indication of how symmetrical the distribution is around its mean. Positive values indicate an asymmetrical distribution with a longer tail to the right. Negative values indicate data with a longer tail to the left. A popular rule of thumb considers that if the skewness is greater than 1.0 (or less than -1.0), the distribution may be considered far from symmetrical.</dd>
+<dd> See also <a href="Sholl_Analysis....html#Skewness-fitted">Skewness (fitted data)</a></dd></dl>
+<dl><dt>Kurtosis<span id="Kurtosis"></span></dt>
+<dd>The <a href="http://en.wikipedia.org/wiki/Kurtosis" class="extiw" title="wikipedia:Kurtosis">kurtosis</a> of the sampled data, which quantifies whether the shape of the distribution matches that of a Gaussian distribution, assuming that a Gaussian distribution has a kurtosis of 0. A distribution more peaked than a Gaussian has a positive kurtosis while a negative value indicates a flatter distribution.</dd>
+<dd> See also <a href="Sholl_Analysis....html#Kurtosis-fitted">Kurtosis (fitted data)</a></dd></dl>
+<dl><dt><span id="MaxInters"></span>Highest count of intersections (<i>Max inters.</i>)</dt>
+<dd>The maximum value of sampled intersections, i.e., the maximum in a linear [<i>N</i> vs <i>Distance</i>] profile, reflecting the highest number of processes/branches in the arbor.</dd>
+<dd> See also <a href="Sholl_Analysis....html#CriticalValue">Critical value</a></dd></dl>
+<div style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> <i><b>Max inters.</b></i>: By default only the absolute maximum is noted. However, it is possible to apply peak detection techniques to the profile to retrieve other sites of high density branching. See <a href="Sholl_Analysis....html#Complementary_Tools">Complementary Tools</a> for more details.</div>
+<p><br />
+</p>
+<dl><dt><span id="MaxIntersRadius"></span>Radius of highest count of intersections (<i>Max inters. radius</i>)</dt>
+<dd>The distance at which the <i>Highest count of intersections</i> occurred, reflecting sites of highest branch density. Note that if the same maximum occurs multiple times, only the first distance is considered.</dd>
+<dd> See also <a href="Sholl_Analysis....html#CriticalRadius">Critical radius</a></dd></dl>
+<dl><dt><span id="SchoenenSampled"></span>Schoenen Ramification index (<i>Ramification index (sampled)</i>)</dt>
+<dd>A measure of ramification<sup id="cite_ref-Schoenen_6-0" class="reference"><a href="Sholl_Analysis....html#cite_note-Schoenen-6">&#91;6&#93;</a></sup>: the ratio between <i>Max inters.</i> and the number of <a href="Sholl_Analysis....html#PrimaryBranches">primary branches</a>. It is only calculated when <a href="Sholl_Analysis....html#PrimaryBranches">primary branches</a> is valid and not zero.</dd>
+<dd> See also <a href="Sholl_Analysis....html#SchoenenFitted">Ramification index (fit)</a></dd></dl>
+<dl><dt><span id="Centroid">Centroid radius</dt>
+<dd>The abcissa of the <a href="http://en.wikipedia.org/wiki/Centroid" class="extiw" title="wikipedia:Centroid">centroid</a> (i.e., the geometric center or barycenter) of the linear profile. It is <a href="Sholl_Analysis....html#ShollPlots">highlighted</a> on the <i>N</i> vs <i>Distance</i> plot.</dd></dl>
+<dl><dt>Centroid value</dt>
+<dd>The ordinate of the <a href="http://en.wikipedia.org/wiki/Centroid" class="extiw" title="wikipedia:Centroid">centroid</a> (i.e., the geometric center or barycenter) of the linear profile. It is <a href="Sholl_Analysis....html#ShollPlots">highlighted</a> on the <i>N</i> vs <i>Distance</i> plot.</dd></dl>
+<dl><dt><span id="EnclosingRadius"></span>Enclosing radius</dt>
+<dd>The last (thus, the widest) of <i>Intersecting radii</i> to be associated with the number of intersections specified by <a href="Sholl_Analysis....html#EnclosingRadiusCutoff">Enclosing radius cutoff</a>. For a cutoff of 1 (the default) <i>Enclosing radius</i> is the widest of <i>Intersecting radii</i>. It reflects the <a href="http://en.wikipedia.org/wiki/Feret_diameter" class="extiw" title="wikipedia:Feret diameter">Feret length</a> of the arbor.</dd></dl>
+<h3><span class="mw-headline" id="Metrics_based_on_fitted_data">Metrics based on fitted data</span></h3>
+<dl><dt><span id="Dratio"></span>Determination ratio</dt>
+<dd>The ratio of the <a href="Sholl_Analysis....html#RegR2">coefficient of determination</a> for the semi-log method and that for the log–log method<sup id="cite_ref-Ristanovic_5-1" class="reference"><a href="Sholl_Analysis....html#cite_note-Ristanovic-5">&#91;5&#93;</a></sup>. If the semi-log method is better relatively to the log–log method, the <i>Determination ratio</i> becomes larger than 1. It is the parameter used by the plugin to silently predict the normalization method that is the <a href="Sholl_Analysis....html#Choice_of_Methods">most informative</a>. The prediction can be monitored by activating the <a href="Sholl_Analysis....html#Descriptors_and_Curve_Fitting">Show fitting details </a> checkbox.</dd></dl>
+<dl><dt><span id="ShollDecay"></span>Sholl regression coefficient (<i>Regression coefficient</i>)</dt>
+<dd>The slope (multiplied by -1) of the linear regression described in <a href="Sholl_Analysis....html#eq3">(3)</a> and <a href="Sholl_Analysis....html#eq4">(4)</a>, i.e., <i>k</i>, a measure of the rate of decay of the number of branches with distance from the center of analysis. Higher <i>k</i> values reflect larger changes in the function log(N/S). To optimize the fit, the plugin retrieves a <a href="Sholl_Analysis....html#ShollPlots">second linear regression</a> centered around the median distance, excluding distances at the edges of the profile. Details of this second fit are also registered on the <a href="Sholl_Analysis....html#Metrics"><i>Sholl table</i></a> under dedicated columns, e.g., <i>Sholl regression coefficient [P10-P90]</i>, when data within the 10<sup>th</sup>–90<sup>th</sup> percentile is used.</dd></dl>
+<dl><dt>Regression intercept</dt>
+<dd>The y-coordinate <i>m</i> described in <a href="Sholl_Analysis....html#eq3">(3)</a> and <a href="Sholl_Analysis....html#eq4">(4)</a>.</dd></dl>
+<dl><dt><span id="RegR2"></span>Regression R<sup>2</sup> (<i>Regression R^2</i>)</dt>
+<dd>The coefficient of determination of the linear regression described in <a href="Sholl_Analysis....html#eq3">(3)</a> and <a href="Sholl_Analysis....html#eq4">(4)</a>.</dd></dl>
+<dl><dt><span id="CriticalValue"></span>Critical value</dt>
+<dd>The local maximum of the polynomial fit, i.e, <i>N</i> at <i>Critical radius</i> in <a href="Sholl_Analysis....html#eq1">(1)</a>. Abbreviation: <i>N<sub>m</sub></i>.</dd>
+<dd> See also <a href="Sholl_Analysis....html#MaxInters">Max inters.</a></dd></dl>
+<dl><dt><span id="CriticalRadius"></span>Critical radius</dt>
+<dd>The distance at which <i>Critical value</i> occurs. By default (see <a href="Sholl_Analysis....html#Advanced_Usage">Advanced Usage</a>), it is calculated with a precision of 1/1000 of <i>Radius step size</i>. Abbreviation: <i>r<sub>c</sub></i>.</dd>
+<dd> See also <a href="Sholl_Analysis....html#MaxIntersRadius">Max inters. radius</a></dd></dl>
+<div id="Nomenclature" style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> <b>Nomenclature</b>: <a href="Sholl_Analysis....html#References">Previous authors</a> have used different terms to describe the largest value taken by the Sholl profile, including <i>Dendrite maximum</i>. Since the Sholl technique is not restricted to dendritic arbors and can be applied to any tree-like structure such as axonal arbors, mammary ducts or blood vessels (cf. <a href="Sholl_Analysis....html#Citations">List of citations</a>), <i>Sholl Analysis</i> introduces the term <a href="Sholl_Analysis....html#CriticalRadius">Critical radius</a>, renaming <i>Dendrite maximum</i> (<i>N<sub>m</sub></i>) to <a href="Sholl_Analysis....html#CriticalValue">Critical value</a>.</div>
+<p><br />
+</p>
+<dl><dt><span id="MeanValueOfFunction"></span>Mean value</dt>
+<dd>The mean value<sup id="cite_ref-Stulic_4-2" class="reference"><a href="Sholl_Analysis....html#cite_note-Stulic-4">&#91;4&#93;</a></sup> of the fitted polynomial function <a href="Sholl_Analysis....html#eq1">(1)</a>, representing the average of intersections over the whole area occupied by the arbor. Abbreviation <i>N<sub>av</sub></i>.</dd>
+<dd>On the Sholl plot, it is <a href="Sholl_Analysis....html#ShollPlots">highlighted</a> as the height of the rectangle that has the width of <i>Enclosing radius</i> − <i>First intersecting radius</i> and the same area of the area under the fitted curve on that discrete interval. It is analogous to <a href="Sholl_Analysis....html#MeanInters">Mean inters.</a>, the arithmetic mean of sampled intersections throughout the arbor (cf. <a href="Sholl_Analysis....html#Metrics_based_on_sampled_data">Metrics based on sampled data</a>). By default (see <a href="Sholl_Analysis....html#Advanced_Usage">Advanced Usage</a>), it is calculated with a precision of 1/1000 of <i>Radius step size</i>.</dd></dl>
+<dl><dt><span id="SchoenenFitted"></span>Schoenen Ramification index (<i>Ramification index (fit)</i>)</dt>
+<dd>Schoenen Ramification index retrieved from fitted profile:  The ration between <a href="Sholl_Analysis....html#CriticalValue">Critical value</a> and  <a href="Sholl_Analysis....html#PrimaryBranches">Number of primary branches</a>.</dd>
+<dd> See also <a href="Sholl_Analysis....html#SchoenenSampled">Ramification index (sampled)</a></dd></dl>
+<dl><dt><span id="Skewness-fitted"></span>Skewness (<i>Skewness (fit)</i>)</dt>
+<dd>The <a href="Sholl_Analysis....html#Skewness">skewness</a> of the fitted polynomial distribution between <a href="Sholl_Analysis....html#StartRadius">Starting radius</a> and <a href="Sholl_Analysis....html#EndRadius">Ending radius</a>.</dd></dl>
+<dl><dt><span id="Kurtosis-fitted"></span>Kurtosis (<i>Kurtosis (fit)</i>)</dt>
+<dd>The <a href="Sholl_Analysis....html#Kurtosis">kurtosis</a> of the fitted polynomial distribution between <a href="Sholl_Analysis....html#StartRadius">Starting radius</a> and <a href="Sholl_Analysis....html#EndRadius">Ending radius</a>.</dd></dl>
+<dl><dt>Polynomial R<sup>2</sup> (<i>Polyn. R^2</i>)</dt>
+<dd>The coefficient of determination of the polynomial fit described in <a href="Sholl_Analysis....html#eq1">(1)</a>.</dd></dl>
+<h2><span class="mw-headline" id="Complementary_Tools">Complementary Tools</span></h2>
+<span id="Extended_Fitting"></span><div class="thumb tright"><div class="thumbinner" style="width:406px;"><div class="MediaTransformError" style="width: 404px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption">Sampled data from the ddaC cell (<span style="border-bottom:1px dotted #ccc;">File▷ Open Samples▷ ddaC Neuron</span>) being fitted to polynomials of varying degree using a complementary <a href="http://imagej.net/BAR" title="BAR">BAR</a> script.</div></div></div>
+<p><i>Sholl Analysis</i> tries to be as flexible as possible by providing several options for normalization and curve fitting. However, it cannot offer exhaustive curve fitting options as determining <i>best fit models</i> requires reasonable choices that are not amenable to full automation. For this reason,  complementary tools for curve fitting can be installed as needed using <a href="http://imagej.net/BAR" title="BAR">BAR</a> by subscribing to its <a href="http://imagej.net/BAR#Installation" title="BAR">update site</a>. Several <a href="http://imagej.net/BAR" title="BAR">BAR</a> commands complement <i>Sholl Analysis</i>. These include:
+</p>
+<dl><dt><a href="Sholl_Analysis....html#Pre-processing">Segmentation</a> tools</dt>
+<dd></dd>
+<dd>Thresholding, shape-based masking and edge-detection routines (see <a href="http://imagej.net/BAR#List_of_BARs" title="BAR">full BAR list</a>)</dd></dl>
+<dl><dt>Data analysis tools</dt>
+<dd></dd>
+<dd><b><a href="http://imagej.net/Find_Peaks" title="Find Peaks">Find Peaks</a>:</b> Retrieves local maxima under several filtering options such as peak amplitude, peak height and peak width. Can be used to retrieve secondary sites of branch density</dd>
+<dd><b><a rel="nofollow" class="external text" href="https://github.com/tferr/Scripts/blob/master/BAR/src/main/resources/scripts/BAR/Data_Analysis/README.md#fit-polynomial">Fit Polynomial</a>:</b> Fits a polynomial of any degree to sampled data. Features an heuristic algorithm for guessing a polynomial "best fit". Expands the built-in repertoire of polynomial fits up to 50<sup>th</sup> order functions.</dd>
+<dd><b><a rel="nofollow" class="external text" href="https://github.com/tferr/Scripts/blob/master/BAR/src/main/resources/scripts/BAR/Data_Analysis/README.md#create-boxplot">Create Boxplot</a>:</b> Allows direct comparison of metrics between groups or sets of data (specially useful when tagging images with the <i>Comment</i> field in <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Metrics &amp; Options...</span></em></span>)</dd>
+<dd><b><a rel="nofollow" class="external text" href="https://github.com/tferr/Scripts/blob/master/BAR/src/main/resources/scripts/BAR/Data_Analysis/README.md#interactive-plotting">Interactive Plotting</a>:</b> Whole-purpose routine that plots data from imported spreadsheets.</dd></dl>
+<h2><span class="mw-headline" id="Pre-processing">Pre-processing</span></h2>
+<p>This section discusses some aspects that should be taken into account when segmenting neuronal arbors to be processed by <i>Sholl Analysis</i>. Since  <i>image segmentation</i> (i.e., the partitioning of images into analyzable parts) is vulnerable to noise and background fluorescence, it is not possible to generalize universal routines that efficiently binarize grayscale images. This means that any procedure  that tries to appropriately describe the original fluorescence image with a binary mask must be tailored to the characteristics of individual datasets. As mentioned in <a href="Sholl_Analysis....html#Complementary_Tools">Complementary Tools</a>, several routines listed here as distributed through the <a href="http://imagej.net/BAR" title="BAR">BAR</a> <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">update site</a>.
+<span id="Noise"></span>
+</p>
+<dl><dt>Noise</dt>
+<dd>Noise can be mitigated through the usage of processing filters, specially edge-preserving ones. Examples:
+<ul><li> <a href="http://imagej.net/Rolling_Ball_Background_Subtraction" title="Rolling Ball Background Subtraction">Rolling Ball</a> or "Top hat" filters, e.g., <span style="border-bottom:1px dotted #ccc;">Process▷ Subtract Background...</span></li>
+<li> Median Filtering (2D/3D), e.g., <span style="border-bottom:1px dotted #ccc;">Process▷ Filters▷</span>, <span style="border-bottom:1px dotted #ccc;">Plugins▷ 3D▷</span></li>
+<li> <a href="http://imagej.net/Anisotropic_Diffusion_2D" title="Anisotropic Diffusion 2D">Anisotropic Diffusion</a>, <span style="border-bottom:1px dotted #ccc;">Plugins▷ Process▷ Anisotropic Diffusion 2D</span></li>
+<li> Sobel Edge Detection, e.g., <span style="border-bottom:1px dotted #ccc;">Process▷ Find Edges</span></li>
+<li> Shen-Castan Edge Detector (<a href="http://imagej.net/BAR" title="BAR">BAR</a> <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">update site</a>), <span style="border-bottom:1px dotted #ccc;">BAR▷ Segmentation▷</span></li>
+<li> Frequency filters, e.g., <span style="border-bottom:1px dotted #ccc;">Process▷ FFT▷ Bandpass Filter...</span> </li></ul></dd></dl>
+<p><span id="Uneven_Illumination"></span>
+</p>
+<dl><dt>Uneven Illumination</dt>
+<dd>Uneven illumination problems, typically associated with <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=howto:working:how_to_correct_background_illumination_in_brightfield_microscopy">wide field microscopy</a>, do occur in confocal microscopy when signal from deep layers of the tissue is not captured as bright as with superficial layers. This signal attenuation along the Z-axis will generate a shaded gradient across the stack that <a href="Sholl_Analysis....html#Automated_Segmentation">histogram-based segmentation</a> will need to take into account. While these problems are better tackled during acquisition (e.g., using laser ramping), it is possible to mitigate this effect using histogram-normalization techniques. Examples:
+<ul><li><a href="http://imagej.net/Bleach_Correction" title="Bleach Correction">Bleach Correction</a>, <span style="border-bottom:1px dotted #ccc;">Image▷ Adjust▷</span></li>
+<li><a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=plugin:stacks:attenuation_correction:start">Attenuation correction</a></li></ul></dd></dl>
+<p><span id="Automated_Segmentation"></span>
+</p>
+<dl><dt>Automated Segmentation</dt>
+<dd>It is possible to adopt more sophisticated <a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">segmentation algorithms</a> when <a href="http://imagej.net/Auto_Threshold" title="Auto Threshold">global thresholding methods</a> do not yield satisfactory results. Examples:
+<ul><li> <a href="http://imagej.net/Auto_Local_Threshold" title="Auto Local Threshold">Local Threshold</a>, <span style="border-bottom:1px dotted #ccc;">Image▷ Adjust▷</span></li>
+<li> <a href="http://imagej.net/RATS:_Robust_Automatic_Threshold_Selection" title="RATS: Robust Automatic Threshold Selection">Robust Automatic Threshold Selection</a>, <span style="border-bottom:1px dotted #ccc;">Plugins▷ Segmentation▷</span></li>
+<li> <a href="http://imagej.net/Level_Sets" title="Level Sets">Level Sets</a>, <span style="border-bottom:1px dotted #ccc;">Plugins▷ Segmentation▷</span></li>
+<li> <a href="http://imagej.net/Morphological_Segmentation" title="Morphological Segmentation">Morphological Segmentation</a> (IJPB-plugins <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">update site</a>), <span style="border-bottom:1px dotted #ccc;">Plugins▷ Segmentation▷</span></li>
+<li> <a href="http://imagej.net/Squassh" title="Squassh">Squassh</a>, split-Bregman Image Segmentation (Segmentation and Quantification of Sub-cellular Shapes, MOSAIC ToolSuite <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">update site</a>), , <span style="border-bottom:1px dotted #ccc;">Plugins▷ Mosaic▷ Segmentation▷</span></li></ul></dd></dl>
+<p><span id="Semi-Automated_Segmentation"></span>
+</p>
+<dl><dt>Semi-Automated Segmentation</dt>
+<dd>Object detection and image segmentation in images with poor signal-to-noise will likely require decisions taken by a human operator. This is frequently done using hand-crafted workflows using either ImageJ's built-in tools or external add ons. Examples:
+<ul><li> <a href="http://imagej.net/Lasso_selection" class="mw-redirect" title="Lasso selection">Blow/Lasso Tool</a>, <span style="border-bottom:1px dotted #ccc;">Plugins▷ Segmentation▷</span></li>
+<li> Scripts from the <a href="http://imagej.net/BAR" title="BAR">BAR</a> <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">update site</a>, <span style="border-bottom:1px dotted #ccc;">BAR▷ <a href="http://imagej.net/BAR#Segmentation" title="BAR">Segmentation</a>▷</span></li></ul></dd></dl>
+<div style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> For additional image processing tools have a look at the growing list of  <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">update sites</a>. For more information on image processing have a look at <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">tutorials</a>, <a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">segmentation</a> and the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/">ImageJ User Guide</a>.</div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Batch_Processing">Batch Processing</span></h2>
+<table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p>It is fairly simple to <a href="http://imagej.net/Scripting_Help" class="mw-redirect" title="Scripting Help">automate</a> the analysis of multiple images using any of the scripting languages supported by ImageJ and Fiji (<a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro Language</a>, <a href="http://imagej.net/Beanshell_Scripting" class="mw-redirect" title="Beanshell Scripting">Beanshell</a>, <a href="http://imagej.net/Javascript_Scripting" class="mw-redirect" title="Javascript Scripting">Javascript</a>, <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">JRuby</a>, <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Jython</a>, <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Clojure</a>, ...). This section provides some examples.
+</p>
+<h3><span class="mw-headline" id="Batch_Analysis_of_Images">Batch Analysis of Images</span></h3>
+<p>Any macro or script must allow the Sholl Analysis plugin to access the ROI marking the center of analysis. One could instruct ImageJ to read the coordinates of pre-existing ROIs from a text file, store a list of line selections in the ROI Manager, or write a morphology-based routine that detects the center of the arbor. However, marking the center of analysis is probably something that you will want to do manually. Here is a workflow:
+</p>
+<ol><li>Place all the .tif images to be processed in a single folder.</li>
+<li>Select the <span style="border-bottom:1px dotted #ccc;">Point Selection Tool</span> in the main ImageJ window. With 3D images, make sure <i>Set stack positions</i> is active in the <span style="border-bottom:1px dotted #ccc;">Image▷ Overlay▷ Overlay Options...</span> prompt.</li>
+<li>Open the first image and press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">T</kbd> to activate the Threshold widget (<span style="border-bottom:1px dotted #ccc;">Image▷ Adjust▷ Threshold...</span>).</li>
+<li>Adjust threshold levels. Press the <i>Apply</i> button of the Threshold widget to create a binary image.</li>
+<li>Select the z-slice containing the center of analysis. Click over the center with the <span style="border-bottom:1px dotted #ccc;">Point Selection Tool</span> and press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">B</kbd> (shortcut for <span style="border-bottom:1px dotted #ccc;">Image▷ Overlay▷ Add Selection...</span>). This will add the point ROI to the image overlay. Save the image as .TIFF by pressing <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">S</kbd> (<span style="border-bottom:1px dotted #ccc;">File▷ Save As...▷ Tiff...</span>).</li>
+<li>Repeat the last 2 steps until all images are marked, using <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">O</kbd> (shortcut for <span style="border-bottom:1px dotted #ccc;">File▷ Open Next</span>) to iterate through all the images.</li></ol>
+<div id="FileFormats" style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<b>Tip:</b> When working with ROIs, it is critical that you work with .tif files because only this format keeps track of image overlays. The <span style="border-bottom:1px dotted #ccc;">Process▷ Batch▷ Convert...</span> command allows bulk conversion between image formats.</div>
+<p><br />
+Now that all the images are marked, we just need to ask ImageJ to generate some lines of code. We will open the Macro Recorder (<span style="border-bottom:1px dotted #ccc;">Plugins▷ Macros▷ Record...</span>) and run <i>Sholl Analysis</i> on one of the images to find out how to call the plugin with suitable parameters. In this example, we will use the ImageJ macro language. The single line of code that appears in the recorder window will look something like this:
+</p>
+<pre class="brush:java">
+// Recording Sholl Analysis version 3.4.3
+// Visit https://imagej.net/Sholl_Analysis#Batch_Processing for scripting examples
+run("Sholl Analysis...", "starting=10 ending=400 radius_step=0 infer fit linear polynomial=[8th degree] semi-log normalizer=Volume create save do");
+</pre>
+<p>Now, we just need to assemble a working macro to be pasted in the <span style="border-bottom:1px dotted #ccc;">Process▷ Batch▷ Macro...</span> prompt:
+</p>
+<pre class="brush:java">
+// Get the number of ROIs of the image overlay
+nROIs = Overlay.size;
+
+// We cannot proceed if no ROI is available (safety check)
+if (nROIs==0)
+   exit("No ROI was found. Cannot proceed.");
+
+// Select the last ROI of the overlay. Because we have activated the "Set stack positions" option,
+// this will automatically activate the Z-slice in which the ROI was created (3D images)
+Overlay.activateSelection(nROIs-1);
+
+// We now call the plugin as detailed by the Macro Recorder. We'll set 'Ending radius' to a non-numeric
+// value (NaN, "Not a Value") to make sure the maximum length for each individual image is used
+run("Sholl Analysis...", "starting=10 ending=NaN radius_step=0 infer fit linear polynomial=[8th degree] semi-log normalizer=Volume create save do");
+</pre>
+<p>Of course you can also automate any preceding steps. However, do not forget to ensure that the center of analysis will be available when the plugin is called:
+</p>
+<pre class="brush:java">
+// Impose spatial calibration
+     run("Properties...", "unit=um pixel_width=1.5 pixel_height=1.5 voxel_depth=3.0");
+// Subtract background
+     run("Subtract Background...", "rolling=50 sliding stack");
+// Apply a favorite threshold
+    setAutoThreshold("Huang dark stack");
+// &gt;&gt;&gt;&gt; Make sure the initial point selection remains available &lt;&lt;&lt;&lt;
+    Overlay.activateSelection( Overlay.size - 1 );
+// Run the plugin
+run("Sholl Analysis...", "starting=10 ending=NaN radius_step=0 infer fit linear polynomial=[8th degree] semi-log normalizer=Volume create save do");
+</pre>
+<p>That's it. Use the Macro Recorder to generate the customizations you will need before parsing the entire folder of images with <span style="border-bottom:1px dotted #ccc;">Process▷ Batch▷ Macro...</span>
+</p>
+<div style="float:center; border: 1px solid #ccc; padding: 5px !important; text-align:center; overflow: hidden; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<p><b>Tip:</b> As you may have noticed, ImageJ plugins are controlled by a single lowercase sentence  in which arguments are separated by a space. Input fields and choice lists appear as <i>keyword=value</i> pairs, active checkboxes by a single keyword. Options that are not needed can be omitted. This makes it easier to generate customizable macros:
+</p>
+<div style="width:98%;">
+<pre class="brush:java">
+start = 10;  // variable that controls starting radius
+end   = 200; // variable that controls ending radius
+step  = 2;   // variable that controls step size
+
+// Run the plugin
+run("Sholl Analysis...", "starting="+ start +" ending="+ end
+        +" radius_step="+ step +" infer linear save do");
+</pre>
+</div></div>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Batch_Analysis_of_Tabular_Data">Batch Analysis of Tabular Data</span></h3>
+<p>If you already have <a href="Sholl_Analysis....html#Importing">obtained profiles</a> (either from previous runs or from <a href="Sholl_Analysis....html#Analysis_of_Traced_Cells">traced cells</a>) and would like to extract new <a href="Sholl_Analysis....html#Metrics">metrics</a> from such data, you can use the  <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl Analysis (Existing Profile)...</span></em></span>. Here is an example macro that runs the plugin over a folder of .csv files containing Sholl profiles produced by <a href="http://imagej.net/Simple_Neurite_Tracer:_Sholl_analysis" title="Simple Neurite Tracer: Sholl analysis">Simple Neurite Tracer</a>:
+</p>
+<pre class="brush:java">
+distanceCol = "Radius";		// Column in .csv file listing distances
+intersecCol = "Inters.";	// Column in .csv file listing intersections
+
+dir = getDirectory("Choose the directory containing the profiles");
+list = getFileList(dir);
+
+for (i=0; i&lt;list.length; i++) {
+	if (endsWith(list[i], ".csv")) {
+		path = dir+list[i];
+		run("Sholl Analysis (Existing Profile)...",
+				"use=[External file...] open=["+ path +"]"
+				+ " name=["+ list[i] +"]"
+				+ " distance="+ distanceCol
+				+ " intersections="+ intersecCol
+				+ " 3d enclosing=1 infer linear polynomial=[Best fitting degree]"
+				+ " semi-log log-log normalizer=Area/Volume show save do");
+	}
+}
+</pre>
+<h2><span class="mw-headline" id="Advanced_Usage">Advanced Usage</span></h2>
+<p>Advanced options can be set through <a rel="nofollow" class="external text" href="http://tferr.github.io/ASA/apidocs/">API calls</a>. Here are some examples:
+</p><p><b><a rel="nofollow" class="external text" href="https://github.com/tferr/ASA/blob/master/scripting-examples/3D_Analysis_ImageStack.py">3D analysis of an ImageStack (Python)</a></b>
+</p>
+<pre class="brush:python">#@ImagePlus imp
+#@LogService log
+
+from sholl import Sholl_Analysis
+from sholl import Options
+from os.path import expanduser
+
+
+def spacedDistances(start, end, step):
+    """Retrieves a list of Sholl sampling distances"""
+    leng = (end - start) / step + 1
+    return [start + i * step for i in range(leng)]
+
+
+# x,y,z coordinates of center of analysis
+xc, yc, zc = 100, 100, 10
+
+# Threshold values for segmentation
+lower_t, upper_t = 88, 255
+
+# Definitions for sampling distances
+start_radius, end_radius, step_size, = 10, 100, 10
+
+# Destination directory for saving plots and tables
+export_path = expanduser("~")
+
+sa = Sholl_Analysis()
+
+if sa.validateImage(imp):
+
+    # Specify plugin settings
+    sa.setDescription(imp.getTitle(), True)
+    sa.setExportPath(export_path, True)
+    sa.setInteractiveMode(False)
+
+    # Customize output options
+    so = Options()
+    so.setMetric(Options.MEDIAN_INTERS, False)  # "Sholl Results" table
+    so.setPlotOutput(Options.NO_PLOTS)  # Which plots should be generated?
+    so.setPromptChoice(Options.HIDE_SAVED_FILES, True)  # Main prompt option
+    so.setPromptChoice(Options.OVERLAY_SHELLS, True)  # Main prompt option
+    sa.setOptions(so)
+
+    # Specify analysis settings
+    sa.setCenter(xc, yc, zc)
+    sa.setThreshold(lower_t, upper_t)
+
+    # Retrieve intersection counts
+    distances = spacedDistances(start_radius, end_radius, step_size)
+    counts = sa.analyze3D(xc, yc, zc, distances, imp)
+
+    if all(c == 0 for c in counts):
+        log.warn("All intersection counts were zero")
+
+    else:
+
+        # Do something with sampled data if analysis was successful
+        for idx, inters in enumerate(counts):
+            log.info("r=%s:&#160;%s inters."&#160;% (distances[idx],inters))
+
+        # Retrieve metrics
+        sa.analyzeProfile(distances, counts, True)
+
+    log.info("Analysis finished. Files saved to&#160;%s"&#160;% export_path)
+    log.info("Sholl Results Table has not been saved")
+
+else:
+
+    log.error(imp.getTitle() + " is not a valid image")
+</pre>
+<p>Reduce the number of discretization steps involved in the calculation of <a href="Sholl_Analysis....html#MeanValueOfFunction">Nav</a>, and <a href="Sholl_Analysis....html#CriticalValue">Cv</a>, <a href="Sholl_Analysis....html#CriticalRadius">Cr</a> (IJ macro (IJM) language):
+</p>
+<pre class="brush:java">
+call("sholl.Sholl_Analysis.setPrecision", "100"); // Default is 1000, ie, 1/1000 of radius step size
+</pre>
+<p>Note that the IJM built-in <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/developer/macro/functions.html#call">call("class.method")</a> function can only pass strings to Java methods. For this reason, you have to quote the passed argument. <tt>Sholl_Analysis</tt> will then parse the string argument and interpreter its value. Note that calls made by the IJM language need to be set before running the plugin and remain in effect while ImageJ is running.
+</p>
+<h2><span class="mw-headline" id="Auxiliary_Commands">Auxiliary Commands</span></h2>
+<dl><dt><span><em><span style="border-bottom:1px dotted #ccc;">Analyze</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Combine Sholl Profiles...</span></em></span><div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:CombineShollProfiles.png" class="image"><img alt="" src="../_images/6/67/CombineShollProfiles.png" width="400" height="331" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:CombineShollProfiles.png" class="internal" title="Enlarge"></a></div>Screenshot of 15 files being processed by <span><em><span style="border-bottom:1px dotted #ccc;">Analyze</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Combine Sholl Profiles...</span></em></span> (v3.6.12)</div></div></div></dt></dl>
+<p>Analysis tool that 1) Merges individual Sholl profiles into a single table and 2) Obtains the average profile (with standard deviation) of a group of cells.
+</p>
+<dl><dt><span><em><span style="border-bottom:1px dotted #ccc;">File</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Open Samples</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">ddaC Neuron</span></em></span></dt>
+<dd>Opens a sample image of a Drosophila class IV ddaC sensory neuron in which dendrites have been previously segmented (2D arbor). Use it to get acquainted with the plugin. Run <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Show Info...</span></em></span> (shortcut: <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">I</kbd> ) to know more about this cell type.</dd></dl>
+<dl><dt><span><em><span style="border-bottom:1px dotted #ccc;">Help</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">About Plugins</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">About Sholl Analysis...</span></em></span></dt>
+<dd>Retrieves information about the plugin version and provides links to several resources including its source code <a rel="nofollow" class="external text" href="https://github.com/tferr/ASA/">repository</a>  and its  <a rel="nofollow" class="external text" href="http://tferr.github.io/ASA/apidocs/">API documentation</a>. It is also accessible through the <i>More&#160;»</i> dropdown menu.</dd></dl>
+<h2><span class="mw-headline" id="FAQ">FAQ</span></h2>
+<p><b>General</b>
+</p>
+<ol>
+	<li>
+		<span id="faq:citing"></span><b>How do I cite <i>Sholl Analysis</i></b>?
+	</li>
+	<dl><dd>
+		The authoritative reference for <i>Sholl Analysis</i> is:
+<ul><li> Ferreira T, Blackman A, Oyrer J, Jayabal A, Chung A, Watt A, Sjöström J, van Meyel D. (<b>2014</b>), <a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v11/n10/full/nmeth.3125.html">Neuronal morphometry directly from bitmap images</a>, <i>Nature Methods</i> 11(10): 982–984.</li></ul>
+The <a href="http://imagej.net/Citing" title="Citing">authoritative reference</a> for Fiji:
+<ul><li> Schindelin J, Arganda-Carreras I, Frise E, Kaynig V, Longair M, Pietzsch T, Preibisch S, Rueden C, Saalfeld S, Schmid B, Tinevez JY, White DJ, Hartenstein V, Eliceiri K, Tomancak P, Cardona A. (<b>2012</b>) <a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v9/n7/full/nmeth.2019.html">Fiji: an open-source platform for biological-image analysis</a>, <i>Nature Methods</i> 9(7): 676-682.</li></ul>
+	</dd></dl>
+	<li>
+		<span id="faq:plugin"></span><b>What is the difference between <i>Sholl Analysis</i> and an homonymous plugin released by the Ghosh laboratory in 2005</b>?
+	</li>
+	<dl><dd>
+		The <a rel="nofollow" class="external text" href="http://labs.biology.ucsd.edu/ghosh/software/">original Sholl Analysis plugin</a> by Tom Maddock (version 1.0) was released for ImageJ 1.35 and is now deprecated, unmaintained software that behaves erratically in newer versions of ImageJ. The current implementation of  <i>Sholl Analysis</i> inherits Tom's initial 2D algorithm, but has numerous <a href="Sholl_Analysis....html#Release_Notes">added features</a> to enhance its utility. Note that throughout 2012 the plugin was temporarily called <i>Advanced Sholl Analysis</i>. You can follow the entire history of the plugin on <a rel="nofollow" class="external text" href="https://github.com/tferr/ASA/">GitHub</a>.
+	</dd></dl>
+	<li>
+		<span id="faq:threshold"></span><b>Why do I need to threshold the cell?</b>
+	</li>
+	<dl><dd>
+		Counting intersections is really a binary procedure: a shell either intercepts a branch or it doesn't. For this reason the image must be split in two phases: <i>arbor</i> and <i>background</i>.
+	</dd></dl>
+	<li>
+		<span id="faq:threshold2"></span><b>In version 1.0, it was not mandatory to adjust threshold values prior to analysis. Why is it now?</b>
+	</li>
+	<dl><dd>
+		Image segmentation has always been <a href="Sholl_Analysis....html#faq:threshold">required</a>. In its early implementations, the program dealt solely with binary images and used the intensity at the center of the analysis to decide how to segregate objects from background. This approach was very restringent: It assumed that the pixels representing the neuron would have the same (constant!) intensity that was not to be found in the remaining background.  As the program became aware of grayscale images, this "feature" had to be removed because a single intensity can no longer be used to infer which parts of the image should be analyzed.
+	</dd></dl>
+	<li>
+		<span id="faq:pre-processing"></span><b>My images do not look that <i>great</i>. How can I treat them prior to analysis?</b>
+	</li>
+	<dl><dd>
+		Have a look at <a href="Sholl_Analysis....html#Pre-processing"> Pre-processing</a>.
+	</dd></dl>
+	<li>
+		<span id="faq:accuracy"></span><b>My bitmap profiles are different from the ones obtained from tracings of the same cells. Why?</b>
+	</li>
+	<dl><dd>
+		As mentioned several times, the quality of the analysis relies on how the arbor was segmented. If you are working with grayscale images you probably need to optimize your <a href="Sholl_Analysis....html#Pre-processing">segmentation routines</a>. On the other hand, if you already obtained binary images make sure you are <a href="Sholl_Analysis....html#Cf._Segmentation">interpreting them properly</a>. You should also confirm that <a href="Sholl_Analysis....html#EndRadius">Ending radius</a> does not intersect objects in the image canvas that extend beyond the analyzed arbor. As a rule of thumb, always refer to the <a href="Sholl_Analysis....html#faq:sholl-mask">Sholl mask</a> to visually inspect which regions of the image have been measured.
+	</dd></dl>
+	<li>
+		<span id="faq:updates"></span><b>My version is not the latest after running <span style="border-bottom:1px dotted #ccc;">Help▷ Update Fiji...</span> Why?</b>
+	</li>
+	<dl><dd>
+		Please note that from version 3.4.6 onwards, updates are available through the <a href="Sholl_Analysis....html#.23Fiji_Users">Java-8 update site</a>. If you have manually installed/modified <i>Sholl_Analysis.jar</i> (<a href="Sholl_Analysis....html#Release_Notes_and_Pre-releases">Development build</a>?). Run the <a href="http://imagej.net/Updater" title="Updater">Updater</a>, choose <i>Advanced Mode</i> then <i>View locally modified files</i> under <i>View Options</i>. Type "Sholl" in the <i>Search</i> field, selecting <i>Sholl_Analysis.jar</i> from the list of files. If the <i>Details pane</i> indicates an available update, click on <i>Locally modified</i> under <i>Status/Action</i> and choose <i>Install/Update</i>. The latest release version will be available once you press <i>Apply changes</i>. See <a href="http://imagej.net/Frequently_Asked_Questions#Installing.2FUpdating" title="Frequently Asked Questions">Installation FAQs</a> for more details.
+	</dd></dl>
+	<li>
+		<span id="faq:documentation"></span><b>This documentation is not that useful. How long do I have to wait until it gets improved?</b>
+	</li>
+	<dl><dd>
+		Around 20 seconds. This is the time it will take you to <a href="http://imagej.net/Help:Contents#New_accounts" title="Help:Contents">create an account</a> on this wiki. Once you have created one, you will be able to improve this page yourself.
+	</dd></dl>
+</ol>
+<p><b>Analysis</b>
+</p>
+<ol start="9">
+	<li>
+		<span id="faq:image-types"></span><b>The plugin complains about a wrong image type. Why?</b>
+	</li>
+	<dl><dd>
+		The plugin does not parse RGB images, but will process any grayscale image (8/16-bit), including multi-channel (composite) images. This is intentional: RGB images are inflexible and images of fluorescence-labeled cells are typically non-RGB images. As explained in the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/">ImageJ User Guide</a>, RGB images can be converted using <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Color</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Channels Tool...</span></em></span> or <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Type</span></em></span> commands.
+	</dd></dl>
+	<li>
+		<span id="faq:compartments"></span><b>I cannot see the hemicircle/hemisphere option. Why?</b>
+	</li>
+	<dl><dd>
+		This option is only available if an orthogonal line has been created by holding <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd> when using the <span style="border-bottom:1px dotted #ccc;">Straight Line Selection Tool</span>. See the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/">ImageJ User Guide</a> for the full list of key modifiers that can be used while creating straight line ROIs.
+	</dd></dl>
+	<li>
+		<span id="faq:z-position"></span><b>With 3D and 4D images, how do I set the Z-position and of the center?</b>
+	</li>
+	<dl><dd>
+		The Z-position (depth) of the center of analysis is the active Z-slice of the stack. With multichannel (composite) images, the active channel also defines the C-position. Both are reported in the <i>Sholl Results</i> table.
+	</dd></dl>
+	<li>
+		<span id="faq:saving"></span><b>I cannot see the option to save the results. Why?</b>
+	</li>
+	<dl><dd>
+		The image you are trying to analyze is not saved locally. Saving it to a local directory (e.g., your Desktop or Home folder) should re-enable it.
+	</dd></dl>
+	<li>
+		<span id="faq:parameters"></span><b>Why so many parameters?</b>
+	</li>
+	<dl><dd>
+		The plugin is designed for the analysis of a wide diversity of arbors and it is not biased to any particular cell type. The only way to ensure this broad applicability is to give users full control over the mathematical techniques used by the plugin to analyze sampled data.
+	</dd></dl>
+</ol>
+<p><b>Results</b>
+</p>
+<ol start="14">
+	<li>
+		<span id="faq:Sholl-table"></span><b>How can I save/edit the <i>Sholl Results</i> table?</b>
+	</li>
+	<dl><dd>
+		Select the table, then choose <span style="border-bottom:1px dotted #ccc;">File▷ Save As…</span>The filename extension can be specified using the <i>More&#160;» Options...</i> command (see the <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/">ImageJ User Guide</a> for details). Single cells cannot be modified from within ImageJ, but custom extensions (e.g., .csv, .xls or .ods) will allow the table to be imported by other spreadsheet applications.
+	</dd></dl>
+	<li>
+		<span id="faq:precision"></span><b>Can I modify the way data is displayed?</b>
+	</li>
+	<dl><dd>
+		Mostly, using <span><em><span style="border-bottom:1px dotted #ccc;">Analysis</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Sholl</span>&#160;&#9655; <span style="border-bottom:1px dotted #ccc;">Metrics &amp; Options</span></em></span> (also listed in the <i>More&#160;» Options...</i> shortcut), including the number of decimal places reported by the <i>Sholl Results</i> table or the usage of scientific notation. To resize plots, use the  <i>More&#160;»</i> dropdown menu in the <i>Options</i> dialog.
+	</dd></dl>	
+	<li>
+		<span id="faq:sholl-mask"></span><b>What is the <i>Sholl mask</i>?</b>
+	</li>
+	<dl><dd>
+		The Sholl mask (<a href="Sholl_Analysis....html#CA1CellMask">see example of CA1 cell</a>) is simply an illustration: a maximum intensity projection of the analyzed cell in which <a href="Sholl_Analysis....html#.23Output_Options">intersection counts</a> are used as pixel intensities. As explained in <a href="Sholl_Analysis....html#Output_Options">Output Options</a>, its LUT can be modified, and intensities calibrated using ImageJ default commands. As mentioned, it can also be used to visually inspect for <a href="Sholl_Analysis....html#Cf._Segmentation">segmentation artifacts</a>.
+	</dd></dl>
+	<li>
+		<span id="faq:3Dvs2D"></span><b>The 3D profile looks <i>worse</i> than the 2D profile of the Maximum Intensity Projection of the same cell. Why?</b>
+	</li>
+	<dl><dd>
+		An anisotropic voxel size will have a strong impact on <a href="Sholl_Analysis....html#StepSize">step size</a>. On the other hand, 2D and 3D images can be sampled differently depending on the <a href="Sholl_Analysis....html#Parameters">options chosen</a>. If <span style="border-bottom:1px dotted #ccc;">Image▷ Properties…</span> (<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">P</kbd>) reports the appropriate spatial calibration, make sure to read <a href="Sholl_Analysis....html#Multiple_Samples_and_Noise_Reduction">Multiple Samples and Noise Reduction</a> before deciding which type of images to use.
+	</dd></dl>
+	<li>
+		<span id="faq:no-output"></span><b>The program terminates without warnings. What am I doing wrong?</b>
+	</li>
+	<dl><dd>
+		The program will not terminate without throwing an error message. However, do note that some exiting messages are displayed in the often overlooked status bar of the main ImageJ window. This is intentional, as it minimizes the frequency of modal windows popping up for each failed operation.
+	</dd></dl>
+</ol>
+<p><b>Metrics and Curve Fitting</b>
+</p>
+<ol start="19">
+	<li>
+		<span id="faq:AUC"></span><b>Would it be possible to retrieve the Area Under the Curve  (linear Sholl plot)?</b>
+	</li>
+	<dl><dd>
+		Sure. But it would hardly be relevant for data sampled at fixed intervals. The area under the curve (AUC, the area between the sampled curve and the horizontal axis, i.e., its definite integral) could be estimated using, e.g., the <a href="http://en.wikipedia.org/wiki/Trapezoidal_rule" class="extiw" title="wikipedia:Trapezoidal rule">trapezoidal rule</a>. However, because data is always sampled at equally spaced intervals, doing so would be the same as multiplying <a href="Sholl_Analysis....html#MeanInters">Mean inters.</a> by the distance between <a href="Sholl_Analysis....html#EndRadius">Ending radius</a> and <a href="Sholl_Analysis....html#StartRadius">Starting radius</a>. Thus, effectively, AUC is  redundant with <a href="Sholl_Analysis....html#MeanInters">Mean inters.</a>, that is already an integrated measurement of the sampled data. On the other hand,
+one could retrieve the AUC of the polynomial fit, but such property is already covered by <a href="Sholl_Analysis....html#MeanValueOfFunction">Mean value</a>.
+	</dd></dl>
+	<li>
+		<span id="faq:inflection-points"></span><b>The shape of the polynomial changes at the edges of the profile. Why?</b>
+	</li>
+	<dl><dd>
+		Inflection points at <a href="Sholl_Analysis....html#StartRadius">starting/ending radius</a> are usually associated with a poor fit and/or the fact that all the radii in which no intersections were counted are ignored. The latter is required to calculate the <a href="Sholl_Analysis....html#ShollDecay">Sholl regression coefficient</a>, as <i>log(0)</i> is undefined.
+	</dd></dl>
+	<li>
+		<span id="faq:poor-fitting"></span><b>None of the fitting options is suitable for my datasets. What should I do?</b>
+	</li>
+	<dl><dd>
+		Have a look at <a href="Sholl_Analysis....html#Complementary_Tools">Complementary Tools</a>.
+	</dd></dl>
+</ol>
+<p><b>Batch Processing</b>
+</p>
+<ol start="22">
+	<li>
+		<span id="faq:recorder"></span><b>The code that the Macro Recorder produced does not seem to work. What am I doing wrong?</b>
+	</li>
+	<dl><dd>
+		It is likely that frequent interactions with the dialog prompt(s) (from which the Recorder retrieves user-specified parameters) have "confused" ImageJ. While this process is usually flawless, it may happen that repeated triggering of GUI-specific commands that are not recordable (e.g., <i><a href="Sholl_Analysis....html#Cf._Segmentation">Cf. Segmentation</a></i> or <i><a href="Sholl_Analysis....html#Importing">Import Other Data</a></i> buttons) may lead to an incomplete recording. The solution is to repeat the recording, while minimizing such interactions.
+	</dd></dl>
+</ol>
+<p><b>Development</b>
+</p>
+<ol start="23">
+	<li>
+		<span id="faq:bug-report"></span><b>I found a bug. How do I report it?</b>
+	</li>
+	<dl><dd>
+		Report it in the <a rel="nofollow" class="external text" href="http://forum.imagej.net">ImageJ Forum</a> or file an <a rel="nofollow" class="external text" href="https://github.com/tferr/ASA/issues">issue</a> on GitHub. Don't forget to include the <a href="http://imagej.net/Bug_reporting_best_practices" title="Bug reporting best practices">steps needed to reproduce the problem</a>. You may also want to check the <a rel="nofollow" class="external text" href="https://github.com/tferr/ASA/blob/master/Notes.md#development-builds">release notes</a> for the latest <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/Sholl-Analysis/lastBuild/">development version</a> to see if the issue has meanwhile been addressed.
+	</dd></dl>
+</ol>
+<h2><span class="mw-headline" id="Release_Notes_and_Pre-releases">Release Notes and Pre-releases</span></h2>
+<p>Releases notes are available on <a rel="nofollow" class="external text" href="https://github.com/tferr/ASA/blob/master/Notes.md#release-notes-for-sholl-analysis">Github</a>. If you do not mind unstable software, <a rel="nofollow" class="external text" href="https://github.com/tferr/ASA/blob/master/Notes.md#development-builds">development builds</a> may be found <a rel="nofollow" class="external text" href="http://jenkins.imagej.net/job/Sholl-Analysis">here</a>. Once new features mature and no major issues are found these development versions will be made available, as usual, through the <a href="http://imagej.net/Updater" title="Updater">Updater</a>.
+</p>
+<h2><span class="mw-headline" id="Related_Resources">Related Resources</span></h2>
+<ul><li> <b><a href="http://imagej.net/Simple_Neurite_Tracer" class="mw-redirect" title="Simple Neurite Tracer">Simple Neurite Tracer</a> (SNT)</b> The remarkable ImageJ framework for semi-automated of two- and three-dimensional tracing. SNT performs Sholl using the <i>Sholl Analysis</i> plugin. On the other hand, <i>Sholl Analysis</i> uses SNT to <a href="Sholl_Analysis....html#Analyze_Traced_Cells">analyze tracings</a></li></ul>
+<ul><li> <b><a href="http://imagej.net/NeuronJ" title="NeuronJ">NeuronJ</a></b> Another option for 2D reconstructions. NeuronJ features a friendly interface but is restricted to 2D images, is not capable of SWC export and is no longer under active development</li></ul>
+<ul><li> <b><a href="http://imagej.net/Category:Neuroanatomy" title="Category:Neuroanatomy">Neuroanatomy Resources</a></b> in this wiki</li></ul>
+<ul><li> <b><a href="http://imagej.net/Neuroanatomy" title="Neuroanatomy">Neuroanatomy update site</a></b>, distributing e.g., the <b><a href="http://imagej.net/Strahler_Analysis" title="Strahler Analysis">Strahler_Analysis</a></b> plugin</li></ul>
+<ul><li> <b><a href="http://imagej.net/BAR" title="BAR">BAR</a></b>, <i>B</i>roadly <i>A</i>pplicable <i>R</i>outines that complement <i>Sholl Analysis</i></li></ul>
+<h2><span class="mw-headline" id="Publication">Publication</span></h2>
+<ul><li> Ferreira T, Blackman A, Oyrer J, Jayabal A, Chung A, Watt A, Sjöström J, van Meyel D. (<b>2014</b>), <a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v11/n10/full/nmeth.3125.html">Neuronal morphometry directly from bitmap images</a>, <i>Nature Methods</i> 11(10): 982–984</li></ul>
+<h2><span class="mw-headline" id="Citations">Citations</span></h2>
+<p>While in development (2005-2014), and prior to its <a href="Sholl_Analysis....html#Publication">publication</a>, <i>Sholl Analysis</i> has been cited by <a rel="nofollow" class="external text" href="https://scholar.google.ca/scholar?as_q=&amp;as_epq=Sholl+Analysis&amp;as_oq=imagej+fiji&amp;as_eq=%22Simple+Neurite+Tracer%22&amp;as_occt=any&amp;as_sauthors=&amp;as_publication=&amp;as_ylo=2005&amp;as_yhi=2014&amp;btnG=&amp;hl=en&amp;as_sdt=1%2C5&amp;as_vis=1">several manuscripts</a>. The manuscripts citing its 2014 <a href="Sholl_Analysis....html#Publication">publication</a> can be retrieved using <a rel="nofollow" class="external text" href="https://scholar.google.ca/scholar?cites=15441574333602897335&amp;as_sdt=2005&amp;sciodt=1,5&amp;hl=en">Scholar</a> or <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pmc/articles/pmid/25264773/citedby/?tool=pubmed">PubMed</a>. Below is a list of publications from authors that have made the developer aware how the program contributed to their research.
+</p>
+<ul><li> Stanko JP, Easterling MR, Fenton SE. Application of Sholl analysis to quantify changes in growth and development in rat mammary gland whole mounts. Reprod Toxicol. 2015 Jul;54:129-35 <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed/25463529">PMID 25463529</a></li></ul>
+<ul><li> Kroner A, Greenhalgh AD, Zarruk JG, Passos Dos Santos R, Gaestel M, David S. TNF and increased intracellular iron alter macrophage polarization to a detrimental M1 phenotype in the injured spinal cord. Neuron. 2014 Sep 3;83(5):1098-116 <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed/25132469">PMID 25132469</a></li></ul>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Please append your work here, if the plugin has been useful to your work. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ol class="references">
+<li id="cite_note-Gross-1"><span class="mw-cite-backlink"><a href="Sholl_Analysis....html#cite_ref-Gross_1-0">↑</a></span> <span class="reference-text">
+Ferreira TA, Iacono LL, Gross CT. Serotonin receptor 1A modulates actin dynamics and restricts dendritic growth in hippocampal neurons. Eur J Neurosci. 2010 Jul;32(1):18-26. <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed?term=20561047">PMID: 20561047</a></span>
+</li>
+<li id="cite_note-Sholl-2"><span class="mw-cite-backlink"><a href="Sholl_Analysis....html#cite_ref-Sholl_2-0">↑</a></span> <span class="reference-text">
+Sholl DA. Dendritic organization in the neurons of the visual and motor cortices of the cat. J Anat. 1953 Oct;87(4):387-406. <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed?term=13117757">PMID: 13117757</a></span>
+</li>
+<li id="cite_note-DIADEM-3"><span class="mw-cite-backlink"><a href="Sholl_Analysis....html#cite_ref-DIADEM_3-0">↑</a></span> <span class="reference-text">
+Brown KM, Barrionuevo G, Canty AJ, De Paola V, Hirsch JA, Jefferis GS, Lu J, Snippe M, Sugihara I, Ascoli GA. The DIADEM data sets: representative light microscopy images of neuronal morphology to advance automation of digital reconstructions. Neuroinformatics. 2011 Sep;9(2-3):143-57, <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed?term=21249531">PMID: 21249531</a></span>
+</li>
+<li id="cite_note-Stulic-4"><span class="mw-cite-backlink">↑ <sup><a href="Sholl_Analysis....html#cite_ref-Stulic_4-0">4.0</a></sup> <sup><a href="Sholl_Analysis....html#cite_ref-Stulic_4-1">4.1</a></sup> <sup><a href="Sholl_Analysis....html#cite_ref-Stulic_4-2">4.2</a></sup></span> <span class="reference-text">
+Ristanović D, Milosević NT, Stulić V. Application of modified Sholl analysis to neuronal dendritic arborization of the cat spinal cord. J Neurosci Methods. 2006 Dec 15;158(2):212-8. <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed?term=16814868">PMID: 16814868</a></span>
+</li>
+<li id="cite_note-Ristanovic-5"><span class="mw-cite-backlink">↑ <sup><a href="Sholl_Analysis....html#cite_ref-Ristanovic_5-0">5.0</a></sup> <sup><a href="Sholl_Analysis....html#cite_ref-Ristanovic_5-1">5.1</a></sup></span> <span class="reference-text">
+Milosević NT, Ristanović D. The Sholl analysis of neuronal cell images: semi-log or log-log method? J Theor Biol. 2007 Mar 7;245(1):130-40 <a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed?term=17084415">PMID: 17084415</a></span>
+</li>
+<li id="cite_note-Schoenen-6"><span class="mw-cite-backlink"><a href="Sholl_Analysis....html#cite_ref-Schoenen_6-0">↑</a></span> <span class="reference-text">
+Schoenen J. The dendritic organization of the human spinal cord: the dorsal horn. Neuroscience. 1982;7(9):2057-87.<a rel="nofollow" class="external text" href="http://www.ncbi.nlm.nih.gov/pubmed?term=7145088">PMID: 7145088</a></span>
+</li>
+</ol>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the <a rel="nofollow" class="external text" href="http://www.gnu.org/licenses/gpl.txt">Free Software Foundation</a>. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</span>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073406
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.532 seconds
+Real time usage: 0.707 seconds
+Preprocessor visited node count: 13233/1000000
+Preprocessor generated node count: 16285/1000000
+Post‐expand include size: 92309/2097152 bytes
+Template argument size: 18719/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  592.663      1 - -total
+ 36.28%  215.009     14 - Template:Key_press
+ 33.65%  199.408     23 - Template:Key_press/core
+ 30.56%  181.122      1 - Template:GitHubEmbed
+ 13.52%   80.157      1 - Template:ComponentStats:ca.mcgill:Sholl_Analysis
+ 13.35%   79.144      1 - Template:Component
+ 11.22%   66.487      9 - Template:Person
+ 10.30%   61.053     34 - Template:Bc
+  2.39%   14.162     33 - Template:Box-shadow
+  2.34%   13.839     59 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Sholl_Analysis&amp;oldid=41330">http://imagej.net/index.php?title=Sholl_Analysis&amp;oldid=41330</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Sholl_Analysis&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li><li><a href="http://imagej.net/Category:Neuroanatomy" title="Category:Neuroanatomy">Neuroanatomy</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Sholl+Analysis" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Sholl+Analysis" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Sholl_Analysis" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Sholl_Analysis" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Sholl_Analysis&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Sholl_Analysis&amp;oldid=41330" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Sholl_Analysis&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":862});});</script>
+		</body>
+		</html>
+		

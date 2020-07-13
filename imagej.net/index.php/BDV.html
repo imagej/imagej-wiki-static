@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>BigDataViewer - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"BigDataViewer","wgTitle":"BigDataViewer","wgCurRevisionId":40521,"wgRevisionId":40521,"wgArticleId":2137,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Visualization","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"BigDataViewer","wgRelevantArticleId":2137,"wgRequestId":"3b0fa8bf3f33113ff5282d00","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The BigDataViewer is a re-slicing browser for terabyte-sized multi-view image sequences.&#10;BigDataViewer was developed with multi-view light-sheet microscopy data in mind and integrates well with Fiji's SPIMage processing pipeline."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="BigDataViewer"/>
+
+	<meta property="og:description" content="The BigDataViewer is a re-slicing browser for terabyte-sized multi-view image sequences.&#10;BigDataViewer was developed with multi-view light-sheet microscopy data in mind and integrates well with Fiji's SPIMage processing pipeline."/>
+
+	<meta property="og:url" content="http://imagej.net/BigDataViewer"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-BigDataViewer rootpage-BigDataViewer skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="BDV.html#bodyContent">Skip to content</a>, 			<a href="BDV.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="BDV.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="BDV.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:BigDataViewer&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=BigDataViewer&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=BigDataViewer&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>BigDataViewer</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>BigDataViewer Fiji<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/BigDataViewer">https://imagej.net/BigDataViewer</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/bigdataviewer/bigdataviewer_fiji/releases/tag/bigdataviewer_fiji-3.0.1">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~bigdataviewer_fiji~3.0.1~~~kw,versionexpand">3.0.1</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Wed May 24 15:48:27 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>, <a href="http://imagej.net/User:Moon" title="User:Moon">HongKee Moon</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="BDV.html#Description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="BDV.html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="BDV.html#Usage"><span class="tocnumber">3</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="BDV.html#Opening_a_Dataset"><span class="tocnumber">3.1</span> <span class="toctext">Opening a Dataset</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="BDV.html#Multi-view_data_converted_to_XML.2FHDF5"><span class="tocnumber">3.1.1</span> <span class="toctext">Multi-view data converted to XML/HDF5</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="BDV.html#Standard_microscopy_data"><span class="tocnumber">3.1.2</span> <span class="toctext">Standard microscopy data</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="BDV.html#Imaris_files"><span class="tocnumber">3.1.3</span> <span class="toctext">Imaris files</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-8"><a href="BDV.html#Basic_Navigation"><span class="tocnumber">3.2</span> <span class="toctext">Basic Navigation</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="BDV.html#Interpolation_Mode"><span class="tocnumber">3.3</span> <span class="toctext">Interpolation Mode</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="BDV.html#Displaying_Multiple_Sources"><span class="tocnumber">3.4</span> <span class="toctext">Displaying Multiple Sources</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="BDV.html#Grouping_Sources"><span class="tocnumber">3.5</span> <span class="toctext">Grouping Sources</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="BDV.html#Adjusting_Brightness_and_Color"><span class="tocnumber">3.6</span> <span class="toctext">Adjusting Brightness and Color</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="BDV.html#Bookmarking_Locations_and_Orientations"><span class="tocnumber">3.7</span> <span class="toctext">Bookmarking Locations and Orientations</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="BDV.html#Loading_and_Saving_Settings"><span class="tocnumber">3.8</span> <span class="toctext">Loading and Saving Settings</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="BDV.html#Opening_BigDataViewer_Datasets_as_ImageJ_Stacks"><span class="tocnumber">3.9</span> <span class="toctext">Opening BigDataViewer Datasets as ImageJ Stacks</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-16"><a href="BDV.html#Exporting_Datasets_for_the_BigDataViewer"><span class="tocnumber">4</span> <span class="toctext">Exporting Datasets for the BigDataViewer</span></a>
+<ul>
+<li class="toclevel-2 tocsection-17"><a href="BDV.html#About_the_BigDataViewer_data_format"><span class="tocnumber">4.1</span> <span class="toctext">About the BigDataViewer data format</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="BDV.html#Exporting_from_ImageJ_Stacks"><span class="tocnumber">4.2</span> <span class="toctext">Exporting from ImageJ Stacks</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="BDV.html#Integration_with_Fiji.27s_SPIMage_Processing_Tools"><span class="tocnumber">4.3</span> <span class="toctext">Integration with Fiji's SPIMage Processing Tools</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="BDV.html#Cluster_processing_of_XML.2FHDF5_SPIM_data"><span class="tocnumber">4.4</span> <span class="toctext">Cluster processing of XML/HDF5 SPIM data</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-21"><a href="BDV.html#Publication"><span class="tocnumber">5</span> <span class="toctext">Publication</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Description">Description</span></h2>
+<p>The BigDataViewer is a re-slicing browser for terabyte-sized multi-view image sequences.
+BigDataViewer was developed with multi-view light-sheet microscopy data in mind and integrates well with Fiji's SPIMage processing pipeline.
+</p><p>Conceptually, the visualized data comprises multiple <i>data sources</i>.
+Each source provides one 3D image (for each time-point in the case of a time-lapse sequence).
+For example, in a multi-angle SPIM sequence, each angle is a source.
+In a multi-angle, multi-channel SPIM sequence, each channel of each angle is a source.
+</p><p>BigDataViewer comes with a custom data format that is is optimized for fast random access to very large data sets.
+This permits browsing to any location within a multi-terabyte recording in a fraction of a second.
+</p><p>The file format is based on XML and HDF5.
+Images are represented as tiled multi-resolution pyramids, and stored in HDF5 chunked multi-dimensional arrays.
+The XML file contains metadata, for example the registration of sources to the global coordinate system.
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>The BigDataViewer comes with Fiji.
+You should have a sub-menu <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> BigDataViewer</span></em></span>.
+</p>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<h3><span class="mw-headline" id="Opening_a_Dataset">Opening a Dataset</span></h3>
+<p>To use the BigDataViewer we need some example dataset to browse.
+There are various options:
+</p>
+<h4><span class="mw-headline" id="Multi-view_data_converted_to_XML.2FHDF5">Multi-view data converted to XML/HDF5</span></h4>
+<p>A special purpose of BigDataViewer is to visualise multi-view light sheet microscopy datasets.
+Our custom XML/HDF5  is a special purpose hierarchical data format that optimises access to any part of large-multi view datasets using ImgLib2.
+You can download a small dataset from
+<a rel="nofollow" class="external text" href="https://fly.mpi-cbg.de/~pietzsch/bdv-example/">here</a>, comprising two views and three time-points.
+This is an excerpt of a 6 angle 715 time-point sequence of <i>drosophila melanogaster</i> embryonal development, imaged with a Zeiss Lightsheet Z.1.
+Download both the XML and the HDF5 file and place them somewhere next to each other.
+</p><p>Alternatively, you can create a dataset by exporting your own data as described below.
+</p><p>To start BigDataViewer, select <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> BigDataViewer </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open XML/HDF5</span></em></span> from the Fiji menu.
+This brings up a file open dialog. Open the XML file of your test dataset.
+</p>
+<h4><span class="mw-headline" id="Standard_microscopy_data">Standard microscopy data</span></h4>
+<p>The BigDataViewer can be used to visualise and navigate any image that can be opened in Fiji.
+Since Fiji relies of LOCI Bioformats library that means essentially all know microscopy file formats.
+</p><p>For example, open the sample image <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open Samples </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Mitosis (26MB, 5D stack)</span></em></span> from the Fiji menu.
+Subsequently select <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> BigDataViewer </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open Current Image</span></em></span> which will launch the BigDataViewer with the sample image, for navigation by arbitrary re-slicing.
+</p>
+<h4><span class="mw-headline" id="Imaris_files">Imaris files</span></h4>
+<p><a rel="nofollow" class="external text" href="http://www.bitplane.com/imaris/imaris">Imaris (Bitplane)</a> uses a hierarchical data format (similar to BigDataViewer's XML/HDF5 format).
+In order to open Imaris <tt style="font-size: 1.25em;">.ims</tt> files select <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> BigDataViewer </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open Imaris (experimental)</span></em></span> from the Fiji menu.
+Please note, that support for the Imaris format is still experimental.
+</p>
+<h3><span class="mw-headline" id="Basic_Navigation">Basic Navigation</span></h3>
+<p>Assuming you downloaded the <i>drosophila melanogaster</i> example dataset, you should see something like this:
+</p>
+<div class="MediaTransformError" style="width: 700px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>On startup, the middle slice of the first source (angle) is shown.
+You can browse the stack using the keyboard or the mouse.
+To get started, try the following:
+</p>
+<ul><li> Use the mouse-wheel or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">&lt;</kbd> and <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">&gt;</kbd> keys to scroll through z slices.</li>
+<li> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">right-click</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">drag</kbd> anywhere on the canvas to translate the image.</li>
+<li> Use <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">mouse-wheel</kbd>, or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">↑</span></kbd> and <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">↓</span></kbd> keys to zoom in and out.</li>
+<li> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">left-click</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">drag</kbd> anywhere on the canvas to rotate (reslice) the image.</li></ul>
+<p><br />
+The following table shows the available navigation commands using the mouse:
+</p>
+<table border="1" style="border-collapse:collapse;">
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">left-click</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">drag</kbd>
+</td>
+<td style="padding: 5px;"> Rotate (pan and tilt) around the point where the mouse was clicked.
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">right-click</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">drag</kbd> or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">middle-click</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">drag</kbd>
+</td>
+<td style="padding: 5px;"> Translate in the XY-plane.
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">mouse-wheel</kbd>
+</td>
+<td style="padding: 5px;"> Move along the z-axis.
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⌘</span> Cmd</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">mouse-wheel</kbd> or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">mouse-wheel</kbd>
+</td>
+<td style="padding: 5px;"> Zoom in and out.
+</td></tr></table>
+<p><br />
+The following table shows the available navigation commands using keyboard shortcuts:
+</p>
+<table border="1" style="border-collapse:collapse;">
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">X</kbd>, <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Y</kbd>, <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Z</kbd>
+</td>
+<td style="padding: 5px;"> Select keyboard rotation axis.
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">←</span></kbd>, <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">→</span></kbd>
+</td>
+<td style="padding: 5px;"> Rotate clockwise or counter-clockwise around the choosen rotation axis.
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">↑</span></kbd>, <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">↓</span></kbd>
+</td>
+<td style="padding: 5px;"> Zoom in or out.
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">,</kbd>, <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">.</kbd>
+</td>
+<td style="padding: 5px;"> Move forward or backward along the Z-axis.
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">X</kbd>
+</td>
+<td style="padding: 5px;"> Rotate to the ZY-plane of the current source. (Look along the X-axis of the current source.)
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Y</kbd> or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">A</kbd>
+</td>
+<td style="padding: 5px;"> Rotate to the XZ-plane of the current source. (Look along the Y-axis of the current source.)
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Z</kbd>
+</td>
+<td style="padding: 5px;"> Rotate to the XY-plane of the current source. (Look along the Z-axis of the current source.)
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">[</kbd> or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">N</kbd>
+</td>
+<td style="padding: 5px;"> Move to previous timepoint.
+</td></tr>
+<tr>
+<td style="padding: 5px;"> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">]</kbd> or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">M</kbd>
+</td>
+<td style="padding: 5px;"> Move to next timepoint.
+</td></tr></table>
+<p><br />
+For all navigation commands you can hold <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd> to rotate and browse
+10x faster, or hold <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd> to rotate and browse
+10x slower.
+For example, <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">←</span></kbd> rotates by
+1° clockwise, while <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">←</span></kbd> rotates by
+10°, and <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">←</span></kbd> rotates by
+0.1°.
+</p><p>The axis-rotation commands (e.g., <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">X</kbd>) rotate around the current mouse location.
+That is, if you press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">X</kbd>, the view will pivot such that you see a ZY-slice through the dataset (you look along the X-axis).
+The point under the mouse will stay fixed, i.e., the view will be a ZY-slice through that point.
+</p>
+<h3><span class="mw-headline" id="Interpolation_Mode">Interpolation Mode</span></h3>
+<p>Using <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">I</kbd> you can switch between nearest-neighbor and trilinear interpolation schemes.
+The difference is clearly visible when you zoom in such that individual source pixels are visible.
+</p>
+<div class="MediaTransformError" style="width: 700px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Trilinear interpolation results in smoother images but is a bit more expensive computationally.
+Nearest-neighbor is faster but looks more pixelated.
+</p>
+<h3><span class="mw-headline" id="Displaying_Multiple_Sources">Displaying Multiple Sources</span></h3>
+<p>BigDataViewer datasets typically contain more than one source.
+For a SPIM sequence one usually has multiple angles and possibly fused and deconvoled data on top.
+</p><p>Select <span><em><span style="border-bottom:1px dotted #ccc;"> Settings </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Visibility &amp; Grouping</span></em></span> from the BigDataViewer menu to bring up a dialog to control source visibility.
+You can also bring up this dialog by the shortcut <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">F6</kbd>.
+</p><p><a href="http://imagej.net/File:Bdv-visibility.png" class="image"><img alt="Bdv-visibility.png" src="../_images/6/6c/Bdv-visibility.png" width="500" height="394" /></a>
+</p><p>Using the current source checkboxes (A in the figure above), you can switch between available sources.
+The first ten sources can also be made current by the number keys <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">1</kbd> through <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">0</kbd> in the main BigDataViewer window.
+</p><p>To view multiple sources overlaid at the same time, switch to <i>fused mode</i> using the checkbox (B).
+You can also switch between normal and fused mode using the shortcut <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">F</kbd> in the main window.
+In fused mode individual sources can be turned on and off using the checkboxes (C) or shortcuts <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">1</kbd> through <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">0</kbd> in the main window.
+</p><p>Whether in normal or fused mode, the (unselectable) boxes (D) provide feedback on which sources are actually currently displayed.
+Also the main window provides feedback:
+</p><p><a href="http://imagej.net/File:Bdv-overlays-1.png" class="image"><img alt="Bdv-overlays-1.png" src="../_images/d/de/Bdv-overlays-1.png" width="500" height="170" /></a>
+</p><p>In the top-left corner an overview of the dataset is displayed (E).
+Visible sources are displayed as green/magenta wireframe boxes, invisible sources are displayed as grey wireframe boxes.
+The dimensions of the boxes illustrate the size of the source images. The filled grey rectangle illustrates the screen area, i.e., the portion of the currently displayed slice.
+For the visible sources, the part that is in front of the screen is green, the part that is behind the screen is magenta.
+</p><p>At the top of the window, the name of the current source is shown (F).
+</p><p>Note, that also in fused mode there is always a <i>current source</i>, although this source may not even be visible.
+Commands such as <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">X</kbd> (rotate to ZY-plane) refer to the local coordinate system of the current source.
+</p>
+<h3><span class="mw-headline" id="Grouping_Sources">Grouping Sources</span></h3>
+<p>Often there are sets of sources for which visibility is logically related.
+For example, in a multi-angle, multi-channel SPIM sequence, you will frequently want to see all channels of a given angle, or all angles of a given channel.
+If your dataset contains deconvolved data, you may want to see either all raw angles overlaid, or the deconvolved view, respectively.
+You want to be able to quickly switch between those two views.
+Turning individual sources on and off becomes tedious in these situations.
+Therefore, sources can be organized into <i>groups</i>.
+All sources of a <i>group</i> can be activated or deactivated at once.
+</p><p>Source grouping is handled in the visibility and grouping dialog, too
+(menu <span><em><span style="border-bottom:1px dotted #ccc;"> Settings </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Visibility &amp; Grouping</span></em></span> or shortcut <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">F6</kbd>).
+</p><p><a href="http://imagej.net/File:Bdv-grouping.png" class="image"><img alt="Bdv-grouping.png" src="../_images/2/27/Bdv-grouping.png" width="500" height="374" /></a>
+</p><p>The lower half of the dialog is dedicated to grouping.
+There are 10 groups available.
+They are named "group 1" through "group 10" initially, but the names can be edited (A).
+</p><p>Sources can be assigned to groups using the checkboxes (B).
+In every line, there are as many checkboxes as there are sources.
+Sources corresponding to active checkboxes are assigned to the respective group.
+For example, in the above screenshot there are two sources and therefore two "assigned sources" checkboxes per line
+The first source is assigned to groups 1 and 2, the second source is assigned to groups 2 and 3.
+Group 2 has been renamed to "all sources".
+</p><p><i>Grouping</i> can be turned on and off by the checkbox (C) or by using the shortcut <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">G</kbd> in the main window.
+If grouping is enabled, groups take the role of individual sources:
+There is one <i>current group</i> which is visible in normal mode (all individual sources that are part of this group are overlaid).
+Groups can be activated or deactivated to determine visibility in fused mode (all individual sources that are part of at least one active group are overlaid).
+</p><p>Groups can be made current and made active or inactive using the checkboxes (D).
+Also, if grouping is enabled the number key shortcuts in the main BigDataViewer window act on groups instead of individual sources.
+That is, groups 1 through 10 can be made current by keys <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">1</kbd> through <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">0</kbd>.
+Similarly, shortcuts <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">1</kbd> through <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">0</kbd> in the main window activate or deactivate groups 1 through 10 for visibility in fused mode.
+</p><p>If grouping is enabled, the name of the current group is shown at the top of the main window.
+</p><p><a href="http://imagej.net/File:Bdv-overlays-2.png" class="image"><img alt="Bdv-overlays-2.png" src="../_images/8/80/Bdv-overlays-2.png" width="500" height="102" /></a>
+</p>
+<h3><span class="mw-headline" id="Adjusting_Brightness_and_Color">Adjusting Brightness and Color</span></h3>
+<p>To change the brightness, contrast, or color of particular sources select <span><em><span style="border-bottom:1px dotted #ccc;"> Settings </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Brightness &amp; Color</span></em></span> or press the shortcut <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">S</kbd>.
+This brings up the brightness and color settings dialog.
+</p><p><a href="http://imagej.net/File:Bdv-brightness-1.png" class="image"><img alt="Bdv-brightness-1.png" src="../_images/a/a6/Bdv-brightness-1.png" width="500" height="173" /></a>
+</p><p>The <i>min</i> and <i>max</i> sliders (A) can be used to adjust the brightness and contrast.
+They represent minimum and maximum source values that are mapped to the display range.
+For the screenshot above, this means that source intensity 200 (and everything below) is mapped to black. Source intensity 862 (and everything above) is mapped to white.
+</p><p>When a new dataset is opened, BigDataViewer tries to estimate good initial <i>min</i> and <i>max</i> settings by looking at the first image of the dataset.
+</p><p>BigDataViewer datasets are currently always stored with 16 bits per pixel, however the data does not always exploit the full value range 0 ... 65535.
+The example drosophila dataset uses values in the range of perhaps 0 ... 1000, except for the much brighter fiducial beads around the specimen.
+The <i>min</i> and <i>max</i> sliders in this case are a bit fiddly to use, because they span the full 16 bit range with the interesting region squeezed into the first few pixels.
+This can be remedied by adjusting the range of the sliders.
+For this, click on the &gt;&gt; dialog button (B).
+This shows two additional input fields, where the range of the sliders can be adjusted.
+In the following screenshot, the leftmost value of the slider range has been set to 0 and the rightmost value to 2000, making the sliders much more useful.
+</p><p><a href="http://imagej.net/File:Bdv-brightness-2.png" class="image"><img alt="Bdv-brightness-2.png" src="../_images/7/77/Bdv-brightness-2.png" width="500" height="139" /></a>
+</p><p>So far, all sources share the same <i>min</i> and <i>max</i> settings.
+However, these can also be adjusted for each individual source or for groups of sources.
+The checkboxes (C) assign sources to <i>min-max-groups</i>.
+There is one checkbox per source.
+In the example drosophila dataset there are two sources, therefore there are two checkboxes.
+The active checkboxes indicate for which sources the <i>min</i> and <i>max</i> values apply.
+</p><p>If you uncheck one of the sources, it will move to its own new <i>min-max-group</i>.
+Now you can adjust the values for each source individually.
+The sliders of new group are initialized as a copy of the old group.
+</p><p><a href="http://imagej.net/File:Bdv-brightness-3.png" class="image"><img alt="Bdv-brightness-3.png" src="../_images/0/07/Bdv-brightness-3.png" width="500" height="264" /></a>
+</p><p>Sources can be assigned to <i>min-max-groups</i> by checking/unchecking the checkboxes.
+The rule is that every source is always assigned to exactly one min-max-group.
+Thus, if you activate an unchecked source in a min-max-group, this will remove the source from its previous min-max-group and add it to the new one.
+Unchecking a source will remove it from its min-max-group and move it to a new one.
+Min-max-groups that become empty are removed.
+To go back to a single min-max-group in the example, you would simply move all sources to the same group.
+</p><p>Finally, at the bottom of the dialog (D) colors can be assigned to sources.
+There is one color button per source (two in the example).
+Clicking a button brings up a color dialog, where you can choose a color for that particular source.
+In the following screenshot, the sources have been colored magenta and green.
+</p><p><a href="http://imagej.net/File:Bdv-brightness-4.png" class="image"><img alt="Bdv-brightness-4.png" src="../_images/2/29/Bdv-brightness-4.png" width="500" height="571" /></a>
+</p>
+<h3><span class="mw-headline" id="Bookmarking_Locations_and_Orientations">Bookmarking Locations and Orientations</span></h3>
+<p>BigDataViewer allows to bookmark the current view.
+You can set bookmarks for interesting views or particular details of your dataset to easily navigate back to those views later.
+</p><p>Each bookmark has an assigned shortcut key, i.e., you can have bookmarks "a", "A", "b", ..., "1", "2", etc.
+To set a bookmark for the current view, press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">B</kbd> and then the shortcut you want to use for the bookmark.
+To recall bookmark, press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">B</kbd> and then the shortcut of the bookmark.
+</p><p>BigDataViewer provides visual feedback for setting and recalling bookmarks.
+When you press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">B</kbd>, the message "<b>set bookmark:</b>" appears in the lower right corner of the main window, prompting to press the bookmark shortcut next.
+</p><p><a href="http://imagej.net/File:Bdv-set-bookmark.png" class="image"><img alt="Bdv-set-bookmark.png" src="../_images/d/d4/Bdv-set-bookmark.png" width="500" height="329" /></a>
+</p><p>Now press the key you want to use as a shortcut, for example <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">A</kbd>.
+The prompt message will change to "<b>set bookmark: a</b>" indicating that you have set a bookmark with shortcut <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">A</kbd>.
+Instead of pressing a shortcut key you can abort using <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⎋</span> Esc</kbd>.
+</p><p>Similarly, when you press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">B</kbd> to recall a bookmark, the prompt message "<b>go to bookmark:</b>" appears.
+Now press the shortcut of the bookmark you want to recall, for example <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">A</kbd>.
+The prompt message will change to "<b>go to bookmark: a</b>" and the view will move to the bookmarked location.
+Instead of pressing a shortcut key you can abort using <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⎋</span> Esc</kbd>.
+</p><p>Note, that bookmark shortcuts are case-sensitive, i.e., <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">A</kbd> and <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">A</kbd> refer to distinct bookmarks "a" and "A" respectively.
+</p><p>The bookmarking mechanism can also be used to bookmark and recall orientations.
+Press <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">O</kbd> and then a bookmark shortcut to recall only the orientation of that bookmark.
+This rotates the view into the rotation of the bookmarked view (but does not zoom or translate to the bookmarked location).
+The rotation is around the current mouse location (i.e., the point under the mouse stays fixed).
+</p>
+<h3><span class="mw-headline" id="Loading_and_Saving_Settings">Loading and Saving Settings</span></h3>
+<p>Organizing sources into groups, assigning appropriate colors, adjusting brightness correctly, and bookmarking interesting locations is work that you do not want to repeat over and over every time you re-open a dataset.
+Therefore, BigDataViewer allows to save and load these settings.
+</p><p>Select <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Save settings</span></em></span> from the menu to store settings to an XML file, and <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Load settings</span></em></span> to load them from an XML file.
+</p><p>When a dataset is opened, BigDataViewer automatically loads an appropriately named settings file if it is present.
+This settings file must be in the same directory as the dataset's XML file, and have the same filename with <i>.settings</i> appended.
+For example, if the dataset's XML file is named <i>drosophila.xml</i>, the settings file must be named <i>drosophila.settings.xml</i>.
+(If you select <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Save settings</span></em></span>, this filename is already suggested in the Save File dialog.)
+</p><p>Settings files assume that a specific number of sources are present, therefore settings are usually not compatible across different datasets.
+</p>
+<h3><span class="mw-headline" id="Opening_BigDataViewer_Datasets_as_ImageJ_Stacks">Opening BigDataViewer Datasets as ImageJ Stacks</span></h3>
+<p>BigDataViewer may be great for looking at your data, but what if you want to apply other ImageJ algorithms or plugins to the images?
+You can open individual images from a dataset as ImageJ stacks using <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> BigDataViewer...</span></em></span> from the Fiji menu.
+</p><p><a href="http://imagej.net/File:Bdv-import.png" class="image"><img alt="Bdv-import.png" src="../_images/e/ee/Bdv-import.png" width="500" height="272" /></a>
+</p><p>Select the XML file of a dataset, then choose the time-point and source (setup) index of the image you want to open.
+If you enable the <i>"open as virtual stack"</i> checkbox the image will open as an ImageJ <i>virtual stack</i>.
+This means that the opened image is backed by BigDataViewer's cache and slices are loaded on demand.
+Without <i>"open as virtual stack"</i>, the full image will be loaded into memory.
+Virtual stacks will open a bit faster but switching between slices may be less instantaneous.
+</p><p>Note that the import function is macro-recordable.
+Thus, you can make use of it to batch-process images from BigDataViewer datasets.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Exporting_Datasets_for_the_BigDataViewer">Exporting Datasets for the BigDataViewer</span></h2>
+<p>BigDataViewer uses a custom file-format that is optimized for fast arbitrary re-slicing at various scales.
+This file format is build on open standards <a rel="nofollow" class="external text" href="http://www.w3.org/XML/">XML</a> and <a rel="nofollow" class="external text" href="http://www.hdfgroup.org/HDF5/">HDF5</a>.
+XML is used to store meta-data and HDF5 is used to store image volumes.
+(Actually, we support several ways to store the image volumes besides HDF5. For example, the volume data can be provided by a web service for remote access.)
+</p><p>Before we discuss how to export your data to this XML/HDF5 format, we provide a rough overview for some background, rationale, and terminology.
+The format is explained in detail in our paper <a rel="nofollow" class="external text" href="http://arxiv.org/abs/1412.0488">BigDataViewer: Interactive Visualization and Image Processing for Terabyte Data Sets</a>.
+</p>
+<h3><span class="mw-headline" id="About_the_BigDataViewer_data_format">About the BigDataViewer data format</span></h3>
+<p>Each BigDataViewer dataset contains a set of 3D grayscale image volumes organized by <i>timepoints</i> and <i>setups</i>.
+In the context of lightsheet microscopy, each channel or acquisition angle or combination of both is a <i>setup</i>.
+E.g., for a multi-view recording with 3 angles and 2 channels there are 6 <i>setups</i>.
+Each <i>setup</i> represents a visualisation data source in the viewer that provides one image volume per <i>timepoint</i>.
+We refer to each combination of <i>setup</i> and <i>timepoint</i> as a <i>view</i>.
+Each <i>view</i> has one corresponding grayscale image volume.
+</p><p>A dataset comprises an XML file to store meta-data and one or more HDF5 files to store the raw images.
+Among other things, the XML file contains
+</p>
+<ul><li> the path of the HDF5 file(s),</li>
+<li> a number of <i>setups</i>,</li>
+<li> a number of <i>timepoints</i>,</li>
+<li> the registration of each <i>view</i> into the global coordinate system.</li></ul>
+<p><br />
+Each <i>view</i> has one corresponding image volume which is stored in the HDF5 file.
+Raw image volumes are stored as multi-resolution pyramids:
+In addition to the original resolution, several progressively down-scaled resolutions (mipmaps) are stored.
+This serves two purposes.
+First, using mipmaps minimizes aliasing effects when rendering a zoomed-out view of the dataset~\cite{Williams:1983it}.
+Second, and more importantly, using mipmaps reduces data access time and thus increases the perceived responsiveness for navigation.
+Low-resolution mipmaps take up less memory and therefore load faster from disk.
+New chunks of data must be loaded when the user browses to a part of the dataset that is not currently cached in memory.
+In this situation, BigDataViewer can rapidly load and render low-resolution data, filling in high resolution detail later as it becomes available.
+This multi-resolution pyramid scheme is illustrated in the following figure.
+</p>
+<div class="MediaTransformError" style="width: 700px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Each raw image volume is stored in multiple resolutions, the original resolution (left) and successively smaller, downsampled versions (right).
+Each resolution is stored in a chunked representation, split into small 3D blocks.
+</p><p><br />
+Each level of the multi-resolution pyramid is stored as a <i>chunked multi-dimensional array</i>.
+Multi-dimensional arrays are the standard way of storing image data in HDF5.
+The layout of multi-dimensional arrays on disk can be configured.  We use a <i>chunked</i> layout which means that the 3D image volume is split into several chunks (smaller 3D blocks).
+These chunks are stored individually in the HDF5 file, which optimizes performance for our use-case where fast random access to individual chunks is required.
+</p><p>Rendering a virtual slice requires data contained within a small subset of chunks.
+Only chunks that touch the slice need to be loaded, as illustrated in the following Figure.
+</p>
+<div class="MediaTransformError" style="width: 700px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>When rendering a slice (schematically illustrated by the blue line) the data of only a small subset of blocks is required.
+In the original resolution 5 blocks are required, while only 2, respectively 1 block is required for lower resolutions.
+Therefore, less data needs to be loaded to render a low-resolution slice.
+This allows low-resolution versions to be loaded and rendered rapidly.
+High-resolution detail is filled in when the user stops browsing to view a certain slice for an extended period of time.
+</p><p>Each of these chunks, however, is loaded in full, although only a subset of voxels in each chunk is required to render the actual slice.
+Loading the data in this way, aligned at chunk boundaries, gurantees optimal I/O performance.
+</p><p>All loaded chunks are cached in RAM.
+During interactive navigation, subsequent slices typically intersect with a similar set of chunks because their pose has changed only moderately, i.e.. cached data are re-used.
+Only chunks that are not currently in the cache need to be loaded from disk, as illustrated in the following Figure.
+</p>
+<div class="MediaTransformError" style="width: 700px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>For rendering the slice indicated by the red line, only the red blocks need to be loaded.
+The blue blocks are already cached from rendering the blue slice before.
+Combined with the multi-resolution mipmap representation, this chunking and caching scheme allows for fluid interactive browsing of very large datasets.
+</p><p>The parameters of the mipmap and chunking scheme are specific to each dataset and they are fully configurable by the user.
+In particular, when exporting images to the BigDataViewer format, the following parameters are adjustable:
+</p>
+<ul><li> the number of mipmap levels,</li>
+<li> the subsampling factors in each dimension for each mipmap level,</li>
+<li> the chunk sizes in each dimension for each mipmap level.</li></ul>
+<p>BigDataViewer suggests sensible parameter settings, however, for particular applications and data properties a user may tweak these parameters for optimal performance.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Exporting_from_ImageJ_Stacks">Exporting from ImageJ Stacks</span></h3>
+<p>You can export any dataset to BigDataViewer format by opening it as a stack in Fiji and then selecting <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> BigDataViewer </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Export Current Image as XML/HDF5</span></em></span> from the Fiji menu.
+If the image has multiple channels, each channel will become one <i>setup</i> in the exported dataset.
+If the image has multiple frames, each frame will become one <i>timepoint</i> in the exported dataset.
+Of course, you may export from virtual stacks if your data is too big to fit into memory.
+</p><p>To get started, let's open one of the ImageJ sample images by <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Open Samples </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> T1 Head (2.4M, 16-bits)</span></em></span>.
+Selecting <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> BigDataViewer </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Export Current Image as XML/HDF5</span></em></span> brings up the following dialog.
+</p><p><a href="http://imagej.net/File:Bdv-export-stack.png" class="image"><img alt="Bdv-export-stack.png" src="../_images/6/67/Bdv-export-stack.png" width="500" height="451" /></a>
+</p><p>Parts (A) and (C) of the dialog are optional, so we will explain (B) and (D) first.
+</p><p>At the bottom of the dialog (D), the export path is defined.
+Specify the path of the XML file to which you want to export the dataset.
+The HDF5 file for the dataset will be placed into the same directory under the same name with extension ".h5".
+If the <i>"use deflate compression"</i> checkbox is enabled, the image data will be compressed using HDF5 built-in DEFLATE compression.
+We recommend to use this option.
+It will usually reduce the file size to about 50% with respect to uncompressed image size.
+The performance impact of decompression when browsing the dataset is negligible.
+</p><p>In part (B) of the dialog the <i>value range</i> of the image must be specified.
+BigDataViewer always stores images with 16-bit precision currently, while the image you want to export is not necessarily 16-bit.
+The value range defines the minimum and maximum of the image you want to export.
+This is mapped to the 16-bit range for export.
+I.e., the minimum of the value range will be mapped to the minimum of the unsigned 16-bit range (0).
+The maximum of the value range will be mapped to the maximum of the unsigned 16-bit range (65535).
+In the drop-down menu you can select one the following options to specify how the value range should be determined:
+</p>
+<ul><li> <i>"Use ImageJ's current min/max setting"</i>. The minimum and maximum set in ImageJ's Brightness&amp;Contrast are used. Note, that image intensities outside that range will be clipped to the minimum or maximum, respectively.</li>
+<li> <i>"Compute min/max of the (hyper-)stack"</i>. Compute the minimum and maximum of the stack and use these. Note, that this may take some time to compute because it requires to look at all pixels of the stack you want to export.</li>
+<li> <i>"Use values specified below"</i>. Use the values specified in the <i>Min</i> and <i>Max</i> fields (B) of the export dialog. Note, that image intensities outside that range will be clipped to the minimum or maximum, respectively.</li></ul>
+<p><br />
+After you have specified the value range and selected and export path, press <i>OK</i> to export the dataset.
+Messages about the progress of the operation are displayed in the ImageJ Log window.
+</p><p><a href="http://imagej.net/File:Bdv-export-stack-log.png" class="image"><img alt="Bdv-export-stack-log.png" src="../_images/6/67/Bdv-export-stack-log.png" width="500" height="198" /></a>
+</p><p>When the export is done you can browse the dataset in the BigDataViewer by opening the exported XML file.
+</p><p>The optional parts (A) and (C) of the export dialog provide further options to customize the export.
+If the checkbox <i>"manual mipmap setup"</i> is enabled, you can customize the multi-resolution mipmap pyramid which stores your image stacks.
+You can specify the number of resolution levels used, and their respective down-scaling factors, as well as the chunk sizes into which each resolution level is subdivided.
+</p><p>The <i>"Subsampling factors"</i> field specifies a comma-separated list of resolution levels, formatted as <tt>{level, ..., level}</tt>.
+Each <tt style="font-size: 1.25em;">level</tt> is a list of subsampling factors in <i>X, Y, Z</i>, formatted as <tt>{x-scale, y-scale, z-scale}</tt>.
+For example consider the specification <tt>{{1,1,1}, {2,2,2}, {4,4,2}}</tt>.
+This will create a resolution pyramid with three levels.
+The first level is the full resolution -- it is scaled by factors <i>1</i> in all axes.
+The second level is down-scaled by factors <i>2, 2, 1</i> in <i>X, Y, Z</i> respectively.
+So it has half the resolution in <i>X</i> and <i>Y</i>, but full resolution in <i>Z</i>.
+The third level has half the resolution of the second in all axes, i.e., it is down-scaled by factors <i>4, 4, 2</i> in <i>X, Y, Z</i> respectively.
+Note, that you should always order levels by decreasing resolution like this.
+Also note, that in the above example we down-scale by different factors in different axes.
+One may want to do this if the resolution of the dataset is anisotropic.
+Then it is advisable to first downscale only in the higher-resolved axes until approximately isotropic resolution is reached.
+</p><p>The <i>"Hdf5 chunk sizes"</i> specifies the chunk sizes into which data on each resolution level is sub-divided.
+This is again formatted as <tt>{level, ..., level}</tt>, with the same number of levels as supplied for the <i>Subsampling factors</i>.
+Each <tt style="font-size: 1.25em;">level</tt> is a list of sizes in <i>X, Y, Z</i>, formatted as <tt>{x-size, y-size, z-size}</tt>.
+For example consider the specification <tt>{{16,16,16}, {16,16,16}, {16,16,16}}</tt>.
+This will sub-divide each resolution level into chunks of <i>16&#215;16&#215;16</i> pixels.
+</p><p>It is usually not recommended to specify subsampling factors and chunk sizes manually.
+When browsing a dataset, the mipmap setup determines the loading speed and therefore the perceived speed of browsing to data that is not cached.
+With <i>"manual mipmap setup"</i> turned off, reasonable values will be determined automatically depending on the resolution and anisotropy of your dataset.
+</p><p>Finally, in part (C) of the export dialog, you may choose to split your dataset into multiple HDF5 files.
+This is useful in particular for very large datasets.
+For example when moving the data to a different computer, it may be cumbersome to have it sitting in a single 10TB file.
+If the checkbox <i>"split hdf5"</i> is enabled the dataset will be split into multiple HDF5 <i>partition</i> files.
+The dataset can be split along the <i>timepoint</i> and <i>setup</i> dimensions.
+Specify the number of <i>timepoints per partition</i> and <i>setups per partition</i> in the respective input fields.
+</p><p>For example, assume your dataset has 4 setups and 10 timepoints.
+Setting <i>timepoints per partition = 5</i> and <i>setups per partition = 2</i> will result in 4 HDF5 partitions:
+</p>
+<ul><li> setups 1 and 2 of timepoints 1 through 5,</li>
+<li> setups 3 and 4 of timepoints 1 through 5,</li>
+<li> setups 1 and 2 of timepoints 6 through 10, and</li>
+<li> setups 3 and 4 of timepoints 6 through 10.</li></ul>
+<p>Setting <i>timepoints per partition = 0</i> or <i>setups per partition = 0</i> means that the dataset is not split in the respective dimension.
+</p><p>Note, that splitting into multiple HDF5 files is transparent from the viewer side.
+There is still only one XML file that gathers all the partitions files into one dataset.
+</p>
+<h3><span class="mw-headline" id="Integration_with_Fiji.27s_SPIMage_Processing_Tools">Integration with Fiji's SPIMage Processing Tools</span></h3>
+<p>BigDataViewer seamlessly integrates with the "Multiview Reconstruction" plugins that Fiji offers for registration and reconstruction of lightsheet microscopy data.
+Recent versions of these tools build on the same XML format as BigDataViewer itself.
+In addition to HDF5, "Multiview reconstruction" supports a backend for datasets that store individual views as TIFF files,
+because unprocessed data from lightsheet microscopes is often available in this format.
+</p><p>In principle, BigDataViewer is able to display a TIFF dataset as is.
+However, for quick navigation this is not the ideal format:
+When navigating to a new timepoint, BigDataViewer needs to load all TIFF files of that timepoint into memory, suffering a delay of tens of seconcds.
+Therefore, it is beneficial to convert the TIFF dataset to HDF5.
+Note, that this can be done at any point of the processing pipeline (i.e., before registration, after registration, after multiview fusion or deconvolution, etc)
+because the "Multiview reconstruction" plugins can operate on HDF5 datasets as well.
+</p><p>We assume that the user has already created an XML/TIFF dataset, as explained in <a href="http://imagej.net/Multiview-Reconstruction" title="Multiview-Reconstruction">Multiview-Reconstruction</a>.
+</p><p>To convert the dataset to HDF5, select <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Multiview Reconstruction </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Resave </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> As HDF5</span></em></span> form the Fiji menu.
+This brings up the following dialog.
+</p><p><a href="http://imagej.net/File:Bdv-mvr-export1b.png" class="image"><img alt="Bdv-mvr-export1b.png" src="../_images/7/71/Bdv-mvr-export1b.png" width="500" height="276" /></a>
+</p><p>At the top of the dialog, select the XML file of the dataset you want to convert to HDF5.
+In the lower part of the dialog, you can select which parts of the dataset you want to resave.
+For example, assume that the source dataset contains the raw image stacks from the microscope, as well as deconvolved versions.
+You might decide that you do not need the raw data as HDF5, so you can select only the deconvolved channels.
+Once you have determined what you want to convert press <i>OK</i>.
+</p><p>This brings up the next dialog, in which you need to specify the export path and options.
+</p><p><a href="http://imagej.net/File:Bdv-mvr-export2.png" class="image"><img alt="Bdv-mvr-export2.png" src="../_images/6/67/Bdv-mvr-export2.png" width="500" height="281" /></a>
+</p><p>These parameters are the same as discussed in the previous section:
+If you want to specify custom mipmap settings, you can do so in the top part of the dialog.
+Below that, choose whether you want to compress the image data.
+For the export path, specify the XML file to which you want to export the dataset.
+Press <i>OK</i> to start the export.
+</p>
+<h3><span class="mw-headline" id="Cluster_processing_of_XML.2FHDF5_SPIM_data">Cluster processing of XML/HDF5 SPIM data</span></h3>
+<p>Converting very large datasets into the HDF5 file format adds a significant overhead.
+In order to speed up this conversion, we have developed a image processing pipeline that enables parallelisation of the process on a HPC cluster.
+</p><p>We have documented the steps and software needed to execute the above mentioned Fiji plugin on a cluster computer on
+<a href="http://imagej.net/SPIM_Registration_on_cluster" class="mw-redirect" title="SPIM Registration on cluster"><b>this wiki page</b></a>. Specifically, the sections
+<a href="http://imagej.net/SPIM_Registration_on_cluster#Define_XML" class="mw-redirect" title="SPIM Registration on cluster"><b>Define XML</b></a> and
+<a href="http://imagej.net/SPIM_Registration_on_cluster#Re-save_as_HDF5" class="mw-redirect" title="SPIM Registration on cluster"><b>Re-save as HDF5</b></a> deal with the conversion process.
+</p><p>First it is necessary to define an XML file that describes the parameters of the dataset (i.e. number of time points, angles, illuminations and channels).
+Subsequently, we launch one HDF5 re-save job per time point which generates as many <tt style="font-size: 1.25em;">.h5</tt> files as there are time points.
+An additional master <tt style="font-size: 1.25em;">.h5</tt> file and the updated XML allow seamless navigation of such dataset with BigDataViewer.
+Since the dataset will typically reside on a cluster filesystem without a graphical user interface, it is advisable to register it with the <a href="http://imagej.net/BigDataServer" title="BigDataServer"><b>BigDataServer</b></a> and examine it remotely.
+All subsequent processing steps of SPIM registration only modify the XML and thus it is necessary to perform the re-saving only once, usually as the first step of the SPIMage processing pipeline.
+</p><p>A multi-view dataset consisting of 715 six angle time points (altogether 2.1 Terabytes) converts to HDF5 with compression in 65 minutes using about 200 processors working in parallel.
+</p>
+<h2><span class="mw-headline" id="Publication">Publication</span></h2>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=BigDataViewer%3A+visualization+and+processing+for+large+image+data+sets&amp;rft.aulast=Pietzsch&amp;rft.aufirst=T.&amp;rft.date=2015&amp;rft.volume=12%286%29&amp;rft.pages=481-483&amp;rft_id=info:pmid/26020499&amp;rft_id=http%3A%2F%2Fwww.nature.com%2Fnmeth%2Fjournal%2Fv12%2Fn6%2Ffull%2Fnmeth.3392.html"><cite id="CITEREFPietzschSaalfeldPreibischTomancak2015">Pietzsch, T.; Saalfeld, S.&#32;&amp; Preibisch, S.&#32;et al.&#32;(2015),&#32;"<a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v12/n6/full/nmeth.3392.html">BigDataViewer: visualization and processing for large image data sets</a>",&#32;<i>Nature Methods</i>&#32;<b>12(6)</b>:  481-483, PMID 26020499<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://www.nature.com/nmeth/journal/v12/n6/full/nmeth.3392.html">http://www.nature.com/nmeth/journal/v12/n6/full/nmeth.3392.html</a>&gt;</span></cite></span> (<a rel="nofollow" class="external text" href="http://scholar.google.com/scholar?cluster=2149722257070741970">on Google Scholar</a>).</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064542
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 1.120 seconds
+Real time usage: 1.129 seconds
+Preprocessor visited node count: 39648/1000000
+Preprocessor generated node count: 25441/1000000
+Post‐expand include size: 207158/2097152 bytes
+Template argument size: 19103/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00% 1045.502      1 - -total
+ 85.49%  893.810     64 - Template:Key_press
+ 79.45%  830.618     90 - Template:Key_press/core
+  9.01%   94.230      1 - Template:ComponentStats:sc.fiji:bigdataviewer_fiji
+  8.86%   92.584      1 - Template:Component
+  7.48%   78.201     10 - Template:Person
+  3.25%   33.937     90 - Template:Box-shadow
+  2.95%   30.792     90 - Template:Linear-gradient
+  2.42%   25.308     16 - Template:Bc
+  2.28%   23.857      1 - Template:Publication
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=BigDataViewer&amp;oldid=40521">http://imagej.net/index.php?title=BigDataViewer&amp;oldid=40521</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 10 September 2019, at 07:13.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=BigDataViewer&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Visualization" title="Category:Visualization">Visualization</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=BigDataViewer" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=BigDataViewer" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/BigDataViewer" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/BigDataViewer" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=BigDataViewer&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=BigDataViewer&amp;oldid=40521" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=BigDataViewer&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":1278});});</script>
+		</body>
+		</html>
+		

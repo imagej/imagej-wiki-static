@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Developing ImageJ in NetBeans - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Developing_ImageJ_in_NetBeans","wgTitle":"Developing ImageJ in NetBeans","wgCurRevisionId":38396,"wgRevisionId":38396,"wgArticleId":2237,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Development","IDEs"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Developing_ImageJ_in_NetBeans","wgRelevantArticleId":2237,"wgRequestId":"7533adc4c9b6ff626e39278a","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This article explains how to install and configure NetBeans for use with ImageJ development. Directions correspond to NetBeans 7.1.2, which added integrated Git support, and may need adjustment for other versions."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Developing ImageJ in NetBeans"/>
+
+	<meta property="og:description" content="This article explains how to install and configure NetBeans for use with ImageJ development. Directions correspond to NetBeans 7.1.2, which added integrated Git support, and may need adjustment for other versions."/>
+
+	<meta property="og:url" content="http://imagej.net/Developing_ImageJ_in_NetBeans"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Developing_ImageJ_in_NetBeans rootpage-Developing_ImageJ_in_NetBeans skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="NetBeans.html#bodyContent">Skip to content</a>, 			<a href="NetBeans.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="NetBeans.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="NetBeans.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Developing_ImageJ_in_NetBeans&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Developing_ImageJ_in_NetBeans&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Developing_ImageJ_in_NetBeans&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Developing ImageJ in NetBeans</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Development
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Development" title="Development">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Philosophy" title="Philosophy">Philosophy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Architecture" title="Architecture">Architecture</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Source_code" title="Source code">Source code</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Project_management" title="Project management">Project management</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Coding_style" title="Coding style">Coding style</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging" title="Debugging">Debugging</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tools
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git" title="Git">Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Maven" title="Maven">Maven</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/IDEs" title="IDEs">IDEs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Travis" title="Travis">Travis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/AppVeyor" title="AppVeyor">AppVeyor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Dotfiles" title="Dotfiles">Dotfiles</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Guides
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Writing_plugins" title="Writing plugins">Writing plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_contribute_to_an_existing_plugin_or_library" title="How to contribute to an existing plugin or library">Contributing to a plugin</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Distribution" title="Distribution">Distributing your plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Development_Lifecycle" title="Development Lifecycle">Development lifecycle</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Building_a_POM" title="Building a POM">Building a POM</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImageJ_in_Eclipse" title="Developing ImageJ in Eclipse">Developing with Eclipse</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging_Exercises" title="Debugging Exercises">Hands-on debugging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_ops" title="Adding new ops">Adding new ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_formats" title="Adding new formats">Adding new formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_using_native_libraries" title="Developing using native libraries">Using native libraries</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_developers" title="Tips for developers">Tips for developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_C%2B%2B_developers" title="Tips for C++ developers">Tips for C++ developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">ImageJ 1.x plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Versioning" title="Versioning">Versioning</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Logging" title="Logging">Logging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Uber-JAR" title="Uber-JAR">Uber-JARs</a>
+</td></tr></table>
+</td></tr></table>
+<p><br />
+This article explains how to install and configure NetBeans for use with <a href="http://imagej.net/ImageJ" title="ImageJ">ImageJ</a> development. Directions correspond to NetBeans 7.1.2, which added integrated Git support, and may need adjustment for other versions.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="NetBeans.html#Install_and_configure_NetBeans"><span class="tocnumber">1</span> <span class="toctext">Install and configure NetBeans</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="NetBeans.html#Setting_up_NetBeans_on_Windows"><span class="tocnumber">1.1</span> <span class="toctext">Setting up NetBeans on Windows</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="NetBeans.html#Install_Java_Development_Kit"><span class="tocnumber">1.1.1</span> <span class="toctext">Install Java Development Kit</span></a></li>
+<li class="toclevel-3 tocsection-4"><a href="NetBeans.html#Install_NetBeans"><span class="tocnumber">1.1.2</span> <span class="toctext">Install NetBeans</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-5"><a href="NetBeans.html#Setting_up_NetBeans_on_Mac_OS_X"><span class="tocnumber">1.2</span> <span class="toctext">Setting up NetBeans on Mac OS X</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="NetBeans.html#Install_NetBeans_2"><span class="tocnumber">1.2.1</span> <span class="toctext">Install NetBeans</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-7"><a href="NetBeans.html#Setting_up_NetBeans_on_Linux"><span class="tocnumber">1.3</span> <span class="toctext">Setting up NetBeans on Linux</span></a>
+<ul>
+<li class="toclevel-3 tocsection-8"><a href="NetBeans.html#Install_Java_Development_Kit_2"><span class="tocnumber">1.3.1</span> <span class="toctext">Install Java Development Kit</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="NetBeans.html#Install_NetBeans_3"><span class="tocnumber">1.3.2</span> <span class="toctext">Install NetBeans</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="NetBeans.html#Import_the_ImageJ_source"><span class="tocnumber">2</span> <span class="toctext">Import the ImageJ source</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="NetBeans.html#Launch_the_program"><span class="tocnumber">3</span> <span class="toctext">Launch the program</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="NetBeans.html#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Install_and_configure_NetBeans">Install and configure NetBeans</span></h2>
+<h3><span class="mw-headline" id="Setting_up_NetBeans_on_Windows">Setting up NetBeans on Windows</span></h3>
+<h4><span class="mw-headline" id="Install_Java_Development_Kit">Install Java Development Kit</span></h4>
+<p>Download and install JDK 6 from the <a rel="nofollow" class="external text" href="http://www.oracle.com/technetwork/java/javase/downloads/">Java web site</a>.
+</p>
+<h4><span class="mw-headline" id="Install_NetBeans">Install NetBeans</span></h4>
+<p>Download and install NetBeans from the <a rel="nofollow" class="external text" href="http://netbeans.org/downloads/">NetBeans web site</a>. Any bundle that includes Java SE should be fine.
+</p>
+<h3><span class="mw-headline" id="Setting_up_NetBeans_on_Mac_OS_X">Setting up NetBeans on Mac OS X</span></h3>
+<h4><span class="mw-headline" id="Install_NetBeans_2">Install NetBeans</span></h4>
+<p>Download and install NetBeans from the <a rel="nofollow" class="external text" href="http://netbeans.org/downloads/">NetBeans web site</a>. Any bundle that includes Java SE should be fine.
+</p>
+<h3><span class="mw-headline" id="Setting_up_NetBeans_on_Linux">Setting up NetBeans on Linux</span></h3>
+<h4><span class="mw-headline" id="Install_Java_Development_Kit_2">Install Java Development Kit</span></h4>
+<p>Install Java using the package manager—e.g., for Ubuntu 10.04:
+</p>
+<pre class="brush:bash">
+sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"
+sudo aptitude update
+sudo aptitude install sun-java6-jdk sun-java6-plugin
+sudo update-java-alternatives -s sun-java6-sun
+</pre>
+<h4><span class="mw-headline" id="Install_NetBeans_3">Install NetBeans</span></h4>
+<p>Install NetBeans using the package manager—e.g., on Ubuntu:
+</p>
+<pre class="brush:bash">
+sudo aptitude install netbeans
+</pre>
+<h2><span class="mw-headline" id="Import_the_ImageJ_source">Import the ImageJ source</span></h2>
+<ol><li> Choose Team &gt; Git &gt; Clone... from the NetBeans menu</li>
+<li> For the Repository URL, enter: <code><a rel="nofollow" class="external free" href="git://github.com/imagej/imagej">git://github.com/imagej/imagej</a></code></li>
+<li> Click Next, check the "master*" branch, then Next again, then Finish</li>
+<li> When prompted, click Open Project...</li>
+<li> Select the "ImageJ Projects" project in the tree then click Open</li>
+<li> Right-click the "ImageJ Projects" project and choose Build</li></ol>
+<p>You may receive a warning about Maven when building the project. It is not required, but if you wish to eliminate it, you can install Maven from the <a rel="nofollow" class="external text" href="http://maven.apache.org/download.html">Maven web site</a>.
+</p>
+<h2><span class="mw-headline" id="Launch_the_program">Launch the program</span></h2>
+<ol><li> Expand the "ImageJ Projects" project, then "Modules"</li>
+<li> Expand the "ImageJ POM: User Interface" module</li>
+<li> Double-click the "ImageJ Application" project to open it</li>
+<li> Right-click the "ImageJ Application" project and choose "Run"</li>
+<li> On the Main Class dialog, choose "net.imagej.Main"</li></ol>
+<p>To expand the projects you can also right click on the top-level "ImageJ Projects" and choose "Open Required Projects" (and "Close Required Projects" to close). During development you must select "Open Required Projects" before you can successfully do "Find Usages" in the "Open Projects" scope.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="https://www.youtube.com/watch?v=Ac-6gJ2eRb0">Developing ImageJ 1.x plugins with NetBeans</a> screencast</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/imagej/example-legacy-plugin/">example-legacy-plugin</a> project template</li>
+<li> <a href="http://imagej.net/Developing_Plugins_for_ImageJ_1.x" title="Developing Plugins for ImageJ 1.x">Developing Plugins for ImageJ 1.x</a> tutorial</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073038
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.038 seconds
+Preprocessor visited node count: 339/1000000
+Preprocessor generated node count: 940/1000000
+Post‐expand include size: 6980/2097152 bytes
+Template argument size: 3802/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   19.705      1 - -total
+ 85.87%   16.921      1 - Template:DevelopMenu
+ 73.98%   14.578      1 - Template:Menu
+ 65.38%   12.884      3 - Template:Submenu
+ 32.64%    6.431     31 - Template:MenuItem
+ 11.01%    2.170      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Developing_ImageJ_in_NetBeans&amp;oldid=38396">http://imagej.net/index.php?title=Developing_ImageJ_in_NetBeans&amp;oldid=38396</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 23 August 2018, at 12:28.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Developing_ImageJ_in_NetBeans&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li><li><a href="http://imagej.net/Category:IDEs" title="Category:IDEs">IDEs</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Developing+ImageJ+in+NetBeans" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Developing+ImageJ+in+NetBeans" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Developing_ImageJ_in_NetBeans" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Developing_ImageJ_in_NetBeans" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Developing_ImageJ_in_NetBeans&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Developing_ImageJ_in_NetBeans&amp;oldid=38396" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Developing_ImageJ_in_NetBeans&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":228});});</script>
+		</body>
+		</html>
+		

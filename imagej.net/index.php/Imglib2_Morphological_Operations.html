@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Imglib2 Morphological Operations - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Imglib2_Morphological_Operations","wgTitle":"Imglib2 Morphological Operations","wgCurRevisionId":19655,"wgRevisionId":19655,"wgArticleId":1975,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Imglib2_Morphological_Operations","wgRelevantArticleId":1975,"wgRequestId":"144f57b21b0021f291c35118","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","mediawiki.page.gallery.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.page.gallery.styles%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The presentation of what are morphological operations is left to Wikipedia."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Imglib2 Morphological Operations"/>
+
+	<meta property="og:description" content="The presentation of what are morphological operations is left to Wikipedia."/>
+
+	<meta property="og:url" content="http://imagej.net/Imglib2_Morphological_Operations"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Imglib2_Morphological_Operations rootpage-Imglib2_Morphological_Operations skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Imglib2_Morphological_Operations.html#bodyContent">Skip to content</a>, 			<a href="Imglib2_Morphological_Operations.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Imglib2_Morphological_Operations.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Imglib2_Morphological_Operations" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Imglib2_Morphological_Operations&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Imglib2_Morphological_Operations&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Imglib2_Morphological_Operations&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Imglib2 Morphological Operations</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Imglib2_Morphological_Operations.html#Morphological_operations_in_Imglib2."><span class="tocnumber">1</span> <span class="toctext">Morphological operations in Imglib2.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Imglib2_Morphological_Operations.html#Package_content_and_location."><span class="tocnumber">1.1</span> <span class="toctext">Package content and location.</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Imglib2_Morphological_Operations.html#Gray_morphology_and_flat_structuring_elements."><span class="tocnumber">1.2</span> <span class="toctext">Gray morphology and flat structuring elements.</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Imglib2_Morphological_Operations.html#Morphological_operations_on_Comparable_type."><span class="tocnumber">1.3</span> <span class="toctext">Morphological operations on Comparable type.</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Imglib2_Morphological_Operations.html#Usage."><span class="tocnumber">2</span> <span class="toctext">Usage.</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Imglib2_Morphological_Operations.html#Structuring_elements_and_their_decomposition."><span class="tocnumber">3</span> <span class="toctext">Structuring elements and their decomposition.</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="Imglib2_Morphological_Operations.html#Rectangular_structuring_element."><span class="tocnumber">3.1</span> <span class="toctext">Rectangular structuring element.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-8"><a href="Imglib2_Morphological_Operations.html#Decomposition."><span class="tocnumber">3.1.1</span> <span class="toctext">Decomposition.</span></a>
+<ul>
+<li class="toclevel-4 tocsection-9"><a href="Imglib2_Morphological_Operations.html#2D_case."><span class="tocnumber">3.1.1.1</span> <span class="toctext">2D case.</span></a></li>
+<li class="toclevel-4 tocsection-10"><a href="Imglib2_Morphological_Operations.html#3D_case."><span class="tocnumber">3.1.1.2</span> <span class="toctext">3D case.</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-11"><a href="Imglib2_Morphological_Operations.html#Square_structuring_element"><span class="tocnumber">3.2</span> <span class="toctext">Square structuring element</span></a>
+<ul>
+<li class="toclevel-3 tocsection-12"><a href="Imglib2_Morphological_Operations.html#Decomposition._2"><span class="tocnumber">3.2.1</span> <span class="toctext">Decomposition.</span></a>
+<ul>
+<li class="toclevel-4 tocsection-13"><a href="Imglib2_Morphological_Operations.html#2D_case._2"><span class="tocnumber">3.2.1.1</span> <span class="toctext">2D case.</span></a></li>
+<li class="toclevel-4 tocsection-14"><a href="Imglib2_Morphological_Operations.html#3D_case._2"><span class="tocnumber">3.2.1.2</span> <span class="toctext">3D case.</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-15"><a href="Imglib2_Morphological_Operations.html#Diamond_structuring_element"><span class="tocnumber">3.3</span> <span class="toctext">Diamond structuring element</span></a>
+<ul>
+<li class="toclevel-3 tocsection-16"><a href="Imglib2_Morphological_Operations.html#Shape"><span class="tocnumber">3.3.1</span> <span class="toctext">Shape</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="Imglib2_Morphological_Operations.html#Decomposition._3"><span class="tocnumber">3.3.2</span> <span class="toctext">Decomposition.</span></a>
+<ul>
+<li class="toclevel-4 tocsection-18"><a href="Imglib2_Morphological_Operations.html#2D_performance"><span class="tocnumber">3.3.2.1</span> <span class="toctext">2D performance</span></a></li>
+<li class="toclevel-4 tocsection-19"><a href="Imglib2_Morphological_Operations.html#3D_performance."><span class="tocnumber">3.3.2.2</span> <span class="toctext">3D performance.</span></a></li>
+<li class="toclevel-4 tocsection-20"><a href="Imglib2_Morphological_Operations.html#Comparison_with_MATLAB."><span class="tocnumber">3.3.2.3</span> <span class="toctext">Comparison with MATLAB.</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-21"><a href="Imglib2_Morphological_Operations.html#Disk_structuring_element."><span class="tocnumber">3.4</span> <span class="toctext">Disk structuring element.</span></a>
+<ul>
+<li class="toclevel-3 tocsection-22"><a href="Imglib2_Morphological_Operations.html#2D_Decomposition_in_periodic_lines."><span class="tocnumber">3.4.1</span> <span class="toctext">2D Decomposition in periodic lines.</span></a></li>
+<li class="toclevel-3 tocsection-23"><a href="Imglib2_Morphological_Operations.html#Decomposition_for_other_dimensionalities."><span class="tocnumber">3.4.2</span> <span class="toctext">Decomposition for other dimensionalities.</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-24"><a href="Imglib2_Morphological_Operations.html#References_and_links."><span class="tocnumber">4</span> <span class="toctext">References and links.</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Morphological_operations_in_Imglib2.">Morphological operations in Imglib2.</span></h1>
+<p>The presentation of what are morphological operations is left to <a href="http://en.wikipedia.org/wiki/Mathematical_morphology" class="extiw" title="wikipedia:Mathematical morphology">Wikipedia</a>.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Package_content_and_location.">Package content and location.</span></h2>
+<p>This Imglib2 package ships only (yet) the basic morphological operations:
+</p>
+<ul><li> erosion</li>
+<li> dilation</li>
+<li> opening </li>
+<li> closing</li></ul>
+<p>These 4 operations are implemented for arbitrary dimensionalities (2D, 3D, 4D, etc...). The package reuses standard Imglib2 interfaces and classes. It also conforms to the public static methods accessors for low level algorithms, as the <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2-algorithm/tree/master/src/main/java/net/imglib2/algorithm/gauss3">gauss3</a> package does.
+Apart from this, it is strongly inspired by the morphological operation methods in the Image Processing Toolbox of the <a rel="nofollow" class="external text" href="http://fr.mathworks.com/help/images/morphological-filtering.html">MATLAB</a> software.
+</p><p>It also ships facilities to generate structuring elements, and allows the use of decomposed structuring elements for performance optimization. This part is documented below.
+</p><p>Classes can be found in the <code><a rel="nofollow" class="external text" href="https://github.com/tinevez/imglib2-algorithm/tree/morphology/src/main/java/net/imglib2/algorithm/morphology">net.imglib2.algorithm.morphology</a></code> package of the <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2-algorithm">imglib2-algorithm library</a>.
+</p><p>Examples can be found in the <code><a rel="nofollow" class="external text" href="https://github.com/tinevez/imglib2-tests/tree/morphology/src/test/java/net/imglib2/algorithm/morphology">net.imglib2.algorithm.morphology</a></code> package of the <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2-tests">imglib2-tests library</a>.
+</p>
+<h2><span class="mw-headline" id="Gray_morphology_and_flat_structuring_elements.">Gray morphology and flat structuring elements.</span></h2>
+<p>This set of methods does <i>gray morphology</i>. It applies to source images that can be of any scalar numerical type (8-bit, 12-bit, 16-bit, booleans, floats, signed or unsigned, ...), not only black and white images. 
+</p><p>It actually applies to more than this: The type of the source image only needs to extend <code>Type</code> (the Imglib2 mother interface for values) and <code>Comparable</code>  (the java interface for objects than can be compared to others). This is detailed later. 
+</p><p>However, we use the Imglib2 <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2-algorithm/blob/master/src/main/java/net/imglib2/algorithm/region/localneighborhood/Shape.java">Shape interface</a> for structuring elements. This restricts structuring elements to <i>flat</i> structuring elements, which do not have a weight, or value, associated to each location. This prevents us from developing a <i>stricto sensu</i> rolling-ball background subtraction algorithm based on this package (but a rolling-disk version is possible).
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Morphological_operations_on_Comparable_type.">Morphological operations on <code>Comparable</code> type.</span></h2>
+<p>Morphological operations are defined on types that have very little requirement. The data does not have to be made of numerical pixels at all. Mathematically, they are defined on partially ordered sets (complete lattices, see for instance <a href="http://en.wikipedia.org/wiki/Dilation_(morphology)#Dilation_on_complete_lattices" class="extiw" title="wikipedia:Dilation (morphology)"><i>Dilation on complete lattices</i></a>).
+</p><p>In Imglib2, we require a little bit more than that. The data type you can use with morphological operations needs to be comparable. In practice, it must extends <code>Type</code> and <code>Comparable</code>: <code>T extends Type&lt; T &gt; &amp; Comparable&lt; T &gt;</code>. With this, it is perfectly possible to dilate an image of strings by a 3x3 square strel:
+</p><p>Before:
+</p>
+<pre>Upcycle       Sexting       Unfriend      Droolworthy   Noob          Muggle        
+Woot          Po-po         Purple State  Guyliner      Screenager    Crunk         
+Obvs          Mankini       Locavore      Bling         Textspeak     Muffin Top    
+Infomania     Grrrl         Truthiness    Bromance      D'oh          Twitterati    
+La-la Land    Whatevs       Illiterati    OMG           Hater         Jeggings      
+Jean-Yves     Mini-Me       Chillax       Frankenfood   Totes         Whovian       </pre>
+<p><br />
+After full dilation:
+</p>
+<pre>Upcycle       Upcycle       Upcycle       Unfriend      Unfriend      Noob          Noob          Muggle        
+Woot          Woot          Woot          Unfriend      Unfriend      Screenager    Screenager    Muggle        
+Woot          Woot          Woot          Unfriend      Unfriend      Textspeak     Textspeak     Muggle        
+Woot          Woot          Woot          Truthiness    Truthiness    Twitterati    Twitterati    Twitterati    
+Obvs          Whatevs       Whatevs       Whatevs       Truthiness    Twitterati    Twitterati    Twitterati    
+La-la Land    Whatevs       Whatevs       Whatevs       Truthiness    Whovian       Whovian       Whovian       
+La-la Land    Whatevs       Whatevs       Whatevs       Totes         Whovian       Whovian       Whovian       
+Jean-Yves     Mini-Me       Mini-Me       Mini-Me       Totes         Whovian       Whovian       Whovian       </pre>
+<p><br />
+After standard dilation:<sup id="cite_ref-1" class="reference"><a href="Imglib2_Morphological_Operations.html#cite_note-1">&#91;1&#93;</a></sup>
+</p>
+<pre>Woot          Woot          Unfriend      Unfriend      Screenager    Screenager    
+Woot          Woot          Unfriend      Unfriend      Textspeak     Textspeak     
+Woot          Woot          Truthiness    Truthiness    Twitterati    Twitterati    
+Whatevs       Whatevs       Whatevs       Truthiness    Twitterati    Twitterati    
+Whatevs       Whatevs       Whatevs       Truthiness    Whovian       Whovian       
+Whatevs       Whatevs       Whatevs       Totes         Whovian       Whovian       </pre>
+<p><br />
+</p><p><br />
+</p>
+<h1><span class="mw-headline" id="Usage.">Usage.</span></h1>
+<p>The 4 basic operations are accessed through 4 classes:
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="https://github.com/tinevez/imglib2-algorithm/blob/morphology/src/main/java/net/imglib2/algorithm/morphology/Dilation.java">net.imglib2.algorithm.morphology.Dilation</a></li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/tinevez/imglib2-algorithm/blob/morphology/src/main/java/net/imglib2/algorithm/morphology/Erosion.java">net.imglib2.algorithm.morphology.Erosion</a></li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/tinevez/imglib2-algorithm/blob/morphology/src/main/java/net/imglib2/algorithm/morphology/Opening.java">net.imglib2.algorithm.morphology.Opening</a></li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/tinevez/imglib2-algorithm/blob/morphology/src/main/java/net/imglib2/algorithm/morphology/Closing.java">net.imglib2.algorithm.morphology.Closing</a></li></ul>
+<p><br />
+Each of these classes contains only static methods that performs the desired operation. There can be up to 16 flavors of the same operation. They exist to cover all cases, which fall in 4 categories:
+</p>
+<ul><li> You want to operate on an <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2/blob/master/src/main/java/net/imglib2/img/Img.java">Img</a> and return a <b>new Img</b> with the results. Then you need to call for instance:</li></ul>
+<pre class="brush:java">
+Img&lt; FloatType &gt; result = Dilation.dilate( img, strel, 1 );
+</pre>
+<p><a href="http://imagej.net/File:DilatedToNewImgExample.png" class="image"><img alt="DilatedToNewImgExample.png" src="../_images/6/68/DilatedToNewImgExample.png" width="600" height="165" /></a>
+</p>
+<ul><li> You want to perform to <b>full</b> dilation or erosion on a source Img. Full version of these operations means the new image will have a size increased or shrunk as if the structuring element would actually dilate or erode the source border:</li></ul>
+<pre class="brush:java">
+Img&lt; FloatType &gt; result = Dilation.dilateFull( img, strel, 1 );
+</pre>
+<p><a href="http://imagej.net/File:DilatedToNewFullImgExample.png" class="image"><img alt="DilatedToNewFullImgExample.png" src="../_images/1/16/DilatedToNewFullImgExample.png" width="600" height="166" /></a>
+</p><p><br />
+</p>
+<ul><li> You want to operate on a source <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2/blob/master/src/main/java/net/imglib2/RandomAccessibleInterval.java">RandomAccessibleInterval</a>, in place (write the results in the source):</li></ul>
+<pre class="brush:java">
+Dilation.dilateInPlace( rai, interval, strel, 1 );
+</pre>
+<p><a href="http://imagej.net/File:DilatedInPlaceExample.png" class="image"><img alt="DilatedInPlaceExample.png" src="../_images/9/97/DilatedInPlaceExample.png" width="600" height="163" /></a>
+</p><p><br />
+</p>
+<ul><li> You want to operate on a source <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2/blob/master/src/main/java/net/imglib2/RandomAccessible.java">RandomAccessible</a>, and write the results in a provided <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2/blob/master/src/main/java/net/imglib2/IterableInterval.java">IterableInterval</a>:</li></ul>
+<pre class="brush:java">
+Dilation.dilate( source, target, strel, 1 )
+</pre>
+<p><a href="http://imagej.net/File:DilatedToTargetExample.png" class="image"><img alt="DilatedToTargetExample.png" src="../_images/0/0b/DilatedToTargetExample.png" width="600" height="223" /></a>
+</p><p><br />
+Now, each of these category are declined in 4 specifics methods:
+</p>
+<ul><li> Depending on the source type: 
+<ul><li> If the source type inherits from <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2/blob/master/src/main/java/net/imglib2/type/numeric/RealType.java">RealType</a> - which is the case for most numeric types and all the native types - then you can use directly the above methods without any extras.</li>
+<li> But you may have a source which might be <code>T extends Comparable &amp; Type</code>. Then you have to provided the maximal value or the minimal value or both for this type. Then you have to call the methods whose signature are like:</li></ul></li></ul>
+<pre class="brush:java">
+public static &lt; T extends Type&lt; T &gt; &amp; Comparable&lt; T &gt; &gt; Img&lt; T &gt; dilate( final Img&lt; T &gt; source, final Shape strel, final T minVal, final int numThreads )
+</pre>
+<ul><li> Depending on whether you have the structuring element as a single Shape or decomposed in a list of Shape, there is a version of all those methods for this case or the other.</li></ul>
+<pre class="brush:java">
+public static &lt; T extends RealType&lt; T &gt; &gt; Img&lt; T &gt; dilate( final Img&lt; T &gt; source, final Shape strel, final int numThreads )
+</pre>
+<p>and
+</p>
+<pre class="brush:java">
+public static &lt; T extends RealType&lt; T &gt; &gt; Img&lt; T &gt; dilate( final Img&lt; T &gt; source, final List&lt; Shape &gt; strels, final int numThreads )
+</pre>
+<h1><span class="mw-headline" id="Structuring_elements_and_their_decomposition.">Structuring elements and their decomposition.</span></h1>
+<p>Morphological operations are basically neighborhood operations: you iterate in a neighborhood around each location of the source, and the target value at this location depends on the maximal or minimal value you meet then. So typically, the complexity of the algorithm can be written as <code>N × n</code> where <code>N</code> is the number of pixels in the source and <code>n</code> is the number of pixels in the neighborhood. For instance, for a square neighborhood of side <code>l</code> it will be <code>N × l²</code>.
+</p><p>It turns out some structuring elements can be decomposed to achieve greater performance. For instance, looking for the maximum in a square of side <code>l</code> can be achieved by first looking for the maximum in an horizontal line of length <code>l</code>, writing the results somewhere, then looking for the maximum of the intermediate image in a vertical line of length <code>l</code>. The square structuring element can be decomposed in two  orthogonal lines. The benefits in complexity are immediate; with the decomposition, it is now of  <code>N × 2 × l</code>. Benefits are greater as the size of the neighborhood increases.
+</p><p>Several structuring elements can be decomposed, sometimes depending on the dimensionality of the problem. 
+</p><p>In the Imglib2 morphology package, these decompositions are achieved through the <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2-algorithm/blob/master/src/main/java/net/imglib2/algorithm/morphology/StructuringElements.java">StructuringElements</a> class. For instance:
+</p>
+<pre class="brush:java">
+public static final List&lt; Shape &gt; diamond( final int radius, final int dimensionality, final boolean decompose )
+</pre>
+<p>This method returns a structuring element as a list of shapes, and a boolean flag determines if the returned list correspond to an optimization or not. As seen above, all operations are built to support a list of shapes as structuring element.
+</p><p>The following paragraphs document what decompositions are currently implemented for common structuring elements.
+</p><p><br />
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Rectangular_structuring_element.">Rectangular structuring element.</span></h2>
+<h3><span class="mw-headline" id="Decomposition.">Decomposition.</span></h3>
+<p>A rectangle can be decomposed in a series of orthogonal lines, in any dimensions, considerably diminishing the number of pixels to iterate. 
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="2D_case.">2D case.</span></h4>
+<p>If the image has <code>M</code> pixels, and that the rectangle is a square of side 
+<code>R</code>, then the non-optimized case should have a processing time proportional to <code>M × R²</code>. The optimized case replace iterating over the square by iterating twice over a line of length <code>R</code>. Therefore its processing time should be proportional to <code> 2 × M × R</code>. 
+</p><p>The performance improvement should therefore be equal to <code>R / 2</code>. A linear fit of the actual curve rather shows that the law is <code> 0.73 × R + 0.37</code>. This extra benefit - I don't why it's there. 
+</p>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 372px"><div style="width: 372px">
+			<div class="thumb" style="width: 370px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:RectangleStrel2DPerformance.png" class="image"><img alt="" src="../_images/9/9b/RectangleStrel2DPerformance.png" width="370" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 350px"><div class="gallerytext">
+<p>Processing time for the dilation of a 100x100 image.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 364px"><div style="width: 364px">
+			<div class="thumb" style="width: 362px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:RectangleStrel2DPerformanceComparison.png" class="image"><img alt="" src="../_images/8/80/RectangleStrel2DPerformanceComparison.png" width="362" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 342px"><div class="gallerytext">
+<p>Processing time ratio.
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<p><br />
+</p>
+<h4><span class="mw-headline" id="3D_case.">3D case.</span></h4>
+<p>Here the standard case takes a time proportional to <code>M × R³</code>, and the optimized case a time proportional to <code> 3 × M × R</code>. Therefore the performance ratio should be  <code>R² / 3</code>. A fit shows that this ratio follows <code>0.63 × R² + 0.57 × R + 0.48</code>.
+</p>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 364px"><div style="width: 364px">
+			<div class="thumb" style="width: 362px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:RectangleStrel3DPerformance.png" class="image"><img alt="" src="../_images/a/ad/RectangleStrel3DPerformance.png" width="362" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 342px"><div class="gallerytext">
+<p>Processing time for the dilation of a 40x40x40 image.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 368px"><div style="width: 368px">
+			<div class="thumb" style="width: 366px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:RectangleStrel3DPerformanceComparison.png" class="image"><img alt="" src="../_images/0/00/RectangleStrel3DPerformanceComparison.png" width="366" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 346px"><div class="gallerytext">
+<p>Processing time ratio.
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Square_structuring_element">Square structuring element</span></h2>
+<h3><span class="mw-headline" id="Decomposition._2">Decomposition.</span></h3>
+<p>The square is just a special case of the rectangle, implemented for convenience. It has the same decomposition principle. And similar conclusions can be reached: 
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="2D_case._2">2D case.</span></h4>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 372px"><div style="width: 372px">
+			<div class="thumb" style="width: 370px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:SquareStrel2DPerformance.png" class="image"><img alt="" src="../_images/d/d1/SquareStrel2DPerformance.png" width="370" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 350px"><div class="gallerytext">
+<p>Processing time for the dilation of a 100x100 image.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 368px"><div style="width: 368px">
+			<div class="thumb" style="width: 366px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:SquareStrel2DPerformanceComparison.png" class="image"><img alt="" src="../_images/9/93/SquareStrel2DPerformanceComparison.png" width="366" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 346px"><div class="gallerytext">
+<p>Processing time ratio.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 368px"><div style="width: 368px">
+			<div class="thumb" style="width: 366px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:SquareStrel2DPerformanceWMATLAB.png" class="image"><img alt="" src="../_images/f/f0/SquareStrel2DPerformanceWMATLAB.png" width="366" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 346px"><div class="gallerytext">
+<p>First image zoomed to highlight <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> performance.
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<p><br />
+</p>
+<h4><span class="mw-headline" id="3D_case._2">3D case.</span></h4>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 364px"><div style="width: 364px">
+			<div class="thumb" style="width: 362px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:SquareStrel3DPerformance.png" class="image"><img alt="" src="../_images/3/3d/SquareStrel3DPerformance.png" width="362" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 342px"><div class="gallerytext">
+<p>Processing time for the dilation of a 49x49x49 image.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 368.66666666667px"><div style="width: 368.66666666667px">
+			<div class="thumb" style="width: 366.66666666667px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:SquareStrel3DPerformanceComparison.png" class="image"><img alt="" src="../_images/2/22/SquareStrel3DPerformanceComparison.png" width="367" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 347px"><div class="gallerytext">
+<p>Processing time ratio.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 366px"><div style="width: 366px">
+			<div class="thumb" style="width: 364px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:SquareStrel3DPerformanceWMATLAB.png" class="image"><img alt="" src="../_images/d/da/SquareStrel3DPerformanceWMATLAB.png" width="364" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 344px"><div class="gallerytext">
+<p>First image zoomed to highlight <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> performance.
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Diamond_structuring_element">Diamond structuring element</span></h2>
+<h3><span class="mw-headline" id="Shape">Shape</span></h3>
+<p>A diamond strel has the following shape in 2D, for instance with a radius of 3 (It extends over 7 pixels wide):
+</p>
+<pre>┌───────┐
+│   █   │
+│  ███  │
+│ █████ │
+│███████│
+│ █████ │
+│  ███  │
+│   █   │
+└───────┘</pre>
+<p>And in 3D:
+</p>
+<pre>Z = 0:    Z = 1:    Z = 2:    Z = 3:    Z = 4:    Z = 5:    Z = 6:    
+┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐ 
+│       │ │       │ │       │ │   █   │ │       │ │       │ │       │ 
+│       │ │       │ │   █   │ │  ███  │ │   █   │ │       │ │       │ 
+│       │ │   █   │ │  ███  │ │ █████ │ │  ███  │ │   █   │ │       │ 
+│   █   │ │  ███  │ │ █████ │ │███████│ │ █████ │ │  ███  │ │   █   │ 
+│       │ │   █   │ │  ███  │ │ █████ │ │  ███  │ │   █   │ │       │ 
+│       │ │       │ │   █   │ │  ███  │ │   █   │ │       │ │       │ 
+│       │ │       │ │       │ │   █   │ │       │ │       │ │       │ 
+└───────┘ └───────┘ └───────┘ └───────┘ └───────┘ └───────┘ └───────┘ </pre>
+<p>It is the crudest approximation of a sphere.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Decomposition._3">Decomposition.</span></h3>
+<p>The diamond strel can be effectively decomposed in 2D (and 1D) using the logarithmic decomposition in extreme sets, as explained in <sup id="cite_ref-BoomgardVanBalen_2-0" class="reference"><a href="Imglib2_Morphological_Operations.html#cite_note-BoomgardVanBalen-2">&#91;2&#93;</a></sup>. The shape is then decomposed in a minimal series of smaller diamond and diamond tips. The decomposition is exact, giving the same result that of the non-decomposed version. 
+</p><p>In 3D and higher dimensionalities, the logarithmic decomposition cannot be done, and we rely on a more classical linear decomposition (also well explained in <sup id="cite_ref-BoomgardVanBalen_2-1" class="reference"><a href="Imglib2_Morphological_Operations.html#cite_note-BoomgardVanBalen-2">&#91;2&#93;</a></sup>). Here is a comparison on how the decomposed version performs versus the non-decomposed one.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="2D_performance">2D performance</span></h4>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 368px"><div style="width: 368px">
+			<div class="thumb" style="width: 366px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:DiamondStrel2DPerformance.png" class="image"><img alt="" src="../_images/a/a5/DiamondStrel2DPerformance.png" width="366" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 346px"><div class="gallerytext">
+<p>Processing time for the dilation of a 100x100 image.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 364px"><div style="width: 364px">
+			<div class="thumb" style="width: 362px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:DiamondStrel2DPerformanceComparison.png" class="image"><img alt="" src="../_images/7/79/DiamondStrel2DPerformanceComparison.png" width="362" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 342px"><div class="gallerytext">
+<p>Processing time ratio.
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<p>It is worth using a decomposition above a radius of 4.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="3D_performance.">3D performance.</span></h4>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 366px"><div style="width: 366px">
+			<div class="thumb" style="width: 364px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:DiamondStrel3DPerformance.png" class="image"><img alt="" src="../_images/f/f5/DiamondStrel3DPerformance.png" width="364" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 344px"><div class="gallerytext">
+<p>Processing time for the dilation of a 40x40x40 image.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 366px"><div style="width: 366px">
+			<div class="thumb" style="width: 364px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:DiamondStrel3DPerformanceComparison.png" class="image"><img alt="" src="../_images/6/6a/DiamondStrel3DPerformanceComparison.png" width="364" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 344px"><div class="gallerytext">
+<p>Processing time ratio.
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<p>It is worth using a decomposition in almost any cases.
+</p><p><br />
+</p>
+<h4><span class="mw-headline" id="Comparison_with_MATLAB.">Comparison with MATLAB.</span></h4>
+<p>MATLAB comes with a very nice morphology package. I actually took inspiration from to it to write the Imglib2 code. It is tempting to compare the performance of <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> vs Imglib2, even if this kind of comparison is always tricky and clumsy. Anyway, here it is. I just timed the duration required to perform the dilation of a provided source image, including the time required to generate the structuring element. Imglib2 tests above time the same process. But of course, the time required to generate the source image and to start <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> or to launch the Java tests are not included. I took care to include a 'warm-up' run to allow the JIT compiler to kick-in in all cases.
+</p>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 368px"><div style="width: 368px">
+			<div class="thumb" style="width: 366px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:DiamondStrel2DPerformanceWMATLAB.png" class="image"><img alt="" src="../_images/5/52/DiamondStrel2DPerformanceWMATLAB.png" width="366" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 346px"><div class="gallerytext">
+<p>Processing time for the dilation of a 100x100 image.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 366px"><div style="width: 366px">
+			<div class="thumb" style="width: 364px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:DiamondStrel3DPerformanceWMATLAB.png" class="image"><img alt="" src="../_images/5/5d/DiamondStrel3DPerformanceWMATLAB.png" width="364" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 344px"><div class="gallerytext">
+<p>Processing time for the dilation of a 40x40x40 image.
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<p>For the 2D case (only), <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> offers to generate optimized structuring elements, like for this Imglib2 code. This is why there is two <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> curves on the 2D graph. We can see that in all cases, the <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> code is faster than the Imglib2 code (respective to optimized vs optimized and the converse).  This may be explained by the fact that <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> benefitiates on my computer (a 2012 MacPro) from the Intel Integrated Performance Primitives (<a rel="nofollow" class="external text" href="http://software.intel.com/en-us/intel-ipp">IPP</a>), that strongly improves block processing algorithms. Fortunately, the difference is not too taxing in the optimized case.
+</p><p>In 3D, <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> does not offer a structuring element decomposition (yet). So the performance curve as the expected cubic shape, though it outperforms Imglib2 in the non-optimized case. For large radius, the Imglib2 optimization manages to beat it.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Disk_structuring_element.">Disk structuring element.</span></h2>
+<h3><span class="mw-headline" id="2D_Decomposition_in_periodic_lines.">2D Decomposition in periodic lines.</span></h3>
+<p>In the 2D case, a disk structuring element can be decomposed in a succession of 4, 6 or 8 periodic lines<sup id="cite_ref-RolfAdams_3-0" class="reference"><a href="Imglib2_Morphological_Operations.html#cite_note-RolfAdams-3">&#91;3&#93;</a></sup>. Doing so, the shape of the disk is only an approximate one. The first plot below indicates the percentage of pixels that are a mismatch compared to the "true" disk (by "true" I mean as best as digitizing a disk on a square matrix can be). In practice, this plot is rather uninformative. The second plot gives the effective aspect of the decomposed disks:
+</p>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 356.66666666667px"><div style="width: 356.66666666667px">
+			<div class="thumb" style="width: 354.66666666667px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:DiskDecompError.png" class="image"><img alt="" src="../_images/f/fd/DiskDecompError.png" width="355" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 335px"><div class="gallerytext">
+<p>Error percentage when approximating a disk STREL with a PL decomposition.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 3102px"><div style="width: 3102px">
+			<div class="thumb" style="width: 3100px;"><div style="margin:150px auto;"><div class="MediaTransformError" style="width: 4650px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+			<div class="gallerytextwrapper" style="width: 3080px"><div class="gallerytext">
+<p>Aspect of the disk STREL decomposition in periodic lines, with varying radius.
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<p>As for performance, you can see below that it is always best to use any decomposition as soon as the radius is larger than 3. This is a lucky limit, because the periodic line decomposition gives very approximated shapes for small radii.
+</p>
+<ul class="gallery mw-gallery-packed-hover">
+		<li class="gallerybox" style="width: 370.66666666667px"><div style="width: 370.66666666667px">
+			<div class="thumb" style="width: 368.66666666667px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:DiskDecompPerformance.png" class="image"><img alt="" src="../_images/8/8f/DiskDecompPerformance.png" width="369" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 349px"><div class="gallerytext">
+<p>Processing time for the dilation of a 100x100 image.
+</p>
+			</div></div>
+		</div></li>
+		<li class="gallerybox" style="width: 372.66666666667px"><div style="width: 372.66666666667px">
+			<div class="thumb" style="width: 370.66666666667px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:DiskDecompPerformanceComparison.png" class="image"><img alt="" src="../_images/b/b6/DiskDecompPerformanceComparison.png" width="371" height="300" /></a></div></div>
+			<div class="gallerytextwrapper" style="width: 351px"><div class="gallerytext">
+<p>Processing time ratio.
+</p>
+			</div></div>
+		</div></li>
+</ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Decomposition_for_other_dimensionalities.">Decomposition for other dimensionalities.</span></h3>
+<p>I am unable to derive an efficient decomposition of the disk STREL for the 3D case. Also, I was unable so far to find an implementation example or clear literature about such a decomposition. The closest I reach was this <a rel="nofollow" class="external text" href="http://ismm.dpi.inpe.br/col/dpi.inpe.br/ismm@80/2007/03.20.04.48/doc/ISMM2007fullpaper/fullpaper.pdf">publication</a> that describes a possible method (proposed in <a rel="nofollow" class="external text" href="http://dsp.stackexchange.com/questions/12675/decomposition-of-3d-structuring-elements-for-morphological-operations">this DSP thread</a>) but it missed the implementation details that could make it practical.
+</p>
+<h1><span class="mw-headline" id="References_and_links.">References and links.</span></h1>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="Imglib2_Morphological_Operations.html#cite_ref-1">↑</a></span> <span class="reference-text">These are the 35 words added by the Oxford Online Dictionary during summer 2012. And another one.</span>
+</li>
+<li id="cite_note-BoomgardVanBalen-2"><span class="mw-cite-backlink">↑ <sup><a href="Imglib2_Morphological_Operations.html#cite_ref-BoomgardVanBalen_2-0">2.0</a></sup> <sup><a href="Imglib2_Morphological_Operations.html#cite_ref-BoomgardVanBalen_2-1">2.1</a></sup></span> <span class="reference-text">Rein van den Boomgard and Richard van Balen, <a rel="nofollow" class="external text" href="http://www.sciencedirect.com/science/article/pii/1049965292900553.htm">Methods for Fast Morphological Image Transforms Using Bitmapped Binary Images</a>, CVGIP: Models and Image Processing, vol. 54, no. 3, May 1992, pp. 252-254.</span>
+</li>
+<li id="cite_note-RolfAdams-3"><span class="mw-cite-backlink"><a href="Imglib2_Morphological_Operations.html#cite_ref-RolfAdams_3-0">↑</a></span> <span class="reference-text">Rolf Adams, <a rel="nofollow" class="external text" href="http://www.sciencedirect.com/science/article/pii/S1049965283710242">Radial Decomposition of Discs and Spheres</a>, CVGIP: Graphical Models and Image Processing, vol. 55, no. 5, September 1993, pp. 325-332.</span>
+</li>
+</ol>
+<p><br />
+</p><p><a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a> (<a href="http://imagej.net/index.php?title=User_talk:JeanYvesTinevez&amp;action=edit&amp;redlink=1" class="new" title="User talk:JeanYvesTinevez (page does not exist)">talk</a>) 09:33, 5 December 2014 (CST)
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072709
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.072 seconds
+Real time usage: 0.081 seconds
+Preprocessor visited node count: 437/1000000
+Preprocessor generated node count: 3773/1000000
+Post‐expand include size: 84/2097152 bytes
+Template argument size: 30/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    8.734      1 - Template:Person
+100.00%    8.734      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Imglib2_Morphological_Operations&amp;oldid=19655">http://imagej.net/index.php?title=Imglib2_Morphological_Operations&amp;oldid=19655</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 16 March 2016, at 05:52.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Imglib2_Morphological_Operations&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Imglib2+Morphological+Operations" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Imglib2+Morphological+Operations" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Imglib2_Morphological_Operations" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Imglib2_Morphological_Operations" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Imglib2_Morphological_Operations&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Imglib2_Morphological_Operations&amp;oldid=19655" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Imglib2_Morphological_Operations&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.page.gallery","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":230});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Multi-View Fusion - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Multi-View_Fusion","wgTitle":"Multi-View Fusion","wgCurRevisionId":41295,"wgRevisionId":41295,"wgArticleId":1411,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Multi-View_Fusion","wgRelevantArticleId":1411,"wgRequestId":"df4500d352f78374a8266679","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Please note that the multi-view fusion plugin available through Fiji, is based on a publication. If you use it successfully for your research please be so kind to cite our work:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Multi-View Fusion"/>
+
+	<meta property="og:description" content="Please note that the multi-view fusion plugin available through Fiji, is based on a publication. If you use it successfully for your research please be so kind to cite our work:"/>
+
+	<meta property="og:url" content="http://imagej.net/Multi-View_Fusion"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Multi-View_Fusion rootpage-Multi-View_Fusion skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Multi-View_Fusion.html#bodyContent">Skip to content</a>, 			<a href="Multi-View_Fusion.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Multi-View_Fusion.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Multi-View_Fusion" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Multi-View_Fusion&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Multi-View_Fusion&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Multi-View_Fusion&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Multi-View Fusion</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Multi-view fusion plugin (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Stephan Preibisch, Stephan Saalfeld, Johannes Schindelin, Pavel Tomancak
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Stephan Preibisch
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> SPIM_Registration.jar
+</td></tr>
+
+<tr>
+<th> Initial release
+</th>
+<td> February 2010
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> October 2011
+</td></tr>
+
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Registration" title="Category:Registration">SPIM Registration</a>
+</td></tr>
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external text" href="http://fly.mpi-cbg.de/~preibisch">Stephan Preibisch's homepage</a>
+</td></tr>
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Multi-View_Fusion.html#Citation"><span class="tocnumber">1</span> <span class="toctext">Citation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Multi-View_Fusion.html#Overview_of_the_multi-view_fusion_plugin"><span class="tocnumber">2</span> <span class="toctext">Overview of the multi-view fusion plugin</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Multi-View_Fusion.html#Creating_a_cropped_output_image"><span class="tocnumber">3</span> <span class="toctext">Creating a cropped output image</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Multi-View_Fusion.html#What_do_I_have_to_consider_when_I_want_to_fuse_a_timeseries.3F"><span class="tocnumber">4</span> <span class="toctext">What do I have to consider when I want to fuse a timeseries?</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Multi-View_Fusion.html#How_do_I_view_fused.2C_saved_output_image.28s.29"><span class="tocnumber">5</span> <span class="toctext">How do I view fused, saved output image(s)</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Multi-View_Fusion.html#How_to_use_the_plugin"><span class="tocnumber">6</span> <span class="toctext">How to use the plugin</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Citation">Citation</span></h2>
+<p>Please note that the multi-view fusion plugin available through Fiji, is based on a publication. If you use it successfully for your research please be so kind to cite our work:
+</p>
+<ul><li> S. Preibisch, S. Saalfeld, J. Schindelin and P. Tomancak (2010) "Software for bead-based registration of selective plane illumination microscopy data", <i>Nature Methods</i>, <b>7</b>(6):418-419. <a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v7/n6/full/nmeth0610-418.html">Webpage</a> <a href="http://imagej.net/_images/2/29/Nmeth0610-418.pdf" class="internal" title="Nmeth0610-418.pdf">PDF</a> <a href="http://imagej.net/_images/3/32/Nmeth0610-418-S1.pdf" class="internal" title="Nmeth0610-418-S1.pdf">Supplement</a></li></ul>
+<h2><span class="mw-headline" id="Overview_of_the_multi-view_fusion_plugin">Overview of the multi-view fusion plugin</span></h2>
+<p>The multi-view fusion plugin is able to combine several 3d acquistions of the same specimen taken from different viewpoints (this includes different tiles) into one single output image. This can be done for single timepoints or an entire timeseries. Prerequisite for the fusion is an aligned dataset, an overview of the complete registration and fusion process can be found <a href="http://imagej.net/SPIM_Registration" title="SPIM Registration">here</a>. The registration can be achieved using one the following plugins:
+</p>
+<ul><li> <a href="http://imagej.net/SPIM_Bead_Registration" title="SPIM Bead Registration">Bead-based registration</a></li>
+<li> <a href="http://imagej.net/index.php?title=Segmentation-based_registration&amp;action=edit&amp;redlink=1" class="new" title="Segmentation-based registration (page does not exist)">Segmentation-based registration</a></li></ul>
+<p>The multi-view fusion plugins offers two registration options:
+</p>
+<ul><li> Single-channel</li>
+<li> Multi-channel</li></ul>
+<p>Note, that in order to fuse a multi-channel acquisition, a single-channel registration can be sufficient as the registration of one channel can be applied to other channels of the same timepoint. Both options work in the same way and have very similar options. The additional options of multi-channel registration are explained in the last section.
+</p>
+<h2><span class="mw-headline" id="Creating_a_cropped_output_image">Creating a cropped output image</span></h2>
+<p>The output images are typically very large, as the plugin by default fuses the complete bounding box around all registered views. Therefore, it is recommended to define a cropping area in the output image that contains only the sample.
+</p><p>If you do not have enough memory to create an uncropped output image, there is an option to first create a down-sampled version of the output image in which you can identify the cropping area. In a second run, you can create the fused image with full resolution only for the cropped area that contains the specimen. Note that when you define the cropping area in a downsampled image, you need to adjust the the values to the original scale. That is, if you downsample 2-fold, you have to multiply all coordinates by 2.
+</p>
+<h2><span class="mw-headline" id="What_do_I_have_to_consider_when_I_want_to_fuse_a_timeseries.3F">What do I have to consider when I want to fuse a timeseries?</span></h2>
+<p>If you want to process a timeseries you should first run the fusion only for the reference timepoint in order to determine the correct cropping parameters. In a second run you can fuse the complete timeseries using these cropping parameters.
+</p>
+<h2><span class="mw-headline" id="How_do_I_view_fused.2C_saved_output_image.28s.29">How do I view fused, saved output image(s)</span></h2>
+<p>The fused images will be saved in the <i>output</i> directory of the dataset as a collection of two-dimensional planes. The created output images can be viewed for example with Plugins-&gt;Image5D-&gt;<a rel="nofollow" class="external text" href="https://imagej.net/plugins/image5d.html">Virtual Image 5D Opener</a> or via the Plugins-&gt;LOCI-&gt;<a rel="nofollow" class="external text" href="http://www.loci.wisc.edu/software/bio-formats">Bio-Formats Importer</a> (check the option <i>Group files with similar names</i>).
+</p>
+<h2><span class="mw-headline" id="How_to_use_the_plugin">How to use the plugin</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Spim_multiview_dialog1.jpg" class="image"><img alt="" src="../_images/3/3a/Spim_multiview_dialog1.jpg" width="300" height="182" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Spim_multiview_dialog1.jpg" class="internal" title="Enlarge"></a></div>Shows the first dialog that queries the location of the multi-view files</div></div></div>
+<p>The multi-view fusion consists of two consecutive dialogs. The first dialog queries the information necessary to analyze the dataset. Please note that all the parameters will be looked up in the <a href="http://imagej.net/SPIM_Bead_Registration" title="SPIM Bead Registration">bead-based registration</a> or <a href="http://imagej.net/index.php?title=Segmentation-based_registration&amp;action=edit&amp;redlink=1" class="new" title="Segmentation-based registration (page does not exist)">segmentation-based registration</a>, so typically just pressing ok is sufficient, except you process a timeseries. These are the options of the first dialog:
+</p>
+<ul><li> <b>SPIM data directory:</b> Fill in the directory name that contains all the image files (or directories with equally sized 2d image planes). You can either drag&amp;drop the directory, browse for it or type the name directly.</li></ul>
+<ul><li> <b>Pattern of SPIM files:</b> Define the naming convention of the input files by explaining how the angle and the timepoint is encoded into the filename. For example the file names are named in following way <br /><i>spim_tl1_angle0.lsm</i>, <i>spim_tl1_angle45.lsm</i> ... <i>spim_tl1_angle270.lsm</i><br /><i>spim_tl2_angle0.lsm</i>, ... <i>spim_tl2_angle270.lsm</i><br /><i>spim_tl100_angle0.lsm</i>, ... <i>spim_tl100_angle270.lsm</i>.<br /> That means the pattern of the file names corresponds to <b>spim_tl{t}_angle{a}.lsm</b>, where <b>{t}</b> is replaced with the current timepoint and <b>{a}</b> with the current angle. If the numbers contain leading zeros (e.g. 000, 045, 090, 135 instead of 0, 45, 90, 135), this can be encoded by simply adding more letters to the placeholder, in this case <b>{aaa}</b>.</li></ul>
+<ul><li> <b>Timepoints to process:</b> Define the timepoint(s) that should be processed. You can give single numbers (e.g. 18), enumerate (e.g. 1, 18, 19, 100), define ranges (e.g. 1-18) or combine all of them in any combination wanted (e.g. 1,2,10,20-50).</li></ul>
+<ul><li> <b>Angles to process:</b> Define the angles (at least 2) that should be processed (for each timepoint if applicable). You can enumerate angles (e.g. 0, 90, 180, 270), define ranges in steps (e.g. 0-270:45 which means use angle 0 to 270 in steps of 45, i.e. 0, 45, 90, 135, 180, 225, 270) or combine all of them in any combination wanted (e.g. 0, 45, 180-270:45).</li></ul>
+<p>After entering the data the program will check which kind of registrations are available for each channel. Typically, the individual registration for each channel is available, and maybe also several timeseries registration with various reference timepoints. If no registration files could be found, the plugin will quit.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:352px;"><a href="http://imagej.net/File:Spim_multiview_dialog2.jpg" class="image"><img alt="" src="../_images/1/16/Spim_multiview_dialog2.jpg" width="350" height="304" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Spim_multiview_dialog2.jpg" class="internal" title="Enlarge"></a></div>Shows the second dialog that queries the details of the multi-view fusion</div></div></div>
+<p>In the second dialog, you have to define the details of the multi-view fusion. It offers the following options:
+</p>
+<ul><li> <b>Registration for channel <i>x</i>:</b> You can choose which registration is used for this channel. You can typically choose between the individual registration of this timepoint or any registration to a reference timepoint. If you perform multichannel fusion, more than one channel might be available.</li></ul>
+<ul><li> <b>Fusion Method:</b> Define how the input data is handled in order to compute the output image(s). There are three options available:
+<ul><li> <i>Fuse all images at once</i> loads all the input images and computes the output image. This is the fastest method, but it also needs significant amounts of RAM. </li>
+<li> <i>Fuse images sequentially</i> loads one input image after the other and computes the contribution sequentially. This is slower but typically uses less RAM. However, this methods needs to allocate the output image twice during the fusion process as it needs to store image content and weights separately. </li>
+<li> <i>Create independent registered images</i> is a special output option where each view is transformed and saved individually, where all output images have the same bounding box. This option can be for example used to asses the registration quality by overlaying them afterwards.</li></ul></li></ul>
+<ul><li> <b>Apply blending:</b> Check this if you want to apply blending at the edges of the overlapping views; this removes brightness differences at the hyperplanes where the overlapping images intersect. <b>Note:</b> If neither blending nor content-based weightening is selected, only normal averaging is performed for fusion.</li></ul>
+<ul><li> <b>Apply content-based weightening:</b> Check this if the content-based weightening should be used; this weights each pixel of each view by its local information content and thereby increases the contrast of the output image. <b>Note:</b> The content based weightening is rather fast but consumes a lot of RAM.</li></ul>
+<p><b>Note:</b> Blending and content-based fusion can be combined!
+</p>
+<ul><li> <b>Downsample image n-times:</b> The factor defines the downsampling of the output image, e.g. 2 means that the output image will be half as big in each dimension and therefore need 8x less RAM than the full resolution output image. This is especially useful if the bounding box around the imaged sample (defined below) is not known yet as has to be determined.</li></ul>
+<ul><li> <b>Crop output image offset x/y/z:</b> Defines the offset of the cropping area (bounding box) in the x/y/z-dimension of the output image relative to the uncropped image. A value of 0 refers to the top-front-left corner of the bounding box surrounding all views. <b>Note:</b> All the values are relative to the downsampling factor in <b>downsample image n-times</b>.</li></ul>
+<ul><li> <b>Crop output image size x/y/z:</b> Defines the size of the cropping area (bounding box) in the x/y/z-dimension of the output image relative to the uncropped image. A value of 0 means no cropping. <b>Note:</b> All the values are relative to the downsampling factor in <b>downsample image n-times</b>.</li></ul>
+<ul><li> <b>Display output image:</b> Display the fused image(s) when finished. Be careful when checking this button and performing a timelapse registration.</li></ul>
+<ul><li> <b>Save output image:</b> Write the fused image(s) to disk when finished. It will save the output image(s) as a collection of two-dimensional planes.</li></ul>
+<p><b>Note:</b> A suggested bounding box for the <a rel="nofollow" class="external text" href="http://fly.mpi-cbg.de/preibisch/nm/HisYFP-SPIM.zip">example dataset</a> is offset: [272, 352, 360] -- size: [720, 380, 350]
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073022
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.032 seconds
+Real time usage: 0.033 seconds
+Preprocessor visited node count: 97/1000000
+Preprocessor generated node count: 563/1000000
+Post‐expand include size: 1018/2097152 bytes
+Template argument size: 497/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    3.680      1 - Template:Infobox
+100.00%    3.680      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Multi-View_Fusion&amp;oldid=41295">http://imagej.net/index.php?title=Multi-View_Fusion&amp;oldid=41295</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Multi-View_Fusion&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Multi-View+Fusion" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Multi-View+Fusion" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Multi-View_Fusion" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Multi-View_Fusion" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Multi-View_Fusion&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Multi-View_Fusion&amp;oldid=41295" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Multi-View_Fusion&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":178});});</script>
+		</body>
+		</html>
+		

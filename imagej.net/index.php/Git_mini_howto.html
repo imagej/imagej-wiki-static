@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Git mini howto - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Git_mini_howto","wgTitle":"Git mini howto","wgCurRevisionId":29395,"wgRevisionId":29395,"wgArticleId":32,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Outdated","Git"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Git_mini_howto","wgRelevantArticleId":32,"wgRequestId":"38850fbe4d3011497e10dc0a","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This page is a really quick 'n dirty tutorial on how to work with Git.  It is strongly biased to the work on Fiji; you should refer to Git workshop, Git for dummies or to Git's homepage for much more information."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Git mini howto"/>
+
+	<meta property="og:description" content="This page is a really quick 'n dirty tutorial on how to work with Git.  It is strongly biased to the work on Fiji; you should refer to Git workshop, Git for dummies or to Git's homepage for much more information."/>
+
+	<meta property="og:url" content="http://imagej.net/Git_mini_howto"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Git_mini_howto rootpage-Git_mini_howto skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Git_mini_howto.html#bodyContent">Skip to content</a>, 			<a href="Git_mini_howto.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Git_mini_howto.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Git_mini_howto" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Git_mini_howto&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Git_mini_howto&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Git_mini_howto&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Git mini howto</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Git Tutorials
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">Git for dummies</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/EGit" title="EGit">Git in Eclipse (EGit)</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Git mini howto</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_workshop" title="Git workshop">Git workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">Git Conflicts</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">Git topic branches</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Notes" title="Git Notes">Git Notes</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git reflogs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_submodule_tutorial" title="Git submodule tutorial">Git submodule tutorial</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Pinpoint_regressions_with_Git" title="Pinpoint regressions with Git">Pinpoint regressions with Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_publish_a_Git_repository" title="How to publish a Git repository">How to publish a Git repository</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_extract_a_subproject" title="How to extract a subproject">How to extract a subproject</a>
+</td></tr></table>
+<p><br />
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This section is out of date, potentially misleading or invalid. Be careful with any instructions here. When in doubt, <a href="http://imagej.net/Help" title="Help">ask for help from the community</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p>This page is a <b>really</b> quick 'n dirty tutorial on how to work with Git.  It is strongly biased to the work on Fiji; you should refer to <a href="http://imagej.net/Git_workshop" title="Git workshop">Git workshop</a>, <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">Git for dummies</a> or to <a rel="nofollow" class="external text" href="https://git-scm.com/">Git's homepage</a> for much more information.
+</p><p>Most of these explanations are meant for the command line users.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Git_mini_howto.html#Nomenclature"><span class="tocnumber">1</span> <span class="toctext">Nomenclature</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Git_mini_howto.html#Cloning"><span class="tocnumber">2</span> <span class="toctext">Cloning</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Git_mini_howto.html#Contributing"><span class="tocnumber">3</span> <span class="toctext">Contributing</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Git_mini_howto.html#Local_configuration"><span class="tocnumber">4</span> <span class="toctext">Local configuration</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Git_mini_howto.html#Updating"><span class="tocnumber">5</span> <span class="toctext">Updating</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Git_mini_howto.html#Running_Fiji"><span class="tocnumber">6</span> <span class="toctext">Running Fiji</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Git_mini_howto.html#Making_changes"><span class="tocnumber">7</span> <span class="toctext">Making changes</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Git_mini_howto.html#Pushing_changes_upstream"><span class="tocnumber">8</span> <span class="toctext">Pushing changes upstream</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Git_mini_howto.html#Graphical_user_interfaces"><span class="tocnumber">9</span> <span class="toctext">Graphical user interfaces</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Git_mini_howto.html#Making_changes_.28advanced.29"><span class="tocnumber">10</span> <span class="toctext">Making changes (advanced)</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Nomenclature">Nomenclature</span></h2>
+<p>A quick note on the nomenclature: <i>fiji.git</i> refers to the "official" repository on <a rel="nofollow" class="external autonumber" href="https://github.com/fiji/fiji.git">[1]</a>.  After cloning it, you will have a local repository with a working directory, which will be referred to as "fiji/" in this document (and "cd fiji/" just tells you to make sure you are in that directory).
+</p><p>If you are unsure about the meaning of any Git term, just consult the <a rel="nofollow" class="external text" href="http://git.or.cz/gitwiki/GitGlossary">Git glossary</a>.
+</p>
+<h1><span class="mw-headline" id="Cloning">Cloning</span></h1>
+<p>You need to clone <i>fiji.git</i>:
+</p>
+<pre>$ git clone <a rel="nofollow" class="external free" href="git://fiji.sc/fiji.git/">git://fiji.sc/fiji.git/</a>
+</pre>
+<h1><span class="mw-headline" id="Contributing">Contributing</span></h1>
+<p>All contributions should go through GitHub <a rel="nofollow" class="external text" href="https://help.github.com/articles/using-pull-requests/">pull request</a>
+</p>
+<h1><span class="mw-headline" id="Local_configuration">Local configuration</span></h1>
+<p>You need to make sure that Git knows who you are (substitute your name/email here...):
+</p>
+<pre>$ git config --global user.name "General Failure"
+$ git config --global user.email "general@failure.harddrive.org"
+</pre>
+<p>Likewise, if your preferred editor is not <i>vi</i>, you might want to do something about that (substitute your pet editor here...):
+</p>
+<pre>$ git config --global core.editor xemacs
+</pre>
+<h1><span class="mw-headline" id="Updating">Updating</span></h1>
+<p>To get the most recent changes, call
+</p>
+<pre>$ cd fiji/
+$ git pull
+</pre>
+<p>Note: You should always commit your changes before pulling.
+</p>
+<h1><span class="mw-headline" id="Running_Fiji">Running Fiji</span></h1>
+<p>A simple
+</p>
+<pre>$ cd fiji/
+$ sh Build.sh run
+</pre>
+<p>will pick up on all changes, rebuild what needs to be rebuilt, and run Fiji.
+</p>
+<h1><span class="mw-headline" id="Making_changes">Making changes</span></h1>
+<p>You can <a href="http://imagej.net/index.php?title=Adding_plugins_with_source&amp;action=edit&amp;redlink=1" class="new" title="Adding plugins with source (page does not exist)">add/modify plugins</a>, and test by running "make".
+</p><p>Once you are happy with your changes, you should inspect your changes with
+</p>
+<pre>$ cd fiji/
+$ git status
+</pre>
+<p>which will show you which tracked files were modified, and the untracked files (which might need to be added to the Git repository).  You can view the diff of your changes with
+</p>
+<pre>$ cd fiji/
+$ git diff
+</pre>
+<p>You should stage the changed/new files for commit, and verify that all files were correctly staged, with:
+</p>
+<pre>$ cd fiji/
+$ git add &lt;files&gt;
+$ git status
+</pre>
+<p>If all files that need committing were staged correctly, you commit them:
+</p>
+<pre>$ cd fiji/
+$ git commit
+</pre>
+<p>Please make sure that your commit message is in a format like this:
+</p>
+<pre>The first line is a short description
+
+After an empty line, you can go into details what this commit does, and why.  Maybe even how.
+</pre>
+<p>Note: a neat trick when you realize that you did not commit after all, is to delete the <i>complete</i> commit message, save and exit.  This will abort the commit.  The ability to abort a commit comes in pretty handy e.g. when you see an unwanted entry in the list of files to be committed.
+</p><p>For more advanced Git usage, see "Making changes (advanced)".
+</p>
+<h1><span class="mw-headline" id="Pushing_changes_upstream">Pushing changes upstream</span></h1>
+<p>All commits are purely local before you decide to publish them.  You might want to check first what you are going to publish before actually doing that (assuming a branch name "contrib"):
+</p>
+<pre>$ cd fiji/
+$ git fetch contrib
+$ gitk contrib/contrib..
+</pre>
+<p>(Note that the commits in the gitk window are ordered chronologically, most recent is the top-most, and please also note that the commits marked with a hollow circle on the left side are so-called "boundary" commits, i.e. commits that are already upstream).
+</p><p>Now you can publish your changes with
+</p>
+<pre>$ cd fiji/
+$ git push contrib HEAD:contrib
+</pre>
+<p>Note: if somebody made changes to the branch in the mean-time, you need to pull first:
+</p>
+<pre>$ cd fiji/
+$ git pull contrib contrib
+$ git push contrib HEAD:contrib
+</pre>
+<p><b>Note</b>: there might be <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">merge conflicts</a> that you need to <a href="http://imagej.net/Git_Conflicts#Resolving_merge_conflicts" title="Git Conflicts">resolve</a> before pushing.
+</p><p><b>Note for CVS/Subversion users</b>: With Git, it is highly encouraged to commit <b>first</b>, <b>then</b> pull.  Git is really good at branching and merging, and it is better for you to commit a version that you actually tested than to integrate other people's changes before committing.  It also helps <a href="http://imagej.net/Git_bisection" class="mw-redirect" title="Git bisection">finding which commit introduced a regression</a>.
+</p>
+<h1><span class="mw-headline" id="Graphical_user_interfaces">Graphical user interfaces</span></h1>
+<p>There are a few graphical user interfaces for working with Git.  You probably want to look at the commit history with <i>gitk</i>, and you might want to clone/pull/add/commit/push with <i>git gui</i>.
+</p><p>If you are an Eclipse user, you might want to work with the <a rel="nofollow" class="external text" href="http://git.or.cz/gitwiki/EclipsePlugin?highlight=(eclipse)">Eclipse plugin</a>.
+</p>
+<h1><span class="mw-headline" id="Making_changes_.28advanced.29">Making changes (advanced)</span></h1>
+<p>Git is aware of three states:
+</p>
+<ul><li> the tip of the branch (AKA the last committed version, or "HEAD")</li>
+<li> the staging area (also called "the index")</li>
+<li> the working directory</li></ul>
+<p>Instead of staging whole files, you can pick just a few changes to be staged:
+</p>
+<pre>$ cd fiji/
+$ git add -i
+</pre>
+<p>This will let you choose single hunks from the unstaged changes and put them into the staging area.  It also allows you to revert to the version stored 
+</p><p>In <i>git-gui</i>, you can do the same by clicking on the file and then choose <i>Stage this hunk</i> or <i>Unstage this hunk</i> from the context menu you get by right-clicking on the hunk header (the line beginning with <i>@@</i>).
+</p><p>You can inspect what changes are in the staging area with:
+</p>
+<pre>$ cd fiji/
+$ git diff --cached
+</pre>
+<p>When you are comfortable with the staged changes, just commit with
+</p>
+<pre>$ cd fiji/
+$ git commit
+</pre>
+<p>Even more advanced Git usage involved <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">topic branches</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072413
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.039 seconds
+Preprocessor visited node count: 157/1000000
+Preprocessor generated node count: 449/1000000
+Post‐expand include size: 2656/2097152 bytes
+Template argument size: 1023/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   10.349      1 - -total
+ 59.83%    6.192      1 - Template:GitMenu
+ 46.42%    4.804      1 - Template:Menu
+ 39.40%    4.078      1 - Template:Outdated
+ 31.47%    3.257      1 - Template:Warning
+ 27.38%    2.834     12 - Template:MenuItem
+ 23.30%    2.411      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Git_mini_howto&amp;oldid=29395">http://imagej.net/index.php?title=Git_mini_howto&amp;oldid=29395</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:43.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Git_mini_howto&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Outdated" title="Category:Outdated">Outdated</a></li><li><a href="http://imagej.net/Category:Git" title="Category:Git">Git</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Git+mini+howto" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Git+mini+howto" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Git_mini_howto" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Git_mini_howto" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Git_mini_howto&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Git_mini_howto&amp;oldid=29395" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Git_mini_howto&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":236});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Development Lifecycle - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Development_Lifecycle","wgTitle":"Development Lifecycle","wgCurRevisionId":39611,"wgRevisionId":39611,"wgArticleId":2816,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Development","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Development_Lifecycle","wgRelevantArticleId":2816,"wgRequestId":"cdbd91d5c14a233e8baeb639","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The SciJava philosophy is to release early, release often. At the same time, we always want to preserve scientific reproducibility. To make this possible we lean on several project management tools. The purpose of this guide is to take you through the process of using these tools with the goal of releasing new versions of your software, and then providing those releases to users."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Development Lifecycle"/>
+
+	<meta property="og:description" content="The SciJava philosophy is to release early, release often. At the same time, we always want to preserve scientific reproducibility. To make this possible we lean on several project management tools. The purpose of this guide is to take you through the process of using these tools with the goal of releasing new versions of your software, and then providing those releases to users."/>
+
+	<meta property="og:url" content="http://imagej.net/Development_Lifecycle"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Development_Lifecycle rootpage-Development_Lifecycle skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Cutting_releases.html#bodyContent">Skip to content</a>, 			<a href="Cutting_releases.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Cutting_releases.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Cutting_releases.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Development_Lifecycle&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Development_Lifecycle&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Development_Lifecycle&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Development Lifecycle</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This page describes the core <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> <i>software release process</i>.
+<ul><li> For an overview of <i>distribution methods</i>, see <a href="http://imagej.net/Distribution" title="Distribution">Distribution</a>.</li>
+<li> To <i>download</i> software releases, see <a href="http://imagej.net/Downloads" title="Downloads">Downloads</a>. </td></li></ul>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Development
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Development" title="Development">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Philosophy" title="Philosophy">Philosophy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Architecture" title="Architecture">Architecture</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Source_code" title="Source code">Source code</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Project_management" title="Project management">Project management</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Coding_style" title="Coding style">Coding style</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging" title="Debugging">Debugging</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tools
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git" title="Git">Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Maven" title="Maven">Maven</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/IDEs" title="IDEs">IDEs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Travis" title="Travis">Travis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/AppVeyor" title="AppVeyor">AppVeyor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Dotfiles" title="Dotfiles">Dotfiles</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Guides
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Writing_plugins" title="Writing plugins">Writing plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_contribute_to_an_existing_plugin_or_library" title="How to contribute to an existing plugin or library">Contributing to a plugin</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Distribution" title="Distribution">Distributing your plugins</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Development lifecycle</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Building_a_POM" title="Building a POM">Building a POM</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImageJ_in_Eclipse" title="Developing ImageJ in Eclipse">Developing with Eclipse</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging_Exercises" title="Debugging Exercises">Hands-on debugging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_ops" title="Adding new ops">Adding new ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_formats" title="Adding new formats">Adding new formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_using_native_libraries" title="Developing using native libraries">Using native libraries</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_developers" title="Tips for developers">Tips for developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_C%2B%2B_developers" title="Tips for C++ developers">Tips for C++ developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">ImageJ 1.x plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Versioning" title="Versioning">Versioning</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Logging" title="Logging">Logging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Uber-JAR" title="Uber-JAR">Uber-JARs</a>
+</td></tr></table>
+</td></tr></table>
+<p>The SciJava <a href="http://imagej.net/Philosophy" title="Philosophy">philosophy</a> is to <a href="http://imagej.net/Philosophy#Release_early.2C_release_often" title="Philosophy">release early, release often</a>. At the same time, we always want to preserve <a href="http://imagej.net/Reproducible_builds" class="mw-redirect" title="Reproducible builds">scientific reproducibility</a>. To make this possible we lean on several <a href="http://imagej.net/Project_management" title="Project management">project management</a> tools. The purpose of this guide is to take you through the process of using these tools with the goal of releasing new versions of your software, and then providing those releases to users.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Cutting_releases.html#Phases_of_development"><span class="tocnumber">1</span> <span class="toctext">Phases of development</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Cutting_releases.html#Relationship_with_Maven_SNAPSHOTs"><span class="tocnumber">2</span> <span class="toctext">Relationship with Maven SNAPSHOTs</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Cutting_releases.html#Phases_in-depth"><span class="tocnumber">3</span> <span class="toctext">Phases in-depth</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Cutting_releases.html#Phase_1:_In_development"><span class="tocnumber">3.1</span> <span class="toctext">Phase 1: In development</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Cutting_releases.html#Phase_2:_On_master"><span class="tocnumber">3.2</span> <span class="toctext">Phase 2: On master</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Cutting_releases.html#Phase_3:_Released"><span class="tocnumber">3.3</span> <span class="toctext">Phase 3: Released</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="Cutting_releases.html#Advantages"><span class="tocnumber">3.3.1</span> <span class="toctext">Advantages</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="Cutting_releases.html#Prerequisites"><span class="tocnumber">3.3.2</span> <span class="toctext">Prerequisites</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="Cutting_releases.html#Steps_to_release"><span class="tocnumber">3.3.3</span> <span class="toctext">Steps to release</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-10"><a href="Cutting_releases.html#Phase_4:_Managed"><span class="tocnumber">3.4</span> <span class="toctext">Phase 4: Managed</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Cutting_releases.html#Phase_5:_Uploaded"><span class="tocnumber">3.5</span> <span class="toctext">Phase 5: Uploaded</span></a>
+<ul>
+<li class="toclevel-3 tocsection-12"><a href="Cutting_releases.html#ImageJ_and_Fiji_update_sites"><span class="tocnumber">3.5.1</span> <span class="toctext">ImageJ and Fiji update sites</span></a></li>
+<li class="toclevel-3 tocsection-13"><a href="Cutting_releases.html#External_update_sites"><span class="tocnumber">3.5.2</span> <span class="toctext">External update sites</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="Cutting_releases.html#Further_reading"><span class="tocnumber">4</span> <span class="toctext">Further reading</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Phases_of_development">Phases of development</span></h1>
+<p><a href="http://imagej.net/ImageJ" title="ImageJ">ImageJ</a> and <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a> are developed according to the <a href="http://imagej.net/Philosophy" title="Philosophy">SciJava philosophy</a>, thus these applications are used throughout this tutorial to illustrate the development lifecycle.
+</p><p>Whether adding new features, fixing bugs, improving performance, etc... <b>development</b> is the process of making changes, with the goal of exposing these changes to users. To accomplish this, actively developed projects cycle through five general "phases":
+</p>
+<div style="float:right; width: 30%; border: 1px solid #ccc; padding: 15px !important; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<p style="font-size: large; font-weight: bold; margin-top: 0; padding-top: 0">What are Maven artifacts?</p> Artifacts are files, most commonly a <b><a href="http://en.wikipedia.org/wiki/JAR_(file_format)" class="extiw" title="wikipedia:JAR (file format)">JAR</a></b> encapsulating the compiled classes for a component. Other files that may be produced as artifacts include:
+<ul><li> The project's <b><a rel="nofollow" class="external text" href="https://maven.apache.org/pom.html">POM</a></b></li>
+<li> A jar with the original source files</li>
+<li> A jar with any generated javadoc</li>
+<li> A jar with any test files</div></li></ul>
+<ol><li> <b>In development.</b> The source code is modified to add new features, fix bugs, etc... these modifications are expressed as <i>commits</i> by <a href="http://imagej.net/Git" title="Git">Git</a>, whether on your local filesystem, a topic branch, or a repository fork.</li>
+<li> <b>On master.</b> When you have a set of one or more <i>commits</i> that you are happy with (i.e. the feature is complete, or the bug is fixed) they are moved to the <code>master</code> branch of the project's repository on GitHub. This ensures the <code>master</code> branch is always <i>release ready</i>.</li>
+<li> <b>Released.</b> When there is a need to make the current <code>master</code> branch public (i.e. it has a critical bug fix or cool new feature that users have requested) <a href="http://imagej.net/Maven" title="Maven">Maven</a> is used to <i>cut a release</i>, which is then <i>deployed as an artifact</i> to the <a rel="nofollow" class="external text" href="https://maven.scijava.org/">SciJava Maven repository</a>. Developers can now use the new version in their own projects.</li>
+<li> <b>Managed.</b> The new release artifact must be verified to work in the combined runtime environment with other SciJava components. Once it has been tested to work, the version listed in the SciJava component collection <a href="http://imagej.net/BOM" class="mw-redirect" title="BOM">Bill of Materials (BOM)</a> can be updated accordingly.</li>
+<li> <b>Uploaded.</b> Finally, the new release artifact can be uploaded to its associated ImageJ <a href="http://imagej.net/Update_site" class="mw-redirect" title="Update site">update site</a>, making it available to end users.</li></ol>
+<p>The following sections will discuss these phases, and their associated tools and workflows, in more depth.
+</p>
+<h1><span class="mw-headline" id="Relationship_with_Maven_SNAPSHOTs">Relationship with Maven SNAPSHOTs</span></h1>
+<p>Another way of thinking about the development cycle is through the Maven version number given associated with the code. The idea behind reproducible builds is that from a given version of a plugin, the state of the code producing that version can be determined unambiguously. Typically, that state is determined by a unique <a href="http://imagej.net/Git" title="Git">Git</a> commit. However, it would be impractical and unrealistic to change the Maven version with every single Git commit.
+</p><p>This is why <a rel="nofollow" class="external text" href="https://docs.oracle.com/middleware/1212/core/MAVEN/maven_version.htm#MAVEN401">SNAPSHOT</a> versions are used while "in development" (phases 1 and 2 - "SNAPSHOT coupling"). Using a SNAPSHOT version is saying "no guarantees are made as to the reproducibility of this artifact." For this reason, to best facilitate reproducible science, SNAPSHOT versions of code are not provided to users (except potentially for testing).
+</p><p>To provide users with an updated version of an artifact (phases 3, 4 and 5) the version is changed to a unique, non-SNAPSHOT, version for a single Git commit. Then the next commit returns to SNAPSHOT versioning for further development. Thus the cycle repeats.
+</p>
+<h1><span class="mw-headline" id="Phases_in-depth">Phases in-depth</span></h1>
+<div style="float:right; width: 300px; border: 1px solid #ccc; padding: 15px !important; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<p style="font-size: large; font-weight: bold; margin-top: 0; padding-top: 0">When to use a topic branch?</p> <a href="http://imagej.net/Architecture" title="Architecture">Core SciJava components</a> employ a "release ready master branch" approach:
+<ul><li> The tip of the master branch is always stable enough to be released, "as good or better" than the state of its last release.</li>
+<li> Each commit on the master branch should compile with passing tests. This has several advantages—e.g., better <a rel="nofollow" class="external text" href="https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git#Binary-Search">bisect-style debugging</a>.</li></ul>
+<p>Topic branches are great for isolating potentially disruptive and/or unfinished changes from the master branch, so that it always remains release ready. However, pushing directly to master has a huge time savings over filing a PR and awaiting review for days, weeks or months. Getting changes onto master quickly has many advantages:
+</p>
+<ul><li> <b>Fewer conflicts.</b> It avoids conflicts between multiple long-running topic branches.</li>
+<li> <b>SNAPSHOT builds.</b> <a href="http://imagej.net/Travis" title="Travis">Travis</a> builds the change into the latest SNAPSHOT build, making it available from the <a href="http://imagej.net/SciJava_Maven_repository" class="mw-redirect" title="SciJava Maven repository">SciJava Maven repository</a>.</li>
+<li> <b>Faster support.</b> Supporting the community is less convoluted, with changes released to users more rapidly. Yes, you can link to changes on a topic branch. And yes, you can upload binary builds from that branch. But each extra manual step costs time—better to link directly to the latest SNAPSHOT build. There are even ImageJ <a href="http://imagej.net/Update_sites" class="mw-redirect" title="Update sites">update sites</a> which serve the latest builds from master, to make it easier for non-technical users to test changes.</li>
+<li> <b>Less complex.</b> The more topic branches you have—and in particular, the more integration branches you have—the more complex the system becomes, the more supporting tooling, CI jobs, etc. are needed. And the more developer time is needed to maintain the tooling, sort through topic branches, keep track of open PRs... leaving less time for developing new features and fixing bugs.</li></ul>
+<p>Hence, when exactly to use a topic branch is a judgment call, but some good times to use a topic branch are:
+</p>
+<ul><li> <b>Breaking.</b> The changes break <a href="http://imagej.net/Backwards_compatibility" class="mw-redirect" title="Backwards compatibility">backwards compatibility</a>.</li>
+<li> <b>New API.</b> The changes introduce significant new API which will need to remain backwards compatible in the future, and review is desired before committing to that API.</li>
+<li> <b>Unfinished.</b> The changes are unfinished.</li>
+<li> <b>Regressing.</b> The changes leave the codebase in a "worse" state somehow.</li>
+<li> <b>Discussion.</b> To solicit discussion from the <a href="http://imagej.net/Community" class="mw-redirect" title="Community">community</a>, especially if the changes might be contentious.</li></ul>
+<p>Conversely, some situations to push directly to master:
+</p>
+<ul><li> <b>Correct.</b> Bug-fixes where the developer is confident the fix is correct.</li>
+<li> <b>No new API.</b> Small new additions which do not introduce significant future maintenance burden.</li>
+<li> <b>Unstable.</b> Changes to unstable or experimental components still in their "incubation" period of development (i.e., versioned at 0.x), since there is no promise of backwards compatibility.</li>
+<li> <b>Unsupported.</b> Changes to "unsupported" components which make no guarantee of backwards compatibility.</li></ul>
+Lastly, keep in mind that SciJava favors the <a href="http://imagej.net/RERO" class="mw-redirect" title="RERO">release early, release often</a> style of development, to maximize iterations of community feedback. Just because a change makes it to the master branch, does not mean it is set in stone: if a problem is later found, the change can be amended or reverted as quickly as it was added—easy come, easy go.</div>
+<h2><span class="mw-headline" id="Phase_1:_In_development">Phase 1: In development</span></h2>
+<p>Repositories on GitHub are referred to as <b>remotes</b>; when you <i><a rel="nofollow" class="external text" href="https://help.github.com/articles/cloning-a-repository/">clone</a></i>, or <i>check out</i>, a remote you get a local copy of the repository. Development progresses by making changes to your local copy and pushing them back to the remote. GitHub provides tools for controlling <a rel="nofollow" class="external text" href="https://help.github.com/articles/permission-levels-for-a-user-account-repository/">user permission levels</a> for each remote repository, therefore how you develop a project depends on whether you are able to <i>push</i> (write) to that project's remote repository or not.
+</p>
+<ul><li> <b>Collaborating developer.</b> If you have permission to push directly to the project's remote repository, then you can simply use <a href="http://imagej.net/Git" title="Git">Git</a> and <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a> to <a rel="nofollow" class="external text" href="https://help.github.com/articles/cloning-a-repository/">clone the repository</a> and make your changes. For non-trivial changes, you will typically <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">create a topic branch</a> to develop and test the changes. This also provides a forum for discussion and review with your fellow developers.</li></ul>
+<ul><li> <b>External developer.</b> If you do not have push rights, then you need to go through an additional step called <b><a rel="nofollow" class="external text" href="http://www.dataschool.io/simple-guide-to-forks-in-github-and-git/">Forking the repository</a></b>. This will create a remote copy of the repository, to which you have push rights. Your remote fork is referred to as <i>downstream</i> of the original remote repository (which is <i>upstream</i> of your fork). Your development will then take place on your fork, with an additional step later to reconcile with the upstream repository.</li></ul>
+<h2><span class="mw-headline" id="Phase_2:_On_master">Phase 2: On master</span></h2>
+<p>Once a feature or fix is complete it can move to the <code>master</code> branch of the repository. How you accomplish this depends on how the changes were developed in Phase 1.
+</p>
+<ul><li> <b>Collaborating developer.</b> Minimal changes can be pushed back directly to <code>master</code> on the remote repository. If your work is on a <a href="http://imagej.net/Git_topic_branches" title="Git topic branches">topic branch</a> then you should use a <a rel="nofollow" class="external text" href="https://help.github.com/articles/using-pull-requests/">pull request</a> (PR) so that the topic branch can be reviewed before being merged to <code>master</code>.</li></ul>
+<ul><li> <b>External developer.</b> First push your changes back to a branch of your forked repository (it doesn't necessarily have to be <code>master</code>). Then you can file a <a rel="nofollow" class="external text" href="https://help.github.com/articles/using-pull-requests/">pull request</a> (PR) on <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a> to merge your branch back to the official repository. This invites code review from other interested developers. Reviewers might ask for changes to the code to address any issues. After any needed revisions have been made, a <a href="http://imagej.net/Governance" title="Governance">project maintainer</a> will accept your changes and then merge to the official <code>master</code> branch.</li></ul>
+<h2><span class="mw-headline" id="Phase_3:_Released">Phase 3: Released</span></h2>
+<p>Once the <code>master</code> branch of a component has your desired new functionality, the next step is to cut a <i>release</i> version of the component. Normally, the Maven version (in the <a rel="nofollow" class="external text" href="https://maven.apache.org/pom.html#Introduction">pom.xml</a>) on master is a <a rel="nofollow" class="external text" href="http://stackoverflow.com/q/5901378"><i>SNAPSHOT</i> version</a>, meaning it is <a href="http://imagej.net/Reproducible_builds" class="mw-redirect" title="Reproducible builds">unstable</a> and not yet released. However, a <a href="http://imagej.net/Reproducible_builds" class="mw-redirect" title="Reproducible builds">stable</a> <i>release</i> artifact can be deployed to the appropriate remote Maven repository.
+</p><p>The <a rel="nofollow" class="external text" href="https://github.com/scijava/scijava-scripts/blob/master/release-version.sh">release-version.sh</a> script automates the steps to performing a release. It relies on the <a rel="nofollow" class="external text" href="http://maven.apache.org/maven-release/maven-release-plugin/">Maven Release plugin</a> to do most of the heavy lifting, but also does some extra work (e.g., to ensure releases are deployed to the correct repository).
+</p>
+<h3><span class="mw-headline" id="Advantages">Advantages</span></h3>
+<ul><li> A tag is created on GitHub to easily reference the release commit.</li>
+<li> The "bump to next release cycle" commit is done automatically.</li>
+<li> The Maven POM references the correct tag rather than <code>HEAD</code>.</li>
+<li> <a href="http://imagej.net/Travis_CI" class="mw-redirect" title="Travis CI">Travis CI</a> performs the actual release for you, using credentials which are encrypted in the repository itself.</li></ul>
+<h3><span class="mw-headline" id="Prerequisites">Prerequisites</span></h3>
+<ul><li> Install the <code>release-version.sh</code> script. The best way to do this is to clone the <a rel="nofollow" class="external text" href="https://github.com/scijava/scijava-scripts">SciJava-scripts</a> repository. That will give you access to other useful scripts and help keep them all up to date.</li>
+<li> (<b>optional</b>) If you want to easily use these scripts from any directory, you can <a rel="nofollow" class="external text" href="http://askubuntu.com/q/97897">add the scijava-scripts folder to your PATH</a>.</li>
+<li> Verify that your project's parent is pom-scijava version 17.1.1 or newer. If the parent version is too old, or is not pom-scijava, then upgrade it. Ask on the <a href="http://imagej.net/Forum" class="mw-redirect" title="Forum">forum</a> if you need assistance.</li>
+<li> If your component is to be released to the SciJava Maven repository, then add the following line to the properties section of your POM: <code>&lt;releaseProfiles&gt;deploy-to-imagej&lt;/releaseProfiles&gt;</code></li>
+<li> Ensure the repository for your project is linked with a <a href="http://imagej.net/Travis_CI" class="mw-redirect" title="Travis CI">Travis CI</a> job that automatically builds and deploys Maven artifacts in response to changes on GitHub. If you're not sure if your project has this automation, ask for help on the <a href="http://imagej.net/Forum" class="mw-redirect" title="Forum">forum</a>.</li></ul>
+<h3><span class="mw-headline" id="Steps_to_release">Steps to release</span></h3>
+<p>From your project's directory, simply run:
+</p>
+<pre class="brush:shell">
+release-version.sh
+</pre>
+<p>The script will verify that your master branch is ready to go, then create and push a <a rel="nofollow" class="external text" href="http://git-scm.com/book/en/v2/Git-Basics-Tagging">tag</a> for the release. <a href="http://imagej.net/Travis_CI" class="mw-redirect" title="Travis CI">Travis CI</a> will then notice the tag and complete the release for you. You should receive an email from Travis after the release is complete indicating whether the build was successful.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> If your project is a <a rel="nofollow" class="external text" href="https://maven.apache.org/guides/mini/guide-multiple-modules.html">multi-module build</a>, first make a commit commenting out any modules that should not be released. Then run the script from the aggregator pom directory. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Phase_4:_Managed">Phase 4: Managed</span></h2>
+<p>For core projects, there is an intermediate layer tying User-facing and Developer-facing components together: the <a href="http://imagej.net/BOM" class="mw-redirect" title="BOM">Bill of Materials</a> (BOM). To ensure users and developers see the same functionality, components should only be uploaded to the core update sites when their version is also updated in the <a rel="nofollow" class="external text" href="https://github.com/scijava/pom-scijava/">pom-scijava</a> BOM.
+</p><p>To update the version of your component listed in the <a rel="nofollow" class="external text" href="https://github.com/scijava/pom-scijava/">pom-scijava</a> BOM, you should follow the <a href="Cutting_releases.html#Phase_1:_In_development">External developer</a> instructions for contributing to <a rel="nofollow" class="external text" href="https://github.com/scijava/pom-scijava/">pom-scijava</a>. By <a rel="nofollow" class="external text" href="https://help.github.com/articles/using-pull-requests/">submitting a pull request</a> that simply modifies the managed version of your component, you will signal to the core SciJava developers that your project is ready for upload. For example, <a rel="nofollow" class="external text" href="https://github.com/scijava/pom-scijava/pull/40">this PR</a> updates the managed version of <a href="http://imagej.net/Bio-Formats" title="Bio-Formats">Bio-Formats</a> to 5.5.0.
+</p>
+<h2><span class="mw-headline" id="Phase_5:_Uploaded">Phase 5: Uploaded</span></h2>
+<div style="float:right; width: 30%; border: 1px solid #ccc; padding: 15px !important; margin-top: 1em; margin-bottom: 2em; background-color: #ffefbe; -moz-border-radius: .75em; -webkit-border-radius: .75em; border-radius: .75em;-moz-box-shadow: 4px 4px 4px #CCC; -webkit-box-shadow: 4px 4px 4px #CCC; box-shadow: 4px 4px 4px #CCC;">
+<p style="font-size: large; font-weight: bold; margin-top: 0; padding-top: 0">What are ImageJ update sites?</p> ImageJ <a href="http://imagej.net/Update_sites" class="mw-redirect" title="Update sites">update sites</a> are what ImageJ actually queries to download updates. These update sites are versioned, but do not rely on other tools (e.g., <a href="http://imagej.net/Git" title="Git">Git</a> or <a href="http://imagej.net/Maven" title="Maven">Maven</a>) in order to function. Rather, component developers upload new versions of their component(s) using the <a href="http://imagej.net/ImageJ_Updater" class="mw-redirect" title="ImageJ Updater">ImageJ Updater</a>, which makes them available to end users. Typically, update sites are available as web sites via HTTP, with uploads functioning via <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-plugins-uploader-webdav">WebDAV</a> or <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-plugins-uploader-ssh">SSH/SFTP/SCP</a>.</div>
+<p>Deploying to the Maven repository creates a stable release artifact of a software component usable by other developers. But for ImageJ-related components, that alone does not put it into the hands of users. To do that, the component must then be <i>uploaded</i> to an ImageJ <a href="http://imagej.net/Update_site" class="mw-redirect" title="Update site">update site</a>.
+</p>
+<h3><span class="mw-headline" id="ImageJ_and_Fiji_update_sites">ImageJ and Fiji update sites</span></h3>
+<ul><li> The core ImageJ update site reflects the state of the newest <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej/">net.imagej:imagej</a> release.</li>
+<li> The core Fiji update site reflects the state of the newest <a rel="nofollow" class="external text" href="https://github.com/fiji/fiji/">sc.fiji:fiji</a> release.</li>
+<li> Actually, for the moment, both of the above statements are untrue, but they represent the direction we are heading. Right now, core components of both ImageJ and Fiji are distributed manually via the Java-8 update site. See the <a href="http://imagej.net/Java_8" class="mw-redirect" title="Java 8">Java 8</a> page for details.</li></ul>
+<h3><span class="mw-headline" id="External_update_sites">External update sites</span></h3>
+<p>An update site can be hosted anywhere, though the ImageJ web server at <a rel="nofollow" class="external free" href="http://sites.imagej.net/">http://sites.imagej.net/</a> offers a <a href="http://imagej.net/Personal_update_site" class="mw-redirect" title="Personal update site">personal update site</a> service.
+</p><p>See the <b><a href="http://imagej.net/Distribution" title="Distribution">distribution</a></b> page for a discussion of pros and cons of distributing your plugin on a core versus a personal update site.
+</p><p>If you do manage <a href="http://imagej.net/How_to_set_up_and_populate_an_update_site" title="How to set up and populate an update site">your own update site</a>, you can upload your release yourself.
+</p><p>See the <a href="http://imagej.net/Update_Sites" title="Update Sites">documentation on update sites</a> for further instructions.
+</p>
+<h1><span class="mw-headline" id="Further_reading">Further reading</span></h1>
+<ul><li> The SciJava <a href="http://imagej.net/Architecture#Versioning" title="Architecture">versioning guidelines</a> will help you choose appropriate version numbers for your software when performing Maven releases.</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064930
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.064 seconds
+Real time usage: 0.066 seconds
+Preprocessor visited node count: 752/1000000
+Preprocessor generated node count: 1929/1000000
+Post‐expand include size: 15937/2097152 bytes
+Template argument size: 9272/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   28.052      1 - -total
+ 39.92%   11.198      1 - Template:DevelopMenu
+ 34.53%    9.686      1 - Template:Menu
+ 30.14%    8.455      3 - Template:Submenu
+ 22.98%    6.447      3 - Template:Box
+ 17.25%    4.840      6 - Template:GitHub
+ 16.63%    4.666     31 - Template:MenuItem
+ 15.79%    4.429      2 - Template:Notice
+ 12.20%    3.422      2 - Template:Ambox
+  6.96%    1.953      3 - Template:Box-shadow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Development_Lifecycle&amp;oldid=39611">http://imagej.net/index.php?title=Development_Lifecycle&amp;oldid=39611</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 30 April 2019, at 14:17.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Development_Lifecycle&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Development+Lifecycle" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Development+Lifecycle" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Development_Lifecycle" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Development_Lifecycle" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Development_Lifecycle&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Development_Lifecycle&amp;oldid=39611" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Development_Lifecycle&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":213});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>LoopBuilder - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"LoopBuilder","wgTitle":"LoopBuilder","wgCurRevisionId":45633,"wgRevisionId":45633,"wgArticleId":12706,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"LoopBuilder","wgRelevantArticleId":12706,"wgRequestId":"fb9c0ea47d7347481601d3fb","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="LoopBuilder is part of ImgLib2. It provides a very simple way to implement a pixel wise operation. LoopBuilder can operate on one, two, three, ... up to six images. Simplest case is an operation on one image. LoopBuilder will perform the given operation for every pixel of the image."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="LoopBuilder"/>
+
+	<meta property="og:description" content="LoopBuilder is part of ImgLib2. It provides a very simple way to implement a pixel wise operation. LoopBuilder can operate on one, two, three, ... up to six images. Simplest case is an operation on one image. LoopBuilder will perform the given operation for every pixel of the image."/>
+
+	<meta property="og:url" content="http://imagej.net/LoopBuilder"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-LoopBuilder rootpage-LoopBuilder skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="LoopBuilder.html#bodyContent">Skip to content</a>, 			<a href="LoopBuilder.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="LoopBuilder.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/LoopBuilder" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:LoopBuilder&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=LoopBuilder&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=LoopBuilder&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>LoopBuilder</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>LoopBuilder is part of ImgLib2. It provides a very simple way to implement a pixel wise operation. LoopBuilder can operate on one, two, three, ... up to six images. Simplest case is an operation on one image. LoopBuilder will perform the given operation for every pixel of the image.
+</p><p>Example: Multiply every pixel by a factor of two 2.
+</p>
+<pre class="brush:java">// "image" should be a RandomAccessibleInterval&lt;FloatType&gt;. (IntType, UnsignedByteType, etc. would work as well.)
+LoopBuilder.setImages(image).forEachPixel(pixel -&gt; pixel.mul(2));</pre>
+<p>Slightly more complex is the case with two images. LoopBuilder will iterate simultaneously over both given images. The given operation is executed for each pair of corresponding pixels. "Corresponding" means that the pixels are at the same location in both images. Lets use this to copy the content of image. The value of the source pixel must be copied to the corresponding target pixel:
+</p>
+<pre class="brush:java">// "sourceImage" and "targetImage" should be RandomAccessibleIntervals with the same pixel type.
+LoopBuilder.setImages(sourceImage, targetImage).forEachPixel((s, t) -&gt; t.set(s));</pre>
+<p>It's the same story for three images. LoopBuilder iterates simultaneously over the three images. The operation is executed each triplet of corresponding pixel. This can be used, for example, to add two images.
+</p>
+<pre class="brush:java">// "imageA", "imageB", "imageSum" should be RandomAccessibleInterval&lt;FloatType&gt;. (Any other RealType would work as well.)
+LoopBuilder.setImages(imageA, imageB, imageSum).forEachPixel(
+    (a, b, s) -&gt; s.setReal(a.getRealFloat() + b.getRealFloat()
+);</pre>
+<p>Or for a pixel wise comparison of two images:
+</p>
+<pre class="brush:java">// "imageA", "imageB", "imageSum" should be RandomAccessibleInterval&lt;FloatType&gt;. (Any other RealType would work as well.)
+LoopBuilder.setImages(imageA, imageB, resultImage).forEachPixel(
+    (a, b, r) -&gt; {
+        if(a.getRealFloat() &gt; b.getRealFloat())
+            r.set(1);
+        else
+            r.set(2);
+    }
+);</pre>
+<p>For LoopBuilder images must be <code>RandomAccessibleIntervals</code>. All images must have the same size / dimensions.
+</p><p>LoopBuilder works for for 1D, 2D, 3D, 4D and any other number of dimensions. There is no restriction on pixel types, any pixel typs are supported.
+</p><p>(<code>Img</code>, <code>ArrayImg</code>, <code>PlanarImg</code>, etc. work as well because the implement the <code>RandomAccessibleInterval</code> interface.)
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="LoopBuilder.html#Tips"><span class="tocnumber">1</span> <span class="toctext">Tips</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="LoopBuilder.html#Coordinates"><span class="tocnumber">1.1</span> <span class="toctext">Coordinates</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="LoopBuilder.html#Flat_Iteration_Order"><span class="tocnumber">1.2</span> <span class="toctext">Flat Iteration Order</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="LoopBuilder.html#More_Than_6_Images"><span class="tocnumber">1.3</span> <span class="toctext">More Than 6 Images</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="LoopBuilder.html#Alternatives"><span class="tocnumber">2</span> <span class="toctext">Alternatives</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="LoopBuilder.html#Multi_Threading"><span class="tocnumber">3</span> <span class="toctext">Multi Threading</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="LoopBuilder.html#Performance"><span class="tocnumber">4</span> <span class="toctext">Performance</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="LoopBuilder.html#Cursor_vs._RandomAccess"><span class="tocnumber">4.1</span> <span class="toctext">Cursor vs. RandomAccess</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="LoopBuilder.html#Iteration_Order"><span class="tocnumber">4.2</span> <span class="toctext">Iteration Order</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="LoopBuilder.html#Byte_Code_Copying_for_JIT-Optimization"><span class="tocnumber">4.3</span> <span class="toctext">Byte Code Copying for JIT-Optimization</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Tips">Tips</span></h2>
+<h3><span class="mw-headline" id="Coordinates">Coordinates</span></h3>
+<p>LoopBuilder, does not provide a direct way to access the position or coordinates of a pixel in an image. What you can do instead is use <code>Intervals.positions(...)</code>. This will return an image where the pixel values are the positions of the pixel itself. Here is an example:
+</p>
+<pre class="brush:java">LoopBuilder.setImages(Intervals.positions(image), image).forEachPixel(
+    (position, pixel) -&gt; {
+        long x = position.getLongPosition(0);
+        long y = position.getLongPosition(1);
+        pixel.setRealDoubel(2 * x * x + 4 * y * y);
+    }
+);</pre>
+<h3><span class="mw-headline" id="Flat_Iteration_Order">Flat Iteration Order</span></h3>
+<p>In most cases, LoopBuilder will use flat iteration order. Hence the image is processed line by line, slice by slice, frame by frame... . But that's not guarantied. For example, if all images are <code>CellImg</code> with matching cell sizes, than LoopBuilder will use better suited iteration order. So if your code depends on the flat iteration order, specify <code>.flatIterationOrder()</code> like in the following example. Don't use multi-threading, as for multi threading iteration order is unspecified.
+</p>
+<pre class="brush:java">int[] counter = { 0 };
+LoopBuilder.setImages(image).flatIterationOrder().forEachPixel(
+    pixel -&gt;  pixel.setInteger(counter[0]++)
+);</pre>
+<h3><span class="mw-headline" id="More_Than_6_Images">More Than 6 Images</span></h3>
+<p>LoopBuilder only works with up to six images. This is not because any technical reason, but because the code would become rather clunky. When you have many images, changes are high, that some of the images are similar. These images have the same pixel type, and somehow belong together.
+</p><p>Lets look at an example again. Let's calculate the maximum over 8 images. That are to many images for LoopBuilder. But we can combine the 8 images, using <code>Views.collapse(Views.stack(...))</code>. This will fuse the images into one image, where each pixel is a vector of size 8. The vector contains all the pixel values of the 8 corresponding pixels.
+</p>
+<pre class="brush:java">// ... Initialize all images ...
+
+// Combine image1, ..., image8 into a combined image, where each pixel is a vector.
+RandomAccessibleInterval&lt;&#160;? extends GenericComposite&lt; FloatType &gt; &gt; combined =
+    Views.collapse( Views.stack( image1, image2, image3, image4, image5, image6, image7, image8 ) );
+        
+LoopBuilder.setImages( combined, resultImage ).forEachPixel( (vector, r) -&gt; {
+    float max = Float.NEGATIVE_INFINITY;
+    for ( int i = 0; i &lt; 8; i++ )
+    {
+        max = Math.max( max, vector.get(i).getRealFloat() );
+    }
+    r.setReal( max );
+} );</pre>
+<h2><span class="mw-headline" id="Alternatives">Alternatives</span></h2>
+<p>LoopBuilder provides nothing, that is otherwise impossible to achieve. It is just a nice way, to write otherwise complex loops. But you could achieve the same results with ImgLib2 <code>Cursor</code> or <code>RandomAccess</code>. Lets add two images using <code>Cursor</code>:
+</p>
+<pre class="brush:java">Cursor&lt;FloatType&gt; cursorA = Views.flatIterable(imageA).cursor();
+Cursor&lt;FloatType&gt; cursorB = Views.flatIterable(imageB).cursor();
+Cursor&lt;FloatType&gt; cursorSum = Views.flatIterable(imageSum).cursor();
+while(sourceCursor.hasNext()) {
+    FloatType a = cursorA.next();
+    FloatType b = cursorB.next();
+    FloatType s = cursorS.next();
+    s.setReal(a.getRealFloat() + b.getRealFloat());
+}</pre>
+<p>The example above is actually still quite simple. And a <code>Cursor</code> is fast for basic image containers like <code>ArrayImg</code>, <code>PlanarImg</code> and sometimes <code>CellImg</code>. But it's faster to use <code>RandomAccess</code> when you use views like <code>View.extendBorder(...)</code>, <code>Views.interval(...)</code>, <code>Views.rotate(...)</code> etc. Writing a loop that uses no Cursors at all is much harder. Here is an example that sets all pixels of an image to 1.
+</p>
+<pre class="brush:java">RandomAccess&lt; IntType &gt; ra = image.randomAccess();
+ra.setPosition( image.min( 2 ), 2 );
+for ( long z = image.min( 2 ); z &lt;= image.max( 2 ); z++ )
+{
+    ra.setPosition( image.min( 1 ), 1 );
+    for ( long y = image.min( 1 ); y &lt;= image.max( 1 ); y++ )
+    {
+        ra.setPosition( image.min( 0 ), 0 );
+        for ( long x = image.min( 0 ); x &lt;= image.max( 0 ); x++ )
+        {
+            IntType pixel = ra.get();
+            pixel.setInteger( 1 );
+            ra.fwd( 0 );
+        }
+        ra.fwd( 1 );
+    }
+    ra.fwd( 2 );
+}
+</pre>
+<h2><span class="mw-headline" id="Multi_Threading">Multi Threading</span></h2>
+<p>If your images are big, than multithreading might speed up the operation. And it's super easy if you use LoopBuilder. Let's calculate the sum using multiple threads. The only thing you need to do is write <code>.multiThreaded()</code> before the call to <code>forEachPixel(...)</code>.
+</p>
+<pre class="brush:java">// calculate sum, using multiple threads:
+LoopBuilder.setImages(imageA, imageB, imageS).multiThreaded().forEachPixel(
+                                              ///////////////
+    (pixelA, pixelB, pixelS) -&gt; {
+        pixelS.set(pixelA.getRealFloat() + pixelB.getRealFloat());
+    }
+);</pre>
+<p>This should run about four times faster, on a CPU with four CPU cores. (Your image needs two be big enough.) What LoopBuilder internally does, is the following: It splits the images into chunks, and the chunks are than distributed to a pool of threads.
+</p><p>But be careful, multi-threading works well as long as your operation is thread-safe. This is the case for simple operations like "pixelS = pixelA + pixelB". An per pixel operation is NOT thread-safe if it changes a object, field or variable outside the of operation. Let's take a look at the following example: It calculates the sum over the squared pixel values:
+</p>
+<pre class="brush:java">FloatType squareSum = new FloatType(0);
+LoopBuilder.setImages(image).forEachPixel(
+   pixel -&gt; {
+      squaredSum.setReal(squaredSum.getRealFloat() + Math.pow(pixel.getRealFloat, 2));
+   }
+)</pre>
+<p>Here the per pixel operation (line 3-5) changes the <code>squaredSum</code>, which is defined in line 1, outside of the per pixel operation. Only adding <code>.multiThreaded()</code> will cause wrong results. This is because the operation is simultaniously executed by mutliple threads. All the threads simultaniously changing the <code>squaredSum</code> causes choas. The wrong result is the consequence.
+</p><p>Luckily LoopBuilder provides a solution to this problem. LoopBuilder devides the image into chunks, and destributes the chunks to a pool of threads. A chunk is always only processed by one thread. That's why there are no multi-threading problems as long as we have one <code>squaredSum</code> variable per chunk. This can be done using LoopBuilders <code>.forEachChunk(...)</code> method:
+</p>
+<pre class="brush:java">// For each chunk calculate an individual squared sum.
+List&lt;FloatType&gt; listOfSquaredSums = LoopBuilder.setImages(image).multithreaded().forEachChunk( chunk -&gt; {
+   FloatType squaredSum = new FloatType(0);
+   chunk.forEachPixel( pixel -&gt; {
+      squaredSum.setReal(squaredSum.getRealFloat() + Math.pow(pixel.getRealFloat, 2));    
+   } );
+   return squaredSum;
+})
+
+// Calculate the sum about all the individual squared sums.
+FloatType totalSquaredSum = new FloatType(0);
+for(FloatType squareSum&#160;: listOfSquaredSums) {
+   totalSquaredSum.add(squaredSum);
+}</pre>
+<p>In the example above the per pixel operation (in line 5) can access variables and objects that belong to the chunk (in line 3 - 7) without causing any thread safety issues.
+</p><p>Another use case for the <code>forEachChunk</code> mappens, happens if your per pixel operation needs some resources. The following examples swaps the content of two images A and B. The temporary variable <code>tmp</code> is used to swap the pixel value. But creating a <code>new FloatType()</code> for each pixel would be very slow, but creating one temporary variable per chunk, is fine:
+</p>
+<pre class="brush:java">LoopBuilder.setImages(imageA, imageB).multiThreaded().forEachChunk( chunk -&gt; {
+    FloatType tmp = new FloatType(); // create require resource
+    chunk.forEach((a, b) -&gt; {
+        tmp.set(a);   // operation using the resource
+        a.set(b);
+        b.set(tmp);
+    });
+    // Optional: free your resource if needed.
+    return null; // Optional: return some results.
+})</pre>
+<p>Disclaimer: Please always measure the execution time if you use multi-threading. Sometimes the simgle threaded code is better optimized by the compiler and runs even faster than the multi-threaded code. Also check that you don't have thread-safety issues, make sure your results are correct. Thread-safety problem are hard to debug!
+</p>
+<h2><span class="mw-headline" id="Performance">Performance</span></h2>
+<p>Disclaimer: LoopBuilder achieves good perfomance in Java, but it is slow when used in scripting languages like Groovy or Jython. (This is because LoopBuilder relies on Lambda expression, and using them in scripting languages is rather complicated and slow.)
+</p><p>LoopBuilder has been heavily benchmarked and designed to give good perfance. This performance advantage compared to for example <code>Cursor</code> loops is most noticible for methods that are used with different image types (For example <code>ArrayImg</code>, <code>PlanarImg</code>, <code>Views.interval(...)</code>, etc. ). Because LoopBuilder will execute the loop in a way, that promises good performance for the particular image type. The strategies that are used to provide the best performance are discribed below.
+</p><p>Still, if you write a piece of very specialized code that always runs on only one image type (maybe <code>ArrayImg&lt;BoolType&gt;</code>). Then writing your own loop using <code>Cursor</code> or <code>RandomAccess</code> might give better performance. But always carefully measure the execution time.
+</p><p><a rel="nofollow" class="external text" href="https://gist.github.com/maarzt/19167a5019c1d685c483441b7322b986">Benchmark comparing LoopBuilder and Cursor</a>
+</p>
+<h3><span class="mw-headline" id="Cursor_vs._RandomAccess">Cursor vs. RandomAccess</span></h3>
+<p>LoopBuilder either uses a loop that uses <code>Cursor</code>s. That's the case if all the images have fast <code>Cursor</code>s like <code>ArrayImg</code>, <code>PlanarImg</code>, <code>CellImg</code> and for slices of <code>ArrayImg</code>. But in all other cases <code>RandomAccess</code>es are used. The <code>RandomAccess</code> are moved simultaneously along the image. The methods <code>RandomAccess.fwd(int d)</code> and <code>RandomAccess.move(long offset, int d)</code> are used, which happens to be faster than <code>setPosition(long[] pos)</code>.
+</p>
+<h3><span class="mw-headline" id="Iteration_Order">Iteration Order</span></h3>
+<p>Usually flat iteration order is used. Currently the only exception happens, when all images are 'CellImg' of matching cell size. Than the <code>CellImg</code> specific iteration order will be used.
+</p>
+<h3><span class="mw-headline" id="Byte_Code_Copying_for_JIT-Optimization">Byte Code Copying for JIT-Optimization</span></h3>
+<p>The loops that are used for image processing are usually very tight. (A few number of operations per cycle) The performance of these tight loops heavily depends on the byte-code optimizations done by Java's just-in-time-compiler. Sadly the JIT-compiler de-optimizes byte-code that is used with different implementations of the same interface.
+</p><p>Hence writing a loop that performs a simple image processing step, like adding two images, will runs very fast only if used with <code>ArrayImg</code>. But using it with <code>ArrayImg</code>, <code>CellImg</code> and <code>IntervalView</code> will cause the byte-code to be de-optimized and to dramatically reduce performance.
+</p><p>LoopBuilder circumvents this problem, by loading a new copy of the class running the loop, for every new combination of images (<code>ArrayImg</code>s, <code>CellImg</code>s, etc.) Each copy of the class, has a it's own copy of the byte-code. And these individual copies of the byte-code are individually optimized byte the JIT-compiler to the particular image classes used. Hence avoiding the de-optimization.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072855
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.012 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 156/1000000
+Preprocessor generated node count: 304/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=LoopBuilder&amp;oldid=45633">http://imagej.net/index.php?title=LoopBuilder&amp;oldid=45633</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 4 June 2020, at 16:13.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=LoopBuilder&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=LoopBuilder" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=LoopBuilder" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/LoopBuilder" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/LoopBuilder" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=LoopBuilder&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=LoopBuilder&amp;oldid=45633" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=LoopBuilder&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":230});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>How to write your own particle-linking algorithm for TrackMate - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"How_to_write_your_own_particle-linking_algorithm_for_TrackMate","wgTitle":"How to write your own particle-linking algorithm for TrackMate","wgCurRevisionId":41252,"wgRevisionId":41252,"wgArticleId":2415,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"How_to_write_your_own_particle-linking_algorithm_for_TrackMate","wgRelevantArticleId":2415,"wgRequestId":"d57a3dd742edcabfc0894fb1","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This last part on particle-linking modules concludes the series of tutorials on extending TrackMate. The most difficult modules to create are spot detectors, which was the subject of the previous tutorial. Particle-linking modules, or trackers, are a little bit less complicated."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="How to write your own particle-linking algorithm for TrackMate"/>
+
+	<meta property="og:description" content="This last part on particle-linking modules concludes the series of tutorials on extending TrackMate. The most difficult modules to create are spot detectors, which was the subject of the previous tutorial. Particle-linking modules, or trackers, are a little bit less complicated."/>
+
+	<meta property="og:url" content="http://imagej.net/How_to_write_your_own_particle-linking_algorithm_for_TrackMate"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-How_to_write_your_own_particle-linking_algorithm_for_TrackMate rootpage-How_to_write_your_own_particle-linking_algorithm_for_TrackMate skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#bodyContent">Skip to content</a>, 			<a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/How_to_write_your_own_particle-linking_algorithm_for_TrackMate" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:How_to_write_your_own_particle-linking_algorithm_for_TrackMate&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=How_to_write_your_own_particle-linking_algorithm_for_TrackMate&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=How_to_write_your_own_particle-linking_algorithm_for_TrackMate&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>How to write your own particle-linking algorithm for TrackMate</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="width: 22em; font-size: 90%; text-align: left; float: right; border: 1px dashed #a0a0a0;">
+<tr>
+<th colspan="2" style="font-size: 130%;"> Extending TrackMate
+</th></tr>
+<tr>
+<td>
+<ul><li> <a href="http://imagej.net/How_to_write_your_own_edge_feature_analyzer_algorithm_for_TrackMate" title="How to write your own edge feature analyzer algorithm for TrackMate">How to write your own edge feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" title="How to write your own track feature analyzer algorithm for TrackMate">How to write your own track feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_spot_feature_analyzer_algorithm_for_TrackMate" title="How to write your own spot feature analyzer algorithm for TrackMate">How to write your own spot feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_viewer_for_TrackMate" title="How to write your own viewer for TrackMate">How to write your own viewer for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_custom_actions_for_TrackMate" title="How to write custom actions for TrackMate">How to write custom actions for TrackMate</a></li>
+<li> <a href="http://imagej.net/How_to_write_your_own_detection_algorithm_for_TrackMate" title="How to write your own detection algorithm for TrackMate">How to write your own detection algorithm for TrackMate</a></li>
+<li> <strong class="selflink">How to write your own particle-linking algorithm for TrackMate</strong></li></ul>
+</td></tr></table><a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a> can be extended with new modules covering about everything it does, thanks to several nice features of <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a>. These tutorials explain how to do so. They are best read in order.
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#Introduction."><span class="tocnumber">1</span> <span class="toctext">Introduction.</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#Simple.2C_undirected_graphs."><span class="tocnumber">2</span> <span class="toctext">Simple, undirected graphs.</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#Graphs_in_TrackMate."><span class="tocnumber">3</span> <span class="toctext">Graphs in TrackMate.</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#Particle-linking_algorithms_in_TrackMate."><span class="tocnumber">4</span> <span class="toctext">Particle-linking algorithms in TrackMate.</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#A_dummy_example:_drunken_cell_divisions."><span class="tocnumber">5</span> <span class="toctext">A dummy example: drunken cell divisions.</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#The_factory_class."><span class="tocnumber">6</span> <span class="toctext">The factory class.</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate.html#Wrapping_up"><span class="tocnumber">7</span> <span class="toctext">Wrapping up</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction.">Introduction.</span></h2>
+<p>This last part on particle-linking modules concludes the series of tutorials on extending <a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a>. The most difficult modules to create are spot detectors, which was the subject of the <a href="http://imagej.net/How_to_write_your_own_detection_algorithm_for_TrackMate" title="How to write your own detection algorithm for TrackMate">previous tutorial</a>. Particle-linking modules, or trackers, are a little bit less complicated. 
+</p><p>However, you still need to understand how we store and manipulate links in TrackMate, and this implies very briefly introducing mathematical graphs.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Simple.2C_undirected_graphs.">Simple, undirected graphs.</span></h2>
+<p>TrackMate stores the results of the detection step as spots in a <a rel="nofollow" class="external text" href="https://fiji.sc/javadoc/fiji/plugin/trackmate/SpotCollection.html">SpotCollection</a>. The tracking results are mainly links between these spots so we needed a structure to hold them. We went for the most general one, and picked a mathematical graph.
+</p><p><a href="http://en.wikipedia.org/wiki/Graph_(mathematics)" class="extiw" title="wikipedia:Graph (mathematics)">Mathematical graphs</a> are mathematical structures that hold objects (<b>vertices</b>) and links between them (<b>edges</b>, we will use the two terms interchangeably). TrackMate relies specifically on a specialization: it uses an undirected, simple weighted graph.
+</p>
+<ul><li> Undirected means that a link between A and B is the same as a link between B and A. There is no specific direction and it cannot be exploited. However, you will see that the API offers specific tools that can fake a direction. Indeed, since we deal mainly with time-lapse data, we would like to make it possible to say that we iterate a graph following the time direction.</li>
+<li> Simple is not related to the efforts that must be made to grasp this mathematical field, but to the fact that there can be only 1 or no link between two spots, and that we do not authorize a link going from one spots to this same spot (no loop).</li>
+<li> Weighted means that each link has a numerical value, called weight, associated to it. We use it just to store some of the results of the tracking algorithm, but it has no real impact on TrackMate.</li></ul>
+<p>This restrictions do not harm the generality of what you can represent in Life Science with this. You can still have the classical links you find in typical time-lapse experiment:
+</p>
+<ul><li> Following a single object over time: </li></ul>
+<pre>A0 - A1 - A2 - A3 - ... </pre>
+<ul><li> A cell division:</li></ul>
+<pre>A0 - A1 -+- B2 - B3 - ...
+         |
+         +- C2 - C3 - ...</pre>
+<ul><li> But also anything fusions, tripolar divisions, and a mix of everything in the same model.</li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Graphs_in_TrackMate.">Graphs in TrackMate.</span></h2>
+<p>On a side note, this is important if you plan to build analysis tools for TrackMate results. TrackMate philosophy is to offer managing the most general case (when it comes to linking), but your analysis tools might require special use cases. 
+</p>
+<ul><li> For instance, when you are tracking vesicles that do not fuse nor split, you just have a linear data structure (an array of objects for each particle). </li>
+<li> When you follow a cell lineage, you have a  <a href="http://en.wikipedia.org/wiki/Tree_(data_structure)" class="extiw" title="wikipedia:Tree (data structure)">rooted mathematical tree</a>. </li>
+<li> And if all cells divide in two daughters, then you have a <a href="http://en.wikipedia.org/wiki/Binary_tree" class="extiw" title="wikipedia:Binary tree">rooted binary tree</a>. </li></ul>
+<p>They all are specialization of the simple graph, and offer special tools that can be very useful. But <i>TrackMate assumes none of these specializations</i>. It stores and manipulate a graph.
+</p><p>Since we are Java coders, we use a Java library to manipulate these graphs, and for this we rely on the excellent <a rel="nofollow" class="external text" href="http://jgrapht.org/">JGraphT</a> library. Why a graph? Why not storing a list of successors and a list of predecessors for each spot? Or directly have a track object that would save some time on determining what are the tracks? Well, because a graph is very handy and simple to use when creating links. When you will write your own tracker, and found a link you want to add the model, the only thing you have to do is: <code>graph.addEdge(A, B)</code>. You don't have to care whether A belongs to a track and if yes to what track, you don't need to see the whole graph globally, you can just focus on the local link. Adding a link in the code is always very simple.
+</p><p>Then of course, you still need a way to know how many tracks are there in the model, and what are they made of. But this is the job of TrackMate. It offers the API that hides the graph and deals in track. This is done via a component of the model, the <a rel="nofollow" class="external text" href="https://fiji.sc/javadoc/fiji/plugin/trackmate/TrackModel.html">TrackModel</a>. But in the tracker we will not use this. We will be given a simple graph, and will have to flesh it out with spots and links between these spots. When the tracker completes, TrackMate will build and maintains a list of tracks from it. 
+</p><p>The price to pay for this simplicity is that - when tracking - it is not trivial to get the global information. For instance, it is easy to query whether a link exists between two spots, but the graph does not see the tracks directly. If you need them, you either have to build them from the graph, either have to maintain them locally. But more on this below. 
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Particle-linking_algorithms_in_TrackMate.">Particle-linking algorithms in TrackMate.</span></h2>
+<p>We used the term <i>tracker</i> since the beginning of this series, but the correct term for what we will build now is particle linking algorithm. Our particles are the visible spots resulting from the detection step, and the links will be the edges of the graph. A tracker could be defined as the full application that combines a particle detection algorithm with a particle linking algorithm.
+</p><p>In TrackMate, particle linking algorithms implements the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/tracking/SpotTracker.java">SpotTracker</a> interface. It is very simple. As explained in the docs, a SpotTracker algorithm is simply expected to create a new <a rel="nofollow" class="external text" href="http://jgrapht.org/javadoc/index.html?org/jgrapht/graph/SimpleWeightedGraph.html">SimpleWeightedGraph</a> from the SpotCollection given (using of course only the <i>visible</i> spots). We use a simple weighted graph:
+</p>
+<ul><li> Though the weights themselves are not used for subsequent steps, it is suggested to use edge weight to report the cost of a link.</li>
+<li> The graph is undirected, however, some link direction can be retrieved later on using the Spot.FRAME feature. The SpotTracker implementation does not have to deal with this; only undirected edges are created.</li>
+<li> Several links between two spots are not permitted.</li>
+<li> A link with the same spot for source and target is not allowed.</li>
+<li> A link with the source spot and the target spot in the same frame is not allowed. This must be enforced by implementations.</li></ul>
+<p>There is also an extra method to pass a instance of <a rel="nofollow" class="external text" href="https://fiji.sc/javadoc/fiji/plugin/trackmate/Logger.html">Logger</a> to log the tracking process progresses. That's all. 
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="A_dummy_example:_drunken_cell_divisions.">A dummy example: drunken cell divisions.</span></h2>
+<p>There is already an example online that does <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate-examples/blob/master/src/main/java/plugin/trackmate/examples/tracker/RandomLinkingTracker.java">random link creation</a>. Let's do something else, and build a tracker that links a spot to any two spots in the next frame (if they exist) as if it would go cell division as fast as it can.
+</p><p>Creating the class yields the following skeleton:
+</p>
+<pre class="brush:java">
+package plugin.trackmate.examples.tracker;
+
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.SimpleWeightedGraph;
+
+import fiji.plugin.trackmate.Logger;
+import fiji.plugin.trackmate.Spot;
+import fiji.plugin.trackmate.tracking.SpotTracker;
+
+public class DrunkenCellDivisionTracker implements SpotTracker
+{
+
+	private SimpleWeightedGraph&lt; Spot, DefaultWeightedEdge &gt; graph;
+
+	private String errorMessage;
+
+	private Logger logger = Logger.VOID_LOGGER;
+
+	@Override
+	public SimpleWeightedGraph&lt; Spot, DefaultWeightedEdge &gt; getResult()
+	{
+		return graph;
+	}
+
+	@Override
+	public boolean checkInput()
+	{
+		return true;
+	}
+
+	@Override
+	public boolean process()
+	{
+		graph = new SimpleWeightedGraph&lt; Spot, DefaultWeightedEdge &gt;( DefaultWeightedEdge.class );
+		return true;
+	}
+
+	@Override
+	public String getErrorMessage()
+	{
+		return errorMessage;
+	}
+
+	@Override
+	public void setNumThreads()
+	{
+		// Ignored. We do not multithreading here.
+	}
+
+	@Override
+	public void setNumThreads( final int numThreads )
+	{
+		// Ignored.
+	}
+
+	@Override
+	public int getNumThreads()
+	{
+		return 1;
+	}
+
+	@Override
+	public void setLogger( final Logger logger )
+	{
+// Just store the instance for later use.
+		this.logger = logger;
+	}
+}
+</pre>
+<p>Parameters need to be passed to the class via its constructor. As for detectors, the factory we will build later will be in charge of getting these parameters. Of course, the most important one is the SpotCollection to track. In our case it will be the only one, as our dummy tracker do not have any settings. So we can have a constructor like this:
+</p>
+<pre class="brush:java">
+public DrunkenCellDivisionTracker( final SpotCollection spots )
+	{
+		this.spots = spots;
+	}
+</pre>
+<p>then we exploit the SpotCollection in the <code>process()</code> method. Our strategy here is to loop over all the frames that have a content, and link each spot to two spots in the next frame - wherever they are - until there is either no source spots or no target spots left. The method looks like this:
+</p>
+<pre class="brush:java">
+@Override
+	public boolean process()
+	{
+		graph = new SimpleWeightedGraph&lt; Spot, DefaultWeightedEdge &gt;( DefaultWeightedEdge.class );
+
+		// Get the frames in order.
+		final NavigableSet&lt; Integer &gt; frames = spots.keySet();
+		final Iterator&lt; Integer &gt; frameIterator = frames.iterator();
+
+		// Get all the visible spots in the first frame, and put them in a new
+		// collection.
+		final Iterable&lt; Spot &gt; iterable = spots.iterable( frameIterator.next(), true );
+		final Collection&lt; Spot &gt; sourceSpots = new ArrayList&lt; Spot &gt;();
+		for ( final Spot spot&#160;: iterable )
+		{
+			sourceSpots.add( spot );
+		}
+
+		// Loop over frames, and link the source spots to spots in the next
+		// frame.
+		double progress = 0;
+		while ( frameIterator.hasNext() )
+		{
+			final Integer frame = frameIterator.next();
+			final Iterator&lt; Spot &gt; it = spots.iterator( frame, true );
+			SOURCE_LOOP: for ( final Spot source&#160;: sourceSpots )
+			{
+				/*
+				 * Add the source to the graph, if it is not already done (doing
+				 * it several time is not a problem: it's backed up by a Set).
+				 */
+				graph.addVertex( source );
+				// Finds 2 targets.
+				for ( int i = 0; i &lt; 2; i++ )
+				{
+					if ( it.hasNext() )
+					{
+						final Spot target = it.next();
+						// You must add it as vertex before creating the link.
+						graph.addVertex( target );
+						// This is how we create a link.
+						final DefaultWeightedEdge edge = graph.addEdge( source, target );
+						// We get the edge back, and set its weight through:
+						if ( null&#160;!= edge )
+						{
+							graph.setEdgeWeight( edge, 3.14 );
+							/*
+							 * Edge can be null if a link already exists between
+							 * the two spots.
+							 */
+						}
+					}
+					else
+					{
+						break SOURCE_LOOP;
+					}
+				}
+			}
+
+			// Regenerate source list for next frame.
+			sourceSpots.clear();
+			for ( final Spot spot&#160;: spots.iterable( frame, true ) )
+			{
+				sourceSpots.add( spot );
+			}
+
+			progress += 1;
+			logger.setProgress( progress / frames.size() );
+		}
+		return true;
+	}
+</pre>
+<p>So it's not really complicated. Which is good, because the complicated part, completely omitted here, is the one where you have to determine what links to create. This is where you Science should kick in. 
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="The_factory_class.">The factory class.</span></h2>
+<p>Now that we have the clever part of the code (the one that does the actual linking), we need to deal with TrackMate integration. Like for the detection modules, this is done <i>via</i> a factory class, named <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/tracking/SpotTrackerFactory.java">SpotTrackerFactory</a>. It is completely equivalent to the SpotDetectorFactory we saw in the <a href="http://imagej.net/How_to_write_your_own_detection_algorithm_for_TrackMate" title="How to write your own detection algorithm for TrackMate">previous tutorial</a>, so I won't detail the common methods again.
+</p><p><br />
+The methods specific to the tracker are:
+</p>
+<ul><li> <code>public SpotTracker create( final SpotCollection spots, final Map&lt; String, Object &gt; settings );</code></li></ul>
+<p>This method instantiates the actual tracker class. You can see that it received the SpotCollection and a settings map. This method is expected to unpack this map and extract the actual parameters need to instantiate the tracker.
+</p><p>Note that contrary to the detector factory, TrackMate calls this method only once for a tracking process. It does not generate a tracker per frame. So it is actually simpler than for detection: a tracker instance is expected to solve the tracking problem for the whole model at once. Therefore, there is no need for a <code>setTarget()</code> method, like previously.
+</p><p><br />
+</p>
+<ul><li> <code>public ConfigurationPanel getTrackerConfigurationPanel( final Model model );</code></li></ul>
+<p>This method should generate a GUI panel to request tracking parameters from the user. Completely similar to the detection modules.
+</p><p><br />
+</p>
+<ul><li> <code>marshall</code> and <code>unmarshall</code></li></ul>
+<p>Save to and retrieve from XML, like previously. 
+</p><p><br />
+</p>
+<ul><li> <code>public String toString( final Map&lt; String, Object &gt; sm );</code></li></ul>
+<p>Used to pretty-print the settings map specific to this tracker.
+</p><p>The rest is classic. Here is what it looks like for our tracker:
+</p>
+<div class="MediaTransformError" style="width: 715px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>TrackMate recognize there were two tracks. You did not have to worry about that. 
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Wrapping_up">Wrapping up</span></h2>
+<p>The full code, as well as the code for another tracker example can be found on <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate-examples/tree/master/src/main/java/plugin/trackmate/examples/tracker">github</a>.
+And this concludes flatly our series of tutorials on how to extend TrackMate. Go forth now, and bend it to your needs; it is <i>your</i> tool.
+</p><p><a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a> (<a href="http://imagej.net/index.php?title=User_talk:JeanYvesTinevez&amp;action=edit&amp;redlink=1" class="new" title="User talk:JeanYvesTinevez (page does not exist)">talk</a>) 09:26, 5 September 2014 (CDT)
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072459
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.036 seconds
+Preprocessor visited node count: 146/1000000
+Preprocessor generated node count: 3169/1000000
+Post‐expand include size: 935/2097152 bytes
+Template argument size: 30/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    9.762      1 - -total
+ 79.96%    7.806      1 - Template:Person
+  8.42%    0.822      1 - Template:ExtendingTrackMateTutorials
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=How_to_write_your_own_particle-linking_algorithm_for_TrackMate&amp;oldid=41252">http://imagej.net/index.php?title=How_to_write_your_own_particle-linking_algorithm_for_TrackMate&amp;oldid=41252</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=How_to_write_your_own_particle-linking_algorithm_for_TrackMate&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=How+to+write+your+own+particle-linking+algorithm+for+TrackMate" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=How+to+write+your+own+particle-linking+algorithm+for+TrackMate" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/How_to_write_your_own_particle-linking_algorithm_for_TrackMate" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/How_to_write_your_own_particle-linking_algorithm_for_TrackMate" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=How_to_write_your_own_particle-linking_algorithm_for_TrackMate&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=How_to_write_your_own_particle-linking_algorithm_for_TrackMate&amp;oldid=41252" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=How_to_write_your_own_particle-linking_algorithm_for_TrackMate&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":228});});</script>
+		</body>
+		</html>
+		

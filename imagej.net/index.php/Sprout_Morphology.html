@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Sprout Morphology - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Sprout_Morphology","wgTitle":"Sprout Morphology","wgCurRevisionId":26853,"wgRevisionId":26853,"wgArticleId":3597,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Sprout_Morphology","wgRelevantArticleId":3597,"wgRequestId":"ab61115efad1af455a67bf26","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The Sprout Morphology plugin measures sprout number, length, width and cell density of endothelial cell (EC) sprouts grown in a bead sprouting assay. It optionally includes measuring the coverage of these sprouts with pericytes included in the assay, as well as the endothelial cell/pericyte ratio."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Sprout Morphology"/>
+
+	<meta property="og:description" content="The Sprout Morphology plugin measures sprout number, length, width and cell density of endothelial cell (EC) sprouts grown in a bead sprouting assay. It optionally includes measuring the coverage of these sprouts with pericytes included in the assay, as well as the endothelial cell/pericyte ratio."/>
+
+	<meta property="og:url" content="http://imagej.net/Sprout_Morphology"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Sprout_Morphology rootpage-Sprout_Morphology skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Sprout_Morphology.html#bodyContent">Skip to content</a>, 			<a href="Sprout_Morphology.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Sprout_Morphology.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Sprout_Morphology" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Sprout_Morphology&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Sprout_Morphology&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Sprout_Morphology&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Sprout Morphology</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Sprout Morphology (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Eglinger" title="User:Eglinger">Jan Eglinger</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Eglinger" title="User:Eglinger">Jan Eglinger</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/angiogenesis/Sprout_Analysis/">on GitHub</a>
+</td></tr>
+
+
+<tr>
+<th> Development status
+</th>
+<td> stable
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a>
+</td></tr>
+
+</table>
+<p><br />
+The <b>Sprout Morphology</b> plugin measures sprout <i>number</i>, <i>length</i>, <i>width</i> and <i>cell density</i> of endothelial cell (EC) sprouts grown in a bead sprouting assay. It optionally includes measuring the coverage of these sprouts with pericytes included in the assay, as well as the endothelial cell/pericyte ratio.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Sprout_Morphology.html#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Sprout_Morphology.html#Usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Sprout_Morphology.html#General_configuration"><span class="tocnumber">2.1</span> <span class="toctext">General configuration</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Sprout_Morphology.html#Bead_detection"><span class="tocnumber">2.2</span> <span class="toctext">Bead detection</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Sprout_Morphology.html#Sprout_detection"><span class="tocnumber">2.3</span> <span class="toctext">Sprout detection</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Sprout_Morphology.html#Nucleus_segmentation"><span class="tocnumber">2.4</span> <span class="toctext">Nucleus segmentation</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Sprout_Morphology.html#Endothelial_cell.2FPericyte_classification"><span class="tocnumber">2.5</span> <span class="toctext">Endothelial cell/Pericyte classification</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Sprout_Morphology.html#Pericyte_coverage"><span class="tocnumber">2.6</span> <span class="toctext">Pericyte coverage</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Sprout_Morphology.html#Publication"><span class="tocnumber">3</span> <span class="toctext">Publication</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>To install the plugin, activate the <b>Angiogenesis</b> <a href="http://imagej.net/How_to_follow_a_3rd_party_update_site" class="mw-redirect" title="How to follow a 3rd party update site">update site</a> and restart Fiji.
+</p>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<p>Open a maximum intensity projection of the multi-channel image to be analyzed, then start the plugin via <span><em><span style="border-bottom:1px dotted #ccc;">Analyze</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Sprout Morphology</span></em></span>. The process consists of up to six dialogs:
+</p>
+<h3><span class="mw-headline" id="General_configuration">General configuration</span></h3>
+<p><a href="http://imagej.net/File:SproutAnalyzer_Configuration.png" class="image" title="Configuration dialog"><img alt="Configuration dialog" src="../_images/e/e3/SproutAnalyzer_Configuration.png" width="400" height="425" /></a>
+</p>
+<h3><span class="mw-headline" id="Bead_detection">Bead detection</span></h3>
+<p><a href="http://imagej.net/File:SproutAnalyzer_BeadDetection.png" class="image" title="Bead detection"><img alt="Bead detection" src="../_images/9/96/SproutAnalyzer_BeadDetection.png" width="400" height="243" /></a>
+</p>
+<h3><span class="mw-headline" id="Sprout_detection">Sprout detection</span></h3>
+<p><a href="http://imagej.net/File:SproutAnalyzer_SproutDetection.png" class="image" title="Sprout detection"><img alt="Sprout detection" src="../_images/a/a3/SproutAnalyzer_SproutDetection.png" width="400" height="259" /></a>
+</p>
+<h3><span class="mw-headline" id="Nucleus_segmentation">Nucleus segmentation</span></h3>
+<p><a href="http://imagej.net/File:SproutAnalyzer_NucleusSegmentation.png" class="image" title="Nucleus segmentation"><img alt="Nucleus segmentation" src="../_images/d/d5/SproutAnalyzer_NucleusSegmentation.png" width="400" height="212" /></a>
+</p>
+<h3><span class="mw-headline" id="Endothelial_cell.2FPericyte_classification">Endothelial cell/Pericyte classification</span></h3>
+<p><a href="http://imagej.net/File:SproutAnalyzer_CellClassification.png" class="image" title="Cell classification of ECs and pericytes"><img alt="Cell classification of ECs and pericytes" src="../_images/a/a3/SproutAnalyzer_CellClassification.png" width="400" height="254" /></a>
+</p>
+<h3><span class="mw-headline" id="Pericyte_coverage">Pericyte coverage</span></h3>
+<p><a href="http://imagej.net/File:SproutAnalyzer_PericyteCoverage.png" class="image" title="Pericyte coverage measurement"><img alt="Pericyte coverage measurement" src="../_images/d/dd/SproutAnalyzer_PericyteCoverage.png" width="400" height="273" /></a>
+</p>
+<h2><span class="mw-headline" id="Publication">Publication</span></h2>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Quantitative+assessment+of+angiogenesis+and+pericyte+coverage+in+human+cell-derived+vascular+sprouts&amp;rft.aulast=Eglinger&amp;rft.aufirst=J.&amp;rft.date=2017&amp;rft.volume=37%282%29&amp;rft_id=info:doi/10.1186%2Fs41232-016-0033-2&amp;rft_id=http%3A%2F%2Finflammregen.biomedcentral.com%2Farticles%2F10.1186%2Fs41232-016-0033-2"><cite id="CITEREFEglingerKarsjensLammert2017">Eglinger, J.; Karsjens, H.&#32;&amp; Lammert, E.&#32;(2017),&#32;"<a rel="nofollow" class="external text" href="http://inflammregen.biomedcentral.com/articles/10.1186/s41232-016-0033-2">Quantitative assessment of angiogenesis and pericyte coverage in human cell-derived vascular sprouts</a>",&#32;<i>Inflammation and Regeneration</i>&#32;<b>37(2)</b>, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1186%2Fs41232-016-0033-2">10.1186/s41232-016-0033-2</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://inflammregen.biomedcentral.com/articles/10.1186/s41232-016-0033-2">http://inflammregen.biomedcentral.com/articles/10.1186/s41232-016-0033-2</a>&gt;</span></cite></span></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073456
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.072 seconds
+Real time usage: 0.075 seconds
+Preprocessor visited node count: 665/1000000
+Preprocessor generated node count: 10446/1000000
+Post‐expand include size: 6819/2097152 bytes
+Template argument size: 2311/2097152 bytes
+Highest expansion depth: 11/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   34.861      1 - -total
+ 50.04%   17.443      1 - Template:Citation
+ 40.98%   14.286      1 - Template:Citation/core
+ 40.00%   13.943      1 - Template:Infobox
+ 25.51%    8.894      2 - Template:Person
+  9.20%    3.206      1 - Template:Bc
+  5.08%    1.772      1 - Template:GitHub
+  3.26%    1.137      1 - Template:Link
+  2.86%    0.998      1 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Sprout_Morphology&amp;oldid=26853">http://imagej.net/index.php?title=Sprout_Morphology&amp;oldid=26853</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 18 January 2017, at 05:05.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Sprout_Morphology&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Sprout+Morphology" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Sprout+Morphology" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Sprout_Morphology" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Sprout_Morphology" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Sprout_Morphology&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Sprout_Morphology&amp;oldid=26853" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Sprout_Morphology&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":289});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>BigDataServer - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"BigDataServer","wgTitle":"BigDataServer","wgCurRevisionId":17913,"wgRevisionId":17913,"wgArticleId":2765,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"BigDataServer","wgRelevantArticleId":2765,"wgRequestId":"01594ec4d92b674ab9f0027d","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="BigDataServer is a minimalistic HTTP server that serves XML/HDF5 datasets to the BigDataViewer Fiji plugin for visualisation."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="BigDataServer"/>
+
+	<meta property="og:description" content="BigDataServer is a minimalistic HTTP server that serves XML/HDF5 datasets to the BigDataViewer Fiji plugin for visualisation."/>
+
+	<meta property="og:url" content="http://imagej.net/BigDataServer"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-BigDataServer rootpage-BigDataServer skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="BigDataServer.html#bodyContent">Skip to content</a>, 			<a href="BigDataServer.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="BigDataServer.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/BigDataServer" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:BigDataServer&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=BigDataServer&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=BigDataServer&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>BigDataServer</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>BigDataServer (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>, <a href="http://imagej.net/User:Moon" title="User:Moon">HongKee Moon</a>, <a href="http://imagej.net/User:Tomancak" title="User:Tomancak">Pavel Tomancak</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/bigdataviewer/bigdataviewer-server/">on GitHub</a>
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> 1.0.2
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> experimental
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Visualization" title="Category:Visualization">Visualization</a>, <a href="http://imagej.net/Category:Transform" title="Category:Transform">Transform</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="BigDataServer.html#Description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="BigDataServer.html#Installing_and_running_the_BigDataServer"><span class="tocnumber">2</span> <span class="toctext">Installing and running the BigDataServer</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="BigDataServer.html#Connecting_to_a_running_BigDataServer_from_Fiji"><span class="tocnumber">3</span> <span class="toctext">Connecting to a running BigDataServer from Fiji</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Description">Description</span></h2>
+<p>BigDataServer is a minimalistic HTTP server that serves XML/HDF5 datasets to the <a href="http://imagej.net/BigDataViewer" title="BigDataViewer">BigDataViewer</a> Fiji plugin for visualisation.
+</p><p>The BigDataServer is running on a remote machine which hosts the XML/HDF5 datasets.
+A client running Fiji connects to the server, chooses the dataset that the server offers and then the data are efficiently delivered to the BigDataViewer.
+In this way, it is possible to seamlessly navigate very large datasets that reside in a remote location.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Installing_and_running_the_BigDataServer">Installing and running the BigDataServer</span></h2>
+<p>BigDataServer is packaged as a single "batteries-included" jar file with all required dependencies.
+It is run from the command line using Java 7 or higher.
+Copy <a rel="nofollow" class="external text" href="http://fly.mpi-cbg.de/~pietzsch/bigdataserver.jar">bigdataserver.jar</a> onto your webserver (probably running Linux).
+Run the BigDataServer using this command:
+</p>
+<pre>$ java -Xmx4G -jar bigdataserver.jar PARAMETERS
+</pre>
+<p>The <tt style="font-size: 1.25em;">-Xmx4G</tt> option gives the server 4GB of RAM.
+The server is built on the same caching architecture as BigDataViewer and does not require a lot of RAM to run (1GB or less should be sufficient).
+However, running with more RAM means that more of the data can be cached in RAM (on the server).
+This will improve performance, because client requests can be handled rapidly from cached data.
+</p><p>Running the above command without parameters will print this help:
+</p>
+<pre>$ java -Xmx4G -jar bigdataserver.jar
+usage: BigDataServer [OPTIONS] [NAME XML] ...
+
+Serves one or more XML/HDF5 datasets for remote access over HTTP.
+Provide (NAME XML) pairs on the command line or in a dataset file, where
+NAME is the name under which the dataset should be made accessible and XML
+is the path to the XML file of the dataset.
+-d &lt;FILE&gt;        Dataset file: A plain text file specifying one dataset
+                 per line. Each line is formatted as "NAME &lt;TAB&gt; XML".
+-p &lt;PORT&gt;        Listening port.
+                 (default: 8080)
+-s &lt;HOSTNAME&gt;    Hostname of the server.
+                 (default: localhost)
+-t &lt;DIRECTORY&gt;   Directory to store thumbnails. (new temporary directory
+                 by default.)
+</pre>
+<p>A typical command to start the server will look like this:
+</p>
+<pre>$ java -Xmx4G -jar bigdataserver.jar -d datasets.txt -s fly.mpi-cbg.de -p 8081
+2015-02-14 14:02:52.696:INFO::main: Logging initialized @421ms
+...
+2015-02-14 14:03:12.316:INFO:oejs.Server:main: Started @20046ms
+</pre>
+<p>where <i>dataset.txt</i> is a TAB delimited list of names and XML paths to the locally accessible datasets (comprising the XML and HDF5 files).
+For example <i>dataset.txt</i> could look like this:
+</p>
+<pre>drosophila_original_test	/mnt/export/hdf5_dataset.xml
+drosophila_registered_test	/mnt/export/registered_dataset.xml
+</pre>
+<p>The server will keep running until you cancel it with <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">C</kbd> or close the shell.
+To start the server in the background run it in a screen session:
+</p>
+<pre>$ screen
+$ java -Xmx4G -jar bigdataserver.jar -d datasets.txt
+2015-02-14 14:02:52.696:INFO::main: Logging initialized @421ms
+...
+2015-02-14 14:03:12.316:INFO:oejs.Server:main: Started @20046ms
+</pre>
+<p>and detach the screen with <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">A</kbd> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">D</kbd>.
+</p><p>To add new datasets edit the <i>dataset.txt</i> and add new XML paths.
+After that you have to currently restart the server.
+(Re-attach the screen session with <tt style="font-size: 1.25em;">screen -r</tt>, cancel the server with <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">C</kbd> and repeat the above).
+</p><p>Note that the server port needs to be open.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Connecting_to_a_running_BigDataServer_from_Fiji">Connecting to a running BigDataServer from Fiji</span></h2>
+<p>In order to connect to a BigDataServer from Fiji and view the data go to <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> BigDataViewer </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Browse BigDataServer</span></em></span>.
+You will be presented with the following dialog box:
+</p><p><a href="http://imagej.net/File:Bdv-browse-bigdataserver-1.png" class="image"><img alt="Bdv-browse-bigdataserver-1.png" src="../_images/7/76/Bdv-browse-bigdataserver-1.png" width="500" height="269" /></a>
+</p><p>Enter the URL (including port) of a BigDataServer.
+For example, the Drosophila timelapse dataset described in 
+<a href="http://imagej.net/BigDataViewer_Example_Datasets#Remote_HDF5" title="BigDataViewer Example Datasets">BigDataViewer_Example_Datasets#Remote_HDF5</a> is available through this address:
+<a rel="nofollow" class="external free" href="http://fly.mpi-cbg.de:8081">http://fly.mpi-cbg.de:8081</a>. Click OK.
+The following window will pop up showing a list of datasets offered by the server:
+</p><p><a href="http://imagej.net/File:Bdv-browse-bigdataserver-2.png" class="image"><img alt="Bdv-browse-bigdataserver-2.png" src="../_images/f/fd/Bdv-browse-bigdataserver-2.png" width="500" height="269" /></a>
+</p><p>In the example, the server offers only a single dataset called <i>Drosophila</i>.
+Double-clicking on a dataset in the list will launch it in the BigDataViewer.
+</p>
+<div class="MediaTransformError" style="width: 700px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064604
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.132 seconds
+Real time usage: 0.136 seconds
+Preprocessor visited node count: 3370/1000000
+Preprocessor generated node count: 10015/1000000
+Post‐expand include size: 17237/2097152 bytes
+Template argument size: 1950/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  105.360      1 - -total
+ 73.91%   77.870      4 - Template:Key_press
+ 68.90%   72.590      7 - Template:Key_press/core
+ 22.30%   23.495      1 - Template:Infobox
+ 16.76%   17.661      4 - Template:Person
+  3.34%    3.514      1 - Template:Bc
+  3.26%    3.439      7 - Template:Linear-gradient
+  3.12%    3.286      7 - Template:Box-shadow
+  1.62%    1.709      1 - Template:GitHub
+  1.54%    1.618      7 - Template:Border-radius
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=BigDataServer&amp;oldid=17913">http://imagej.net/index.php?title=BigDataServer&amp;oldid=17913</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 8 October 2015, at 13:24.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=BigDataServer&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=BigDataServer" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=BigDataServer" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/BigDataServer" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/BigDataServer" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=BigDataServer&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=BigDataServer&amp;oldid=17913" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=BigDataServer&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":341});});</script>
+		</body>
+		</html>
+		

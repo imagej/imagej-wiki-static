@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Read and Write Excel - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Read_and_Write_Excel","wgTitle":"Read and Write Excel","wgCurRevisionId":45539,"wgRevisionId":45539,"wgArticleId":10481,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Read_and_Write_Excel","wgRelevantArticleId":10481,"wgRequestId":"f9c1535172313af0ac5482e1","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="By default, this plugin extracts data from the Results Table and adds it to a sheet-tab &quot;A&quot; in an .xlsx Excel file on the user's desktop. The plugin will create a file named &quot;Rename me after writing is done&quot; on the desktop if none-exists already, and will update this file if it has already been created. Data is added to the latest sheet (created as &quot;A&quot; if the file is new) or to a user specified sheet using a passed argument (see below). Within the latest sheet, data will be added adjacent to previous data, unless an argument is passed to stack data underneath pre-existing column headers and data. Results Table column headers are added automatically. A row count is added by default but the user can choose to deny this with a passed argument."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Read and Write Excel"/>
+
+	<meta property="og:description" content="By default, this plugin extracts data from the Results Table and adds it to a sheet-tab &quot;A&quot; in an .xlsx Excel file on the user's desktop. The plugin will create a file named &quot;Rename me after writing is done&quot; on the desktop if none-exists already, and will update this file if it has already been created. Data is added to the latest sheet (created as &quot;A&quot; if the file is new) or to a user specified sheet using a passed argument (see below). Within the latest sheet, data will be added adjacent to previous data, unless an argument is passed to stack data underneath pre-existing column headers and data. Results Table column headers are added automatically. A row count is added by default but the user can choose to deny this with a passed argument."/>
+
+	<meta property="og:url" content="http://imagej.net/Read_and_Write_Excel"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Read_and_Write_Excel rootpage-Read_and_Write_Excel skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="./User:ResultsToExcel.html#bodyContent">Skip to content</a>, 			<a href="./User:ResultsToExcel.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="./User:ResultsToExcel.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="./User:ResultsToExcel.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Read_and_Write_Excel&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Read_and_Write_Excel&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Read_and_Write_Excel&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Read and Write Excel</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Read and Write Excel (ImageJ/Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Anthony Sinadinos, Brenden Kromhout
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Anthony Sinadinos <a rel="nofollow" class="external text" href="https://forum.image.sc/u/antinos/">(antinos)</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/antinos/Read_and_Write_Excel_Modified/">on GitHub</a>
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> 1.1.6
+</td></tr>
+
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Category:Plugins</a>
+</td></tr>
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external text" href="https://www.youtube.com/watch?v=dLkoB25MTIY">Youtube tutorial</a>
+</td></tr>
+</table>
+<p><br />
+By default, this plugin extracts data from the Results Table and adds it to a sheet-tab "A" in an .xlsx Excel file on the user's desktop. The plugin will create a file named "Rename me after writing is done" on the desktop if none-exists already, and will update this file if it has already been created. Data is added to the latest sheet (created as "A" if the file is new) or to a user specified sheet using a passed argument (see below). Within the latest sheet, data will be added adjacent to previous data, unless an argument is passed to stack data underneath pre-existing column headers and data. Results Table column headers are added automatically. A row count is added by default but the user can choose to deny this with a passed argument.
+</p><p>Created in Eclipse IDE. Requires jre 1.8, which is current ImageJ compatible.
+</p>
+<table class="wikitable mw-collapsible mw-collapsed" style="width: 40%; float:right; margin-left: 10px;">
+<caption class="nowrap"> Release version dates
+</caption>
+<tr>
+<th scope="col"> Version
+</th>
+<th scope="col"> Release Date
+</th>
+<th scope="col" style="width: 50%"> Notes
+</th></tr>
+<tr>
+<th scope="row"> v1.0.0
+</th>
+<td style="text-align:right;"> 19 Nov 2015
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> v1.0.1
+</th>
+<td style="text-align:right;"> 25 Nov 2015
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> v1.0.2
+</th>
+<td style="text-align:right;"> 10 Apr 2017
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> v1.1.0
+</th>
+<td style="text-align:right;"> 27 Feb 2018
+</td>
+<td> <span style="font-size:80%; line-height: 0.9em;">This version contains many new features that have been added by Brenden Kromhout <a rel="nofollow" class="external free" href="https://github.com/bkromhout">https://github.com/bkromhout</a> </span>
+</td></tr>
+<tr>
+<th scope="row"> v1.1.1
+</th>
+<td style="text-align:right;"> 02 Jul 2018
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> v1.1.2
+</th>
+<td style="text-align:right;"> 04 Nov 2018
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> v1.1.3
+</th>
+<td style="text-align:right;"> Jan 2019
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> v1.1.4
+</th>
+<td style="text-align:right;"> 17 Apr 2019
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> v1.1.5
+</th>
+<td style="text-align:right;"> 30 Nov 2019
+</td>
+<td>
+</td></tr>
+<tr>
+<th scope="row"> v1.1.6
+</th>
+<td style="text-align:right;"> 20 May 2020
+</td>
+<td>
+</td></tr></table>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="./User:ResultsToExcel.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="./User:ResultsToExcel.html#Usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="./User:ResultsToExcel.html#Optional_arguments"><span class="tocnumber">2.1</span> <span class="toctext">Optional arguments</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="./User:ResultsToExcel.html#Large_data_import_and_export"><span class="tocnumber">2.2</span> <span class="toctext">Large data import and export</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="./User:ResultsToExcel.html#Disclaimers_and_Licencing_stuff"><span class="tocnumber">3</span> <span class="toctext">Disclaimers and Licencing stuff</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="./User:ResultsToExcel.html#Plugin_technical_details"><span class="tocnumber">4</span> <span class="toctext">Plugin technical details</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="./User:ResultsToExcel.html#Change_log"><span class="tocnumber">4.1</span> <span class="toctext">Change log</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="./User:ResultsToExcel.html#Dependencies"><span class="tocnumber">4.2</span> <span class="toctext">Dependencies</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="./User:ResultsToExcel.html#Update_site"><span class="tocnumber">4.3</span> <span class="toctext">Update site</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="./User:ResultsToExcel.html#Installation"><span class="tocnumber">5</span> <span class="toctext">Installation</span></a></li>
+</ul>
+</div>
+</div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<p><span style="float:right; margin-left:10px;">
+<b>Youtube tutorial:</b><br />
+<iframe width="420" height="355" src="https://www.youtube.com/embed/dLkoB25MTIY" frameborder="0" allowfullscreen></iframe>
+</span>
+This plugin can be called from a macro using:
+</p>
+<pre class="brush:javascript"> 
+run("Read and Write Excel");
+</pre>
+<p>and it works very well with batching. A major change for v1.1.0, is that, if called slightly differently (see below), the plugin is now much better at handling large data sets and/or excel files that become large over time.
+</p><p>The title of the <b>most recent</b> open image is added as a label for exported results data by default, but this can be changed with passed arguments.
+</p>
+<h3><span class="mw-headline" id="Optional_arguments">Optional arguments</span></h3>
+<p>Arguments will be parsed from the second argument string as follows.
+</p><p><br />
+"dataset_label=" The label to write in the cell above the data in the excel file. Strings and numbers can also be fed to the custom title modifier from a macro/loop:
+</p>
+<pre class="brush:java"> 
+run("Read and Write Excel", "dataset_label=[My new results data label]");
+//example with passed variable 'i'
+run("Read and Write Excel", "dataset_label=Table"+i);
+</pre>
+<p><br />
+"no_count_column" Prevents the plugin from adding a "Count" column automatically:
+</p>
+<pre class="brush:java"> 
+run("Read and Write Excel", "no_count_column");
+</pre>
+<p><br />
+"stack_results" Causes the plugin to export results data underneath pre-existing data (instead of adjacent to it). NOTE: The dataset label for the now stacked data will be that determined for the most recent import:
+</p>
+<pre class="brush:java"> 
+run("Read and Write Excel", "stack_results");
+</pre>
+<p><br />
+"file=" The path to the excel file to create and/or update (uses the default desktop file otherwise):
+</p>
+<pre class="brush:java"> 
+run("Read and Write Excel", "file=[C:/Users/antinos/Desktop/My_file.xlsx]");
+</pre>
+<p><br />
+"sheet=" Which sheet in the excel file to put the results in. For example, "sheet=banana" will create and/or append a sheet named 'banana':
+</p>
+<pre class="brush:java"> 
+run("Read and Write Excel", "sheet=banana");
+</pre>
+<p><br />
+Join arguments as follows:
+</p>
+<pre class="brush:java"> 
+run("Read and Write Excel", "no_count_column file=[C:/Users/antinos/Documents/My_cool_file.xlsx] sheet=[Custom name here] dataset_label=[Custom data title here]");
+</pre>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Large_data_import_and_export">Large data import and export</span></h3>
+<p>"file_mode=" This requires a slightly different way of calling the plugin but <b>is very useful for expected large datasets</b>. There are three options.
+</p><p>"file_mode=read_and_open" Will just load/open an excel file into computer memory (the one you specify with file=)...make sure you do write_and_close when you're done or you'll have problems:
+</p>
+<pre class="brush:java"> 
+run("Read and Write Excel", "file=[C:/Users/antinos/Documents/My_cool_file.xlsx] file_mode=read_and_open");
+</pre>
+<p><br />
+"file_mode=queue_write" Will queue something to be written to the excel file you've opened previously with read_and_open:
+</p>
+<pre class="brush:java"> 
+run("Read and Write Excel", "file_mode=queue_write");
+</pre>
+<p><br />
+"file_mode=write_and_close" Will write everything you've queued with queue_write, then close the excel file:
+</p>
+<pre class="brush:java"> 
+run("Read and Write Excel", "file_mode=write_and_close");
+</pre>
+<p><br />
+Example large data macro workflow:
+</p>
+<pre class="brush:java">
+//macro to read and write large datasets
+
+//open or create the .xlsx file we want to add data to
+run("Read and Write Excel", "file=[C:/Users/antinos/Documents/My_cool_file.xlsx] file_mode=read_and_open");
+
+//add multiple and/or large datasets
+///do macro analysis and generate a big results table
+run("Read and Write Excel", "file_mode=queue_write");
+///do macro analysis and generate a big results table
+run("Read and Write Excel", "file_mode=queue_write");
+///do macro analysis and generate a big results table
+run("Read and Write Excel", "file_mode=queue_write");
+///do macro analysis and generate a big results table
+run("Read and Write Excel", "file_mode=queue_write");
+//for example in a loop
+for (i = 0; i &lt; 100; i++) {
+	//macro code here
+	run("Read and Write Excel", "file_mode=queue_write");
+}
+
+//finally write the queued results data to the file
+run("Read and Write Excel", "file_mode=write_and_close");
+</pre>
+<p><br />
+Also see <a rel="nofollow" class="external free" href="https://github.com/bkromhout/Read_and_Write_Excel_Modified">https://github.com/bkromhout/Read_and_Write_Excel_Modified</a> for examples. <b>(However please note: whilst Brenden did an amazing job updating the plugin for the version 1.1 release, the most up-to-date version is currently not represented on his github repo)</b>
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Disclaimers_and_Licencing_stuff">Disclaimers and Licencing stuff</span></h2>
+<p>I am aware that another Excel_Writer plugin exists but it did not work very well for me (hence me creating this). I did not consult their source code but did find out about Apache POI(*) from them.
+</p><p>Since Brenden modified the plugin, the code is now a lot neater. Feel free to consult it as per your needs.
+</p><p>(*)This plugin uses the Apache POI api, which is distributed under the terms of the Apache Licence (available from <a rel="nofollow" class="external free" href="https://poi.apache.org/legal.html">https://poi.apache.org/legal.html</a>). I believe this software to be free and open source.
+</p>
+<h2><span class="mw-headline" id="Plugin_technical_details">Plugin technical details</span></h2>
+<div class="mw-collapsible mw-collapsed">
+<div>
+<h3><span class="mw-headline" id="Change_log">Change log</span></h3>
+</div>
+<div class="mw-collapsible-content">
+<p>Version 1.0.1 changes: 
+</p>
+<ol><li> package is not bloated by dependency .jar files.</li>
+<li> now contains source-code for reference.</li>
+<li> removed platform specification as I believe this plugin will work across operating systems.</li></ol>
+<p>Version 1.0.2 changes:
+</p>
+<ol><li> the legacy feature was removed that allowed data to be fed to the plugin in a single-line string to the 'arg' function</li>
+<li> all data is now exported as string/text into the generated spreadsheet. This is sub-optimal, in that cells will then need to be converted back to a number format in the spreadsheet, but was required to immediately fix an issue whereby string data (when it exists within the Results table) was not being handled properly by the plugin</li>
+<li> Replaced the legacy data import function of the argument line (note 1 above) with an allowance for user supplied headings for each import; the argument now accepts a string title (e.g "this is my new title") that will then be used to label the results when exported.</li></ol>
+<p>Version 1.1.0 changes: 
+</p>
+<ol><li> Brenden Kromhout added the optional argument features mentioned above and described on his <a rel="nofollow" class="external text" href="https://github.com/bkromhout/Read_and_Write_Excel_Modified">GitHub</a> repo </li>
+<li> Data imported into an .xlsx file is now recognised as either text or numbers automatically </li>
+<li> An imageJ progress bar is now visible for each export </li>
+<li> Now using the latest Apache POI releases (3.17)</li></ol>
+<p>Version 1.1.1 changes:
+</p>
+<ol><li> Fixed an error whereby the plugin would fail to export data if the 'Label' column of the results table contained empty cells. Empty cells are now replace with a "null" string/text upon export.</li></ol>
+<p>Version 1.1.2 changes:
+</p>
+<ol><li> Added an argument so that results data can be exported so that it appears underneath pre-existing data in the created/amended .xlsx file. To implement this function, call the plugin with the argument "stack_results".</li></ol>
+<p>Version 1.1.3 changes:
+</p>
+<ol><li> Bug fix. Results data exported with the "stack_results" argument was being incorrectly referenced after the plugin handled empty cells (from the 'Label' column). When they arise, these empty cells are now handled better.</li></ol>
+<p>Version 1.1.4 changes:
+</p>
+<ol><li> Bug fix. Label column issue fixed. Label data was not being exported; it now is.</li></ol>
+<p>Version 1.1.5 changes:
+</p>
+<ol><li> Bug fix. Export can now proceed when there are non-Label-column empty cells.</li></ol>
+<p>Version 1.1.6 changes:
+</p>
+<ol><li> Bug fix. Fixed a rare 'stack_results' issue whereby the data was exported incorrectly if the results table and the excel file both contained a single-row of data.</li></ol>
+</div></div>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Dependencies">Dependencies</span></h3>
+<table class="wikitable">
+
+<tr>
+<th scope="col"> Dependency
+</th>
+<th scope="col"> Maven Repo
+</th></tr>
+<tr>
+<th> jars/commons-collections4.jar
+</th>
+<td style="text-align:center;"> <a rel="nofollow" class="external autonumber" href="https://mvnrepository.com/artifact/org.apache.commons/commons-collections4">[1]</a>
+</td></tr>
+<tr>
+<th> jars/xmlbeans.jar
+</th>
+<td style="text-align:center;"> <a rel="nofollow" class="external autonumber" href="https://mvnrepository.com/artifact/org.apache.xmlbeans/xmlbeans">[2]</a>
+</td></tr>
+<tr>
+<th> jars/poi-ooxml.jar
+</th>
+<td style="text-align:center;"> <a rel="nofollow" class="external autonumber" href="https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml">[3]</a>
+</td></tr>
+<tr>
+<th> jars/poi-ooxml-schemas.jar
+</th>
+<td style="text-align:center;"> <a rel="nofollow" class="external autonumber" href="https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-schemas">[4]</a>
+</td></tr>
+<tr>
+<th> jars/poi.jar
+</th>
+<td style="text-align:center;"> <a rel="nofollow" class="external autonumber" href="https://mvnrepository.com/artifact/org.apache.poi/poi">[5]</a>
+</td></tr>
+<tr>
+<th> jars/ij.jar
+</th>
+<td style="text-align:center;"> <a rel="nofollow" class="external autonumber" href="https://mvnrepository.com/artifact/net.imagej/ij">[6]</a>
+</td></tr></table>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Update_site">Update site</span></h3>
+<p><a rel="nofollow" class="external free" href="http://sites.imagej.net/ResultsToExcel">http://sites.imagej.net/ResultsToExcel</a>
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<ul><li> With ImageJ open, navigate to 'Help'</li>
+<li> In the presented drop down menu, then select 'Update...'</li>
+<li> Allow ImageJ to check for updates</li>
+<li> If required, download updates and restart ImageJ as prompted</li>
+<li> Repeat the first two steps = Help&gt;Update...</li>
+<li> This time ImageJ should let you know that there are no updates available</li>
+<li> Click on 'OK' but do not close the 'ImageJ Updater' window that is also open</li>
+<li> In the bottom left of the 'ImageJ Updater' window, find and click on 'Manage update sites'</li>
+<li> In the newly presented 'Manage update sites' window, find and check the 'ResultsToExcel' check box</li>
+<li> Then close the 'Manage update sites' window</li>
+<li> The 'ImageJ Updater' window will now present you with the plugin files for installation</li>
+<li> Press 'Apply changes'</li>
+<li> After the update has been applied successfully, restart ImageJ</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713074311
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.020 seconds
+Real time usage: 0.022 seconds
+Preprocessor visited node count: 261/1000000
+Preprocessor generated node count: 1225/1000000
+Post‐expand include size: 1192/2097152 bytes
+Template argument size: 582/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    6.854      1 - -total
+ 82.55%    5.658      1 - Template:Infobox
+ 26.48%    1.815      1 - Template:GitHub
+ 16.12%    1.105      1 - Template:TOC
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Read_and_Write_Excel&amp;oldid=45539">http://imagej.net/index.php?title=Read_and_Write_Excel&amp;oldid=45539</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 May 2020, at 09:14.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Read_and_Write_Excel&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Read+and+Write+Excel" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Read+and+Write+Excel" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Read_and_Write_Excel" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Read_and_Write_Excel" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Read_and_Write_Excel&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Read_and_Write_Excel&amp;oldid=45539" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Read_and_Write_Excel&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":206});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Description of ImageJ's plugin architecture - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Description_of_ImageJ's_plugin_architecture","wgTitle":"Description of ImageJ's plugin architecture","wgCurRevisionId":31539,"wgRevisionId":31539,"wgArticleId":757,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Outdated","Development"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Description_of_ImageJ's_plugin_architecture","wgRelevantArticleId":757,"wgRequestId":"504c30879f3ffb1bf7f1b4aa","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="So you want to know how ImageJ determines what plugins are available, and how to call them?  If so, you came to the right place."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Description of ImageJ's plugin architecture"/>
+
+	<meta property="og:description" content="So you want to know how ImageJ determines what plugins are available, and how to call them?  If so, you came to the right place."/>
+
+	<meta property="og:url" content="http://imagej.net/Description_of_ImageJ%27s_plugin_architecture"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Description_of_ImageJ_s_plugin_architecture rootpage-Description_of_ImageJ_s_plugin_architecture skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Description_of_ImageJ's_plugin_architecture.html#bodyContent">Skip to content</a>, 			<a href="Description_of_ImageJ's_plugin_architecture.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Description_of_ImageJ's_plugin_architecture.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Description_of_ImageJ%27s_plugin_architecture" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Description_of_ImageJ%27s_plugin_architecture&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Description_of_ImageJ%27s_plugin_architecture&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Description_of_ImageJ%27s_plugin_architecture&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Description of ImageJ's plugin architecture</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This section is out of date, potentially misleading or invalid. Be careful with any instructions here. When in doubt, <a href="http://imagej.net/Help" title="Help">ask for help from the community</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+So you want to know how ImageJ determines what plugins are available, and how to call them?  If so, you came to the right place.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Description_of_ImageJ's_plugin_architecture.html#What_are_ImageJ_plugins.3F"><span class="tocnumber">1</span> <span class="toctext">What are ImageJ plugins?</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Description_of_ImageJ's_plugin_architecture.html#How_does_ImageJ_find_the_plugins.3F"><span class="tocnumber">2</span> <span class="toctext">How does ImageJ find the plugins?</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Description_of_ImageJ's_plugin_architecture.html#Can_plugins_be_reloaded.3F"><span class="tocnumber">3</span> <span class="toctext">Can plugins be reloaded?</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Description_of_ImageJ's_plugin_architecture.html#How_can_a_plugin_specify_input.2Foutput_parameters.3F"><span class="tocnumber">4</span> <span class="toctext">How can a plugin specify input/output parameters?</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="What_are_ImageJ_plugins.3F">What are ImageJ plugins?</span></h2>
+<p>ImageJ plugins are classes implementing the <i>ij.plugin.PlugIn</i> or <i>ij.plugin.filter.PlugInFilter</i> interface.  The latter will only work when it has an input image, and it has a <i>setup()</i> method that returns information about which types of images the plugin can handle.
+</p><p>If a plugin class implements both the <i>PlugIn</i> and the <i>PlugInFilter</i> interface, the <i>PlugIn</i> interface will be preferred.
+</p>
+<h2><span class="mw-headline" id="How_does_ImageJ_find_the_plugins.3F">How does ImageJ find the plugins?</span></h2>
+<p>Plugins must be stored as either <i>.class</i> or <i>.jar</i> files in the <i>plugins/</i> directory in ImageJ's root directory.
+</p><p>The contract is that the name of the file contains an underscore.  If the file is a <i>.jar</i> file, its contents are searched for <i>.class</i> files whose names have underscores in them.  The underscores will be replaced by spaces and the resulting names (without the <i>.class</i> extension) will be added to the <i>Plugins</i> menu.
+</p><p>The <i>.class</i> file discovery in <i>.jar</i> files is <u>not</u> performed if the <i>.jar</i> file contains a file called <i>plugins.config</i>.  If that file exists, it is parsed to obtain the labels of the menu items and the corresponding Java classes instead.  A <i>plugins.config</i> file looks like this:
+</p>
+<pre># This is a comment (empty lines are also ignored)
+
+# This line will add "Blob" to the "New" submenu of the "File" menu.
+# Clicking on "Blob" will call the plugin class "my.test.Test"
+File&gt;New, "Blob", my.test.Test
+</pre>
+<p><i>Technical note:</i> the plugins are loaded via an instance of <i>ij.io.PluginClassLoader</i>, which is available by calling <i>ij.IJ.getClassLoader()</i>.
+</p><p><i>Fiji note:</i> while the plugins' <i>.jar</i> files are stored in the <i>plugins/</i> directory, the third-party libraries are not.  They are stored in the <i>jars/</i> directory, so that e.g. the file <i>jai_codec.jar</i> (which also contains classes with underscores in their names) is not mistaken for a plugin <i>.jar</i>. Plugins share all third party-libraries located in the <i>jars</i> directory. Every plugin has all third-party libraries in its classpath.
+</p>
+<h2><span class="mw-headline" id="Can_plugins_be_reloaded.3F">Can plugins be reloaded?</span></h2>
+<p>Yes.  By clicking on <i>Update Menus</i> in the <i>Help</i> menu, ImageJ's plugin class loader is replaced with a new instance.  Plugins which are already running are not reloaded, though.
+</p><p><i>Technical note:</i> for class reloading to work, it is necessary that the <i>plugins/</i> directory is <u>not</u> in the classpath, lest the system class loader take care of the classes (in which case they cannot be unloaded, and therefore not be reloaded, either).
+</p><p><i>Fiji note:</i> as third-party libraries cannot be in the <i>plugins/</i> directory, they must be in the class path (otherwise, the PluginClassLoader will not be able to resolve those classes).
+</p><p><i>Another Fiji note:</i> for scripting languages to work, the interpreters' class loaders have to be replaced or augmented by ImageJ's plugin class loader.
+</p>
+<h2><span class="mw-headline" id="How_can_a_plugin_specify_input.2Foutput_parameters.3F">How can a plugin specify input/output parameters?</span></h2>
+<p>A plugin typically instantiates <i>ij.gui.GenericDialog</i> in its <i>run()</i> method.  This class serves three purposes:
+</p>
+<ul><li> it shows a dialog with the given parameters of the given types,</li></ul>
+<ul><li> if there is a running macro recorder, and the dialog was not canceled, the key/values are recorded (using the labels of the dialog as keys), and</li></ul>
+<ul><li> if the dialog is "shown" in the context of a macro, the values are retrieved by the same keys from the parameters specified in the macro.</li></ul>
+<p><i>Technical note:</i> if a plugin uses the recommended GenericDialog way to ask for parameters, there is currently no other way to find out what parameters the plugin offers than to run the method and look what the dialog offers. In other words, this method is only useful when ImageJ is used as a desktop application, not when you want to use it as a library.
+</p><p><i>Another technical note:</i> as a GenericDialog extends an AWT class, it cannot be instantiated in a headless mode on Linux.  The reason is that text dimensions (and therefore the dimensions of the dialog itself) can only be inferred using functionality of X11's font manager.  So you cannot run parameterized macros in ImageJ on Linux without a graphical user interface.
+</p><p><i>Fiji note:</i> we have a workaround, where we have <i>alternative</i> implementations of some classes, which no longer extend AWT classes.  These implementations live in <i>misc/headless.jar</i>, and are prepended to the class path when Fiji was called in headless mode, so that those implementations are found before ImageJ's.  The downside is that plugins relying on the AWT classes being base classes will stop working, but at least some plugins run that way even without a graphical user interface.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064952
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.044 seconds
+Real time usage: 0.043 seconds
+Preprocessor visited node count: 51/1000000
+Preprocessor generated node count: 255/1000000
+Post‐expand include size: 1148/2097152 bytes
+Template argument size: 332/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    6.906      1 - Template:Outdated
+100.00%    6.906      1 - -total
+ 73.00%    5.041      1 - Template:Warning
+ 55.02%    3.800      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Description_of_ImageJ%27s_plugin_architecture&amp;oldid=31539">http://imagej.net/index.php?title=Description_of_ImageJ%27s_plugin_architecture&amp;oldid=31539</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 29 May 2017, at 20:00.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Description_of_ImageJ%27s_plugin_architecture&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Outdated" title="Category:Outdated">Outdated</a></li><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Description+of+ImageJ%27s+plugin+architecture" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Description+of+ImageJ%27s+plugin+architecture" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Description_of_ImageJ%27s_plugin_architecture" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Description_of_ImageJ%27s_plugin_architecture" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Description_of_ImageJ%27s_plugin_architecture&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Description_of_ImageJ%27s_plugin_architecture&amp;oldid=31539" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Description_of_ImageJ%27s_plugin_architecture&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":271});});</script>
+		</body>
+		</html>
+		

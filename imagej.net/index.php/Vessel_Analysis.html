@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Vessel Analysis - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Vessel_Analysis","wgTitle":"Vessel Analysis","wgCurRevisionId":41418,"wgRevisionId":41418,"wgArticleId":3579,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Vessel_Analysis","wgRelevantArticleId":3579,"wgRequestId":"33ad546d8b3051fa08a8facc","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Vessel Analysis is a plugin to automatically calculate vascular density metrics:&#10;- vascular density = vessel area/total area * 100%&#10;- vascular length density = skeletonized vessel area/total area * 100%)"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Vessel Analysis"/>
+
+	<meta property="og:description" content="Vessel Analysis is a plugin to automatically calculate vascular density metrics:&#10;- vascular density = vessel area/total area * 100%&#10;- vascular length density = skeletonized vessel area/total area * 100%)"/>
+
+	<meta property="og:url" content="http://imagej.net/Vessel_Analysis"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Vessel_Analysis rootpage-Vessel_Analysis skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Vessel_Analysis.html#bodyContent">Skip to content</a>, 			<a href="Vessel_Analysis.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Vessel_Analysis.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Vessel_Analysis" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Vessel_Analysis&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Vessel_Analysis&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Vessel_Analysis&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Vessel Analysis</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Vessel Analysis (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Nivetha Govindaraju, M farna
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> M farna (<a rel="nofollow" class="external text" href="mailto:mai.elfarnawany@gmail.com">mai.elfarnawany@gmail.com</a>)
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> <a rel="nofollow" class="external text" href="https://imagej.net/File:Vessel_Analysis.zip">Vessel Analysis.zip</a>
+</td></tr>
+
+<tr>
+<th> Initial release
+</th>
+<td> June 14<sup>th</sup>, 2016
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> 1.1
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a>, <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a>
+</td></tr>
+
+</table>
+<p><br />
+</p><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Vessel_Analysis.html#Description:"><span class="tocnumber">1</span> <span class="toctext"><b>Description:</b></span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Vessel_Analysis.html#Installation:"><span class="tocnumber">2</span> <span class="toctext"><b>Installation:</b></span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Vessel_Analysis.html#Usage:"><span class="tocnumber">3</span> <span class="toctext"><b>Usage:</b></span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Vessel_Analysis.html#Recommended_Citation:"><span class="tocnumber">4</span> <span class="toctext"><b>Recommended Citation:</b></span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Vessel_Analysis.html#Other_Studies_Used_and_Cited_Vessel_Analysis:"><span class="tocnumber">5</span> <span class="toctext"><b>Other Studies Used and Cited Vessel Analysis:</b></span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Description:"><b>Description:</b></span></h2>
+<p>Vessel Analysis is a plugin to automatically calculate vascular density metrics:
+- vascular density = vessel area/total area * 100%
+- vascular length density = skeletonized vessel area/total area * 100%) 
+</p><p>as well as making diameter measurements for multiple vessels in RGB images of vascular networks. It can also be used on any images of branching structures.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Installation:"><b>Installation:</b></span></h2>
+<p>Vessel Analysis can be added to Fiji (version 1.47g or higher required). 
+</p><p>Download the <a rel="nofollow" class="external text" href="https://imagej.net/File:Vessel_Analysis.zip">Vessel Analysis.zip</a> package and save an unzipped copy in Fiji's Plugins folder.
+Open a new session in Fiji and you should now see Vessel Analysis listed near the bottom of the Plugins drop down menu.
+</p><p>Before using the plugin, make sure your version of Fiji comes pre-downloaded with the Auto Threshold and Geometry to Distance plugins. They should be listed under:
+o Image &gt; Adjust &gt; Auto Threshold
+o Analyze &gt; Local Thickness &gt; Geometry to Distance Map
+</p><p>Also make sure you install <a rel="nofollow" class="external text" href="https://imagej.net/plugins/mexican-hat/index.html">Mexican Hat Filter</a>  plugin
+</p>
+<h2><span class="mw-headline" id="Usage:"><b>Usage:</b></span></h2>
+<p>Detailed Instructions <a rel="nofollow" class="external text" href="https://imagej.net/File:Vessel_Analysis_User_Manual.pdf">HERE</a>
+</p><p>Open a multi-channel image in Fiji and execute the Vessel Analysis plugin via Plugins &gt; Vessel Analysis &gt; Vessel Analysis (complete). The "complete" program will guide you through preprocessing steps to prepare the image for vascular density and diameter measurements.
+</p><p><i>Using the Plugin: Pre-processing</i>
+</p><p>You may skip directly to Vessel Analysis &gt; Vascular Density or Vessel Analysis &gt; Diameter Measurements if you already have the appropriate pre-processed image.
+</p><p>As the image is processed, new images will be generated and automatically saved in the source directory of the original image. You may re-use these images for future processing.
+</p><p><i>Vessel Analysis (complete)</i>
+Using the rectangular selection tool, you will be asked to select the image area you would like to analyze. Once complete, click OK. A cropped image will be generated, followed by its binary version. The following measurements will be collected using this binary image.
+</p><p><i>Choose a metric...</i>
+</p><p>You will now be prompted to perform either vascular density or diameter measurements.
+At the end of each individual program, you can choose to analyze the other metric as well.
+</p>
+<div class="MediaTransformError" style="width: 382px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<div class="MediaTransformError" style="width: 375px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<div class="MediaTransformError" style="width: 375px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h2><span class="mw-headline" id="Recommended_Citation:"><b>Recommended Citation:</b></span></h2>
+<p>Elfarnawany, Mai H., "Signal Processing Methods for Quantitative Power Doppler Microvascular Angiography" (2015). Electronic Thesis and Dissertation Repository. 3106. 
+</p>
+<h2><span class="mw-headline" id="Other_Studies_Used_and_Cited_Vessel_Analysis:"><b>Other Studies Used and Cited Vessel Analysis:</b></span></h2>
+<p>Teplyi V, Grebchenko K, Evaluation of the scars' vascularization using computer processing of the digital images., Skin Res Technol. 2019 Mar;25(2):194-199.
+</p><p>Yvette Zarb et al, Ossified blood vessels in primary familial brain calcification elicit a neurotoxic astrocyte response, Brain, Volume 142, Issue 4, April 2019, Pages 885–902.
+</p><p>Said SS et al., Fortifying Angiogenesis in Ischemic Muscle with FGF9-Loaded Electrospun Poly(Ester Amide) Fibers., Adv Healthc Mater. 2019 Apr;8(8):e1801294.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713074410
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.052 seconds
+Real time usage: 0.053 seconds
+Preprocessor visited node count: 785/1000000
+Preprocessor generated node count: 3598/1000000
+Post‐expand include size: 1042/2097152 bytes
+Template argument size: 499/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   27.154      1 - -total
+100.00%   27.154      1 - Template:Infobox
+ 85.04%   23.092      2 - Template:Person
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Vessel_Analysis&amp;oldid=41418">http://imagej.net/index.php?title=Vessel_Analysis&amp;oldid=41418</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Vessel_Analysis&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Vessel+Analysis" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Vessel+Analysis" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Vessel_Analysis" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Vessel_Analysis" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Vessel_Analysis&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Vessel_Analysis&amp;oldid=41418" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Vessel_Analysis&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":216});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Debugging - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Debugging","wgTitle":"Debugging","wgCurRevisionId":30646,"wgRevisionId":30646,"wgArticleId":622,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Development"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Debugging","wgRelevantArticleId":622,"wgRequestId":"6fa3945eedd5501dbba6511a","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="To debug problems with ImageJ, it is often helpful to launch it in debug mode. See the Troubleshooting page for instructions."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Debugging"/>
+
+	<meta property="og:description" content="To debug problems with ImageJ, it is often helpful to launch it in debug mode. See the Troubleshooting page for instructions."/>
+
+	<meta property="og:url" content="http://imagej.net/Debugging"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Debugging rootpage-Debugging skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Command-Line_Debugging.html#bodyContent">Skip to content</a>, 			<a href="Command-Line_Debugging.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Command-Line_Debugging.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Command-Line_Debugging.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Debugging&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Debugging&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Debugging&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Debugging</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Development
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Development" title="Development">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Philosophy" title="Philosophy">Philosophy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Architecture" title="Architecture">Architecture</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Source_code" title="Source code">Source code</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Project_management" title="Project management">Project management</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Coding_style" title="Coding style">Coding style</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Debugging</strong>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tools
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git" title="Git">Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Maven" title="Maven">Maven</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/IDEs" title="IDEs">IDEs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Travis" title="Travis">Travis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/AppVeyor" title="AppVeyor">AppVeyor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Dotfiles" title="Dotfiles">Dotfiles</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Guides
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Writing_plugins" title="Writing plugins">Writing plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_contribute_to_an_existing_plugin_or_library" title="How to contribute to an existing plugin or library">Contributing to a plugin</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Distribution" title="Distribution">Distributing your plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Development_Lifecycle" title="Development Lifecycle">Development lifecycle</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Building_a_POM" title="Building a POM">Building a POM</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImageJ_in_Eclipse" title="Developing ImageJ in Eclipse">Developing with Eclipse</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging_Exercises" title="Debugging Exercises">Hands-on debugging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_ops" title="Adding new ops">Adding new ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_formats" title="Adding new formats">Adding new formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_using_native_libraries" title="Developing using native libraries">Using native libraries</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_developers" title="Tips for developers">Tips for developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_C%2B%2B_developers" title="Tips for C++ developers">Tips for C++ developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">ImageJ 1.x plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Versioning" title="Versioning">Versioning</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Logging" title="Logging">Logging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Uber-JAR" title="Uber-JAR">Uber-JARs</a>
+</td></tr></table>
+</td></tr></table>
+<p><br />
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This page has approaches for <i>software developers</i> to use for debugging ImageJ.<br />If you are a <i>user</i> looking to troubleshoot issues, see the <a href="http://imagej.net/Troubleshooting" title="Troubleshooting">Troubleshooting</a> page. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Command-Line_Debugging.html#Launching_ImageJ_in_debug_mode"><span class="tocnumber">1</span> <span class="toctext">Launching ImageJ in debug mode</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Command-Line_Debugging.html#Debugging_plugins_in_an_IDE_.28Netbeans.2C_IntelliJ.2C_Eclipse.2C_etc.29"><span class="tocnumber">2</span> <span class="toctext">Debugging plugins in an IDE (Netbeans, IntelliJ, Eclipse, etc)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Command-Line_Debugging.html#Attaching_to_ImageJ_instances"><span class="tocnumber">2.1</span> <span class="toctext">Attaching to ImageJ instances</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Command-Line_Debugging.html#Attach_ImageJ_to_a_waiting_Eclipse"><span class="tocnumber">2.2</span> <span class="toctext">Attach ImageJ to a waiting Eclipse</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Command-Line_Debugging.html#Monitoring_system_calls"><span class="tocnumber">3</span> <span class="toctext">Monitoring system calls</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="Command-Line_Debugging.html#Linux"><span class="tocnumber">3.1</span> <span class="toctext">Linux</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Command-Line_Debugging.html#MacOSX"><span class="tocnumber">3.2</span> <span class="toctext">MacOSX</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Command-Line_Debugging.html#Windows"><span class="tocnumber">3.3</span> <span class="toctext">Windows</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Command-Line_Debugging.html#Debugging_shared_.28dynamic.29_library_issues"><span class="tocnumber">4</span> <span class="toctext">Debugging shared (dynamic) library issues</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="Command-Line_Debugging.html#Linux_2"><span class="tocnumber">4.1</span> <span class="toctext">Linux</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Command-Line_Debugging.html#MacOSX_2"><span class="tocnumber">4.2</span> <span class="toctext">MacOSX</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Command-Line_Debugging.html#Windows_2"><span class="tocnumber">4.3</span> <span class="toctext">Windows</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="Command-Line_Debugging.html#Debugging_JVM_hangs"><span class="tocnumber">5</span> <span class="toctext">Debugging JVM hangs</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="Command-Line_Debugging.html#Debugging_memory_leaks"><span class="tocnumber">6</span> <span class="toctext">Debugging memory leaks</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="Command-Line_Debugging.html#Debugging_hard_JVM_crashes"><span class="tocnumber">7</span> <span class="toctext">Debugging hard JVM crashes</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="Command-Line_Debugging.html#Using_gdb"><span class="tocnumber">7.1</span> <span class="toctext">Using gdb</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Command-Line_Debugging.html#Using_lldb"><span class="tocnumber">7.2</span> <span class="toctext">Using lldb</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="Command-Line_Debugging.html#Using_the_hs_err_pid.3Cpid.3E.log_files"><span class="tocnumber">7.3</span> <span class="toctext">Using the <i>hs_err_pid&lt;pid&gt;.log</i> files</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="Command-Line_Debugging.html#Out_of_memory_error"><span class="tocnumber">7.4</span> <span class="toctext">Out of memory error</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-20"><a href="Command-Line_Debugging.html#Debugging_Java_code_with_jdb"><span class="tocnumber">8</span> <span class="toctext">Debugging Java code with jdb</span></a>
+<ul>
+<li class="toclevel-2 tocsection-21"><a href="Command-Line_Debugging.html#How_to_attach_the_Java_debugger_jdb_to_a_running_ImageJ_process"><span class="tocnumber">8.1</span> <span class="toctext">How to attach the Java debugger jdb to a running ImageJ process</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Command-Line_Debugging.html#This_is_an_ultra_quick_start_to_jdb.2C_the_default_Java_debugger"><span class="tocnumber">8.2</span> <span class="toctext">This is an ultra quick start to jdb, the default Java debugger</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-23"><a href="Command-Line_Debugging.html#Inspecting_serialized_objects"><span class="tocnumber">9</span> <span class="toctext">Inspecting serialized objects</span></a></li>
+<li class="toclevel-1 tocsection-24"><a href="Command-Line_Debugging.html#Debugging_Swing_.28Event_Dispatch_Thread.29_issues"><span class="tocnumber">10</span> <span class="toctext">Debugging Swing (Event Dispatch Thread) issues</span></a></li>
+<li class="toclevel-1 tocsection-25"><a href="Command-Line_Debugging.html#Debugging_Java3D_issues"><span class="tocnumber">11</span> <span class="toctext">Debugging Java3D issues</span></a>
+<ul>
+<li class="toclevel-2 tocsection-26"><a href="Command-Line_Debugging.html#Command_line_debugging"><span class="tocnumber">11.1</span> <span class="toctext">Command line debugging</span></a>
+<ul>
+<li class="toclevel-3 tocsection-27"><a href="Command-Line_Debugging.html#Windows_.26_Linux"><span class="tocnumber">11.1.1</span> <span class="toctext">Windows &amp; Linux</span></a></li>
+<li class="toclevel-3 tocsection-28"><a href="Command-Line_Debugging.html#MacOSX_3"><span class="tocnumber">11.1.2</span> <span class="toctext">MacOSX</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-29"><a href="Command-Line_Debugging.html#Show_Java3D_debug_messages"><span class="tocnumber">11.2</span> <span class="toctext">Show Java3D debug messages</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="Command-Line_Debugging.html#Windows-specific_stuff"><span class="tocnumber">11.3</span> <span class="toctext">Windows-specific stuff</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="Command-Line_Debugging.html#More_Java_3D_properties"><span class="tocnumber">11.4</span> <span class="toctext">More Java 3D properties</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-32"><a href="Command-Line_Debugging.html#Interactive_debugging_using_a_shared_Terminal_session"><span class="tocnumber">12</span> <span class="toctext">Interactive debugging using a shared Terminal session</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Launching_ImageJ_in_debug_mode">Launching ImageJ in debug mode</span></h1>
+<p>To debug problems with ImageJ, it is often helpful to launch it in debug mode. See the <a href="http://imagej.net/Troubleshooting#Launching_ImageJ_from_the_console" title="Troubleshooting">Troubleshooting</a> page for instructions.
+</p>
+<h1><span class="mw-headline" id="Debugging_plugins_in_an_IDE_.28Netbeans.2C_IntelliJ.2C_Eclipse.2C_etc.29">Debugging plugins in an IDE (Netbeans, IntelliJ, Eclipse, etc)</span></h1>
+<p>To debug a plugin in an IDE, you most likely need to provide a <i>main()</i> method. To make things easier, we provide helper methods in <i>fiji-lib</i> in the class <i>fiji.Debug</i> to run plugins, and to load images and run filter plugins:
+</p>
+<pre class="brush:java">
+import fiji.Debug;
+
+...
+
+public void main(String[] args) {
+    Debug.runFilter("/home/clown/my-profile.jpg", "Gaussian Blur", "radius=2");
+}
+</pre>
+<p>You need to replace the first argument by a valid path to a sample image and the second argument by the name of your plugin (typically the class name with underscores replaced by spaces).
+</p><p>If your plugin is not a filter plugin, i.e. if it does not require an image to run, simply use the <i>Debug.run(plugin, parameters)</i> method.
+</p>
+<h2><span class="mw-headline" id="Attaching_to_ImageJ_instances">Attaching to ImageJ instances</span></h2>
+<p>Sometimes, we need to debug things directly in ImageJ, for example because there might be issues with the plugin discovery (ImageJ wants to find the plugins in <i>&lt;ImageJ&gt;/plugins/</i>, and often we want to bundle them as <i>.jar</i> files, both of which are incompatible with Eclipse debugging). JDWP (<i>Java Debug Wire Protocol</i>) to the rescue!
+</p><p>After starting the Java Virtual Machine in a special mode, debuggers (such as Eclipse's built-in one) can attach to it. To start ImageJ in said mode, you need to pass the <i>--debugger=&lt;port&gt;</i> option:
+</p>
+<pre class="brush:bash">
+ImageJ.app/ImageJ-linux64 --debugger=8000
+</pre>
+<p>In Eclipse (or whatever <a href="http://en.wikipedia.org/wiki/JDWP" class="extiw" title="wikipedia:JDWP">JDWP</a>-enabled debugger) select the correct project so that the source code can be found, mark the break-points where you want execution to halt (e.g. to inspect variables' values), and after clicking on <i>Run&gt;Debug Configurations...</i> right-click on the <i>Remote Java Application</i> item in the left-hand side list and select <i>New</i>. Now you only need to make sure that the port matches the value that you specified (in the example above, <i>8000</i>, Eclipse's default port number).
+</p><p>If you require more control over the ImageJ side -- such as picking a semi-random port if port 8000 is already in use -- you can also use the <i>-agentlib:jdwp=...</i> Java option directly (<i>--debugger=&lt;port&gt;</i> is just a shortcut for convenience):
+</p>
+<pre class="brush:bash">
+ImageJ.app/ImageJ-linux64 -agentlib:jdwp=server=y,suspend=y,transport=dt_socket,address=localhost:8000 --
+</pre>
+<p>(the <i>--</i> marker separates the Java options -- if any -- from the ImageJ options). Once started that way, ImageJ will wait for the debugger to be attached, after printing a message such as:
+</p>
+<blockquote>Listening for transport dt_socket at address: 46317</blockquote>
+<p><b>Note</b>: calling <i>imagej -agentlib:jdwp=help --</i> will print nice usage information with documentation of other JDWP options.
+</p>
+<h2><span class="mw-headline" id="Attach_ImageJ_to_a_waiting_Eclipse">Attach ImageJ to a waiting Eclipse</span></h2>
+<p>Instead of making ImageJ <a href="Command-Line_Debugging.html#Attaching_to_ImageJ_instances">the debugging server</a>, when debugging startup events and headless operations it is easier to make ImageJ the client and Eclipse (or equivalent) the server.
+</p><p>In this case you start the debugging session first, e.g. in Eclipse debug configurations you specify "Standard (Socket Listen)" as the connection type. Then, simply start ImageJ without the "server=y" flag to connect and debug:
+</p>
+<pre class="brush:bash">
+ImageJ.app/ImageJ-linux64 -agentlib:jdwp=suspend=y,transport=dt_socket,address=localhost:8000 --
+</pre>
+<h1><span class="mw-headline" id="Monitoring_system_calls">Monitoring system calls</span></h1>
+<h2><span class="mw-headline" id="Linux">Linux</span></h2>
+<p>On Linux, you should call ImageJ using the <a rel="nofollow" class="external text" href="http://www.linuxmanpages.com/man1/strace.1.php">strace command</a>:
+</p>
+<pre class="brush:bash">
+strace -Ffo syscall.log ./imagej &lt;args&gt;
+</pre>
+<h2><span class="mw-headline" id="MacOSX">MacOSX</span></h2>
+<p>Use the <i>dtruss</i> wrapper around <a rel="nofollow" class="external text" href="http://developer.apple.com/documentation/Darwin/Reference/ManPages/man1/dtrace.1.html">dtrace</a> to monitor system calls:
+</p>
+<pre class="brush:bash">
+dtruss ./imagej &lt;args&gt;
+</pre>
+<h2><span class="mw-headline" id="Windows">Windows</span></h2>
+<p>To monitor all kinds of aspects of processes on Windows, use <a rel="nofollow" class="external text" href="http://technet.microsoft.com/en-us/sysinternals/bb896645.aspx">Sysinternal's Process Monitor</a>.
+</p>
+<h1><span class="mw-headline" id="Debugging_shared_.28dynamic.29_library_issues">Debugging shared (dynamic) library issues</span></h1>
+<h2><span class="mw-headline" id="Linux_2">Linux</span></h2>
+<p>Set the <i>LD_DEBUG</i> environment variable before launching ImageJ:
+</p>
+<pre class="brush:bash">
+LD_DEBUG=1 ./imagej &lt;args&gt;
+</pre>
+<h2><span class="mw-headline" id="MacOSX_2">MacOSX</span></h2>
+<p>Set the <i>DYLD_PRINT_APIS</i> environment variable before launching ImageJ:
+</p>
+<pre class="brush:bash">
+DYLD_PRINT_APIS=1 ./imagej &lt;args&gt;
+</pre>
+<h2><span class="mw-headline" id="Windows_2">Windows</span></h2>
+<p>Often, dynamic library issues are connected to a dependent .dll file missing. Download <a rel="nofollow" class="external text" href="http://www.dependencywalker.com/">depends.exe</a> and load the .dll file you suspect is missing a dependency.
+</p>
+<h1><span class="mw-headline" id="Debugging_JVM_hangs">Debugging JVM hangs</span></h1>
+<p>When the Java VM hangs, the reason might be a dead-lock. Try taking a <a href="http://imagej.net/Troubleshooting#If_ImageJ_freezes_or_hangs" title="Troubleshooting">stack trace</a>. If you have trouble, you can try one of the following advanced techniques:
+</p>
+<ol>
+<li style="padding-bottom: 5px">
+You can use the <code>jstack</code> command (you don't need to run ImageJ from the command line in this case). This requires that you first find the PID (process ID) of ImageJ. You can do so by running:
+<pre class="brush:bash">jps</pre>
+<p>from the command line to print a list of running Java processes. If you're not sure which PID is ImageJ's, you can close ImageJ, run <code>jps</code>, open ImageJ and run <code>jps</code> again. Whichever PID is present in the second run but not the first is ImageJ's. Then, to acquire a stack trace, just run:
+</p>
+<pre class="brush:bash">jstack &lt;ImageJ's PID&gt;</pre>
+</li>
+<li>
+For GUI-based debugging, can also attach to the ImageJ PID using the <code>jvisualvm</code> program that you can find in <code>java/&lt;platform&gt;/&lt;jdk&gt;/bin/</code>. Here you can simply press a big <i>Thread Dump</i> button to view the stack trace.
+
+MacOSX users, please note that Apple decided that the VisualVM tool should no longer be shipped with the Java Development Kit; you will have to download it <a rel="nofollow" class="external text" href="http://visualvm.java.net/download.html">from here</a>.
+</li>
+</ol>
+<p>Regardless of which method you use to acquire the stack trace, to debug you will want to acquire multiple stack traces over time and compare. If all the stack traces are in the same method execution, then that's the source of the deadlock (or slowdown).
+</p>
+<h1><span class="mw-headline" id="Debugging_memory_leaks">Debugging memory leaks</span></h1>
+<p>Sometimes, memory is not released properly, leading to OutOfMemoryExceptions.
+</p><p>One way to find out what is happening is to use <code>jvisualvm</code> (see <a href="Command-Line_Debugging.html#Debugging_JVM_hangs">#Debugging JVM hangs</a>) to connect to the ImageJ process, click on <i>Heap Dump</i> in the <i>Monitor</i> tab, in said tab select the sub-tab <i>Classes</i> and sort by size. Double-clicking on the top user should get you to a detailed list of <i>Instances</i> where you can expand the tree of references to find out what is holding a reference still.
+</p>
+<h1><span class="mw-headline" id="Debugging_hard_JVM_crashes">Debugging hard JVM crashes</span></h1>
+<p>When you have found an issue that crashes the JVM, and you can repeat that crash reliably, there are a number of options to find out what is going on.
+</p>
+<h2><span class="mw-headline" id="Using_gdb">Using gdb</span></h2>
+<p>Typically when you debug a program that crashes, you start it in a debugger, to inspect the stack trace and the variables at the time of the crash. However, there are substantial problems with gdb when starting the Java VM; either gdb gets confused by segmentation faults (used by the JVM to handle NullPointerExceptions in an efficient manner), or it gets confused by the threading system -- unless you compile gdb yourself.
+</p><p>But there is a very easy method to use gdb to inspect serious errors such as segmentation faults or trap signals nevertheless:
+</p>
+<pre class="brush:bash">
+./imagej -XX:OnError="gdb -&#160;%p" --
+</pre>
+<h2><span class="mw-headline" id="Using_lldb">Using lldb</span></h2>
+<p>On newer OS X versions, gdb has been replaced with lldb. For those familiar with gdb already, there is an <a rel="nofollow" class="external text" href="http://lldb.llvm.org/lldb-gdb.html">LLDB to GDB Command Map</a> cheat sheet which may be useful.
+</p>
+<h2><span class="mw-headline" id="Using_the_hs_err_pid.3Cpid.3E.log_files">Using the <i>hs_err_pid&lt;pid&gt;.log</i> files</span></h2>
+<p>The Java virtual machine (JVM) frequently leaves files of the format <i>hs_err_pid&lt;number&gt;.log</i> in the current working directory after a crash. Such a file starts with a preamble similar to this:
+</p>
+<pre>
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f3dc887dd8b, pid=12116, tid=139899447723792
+#
+# JRE version: 6.0_20-b02
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (16.3-b01 mixed mode linux-amd64 )
+# Problematic frame:
+# C  [libc.so.6+0x86d8b]  memcpy+0x15b
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+</pre>
+<p>followed by thread dumps and other useful information including the command-line arguments passed to the JVM.
+</p><p>The most important part is the line after the line <i># Problematic frame:</i> because it usually gives you an idea in which component the crash was triggered.
+</p>
+<h2><span class="mw-headline" id="Out_of_memory_error">Out of memory error</span></h2>
+<p>If the specific exception you're receiving (or you suspect) is an OutOfMemoryError, there are JVM flags that can be enabled when running ImageJ to help pinpoint the problem:
+</p>
+<pre class="brush:bash">
+./imagej -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/desired/path/
+</pre>
+<p>The first option: 
+</p>
+<pre class="brush:plain">
+-XX:+HeapDumpOnOutOfMemoryError
+</pre>
+<p>tells the JVM to create a heap dump (.hprof file) if an OutOfMemoryError is thrown. This is basically a snapshot of the JVM state when memory ran out.
+</p><p>The second option:
+</p>
+<pre class="brush:plain">
+-XX:HeapDumpPath=/desired/path/
+</pre>
+<p>is not required, but convenient for controlling where the resulting .hprof file is written. Note that these heap dumps are named by PID, and thus are not easily human distinguishable.
+</p><p>After acquiring a heap dump, you can analyze it yourself, e.g. with a <a rel="nofollow" class="external text" href="http://www.eclipse.org/mat/">memory analyzer</a>, or post on [Mailing Lists|imagej-devel] with a brief explanation of your problem.
+</p>
+<h1><span class="mw-headline" id="Debugging_Java_code_with_jdb">Debugging Java code with jdb</span></h1>
+<h2><span class="mw-headline" id="How_to_attach_the_Java_debugger_jdb_to_a_running_ImageJ_process">How to attach the Java debugger jdb to a running ImageJ process</span></h2>
+<p>This requires two separate processes, ImageJ itself and the debugger.  You can do this either in one shell, backgrounding the first process or in two shells, this is recommended.  In the two shells do the following:
+</p>
+<dl><dt>Shell 1</dt>
+<dd>In the first shell, start ImageJ with special parameters to open a port (8000 in this case) to which jdb can connect afterwards:</dd></dl>
+<pre class="brush:bash">
+./imagej -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=y --</pre>
+<dl><dd>(Tested with Java 1.5.0, ymmv)</dd>
+<dt>Shell 2</dt>
+<dd>In the second shell, tell jdb to attach to that port:</dd></dl>
+<pre class="brush:bash">
+jdb -attach 8000
+</pre>
+<h2><span class="mw-headline" id="This_is_an_ultra_quick_start_to_jdb.2C_the_default_Java_debugger">This is an ultra quick start to jdb, the default Java debugger</span></h2>
+<p>Hopefully you are a little familiar with gdb, since jdb resembles it lightly.
+</p><p>Notable differences:
+</p>
+<ul><li> a breakpoint is set with "stop in &lt;class&gt;.&lt;method&gt;" or "&lt;class&gt;:&lt;line&gt;".  Just remember that the class must be fully specified, i.e. &lt;package&gt;.&lt;subpackages...&gt;.&lt;classname&gt;</li>
+<li> no tab completion</li>
+<li> no readline (cursor up/down)</li>
+<li> no shortcuts; you have to write "run", not "r" to run the program</li>
+<li> no listing files before the class was loaded</li>
+<li> much easier method to specify the location of the source: "use &lt;dir&gt;"</li>
+<li> "until" is "step", "step" is "stepi"</li></ul>
+<p>Okay, so here you go, a little demonstration:
+</p><p>(If you attach jdb to a running ImageJ process, you have to use the line from the previous section instead.)
+</p>
+<pre>$ jdb -classpath ij.jar ij.ImageJ
+&gt; stop in ij.ImageJ.main
+Deferring breakpoint ij.ImageJ.main.
+It will be set after the class is loaded.
+&gt; run
+run ij.ImageJ
+Set uncaught java.lang.Throwable
+Set deferred uncaught java.lang.Throwable
+&gt;
+VM Started: Set deferred breakpoint ij.ImageJ.main
+
+Breakpoint hit: "thread=main", ij.ImageJ.main(), line=466 bci=0
+
+main[1] use .
+main[1] list
+462             //prefs.put(IJ_HEIGHT, Integer.toString(size.height));
+463     }
+464
+465     public static void main(String args[]) {
+466 =&gt;          if (System.getProperty("java.version").substring(0,3).compareTo("1.4")&lt;0) {
+467                     javax.swing.JOptionPane.showMessageDialog(null,"ImageJ "+VERSION+" requires Java 1.4.1 or later.");
+468                     System.exit(0);
+469             }
+470             boolean noGUI = false;
+471             arguments = args;
+main[1] print args[0]
+java.lang.IndexOutOfBoundsException: Invalid array range: 0 to 0
+ args[0] = null
+main[1] print args.length
+ args.length = 0
+main[1] step
+&gt;
+Step completed: "thread=main", ij.ImageJ.main(), line=470 bci=28
+470             boolean noGUI = false;
+
+main[1] step
+&gt;
+Step completed: "thread=main", ij.ImageJ.main(), line=471 bci=30
+471             arguments = args;
+
+main[1] set noGUI = true
+ noGUI = true = true
+main[1] cont
+&gt;
+The application exited
+</pre>
+<h1><span class="mw-headline" id="Inspecting_serialized_objects">Inspecting serialized objects</span></h1>
+<p>If you have a file with a serialized object, you can use this Beanshell in the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a> to open a tree view of the object (double-click to open/close the branches of the view):
+</p>
+<pre class="brush:java">
+import fiji.debugging.Object_Inspector;
+
+import ij.io.OpenDialog;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+dialog = new OpenDialog("Classifier", null);
+if (dialog.getDirectory()&#160;!= null) {
+	path = dialog.getDirectory() + "/" + dialog.getFileName();
+	in = new FileInputStream(path);
+	in = new ObjectInputStream(in);
+	object = in.readObject();
+	in.close();
+	Object_Inspector.openFrame("classifier", object);
+}
+</pre>
+<h1><span class="mw-headline" id="Debugging_Swing_.28Event_Dispatch_Thread.29_issues">Debugging Swing (Event Dispatch Thread) issues</span></h1>
+<p>Swing does not allow us to call all the methods on all UI objects from wherever we want. Some things, such as <i>setVisible(true)</i> or <i>pack()</i> need to be called on the Event Dispatch Thread (AKA EDT). See Sun's <a rel="nofollow" class="external text" href="http://java.sun.com/products/jfc/tsc/articles/threads/threads1.html">detailed explanation</a> as to why this is the case.
+</p><p>There are a couple of ways to test for such EDT violations, see <a rel="nofollow" class="external text" href="http://weblogs.java.net/blog/alexfromsun/archive/2006/02/debugging_swing.html">this blog post by Alexander Potochkin</a> (current versions of debug.jar can be found <a rel="nofollow" class="external text" href="http://java.net/projects/swinghelper/sources/svn/show/trunk/www/bin">here</a>).
+</p>
+<h1><span class="mw-headline" id="Debugging_Java3D_issues">Debugging Java3D issues</span></h1>
+<p>When Java3D does not work, the first order of business is to use <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Utilities </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Debugging </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Test Java3D</span></em></span>. If this shows a rotating cube, but the <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D Viewer</a> does not work, please click on <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Java3D Properties...</span></em></span> in the <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D Viewer</a>'s menu bar.
+</p>
+<h2><span class="mw-headline" id="Command_line_debugging">Command line debugging</span></h2>
+<p>If this information is not enough to solve the trouble, or if <i>Test Java3D</i> did not work, then you need to call ImageJ from the command line to find out more.
+</p><p>From the command line, you have several options to show more or less information about Java3D.
+</p>
+<h3><span class="mw-headline" id="Windows_.26_Linux">Windows &amp; Linux</span></h3>
+<p>Please find the <i>ImageJ-&lt;platform&gt;</i> executable in the ImageJ.app/ directory (on 32-bit Windows, that would be <i>ImageJ-win32.exe</i>. Make a copy in the same directory and rename that to <i>debug</i> (on Windows: <i>debug.exe</i>). Simply double-click that.
+</p><p>On Windows, you will see a console window popping up; to copy information for pasting somewhere else, please right-click the upper-left window icon, select <i>Properties...</i>, activate the <i>Quick Edit</i> mode. Then mark the text in question by dragging the mouse with the left mouse button pressed, and copy it to the clipboard by right-clicking.
+</p><p>On Linux, the output will be written to the file <i>.xsession-errors</i> in the home directory.
+</p>
+<h3><span class="mw-headline" id="MacOSX_3">MacOSX</span></h3>
+<p>On MacOSX, you need to remember that any application is just a directory with a special layout. So you can call ImageJ like this from the <i>Terminal</i> (which you will find in the Finder by clicking on <i>Go&gt;Utilities</i>. Example command line:
+</p>
+<pre class="brush:bash">
+cd /Applications/ImageJ.app/Contents/MacOS/
+cp ImageJ-macosx debug
+./debug
+</pre>
+<h2><span class="mw-headline" id="Show_Java3D_debug_messages">Show Java3D debug messages</span></h2>
+<pre class="brush:bash">
+./imagej -Dj3d.debug=true --
+</pre>
+<p>(Of course, you need to substitute the <i>./imagej</i> executable name with the appropriate name for your platform.)
+</p><p><b>Note:</b> do not forget the trailing <i>--</i>; without them, ImageJ mistakes the first option for an ImageJ option rather than a Java one.
+<b>Note, too:</b> on Windows, you <u>must not</u> forget to pass the <i>--console</i> option (this can be anywhere on the command line).
+</p>
+<h2><span class="mw-headline" id="Windows-specific_stuff">Windows-specific stuff</span></h2>
+<p>On Windows, you can choose between OpenGL and Direct3D by passing <i>-Dj3d.rend=ogl</i> or <i>-Dj3d.rend=d3d</i>, respectively.
+</p><p>Further, some setups require enough RAM to be reserved, so you might need to pass an option like <i>--mem=1200m</i> (make sure that you have enough RAM free before starting ImageJ that way, though!). If it turns out that memory was the issue, you can make the setting permanent by clicking ImageJ's <span><em><span style="border-bottom:1px dotted #ccc;"> Edit </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Options </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Memory &amp; Threads...</span></em></span> menu entry.
+</p>
+<h2><span class="mw-headline" id="More_Java_3D_properties">More Java 3D properties</span></h2>
+<p>You can control quite a few things in Java 3D through setting Java properties. Remember, you can set properties using a command line like this:
+</p>
+<pre class="brush:bash">
+./imagej -D&lt;property-name&gt;=&lt;property-value&gt; --
+</pre>
+<p>where you substitute <i>&lt;property-name&gt;</i> and <i>&lt;property-values&gt;</i> appropriately. You can have more than one such option, but make sure that they are appearing before the <i>--</i> on the command line, otherwise ImageJ will mistake them for ImageJ options.
+</p><p>This list of Java 3D properties was salvaged from the now-defunct j3d.org website:
+</p>
+<table>
+<tr>
+<th> Property
+</th>
+<th> Values
+</th>
+<th> Java 3D version
+</th>
+<th> Explanation
+</th></tr>
+<tr>
+<td>j3d.rend
+</td>
+<td>"ogl" or "d3d"
+</td>
+<td>1.3.2
+</td>
+<td>Win32-only. Specifies which underlying rendering API should be used (thus allowing both Direct3D and OpenGL native DLLs to be installed on a singe machine. (default value "ogl")
+</td></tr>
+<tr>
+<td>j3d.deviceSampleTime
+</td>
+<td>A time in millseconds
+</td>
+<td>1.1
+</td>
+<td>The sample time for non-blocking input devices (default value is 5ms).
+</td></tr>
+<tr>
+<td>j3d.disablecompile
+</td>
+<td>N/A
+</td>
+<td>1.2
+</td>
+<td>If set turns off the ability to internally .compile() the scenegraph.
+</td></tr>
+<tr>
+<td>j3d.docompaction
+</td>
+<td>true or false
+</td>
+<td>1.3
+</td>
+<td>Default true. Controls whether or not objects are removed from the render cache when they haven't been visibile for a while. If it is disabled, they stay in the render cache from when they are first visible until they are removed from the scene graph.
+</td></tr>
+<tr>
+<td>j3d.forceReleaseView
+</td>
+<td>true or false
+</td>
+<td>1.3.2
+</td>
+<td>Default false. If this flag is set to true, the view is released after the Canvas3D is removed from the view. Can be used if you have memory leaks after disposing Canvas3D. Note: Setting this flag as true disables the bug fix 4267395 in View deactivate()
+</td></tr>
+<tr>
+<td>j3d.implicitAntialiasing
+</td>
+<td>true or false
+</td>
+<td>1.3
+</td>
+<td>Default false. By default, full scene antialiasing is disabled if a multisampling pixel format (or visual) is chosen. To honor a display drivers multisample antialiasing setting (e.g. force scene antialiasing), set the implicitAntialiasing property to true. This causes Java3D to ignore its own scene antialias settings, letting the driver implicitly implement the feature
+</td></tr>
+<tr>
+<td>j3d.optimizeForSpace
+</td>
+<td>true or false
+</td>
+<td>1.3
+</td>
+<td>Default true Java3d only builds display list for by-copy geometry. Set to false will cause Java3d to build display list for by-ref geometry and infrequently changing geometry using more space, but having greater speed.
+</td></tr>
+<tr>
+<td>j3d.renderLock
+</td>
+<td>true or false
+</td>
+<td>1.3
+</td>
+<td>JDK requires getting the JAWT_DrawingSurfaceInfo and lock the surface before Java3D render on the canvas. (see comment on jdk/include/jawt.h in the SDK) Default false causes Java3D to lock the surface before rendering and unlock it afterwards for onScreen rendering in the Renderer thread. For OffScreen rendering and for front/back buffer swapping the lock will not acquired. Setting the value to true will force Java3D lock the surface using the AWT mechanism before swap() and for offScreen rendering. This may be useful for some driver/OS to workaround problem. But in general the default should work.
+</td></tr>
+<tr>
+<td>j3d.threadLimit
+</td>
+<td>An integer
+</td>
+<td>1.2
+</td>
+<td>Controls how many threads may run in parallel regardless of how many cpu's the system has. Setting it to "1" will make the system act like a traditional OpenGL render loop. The default value is the number of CPUs in your machine + 1.
+</td></tr>
+<tr>
+<td>j3d.transparentOffScreen
+</td>
+<td>true or false
+</td>
+<td>1.3.2
+</td>
+<td>Default false. If this flag is set to true the background of the off screen canvas is set to transparent.
+</td></tr>
+<tr>
+<td>j3d.usePbuffer
+</td>
+<td>true or false
+</td>
+<td>1.3.2
+</td>
+<td>Default true. If this flag is set to false pbuffer will not be use for off screen rendering.
+</td></tr>
+<tr>
+<td>j3d.viewFrustumCulling
+</td>
+<td>true or false
+</td>
+<td>1.3.2
+</td>
+<td>Default true. If this flag is set to false, the renderer view frustum culling is turned off. Java 3D uses a 2 pass view culling. The first pass is a loose view culling of the spatial tree, and the second pass is a tight view frustum culling in the renderer before sending the geometry down to the low level graphics API. This property is to control the renderer view frustum culling, and it will not affect the first pass view culling.
+</td></tr>
+<tr>
+<td>javax.media.j3d.compileStats
+</td>
+<td>N/A
+</td>
+<td>??
+</td>
+<td>Output scenegraph compilation statistics
+</td></tr>
+<tr>
+<td>javax.media.j3d.compileVerbose
+</td>
+<td>N/A
+</td>
+<td>??
+</td>
+<td>Output verbose message when compiling scenegraph
+</td></tr>
+<tr>
+<th colspan="4"><br />OpenGL Only
+</th></tr>
+<tr>
+<td>j3d.backgroundtexture
+</td>
+<td>true or false
+</td>
+<td>1.3
+</td>
+<td>Prior to Java3D 1.3 OGL version of Java3D used glDrawPixels() to render background, which is known to be very slow under Windows since most window driver did not accelerate the function. To workaround this performance problem current release uses textures for the backgrond under windows by default (glDrawPixels() is used as default under Solaris). Setting this flag to false will force Java3D fall back to use glDrawPixels() instead of texture when drawing background texture in case it provide better performance under some drivers.
+</td></tr>
+<tr>
+<td>j3d.disableSeparateSpecular
+</td>
+<td>true or false
+</td>
+<td>1.2
+</td>
+<td>Default true enables the use of specular highlights in textures when using OpenGL 1.2.
+</td></tr>
+<tr>
+<td>j3d.disableXinerama
+</td>
+<td>true or false
+</td>
+<td>1.3
+</td>
+<td>Solaris version only. Allows major performance boost when using dual screen environments with the X11 Xinerama extension enabled. To disable this feature you need JDK1.4. Detailed information in the release notes.
+</td></tr>
+<tr>
+<td>j3d.displaylist
+</td>
+<td>true or false
+</td>
+<td>1.2
+</td>
+<td>Default true to use display lists (an OpenGL performance enhancing feature). False to disable for debugging.
+</td></tr>
+<tr>
+<td>j3d.g2ddrawpixel
+</td>
+<td>true or false
+</td>
+<td>1.1
+</td>
+<td>If false, this will use texture mapping instead of glDrawPixel to flush the graphics2D to the screen. glDrawPixel is not accelerated on some older video cards (windows).
+</td></tr>
+<tr>
+<td>j3d.sharedctx
+</td>
+<td>true or false
+</td>
+<td>1.2
+</td>
+<td>Default true for Solaris and false for windows. Shared contexts are used in OpenGL for DisplayLists and Texture Objects to improve performance. However some drivers have bugs causing weird rendering artifacts. This can be used to disable their use to see if this is the problem.
+</td></tr>
+<tr>
+<td>j3d.sharedstereozbuffer
+</td>
+<td>true or false
+</td>
+<td>1.2
+</td>
+<td>Some framebuffers only have one Z buffer and share this between the left and right eyes. This may be the reason why they don't have quad buffer but can still support stereo by setting this flag to true.
+</td></tr>
+<tr>
+<td>j3d.usecombiners
+</td>
+<td>true or false
+</td>
+<td>1.3
+</td>
+<td>Default false, uses the standard OpenGL all environment options. When set to true, it will make use of the Nvidia register combiner extensions to OpenGL for for Texture combine modes such as COMBINE_INTERPOLATE, COMBINE_DOT3. (ie GL_NV_register_combiners instead of standard OpenGL call glTexEnvi(GL_TEXTURE_ENV, ...)). It can be use in case like Dot3 texture when the driver does not support OpenGL extension GL_ARB_texture_env_dot3/GL_EXT_texture_env_dot3 but it supports the GL_NV_register_combiners extension instead.
+</td></tr>
+<tr>
+<th colspan="4"><br />DirectX only
+</th></tr>
+<tr>
+<td>j3d.d3ddevice
+</td>
+<td>"emulation" or "hardware" or "tnlhardware" or "reference"
+</td>
+<td>1.2
+</td>
+<td>Forces the software to use a particular mode for the underlying graphics accelaration. The reference option is only available if you have the Direct3D SDK installed (very unlikely).
+</td></tr>
+<tr>
+<td>j3d.d3ddriver
+</td>
+<td>idx
+</td>
+<td>1.2
+</td>
+<td>For cards like Voodoo that run fullscreen 3D only. idx is the order DirectX enumerates its driver using DirectDrawEnumerateEx(). This number starts at 1. This will force Java3D to use the driver specified by the user (may fail if the driver is not compatible with display). The driver number and details can be found by using the j3d.debug property. For a typical setup of a 3D only card attach to a graphics card in a single monitor system, use idx=2. This will automatically toggle to fullscreen hardware accelerated mode since if the 3D card support 3D only.
+</td></tr>
+<tr>
+<td>j3d.debug
+</td>
+<td>true or false
+</td>
+<td>1.1
+</td>
+<td>Prints out startup and running information. Useful for finding out information about the underlying hardware setup.
+</td></tr>
+<tr>
+<td>j3d.fullscreen
+</td>
+<td>PREFERRED or REQUIRED or UNNECESSARY
+</td>
+<td>1.2
+</td>
+<td>Option to force Java3D to run in fullscreen mode for video cards that will only use hardware accelaration when using fullscreen (non-windowed) mode, like the older Voodoo series.
+</td></tr>
+<tr>
+<td>j3d.vertexbuffer
+</td>
+<td>true or false
+</td>
+<td>1.2
+</td>
+<td>false to turn off the use of vertex buffers (a D3D performance enhancing feature equivalent to OpenGL display lists). Some drivers have implementation problems so it might be worth turning this off if you get crashes.
+<p>Utility Classes
+</p>
+</td></tr>
+<tr>
+<td>j3d.audiodevice
+</td>
+<td>A quote string containing a class name
+</td>
+<td>1.3.2
+</td>
+<td>SimpleUniverse utility classes. Takes the name of a concrete subclass of com.sun.j3d.audioengines.AudioEngine3DL2 that will be constructed by Viewer.createAudioDevice(). The default value is null, which means that audio is disabled by default for applications that call Viewer.createAudioDevice().
+<p>j3d.configURL	Unknown	1.3.1	Found in the ConfiguredUniverse class. Functionality unknown currently.
+</p>
+</td></tr>
+<tr>
+<td>j3d.io.ImageCompression
+</td>
+<td>"None" or "GZIP" or "JPEG"
+</td>
+<td>1.3.1
+</td>
+<td>Found in the scenegraph I/O package. Functionality unknown currently.
+</td></tr>
+<tr>
+<td>j3d.stereo
+</td>
+<td>PREFERRED or REQUIRED
+</td>
+<td>1.1
+</td>
+<td>Only used by SimpleUniverse. If you roll your own VirtualUniverse, this property is not used. Controls whether you want Java3D to definitely create stereo mode capable canvases or not
+</td></tr>
+<tr>
+<td>sun.java2d.d3d
+</td>
+<td>true or false
+</td>
+<td>??
+</td>
+<td>Default true. Enable Direct3D in Java 2D (not Java 3D, actually).
+</td></tr>
+<tr>
+<td>sun.java2d.ddoffscreen
+</td>
+<td>true or false
+</td>
+<td>??
+</td>
+<td>Default true. Enable DirectDraw and Direct3D by Java 2D for off screen images, such as the Swing back buffer (not Java 3D, actually).
+</td></tr>
+<tr>
+<td>sun.java2d.noddraw
+</td>
+<td>true or false
+</td>
+<td>??
+</td>
+<td>Default false. Completely disable DirectDraw and Direct3D by Java 2D (not Java 3D, actually). This avoids any problems associated with use of these APIs and their respective drivers.
+</td></tr></table>
+<h1><span class="mw-headline" id="Interactive_debugging_using_a_shared_Terminal_session">Interactive debugging using a shared Terminal session</span></h1>
+<p>For users running Linux and MacOSX computers (or on Windows, <a rel="nofollow" class="external text" href="http://www.cygwin.com/">Cygwin</a> with an openssh server), one can use an SSH tunnel for a debugging session shared between a user and a developer. All that is needed is a shared account on a public SSH server.
+</p><p>The user should execute this command:
+</p>
+<pre class="brush:bash">
+ssh -R 2222:127.0.0.1:22 -t $ACCOUNT@$SSHSERVER screen
+</pre>
+<p>Once connected, the command
+</p>
+<pre class="brush:bash">
+ssh -p 2222 $LOCALACCOUNT@127.0.0.1
+</pre>
+<p>will open a connection back to the local machine.
+</p><p>The developer should then execute this command:
+</p>
+<pre class="brush:bash">
+ssh -t $ACCOUNT@$SSHSERVER 'screen -x'
+</pre>
+<p>Since this provides a shared <a rel="nofollow" class="external text" href="http://savannah.gnu.org/projects/screen/">GNU screen</a> session, both the user and the developer can execute commands and see the output. It is even quite common to use the terminal window as sort of a private chat room by typing out what you have to say, ending the line with a <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">C</kbd> (lest it get executed as a command).
+</p><p>After the debugging party is over, the user can log out securely by hitting <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">D</kbd> to log out from the local machine (since the user typed in their password in the GNU screen session herself, there is no way for the developer to log back in without the user's explicit consent). Another <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">D</kbd> will terminate the GNU screen session, and yet another <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">D</kbd> will log out from the shared account on the SSH server.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064845
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.148 seconds
+Real time usage: 0.152 seconds
+Preprocessor visited node count: 3806/1000000
+Preprocessor generated node count: 8060/1000000
+Post‐expand include size: 24375/2097152 bytes
+Template argument size: 5583/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  111.995      1 - -total
+ 77.61%   86.920      8 - Template:Key
+ 69.21%   77.516      8 - Template:Key_press/core
+ 11.11%   12.442      1 - Template:DevelopMenu
+  9.77%   10.938      1 - Template:Menu
+  8.60%    9.631      3 - Template:Submenu
+  5.86%    6.561      3 - Template:Bc
+  4.35%    4.872     31 - Template:MenuItem
+  4.05%    4.538      8 - Template:Linear-gradient
+  3.17%    3.552      8 - Template:Box-shadow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Debugging&amp;oldid=30646">http://imagej.net/index.php?title=Debugging&amp;oldid=30646</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 3 May 2017, at 11:49.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Debugging&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Debugging" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Debugging" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Debugging" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Debugging" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Debugging&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Debugging&amp;oldid=30646" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Debugging&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":300});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Multi-View Deconvolution - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Multi-View_Deconvolution","wgTitle":"Multi-View Deconvolution","wgCurRevisionId":17129,"wgRevisionId":17129,"wgArticleId":1686,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Multi-View_Deconvolution","wgRelevantArticleId":1686,"wgRequestId":"62f7bd35236041877d26e74e","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Please note that the SPIM registration plugin available through Fiji, is based on a publication. If you use it successfully for your research please be so kind to cite our work:"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Multi-View Deconvolution"/>
+
+	<meta property="og:description" content="Please note that the SPIM registration plugin available through Fiji, is based on a publication. If you use it successfully for your research please be so kind to cite our work:"/>
+
+	<meta property="og:url" content="http://imagej.net/Multi-View_Deconvolution"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Multi-View_Deconvolution rootpage-Multi-View_Deconvolution skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Multi-View_Deconvolution.html#bodyContent">Skip to content</a>, 			<a href="Multi-View_Deconvolution.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Multi-View_Deconvolution.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Multi-View_Deconvolution" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Multi-View_Deconvolution&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Multi-View_Deconvolution&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Multi-View_Deconvolution&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Multi-View Deconvolution</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Multi-view deconvolution plugin (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Stephan Preibisch, Fernando Amat, Eugene Myers, Pavel Tomancak
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Stephan Preibisch
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> SPIM_Registration.jar
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/SPIM_Registration/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> February 2013
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> June 2013
+</td></tr>
+
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Registration" title="Category:Registration">SPIM Registration</a>
+</td></tr>
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external text" href="http://fly.mpi-cbg.de/~preibisch">Stephan Preibisch's homepage</a>
+</td></tr>
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Multi-View_Deconvolution.html#Citation"><span class="tocnumber">1</span> <span class="toctext">Citation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Multi-View_Deconvolution.html#Overview_of_the_multi-view_deconvolution_plugin"><span class="tocnumber">2</span> <span class="toctext">Overview of the multi-view deconvolution plugin</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Multi-View_Deconvolution.html#Prerequisites_I_-_Registration"><span class="tocnumber">2.1</span> <span class="toctext">Prerequisites I - Registration</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Multi-View_Deconvolution.html#Prerequisites_II_-_PSF.27s"><span class="tocnumber">2.2</span> <span class="toctext">Prerequisites II - PSF's</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Multi-View_Deconvolution.html#Prerequisites_III_-_Cropping_Area"><span class="tocnumber">2.3</span> <span class="toctext">Prerequisites III - Cropping Area</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="Multi-View_Deconvolution.html#How_to_use_the_plugin"><span class="tocnumber">3</span> <span class="toctext">How to use the plugin</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Multi-View_Deconvolution.html#Multi-Channel_Multi-View_Deconvolution"><span class="tocnumber">4</span> <span class="toctext">Multi-Channel Multi-View Deconvolution</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Multi-View_Deconvolution.html#How_do_I_..._Problems.2C_known_issues_and_solutions"><span class="tocnumber">5</span> <span class="toctext">How do I ... Problems, known issues and solutions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="Multi-View_Deconvolution.html#I_want_to_change_the_size_of_the_PSFs_that_are_extracted"><span class="tocnumber">5.1</span> <span class="toctext">I want to change the size of the PSFs that are extracted</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Multi-View_Deconvolution.html#I_want_to_subtract_background_before_running_the_deconvolution"><span class="tocnumber">5.2</span> <span class="toctext">I want to subtract background before running the deconvolution</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Multi-View_Deconvolution.html#How_do_I_choose_an_efficient_block_size_for_the_CPU"><span class="tocnumber">5.3</span> <span class="toctext">How do I choose an efficient block size for the CPU</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Multi-View_Deconvolution.html#How_do_I_make_all_PSF.27s_the_same_size"><span class="tocnumber">5.4</span> <span class="toctext">How do I make all PSF's the same size</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Multi-View_Deconvolution.html#Intermediate_.28de.29activation_of_the_debug_mode"><span class="tocnumber">5.5</span> <span class="toctext">Intermediate (de)activation of the debug mode</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="Multi-View_Deconvolution.html#Start_deconvolution_with_a_previous_result"><span class="tocnumber">5.6</span> <span class="toctext">Start deconvolution with a previous result</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Citation">Citation</span></h2>
+<p>Please note that the SPIM registration plugin available through Fiji, is based on a publication. If you use it successfully for your research please be so kind to cite our work:
+</p>
+<ul><li> S. Preibisch, F. Amat, E. Stamataki, M. Sarov, R.H. Singer, E. Myers and P. Tomancak (2014) "Efficient Bayesian-based Multiview Deconvolution", <i>Nature Methods</i>, <b>11</b>(6):645-648. <a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v11/n6/full/nmeth.2929.html">Webpage</a></li></ul>
+<h2><span class="mw-headline" id="Overview_of_the_multi-view_deconvolution_plugin">Overview of the multi-view deconvolution plugin</span></h2>
+<p>The multi-view deconvolution plugin is an image fusion plugin that computes one single image from several three-dimensional (3d) acquisitions (views) of the same specimen, taken in different orientations. The deconvolution tries to estimate the most probable image that best explains all views, given the individual point spread function (PSF) of each view. It can be computed for single timepoints or an entire timeseries.
+</p>
+<h4><span class="mw-headline" id="Prerequisites_I_-_Registration">Prerequisites I - Registration</span></h4>
+<p>Prerequisite for the fusion is an aligned dataset, an overview of the complete registration process can be found <a href="http://imagej.net/SPIM_Registration" title="SPIM Registration">here</a>, we suggest using the <a href="http://imagej.net/SPIM_Bead_Registration" title="SPIM Bead Registration">Bead-based registration</a> as it provides a simple pipeline.
+</p>
+<h4><span class="mw-headline" id="Prerequisites_II_-_PSF.27s">Prerequisites II - PSF's</span></h4>
+<p>The multi-view deconvolution additionally requires estimates of the PSF for each view. They can be directly and automatically measured from the data itself if fluorescent beads were added to the volume around the sample and the <a href="http://imagej.net/SPIM_Bead_Registration" title="SPIM Bead Registration">Bead-based registration</a> was used to register the views.
+</p><p>Alternatively, an estimate or a simulated PSF can be provided as a 3d image. This is especially helpful in case the registration was achieved in any another way, for example using the <a href="http://imagej.net/index.php?title=Segmentation-based_registration&amp;action=edit&amp;redlink=1" class="new" title="Segmentation-based registration (page does not exist)">Segmentation-based registration</a> or by an external program.
+</p>
+<h4><span class="mw-headline" id="Prerequisites_III_-_Cropping_Area">Prerequisites III - Cropping Area</span></h4>
+<p>It is highly recommended that before starting the multi-view deconvolution, to use the <a href="http://imagej.net/Multi-View_Fusion" title="Multi-View Fusion">Multi-view fusion</a> in order to determine the right bounding box for the image to be deconvolved.
+</p><p><span style="color:#A52A2A">
+<i>Note: Do not set the bounding box too close to the imaged sample as it might result in artifacts. A distance of around 30-50 pixels between sample and the bounding box is suggested for the multi-view deconvolution.</i>
+</span>
+</p>
+<h2><span class="mw-headline" id="How_to_use_the_plugin">How to use the plugin</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:Spim_multiview_dialog1.jpg" class="image"><img alt="" src="../_images/3/3a/Spim_multiview_dialog1.jpg" width="400" height="242" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Spim_multiview_dialog1.jpg" class="internal" title="Enlarge"></a></div>Shows the first dialog that queries the location of the multi-view files</div></div></div>
+<p>The multi-view deconvolution consists like the multi-view fusion of two consecutive dialogs. The first dialog queries the information necessary to analyze the dataset, i.e. locate the image files, the registration information and the location of the corresponding beads if applicable. Please note that all the parameters will be transferred from the <a href="http://imagej.net/Multi-View_Fusion" title="Multi-View Fusion">Multi-view fusion</a> dialog that you used before to set the bounding box (cropping area).
+</p><p>We omit a detailed explanation of the parameters here as it is identical to the explanation provided <a href="http://imagej.net/Multi-View_Fusion#How_to_use_the_plugin" title="Multi-View Fusion">Multi-view fusion dialog</a>.
+</p><p>After providing the data the plugin will check which kind of registrations are available (*.registration and *.registration_.to{tt}). Typically, the individual registration is available, and maybe also several time-series registrations to various reference timepoints. If no registration files could be found, the plugin will quit.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:Mv_deconvolution.png" class="image"><img alt="" src="../_images/5/50/Mv_deconvolution.png" width="400" height="477" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Mv_deconvolution.png" class="internal" title="Enlarge"></a></div>Shows the second dialog that queries detailed parameters</div></div></div>
+<p>In the second dialog, you have to define the detailed instruction of how to run the multi-view deconvolution.
+</p><p><span style="color:#A52A2A">
+<i>Note: Some of the options that are only mentioned here are explained in detail in the supplement of the not yet published publication. We will upload graphs, comparisons, etc. once the paper is accepted.</i>
+</span>
+</p><p>The available options are:
+</p>
+<ul><li> <b>Registration for channel 0:</b> You can choose which registration is used for this channel. You can typically choose between the individual registration of this timepoint or any registration to a reference timepoint.</li></ul>
+<ul><li> <b>Crop output image offset x/y/z:</b> Defines the offset of the cropping area (bounding box) in the x/y/z-dimension of the output image relative to the uncropped image. A value of 0 refers to the top-front-left corner of the bounding box surrounding all views. </li></ul>
+<ul><li> <b>Crop output image size x/y/z:</b> Defines the size of the cropping area (bounding box) in the x/y/z-dimension of the output image relative to the uncropped image. A value of 0 means no cropping.</li></ul>
+<p><i>Note: The values defining the bounding box are identical to those provided in the multi-view fusion!</i>
+</p>
+<ul><li> <b>Type of iteration:</b> There are several iteration schemes that have been developed and can be used. They differ from each other by convergence time and image quality, which is of course a trade-off:</li></ul>
+<ul><li><ul><li> <i>Independent (slow, very precise)</i> Is an ad-hoc optimization, yields reasonable results in case of very high signal-to-noise levels. In this case it is very fast.</li>
+<li> <i>Efficient Bayesian - Optimization I (fast, precise)</i> Is an optimization of the Efficient Bayesian multi-view deconvolution which approximates the conditional probabilities - the default choice.</li>
+<li> <i>Efficient Bayesian (less fast, more precise)</i> Incorporates conditional probabilities between the views into account without making any further assumptions.</li>
+<li> <i>Independent (slow, very precise)</i> assumes the individual views to be independent. This scheme converges slowest, but is least susceptible to noise and distortions (relevant at low signal-noise-ratios, imprecise alignments and inaccurate estimations of the PSFs)</li></ul></li></ul>
+<ul><li> <b>Number of iterations:</b> Typical multi-view deconvolution scenarios comprising around 4-8 views need 10-15 iterations when using <i>Efficient Bayesian - Optimization I (fast, precise)</i> as iteration scheme. The behavior relative to another number of views and different optimization schemes can be found in Supplementary Figure 4 (to be linked).</li></ul>
+<p><i>Note: In order to determine the correct number of iterations for your dataset we suggest to use the Debug Mode (see below) on a partial volume.</i>
+</p>
+<ul><li> <b>Use Tikhonov Regularization/Tikhonov Parameter:</b> The regularization can be (de)activated. The behavior of the Tikhonov Parameter is shown in Supplementary Figures 5 and 6 (to be linked). </li></ul>
+<ul><li> <b>ImgLib Container:</b> Defines which container is used to hold the image data in memory. The ArrayContainer is usually the right choice as it provides highest performance. The PlanarContainer and CellContainer might(!) help in case it runs out of memory, but they save only a few percent.</li></ul>
+<ul><li> <b>Compute:</b> Define if the multi-view deconvolution should be computed for the entire image at once or in blocks. The result will be 100% identical! Computing in blocks saves a significant amount of RAM at the cost of higher computation time. If you run out of memory, try computing it in small blocks. If you select to choose a manually defined block size, a subsequent dialog will query the dimensions. </li></ul>
+<p><i>Note: For computation on the CPU, specific block sizes are not important (it is not a traditional power-of-2 scheme). However, on the GPU it is highly recommended to use only power-of-two values (256, 512, etc.), or maximally a sum of power-of-two values (384, 768, etc.)</i>
+</p>
+<ul><li> <b>Compute on:</b> The multi-view deconvolution can be computed on the CPU or the GPU via JNA and CUDA. The CPU computation is built in Fiji, the CUDA code requires to load a native library (*.dll, *.so) that needs to be copied into the Fiji directory before starting Fiji. If you chose to compute the entire image at once on the GPU, a subsequent dialog will query which CUDA device to use. If you chose blocks on CUDA, you can choose in a subsequent dialog which GPU's will be used. If you have more than one CUDA device, use them both. It is usually not faster to let the CPU's compute blocks as well, but it might be.</li></ul>
+<p><i>Note: Note that when CUDA crashes (e.g. because of out-of-memory), Java usually crashes with it.</i>
+</p>
+<ul><li> <b>PSF Estimation:</b> The PSFs can either be extracted from the corresponding beads that were detected during the bead-based registration or image(s) of the PSF can be provided. You can use a simulated PSF for your data or measured PSF's from another experiment (see PSF display for details how to store them). You can either use the same PSF for all views, it will be transformed according to the registrations of each view, or you specify a PSF for each view. In the latter case you can choose to transform the PSF's or you provide them already transformed. Typically, you will transform them. In case the PSFs are transformed, they to have the same calibration as the input views.</li></ul>
+<ul><li> <b>PSF display:</b> In order to verify or store the extracted PSFs they can be displayed as maximum intensity projection along the rotation axis, as averaged three-dimensional volume or each PSF individually as three-dimensional volume. For the last two cases you can choose to display them in the same calibration as the input views or already transformed. <span style="color:#A52A2A">You can for example save them and provide them as input for another deconvolution experiment where no beads were included.</span></li></ul>
+<p><i>Note: All images are displayed as Virtual stacks. You might need to duplicate them in order to save them.</i>
+</p>
+<ul><li> <b>Debug Mode:</b> The debug mode will not only compute the final image but also show intermediate iterations in an ImageJ window. This allows to identify the correct number of iterations desired for your dataset. You will be queried in a subsequent dialog after every how many iterations you want to see current state of the iteration. It makes sense to not run the debug mode on the entire dataset but maybe a smaller part. Although the output might not be identical it gives a pretty good idea of how many iterations are required.</li></ul>
+<ul><li> <b>Load images sequentially:</b> You usually want to activate this option as it saves a lot of memory and at the same time is just unnoticeably slower.</li></ul>
+<ul><li> <b>Fused image output:</b> You can choose to display the result, save it the output directory as slices or create a different directory for each timepoint that is processed.</li></ul>
+<h2><span class="mw-headline" id="Multi-Channel_Multi-View_Deconvolution">Multi-Channel Multi-View Deconvolution</span></h2>
+<p>Multi-Channel deconvolution can be achieved by running the plugin on both channels individually. First, you have to make sure that both channels are aligned to each other. You have two choices:
+</p><p><b>(1)</b> Run the <a href="http://imagej.net/SPIM_Bead_Registration" title="SPIM Bead Registration">Bead-based registration</a> on just one channel and duplicate and rename the *.dim, *.beads.txt and *.registration files for the other channels. Now when you run the deconvolution on the channel that contained the beads choose to export the PSF's in original calibration. For the other channels run the deconvolution with loaded PSFs. Alternatively use simulated PSFs. Simply merge the result of all channels.
+</p><p><b>(2)</b> Run the  <a href="http://imagej.net/SPIM_Bead_Registration#Multichannel_registration" title="SPIM Bead Registration">Multi-channel bead based registration</a>, it requires that the same beads are visible in all channels and will register all to each other. Now run the deconvolution individually on both channels and extract the PSF's from the image or use simulated PSFs. Now there will be the problem that the images will most likely suffer an offset to each other, you might even need to define two different bounding boxes. The good news is that we know exactly what the offset - even with different bounding boxes - is. For that you need to note down one line in the output of the deconvolution (fusion is actually the same) of the channels:
+</p>
+<pre>Location of pixel (0,0,0) in global coordinates is: (367.39523, 452.0, 105.90103)
+</pre>
+<p>The difference between these coordinates of the different channels can for example be applied afterwards using TransformJ -&gt; Translate.
+</p>
+<h2><span class="mw-headline" id="How_do_I_..._Problems.2C_known_issues_and_solutions">How do I ... Problems, known issues and solutions</span></h2>
+<p>Some tips and tricks in the next few paragraphs require to change a static variable in the source code that changes the behavior of the plugin. This is done using the <b>script editor</b> and works as follows:
+</p>
+<ul><li> <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> New </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Script</span></em></span></li>
+<li> <span><em><span style="border-bottom:1px dotted #ccc;"> Language </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Beanshell</span></em></span></li>
+<li> type the command, e.g.</li></ul>
+<pre class="brush:java">
+System.gc();
+</pre>
+<ul><li> click Run</li></ul>
+<p>This just cleans up the RAM, which might be useful. Note that changes that are made (not in this case though) are only valid for the <b>currently running Fiji instance</b>.
+</p>
+<h3><span class="mw-headline" id="I_want_to_change_the_size_of_the_PSFs_that_are_extracted">I want to change the size of the PSFs that are extracted</span></h3>
+<p>The plugin does some choice of what the area it is it uses to extract the PSF around the detected corresponding beads. You can change it in Beanshell by:
+</p>
+<pre class="brush:java">
+fiji.plugin.Multi_View_Deconvolution.psfSize3d = new int[]{ 31, 31, 31 };
+</pre>
+<p>This changes the area to 31x31x31 pixel around a detected bead (in original calibration of the input views).
+</p>
+<h3><span class="mw-headline" id="I_want_to_subtract_background_before_running_the_deconvolution">I want to subtract background before running the deconvolution</span></h3>
+<p>You can subtract background before running the deconvolution (everything belong 0 is clipped). To do so type in the script editor:
+</p>
+<pre class="brush:java">
+fiji.plugin.Multi_View_Deconvolution.subtractBackground = 100;
+</pre>
+<p>This for example subtracts a value of 100 from each pixel before starting, also before starting to extract the PSFs.
+</p>
+<h3><span class="mw-headline" id="How_do_I_choose_an_efficient_block_size_for_the_CPU">How do I choose an efficient block size for the CPU</span></h3>
+<p>This is pretty tricky right now. You want to use as few blocks as possible given a certain size. If you choose a block size of let's say 512x512x512px you end up with an <b>effective block size</b> of maybe 475x489x432px, it depends on the size of the transformed PSF. It is computed as blocksize - kernelsize + 1. So you cannot really predict it before running a deconvolution once. It also different for each view (see <a href="http://imagej.net/Multi-View_Deconvolution#How_do_I_make_all_PSF.27s_the_same_size" title="Multi-View Deconvolution">next section</a>). However, the <b>effective block size</b> relative to your bounding box size defines how many blocks you will require to cover your bounding box. How many blocks and <b>effective block size</b> is written to the standard out. In the future I plan to make this easier.
+</p>
+<h3><span class="mw-headline" id="How_do_I_make_all_PSF.27s_the_same_size">How do I make all PSF's the same size</span></h3>
+<p>In the course of optimizing the block size you might get sick of the fact that it is different for each view. It might pose huge problems. I therefore added the option to make all transformed PSFs the same size before starting the deconvolution. This means that the <b>effective block size</b> will be the same for all views.
+</p>
+<pre class="brush:java">
+fiji.plugin.Multi_View_Deconvolution.makeAllPSFSameSize = true;
+</pre>
+<p>Note that you might want to go to this detail of optimization if you have to deconvolve hundreds or thousands of timepoints.
+</p>
+<h3><span class="mw-headline" id="Intermediate_.28de.29activation_of_the_debug_mode">Intermediate (de)activation of the debug mode</span></h3>
+<p>Maybe you ran the deconvolution already for some time because the image is gigantic and computed in small blocks and you just want to check the current state at the next iteration. Or you maybe want to deactivate the the debug mode because you are afraid it runs out of memory with the next debug image. You can do so by executing
+</p>
+<pre class="brush:java">
+mpicbg.spim.postprocessing.deconvolution2.debug = true; // or false
+</pre>
+<p>You can also change the interval
+</p>
+<pre class="brush:java">
+mpicbg.spim.postprocessing.deconvolution2.debugInterval = 10;
+</pre>
+<p>Now, I will only debug every 10'th iteration.
+</p>
+<h3><span class="mw-headline" id="Start_deconvolution_with_a_previous_result">Start deconvolution with a previous result</span></h3>
+<p>By default, the deconvolution is initialized with a constant value for each pixel. You have, however, the chance to initialize with a different image. This way you can simply add more iterations to an existing result or even try to combine different parameters. You can do so by setting the input image
+</p>
+<pre class="brush:java">
+mpicbg.spim.postprocessing.deconvolution2.initialImage = "/users/preibischs/data/psi_10.tif";
+</pre>
+<p>and re-running the deconvolution. Note that there is a minimal value for the deconvolved image by definition, here we use 0.0001. By default the image will be checked for anomalies. You can disable the check by executing
+</p>
+<pre class="brush:java">
+mpicbg.spim.postprocessing.deconvolution2.checkNumbers = false;
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713073021
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.032 seconds
+Real time usage: 0.034 seconds
+Preprocessor visited node count: 346/1000000
+Preprocessor generated node count: 1659/1000000
+Post‐expand include size: 2080/2097152 bytes
+Template argument size: 757/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    8.493      1 - -total
+ 53.73%    4.563      1 - Template:Infobox
+ 43.97%    3.734      2 - Template:Bc
+ 16.51%    1.402      1 - Template:GitHub
+ 13.39%    1.137      3 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Multi-View_Deconvolution&amp;oldid=17129">http://imagej.net/index.php?title=Multi-View_Deconvolution&amp;oldid=17129</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 September 2015, at 21:53.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Multi-View_Deconvolution&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Multi-View+Deconvolution" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Multi-View+Deconvolution" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Multi-View_Deconvolution" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Multi-View_Deconvolution" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Multi-View_Deconvolution&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Multi-View_Deconvolution&amp;oldid=17129" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Multi-View_Deconvolution&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":172});});</script>
+		</body>
+		</html>
+		

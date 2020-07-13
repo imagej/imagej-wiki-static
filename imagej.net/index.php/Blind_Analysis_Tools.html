@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Blind Analysis Tools - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Blind_Analysis_Tools","wgTitle":"Blind Analysis Tools","wgCurRevisionId":40754,"wgRevisionId":40754,"wgArticleId":10996,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Blind_Analysis_Tools","wgRelevantArticleId":10996,"wgRequestId":"46e5783059007a2291f747a9","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="These tools have been developed to facilitate blind i.e., unbiased analysis of (image) data."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Blind Analysis Tools"/>
+
+	<meta property="og:description" content="These tools have been developed to facilitate blind i.e., unbiased analysis of (image) data."/>
+
+	<meta property="og:url" content="http://imagej.net/Blind_Analysis_Tools"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Blind_Analysis_Tools rootpage-Blind_Analysis_Tools skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Blind_Analysis_Tools.html#bodyContent">Skip to content</a>, 			<a href="Blind_Analysis_Tools.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Blind_Analysis_Tools.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Blind_Analysis_Tools" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Blind_Analysis_Tools&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Blind_Analysis_Tools&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Blind_Analysis_Tools&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Blind Analysis Tools</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Blind Analysis Tools (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Astha Jaiswal, Holger Lorenz
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Astha Jaiswal, Holger Lorenz
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/ahtsaJ/Blind-Analysis-Tools">on GitHub</a>
+</td></tr>
+
+
+<tr>
+<th> Development status
+</th>
+<td> Active
+</td></tr>
+
+
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Blind_Analysis_Tools.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Blind_Analysis_Tools.html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Blind_Analysis_Tools.html#File_Name_Encrypter"><span class="tocnumber">3</span> <span class="toctext">File Name Encrypter</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Blind_Analysis_Tools.html#Analyse_.26_Decide"><span class="tocnumber">4</span> <span class="toctext">Analyse &amp; Decide</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Blind_Analysis_Tools.html#Limitations"><span class="tocnumber">5</span> <span class="toctext">Limitations</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Blind_Analysis_Tools.html#License"><span class="tocnumber">6</span> <span class="toctext">License</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Blind_Analysis_Tools.html#Contact"><span class="tocnumber">7</span> <span class="toctext">Contact</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>These tools have been developed to facilitate blind i.e., unbiased analysis of (image) data.
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>To install on Fiji, check the update site called “<b>Blind Analysis Tools</b>”. To install on ImageJ 1.x, download the .jar file <a rel="nofollow" class="external text" href="https://github.com/ahtsaJ/Blind-Analysis-Tools/releases/tag/v1.0">here</a>, save it in the Plugins folder and restart ImageJ. “Blind Analysis Tools” will appear under the Plugins menu.
+</p>
+<h2><span class="mw-headline" id="File_Name_Encrypter">File Name Encrypter</span></h2>
+<p>This tool copies randomly selected (image) files to a new subfolder (output folder, name: “BlindRandomFiles” + timestamp) with encrypted names. A mapping file (name: “Mappings” + timestamp) is also saved, which maps encrypted names to original names. The tool first asks to choose a directory containing files and to select file extensions of interest. Only the files with the selected extensions are considered hereafter. The number of available files (<i>n</i>) is displayed at the top.
+The tool offers basic and advance modes.
+</p>
+<ol><li> In <b>basic mode</b>, only one parameter i.e., the number of files to be copied/encrypted is required. </li></ol>
+<center><div class="thumb tright"><div class="thumbinner" style="width:397px;"><div class="MediaTransformError" style="width: 395px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption">File Name Encrypter: Basic mode.</div></div></div></center>
+<ol><li> In <b>advance mode</b>, you can decide if files should be grouped. When grouping is set to “No”, each file is treated as an independent entity. To group files, set the option to “Yes” and provide a substring. </li></ol>
+<center><div class="thumb tright"><div class="thumbinner" style="width:395px;"><div class="MediaTransformError" style="width: 393px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption">File Name Encrypter: Advance mode.</div></div></div></center>
+<p>Grouping comes in handy when, for example, different channels are saved in separate files with related names and you would like to keep the relation even with encrypted names. The tool will look for the first occurrence of the substring in the names of the available files to determine groups. The groups can be of different sizes. File names not containing the substring will be treated as independent entities. In the output folder, all file names in a group will start with the same cryptic string and will have different suffixes. For example, when the following six files are available:
+</p><p>1404_1_w1TL-BF_tub0.mat, 1404_2_w1TL-BF_tub1.mat, 1404_1_w2SD-561.tif, 1404_1_w3SD-488.tif, 1404_2_w2SD-561.tif, 1404_2_w3SD-488.tif
+</p>
+<dl><dd><ul><li> Grouping "No" will result in the number of entities/groups = 6</li>
+<li> Grouping "Yes" with Substring "_w" will result in the number of entities/groups = 2. File names will be split as follows:</li></ul></dd></dl>
+<dl><dd><table class="wikitable">
+<tr>
+<th style="text-align:left;"> File name
+</th>
+<th> Part 1
+</th>
+<th> Part 2
+</th></tr>
+<tr style="color: green;">
+<td>1404_1_w1TL-BF_tub0
+</td>
+<td>1404_1
+</td>
+<td>_w1TL-BF_tub0
+</td></tr>
+<tr style="color: blue;">
+<td>1404_2_w1TL-BF_tub1
+</td>
+<td>1404_2
+</td>
+<td>_w1TL-BF_tub1
+</td></tr>
+<tr style="color: green;">
+<td>1404_1_w2SD-561
+</td>
+<td>1404_1
+</td>
+<td>_w2SD-561
+</td></tr>
+<tr style="color: green;">
+<td>1404_1_w3SD-488
+</td>
+<td>1404_1
+</td>
+<td>_w3SD-488
+</td></tr>
+<tr style="color: blue;">
+<td>1404_2_w2SD-561
+</td>
+<td>1404_2
+</td>
+<td>_w2SD-561
+</td></tr>
+<tr style="color: blue;">
+<td>1404_2_w3SD-488
+</td>
+<td>1404_2
+</td>
+<td>_w3SD-488
+</td></tr></table></dd></dl>
+<p>Part 1 will determine the group and part 2 will determine the suffix of each file in the group. In the above example, all files in a group are shown in the same color.
+</p><p>In advance mode, you can freely choose how many files should be copied in the output folder. Note that repetition would be required to copy more than n files. You can control repetition with the following parameters under <b>Replicates</b>:
+</p>
+<dl><dd><ul><li> Minimum: minimum guaranteed repetitions of each file</li>
+<li> Maximum: maximum possible repetitions of each file </li>
+<li> Total: total number of files to be copied in the output folder. Total must be between minimum*(<i>n</i> or no. of groups) and maximum*(<i>n</i> or no. of groups).</li></ul></dd></dl>
+<p>Following are some examples of different replicates parameter settings for <i>n</i>=6 and no grouping:
+</p>
+<table class="wikitable">
+<tr>
+<th style="text-align:left;"> Example
+</th>
+<th> Parameter setting
+</th>
+<th> Result
+</th></tr>
+<tr>
+<td>1
+</td>
+<td> Minimum=0, Maximum=1, Total=6
+</td>
+<td> All six files will be copied once with encrypted names.
+</td></tr>
+<tr>
+<td>2
+</td>
+<td> Minimum=1, Maximum=1, Total=6
+</td>
+<td> All six files will be copied once with encrypted names.
+</td></tr>
+<tr>
+<td>3
+</td>
+<td> Minimum=1, Maximum=2, Total=10
+</td>
+<td> All six files will be copied once with encrypted names. In addition, four files will be randomly chosen and be copied with encrypted names. No file will be repeated more than two times.
+</td></tr>
+<tr>
+<td>4
+</td>
+<td> Minimum=1, Maximum=5, Total=20
+</td>
+<td> All six files will be copied once with encrypted names. In addition, 14 files will be randomly chosen and be copied with encrypted names. No file will be repeated more than five times.
+</td></tr>
+<tr>
+<td>5
+</td>
+<td> Minimum=0, Maximum=5, Total=20
+</td>
+<td>20 files will be randomly chosen and be copied with encrypted names. No file will be repeated more than five times.
+</td></tr></table>
+<h2><span class="mw-headline" id="Analyse_.26_Decide">Analyse &amp; Decide</span></h2>
+<p>This tool facilitates blind image analysis by randomly opening an image and displaying it with an encrypted name. Therefore, the user does not see the original image name. You can provide <b>macro commands</b> to apply to each image before it is presented. This feature could be useful, for example, if you would like to remove a channel (because it is unnecessary or confusing for the analysis) prior to image display.
+</p>
+<center><div class="thumb tright"><div class="thumbinner" style="width:343px;"><div class="MediaTransformError" style="width: 341px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption">Analyse &amp; Decide</div></div></div></center>
+<p><br />
+It is possible to make a <b>decision</b> about an opened image, for example, weak/medium/strong or small/large, etc. You can simply type your own decision choices at the beginning by pressing the “Set” button. Provide your decision choices as a comma-separated list and press OK. Note that once you press the “Open First Image” button, the “Set” button and the macro text box will be disabled.
+</p>
+<center><div class="thumb tright"><div class="thumbinner" style="width:340px;"><div class="MediaTransformError" style="width: 338px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption">Analyse &amp; Decide: Setting choices</div></div></div></center>
+<p><br />
+Click on the “Open First/Next Image” button to open the next image for analysis. Once you have analyzed an adequate number of files (&lt;= <i>n</i>), press done to finish the analysis. During this analysis, macro commands are recorded in the background.  A decisions file (name: “BlindAnalyse&amp;Decide_Log” + timestamp) and a log file (name: “BlindAnalyse&amp;Decide_Decisions” + timestamp) will be saved in the input folder containing a detailed report of your analysis including:
+</p>
+<dl><dd><ul><li> Start and end time of the analysis</li>
+<li> Chosen directory</li>
+<li> Number of available files and number of analyzed files</li>
+<li> Absolute names of the available and analyzed files</li>
+<li> Initial macro</li>
+<li> Recorded macro</li></ul></dd></dl>
+<h2><span class="mw-headline" id="Limitations">Limitations</span></h2>
+<ol><li> Currently, bio-formats files containing only one series are handled. Files containing multiple series are not correctly handled.</li>
+<li> When dealing with big files, a time lag may be experienced while copying or opening files.</li></ol>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>These tools are free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a rel="nofollow" class="external text" href="http://www.gnu.org/licenses/gpl-3.0.txt">GNU General Public License</a> for more details.
+</p>
+<h2><span class="mw-headline" id="Contact">Contact</span></h2>
+<p>This plugin has been developed at the ZMBH Imaging Facility, University of Heidelberg. If you found any bug or have suggestions, please write to <a rel="nofollow" class="external text" href="mailto:ajcjam@gmail.com">Astha Jaiswal</a> or <a rel="nofollow" class="external text" href="mailto:h.lorenz@zmbh.uni-heidelberg.de">Holger Lorenz</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064645
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.036 seconds
+Preprocessor visited node count: 83/1000000
+Preprocessor generated node count: 531/1000000
+Post‐expand include size: 655/2097152 bytes
+Template argument size: 236/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    3.839      1 - Template:Infobox
+100.00%    3.839      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Blind_Analysis_Tools&amp;oldid=40754">http://imagej.net/index.php?title=Blind_Analysis_Tools&amp;oldid=40754</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 14 October 2019, at 03:58.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Blind_Analysis_Tools&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Blind+Analysis+Tools" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Blind+Analysis+Tools" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Blind_Analysis_Tools" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Blind_Analysis_Tools" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Blind_Analysis_Tools&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Blind_Analysis_Tools&amp;oldid=40754" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Blind_Analysis_Tools&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":239});});</script>
+		</body>
+		</html>
+		

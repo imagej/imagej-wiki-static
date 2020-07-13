@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>2012-02-17 - Using git-svn to develop ImageJ2 - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"2012-02-17_-_Using_git-svn_to_develop_ImageJ2","wgTitle":"2012-02-17 - Using git-svn to develop ImageJ2","wgCurRevisionId":19945,"wgRevisionId":19945,"wgArticleId":3471,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["News","ImageJ2"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"2012-02-17_-_Using_git-svn_to_develop_ImageJ2","wgRelevantArticleId":3471,"wgRequestId":"ac8325c4fb324f7161f9a507","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Subversion is a decent version control program that does not require much thought to operate. Unfortunately, if you want to avoid clunky, unreviewable monster commits (a known worst practice), you will need third-party programs to prepare any non-trivial set of patches."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="2012-02-17 - Using git-svn to develop ImageJ2"/>
+
+	<meta property="og:description" content="Subversion is a decent version control program that does not require much thought to operate. Unfortunately, if you want to avoid clunky, unreviewable monster commits (a known worst practice), you will need third-party programs to prepare any non-trivial set of patches."/>
+
+	<meta property="og:url" content="http://imagej.net/2012-02-17_-_Using_git-svn_to_develop_ImageJ2"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-2012-02-17_-_Using_git-svn_to_develop_ImageJ2 rootpage-2012-02-17_-_Using_git-svn_to_develop_ImageJ2 skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="2012-02-17_-_Using_git-svn_to_develop_ImageJ2.html#bodyContent">Skip to content</a>, 			<a href="2012-02-17_-_Using_git-svn_to_develop_ImageJ2.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="2012-02-17_-_Using_git-svn_to_develop_ImageJ2.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/2012-02-17_-_Using_git-svn_to_develop_ImageJ2" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>2012-02-17 - Using git-svn to develop ImageJ2</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>Subversion is a decent version control program that does not require much thought to operate. Unfortunately, if you want to avoid clunky, unreviewable monster commits (<a rel="nofollow" class="external text" href="http://www.crealytics.de/blog/2010/07/09/5-reasons-keeping-git-commits-small-mluedtke/">a known worst practice</a>), you will need third-party programs to prepare any non-trivial set of patches.
+</p><p>One such third-party program is called <a href="http://imagej.net/Git" title="Git">Git</a>... While Git is usually meant to be used as a standalone version control system (and we have hints <a href="http://imagej.net/Git_Notes" title="Git Notes">here</a> and links <a href="http://imagej.net/Git" title="Git">here</a> how to use it), its <a href="http://imagej.net/Git_topic_branches" title="Git topic branches"><code>git rebase -i</code></a> functionality lends itself to a patch series based workflow.
+</p>
+<h2><span class="mw-headline" id="The_git_svn_workflow">The <code>git svn</code> workflow</span></h2>
+<p>Our recommended <code>git svn</code> workflow was described in our chatroom by <a href="http://imagej.net/User:Bdezonia" title="User:Bdezonia">Barry</a>:
+</p>
+<ol>
+<li><code>git svn fetch</code></li>
+<li><code>git checkout -b NewBranch trunk</code></li>
+<li>&lt;do some edits and test, git adds, git commits, etc.&gt;</li>
+<li><code>git svn fetch</code></li>
+<li><code>gitk ...trunk</code>
+<ul>
+<li>&lt;if not linear development then&gt;<br />
+<code>git rebase -i trunk</code></li></ul>
+&lt;finally&gt;</li>
+<li><code>git svn dcommit</code></li></ol>
+<p>The idea is to first synchronize the local branches with the the Subversion repository (step 1).
+</p><p>Then start and work on a new topic branch (steps 2 &amp; 3). This may involve heavy rewriting and even sharing the branch with other developers just as you are wont from <a rel="nofollow" class="external text" href="http://schacon.github.com/git/gitworkflows.html">regular Git workflows</a>.
+</p><p>When you are ready to publish the patch series in Subversion, synchronize again (step 4) and make sure that no merge commits are present on top of Subversion's <i>trunk</i>. This is necessary because <code>git svn</code> can really only apply a number of patches, it cannot create merge commits. Should there be non-linear development, use Git's <code>rebase</code> command to linearize it.
+</p><p>After everything was prepared for Subversion, use the <code>dcommit</code> command of <code>git svn</code> to commit all changes that are in the current branch but not yet in <i>trunk</i>. (If you are interested why it is called <code>dcommit</code>: the original <code>commit</code> subcommand of <code>git svn</code> is a historic wart...)
+</p>
+<h2><span class="mw-headline" id="Setting_up_the_local_working_directory">Setting up the local working directory</span></h2>
+<p>To get started with <code>git svn</code>, you need an initial <code>git-svn</code> clone. The easy way to do this would be to start
+</p><p><code>git svn clone -s <a rel="nofollow" class="external free" href="https://code.imagej.net/svn/imagej">https://code.imagej.net/svn/imagej</a></code>
+</p><p>However, this is relatively slow since it uses Subversion to check out every revision in the complete history. You can instead hook up a fresh Git working tree with our pre-imported Git repository like this:
+</p>
+<ol>
+<li><code>git init</code></li>
+<li><p>add these sections to the .git/config file<br />
+</p>
+<pre>[remote &quot;origin&quot;]
+        url = git://code.imagej.net/imagej.git
+        pushURL = git@code.imagej.net:imagej.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+        fetch = +refs/heads/svn/*:refs/remotes/*
+[svn-remote &quot;svn&quot;]
+        url = http://code.imagej.net/svn/imagej
+        fetch = trunk:refs/remotes/trunk
+        branches = branches/*:refs/remotes/*
+        tags = tags/*:refs/remotes/tags/*</pre></li>
+<li><code>git fetch</code></li>
+<li><code>git svn fetch</code>  (this step takes some time...)</li>
+<li><code>git checkout -b master -t trunk</code></li></ol>
+<p>Explanation: rather than letting <code>git svn</code> do its job from the get go, we first initialize the <i>origin</i> remote (steps 1 to 3). It is initialized such that the Subversion branches -- which our Git repository exposes in the <i>svn/*</i> namespace -- are fetched into the place where <code>git svn</code> will pick them up rather than going through the tedious multi-hour process of any bootstrap <code>git svn</code> import.
+</p><p>In step 4, <code>git svn</code> indeed picks up those pre-imported branches.
+</p><p>Lastly, we initialize the local <i>master</i> branch to track Subversion's <i>trunk</i>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064300
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.008 seconds
+Real time usage: 0.008 seconds
+Preprocessor visited node count: 15/1000000
+Preprocessor generated node count: 40/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;oldid=19945">http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;oldid=19945</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 18 April 2016, at 16:49.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:News" title="Category:News">News</a></li><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=2012-02-17+-+Using+git-svn+to+develop+ImageJ2" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=2012-02-17+-+Using+git-svn+to+develop+ImageJ2" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/2012-02-17_-_Using_git-svn_to_develop_ImageJ2" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/2012-02-17_-_Using_git-svn_to_develop_ImageJ2" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;oldid=19945" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":202});});</script>
+		</body>
+		</html>
+		

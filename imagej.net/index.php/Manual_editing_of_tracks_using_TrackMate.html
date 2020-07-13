@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Manual editing of tracks using TrackMate - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Manual_editing_of_tracks_using_TrackMate","wgTitle":"Manual editing of tracks using TrackMate","wgCurRevisionId":20890,"wgRevisionId":20890,"wgArticleId":1492,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Manual_editing_of_tracks_using_TrackMate","wgRelevantArticleId":1492,"wgRequestId":"4d1e1e4c8b4f895ad52260ce","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This tutorial show how to manually edit, correct and create spots and tracks in TrackMate. You might want to use manual editing to correct mistakes of automated segmenting or tracking, to do a full manual annotation of a dataset, or to create a &quot;ground-truth&quot; data."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Manual editing of tracks using TrackMate"/>
+
+	<meta property="og:description" content="This tutorial show how to manually edit, correct and create spots and tracks in TrackMate. You might want to use manual editing to correct mistakes of automated segmenting or tracking, to do a full manual annotation of a dataset, or to create a &quot;ground-truth&quot; data."/>
+
+	<meta property="og:url" content="http://imagej.net/Manual_editing_of_tracks_using_TrackMate"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Manual_editing_of_tracks_using_TrackMate rootpage-Manual_editing_of_tracks_using_TrackMate skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Manual_editing_of_tracks_using_TrackMate.html#bodyContent">Skip to content</a>, 			<a href="Manual_editing_of_tracks_using_TrackMate.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Manual_editing_of_tracks_using_TrackMate.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Manual_editing_of_tracks_using_TrackMate" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Manual_editing_of_tracks_using_TrackMate&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Manual_editing_of_tracks_using_TrackMate&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Manual_editing_of_tracks_using_TrackMate&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Manual editing of tracks using TrackMate</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Manual_editing_of_tracks_using_TrackMate.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Manual_editing_of_tracks_using_TrackMate.html#The_test_image:_Development_of_a_C.elegans_embryo"><span class="tocnumber">2</span> <span class="toctext">The test image: Development of a <i>C.elegans</i> embryo</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Manual_editing_of_tracks_using_TrackMate.html#Doing_a_fast_but_very_bad_segmentation"><span class="tocnumber">3</span> <span class="toctext">Doing a fast but very bad segmentation</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Manual_editing_of_tracks_using_TrackMate.html#Generating_irrelevant_tracks"><span class="tocnumber">4</span> <span class="toctext">Generating irrelevant tracks</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Manual_editing_of_tracks_using_TrackMate.html#Launching_TrackScheme"><span class="tocnumber">5</span> <span class="toctext">Launching TrackScheme</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Manual_editing_of_tracks_using_TrackMate.html#TrackScheme_in_a_nutshell"><span class="tocnumber">6</span> <span class="toctext">TrackScheme in a nutshell</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Manual_editing_of_tracks_using_TrackMate.html#Getting_rid_of_bad_tracks"><span class="tocnumber">7</span> <span class="toctext">Getting rid of bad tracks</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Manual_editing_of_tracks_using_TrackMate.html#Spot_editing_with_the_HyperStack_Displayer"><span class="tocnumber">8</span> <span class="toctext">Spot editing with the HyperStack Displayer</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="Manual_editing_of_tracks_using_TrackMate.html#With_the_mouse"><span class="tocnumber">8.1</span> <span class="toctext">With the mouse</span></a>
+<ul>
+<li class="toclevel-3 tocsection-10"><a href="Manual_editing_of_tracks_using_TrackMate.html#Moving_an_existing_spot"><span class="tocnumber">8.1.1</span> <span class="toctext">Moving an existing spot</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="Manual_editing_of_tracks_using_TrackMate.html#Creating_a_new_spot"><span class="tocnumber">8.1.2</span> <span class="toctext">Creating a new spot</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="Manual_editing_of_tracks_using_TrackMate.html#Deleting_an_existing_spot"><span class="tocnumber">8.1.3</span> <span class="toctext">Deleting an existing spot</span></a></li>
+<li class="toclevel-3 tocsection-13"><a href="Manual_editing_of_tracks_using_TrackMate.html#Changing_the_radius_of_a_spot"><span class="tocnumber">8.1.4</span> <span class="toctext">Changing the radius of a spot</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-14"><a href="Manual_editing_of_tracks_using_TrackMate.html#With_the_keyboard"><span class="tocnumber">8.2</span> <span class="toctext">With the keyboard</span></a>
+<ul>
+<li class="toclevel-3 tocsection-15"><a href="Manual_editing_of_tracks_using_TrackMate.html#Moving_an_existing_spot_2"><span class="tocnumber">8.2.1</span> <span class="toctext">Moving an existing spot</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="Manual_editing_of_tracks_using_TrackMate.html#Creating_a_new_spot_2"><span class="tocnumber">8.2.2</span> <span class="toctext">Creating a new spot</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="Manual_editing_of_tracks_using_TrackMate.html#Deleting_an_existing_spot_2"><span class="tocnumber">8.2.3</span> <span class="toctext">Deleting an existing spot</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="Manual_editing_of_tracks_using_TrackMate.html#Changing_the_radius_of_a_spot_2"><span class="tocnumber">8.2.4</span> <span class="toctext">Changing the radius of a spot</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-19"><a href="Manual_editing_of_tracks_using_TrackMate.html#Adding_missed_spots"><span class="tocnumber">9</span> <span class="toctext">Adding missed spots</span></a></li>
+<li class="toclevel-1 tocsection-20"><a href="Manual_editing_of_tracks_using_TrackMate.html#Editing_tracks:_creating_links"><span class="tocnumber">10</span> <span class="toctext">Editing tracks: creating links</span></a>
+<ul>
+<li class="toclevel-2 tocsection-21"><a href="Manual_editing_of_tracks_using_TrackMate.html#By_drag_.26_drop"><span class="tocnumber">10.1</span> <span class="toctext">By drag &amp; drop</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="Manual_editing_of_tracks_using_TrackMate.html#Using_selection_and_right-click_menu"><span class="tocnumber">10.2</span> <span class="toctext">Using selection and right-click menu</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="Manual_editing_of_tracks_using_TrackMate.html#Creating_several_links_at_once"><span class="tocnumber">10.3</span> <span class="toctext">Creating several links at once</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-24"><a href="Manual_editing_of_tracks_using_TrackMate.html#Editing_tracks:_deleting_links"><span class="tocnumber">11</span> <span class="toctext">Editing tracks: deleting links</span></a></li>
+<li class="toclevel-1 tocsection-25"><a href="Manual_editing_of_tracks_using_TrackMate.html#Wrapping_up"><span class="tocnumber">12</span> <span class="toctext">Wrapping up</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>This tutorial show how to manually edit, correct and create spots and tracks in <a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a>. You might want to use manual editing to correct mistakes of automated segmenting or tracking, to do a full manual annotation of a dataset, or to create a "ground-truth" data.
+</p><p>Manual annotation is seldom the most adequate alternative: depending on the size of the target data, it can take an important amount of time and energy, is not objective, and is not reproducible. But sometimes you have to bite the bullet, whether because a segmenter does not exist for your kind of images, or because it is quicker to manually correct error than to come with the ultimate, flawless algorithm. 
+</p><p>Also, tracking is difficult in bio-imaging: images have by construction often a very low SNR, and there is a very wide range of variability amongst experiment types. TrackMate includes generic tracking and segmentation algorithms, and therefore does not exploit the specificity of each problem. It is likely that there are going to be some defects on the difficult use cases you will use it on, and these defects should not stop your science. So there should be a way to manually correct and edit the tracking results. We tried to make it as convenient, easy and quick as possible in TrackMate, should your science requires it.
+</p><p>It is a good idea to be already familiar with the automated segmentation in TrackMate, following the <a href="http://imagej.net/Getting_started_with_TrackMate" title="Getting started with TrackMate">Getting started with TrackMate</a> tutorial. Here, we will use an incorrect automated segmentation result, and correct it manually. It is perfectly possible to skip the automated part and to do the whole process manually. 
+</p>
+<h2><span class="mw-headline" id="The_test_image:_Development_of_a_C.elegans_embryo">The test image: Development of a <i>C.elegans</i> embryo</span></h2>
+<p>Download the target image here: <a rel="nofollow" class="external text" href="http://samples.fiji.sc/Celegans-5pc-17timepoints.tif">Celegans-5pc-17timepoints.tif (94 MB)</a>.
+</p><p>Open it in Fiji. You will get a stack, made of 41 Z-slices over 17 time-points, each image being 240 x 295. As you can see in <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Properties</span></em></span> (<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">^</span> Ctrl</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">P</kbd>), it has a spatial and temporal calibration. 
+</p><p>The context if the following: We used a <i>C.elegans</i> strain named <a rel="nofollow" class="external text" href="http://www.wormbase.org/db/gene/strain?name=AZ212;class=Strain">AZ212</a> that has its histone H2B coupled to the eGFP. The nuclei can therefore be seen in the 488 nm excitation fluorescence channel. The movie started just after the first cell division, so you can see on the first frame two blob-like spots in the center of the egg. On the top-right part of the egg, there is also two smaller spots that are the polar bodies. One will remain at a fixed place, the other one will be pushed around as the cells divide. The movie has 17 time-points that span the first 34 minutes of the <i>C.elegans</i> embryo development. 
+</p><p><a rel="nofollow" class="external text" href="http://www.pasteur.fr/ip/easysite/pasteur/fr/recherche/plates-formes-technologiques/imagopole">We</a> were trying to assess the impact of phototoxicity on development in this movie. We used a rather strong laser power, which explains the relatively good quality of the image, and the fact that this egg's development is slowed down compared to a classical development at 21°C. On this movie, I manually erased another egg that was lying on the top left-corner of the image, which makes it suitable only for educational purposes. 
+</p><p>We want to reconstruct the cell lineage from this movie. Ideally, we will end up in having four tracks: two for the the two cells present on the first frame, and two for the polar bodies. The cell tracks will be branching, following cell division.
+</p><p>This tutorial uses the following strategy: we will use an inadequate set of segmentation parameters to simulate defects in segmentation. Then we will use a tracking algorithm that does not take into account the possibility for a cell to divide, and will not use the spot feature to make linking robust, thus generating linking defects. Finally, we will learn how to correct these defects manually.
+</p>
+<h2><span class="mw-headline" id="Doing_a_fast_but_very_bad_segmentation">Doing a fast but very bad segmentation</span></h2>
+<div class="floatright"><div class="MediaTransformError" style="width: 300px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>
+<p>Launch TrackMate (<span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Tracking </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> TrackMate</span></em></span>) and select the <i>C.elegans</i> stack as a target. Check on the first panel that all the spatial calibration is OK. The pixel size is about 200 nm in XY, 1 μm in Z, and each frame is separated by 2 minutes.
+</p><p>Select the <b>Downsampled LoG detector</b>. This choice actually makes sense: the nuclei are about 8 μm in diameter, and with a sampling of 200 nm, that makes 40 pixels wide nuclei. It is already advantageous to use the down-sampled version of the LoG segmenter above 20 pixels: segmenting 3D data over time takes already quite some time. Having to track large objects allow to downsample them, making the data to iterate over smaller, which speed up the process. 
+</p><p>This comes at a cost: the localization precision. To simulate segmentation defects, we will make it very bad. In the segmenter configuration panel, choose a down-sampling factor of 10 (a factor of 4 would have been wiser), and a target nuclei radius of 8 μm, as depicted to the right. 
+</p><p>The segmentation should take you no more than a minute, even on a standard machine, a considerable improvement over a standard segmenter. But at what cost!
+</p>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<div class="floatright"><div class="MediaTransformError" style="width: 300px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>
+<p>On the Initial thresholding panel, we see that it is easy to separate spurious spots using the <b>Quality</b> feature only. There is a big and sharp peak at the left of the histogram. By moving the slider around you can get the remaining number of spot after filtering. If we put the threshold around 70, just above the first sharp peak, we see that we are left with about 115 spots. Now: We have 17 time-points, each of them containing at most 4 cells and two polar bodies (check the raw movie). So 115 remaining spots seems to be correct, therefore the threshold set at 70 seems right. 
+</p><p>Now move to the next panel. On the <i>Displayer choice</i> panel you must pick the <b>HyperStack Displayer</b>. It is the only one that allows for manual editing.
+</p><p>On the <i>Spot filters</i> panel, the results of the detection will appear. It is likely that our results are the same if you used the same numerical values as above. And you can see that there are still a lot of spurious spots amongst the remaining 115. We were wrong when we selected the initial threshold. 
+</p><p>Anyway, let's correct it now. Just add a filter on Quality, and take a value of 200; 63 spots should remain, and the spurious ones should disappear. 
+</p><p>Almost all polar bodies are incorrectly detected, and the localization of cells is bad. These are expected defects given our choice of detection algorithm and the parameters we have used. Here, the results are not so bad, unfortunately for this tutorial. We could fix them right now, before tracking. You can actually edit the results any time after the first panel of TrackMate. But let us exploit these defects for our training purpose, by having them generating additional linking defects. 
+</p><p><br />
+</p>
+<div class="MediaTransformError" style="width: 550px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+</p>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Generating_irrelevant_tracks">Generating irrelevant tracks</span></h2>
+<div class="floatright"><div class="MediaTransformError" style="width: 240px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>
+<p>Normally, TrackMate can robustly handles track splitting events, representing <i>e.g.</i> cell division. Though this happens in this movie, we choose to dismiss this possibility in the automated tracking part.
+</p><p>In the <i>Tracker choice</i> panel, select the <b>Simple LAP tracker</b>. Leave the default values for the parameters, and press <b>Next</b>. You should end up in having something similar to the image to the right.
+</p><p>A quick assertion shows that for nuclei, the individual track branches are not so bad. Each of the retained spot could use some fine tuning, but the tracks are not completely pathological, disregarding the fact that splitting events are missed. The polar bodies tracking results are hopeless. 
+</p><p>This is what we will now manually correct.
+</p>
+<div style="clear:both;"></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Launching_TrackScheme">Launching TrackScheme</span></h2>
+<p>Move to the <i>Display options</i> panel, skipping the track filtering part. 
+</p><p><a href="http://imagej.net/TrackScheme" title="TrackScheme">TrackScheme</a> is a TrackMate tool for the visualization and editing of tracks. It displays a kind of "track map", where a track is laid on a pane, arranged vertically over time, as a Parisian subway train map. Tracks are displayed hierarchically, discarding the spatial location of each spot. Each spot is laid out going through time from top to bottom. It is a great tool particularly to study and edit lineages. 
+</p><p><a href="http://imagej.net/TrackScheme" title="TrackScheme">TrackScheme</a> also allows manually editing the tracks. Press the <b>TrackScheme</b> button on the last panel. By default, the tracks are displayed as colored circles joined by lines. Each circle represent a spot, and the lines represent a link connecting two dots. The selection in TrackScheme is share across TrackMate, so if you select one circle, it will be highlighted in the HyperStack viewer as well (circled in green). 
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:TrackScheme_Start.png" class="image"><img alt="TrackScheme Start.png" src="../_images/1/15/TrackScheme_Start.png" width="700" height="525" class="thumbborder" /></a></div></div>
+<p><br />
+TrackScheme launches with a simple style: each spot is represented with a circle. You can get more information by changing the style. Next to the <b>Style</b> button in the TrackScheme toolbar, there is combo-box ini which you can select either <b>simple</b> or <b>full</b>. Select <b>full</b>. Each spot is now represented by a rounded rectangle, with the default name printed on the right. Go back in the TrackScheme toolbar. Next to the style combo-box, there is greyed-out button showing 3 pictures. Press it; after some time, each spot in TrackScheme will contain a thumbnail of the spot taken in the raw image. This is very handy to quickly detect detection problems.
+</p>
+<div class="center"><div class="floatnone"><a href="http://imagej.net/File:TrackScheme_Full.png" class="image"><img alt="TrackScheme Full.png" src="../_images/0/05/TrackScheme_Full.png" width="700" height="526" class="thumbborder" /></a></div></div>
+<h2><span class="mw-headline" id="TrackScheme_in_a_nutshell">TrackScheme in a nutshell</span></h2>
+<p>You can do quite some things using TrackScheme, notably track analysis. This is not the ofcus of this tutorial, we will simply be focusing on the track editing features. However, here is a brief description of what the toolbar buttons do.
+</p>
+<div class="MediaTransformError" style="width: 470px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>We will be mainly using the <b>Redo layout</b> and button. 
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Getting_rid_of_bad_tracks">Getting rid of bad tracks</span></h2>
+<p>We will first start by removing all the bad spots and tracks. We decide not to keep the tracks generated by the polar bodies, and only to keep the tracks that follow the 2 nuclei. 
+</p>
+<ul><li> Move to the <b>Track_3</b> column in TrackScheme. You can see that it is following the static polar body.</li>
+<li> We wish to select it at once. There is two way you can do it:
+<ol><li> Draw a selection rectangle around the whole track representation. </li>
+<li> Select one spot or link in the track. Right-click anywhere on TrackScheme: a menu appears, in which you will find <b>Select whole track</b>.</li></ol></li>
+<li> Notice in the displayer that the selected track appear with a green and thick line, so as to highlight it. </li>
+<li> To delete all of it, simply press the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⌦</span> Delete</kbd> key in TrackScheme, or use the right-click menu to do so. </li></ul>
+<p>Do the same for Track_1, since we do not care for polar bodies.
+</p><p>Press the <b>Redo layout</b> button when you are done. There should be four tracks remaining. Notice that their color changed as you deleted some of them. Their default color-map goes from blue to red and is re-adjusted every time the track number changes.
+</p>
+<h2><span class="mw-headline" id="Spot_editing_with_the_HyperStack_Displayer">Spot editing with the HyperStack Displayer</span></h2>
+<p>We now wish to correct for segmentation mistakes, that caused some nuclei to be missed. Creating new spots is made directly in the HyperStack displayer. First, make sure the TrackMate tool (represented by a blue track over a green background) is selected in the ImageJ toolbar, as pictured below:
+</p>
+<div class="center"><div class="floatnone"><div class="MediaTransformError" style="width: 546px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div></div>
+<p><br />
+The HyperStack displayer let you edit spots in two ways: 
+</p>
+<h3><span class="mw-headline" id="With_the_mouse">With the mouse</span></h3>
+<h4><span class="mw-headline" id="Moving_an_existing_spot">Moving an existing spot</span></h4>
+<ul><li> Double-click <i>inside</i> a spot on the displayer to select it for editing. It becomes green with a dashed line. </li>
+<li> Click and drag inside the selected spot to move its center around. To move it Z or in time, simply move the sliders at the bottom of the window and the spot will follow (shortcuts: '&lt;' &amp; '&gt;' for Z, 'Alt + &gt;' &amp; 'Alt + &lt;' to move in time).</li>
+<li> When you are happy with its new location, double-click anywhere to leave the editing mode. You should notice that its thumbnail in TrackScheme gets updated. </li></ul>
+<h4><span class="mw-headline" id="Creating_a_new_spot">Creating a new spot</span></h4>
+<ul><li> Double-click on the image <i>outside</i> of any spot.</li>
+<li> A new spot is created, and is selected for edition. </li>
+<li> The previous remarks apply to change its location. </li></ul>
+<h4><span class="mw-headline" id="Deleting_an_existing_spot">Deleting an existing spot</span></h4>
+<ul><li> Select a spot by single-clicking inside it. It turns green.</li>
+<li> Press the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⌦</span> Delete</kbd> key</li></ul>
+<h4><span class="mw-headline" id="Changing_the_radius_of_a_spot">Changing the radius of a spot</span></h4>
+<ul><li> Select a spot for editing by double-slinking inside it. </li>
+<li> By holding the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⎇</span> Alt</kbd> key, rotates the wheel button. This will change the spot's radius. </li>
+<li> Holding <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⎇</span> Alt</kbd> changes its radius faster. </li>
+<li> Double-click anywhere when you are happy with the new radius. The spot thumbnail in TrackScheme gets updated. </li></ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="With_the_keyboard">With the keyboard</span></h3>
+<p>I have found using the mouse clicks sub-optimal and painful for the carpal bones when editing a lot of spots. Using a combination of the mouse and keyboard proved to be more efficient. For this to work, the HyperStack window must be selected. 
+</p>
+<h4><span class="mw-headline" id="Moving_an_existing_spot_2">Moving an existing spot</span></h4>
+<ul><li> Lay the mouse over the target spot (you do not need to select it).</li>
+<li> Hold the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Space</kbd> key.</li>
+<li> Move the mouse around. The target spot follows the mouse location until you release the mouse key. </li></ul>
+<h4><span class="mw-headline" id="Creating_a_new_spot_2">Creating a new spot</span></h4>
+<ul><li> Lay the mouse anywhere on the image.</li>
+<li> Press the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">A</kbd> key.</li>
+<li> A new spot is <u>a</u>dded at the mouse location.  </li></ul>
+<p>By default, the new spot has the radius of the last spot edited with the mouse. So if you want to set the default radius, just double-click inside a spot that has the desired radius, then double-click again to leave editing mode. From now on, the radius of this spot will by used by default.
+</p>
+<h4><span class="mw-headline" id="Deleting_an_existing_spot_2">Deleting an existing spot</span></h4>
+<ul><li> Lay the mouse over the target spot.</li>
+<li> Press the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">D</kbd> key.</li>
+<li> The target spot is <u>d</u>eleted</li></ul>
+<h4><span class="mw-headline" id="Changing_the_radius_of_a_spot_2">Changing the radius of a spot</span></h4>
+<ul><li> Lay the mouse over the target spot.</li>
+<li> Press the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">E</kbd> key to increase its radius, <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Q</kbd> to diminish it. </li>
+<li> <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Q</kbd> and <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">E</kbd> change the radius by a bigger amount.</li></ul>
+<h2><span class="mw-headline" id="Adding_missed_spots">Adding missed spots</span></h2>
+<p>You now have the tools to correct the mistakes our crude detection made. Unfortunately for is exercise, there is just one: At the last time-point the leftmost cell just divided, but one of the daughter cell has been missed. 
+</p><p>Notice that when you add spots, they also appear in the TrackScheme window as a magenta cells, on the far right in a lane without track number (under the column <b>Unlaid spots</b>). As long as you do not incorporate them in a track, they will remain there.
+</p><p>Also, if you feel courageous, you can improve the look of your TrackScheme layout by adjusting the spot radii. There is however an automated way to do so, which will see later. 
+</p><p>You should end up in having a corrected segmentation, where every nuclei correspond to one spot in TrackMate, and it at the right location. Time yourself doing so, so that you learn how much you have to invest on manually correcting segmentation results, and decide if it is acceptable.
+</p>
+<h2><span class="mw-headline" id="Editing_tracks:_creating_links">Editing tracks: creating links</span></h2>
+<p>Now we want to connect the lonesome spots to the track they belong to. This is all about creating links, and there are two ways to do that.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="By_drag_.26_drop">By drag &amp; drop</span></h3>
+<p>You can create a link between two cells in TrackScheme simply by enabling the linking button on the TrackScheme toolbar, and dragging a line between the source cell and the target cell.
+</p><p>This is pictured below, where the fore-to-last cell of the track 4 is connected to the new spot. For visibility, I brought on this screenshot the target cell closer to the lane of the track 4. You can normally find it either  on the far right of the panel. 
+</p><p><a href="http://imagej.net/File:TrackMate_CreateLinksInTrackScheme_annotated.png" class="image"><img alt="TrackMate CreateLinksInTrackScheme annotated.png" src="../_images/e/e7/TrackMate_CreateLinksInTrackScheme_annotated.png" width="700" height="456" /></a>
+</p><p>Press the <b>Redo layout</b> button to see the arranged result. The first spot is now incorporated in the right track.
+</p>
+<h3><span class="mw-headline" id="Using_selection_and_right-click_menu">Using selection and right-click menu</span></h3>
+<p>The cell in TrackScheme cannot be easily moved due to a very tricky bug we cannot solve. When the source and target cells are far away, it might be better to use another way to create links. We do this using the shared selection.
+</p><p>In TrackScheme, find the first spot of Track_4, in frame 9. When you click on the corresponding cell in TrackScheme, it gets highlighted in green. In the HyperStack viewer, the displayed slice and time points are changed to display the spot, also highlighted in green.
+</p><p>We want to link this cell to the mother cell in Track_0, frame 8, just before it divided. To do so, 
+</p>
+<ul><li> In the HyperStack displayer, move to the frame 8</li>
+<li> Hold the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd> key</li>
+<li> Click on the mother cell</li></ul>
+<p>It gets highlighted in the displayer, and in TrackScheme as well. You now have two cells in the selection.
+</p><p>To create a link between the two, 
+</p>
+<ul><li> Right-click anywhere in TrackScheme</li>
+<li> In the menu that pops-up, select <b>Link 2 spots</b>.</li></ul>
+<p>The newly created link is displayed in magenta. Note that the track arrangement is not changed; you need to press the <b>Redo layout</b> button to rearrange the tracks.
+</p><p>After doing so, you should now see a branching track, as picture below. Notice that the track colors are out of sync. The colors are not automatically updated when changing a track layout. You have to click the <b>Style</b> button in the TrackScheme toolbar to do so. Do so.
+</p>
+<div class="MediaTransformError" style="width: 770px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Creating_several_links_at_once">Creating several links at once</span></h3>
+<p>Using <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">click</kbd>, we can put several cells in the selection, and create the links between each pair. We don't have the need for it, but this is a good way to create a single track from several solitary spots: Just select them all (dragging a selection box or <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">click</kbd>) and select the <b>Link N spots</b> menu item.
+</p>
+<h2><span class="mw-headline" id="Editing_tracks:_deleting_links">Editing tracks: deleting links</span></h2>
+<p>We do not have much to say here. The tracks we generated had missing links, but no spurious ones. So we do not need to remove any. But here is how to do it:
+</p><p>In TrackScheme, select the target link by clicking on it; it gets highlighted in the displayer as well. Press the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⌦</span> Delete</kbd> key to remove it. 
+</p><p>Removing a link often splits a track in 2 new tracks. To have them properly re-arranged,  press the <b>Redo layout</b> button.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Wrapping_up">Wrapping up</span></h2>
+<p>Plus or minus the localization errors and some incorrect cell radii, you now have the full lineage in 3D of this short movie. This concludes this tutorial on manual editing in TrackMate. Here is a picture of the final results:
+</p>
+<div class="MediaTransformError" style="width: 514px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p><br />
+<a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a> (<a href="http://imagej.net/index.php?title=User_talk:JeanYvesTinevez&amp;action=edit&amp;redlink=1" class="new" title="User talk:JeanYvesTinevez (page does not exist)">talk</a>) 11:30, 1 August 2013 (CDT)
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072936
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.292 seconds
+Real time usage: 0.300 seconds
+Preprocessor visited node count: 7568/1000000
+Preprocessor generated node count: 10129/1000000
+Post‐expand include size: 45205/2097152 bytes
+Template argument size: 3970/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  243.928      1 - -total
+ 91.74%  223.775     23 - Template:Key
+ 80.90%  197.340     23 - Template:Key_press/core
+  4.36%   10.628     23 - Template:Box-shadow
+  4.16%   10.155     23 - Template:Linear-gradient
+  3.55%    8.671      2 - Template:Bc
+  2.94%    7.167      1 - Template:Person
+  1.82%    4.448     23 - Template:Border-radius
+  0.90%    2.190      3 - Template:Arrow
+  0.86%    2.103     13 - Template:Unicode
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Manual_editing_of_tracks_using_TrackMate&amp;oldid=20890">http://imagej.net/index.php?title=Manual_editing_of_tracks_using_TrackMate&amp;oldid=20890</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 20 June 2016, at 02:34.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Manual_editing_of_tracks_using_TrackMate&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Manual+editing+of+tracks+using+TrackMate" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Manual+editing+of+tracks+using+TrackMate" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Manual_editing_of_tracks_using_TrackMate" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Manual_editing_of_tracks_using_TrackMate" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Manual_editing_of_tracks_using_TrackMate&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Manual_editing_of_tracks_using_TrackMate&amp;oldid=20890" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Manual_editing_of_tracks_using_TrackMate&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":492});});</script>
+		</body>
+		</html>
+		

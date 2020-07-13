@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Git topic branches - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Git_topic_branches","wgTitle":"Git topic branches","wgCurRevisionId":29398,"wgRevisionId":29398,"wgArticleId":34,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Git"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Git_topic_branches","wgRelevantArticleId":34,"wgRequestId":"c2ff3829a5092f6f0d125919","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Often you want to try some new idea, or work on some new feature, without interfering with the master branch.  That is where topic branches come in.  You can easily switch back and forth between branches, so that you do not need to contribute a new feature with one big &quot;monster&quot; commit."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Git topic branches"/>
+
+	<meta property="og:description" content="Often you want to try some new idea, or work on some new feature, without interfering with the master branch.  That is where topic branches come in.  You can easily switch back and forth between branches, so that you do not need to contribute a new feature with one big &quot;monster&quot; commit."/>
+
+	<meta property="og:url" content="http://imagej.net/Git_topic_branches"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Git_topic_branches rootpage-Git_topic_branches skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Git_topic_branches.html#bodyContent">Skip to content</a>, 			<a href="Git_topic_branches.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Git_topic_branches.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Git_topic_branches" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Git_topic_branches&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Git_topic_branches&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Git_topic_branches&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Git topic branches</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Git Tutorials
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_for_dummies" title="Git for dummies">Git for dummies</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/EGit" title="EGit">Git in Eclipse (EGit)</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_mini_howto" title="Git mini howto">Git mini howto</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_workshop" title="Git workshop">Git workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">Git Conflicts</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Git topic branches</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_Notes" title="Git Notes">Git Notes</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git reflogs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git_submodule_tutorial" title="Git submodule tutorial">Git submodule tutorial</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Pinpoint_regressions_with_Git" title="Pinpoint regressions with Git">Pinpoint regressions with Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_publish_a_Git_repository" title="How to publish a Git repository">How to publish a Git repository</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_extract_a_subproject" title="How to extract a subproject">How to extract a subproject</a>
+</td></tr></table>
+<p><br />
+Often you want to try some new idea, or work on some new feature, without interfering with the master branch.  That is where topic branches come in.  You can easily switch back and forth between branches, so that you do not need to contribute a new feature with one big "monster" commit.
+</p><p>If you want to try something that might not work out, and you do not want anybody to know in such a case, you can keep the topic branches local.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Git_topic_branches.html#Creating_a_topic_branch"><span class="tocnumber">1</span> <span class="toctext">Creating a topic branch</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Git_topic_branches.html#Switching_between_branches"><span class="tocnumber">2</span> <span class="toctext">Switching between branches</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Git_topic_branches.html#Cherry-picking_commits"><span class="tocnumber">3</span> <span class="toctext">Cherry-picking commits</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Git_topic_branches.html#Resolving_conflicts"><span class="tocnumber">3.1</span> <span class="toctext">Resolving conflicts</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Git_topic_branches.html#Merging.2FRebasing_topic_branches"><span class="tocnumber">4</span> <span class="toctext">Merging/Rebasing topic branches</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Git_topic_branches.html#Advanced_topic_branch_editing_.28AKA_rebase_on_drugs.29"><span class="tocnumber">5</span> <span class="toctext">Advanced topic branch editing (AKA rebase on drugs)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="Git_topic_branches.html#Aborting_an_interactive_rebase"><span class="tocnumber">5.1</span> <span class="toctext">Aborting an interactive rebase</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Git_topic_branches.html#Reflogs_and_rebases"><span class="tocnumber">5.2</span> <span class="toctext">Reflogs and rebases</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Creating_a_topic_branch">Creating a topic branch</span></h1>
+<p>You can create a topic branch from any starting point like this:
+</p>
+<pre>$ git checkout -b new-branch branch-point
+</pre>
+<p>The argument <i>branch-point</i> can be any commit, or tag.  If you want to branch off from the current HEAD, you do not need to pass the argument at all:
+</p>
+<pre>$ git checkout -b topic1
+</pre>
+<p><b>Note</b>: if you want to start a new branch from a remote (AKA tracking) branch, this command will also set up default merge to be from that remote with that branch:
+</p>
+<pre>$ git checkout -b fake2 origin/fake2
+...
+$ git pull
+</pre>
+<p>will pull the branch <i>fake2</i> from <i>origin</i> into the current (<i>fake2</i>) branch.
+</p>
+<h1><span class="mw-headline" id="Switching_between_branches">Switching between branches</span></h1>
+<p>To switch from the current branch to another, first make sure that you have committed (or stashed) everything, and then call
+</p>
+<pre>$ git checkout other-branch
+</pre>
+<p>This will switch to another branch (which now becomes your HEAD), and update the working directory.  Note: only the tracked files will be updated; the untracked files will be untouched.
+</p>
+<h1><span class="mw-headline" id="Cherry-picking_commits">Cherry-picking commits</span></h1>
+<p>If you have a single commit on another branch that you would like to have in the current branch, use
+</p>
+<pre>$ git cherry-pick other-branch~2
+</pre>
+<p>In this example, the third-last commit (the 2nd order ancestor) of other-branch's tip was referenced.
+</p><p>Cherry-picking comes in handy if you fix something in a topic branch which needs fixing in the master branch, too:
+</p>
+<pre># current branch: topic234
+... fix bug ...
+# git commit -s &lt;file&gt;
+$ git checkout master
+$ git cherry-pick topic234
+$ git checkout topic234
+</pre>
+<p>In this example, after fixing the bug and committing the bug fix, you switched to the branch <i>master</i>, cherry-picked the most recent commit on the branch <i>topic234</i> and then switched back to the branch <i>topic234</i>.
+</p>
+<h2><span class="mw-headline" id="Resolving_conflicts">Resolving conflicts</span></h2>
+<p>Note: when cherry-picking commits, conflicts can arise.  These are marked with conflict markers ("&lt;&lt;&lt;" ... "===" ... "&gt;&gt;&gt;").
+</p><p>You will have to edit the files, picking what changes you want (the first part is what the version is in the current branch, the second part is what the cherry-picked commit wanted to introduce). See <a href="http://imagej.net/Git_Conflicts" title="Git Conflicts">Git Conflicts</a> for details how to resolve the merge conflicts.
+</p><p>After editing the files, stage them for commit and commit, with
+</p>
+<pre>$ git add &lt;file&gt;...
+$ git commit
+</pre>
+<p>In case of a failed cherry-pick/rebase, this will pick up the appropriate commit message for you.
+</p>
+<h1><span class="mw-headline" id="Merging.2FRebasing_topic_branches">Merging/Rebasing topic branches</span></h1>
+<p>If you finished a topic, and want to bring the changes to the branch <i>master</i>, just switch to that branch and merge the topic branch:
+</p>
+<pre>$ git checkout master
+$ git merge topic234
+</pre>
+<p>Just like cherry-pick, a merge can fail with conflicts.  See <a href="http://imagej.net/Git_topic_branches#Resolving_conflicts" title="Git topic branches">Resolving conflicts</a> for details.
+</p><p>Instead of merging, you might want to rebase your topic branch on top of the current master.  To see what the difference between a merge and a rebase is, consider this history (left is older than right):
+</p>
+<pre>- A - B - C - D - master
+    \
+      E - F - G - topic234
+</pre>
+<p>after merge:
+</p>
+<pre>- A - B - C - D - master^ - master
+    \                      /
+      E - F - G - topic234
+</pre>
+<p>after rebase:
+</p>
+<pre>- A - B - C - D - master - E' - F' - G' - topic234
+</pre>
+<p>In other words, all the commits in topic234 were rewritten as if they were created on top of the current tip of the <i>master</i> branch.
+</p><p>As you see, the branch <i>topic234</i> is rewritten, and does not share any interesting history with the former tip of the <i>topic234</i> branch.  (You can access the former tip with <i>topic234@{1}</i>, see <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git_reflogs</a>.)
+</p><p>So, to incorporate your topic branch into the <i>master</i> branch with a rebase, you would do the following:
+</p>
+<pre># current branch is topic234
+$ git rebase master
+$ git checkout master
+# this will fast-forward, i.e. not create a merge commit, but just move master's tip to topic234's tip.
+$ git merge topic234
+</pre>
+<p>Typically, merges should be preferred to rebases, because merges show the history better: after a rebase, the tip of the branch is basically untested, as you only tested the commits before they were rebased.
+</p><p>However, a rebase comes in pretty handy from time to time, especially if you want to rewrite commit history, as described in the next section.
+</p>
+<h1><span class="mw-headline" id="Advanced_topic_branch_editing_.28AKA_rebase_on_drugs.29">Advanced topic branch editing (AKA rebase on drugs)</span></h1>
+<p>Often, a topic branch becomes a collection of nice commits and fixup commits, and maybe a few commits that are no longer necessary.  In such a case, you probably want to clean up the commit history a bit.  This is where the <i>interactive</i> rebase comes in.
+</p><p>Consider such a history (the first "word" is the abbreviated commit name):
+</p>
+<pre>0470894... Untrack generated files
+e0acf90... Add Fake, a specialized yet simple substitute for 'make'
+047ad28... Fake: implement up-to-date test and use it in make()
+deadbee... fixup! Add Fake, a specialized yet simple substitute for 'make'
+</pre>
+<p>where <i>0470894</i> is the tip of the <i>master</i> branch, and <i>deadbee</i> fixes some severe issue in the commit <i>e0acf90</i>, that should not have been committed as is.
+</p><p>Note that the <i>fixup!</i> commit can be made easily by calling <i>git commit --fixup &lt;commit-to-fixup&gt;</i>.
+</p><p>To reorder the commits and merge the two commits (<i>squash</i> in Git terminology, as <i>merge</i> already means to merge branches), call
+</p><p><code lang="bash">
+$ git rebase -i --autosquash master
+</code>
+</p><p>This will fire up an editor with a list of commits to be applied on top of <i>master</i>:
+</p>
+<pre>pick e0acf90 Add Fake, a specialized yet simple substitute for 'make'
+fixup deadbee fixup! Add Fake, a specialized yet simple substitute for 'make'
+pick 047ad28 Fake: implement up-to-date test and use it in make()
+</pre>
+<p>Note that the <i>autosquash</i> mode interpreted the special commit message of the fixup commit, moved the last line and substituted the command "pick" (as in "cherry-pick") with "fixup".
+</p><p>Save that, and exit the editor.  The rebase will be started and amend the first commit with the fixup commit.
+</p><p>Note: If you want to default to the <i>autosquash</i> mode, you can tell Git so: <i>git config --global rebase.autosquash true</i> (you only need to do this once).
+</p><p>Note: as with cherry-picking and merging, conflicts can arise.  You will <a href="http://imagej.net/Merge_Conflicts" class="mw-redirect" title="Merge Conflicts">have to resolve them</a>, "git add" the resolved files, but you do not need to commit; calling
+</p><p><code lang="bash">
+$ git rebase --continue
+</code>
+</p><p>will pick up the changes, apply the correct commit author and message, and fire up an editor for you to verify the contents.  As before, save and exit, and the rebase will continue.
+</p>
+<h2><span class="mw-headline" id="Aborting_an_interactive_rebase">Aborting an interactive rebase</span></h2>
+<p>Sometimes you realize by the sheer size of the list of commits that you made a mistake, and do not want to rebase after all.  As with "git commit", just delete the <i>complete</i> list, and the interactive rebase will be aborted.
+</p><p>Even at later stages, e.g. when you have a huge conflict and would prefer to go back and merge instead of rebase, you can abort the rebase.  Just call
+</p><p><code lang="bash">
+$ git rebase --abort
+</code>
+</p><p>and Git will bring you back to where you were before you started the rebase.
+</p>
+<h2><span class="mw-headline" id="Reflogs_and_rebases">Reflogs and rebases</span></h2>
+<p>A rebase will work on a <i>detached</i> HEAD.  In other words, while the rebase is in progress, no branch will be updated, but a temporary branch will grow, and only when the rebase is finished successfully, the originally current branch will be updated.
+</p><p>This means that you can refer to the state _before_ the rebase by "branch-name@{1}" (see <a href="http://imagej.net/Git_reflogs" title="Git reflogs">Git_reflogs</a>).
+</p><p>Note: the same is not true for "HEAD@{1}": the reflog for "HEAD" follows every single revision that was current at some stage in the repository.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072415
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.016 seconds
+Real time usage: 0.016 seconds
+Preprocessor visited node count: 115/1000000
+Preprocessor generated node count: 212/1000000
+Post‐expand include size: 1508/2097152 bytes
+Template argument size: 691/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.715      1 - Template:GitMenu
+100.00%    5.715      1 - -total
+ 79.85%    4.563      1 - Template:Menu
+ 45.90%    2.623     12 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Git_topic_branches&amp;oldid=29398">http://imagej.net/index.php?title=Git_topic_branches&amp;oldid=29398</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:43.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Git_topic_branches&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Git" title="Category:Git">Git</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Git+topic+branches" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Git+topic+branches" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Git_topic_branches" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Git_topic_branches" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Git_topic_branches&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Git_topic_branches&amp;oldid=29398" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Git_topic_branches&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":213});});</script>
+		</body>
+		</html>
+		

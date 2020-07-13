@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Auto Threshold - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Auto_Threshold","wgTitle":"Auto Threshold","wgCurRevisionId":36812,"wgRevisionId":36812,"wgArticleId":319,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Segmentation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Auto_Threshold","wgRelevantArticleId":319,"wgRequestId":"7e55a0233215728836355d36","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This plugin binarises 8 and 16-bit images using various global (histogram-derived) thresholding methods. The segmented phase is always shown as white (255)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Auto Threshold"/>
+
+	<meta property="og:description" content="This plugin binarises 8 and 16-bit images using various global (histogram-derived) thresholding methods. The segmented phase is always shown as white (255)."/>
+
+	<meta property="og:url" content="http://imagej.net/Auto_Threshold"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Auto_Threshold rootpage-Auto_Threshold skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Auto_Threshold.html#bodyContent">Skip to content</a>, 			<a href="Auto_Threshold.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Auto_Threshold.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Auto_Threshold" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk"><a href="http://imagej.net/Talk:Auto_Threshold" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Auto_Threshold&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Auto_Threshold&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Auto Threshold</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Auto Threshold<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Auto_Threshold">https://imagej.net/Auto_Threshold</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Auto_Threshold/releases/tag/Auto_Threshold-1.16.5">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Auto_Threshold~1.16.5~~~kw,versionexpand">1.16.5</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 22:30:45 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Landini" title="User:Landini">Gabriel Landini</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:Stelfrich" title="User:Stelfrich">Stefan Helfrich</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<p>This plugin binarises 8 and 16-bit images using various <b>global</b> (histogram-derived) thresholding methods. The segmented phase is always shown as white (255).
+</p><p>For <b>local</b> thresholding rather than global, see  the <a href="http://imagej.net/Auto_Local_Threshold" title="Auto Local Threshold">Auto Local Threshold</a> plugin.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Auto_Threshold.html#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Auto_Threshold.html#Use"><span class="tocnumber">2</span> <span class="toctext">Use</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Auto_Threshold.html#Available_methods"><span class="tocnumber">3</span> <span class="toctext">Available methods</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Auto_Threshold.html#Try_all"><span class="tocnumber">3.1</span> <span class="toctext">Try all</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Auto_Threshold.html#Default"><span class="tocnumber">3.2</span> <span class="toctext">Default</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Auto_Threshold.html#Huang"><span class="tocnumber">3.3</span> <span class="toctext">Huang</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Auto_Threshold.html#Huang2"><span class="tocnumber">3.4</span> <span class="toctext">Huang2</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Auto_Threshold.html#Intermodes"><span class="tocnumber">3.5</span> <span class="toctext">Intermodes</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Auto_Threshold.html#IsoData"><span class="tocnumber">3.6</span> <span class="toctext">IsoData</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Auto_Threshold.html#Li"><span class="tocnumber">3.7</span> <span class="toctext">Li</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Auto_Threshold.html#MaxEntropy"><span class="tocnumber">3.8</span> <span class="toctext">MaxEntropy</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Auto_Threshold.html#Mean"><span class="tocnumber">3.9</span> <span class="toctext">Mean</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Auto_Threshold.html#MinError.28I.29"><span class="tocnumber">3.10</span> <span class="toctext">MinError(I)</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="Auto_Threshold.html#Minimum"><span class="tocnumber">3.11</span> <span class="toctext">Minimum</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="Auto_Threshold.html#Moments"><span class="tocnumber">3.12</span> <span class="toctext">Moments</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="Auto_Threshold.html#Otsu"><span class="tocnumber">3.13</span> <span class="toctext">Otsu</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="Auto_Threshold.html#Percentile"><span class="tocnumber">3.14</span> <span class="toctext">Percentile</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="Auto_Threshold.html#RenyiEntropy"><span class="tocnumber">3.15</span> <span class="toctext">RenyiEntropy</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="Auto_Threshold.html#Shanbhag"><span class="tocnumber">3.16</span> <span class="toctext">Shanbhag</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="Auto_Threshold.html#Triangle"><span class="tocnumber">3.17</span> <span class="toctext">Triangle</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="Auto_Threshold.html#Yen"><span class="tocnumber">3.18</span> <span class="toctext">Yen</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p><b>ImageJ</b>: requires v1.42m or newer. Download <a rel="nofollow" class="external text" href="http://maven.imagej.net/service/local/artifact/maven/redirect?r=releases&amp;g=sc.fiji&amp;a=Auto_Threshold&amp;v=RELEASE&amp;e=jar">Auto_Threshold-X.Y.Z.jar</a> and copy it into the ImageJ/plugins folder and either restart ImageJ or run the '<span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update Menus</span></em></span>' command. After this a new command should appear in '<span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Auto Threshold</span></em></span>'.
+</p><p><b>Fiji</b>: this plugin is part of the Fiji distribution, there is no need to download it.
+</p>
+<h2><span class="mw-headline" id="Use">Use</span></h2>
+<p><b>Method</b> selects the algorithm to be applied (detailed below).
+</p><p>The <b>Ignore black</b> and <b>Ignore white</b> options set the image histogram bins for [0] and [255] greylevels to 0 respectively. This may be useful if the digitised image has under- or over- exposed pixels.
+</p><p><b>White object on black background</b> sets to white the pixels with values above the threshold value (otherwise, it sets to white the values less or equal to the threshold).
+</p><p><b>Set Threshold instead of Threshold (single images)</b> sets the thresholding LUT, without changing the pixel data. This works only for single images.
+</p><p>It you are processing a stack, two additional options are available: <b>Stack</b> can be used to process all the slices (the threshold of each slice will be computed separately). If this option is left unchecked, only the current slice will be processed. <b>Use stack histogram</b> first computes the histogram of the whole stack, then computes the threshold based on that histogram and finally binarises all the slices with that single value. Selecting this option also selects the <b>Stack</b> option above automatically.
+</p><p><b>Important notes:</b> 
+</p><p><b>1.</b> This  plugin is accessed through the <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Auto Threshold</span></em></span> menu entry, however the thresholding methods were also partially implemented in ImageJ's thresholder applet accessible through the <span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Threshold...</span></em></span> menu entry.
+While the Auto Threshold plugin can use or ignore the extremes of the image histogram (Ignore black, Ignore white) the applet cannot: the 'default' method ignores the histogram extremes but the others methods do not. This means that applying the two commands to the same image can produce apparently different results. In essence, the Auto Threshold plugin, with the correct settings, can reproduce the results of the applet, but not the way round.
+</p><p><b>2.</b> From version 1.12 the plugin supports thresholding of 16-bit images. Since the Auto Threshold plugin processes the full greyscale space, it can be slow when dealing with 16-bit images. 
+Note that the ImageJ thresholder applet also processes 16-bit images, but in reality ImageJ first computes a histogram with 256 bins. Therefore, there might be differences in the results obtained on 16-bit images when using the applet and the true 16-bit results obtained with this plugin.
+Note that for speeding up, the histogram is bracketed to include only the range of bins that contain data (and avoid processing empty histogram bins at both extremes).
+</p><p><b>3.</b> The result of 16 bit images and stacks (when processing all slices) is an 8 bit container showing the result in white [255] to comply with the concept of "binary image" (i.e. 8 bits with 0 and 255 values).
+However, for stacks where only 1 slice is thresholded, the result is still a 16 bit container with the thresholded phase shown as white [65535]. This is to keep the data untouched in the remaining slices.
+The "Try all" option retains the 16 bit format to still show the images with methods that might fail to obtain a threshold.
+Images and stacks that are impossible to threshold remain unchanged.
+</p><p><b>4.</b> The same image in 8 and 16 bits (without <i>scaling</i>) returns the same threshold value, however Li's method originally would return different values when the image data was <i>offset</i> (e.g. when adding a fixed value to all pixels). The current implementation avoids this offset-dependent problem. 
+</p><p><b>5.</b> The same image <i>scaled</i> by a fixed value (e.g. when multiplying all pixels by a fixed value) returns a similar threshold result (within 2 greyscale levels of the original unscaled image) for all methods except Huang, Li and Triangle due to the way these algorithms work.
+E.g. the Triangle method applied to an 8 bit image and to the same image converted to 16 bits <i>with scaling</i> can result in different threshold values. This is because the scaling from 8 to 16 bits creates empty bins in between the scaled grey values. The Triangle method (based on a geometric approach) finds those artefactual gaps in the new 16 bit histogram which satisfy the method constraints, but which would not exist in the original 8 bit image. This cannot be prevented (for example by detecting empty histogram bins) as it would interfere with the analysis when real empty bins (as oppose to artefactual ones) exist in the image.
+</p>
+<h2><span class="mw-headline" id="Available_methods">Available methods</span></h2>
+<h3><span class="mw-headline" id="Try_all">Try all</span></h3>
+<p>Which method segments your data best? One can attempt to answer this question using the <b>Try all</b> option.
+This produces a montage with results from all the methods, allowing to explore how the different algorithms perform on a particular image or stack.
+When using stacks, in some cases it might not be a good idea to segment each slice individually rather than with a single threshold for all slices (try the mri-stack.tif from the sample images to better understand this issue).
+</p><p><br />
+</p>
+<div class="MediaTransformError" style="width: 130px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Original image
+</p><p><br />
+</p>
+<div class="MediaTransformError" style="width: 528px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<p>Try all methods.
+</p><p>When processing stacks with many slices, the montages can become very large (~16 times the original stack size) and one risks running out of RAM. A popup window will appear (when stacks have more than 25 slices) to confirm whether the procedure should display the montaged results. Select <b>No</b> to compute the threshold values and display them in the log window.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Default">Default</span></h3>
+<p>This is the original method of auto thresholding available in ImageJ, which is a variation of the IsoData algorithm (described below). The <b>Default</b> option should return the same values as the '<span><em><span style="border-bottom:1px dotted #ccc;"> Image </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Adjust </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Threshold </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Auto</span></em></span>', when selecting <b>Ignore black</b> and <b>Ignore white</b>.
+To indicate segmentation of the desired phase, use the <b>White objects on black background</b> option.
+The IsoData method is also known as <i>iterative intermeans</i>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Huang">Huang</span></h3>
+<p>Implements Huang's fuzzy thresholding method. This uses Shannon's entropy function (one can also use Yager's entropy function).
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Image+thresholding+by+minimizing+the+measure+of+fuzziness&amp;rft.aulast=Huang&amp;rft.aufirst=L-K&amp;rft.date=1995&amp;rft.volume=28%281%29&amp;rft.pages=41-51&amp;rft_id=http%3A%2F%2Fwww.ktl.elf.stuba.sk%2Fstudy%2Fvacso%2FZadania-Cvicenia%2FCvicenie_3%2FTimA2%2FHuang_E016529624.pdf"><cite id="CITEREFHuangWang1995">Huang, L-K&#32;&amp;&#32;Wang, M-J J&#32;(1995),&#32;"<a rel="nofollow" class="external text" href="http://www.ktl.elf.stuba.sk/study/vacso/Zadania-Cvicenia/Cvicenie_3/TimA2/Huang_E016529624.pdf">Image thresholding by minimizing the measure of fuzziness</a>",&#32;<i>Pattern Recognition</i>&#32;<b>28(1)</b>:  41-51<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://www.ktl.elf.stuba.sk/study/vacso/Zadania-Cvicenia/Cvicenie_3/TimA2/Huang_E016529624.pdf">http://www.ktl.elf.stuba.sk/study/vacso/Zadania-Cvicenia/Cvicenie_3/TimA2/Huang_E016529624.pdf</a>&gt;</span></cite></span></li></ul>
+<p>Ported from ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[1]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[2]</a>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Huang2">Huang2</span></h3>
+<p>This is an alternative implementation of Huang's method by J. Schindelin with an impressive speed  advantage on 16 bit images. On some images, however the method gives returns different values than the original Huang method above.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Intermodes">Intermodes</span></h3>
+<p>This assumes a bimodal histogram. The histogram is iteratively smoothed using a running average of size 3, until there are only two local maxima: j and k. The threshold t is then computed as (j+k)/2. Images with histograms having extremely unequal peaks or a broad and ﬂat valley are unsuitable for this method.
+method
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=The+analysis+of+cell+images&amp;rft.aulast=Prewitt&amp;rft.aufirst=JMS&amp;rft.date=1966&amp;rft.volume=128&amp;rft.pages=1035-1053&amp;rft_id=http%3A%2F%2Fwww3.interscience.wiley.com%2Fjournal%2F119758871%2Fabstract%3FCRETRY%3D1%26SRETRY%3D0"><cite id="CITEREFPrewittMendelsohn1966">Prewitt, JMS&#32;&amp;&#32;Mendelsohn, ML&#32;(1966),&#32;"<a rel="nofollow" class="external text" href="http://www3.interscience.wiley.com/journal/119758871/abstract?CRETRY=1&amp;SRETRY=0">The analysis of cell images</a>",&#32;<i>Annals of the New York Academy of Sciences</i>&#32;<b>128</b>:  1035-1053<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://www3.interscience.wiley.com/journal/119758871/abstract?CRETRY=1&amp;SRETRY=0">http://www3.interscience.wiley.com/journal/119758871/abstract?CRETRY=1&amp;SRETRY=0</a>&gt;</span></cite></span></li></ul>
+<p>Ported from Antti Niemist&#246;'s <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> code. See <a rel="nofollow" class="external text" href="https://github.com/carandraug/histthresh">here</a> for an excellent slide presentation and his original <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> code.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="IsoData">IsoData</span></h3>
+<p>Iterative procedure based on the isodata algorithm of:
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Picture+thresholding+using+an+iterative+selection+method&amp;rft.aulast=Ridler&amp;rft.aufirst=TW&amp;rft.date=1978&amp;rft.volume=8&amp;rft.pages=630-632&amp;rft_id=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D4310039"><cite id="CITEREFRidlerCalvard1978">Ridler, TW&#32;&amp;&#32;Calvard, S&#32;(1978),&#32;"<a rel="nofollow" class="external text" href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4310039">Picture thresholding using an iterative selection method</a>",&#32;<i>IEEE Transactions on Systems, Man and Cybernetics</i>&#32;<b>8</b>:  630-632<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4310039">http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4310039</a>&gt;</span></cite></span></li></ul>
+<p>The procedure divides the image into object and background by taking an initial threshold, then the averages of the pixels at or below the threshold and pixels above are computed. The averages of those two values are computed, the threshold is incremented and the process is repeated until the threshold is larger than the composite average. That is,      
+</p>
+<pre>threshold = (average background + average objects)/2. 
+</pre>
+<p>Several implementations of this method exist. See the source code for further comments.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Li">Li</span></h3>
+<p>Implements Li's Minimum Cross Entropy thresholding method based on the iterative version (2nd reference below) of the algorithm.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Minimum+Cross+Entropy+Thresholding&amp;rft.aulast=Li&amp;rft.aufirst=CH&amp;rft.date=1993&amp;rft.volume=26%284%29&amp;rft.pages=617-625"><cite id="CITEREFLiLee1993">Li, CH&#32;&amp;&#32;Lee, CK&#32;(1993),&#32;"Minimum Cross Entropy Thresholding",&#32;<i>Pattern Recognition</i>&#32;<b>26(4)</b>:  617-625</cite></span></li></ul>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=An+Iterative+Algorithm+for+Minimum+Cross+Entropy+Thresholding&amp;rft.aulast=Li&amp;rft.aufirst=CH&amp;rft.date=1998&amp;rft.volume=18%288%29&amp;rft.pages=771-776"><cite id="CITEREFLiTam1998">Li, CH&#32;&amp;&#32;Tam, PKS&#32;(1998),&#32;"An Iterative Algorithm for Minimum Cross Entropy Thresholding",&#32;<i>Pattern Recognition Letters</i>&#32;<b>18(8)</b>:  771-776</cite></span></li></ul>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Survey+over+Image+Thresholding+Techniques+and+Quantitative+Performance+Evaluation&amp;rft.aulast=Sezgin&amp;rft.aufirst=M&amp;rft.date=2004&amp;rft.volume=13%281%29&amp;rft.pages=146-165&amp;rft_id=http%3A%2F%2Fciteseer.ist.psu.edu%2Fsezgin04survey.html"><cite id="CITEREFSezginSankur2004">Sezgin, M&#32;&amp;&#32;Sankur, B&#32;(2004),&#32;"<a rel="nofollow" class="external text" href="http://citeseer.ist.psu.edu/sezgin04survey.html">Survey over Image Thresholding Techniques and Quantitative Performance Evaluation</a>",&#32;<i>Journal of Electronic Imaging</i>&#32;<b>13(1)</b>:  146-165<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://citeseer.ist.psu.edu/sezgin04survey.html">http://citeseer.ist.psu.edu/sezgin04survey.html</a>&gt;</span></cite></span></li></ul>
+<p>Ported from ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[3]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[4]</a>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="MaxEntropy">MaxEntropy</span></h3>
+<p>Implements Kapur-Sahoo-Wong (Maximum Entropy) thresholding method:
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=A+New+Method+for+Gray-Level+Picture+Thresholding+Using+the+Entropy+of+the+Histogram&amp;rft.aulast=Kapur&amp;rft.aufirst=JN&amp;rft.date=1985&amp;rft.volume=29%283%29&amp;rft.pages=273-285"><cite id="CITEREFKapurSahooWong1985">Kapur, JN; Sahoo, PK&#32;&amp; Wong, ACK&#32;(1985),&#32;"A New Method for Gray-Level Picture Thresholding Using the Entropy of the Histogram",&#32;<i>Graphical Models and Image Processing</i>&#32;<b>29(3)</b>:  273-285</cite></span></li></ul>
+<p>Ported from ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[5]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[6]</a>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Mean">Mean</span></h3>
+<p>Uses the mean of grey levels as the threshold. It is used by some other methods as a first guess threshold.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=An+analysis+of+histogram-based+thresholding+algorithms&amp;rft.aulast=Glasbey&amp;rft.aufirst=CA&amp;rft.date=1993&amp;rft.volume=55&amp;rft.pages=532-537"><cite id="CITEREFGlasbey1993">Glasbey, CA&#32;(1993),&#32;"An analysis of histogram-based thresholding algorithms",&#32;<i>CVGIP: Graphical Models and Image Processing</i>&#32;<b>55</b>:  532-537</cite></span></li></ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="MinError.28I.29">MinError(I)</span></h3>
+<p>An iterative implementation of Kittler and Illingworth's Minimum Error thresholding.
+</p><p>This implementation seems to converge more often than the original. Nevertheless, sometimes the algorithm does not converge to a solution. In that case a warning is reported to the log window and the result defaults to the initial estimate of the threshold which is computed using the Mean method.
+The <b>Ignore black</b> or <b>Ignore white</b> options might help to avoid this problem.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Minimum+error+thresholding&amp;rft.aulast=Kittler&amp;rft.aufirst=J&amp;rft.date=1986&amp;rft.volume=19&amp;rft.pages=41-47"><cite id="CITEREFKittlerIllingworth1986">Kittler, J&#32;&amp;&#32;Illingworth, J&#32;(1986),&#32;"Minimum error thresholding",&#32;<i>Pattern Recognition</i>&#32;<b>19</b>:  41-47</cite></span></li></ul>
+<p>Ported from Antti Niemist&#246;'s <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> code. See <a rel="nofollow" class="external text" href="http://www.cs.tut.fi/~ant/histthresh/">here</a> for an excellent slide presentation and the original <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> code.
+</p>
+<h3><span class="mw-headline" id="Minimum">Minimum</span></h3>
+<p>Similarly to the Intermodes method, this assumes a bimodal histogram. The histogram is iteratively smoothed using a running average of size 3, until there are only two local maxima. The threshold t is such that yt−1 &gt; yt &lt;&#61; yt+1.
+</p><p>Images with histograms having extremely unequal peaks or a broad and ﬂat valley are unsuitable for this method.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=The+analysis+of+cell+images&amp;rft.aulast=Prewitt&amp;rft.aufirst=JMS&amp;rft.date=1966&amp;rft.volume=128&amp;rft.pages=1035-1053&amp;rft_id=http%3A%2F%2Fwww3.interscience.wiley.com%2Fjournal%2F119758871%2Fabstract%3FCRETRY%3D1%26SRETRY%3D0"><cite id="CITEREFPrewittMendelsohn1966">Prewitt, JMS&#32;&amp;&#32;Mendelsohn, ML&#32;(1966),&#32;"<a rel="nofollow" class="external text" href="http://www3.interscience.wiley.com/journal/119758871/abstract?CRETRY=1&amp;SRETRY=0">The analysis of cell images</a>",&#32;<i>Annals of the New York Academy of Sciences</i>&#32;<b>128</b>:  1035-1053<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://www3.interscience.wiley.com/journal/119758871/abstract?CRETRY=1&amp;SRETRY=0">http://www3.interscience.wiley.com/journal/119758871/abstract?CRETRY=1&amp;SRETRY=0</a>&gt;</span></cite></span></li></ul>
+<p>Ported from Antti Niemist&#246;'s <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> code. See <a rel="nofollow" class="external text" href="http://www.cs.tut.fi/~ant/histthresh/">here</a> for an excellent slide presentation and the original <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> code.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Moments">Moments</span></h3>
+<p>Tsai's method attempts to preserve the moments of the original image in the thresholded result.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Moment-preserving+thresholding%3A+a+new+approach&amp;rft.aulast=Tsai&amp;rft.aufirst=W&amp;rft.date=1985&amp;rft.volume=29&amp;rft.pages=377-393&amp;rft_id=http%3A%2F%2Fportal.acm.org%2Fcitation.cfm%3Fid%3D201578"><cite id="CITEREFTsai1985">Tsai, W&#32;(1985),&#32;"<a rel="nofollow" class="external text" href="http://portal.acm.org/citation.cfm?id=201578">Moment-preserving thresholding: a new approach</a>",&#32;<i>Computer Vision, Graphics, and Image Processing</i>&#32;<b>29</b>:  377-393<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://portal.acm.org/citation.cfm?id=201578">http://portal.acm.org/citation.cfm?id=201578</a>&gt;</span></cite></span></li></ul>
+<p>Ported from ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[7]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[8]</a>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Otsu">Otsu</span></h3>
+<p>Otsu's threshold clustering algorithm searches for the threshold that minimizes the intra-class variance, defined as a weighted sum of variances of the two classes.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=A+threshold+selection+method+from+gray-level+histograms&amp;rft.aulast=Otsu&amp;rft.aufirst=N&amp;rft.date=1979&amp;rft.volume=9&amp;rft.pages=62-66&amp;rft_id=info:doi/10.1109%2FTSMC.1979.4310076&amp;rft_id=http%3A%2F%2Fieeexplore.ieee.org%2Fxpl%2Ffreeabs_all.jsp%3F%26arnumber%3D4310076"><cite id="CITEREFOtsu1979">Otsu, N&#32;(1979),&#32;"<a rel="nofollow" class="external text" href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?&amp;arnumber=4310076">A threshold selection method from gray-level histograms</a>",&#32;<i>IEEE Trans. Sys., Man., Cyber.</i>&#32;<b>9</b>:  62-66, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109%2FTSMC.1979.4310076">10.1109/TSMC.1979.4310076</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?&amp;arnumber=4310076">http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?&amp;arnumber=4310076</a>&gt;</span></cite></span></li></ul>
+<p>See also the <a href="http://en.wikipedia.org/wiki/Otsu%27s_method" class="extiw" title="wikipedia:Otsu's method">Wikipedia article on Otsu's method</a>.
+</p><p>Ported from C++ code by Jordan Bevik.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Percentile">Percentile</span></h3>
+<p>Assumes the fraction of foreground pixels to be 0.5.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Operation+useful+for+similarity-invariant+pattern+recognition&amp;rft.aulast=Doyle&amp;rft.aufirst=W&amp;rft.date=1962&amp;rft.volume=9&amp;rft.pages=259-267&amp;rft_id=info:doi/10.1145%2F321119.321123&amp;rft_id=http%3A%2F%2Fportal.acm.org%2Fcitation.cfm%3Fid%3D321119.321123"><cite id="CITEREFDoyle1962">Doyle, W&#32;(1962),&#32;"<a rel="nofollow" class="external text" href="http://portal.acm.org/citation.cfm?id=321119.321123">Operation useful for similarity-invariant pattern recognition</a>",&#32;<i>Journal of the Association for Computing Machinery</i>&#32;<b>9</b>:  259-267, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1145%2F321119.321123">10.1145/321119.321123</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://portal.acm.org/citation.cfm?id=321119.321123">http://portal.acm.org/citation.cfm?id=321119.321123</a>&gt;</span></cite></span></li></ul>
+<p>Ported from Antti Niemist&#246;'s <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> code. See <a rel="nofollow" class="external text" href="http://www.cs.tut.fi/~ant/histthresh/">here</a> for an excellent slide presentation and the original <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> code.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="RenyiEntropy">RenyiEntropy</span></h3>
+<p>Similar to the <b>MaxEntropy</b> method, but using Renyi's entropy instead.
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=A+New+Method+for+Gray-Level+Picture+Thresholding+Using+the+Entropy+of+the+Histogram&amp;rft.aulast=Kapur&amp;rft.aufirst=JN&amp;rft.date=1985&amp;rft.volume=29%283%29&amp;rft.pages=273-285"><cite id="CITEREFKapurSahooWong1985">Kapur, JN; Sahoo, PK&#32;&amp; Wong, ACK&#32;(1985),&#32;"A New Method for Gray-Level Picture Thresholding Using the Entropy of the Histogram",&#32;<i>Graphical Models and Image Processing</i>&#32;<b>29(3)</b>:  273-285</cite></span></li></ul>
+<p>Ported from ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[9]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[10]</a>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Shanbhag">Shanbhag</span></h3>
+<p><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Utilization+of+information+measure+as+a+means+of+image+thresholding&amp;rft.aulast=Shanbhag&amp;rft.aufirst=Abhijit+G.&amp;rft.date=1994&amp;rft.volume=56&amp;rft.issue=5&amp;rft.pages=414--419&amp;rft.pub=Academic+Press%2C+Inc.&amp;rft_id=info:doi/10.1006%2Fcgip.1994.1037&amp;rft.issn=1049-9652"><cite id="CITEREFShanbhag1994">Shanbhag, Abhijit G.&#32;(1994),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1006%2Fcgip.1994.1037">Utilization of information measure as a means of image thresholding</a>",&#32;<i>Graph. Models Image Process.</i>&#32;(Academic Press, Inc.)&#32;<b>56</b>&#xa0;(5):  414--419, ISSN <a rel="nofollow" class="external text" href="http://worldcat.org/issn/1049-9652">1049-9652</a><span class="printonly">, DOI 10.1006/cgip.1994.1037</span></cite></span>
+</p><p>Ported from ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[11]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[12]</a>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Triangle">Triangle</span></h3>
+<p>This is an implementation of the Triangle method:
+</p>
+<ul><li><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Automatic+measurement+of+sister+chromatid+exchange+frequency&amp;rft.aulast=Zack+GW%2C+Rogers+WE%2C+Latt+SA&amp;rft.date=1977&amp;rft.volume=25&amp;rft.issue=7&amp;rft.pages=741%E2%80%9353&amp;rft_id=info:pmid/70454&amp;rft_id=http%3A%2F%2Fwww.jhc.org%2Fcgi%2Fpmidlookup%3Fview%3Dlong%26pmid%3D70454"><cite id="CITEREFZack_GW.2C_Rogers_WE.2C_Latt_SA1977">Zack GW, Rogers WE, Latt SA&#32;(1977),&#32;"<a rel="nofollow" class="external text" href="http://www.jhc.org/cgi/pmidlookup?view=long&amp;pmid=70454">Automatic measurement of sister chromatid exchange frequency</a>",&#32;<i>J. Histochem. Cytochem.</i>&#32;<b>25</b>&#xa0;(7):  741–53, PMID 70454<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://www.jhc.org/cgi/pmidlookup?view=long&amp;pmid=70454">http://www.jhc.org/cgi/pmidlookup?view=long&amp;pmid=70454</a>&gt;</span></cite></span></li></ul>
+<p>Modified from Johannes Schindelin's plugin <a rel="nofollow" class="external text" href="http://wbgn013.biozentrum.uni-wuerzburg.de/ImageJ/triangle-algorithm.html">Triangle_Algorithm</a>.
+</p><p>See also: <a rel="nofollow" class="external free" href="http://www.ph.tn.tudelft.nl/Courses/FIP/noframes/fip-Segmenta.html#Heading118">http://www.ph.tn.tudelft.nl/Courses/FIP/noframes/fip-Segmenta.html#Heading118</a>
+</p><p>The Triangle algorithm, a geometric method, cannot tell whether the data is skewed to one side or another, but assumes a maximum peak (mode) near one end of the histogram and searches towards the other end.
+This causes a problem in the absence of information of the type of image to be processed, or when the maximum is not near one of the histogram extremes (resulting in two possible threshold regions between that max and the extremes).
+Here the algorithm was extended to find on which side of the max peak the data goes the furthest and searches for the threshold within that largest range.
+</p>
+<h3><span class="mw-headline" id="Yen">Yen</span></h3>
+<p>Implements Yen's thresholding method from:
+</p>
+<ul><li><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=A+New+Criterion+for+Automatic+Multilevel+Thresholding&amp;rft.aulast=Yen+JC%2C+Chang+FJ%2C+Chang+S&amp;rft.date=1995&amp;rft.volume=4&amp;rft.issue=3&amp;rft.pages=370-378&amp;rft_id=info:doi/10.1109%2F83.366472&amp;rft.issn=1057-7149&amp;rft_id=http%3A%2F%2Fieeexplore.ieee.org%2Fxpl%2Ffreeabs_all.jsp%3Farnumber%3D366472"><cite id="CITEREFYen_JC.2C_Chang_FJ.2C_Chang_S1995">Yen JC, Chang FJ, Chang S&#32;(1995),&#32;"<a rel="nofollow" class="external text" href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=366472">A New Criterion for Automatic Multilevel Thresholding</a>",&#32;<i>IEEE Trans. on Image Processing</i>&#32;<b>4</b>&#xa0;(3):  370-378, ISSN <a rel="nofollow" class="external text" href="http://worldcat.org/issn/1057-7149">1057-7149</a>, doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109%2F83.366472">10.1109/83.366472</a><span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=366472">http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=366472</a>&gt;</span></cite></span></li></ul>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Survey+over+Image+Thresholding+Techniques+and+Quantitative+Performance+Evaluation&amp;rft.aulast=Sezgin&amp;rft.aufirst=M&amp;rft.date=2004&amp;rft.volume=13%281%29&amp;rft.pages=146-165&amp;rft_id=http%3A%2F%2Fciteseer.ist.psu.edu%2Fsezgin04survey.html"><cite id="CITEREFSezginSankur2004">Sezgin, M&#32;&amp;&#32;Sankur, B&#32;(2004),&#32;"<a rel="nofollow" class="external text" href="http://citeseer.ist.psu.edu/sezgin04survey.html">Survey over Image Thresholding Techniques and Quantitative Performance Evaluation</a>",&#32;<i>Journal of Electronic Imaging</i>&#32;<b>13(1)</b>:  146-165<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://citeseer.ist.psu.edu/sezgin04survey.html">http://citeseer.ist.psu.edu/sezgin04survey.html</a>&gt;</span></cite></span></li></ul>
+<p>Ported from ME Celebi's fourier_0.8 routines <a rel="nofollow" class="external autonumber" href="http://sourceforge.net/projects/fourier-ipal">[13]</a> and <a rel="nofollow" class="external autonumber" href="http://www.lsus.edu/faculty/~ecelebi/fourier.htm">[14]</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064535
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.308 seconds
+Real time usage: 0.310 seconds
+Preprocessor visited node count: 9794/1000000
+Preprocessor generated node count: 13604/1000000
+Post‐expand include size: 72785/2097152 bytes
+Template argument size: 20692/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  250.171      1 - -total
+ 60.81%  152.118     18 - Template:Citation
+ 56.59%  141.584     18 - Template:Citation/core
+ 34.29%   85.785      1 - Template:ComponentStats:sc.fiji:Auto_Threshold
+ 33.86%   84.703      1 - Template:Component
+ 27.93%   69.881     10 - Template:Person
+  3.93%    9.836      5 - Template:Bc
+  3.31%    8.276     18 - Template:Link
+  1.25%    3.136      9 - Template:Arrow
+  0.71%    1.773      1 - Template:GitHub
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Auto_Threshold&amp;oldid=36812">http://imagej.net/index.php?title=Auto_Threshold&amp;oldid=36812</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 15 December 2017, at 03:36.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Auto_Threshold&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Auto+Threshold" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Auto+Threshold" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Auto_Threshold" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Auto_Threshold" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Auto_Threshold&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Auto_Threshold&amp;oldid=36812" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Auto_Threshold&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":511});});</script>
+		</body>
+		</html>
+		

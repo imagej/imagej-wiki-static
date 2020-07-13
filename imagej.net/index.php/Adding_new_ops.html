@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Adding new ops - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Adding_new_ops","wgTitle":"Adding new ops","wgCurRevisionId":38513,"wgRevisionId":38513,"wgArticleId":3036,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Tutorials","ImageJ2","Development","Ops"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Adding_new_ops","wgRelevantArticleId":3036,"wgRequestId":"6bfb80a286afd360f7c4f379","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="At the most fundamental level, an Op is a SciJava Plugin encapsulating a piece of functionality, which can be discovered and used by a central OpService."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Adding new ops"/>
+
+	<meta property="og:description" content="At the most fundamental level, an Op is a SciJava Plugin encapsulating a piece of functionality, which can be discovered and used by a central OpService."/>
+
+	<meta property="og:url" content="http://imagej.net/Adding_new_ops"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Adding_new_ops rootpage-Adding_new_ops skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Adding_new_ops.html#bodyContent">Skip to content</a>, 			<a href="Adding_new_ops.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Adding_new_ops.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Adding_new_ops" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Adding_new_ops&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Adding_new_ops&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Adding_new_ops&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Adding new ops</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Development
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Development" title="Development">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Philosophy" title="Philosophy">Philosophy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Architecture" title="Architecture">Architecture</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Source_code" title="Source code">Source code</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Project_management" title="Project management">Project management</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Coding_style" title="Coding style">Coding style</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging" title="Debugging">Debugging</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tools
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git" title="Git">Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Maven" title="Maven">Maven</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/IDEs" title="IDEs">IDEs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Travis" title="Travis">Travis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/AppVeyor" title="AppVeyor">AppVeyor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Dotfiles" title="Dotfiles">Dotfiles</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Guides
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Writing_plugins" title="Writing plugins">Writing plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_contribute_to_an_existing_plugin_or_library" title="How to contribute to an existing plugin or library">Contributing to a plugin</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Distribution" title="Distribution">Distributing your plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Development_Lifecycle" title="Development Lifecycle">Development lifecycle</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Building_a_POM" title="Building a POM">Building a POM</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImageJ_in_Eclipse" title="Developing ImageJ in Eclipse">Developing with Eclipse</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging_Exercises" title="Debugging Exercises">Hands-on debugging</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Adding new ops</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_formats" title="Adding new formats">Adding new formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_using_native_libraries" title="Developing using native libraries">Using native libraries</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_developers" title="Tips for developers">Tips for developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_C%2B%2B_developers" title="Tips for C++ developers">Tips for C++ developers</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">ImageJ 1.x plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Versioning" title="Versioning">Versioning</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Logging" title="Logging">Logging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Uber-JAR" title="Uber-JAR">Uber-JARs</a>
+</td></tr></table>
+</td></tr></table>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Adding_new_ops.html#Make_your_first_Op"><span class="tocnumber">1</span> <span class="toctext">Make your first Op</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Adding_new_ops.html#Create_your_Interface"><span class="tocnumber">1.1</span> <span class="toctext">Create your Interface</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Adding_new_ops.html#Implement_your_Op"><span class="tocnumber">1.2</span> <span class="toctext">Implement your Op</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Adding_new_ops.html#Use_your_Op"><span class="tocnumber">1.3</span> <span class="toctext">Use your Op</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Adding_new_ops.html#Group_your_Ops_in_a_Namespace"><span class="tocnumber">2</span> <span class="toctext">Group your Ops in a Namespace</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="Adding_new_ops.html#Create_your_Interface.28s.29"><span class="tocnumber">2.1</span> <span class="toctext">Create your Interface(s)</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Adding_new_ops.html#Implement_your_Op.28s.29"><span class="tocnumber">2.2</span> <span class="toctext">Implement your Op(s)</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Adding_new_ops.html#Use_your_Op.28s.29"><span class="tocnumber">2.3</span> <span class="toctext">Use your Op(s)</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Adding_new_ops.html#Potential_next_steps"><span class="tocnumber">3</span> <span class="toctext">Potential next steps</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="Adding_new_ops.html#Create_a_helper_service_for_your_Namespace"><span class="tocnumber">3.1</span> <span class="toctext">Create a helper service for your Namespace</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Adding_new_ops.html#Distribute_scripts_demonstrating_how_your_Ops_should_be_used"><span class="tocnumber">3.2</span> <span class="toctext">Distribute scripts demonstrating how your Ops should be used</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="Adding_new_ops.html#Advanced_Topics"><span class="tocnumber">4</span> <span class="toctext">Advanced Topics</span></a></li>
+</ul>
+</div>
+</div>This tutorial is designed to guide developers through the options, processes and motivations for adding Ops outside the core <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-ops/">imagej-ops</a> project. Because this tutorial caters to external developers, in this tutorial we show how a <a href="http://imagej.net/BAR" title="BAR">BAR</a> function could be converted to an Op.
+<h1><span class="mw-headline" id="Make_your_first_Op">Make your first Op</span></h1>
+<p>At the most fundamental level, an Op is a SciJava <a rel="nofollow" class="external text" href="https://github.com/scijava/scijava-common/blob/scijava-common-2.47.0/src/main/java/org/scijava/plugin/Plugin.java">Plugin</a> encapsulating a piece of functionality, which can be discovered and used by a central <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-ops/blob/imagej-ops-0.18.0/src/main/java/net/imagej/ops/OpService.java">OpService</a>.
+</p><p>At a minimum, creating an Op requires two pieces - an interface, and an implementation
+</p>
+<h2><span class="mw-headline" id="Create_your_Interface">Create your Interface</span></h2>
+<pre class="brush:java">
+package bar;
+
+import net.imagej.ops.Op;
+
+/**
+ * Op interface for calculating the greatest common divisor (GCD)
+ */
+public interface GCD extends Op {
+  // Ops can be called by name, defined as properties of the Op interface
+  String NAME = "gcd";
+  // An alias is OPTIONAL but gives users additional ways to call your Op.
+  // For example - the GCD is also called greatest common factor (GCF).
+  String ALIASES = "gcf";
+}
+</pre>
+<h2><span class="mw-headline" id="Implement_your_Op">Implement your Op</span></h2>
+<pre class="brush:java">
+package bar;
+
+import net.imagej.ops.AbstractOp;
+import org.scijava.ItemIO;
+import org.scijava.plugin.Attr;
+import org.scijava.plugin.Parameter;
+import org.scijava.plugin.Plugin;
+
+// The Plugin annotation allows this Op to be discovered by the OpService.
+// We declare the type of op; the name and any aliases will be auto-detected.
+@Plugin(type = GCD.class)
+public class DefaultGCD implements GCD extends AbstractOp {
+
+  // -- Inputs --
+
+  // We want our GCD function to have two inputs. These are declared using @Parameter notation
+  @Parameter
+  private double a;
+
+  @Parameter
+  private double b;
+
+  // -- Outputs --
+
+  // This op will return a single value (the computed GCD) so we declare an output parameter
+
+  @Parameter(type = ItemIO.OUTPUT)
+  private double result;
+
+  @Override
+  public void run() {
+    // The job of the run method is to populate any outputs using the inputs
+    result = computeGCD(a, b);
+  }
+
+  private double computeGCD(final double p1, final double p2) {
+    return p2 == 0&#160;? p1&#160;: computeGCD(p2, p1%p2);
+  }
+}
+</pre>
+<p><a rel="nofollow" class="external text" href="https://github.com/tferr/Scripts/blob/master/BAR/src/main/java/bar/DefaultGCD.java">On GitHub</a>
+</p>
+<h2><span class="mw-headline" id="Use_your_Op">Use your Op</span></h2>
+<p>With these two components, you can start using your Op - for example, in the <a href="http://imagej.net/Scripting" title="Scripting">script editor</a>:
+</p>
+<pre class="brush:python">
+# @OpService ops
+
+from bar import GCD
+
+# We look up our Op by asking the framework to find an implementation of the
+# GCD interface that could handle these inputs
+gcd = ops.op(GCD, 7, 10);
+
+# Print the Op instance, to verify our Op is picked up
+print(gcd)
+
+# The OpService can print useful information about any Op..
+print(ops.info(gcd))
+
+# .. including its usage
+print(ops.help("gcd"))
+
+# We can also run an Op by passing the name or alias we defined
+# Print the result of running our Op
+print(ops.run("gcf", 20, 7))
+</pre>
+<h1><span class="mw-headline" id="Group_your_Ops_in_a_Namespace">Group your Ops in a Namespace</span></h1>
+<p>Calling our Ops by name is not type-safe, and importing each interface is tedious. If you are going to provide a collection of Ops, a useful way to package them is within a custom <a rel="nofollow" class="external text" href="http://javadoc.scijava.org/ImageJ/net/imagej/ops/Namespace.html">Namespace</a>.
+</p>
+<h2><span class="mw-headline" id="Create_your_Interface.28s.29">Create your Interface(s)</span></h2>
+<pre class="brush:java">
+package bar;
+
+import org.scijava.plugin.Plugin;
+
+import net.imagej.ops.AbstractNamespace;
+import net.imagej.ops.Namespace;
+import net.imagej.ops.Op;
+import net.imagej.ops.OpMethod;
+
+@Plugin(type = Namespace.class)
+public class BAR extends AbstractNamespace {
+
+  @Override
+  public String getName() {
+    return "name";
+  }
+
+  // -- BAR Namespace Op interfaces --
+
+  // We can make all of our interfaces nested classes.
+  // This allows references to take the form of "Namespace.Op" which
+  // can make things easier to understand.
+
+  public interface GCD extends Op {
+    // Note that the name and aliases are prepended with Namespace.getName
+    String NAME = "bar.gcd";
+    String ALIASES = "bar.gcf";
+  }
+
+  // -- BAR Namespace built-in methods --
+
+  // Built-in methods provide type-safe methods for accessing Ops
+  // in a namespace.
+
+  // We always provide an Object... constructor that can be passed directly to the
+  // OpService.run method
+
+  @OpMethod(op = bar.BAR.GCD.class)
+  public Object gcd(final Object... args) {
+    return ops().run(bar.BAR.GCD.class, args);
+  }
+
+  // But we can also type-narrow our inputs and returns with our knowledge of the Op
+  // implementations
+
+  @OpMethod(op = bar.BAR.GCD.class)
+  public double gcd(final double a, final double b) {
+    return (Double) ops().run(bar.BAR.GCD.class, a, b);
+  }
+}
+</pre>
+<p><a rel="nofollow" class="external text" href="https://github.com/tferr/Scripts/blob/master/BAR/src/main/java/bar/BAR.java">On GitHub</a>
+</p>
+<h2><span class="mw-headline" id="Implement_your_Op.28s.29">Implement your Op(s)</span></h2>
+<p>The implementation is essentially the same as with single Ops, although we do have to update our class references.
+</p><p>Since the implementations are not accessed directly typically, whether they are grouped as nested classes or provided individually is less important than for the interfaces.
+</p>
+<pre class="brush:java">
+package bar;
+
+import net.imagej.ops.AbstractOp;
+
+import org.scijava.ItemIO;
+import org.scijava.plugin.Attr;
+import org.scijava.plugin.Parameter;
+import org.scijava.plugin.Plugin;
+
+@Plugin(type = BAR.GCD.class, name = BAR.GCD.NAME, attrs = { @Attr(name = "aliases", value = BAR.GCD.ALIASES) })
+public class DefaultGCD extends AbstractOp implements BAR.GCD {
+
+  // -- Inputs --
+
+  @Parameter
+  private double a;
+
+  @Parameter
+  private double b;
+
+  // -- Outputs --
+
+  @Parameter(type = ItemIO.OUTPUT)
+  private double result;
+
+  @Override
+  public void run() {
+    result = computeGCD(a, b);
+  }
+
+  private double computeGCD(final double p1, final double p2) {
+    return p2 == 0&#160;? p1&#160;: computeGCD(p2, p1%p2);
+  }
+}
+</pre>
+<h2><span class="mw-headline" id="Use_your_Op.28s.29">Use your Op(s)</span></h2>
+<p>We can still use our Op through the OpService:
+</p>
+<pre class="brush:python">
+# @OpService ops
+
+print(ops.run("bar.gcd", 20, 15))
+</pre>
+<p>But we can also use our built-in methods:
+</p>
+<pre class="brush:python">
+# @bar.BAR bar
+
+print(bar.gcd(20, 15))
+</pre>
+<p><br />
+This is especially useful in environments with code completion.
+</p><p>Namespaces also present an easy way for users to find information about available functionality using the base Help ops:
+</p>
+<pre class="brush:python">
+# @OpService ops
+# @bar.BAR bar
+
+# Print usage for all ops in the BAR namespace
+print(ops.help(bar))
+</pre>
+<h1><span class="mw-headline" id="Potential_next_steps">Potential next steps</span></h1>
+<h2><span class="mw-headline" id="Create_a_helper_service_for_your_Namespace">Create a helper service for your Namespace</span></h2>
+<p>SciJava <a rel="nofollow" class="external text" href="https://github.com/scijava/scijava-common/blob/scijava-common-2.47.0/src/main/java/org/scijava/service/Service.java">Services</a> are a general workhorse in a given SciJava context. There is a single instance of each Service created per context, so they are a common container for static utility style methods.
+</p><p>When developing an external Namespace, an immediate benefit to creating a corresponding Service is that it provides an initialization hook for registering your new Namespace outside the Ops framework - in particular, with the SCriptService:
+</p>
+<pre class="brush:java">
+
+package bar;
+
+import org.scijava.plugin.Parameter;
+import org.scijava.plugin.Plugin;
+import org.scijava.script.ScriptService;
+import org.scijava.service.AbstractService;
+import org.scijava.service.Service;
+
+import net.imagej.ImageJService;
+
+@Plugin(type = Service.class)
+public class BARService extends AbstractService implements ImageJService {
+
+  @Parameter
+  private ScriptService scriptService;
+
+  @Override
+  public void initialize() {
+    // Register this namespace with the ScriptService so we can drop package prefixes
+    // in script parameters, allowing:
+    // @BAR
+    // instead of
+    // @bar.BAR
+    scriptService.addAlias(bar.BAR.class);
+  }
+}
+</pre>
+<p><a rel="nofollow" class="external text" href="https://github.com/tferr/Scripts/blob/master/BAR/src/main/java/bar/BARService.java">On GitHub</a>
+</p><p><br />
+Now we can drop package prefixes when using our Namespace in scripts:
+</p>
+<pre class="brush:python">
+# @OpService ops
+# @BAR bar
+
+# Print usage for all ops in the BAR namespace
+print(ops.help(bar))
+</pre>
+<h2><span class="mw-headline" id="Distribute_scripts_demonstrating_how_your_Ops_should_be_used">Distribute scripts demonstrating how your Ops should be used</span></h2>
+<p>The ImageJ <a href="http://imagej.net/Scripting" title="Scripting">script editor</a> automatically collects scripts located in <code>src/main/resources/script_templates</code>. For example, if we create a file:
+</p><p><code>src/main/resources/script_templates/BAR/GCD.py</code>
+</p><p>with contents:
+</p>
+<pre class="brush:python">
+# @BAR bar
+# @float a
+# @float b
+
+print("Greatest common divisor of " + str(a) + " and " + str(b) + " is: " + str(bar.gcd(a, b)))
+</pre>
+<p><a rel="nofollow" class="external text" href="https://github.com/tferr/Scripts/blob/master/BAR/src/main/resources/script_templates/BAR/GCD.py">On GitHub</a>
+</p><p><br />
+Then users will be able to select <code>Templates &gt; BAR &gt; GCD</code> from the script editor window, to automatically load the script and select the correct script language (python in this case).
+</p><p>This is an easy way to provide a starting point for development using your Ops.
+</p>
+<h1><span class="mw-headline" id="Advanced_Topics">Advanced Topics</span></h1>
+<p>There are many conveniences in Op development that have not been covered in this tutorial, including:
+</p>
+<ul><li> Create additional implementations for a given Ops interfaces
+<ul><li> Specializing Ops for a variety of input types</li></ul></li>
+<li> Auto-generate your Op implementations using templates</li>
+<li> Write unit-tests to ensure coverage of built-in methods for your Ops</li></ul>
+<p>However, all of this is done in the core <a rel="nofollow" class="external text" href="https://github.com/imagej/imagej-ops/">imagej-ops</a> project and could be deduced by careful study. If you do take the time to independently attempt any of these topics, consider documenting your experience and sharing it as a tutorial on this wiki.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064458
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.030 seconds
+Preprocessor visited node count: 469/1000000
+Preprocessor generated node count: 1266/1000000
+Post‐expand include size: 7012/2097152 bytes
+Template argument size: 3794/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   16.602      1 - -total
+ 73.64%   12.226      1 - Template:DevelopMenu
+ 64.14%   10.648      1 - Template:Menu
+ 56.39%    9.362      3 - Template:Submenu
+ 28.42%    4.719     31 - Template:MenuItem
+ 14.06%    2.335      2 - Template:GitHub
+  6.31%    1.048      1 - Template:TOC
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Adding_new_ops&amp;oldid=38513">http://imagej.net/index.php?title=Adding_new_ops&amp;oldid=38513</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 18 September 2018, at 09:09.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Adding_new_ops&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li><li><a href="http://imagej.net/Category:Ops" title="Category:Ops">Ops</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Adding+new+ops" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Adding+new+ops" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Adding_new_ops" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Adding_new_ops" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Adding_new_ops&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Adding_new_ops&amp;oldid=38513" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Adding_new_ops&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":180});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Bigdataviewer Scijava - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Bigdataviewer_Scijava","wgTitle":"Bigdataviewer Scijava","wgCurRevisionId":40980,"wgRevisionId":40980,"wgArticleId":11068,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Bigdataviewer_Scijava","wgRelevantArticleId":11068,"wgRequestId":"e794488048db0bf146ff65fd","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="As announced in the forum here and here, this repository aims at a better integration of BigDataViewer into FIJI by using the Scijava Framework."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Bigdataviewer Scijava"/>
+
+	<meta property="og:description" content="As announced in the forum here and here, this repository aims at a better integration of BigDataViewer into FIJI by using the Scijava Framework."/>
+
+	<meta property="og:url" content="http://imagej.net/Bigdataviewer_Scijava"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Bigdataviewer_Scijava rootpage-Bigdataviewer_Scijava skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Bigdataviewer_Scijava.html#bodyContent">Skip to content</a>, 			<a href="Bigdataviewer_Scijava.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Bigdataviewer_Scijava.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Bigdataviewer_Scijava" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Bigdataviewer_Scijava&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Bigdataviewer_Scijava&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Bigdataviewer_Scijava&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Bigdataviewer Scijava</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>As announced in the forum <a rel="nofollow" class="external text" href="https://forum.image.sc/t/getting-bigdataviewer-instance-in-an-imagej-command/21110/8">here</a> and <a rel="nofollow" class="external text" href="https://forum.image.sc/t/fiji-commands-for-bigdataviewer/25601">here</a>, this repository aims at a better integration of BigDataViewer into FIJI by using the Scijava Framework.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Bigdataviewer_Scijava.html#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Bigdataviewer_Scijava.html#Goals"><span class="tocnumber">2</span> <span class="toctext">Goals</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Bigdataviewer_Scijava.html#What_you_can_do_with_this_update_site"><span class="tocnumber">3</span> <span class="toctext">What you can do with this update site</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Bigdataviewer_Scijava.html#How_to_make_your_bigdataviewer_workflow_compatible_with_Scijava"><span class="tocnumber">4</span> <span class="toctext">How to make your bigdataviewer workflow compatible with Scijava</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Bigdataviewer_Scijava.html#Secondary_Goals"><span class="tocnumber">5</span> <span class="toctext">Secondary Goals</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Bigdataviewer_Scijava.html#Examples"><span class="tocnumber">6</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="Bigdataviewer_Scijava.html#Video"><span class="tocnumber">6.1</span> <span class="toctext">Video</span></a>
+<ul>
+<li class="toclevel-3 tocsection-8"><a href="Bigdataviewer_Scijava.html#1_-_Simple"><span class="tocnumber">6.1.1</span> <span class="toctext">1 - Simple</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="Bigdataviewer_Scijava.html#2_-_IJ_Script_example"><span class="tocnumber">6.1.2</span> <span class="toctext">2 - IJ Script example</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="Bigdataviewer_Scijava.html#3_-_Procedural_.2B_Warping_.2B_Export_.28xml_hdf5_and_ImagePlus.29"><span class="tocnumber">6.1.3</span> <span class="toctext">3 -  Procedural + Warping + Export (xml hdf5 and ImagePlus)</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-11"><a href="Bigdataviewer_Scijava.html#Scripts"><span class="tocnumber">6.2</span> <span class="toctext">Scripts</span></a>
+<ul>
+<li class="toclevel-3 tocsection-12"><a href="Bigdataviewer_Scijava.html#Groovy"><span class="tocnumber">6.2.1</span> <span class="toctext">Groovy</span></a></li>
+<li class="toclevel-3 tocsection-13"><a href="Bigdataviewer_Scijava.html#IJ1_Macro_Language"><span class="tocnumber">6.2.2</span> <span class="toctext">IJ1 Macro Language</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="Bigdataviewer_Scijava.html#List_of_all_commands"><span class="tocnumber">7</span> <span class="toctext">List of all commands</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>Enable the <a rel="nofollow" class="external text" href="https://imagej.net/Following_an_update_site">update site</a> (<a rel="nofollow" class="external free" href="https://biop.epfl.ch/Fiji-Update-Bdv/">https://biop.epfl.ch/Fiji-Update-Bdv/</a>) to activate bigdataviewer_scijava commands. All commands from this update site are present in the github repository <a rel="nofollow" class="external text" href="https://github.com/BIOP/bigdataviewer_scijava">bigdataviewer_scijava</a>. A <a rel="nofollow" class="external text" href="https://github.com/BIOP/bigdataviewer_scijava#list-of-all-commands-of-the-repository">list of all commands</a> can be found in the repository.
+</p>
+<h2><span class="mw-headline" id="Goals">Goals</span></h2>
+<ul><li> <b>Modularity for bigdataviewer!</b> Being able to combine scripts or code for display and processing. This update site creates a way to access an existing BDV instance when scripting or writing java code.</li>
+<li> <b>Provide a set of macro recordable commands for bigdataviewer</b>. Makes it possible to script basic actions on BigDataViewer with the IJ1 recorder.</li></ul>
+<h2><span class="mw-headline" id="What_you_can_do_with_this_update_site">What you can do with this update site</span></h2>
+<p>By using Scijava framework to store BigDataViewer windows through its <code>BdvHandle</code> interface, it is possible to communicate bdv instances between scripts and commands (see <a rel="nofollow" class="external text" href="https://imagej.net/Script_Parameters">script parameter page</a>). This also facilitates the use of FIJI GUI because the commands of this repository can be chained  easily. Any script or Command which declares a <code>BdvHandle</code> parameter can retrieve or provide reference to existing BigDataViewer instances.
+</p><p>In practice, Bdv windows created via the commands from this update site  are put by default in the <code>ObjectService</code>. To get a reference to these windows:
+</p>
+<ul><li> In groovy, add this at the beginning of your script</li></ul>
+<pre class="brush:python">
+#@bdv.util.BdvHandle bdvh
+</pre>
+<ul><li> In Java:</li></ul>
+<pre class="brush:java">
+@Parameter
+BdvHandle bdvh;
+</pre>
+<h2><span class="mw-headline" id="How_to_make_your_bigdataviewer_workflow_compatible_with_Scijava">How to make your bigdataviewer workflow compatible with Scijava</span></h2>
+<p>Two options:
+</p>
+<ul><li> Use the command <code>BdvWindowCreate</code> from this repository and retrieve its reference through SciJava parameter annotation. This will make your Bdv Window accessible to other plugins / commands.</li>
+<li> Create your own Bdv window, but declare the associated <code>BdvHandle</code> as an output of your Command:
+<ul><li> in Java: <code> @Parameter(type = ItemIO.OUTPUT); BdvHandle bdvh_out;</code></li></ul></li></ul>
+<p>The type of the parameter annotation can also be <code>ItemIO.BOTH</code> if your command is modifying an existing <code>BdvHandle</code>
+</p>
+<h2><span class="mw-headline" id="Secondary_Goals">Secondary Goals</span></h2>
+<p>This repo provide an implementation of all the command from the repository bigdataviewer_fiji to make it scijava compatible, so it should have the same commands.
+</p>
+<ul><li> Because complex bdv dataset (metadata, multiple views, channels...) are usually organized into <code>SpimData</code> objects, this update site / repository also provide tools to manipulate these objects, in a scijava compatible manner. Hence declaring in groovy <code>#@mpicbg.spim.data.generic.AbstractSpimData sd</code> or in java <code>@Parameter AbstractSpimData  asd;</code> allows to manipulate and communicate such objects.</li>
+<li> Easy visualization of the bdv sources present in a Bdv Window (-&gt; access to display options). Right clicking on selected source also enables to access basic display operations.</li>
+<li> Easy edition with "standard actions" on bdv sources held within a Bdv Handle:
+<ul><li> transform </li>
+<li> registration</li>
+<li> export</li>
+<li> import</li></ul></li></ul>
+<h2><span class="mw-headline" id="Examples">Examples</span></h2>
+<h3><span class="mw-headline" id="Video">Video</span></h3>
+<h4><span class="mw-headline" id="1_-_Simple">1 - Simple</span></h4>
+<p><a rel="nofollow" class="external free" href="https://www.youtube.com/watch?v=-q5qIdH9Idw">https://www.youtube.com/watch?v=-q5qIdH9Idw</a> (1 minute)
+</p>
+<ul><li> Open a sample image. </li>
+<li> Change display settings. </li>
+<li> Double clicking on the source in the bdv window translate the window to the origin of the source</li></ul>
+<h4><span class="mw-headline" id="2_-_IJ_Script_example">2 - IJ Script example</span></h4>
+<p><a rel="nofollow" class="external free" href="https://youtu.be/IjIW5bOn4P8">https://youtu.be/IjIW5bOn4P8</a> (3 minutes)
+</p>
+<ul><li> Create Bdv Window</li>
+<li> Start IJ1 recorder</li>
+<li> Open a voronoi image</li>
+<li> Create an affine transform</li>
+<li> Transform source with affine transform</li>
+<li> Make a loop and execute it</li>
+<li> Modify display settings</li></ul>
+<h4><span class="mw-headline" id="3_-_Procedural_.2B_Warping_.2B_Export_.28xml_hdf5_and_ImagePlus.29">3 -  Procedural + Warping + Export (xml hdf5 and ImagePlus)</span></h4>
+<p><a rel="nofollow" class="external free" href="https://youtu.be/uOYWn7tUsf0">https://youtu.be/uOYWn7tUsf0</a> (7 minutes)
+</p>
+<ul><li> Open a procedural image ( mandelbrot )</li>
+<li> Create new Bdv Window</li>
+<li> Open voronoi in this new window</li>
+<li> Warp one into another using BigWarp</li>
+<li> Create a new bdv window</li>
+<li> Transfer initial Voronoi Image into this window</li>
+<li> Transfer transformed fractal into this window</li>
+<li> Resample transformed Mandelbrot like Voronoi</li>
+<li> Save initial voronoi and transformed resampled mandelbrot into a new dataset</li>
+<li> Close everything</li>
+<li> Reopen saved dataset</li>
+<li> Apply correct display settings</li></ul>
+<p>Resampling is necessary because XML/Hdf5 do not allow to save procedural images.
+</p>
+<h3><span class="mw-headline" id="Scripts">Scripts</span></h3>
+<h4><span class="mw-headline" id="Groovy">Groovy</span></h4>
+<p>Run both scripts consecutively:
+</p>
+<ul><li> Display a recursive FIJI image:</li></ul>
+<pre class="brush:java">
+import bdv.util.Procedural3DImageShort
+import net.imglib2.RealRandomAccessible
+import bdv.util.BdvFunctions
+import bdv.util.BdvOptions
+import bdv.util.BdvHandle
+import net.imglib2.type.numeric.integer.UnsignedShortType
+import net.imglib2.FinalInterval
+import net.imglib2.Interval
+import net.imglib2.type.numeric.ARGBType
+// Input&#160;: provided by Single Input Preprocessor in case no widow is present
+#@bdv.util.BdvHandle bdv_h 
+// Output&#160;: allow to updates list of sources
+#@output bdv.util.BdvHandle bdv_h 
+
+// Simple FIJI Image stored as an array
+fijiData =
+            [[0,0,0,0,0,0,0,0,0],
+             [0,1,1,1,1,1,1,1,0],
+             [0,1,0,0,0,0,0,0,0],
+             [0,1,0,1,0,1,0,1,0],
+             [0,1,0,1,0,1,0,1,0],
+             [0,1,0,1,0,1,0,1,0],
+             [0,1,0,0,0,1,0,0,0],
+             [0,1,0,1,1,1,0,0,0],
+             [0,0,0,0,0,0,0,0,0]] as short[][];
+
+// Declare a procedural image
+def s = new Procedural3DImageShort({p -&gt; getRecursiveFiji(p[1], p[0], p[2])}).getRRA();  
+
+// Interval (mainly useless here, but required by BdvFunctions
+Interval interval = new FinalInterval([ 0, 0, 0] as long[], [ 9, 9, 0 ] as long[]);
+
+// Display the source in the bdv_h window
+bss = BdvFunctions.show( s , interval, "FIJI", BdvOptions.options().addTo(bdv_h) );
+
+// Display options
+bss.setDisplayRange(0,1);
+bss.setColor(new ARGBType(ARGBType.rgba(101,164,227,255)));
+
+
+//------------- FUNCTION for recursive FIJI Image generation
+
+int getRecursiveFiji(double x, double y, double level) {
+	def valueLevel = (int) (fijiData[((int)x%9)][((int)y%9)])
+	if (level&lt;=0) {
+		return valueLevel
+	} else {
+		if (valueLevel==1) {
+			if (level&gt;2) {
+				level=2;
+			}
+			return getRecursiveFiji(x*9,y*9,level-1)
+		} else {
+			return 0
+		}
+	}
+}
+</pre>
+<ul><li> Duplicate and rotate specified sources:</li></ul>
+<pre class="brush:python">
+import ch.epfl.biop.bdv.scijava.command.BdvWindowCreate
+import ch.epfl.biop.bdv.scijava.command.edit.transform.BdvSourcesAffineTransform
+import bdv.util.BdvHandle
+
+// bdv handle containing the source to transform
+#@bdv.util.BdvHandle bdv_h_in
+// index of the source in bdv handle input 
+#@int index_src
+// output bdv window
+#@output bdv.util.BdvHandle bdv_h_out
+
+// Command Service
+#@CommandService cs
+
+bdv_h_out = (BdvHandle) cs.run(BdvWindowCreate.class, true,
+				"is2D",false,
+				"windowTitle","Bdv_out",
+				"px",0.0,
+				"py",0.0,
+				"pz",-1.0,
+				"s",12.0).get().getOutput("bdvh");
+
+affine_matrix = "[3d-affine: (0.45, -0.05, 0.0, 0.4, 0.05, 0.5, 0.0, -0.2, 0.0, 0.0, 1.0, -0.6)]";
+
+cs.run(BdvSourcesAffineTransform.class, true, 
+				"at", affine_matrix,
+				"transformInPlace", false,
+				"bdvh", bdv_h_in,
+				"bdvh_out", bdv_h_out,
+				"sourceIndexString", index_src,
+				"output_mode", "Add To Bdv").get()
+
+for (int i=0;i&lt;2;i++) {
+	cs.run(BdvSourcesAffineTransform.class, true,
+				"at", affine_matrix,
+				"transformInPlace", false,
+				"bdvh", bdv_h_out,
+				"bdvh_out", bdv_h_out,
+				"sourceIndexString", i,
+				"output_mode", "Add To Bdv").get()
+}
+</pre>
+<h4><span class="mw-headline" id="IJ1_Macro_Language">IJ1 Macro Language</span></h4>
+<p>Opens blobs and deforms it and append it in BigDataViewer:
+</p>
+<pre class="brush:plain">
+
+run("Create Empty BDV Frame", "is2d=false windowtitle=Bdv px=0.0 py=0.0 pz=-1.0 s=850.0");
+run("Blobs (25K)");
+run("Current IJ1 Image [ImgLib2]");
+run("Set Sources Color", "c=255,51,51 sourceindexstring=0"); 
+run("Transform Sources (Affine, string)", "sourceindexstring=0 bdvh_out=Bdv output_mode=[Add To Bdv] stringmatrix=[1,-0.1,0,250,\n 0,0.5,0.1,0,\n 0,0,1,0, \n 0,0,0,1] transforminplace=false");
+</pre>
+<h2><span class="mw-headline" id="List_of_all_commands">List of all commands</span></h2>
+<p>The list of commands of this repository is available in the git repository&#160;: 
+<a rel="nofollow" class="external free" href="https://github.com/BIOP/bigdataviewer_scijava">https://github.com/BIOP/bigdataviewer_scijava</a>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064630
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.012 seconds
+Real time usage: 0.015 seconds
+Preprocessor visited node count: 100/1000000
+Preprocessor generated node count: 160/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Bigdataviewer_Scijava&amp;oldid=40980">http://imagej.net/index.php?title=Bigdataviewer_Scijava&amp;oldid=40980</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 10 December 2019, at 01:06.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Bigdataviewer_Scijava&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Bigdataviewer+Scijava" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Bigdataviewer+Scijava" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Bigdataviewer_Scijava" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Bigdataviewer_Scijava" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Bigdataviewer_Scijava&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Bigdataviewer_Scijava&amp;oldid=40980" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Bigdataviewer_Scijava&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":210});});</script>
+		</body>
+		</html>
+		

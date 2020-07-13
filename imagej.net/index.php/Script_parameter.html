@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Script Parameters - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Script_Parameters","wgTitle":"Script Parameters","wgCurRevisionId":45241,"wgRevisionId":45241,"wgArticleId":2417,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Scripting"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Script_Parameters","wgRelevantArticleId":2417,"wgRequestId":"9f00cb4a22d2cbf351ef53f1","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="All scripting languages have access to a universal #@parameter notation for declaring inputs and outputs. This approach is preferred over the ImageJ 1.x GenericDialog because it is totally agnostic of the user interface, allowing such scripts to run in a variety of contexts. As with ImageJ2 plugins, script parameterization is based on the SciJava parameter annotation—so experience with plugin writing directly translates to scripting, and vice versa."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Script Parameters"/>
+
+	<meta property="og:description" content="All scripting languages have access to a universal #@parameter notation for declaring inputs and outputs. This approach is preferred over the ImageJ 1.x GenericDialog because it is totally agnostic of the user interface, allowing such scripts to run in a variety of contexts. As with ImageJ2 plugins, script parameterization is based on the SciJava parameter annotation—so experience with plugin writing directly translates to scripting, and vice versa."/>
+
+	<meta property="og:url" content="http://imagej.net/Script_Parameters"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Script_Parameters rootpage-Script_Parameters skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Script_parameter.html#bodyContent">Skip to content</a>, 			<a href="Script_parameter.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Script_parameter.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Script_parameter.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk"><a href="http://imagej.net/Talk:Script_Parameters" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Script_Parameters&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Script_Parameters&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Script Parameters</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Learn
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Introduction" title="Introduction">Introduction</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Getting_Started" title="Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_Guides" title="User Guides">User Guides</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_and_Tricks" title="Tips and Tricks">Tips and Tricks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Presentations" title="Presentations">Presentations</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Plugins" title="Plugins">Plugins</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Techniques
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Category:Techniques" title="Category:Techniques">All Techniques</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Colocalization_Analysis" title="Colocalization Analysis"> Colocalization</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Deconvolution" title="Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Registration" title="Registration">Registration</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Segmentation" title="Segmentation">Segmentation</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Image_Stitching" title="Image Stitching"> Stitching</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tracking" title="Tracking">Tracking</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Visualization" title="Visualization">Visualization</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Scripting
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Scripting" title="Scripting">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/User_input" title="User input">User input</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_basics" title="Scripting basics">Basics of script writing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_use_the_Javadoc" title="How to use the Javadoc">How to use the Javadoc</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Batch_Processing" title="Batch Processing">Batch processing</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Using_the_Script_Editor" title="Using the Script Editor">Script Editor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Editor_Auto_Import" title="Script Editor Auto Import">Auto Imports</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Script_Templates" title="Script Templates">Templates</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">Running headlessly</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_comparisons" title="Scripting comparisons">Comparisons</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scripting_toolbox" title="Scripting toolbox">Toolbox</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_Clojure" title="Multithreaded Image Processing in Clojure">Multithreading in Clojure</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Multithreaded_Image_Processing_in_JavaScript" title="Multithreaded Image Processing in JavaScript">Multithreading in JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Chess" title="Chess">Chess</a> in Jython
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Languages
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/BeanShell_Scripting" title="BeanShell Scripting">BeanShell</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Groovy_Scripting" title="Groovy Scripting">Groovy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Macro_Programming" title="Introduction into Macro Programming">ImageJ Macro</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JavaScript_Scripting" title="JavaScript Scripting">JavaScript</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Clojure_Scripting" title="Clojure Scripting">Lisp (Clojure)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">MATLAB</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Jython_Scripting" title="Jython Scripting">Python (Jython)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Renjin_Scripting" title="Renjin Scripting">R (Renjin)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/JRuby_Scripting" title="JRuby Scripting">Ruby (JRuby)</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Scala_Scripting" title="Scala Scripting">Scala</a>
+</td></tr></table>
+</td></tr></table>
+<p>All scripting languages have access to a universal <code>#@parameter</code> notation for declaring inputs and outputs. This approach is preferred over the ImageJ 1.x <a href="http://imagej.net/Generic_dialog" title="Generic dialog">GenericDialog</a> because it is totally agnostic of the user interface, allowing such scripts to run in a variety of contexts. As with <a href="http://imagej.net/Writing_ImageJ2_plugins" class="mw-redirect" title="Writing ImageJ2 plugins">ImageJ2 plugins</a>, script parameterization is based on the <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> <a rel="nofollow" class="external text" href="https://github.com/scijava/scijava-common/blob/scijava-common-2.40.0/src/main/java/org/scijava/plugin/Parameter.java">parameter annotation</a>—so experience with plugin writing directly translates to scripting, and vice versa.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Script parameters are a feature of <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a>; they will not work in plain <a href="http://imagej.net/ImageJ1" title="ImageJ1">ImageJ1</a>. The <a href="http://imagej.net/Fiji" title="Fiji">Fiji</a> distribution of ImageJ is built on ImageJ2, so they also work in Fiji. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Script_parameter.html#Basic_syntax"><span class="tocnumber">1</span> <span class="toctext">Basic syntax</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Script_parameter.html#Parameter_types"><span class="tocnumber">2</span> <span class="toctext">Parameter types</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Script_parameter.html#Examples"><span class="tocnumber">3</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Script_parameter.html#Integer_and_Decimal_input"><span class="tocnumber">3.1</span> <span class="toctext">Integer and Decimal input</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Script_parameter.html#Parameter_properties"><span class="tocnumber">4</span> <span class="toctext">Parameter properties</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="Script_parameter.html#Widget_labels"><span class="tocnumber">4.1</span> <span class="toctext">Widget labels</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Script_parameter.html#Widget_mouseover"><span class="tocnumber">4.2</span> <span class="toctext">Widget mouseover</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Script_parameter.html#Default_values"><span class="tocnumber">4.3</span> <span class="toctext">Default values</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Script_parameter.html#Persistence"><span class="tocnumber">4.4</span> <span class="toctext">Persistence</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Script_parameter.html#Visibility"><span class="tocnumber">4.5</span> <span class="toctext">Visibility</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Script_parameter.html#Multiple_Choice"><span class="tocnumber">4.6</span> <span class="toctext">Multiple Choice</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Script_parameter.html#Files_and_Folders"><span class="tocnumber">4.7</span> <span class="toctext">Files and Folders</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Script_parameter.html#Styles"><span class="tocnumber">4.8</span> <span class="toctext">Styles</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Basic_syntax">Basic syntax</span></h2>
+<p>The rules for <code>#@</code> parameter use are as follows:
+</p>
+<ol>
+<li>Parameter declarations begin with <code>#@</code>. Each such line contains a single parameter declaration or script directive and nothing else.</li>
+<li><code>#@ Type variableName</code> will declare an input of the indicated type, assigned to the specified name. (The use of a space between <code>#@</code> and <code>Type</code> is encouraged, but not required.)</li>
+<li><code>#@output Type outputName</code> will declare the variable of the specified name as an output parameter with the given type. The <code>Type</code> parameter is optional, as the output will be treated as <code>Object</code> be default. (For the <code>output</code> directive and other script directives, no space is allowed between <code>#@</code> and the directive.)</li>
+</ol>
+<div style="padding: 0.5em; float: right;"><table style="border: 1px solid lightgray; border-radius: 1em; padding: 0.5em 1em 0.5em 1em; width: 100%">
+<tr>
+<td rowspan="2" style="padding-right: 1em; vertical-align: top; padding-top: 1em"><img style="border-radius: 50%" src="http&#58;//gravatar.com/avatar/9e4ed4484fd425f3f178bfeed4777b31" /></td>
+<td colspan="2" style="font-family: Times, Helvetica, sans-serif; font-size: 17px">&#8220;zomg UIs are so easy now<br />done by lunchtime&#8221;</td>
+</tr>
+<tr>
+<td style="font-family: Times, Helvetica, sans-serif; font-size: 15px; padding-left: 1em">—<a href="http://imagej.net/User:Kharrington" title="User:Kharrington">Kyle Harrington</a>,<br />Clojure developer</td>
+<td style="font-size: 10px; text-align: center; white-space: nowrap">[ <a rel="nofollow" class="external text" href="https://gitter.im/fiji/fiji?at=5717afbc98c544f1396cef2f">source</a> ]</td>
+</tr>
+</table></div>
+<p>For example, if we look at the <a rel="nofollow" class="external text" href="https://github.com/scijava/scripting-jython/blob/scripting-jython-0.2.0/src/main/resources/script_templates/Python/Greeting.py">Greeting.py</a> <a href="http://imagej.net/Script_Templates" title="Script Templates">template</a> supplied with Fiji:
+</p><p><b><a rel="nofollow" class="external text" href="https://github.com/scijava/scripting-jython/blob/master/src/main/resources/script_templates/Intro/Greeting.py">src/main/resources/script_templates/Intro/Greeting.py</a></b>
+</p>
+<pre class="brush:python"></pre>
+<p>We see that an input parameter <code>name</code> of type <code>String</code> is declared. <code>@Parameters</code> are handled automatically by the framework; if we run this script when the User Interface is available (e.g. from the script editor), the <code>name</code> parameter will automatically be harvested via a pop-up dialog:
+</p><p><br />
+<a href="http://imagej.net/File:ScriptParams.png" class="image"><img alt="ScriptParams.png" src="../_images/c/c0/ScriptParams.png" width="450" height="219" /></a>
+</p><p><br />
+We could also run this script <a href="http://imagej.net/Scripting_Headless" title="Scripting Headless">headlessly</a>, thanks to the general nature of <code>@parameters</code>.
+</p><p>When the script is completed, any <code>#@output</code> variables are handled by the framework, based on their type. In this case we expect the <code>greeting</code> variable to be printed, since it is a <code>string</code>.
+</p>
+<h2><span class="mw-headline" id="Parameter_types">Parameter types</span></h2>
+<p>A list of possible data types and the corresponding widgets is provided below.<br />  
+The optional style argument defines how the widget are rendered in the input window.<br />
+See the respective widget sections for a preview of the styles. 
+</p>
+<table style="wikitable nicetable">
+<tr>
+<td> <b>Data type</b>
+</td>
+<td> <b>Widget type</b>
+</td>
+<td> <b>Available styles</b>
+</td></tr>
+<tr>
+<td> <code>boolean</code> | <code>Boolean</code>
+</td>
+<td> checkbox
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <code>byte</code> | <code>short</code> | <code>int</code> | <code>long</code>
+</td>
+<td> numeric field
+</td>
+<td> <code>slider</code> | <code>spinner</code> | <code>scroll bar</code>
+</td></tr>
+<tr>
+<td> <code>Byte</code> | <code>Short</code> | <code>Integer</code> | <code>Long</code>
+</td>
+<td> numeric field
+</td>
+<td> <code>slider</code> | <code>spinner</code> | <code>scroll bar</code>
+</td></tr>
+<tr>
+<td> <code>Float</code>
+</td>
+<td> numeric field
+</td>
+<td> <code>slider</code> | <code>spinner</code> | <code>scroll bar</code>
+</td></tr>
+<tr>
+<td> <code>BigInteger</code> | <code>BigDecimal</code>
+</td>
+<td> numeric field
+</td>
+<td> <code>slider</code> | <code>spinner</code> | <code>scroll bar</code>
+</td></tr>
+<tr>
+<td> <code>char</code> | <code>Character</code> | <code>String</code>
+</td>
+<td> text field
+</td>
+<td> <code>text field</code> | <code>text area</code> | <code>password</code>
+</td></tr>
+<tr>
+<td> <code>Dataset</code> | <code>ImagePlus</code>
+</td>
+<td> (&gt;=2 images) triggers a dropdown list
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <code>ColorRGB</code>
+</td>
+<td> color chooser
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <code>Date</code>
+</td>
+<td> date chooser
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <code>File</code>
+</td>
+<td> file chooser
+</td>
+<td> <code>open</code> | <code>save</code> | <code>file</code> |  <code>directory</code> | <code>extensions:</code>
+</td></tr></table>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> <code>float</code> is also an accepted field but the decimal part is not displayed in the form compared to <code>Float</code> (mind the capital F).<br />
+A related <a rel="nofollow" class="external text" href="https://github.com/scijava/scijava-common/issues/302">issue</a> occurs with <code>int</code> and <code>double</code> when a default value is set in the code and entered in the form, the value is not properly recalled at the next run. Use <code>Integer</code> and <code>Double</code> instead. </td>
+
+
+</tr>
+</table></div>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> A single <code>#@ImagePlus</code> or <code>#@Dataset</code>   field will not show up in the input form, instead the current image will automatically be processed. The idea is to stick to the IJ macro language. However if 2 <code>#@ImagePlus</code> (or respectively <code>#@Dataset</code>) are present then they will be rendered as drop-down buttons. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p><p>By implementing <a rel="nofollow" class="external text" href="https://javadoc.scijava.org/SciJava/org/scijava/widget/InputWidget.html">InputWidget</a> it is possible to extend this list.
+</p>
+<h2><span class="mw-headline" id="Examples">Examples</span></h2>
+<h3><span class="mw-headline" id="Integer_and_Decimal_input">Integer and Decimal input</span></h3>
+<p>Integer and flaot can have the optional argument <i>min</i>, <i>max</i> and <i>stepSize</i> value (default 1) as well as a default value indicated by <i>value</i>.<br />
+Different styles are also possible.
+</p>
+<pre class="brush:python">
+#@ Integer (label="Default integer style", min=0, max=10, value=5) myint1
+#@ Integer (label="Slider integer style", style="slider", min=0, max=10, stepSize=2) myint2
+#@ Float   (label="Slider with float", style="slider", min=0, max=1, stepSize=0.1) myfloat
+</pre>
+<p><a href="http://imagej.net/File:ScriptParameters-IntegerStyles.JPG" class="image"><img alt="ScriptParameters-IntegerStyles.JPG" src="../_images/9/90/ScriptParameters-IntegerStyles.JPG" width="450" height="246" /></a>
+</p>
+<h2><span class="mw-headline" id="Parameter_properties">Parameter properties</span></h2>
+<p>If you look at the <a rel="nofollow" class="external text" href="https://github.com/scijava/scijava-common/blob/scijava-common-2.40.0/src/main/java/org/scijava/plugin/Parameter.java">@Parameter annotation</a>, you will notice it has many properties—for example, <code>name</code> and <code>description</code>.
+</p><p>Script parameters can set these properties, following these guidelines:
+</p>
+<ol>
+<li>All properties are defined in a <b>single parenthetical expression</b> immediately following the <code>#@type</code> declaration.</li>
+<li>Properties are set by a <a rel="nofollow" class="external text" href="https://docs.oracle.com/javase/tutorial/java/annotations/basics.html">comma-separated list of <b>key=value</b> pairs</a></li>
+</ol>
+<p>Properties are your way to customize how an <code>#@parameter</code> should be handled by the framework.
+</p>
+<h3><span class="mw-headline" id="Widget_labels">Widget labels</span></h3>
+<p>Widgets are the User Interface elements shown to users to collect input information. For example, instead of just displaying "Name" to the user, we can add a custom label to the field of our <code>Greeting.py</code> script as follows:
+</p>
+<pre class="brush:python">
+#@ String (label="Please enter your name") name
+#@output String greeting
+
+greeting = "Hello, " + name + "!"
+</pre>
+<h3><span class="mw-headline" id="Widget_mouseover">Widget mouseover</span></h3>
+<p>We can add a <code>description</code> property to provide mouse-over text for our field:
+</p>
+<pre class="brush:python">
+#@ String (label="Please enter your name", description="Your name") name
+#@output String greeting
+
+greeting = "Hello, " + name + "!"
+</pre>
+<h3><span class="mw-headline" id="Default_values">Default values</span></h3>
+<p>Default values are also supported as parameter properties:
+</p>
+<pre class="brush:python">
+#@ Integer (label="An integer!",value=15) someInt
+</pre>
+<h3><span class="mw-headline" id="Persistence">Persistence</span></h3>
+<p>Per default, variable values are persisted between runs of a script. This means that parameter values from a previous run are used as starting value. Please note that a persisted value will overwrite a defined <a href="Script_parameter.html#Default_value">default value</a>.
+</p>
+<pre class="brush:python">
+#@ Integer (label="An integer!", value=15, persist=false) someInt
+</pre>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Currently, "two scripts which declare the same parameter name, even with different types, will stomp each other." See <a rel="nofollow" class="external autonumber" href="https://github.com/scijava/scijava-common/issues/193">[1]</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Visibility">Visibility</span></h3>
+<p>This property set if the parameter should be displayed, editable and/or recorded.
+</p><p>- NORMAL: parameter is included in the history for purposes of data provenance, and included as a parameter when recording scripts.
+</p><p>- TRANSIENT: parameter is excluded from the history for the purposes of data provenance, but still included as a parameter when recording scripts.
+</p><p>- INVISIBLE: parameter is excluded from the history for the purposes of data provenance, and also excluded as a parameter when recording scripts. This option should only be used for parameters with no effect on the final
+output, such as a "verbose" flag.
+</p><p>- MESSAGE: parameter value is intended as a message only, not editable by the user nor included as an input or output parameter. The option <code>required</code> should be set to false.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:ScriptParam_MESSAGEstring.JPG" class="image"><img alt="ScriptParam MESSAGEstring.JPG" src="../_images/6/64/ScriptParam_MESSAGEstring.JPG" width="300" height="121" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:ScriptParam_MESSAGEstring.JPG" class="internal" title="Enlarge"></a></div></div></div></div>
+<pre class="brush:python">
+#@ String (visibility=MESSAGE, value="This is a documentation line", required=false) msg
+#@ Integer (label="Some integer parameter") my_int
+</pre>
+<p>You can <a rel="nofollow" class="external text" href="https://forum.image.sc/t/multiline-messages-in-dialog-widgets/183">use HTML</a> to format the message string, for example:
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:ScijavaMultilineMessage.png" class="image"><img alt="ScijavaMultilineMessage.png" src="../_images/2/27/ScijavaMultilineMessage.png" width="300" height="214" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:ScijavaMultilineMessage.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<pre class="brush:python">
+#@ String (visibility=MESSAGE, value="&lt;html&gt;Message line 1&lt;br/&gt;Message line 2&lt;p&gt;Let's make a list&lt;ul&gt;&lt;li&gt;item a&lt;/li&gt;&lt;li&gt;item b&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;") docmsg
+#@ Integer anIntParam
+</pre>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Currently if a script containing a MESSAGE string is recorded with the macro recorder and the resulting recorded code executed, a window will show up containing only the MESSAGE string This is unexpected and will be corrected in the future. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Multiple_Choice">Multiple Choice</span></h3>
+<p>Any parameter can be turned into a multiple-choice selector by adding a <code>choices={...}</code> property. <br />
+The choice widget can have different styles like dropdown list or radio buttons.
+</p>
+<pre class="brush:python">
+#@ String (choices={"Option 1", "Option 2"}, style="listBox") myChoice123
+#@ String (choices={"Option A", "Option B"}, style="radioButtonHorizontal") myChoiceABC
+
+print(myChoice123)
+print(myChoiceABC)
+</pre>
+<div class="MediaTransformError" style="width: 442px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<h3><span class="mw-headline" id="Files_and_Folders">Files and Folders</span></h3>
+<p>By default, a <code>#@ File</code> parameter will create a chooser for a single file. Here is an example in python:
+</p>
+<pre class="brush:python">
+#@ File (label="Select a file") myFile
+
+print(myFile)
+</pre>
+<p>You can request for multiple files or folders as well. However multiple files/folders input are not yet macro-recordable.
+</p><p>Example in ImageJ Macro Language:
+</p>
+<pre class="brush:python">
+#@ File[] listOfPaths (label="select files or folders", style="both")
+
+print("There are "+listOfPaths.length+" paths selected.");
+
+for (i=0;i&lt;listOfPaths.length;i++) {
+        myFile=listOfPaths[i];
+        if (File.exists(myFile)) {
+                print(myFile + " exists.");
+                if (File.isDirectory(myFile)) {
+                        print("Is a directory");
+                } else {
+                        print("Is a file");
+                }
+        }
+}
+
+</pre>
+<p>The exact same code works for the <a href="http://imagej.net/Macros" class="mw-redirect" title="Macros">ImageJ1 Macro language</a>, too.
+</p><p>If you want to select files or folders exclusively, use a <code>style</code> property:
+</p>
+<pre class="brush:python">
+#@ File (label="Select a file", style="file") myFile
+#@ File (label="Select a directory", style="directory") myDir
+
+print(myFile)
+print(myDir)
+</pre>
+<p>The single <code>File</code> parameter support the styles "<i>file</i>", "<i>directory</i>", "<i>open</i>", "<i>save</i>". 
+</p><p>For multiple file or directories, the styles are plural
+</p>
+<pre class="brush:python">
+#@ File[] (label="Select some files", style="files") listfiles
+#@ File[] (label="Select some directories", style="directories")listdirs
+
+print(listfiles)
+print(listdirs)
+</pre>
+<p>The <code>File[]</code> parameter supports the styles "<i>files</i>", "<i>directories</i>", "<i>both</i>".
+</p>
+<h3><span class="mw-headline" id="Styles">Styles</span></h3>
+<p>You can influence the visual style of some of the input widgets. See previous paragraph for widget-specific style examples.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073327
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.108 seconds
+Real time usage: 0.284 seconds
+Preprocessor visited node count: 1110/1000000
+Preprocessor generated node count: 5476/1000000
+Post‐expand include size: 16626/2097152 bytes
+Template argument size: 9059/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  228.555      1 - -total
+ 79.43%  181.536      1 - Template:GitHubEmbed
+  6.56%   15.000      1 - Template:Learn
+  5.79%   13.230      1 - Template:Menu
+  5.59%   12.776      1 - Template:Testimonial
+  5.17%   11.816      4 - Template:Submenu
+  4.95%   11.324      1 - Template:Person
+  3.70%    8.466      4 - Template:Warning
+  3.15%    7.188      5 - Template:Ambox
+  2.64%    6.030     39 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Script_Parameters&amp;oldid=45241">http://imagej.net/index.php?title=Script_Parameters&amp;oldid=45241</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 27 April 2020, at 11:05.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Script_Parameters&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Script+Parameters" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Script+Parameters" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Script_Parameters" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Script_Parameters" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Script_Parameters&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Script_Parameters&amp;oldid=45241" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Script_Parameters&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":440});});</script>
+		</body>
+		</html>
+		

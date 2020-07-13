@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Deconvolution tips - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Deconvolution_tips","wgTitle":"Deconvolution tips","wgCurRevisionId":5042,"wgRevisionId":5042,"wgArticleId":1281,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Deconvolution_tips","wgRelevantArticleId":1281,"wgRequestId":"c40bfb29e8c3cd91ea23c052","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Compiled by E. Crowell and D. J. White"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Deconvolution tips"/>
+
+	<meta property="og:description" content="Compiled by E. Crowell and D. J. White"/>
+
+	<meta property="og:url" content="http://imagej.net/Deconvolution_tips"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Deconvolution_tips rootpage-Deconvolution_tips skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Deconvolution_tips.html#bodyContent">Skip to content</a>, 			<a href="Deconvolution_tips.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Deconvolution_tips.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Deconvolution_tips" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Deconvolution_tips&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Deconvolution_tips&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Deconvolution_tips&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Deconvolution tips</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Deconvolution_tips.html#A_page_for_deconvolution_tips_and_how-tos"><span class="tocnumber">1</span> <span class="toctext">A page for deconvolution tips and how-tos</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Deconvolution_tips.html#What_the_hell_is_the_point_spread_function_.28PSF.29_and_why_should_I_care.3F"><span class="tocnumber">1.1</span> <span class="toctext">What the hell is the point spread function (PSF) and why should I care?</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Deconvolution_tips.html#Post-processing_of_acquired_PSF_images_to_generate_a_measured_PSF"><span class="tocnumber">1.2</span> <span class="toctext">Post-processing of acquired PSF images to generate a measured PSF</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Deconvolution_tips.html#Obtaining_images_optimized_for_deconvolution"><span class="tocnumber">1.3</span> <span class="toctext">Obtaining images optimized for deconvolution</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Deconvolution_tips.html#How_to_do_the_deconvolution"><span class="tocnumber">1.4</span> <span class="toctext">How to do the deconvolution</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="A_page_for_deconvolution_tips_and_how-tos">A page for deconvolution tips and how-tos</span></h2>
+<p>Compiled by E. Crowell and D. J. White
+</p>
+<h3><span class="mw-headline" id="What_the_hell_is_the_point_spread_function_.28PSF.29_and_why_should_I_care.3F">What the hell is the point spread function (PSF) and why should I care?</span></h3>
+<p>The PSF is the image of a point source of light as imaged through a lens (or set of lenses).
+It is the function (shape) describing the diffraction of light in an optical system. For microscope systems, it can be derived from processed images of sub-resolution fluorescent beads, or an approximation can be calculated from optical theory equations.
+</p><p>Three different types of PSF images are useful:
+</p>
+<ol><li>The raw measured PSF obtained by imaging sub-resolution size beads using the optical system.</li>
+<li>The measured PSF obtained by acquiring and processing multiple z-stacks of sub-resolution size beads.</li>
+<li>The theoretical PSF generated by a computer program, after input of values describing the optical system.</li></ol>
+<p>It is necessary to measure the PSF of the optical system to verify that no abnormalities are present.  Imaging sub-resolution beads is a sensitive method to detect any problems in the optical system.  If the Airy rings in the raw PSF are highly asymmetrical, it indicates a problem, such as an objective lens that might be fractured, scratched, misaligned, or simply dirty. Another possibility is that the coverglass could be at an angle rather than being exactly flat.
+</p><p>The effective numerical aperture (NA) of the objective can also be estimated by measuring the angle of the cone of light in the raw PSF.  If the raw PSF has the expected characteristics of a good quality optical system, then a theoretical PSF can be used for deconvolution and the time-consuming processing steps to generate a useful measured PSF (see below) might be avoided.  However, since no optical system is perfect, a high-quality measured PSF will typically give better results than a theoretical PSF.
+</p><p>A normal measured PSF image consists of a three-dimensional Airy pattern of rings of increasing diameter which radiate out from a spherical bead as one increases or decreases the z-position.  The Airy rings should be radially symmetrical circles if the lenses are in good condition.  When viewed orthogonally, two cones of light are visible around the fluorescent bead (point source of light).  The cones of light will not necessarily be perfectly symmetrical in the z-axis, depending on the quality of the optical system.  This asymmetry is one characteristic of the measured PSF which makes it superior to the theoretical PSF for deconvolution applications. A very asymmetric PSF in z is indicative of the presence of spherical aberration, due to wrong coverglass thickness and/or refractive index mismatch between the sample mounting and lens immersion media. 
+</p><p>In order to successfully measure the PSF, the fluorescent object being imaged should behave as a point source of light.  For this to be possible, the fluorescent beads should be smaller than the optical resolution of the system (e.g. 100 - 170 nm diameter).  The optical resolution = 0.61 . lambda / NA , where lambda is the emission wavelength of the fluorophore and NA is the numerical aperture of the objective.  All things being perfect, a 1.4 NA objective has an optical resolution of ~ 250 nm.  In optimal conditions, the pixel spacing in the digitized image should be 2.3-3 times smaller, in the range of 80 - 100 nm or a bit less, to fulfill the Nyquist - Shannon sampling criterion and to avoid missing information, over-sampling, or under-sampling.
+</p><p>Fluorescent beads larger than the optical resolution do not behave as point sources and deform the light passing through them due to their refractive index being higher than that of the mounting medium. 
+</p><p>Before acquiring z-stacks to generate a measured PSF, one should consider the acquisition conditions that will be routinely used to generate images for deconvolution.  The measured PSF image should be sufficiently sampled so that no information is lost, yet must be of dimensions that are equal to (or smaller than) the dimensions of the images to deconvolve.  The PSF image must "fit" into the image to deconvolve.  The PSF image should be large enough in xy to accomodate the full Airy rings, and large enough in z to make the cones of light visible and complete. 
+</p><p>The PSF shape depends on three criteria:
+</p>
+<ol><li>The emission wavelength of the fluorophore</li>
+<li>The objective used (magnification and NA)</li>
+<li>The refractive index of the objective lens immersion medium</li></ol>
+<p>For proper deconvolution, the z-step interval is also an important factor, since the PSF image and the z-stack to be processed should ideally have the same z-step interval.  PSF images with a smaller z-step interval than that of the z-stack to be processed can also be used.
+</p><p>Therefore, a distinct PSF must be acquired/created for every combination of these criteria routinely used when acquiring images.
+</p>
+<h3><span class="mw-headline" id="Post-processing_of_acquired_PSF_images_to_generate_a_measured_PSF">Post-processing of acquired PSF images to generate a measured PSF</span></h3>
+<p>A high-quality PSF image is difficult to generate by acquiring images of sub-resolution fluorescent beads.  Such small beads seldom contain enough fluorescent dye to yield a high signal-to-noise (SNR) ratio.  Therefore, z-stacks should be acquired using a relatively high exposure time (&gt; 200 ms).  Caution should be used to avoid increasing the exposure time or lamp power to a level which will cause rapid photobleaching of the bead.  If photobleaching occurs during acquisition of the PSF z-stack, it will result in a false PSF due to loss of signal caused by photobleaching.
+</p><p>The beads should be sufficiently diluted so that on average only one bead is visible per field of view.  (Neighboring beads will contribute their own light diffraction patterns and deform the measured PSF.)  Appropriate beads for measuring PSFs should have a low tendency to aggregate.  Nevertheless, with subresolution size beads, one can never know if one is imaging a single bead, or a pair or small cluster of beads.  Therefore, it is necessary to image multiple fluorescent beads and to compare the obtained PSFs.  The ones that show nicely symmetrical Airy rings represent the useful PSFs.  If none of the PSFs obtained shows the expected pattern, there is likely a problem in the optics (see above).
+</p><p>A PSF should be obtained for every combination of z-step intervals, wavelengths, objectives, and immersion medium.  However, there is no sense in measuring the PSF of low magnification objectives which give undersampled images, or stainings like DAPI which do not need to be deconvolved.
+</p><p>The last step in generating a useful measured PSF for deconvolution is to subtract the background signal from the stacks so that some pixel values will be equal to zero where there is no real signal.  To accomplish this, simply measure the mean intensity of a black region in the stack, outside of the Airy rings.  This mean value represents the background signal in the image, which usually originates from the positive offset/bias of a CCD camera chip. Subtract the mean value from all the pixels in the stack (use ImageJ/Process/Math/Subtract...).  If this step is omitted, square deformation artifacts may be visible in the deconvolved image.
+</p>
+<h3><span class="mw-headline" id="Obtaining_images_optimized_for_deconvolution">Obtaining images optimized for deconvolution</span></h3>
+<p>It is best to start the z-stack well above the object of interest, and to continue well below, in order to cover the PSF of every interesting point in the sample. If only the "in focus" part of the sample is imaged, the deconvolution result will not greatly improve the image since information is missing. 
+</p><p>The appropriate z-step interval can be calculated from the Abbe/Rayleigh diffraction limit equation Dz = (lambda * RI) / (NA * NA) where Dz = the ideal z-step interval in nanometers, lambda = the emission wavelength, RI = the refractive index of the mounting medium, and NA = the numerical aperture of the objective.  For example, a z-step interval of ~ 350 nm is appropriate for imaging FITC fluorescence using a 1.4 NA objective and a mounting medium with an RI of 1.5.
+</p><p>Always use the same conditions that were used for acquisition of the measured PSF, or generate a theoretical PSF that corresponds to your exact conditions.
+</p>
+<h3><span class="mw-headline" id="How_to_do_the_deconvolution">How to do the deconvolution</span></h3>
+<p>Several plugins for imageJ exist. The most sophisticated are the <a rel="nofollow" class="external text" href="http://bigwww.epfl.ch/algorithms/deconvolutionlab/">DeconvolutionLab (BIG - EPFL)</a> and the parallel <a href="http://imagej.net/Parallel_Iterative_Deconvolution" title="Parallel Iterative Deconvolution">iterative</a> and <a href="http://imagej.net/Parallel_Spectral_Deconvolution" title="Parallel Spectral Deconvolution">spectral</a> deconvolution plugins.
+</p><p><br />
+For further very nicely written and informative descriptions of this topic, see <a rel="nofollow" class="external free" href="http://www.svi.nl/HomePage">http://www.svi.nl/HomePage</a>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064944
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.008 seconds
+Real time usage: 0.008 seconds
+Preprocessor visited node count: 18/1000000
+Preprocessor generated node count: 24/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Deconvolution_tips&amp;oldid=5042">http://imagej.net/index.php?title=Deconvolution_tips&amp;oldid=5042</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 May 2011, at 14:02.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Deconvolution_tips&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Deconvolution+tips" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Deconvolution+tips" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Deconvolution_tips" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Deconvolution_tips" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Deconvolution_tips&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Deconvolution_tips&amp;oldid=5042" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Deconvolution_tips&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":178});});</script>
+		</body>
+		</html>
+		

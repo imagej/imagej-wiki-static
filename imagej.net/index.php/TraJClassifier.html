@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>TraJClassifier - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"TraJClassifier","wgTitle":"TraJClassifier","wgCurRevisionId":41403,"wgRevisionId":41403,"wgArticleId":3883,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"TraJClassifier","wgRelevantArticleId":3883,"wgRequestId":"0eea7e654b3edcca6f630149","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This Fiji plugin loads trajectories from TrackMate (exported via the action &quot;Export trajectories&quot;), characterize them using TraJ and classificate them into normal diffusion, subdiffusion, confined diffusion and directed/active motion by a random forest approach (through Renjin). It supports local analysis and is therefore able to split a single trajectory into segments with different motion types."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="TraJClassifier"/>
+
+	<meta property="og:description" content="This Fiji plugin loads trajectories from TrackMate (exported via the action &quot;Export trajectories&quot;), characterize them using TraJ and classificate them into normal diffusion, subdiffusion, confined diffusion and directed/active motion by a random forest approach (through Renjin). It supports local analysis and is therefore able to split a single trajectory into segments with different motion types."/>
+
+	<meta property="og:url" content="http://imagej.net/TraJClassifier"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-TraJClassifier rootpage-TraJClassifier skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="TraJClassifier.html#bodyContent">Skip to content</a>, 			<a href="TraJClassifier.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="TraJClassifier.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/TraJClassifier" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:TraJClassifier&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=TraJClassifier&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=TraJClassifier&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>TraJClassifier</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Trajectory classifier for TrackMate (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Twagner" title="User:Twagner">Thorsten Wagner</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> ij-trajectory-classifier.jar <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-trajectory-classifier/releases/latest">[1</a>]
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> Github <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-trajectory-classifier">[2</a>]
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> v0.8.1 (24 Aug. 2016)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+
+
+</table>
+<p><br />
+</p><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="TraJClassifier.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="TraJClassifier.html#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="TraJClassifier.html#Introduction"><span class="tocnumber">3</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="TraJClassifier.html#Examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="TraJClassifier.html#Parameters"><span class="tocnumber">5</span> <span class="toctext">Parameters</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>This Fiji plugin loads trajectories from TrackMate (exported via the action "Export trajectories"), characterize them using <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/TraJ">TraJ</a> and classificate them into normal diffusion, subdiffusion, confined diffusion and directed/active motion by a random forest approach (through Renjin). It supports local analysis and is therefore able to split a single trajectory into segments with different motion types.
+</p><p>For detailed information please see:
+</p><p><a rel="nofollow" class="external text" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0170165">Wagner T, Kroll A, Haramagatti CR, Lipinski HG, Wiemann M (2017) Classification and Segmentation of Nanoparticle Diffusion Trajectories in Cellular Micro Environments. PLOS ONE 12(1): e0170165</a>
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>Simply turn on the  <a rel="nofollow" class="external text" href="https://imagej.net/How_to_follow_a_3rd_party_update_site">TraJClassifier update site</a>.
+</p>
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>Please start by reading the <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/TraJ/wiki#introduction">introduction</a> of TraJ, because the TraJClassifier is build upon this library. The TraJClassifier was <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/ij-trajectory-classifier/blob/master/src/main/java/de/biomedical_imaging/ij/trajectory_classifier/help/GenerateTrainingSet.java">trained</a> using <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/TraJ/wiki#simulation">simulated trajectories</a> of normal diffusion, subdiffusion, confined diffusion and directed motion. For each simulated, we estimated nine features for each trajectory (For more information about these features, go to the  <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/TraJ/wiki#features">TraJ wiki</a>):
+</p>
+<ul><li> Alpha</li>
+<li> Asymmetry (Asymmetry3)</li>
+<li> Efficiency </li>
+<li> Fractal dimension</li>
+<li> Gaussianity</li>
+<li> Kurtosis</li>
+<li> Mean squared displacement ratio</li>
+<li> Straightness</li>
+<li> Trappedness</li></ul>
+<p>These features and the corresponding class were then used to train a random forest classifier. Furthermore the TraJClassifier employs a sliding window to allow local analysis of single trajectories. 
+</p><p>As summary, the classification process is as follows:
+</p>
+<pre> 1. Load trajectories from TrackMate xml file (Exported via the action "Export trajectories")
+ 2. For each trajectory
+   2.1 Split the trajectory into subtrajectories using a sliding window
+   2.2 Calculate the features of each subtrajectory and classificate them (-&gt; results are a class <b>l</b> with confidence <b>c</b> for each subtrajectory)
+   2.3 Each position in original trajectory which is contained in a subtrajectory gets a vote for <b>l</b> with the weight <b>c</b>.
+   2.4 Each position in original trajectory gets the class with the majority of votes.
+ 3. Split successive positions with the same class into single segments.
+ 4. Output results
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Examples">Examples</span></h2>
+<p>The following figure shows several cells that are gathered within the field of view (left image). While cell borders are not visible in this focal plane, nuclear envelopes stand out clearly under darkfield illumination (white arrows). A total of 246 particle trajectories was identified as either normal diffusion (red), confined diffusion (yellow), anomalous diffusion (green) or directed motion (magenta). Boxed areas (A-D) show selected cases of directed motion:
+</p><p><a href="http://imagej.net/File:Journal.pone.0170165.g006.PNG" class="image"><img alt="Journal.pone.0170165.g006.PNG" src="../_images/1/1a/Journal.pone.0170165.g006.PNG" width="800" height="460" /></a>
+</p><p>More examples could be found in
+</p><p><a rel="nofollow" class="external text" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0170165">Wagner T, Kroll A, Haramagatti CR, Lipinski HG, Wiemann M (2017) Classification and Segmentation of Nanoparticle Diffusion Trajectories in Cellular Micro Environments. PLOS ONE 12(1): e0170165</a>
+</p>
+<h2><span class="mw-headline" id="Parameters">Parameters</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:Trajclassifier_gui.png" class="image"><img alt="Trajclassifier gui.png" src="../_images/0/03/Trajclassifier_gui.png" width="300" height="317" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Trajclassifier_gui.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<p><b>Minimal track length:</b> Minimal number of positions in a trajectory. It has to be greater than the window size. As the window size should be at least 30, the same is true for the minimal track length.
+</p><p><b>Window size:</b> The parameter determines how many positions are used in the sliding window.
+</p><p><b>Minimal segment size:</b> After classification of a trajectory it consists of several segments. This parameter determines the minimal segment length. Segments smaller than this length (number of positions) will be removed. It is good rule of thumb to set this parameter to same value as the window size because segments which are smaller than the window size seems to be more error prone.
+</p><p><b>Resample rate:</b> During the local analysis using a sliding window, one trajectory is split into several subtrajectories. In very noisy cases it could make sense to resample the subtrajectories to increase the signal to noise ratio (e.g. if the rate is set to 2, then only every second position is used in the trajectory). However, we believe that a trajectory should contain at least 30 position therefore the ratio of window size and the resample rate should be &gt;= 30.
+</p><p><b>Pixel size:</b> Size of a single pixel in µm. However, if your TrackMate data is already scaled, set it to zero.
+</p><p><b>Frame rate:</b> Frames per second
+</p><p><b>Use reduced model for confined motion:</b> The shape constants for the <a rel="nofollow" class="external text" href="https://github.com/thorstenwagner/TraJ/wiki#mean-square-displacement">confined diffusion MSD model</a> are set to 1.
+</p><p><b>Show IDs:</b> Show trajectory IDs as overlay. The trajectories IDs given in the format PARENT ID:SEGMENT ID
+</p><p><b>Show overview classes:</b> Show classes and color codes as overlay.
+</p><p><b>Remove global drift:</b>  In some cases the particles are moving relativ to another object (e.g. particles in a cell). When the object is moving approx. at a constant speed, than it could be possible to estimate it via a global drift estimation and remove this drift component from each trajectory.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713074009
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.056 seconds
+Real time usage: 0.054 seconds
+Preprocessor visited node count: 371/1000000
+Preprocessor generated node count: 3586/1000000
+Post‐expand include size: 1168/2097152 bytes
+Template argument size: 577/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   20.373      1 - -total
+100.00%   20.373      1 - Template:Infobox
+ 79.38%   16.173      2 - Template:Person
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=TraJClassifier&amp;oldid=41403">http://imagej.net/index.php?title=TraJClassifier&amp;oldid=41403</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=TraJClassifier&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=TraJClassifier" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=TraJClassifier" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/TraJClassifier" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/TraJClassifier" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=TraJClassifier&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=TraJClassifier&amp;oldid=41403" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=TraJClassifier&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":271});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Multiview-Reconstruction - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Multiview-Reconstruction","wgTitle":"Multiview-Reconstruction","wgCurRevisionId":32548,"wgRevisionId":32548,"wgArticleId":2209,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Citable","Transform","Registration","Deconvolution","ImgLib","Integral Image"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Multiview-Reconstruction","wgRelevantArticleId":2209,"wgRequestId":"a17701ff6b1222f693fd7125","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The integration of the Multiview Reconstruction and the BigDataViewer is available through the Fiji Updater. Simply update Fiji and the Multiview-Reconstruction pipeline will be available under ' Plugins &amp;#160;&amp;#8250;  Multiview Reconstruction &amp;#160;&amp;#8250;  Multiview Reconstruction Application'. The source code is available on GitHub, please also report feature requests &amp;amp; bugs there."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Multiview-Reconstruction"/>
+
+	<meta property="og:description" content="The integration of the Multiview Reconstruction and the BigDataViewer is available through the Fiji Updater. Simply update Fiji and the Multiview-Reconstruction pipeline will be available under ' Plugins &amp;#160;&amp;#8250;  Multiview Reconstruction &amp;#160;&amp;#8250;  Multiview Reconstruction Application'. The source code is available on GitHub, please also report feature requests &amp;amp; bugs there."/>
+
+	<meta property="og:url" content="http://imagej.net/Multiview-Reconstruction"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Multiview-Reconstruction rootpage-Multiview-Reconstruction skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Multiview-Reconstruction.html#bodyContent">Skip to content</a>, 			<a href="Multiview-Reconstruction.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Multiview-Reconstruction.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Multiview-Reconstruction" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Multiview-Reconstruction&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Multiview-Reconstruction&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Multiview-Reconstruction&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Multiview-Reconstruction</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>SPIM Registration<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/SPIM_Registration">https://imagej.net/SPIM_Registration</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/SPIM_Registration/releases/tag/SPIM_Registration-5.0.13">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv2" class="mw-redirect" title="GPLv2">GPLv2</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~SPIM_Registration~5.0.13~~~kw,versionexpand">5.0.13</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Thu May 04 23:25:02 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>, <a rel="nofollow" class="external text" href="https://github.com/fernandoamat">Fernando Amat</a>, <a href="http://imagej.net/User:Dietzc" title="User:Dietzc">Christian Dietz</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:StephanJanosch" title="User:StephanJanosch">Stephan Janosch</a>, <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a>, <a rel="nofollow" class="external text" href="https://github.com/schmiedc">Christopher Schmied</a>, <a rel="nofollow" class="external text" href="https://github.com/psteinb">Peter Steinbach</a>, <a href="http://imagej.net/User:Nico" title="User:Nico">Nico Stuurman</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Multiview-Reconstruction.html#Download"><span class="tocnumber">1</span> <span class="toctext">Download</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Multiview-Reconstruction.html#Citation"><span class="tocnumber">2</span> <span class="toctext">Citation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Multiview-Reconstruction.html#Introduction_.26_Overview"><span class="tocnumber">3</span> <span class="toctext">Introduction &amp; Overview</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Multiview-Reconstruction.html#History"><span class="tocnumber">3.1</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Multiview-Reconstruction.html#Examples"><span class="tocnumber">3.2</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="Multiview-Reconstruction.html#Detailed_Tutorials"><span class="tocnumber">4</span> <span class="toctext">Detailed Tutorials</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="Multiview-Reconstruction.html#Tools"><span class="tocnumber">4.1</span> <span class="toctext">Tools</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Multiview-Reconstruction.html#Video_Tutorials_.26_Scientific_Talks"><span class="tocnumber">5</span> <span class="toctext">Video Tutorials &amp; Scientific Talks</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="Multiview-Reconstruction.html#Talk:_Registration_of_Multiview_Lightsheet_Fluorescence_Microscopy_.28LSFM.29_Images"><span class="tocnumber">5.1</span> <span class="toctext">Talk: Registration of Multiview Lightsheet Fluorescence Microscopy (LSFM) Images</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Multiview-Reconstruction.html#Tutorial:_Fiji_Multiview_Lightsheet_Reconstruction_Software"><span class="tocnumber">5.2</span> <span class="toctext">Tutorial: Fiji Multiview Lightsheet Reconstruction Software</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="Multiview-Reconstruction.html#Comments.2C_Bugs_.26_Feature_Requests"><span class="tocnumber">6</span> <span class="toctext">Comments, Bugs &amp; Feature Requests</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="Multiview-Reconstruction.html#Downloading_example_dataset"><span class="tocnumber">7</span> <span class="toctext">Downloading example dataset</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="Multiview-Reconstruction.html#System_requirements"><span class="tocnumber">8</span> <span class="toctext">System requirements</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="Multiview-Reconstruction.html#Cluster_processing"><span class="tocnumber">9</span> <span class="toctext">Cluster processing</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Download">Download</span></h2>
+<p>The integration of the <b>Multiview Reconstruction</b> and the <a href="http://imagej.net/BigDataViewer" title="BigDataViewer">BigDataViewer</a> is available through the Fiji Updater. Simply update Fiji and the Multiview-Reconstruction pipeline will be available under '<span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Multiview Reconstruction </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Multiview Reconstruction Application</span></em></span>'. The source code is available <a rel="nofollow" class="external text" href="https://github.com/bigdataviewer/SPIM_Registration/">on GitHub</a>, please also report feature requests &amp; bugs there.
+</p><p>To enable GPU hardware accelerated processing, you might want to download the <b>native CUDA code</b> for:
+</p>
+<ul><li> Separable Convolution: Used for the Difference-of-Gaussian segmentation, available on <a rel="nofollow" class="external text" href="https://github.com/StephanPreibisch/SeparableConvolutionCUDALib">GitHub</a></li>
+<li> Non-Separable Convolution: Used for the <a href="http://imagej.net/Multi-View_Deconvolution" title="Multi-View Deconvolution">MultiView Deconvolution</a>, available on <a rel="nofollow" class="external text" href="https://github.com/StephanPreibisch/FourierConvolutionCUDALib">GitHub</a></li></ul>
+<h2><span class="mw-headline" id="Citation">Citation</span></h2>
+<p>Please note that the SPIM registration plugin available through Fiji, is based on a publication. If you use it successfully for your research please be so kind to cite our work:
+</p>
+<ul><li> S. Preibisch, S. Saalfeld, J. Schindelin and P. Tomancak (2010) "Software for bead-based registration of selective plane illumination microscopy data", <i>Nature Methods</i>, <b>7</b>(6):418-419. <a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v7/n6/full/nmeth0610-418.html">Webpage</a> <a href="http://imagej.net/_images/2/29/Nmeth0610-418.pdf" class="internal" title="Nmeth0610-418.pdf">PDF</a> <a href="http://imagej.net/_images/3/32/Nmeth0610-418-S1.pdf" class="internal" title="Nmeth0610-418-S1.pdf">Supplement</a></li>
+<li> S. Preibisch, F. Amat, E. Stamataki, M. Sarov, R.H. Singer, E. Myers and P. Tomancak (2014) "Efficient Bayesian-based Multiview Deconvolution", <i>Nature Methods</i>, <b>11</b>(6):645-648. <a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v11/n6/full/nmeth.2929.html">Webpage</a></li></ul>
+<p>For technical details about the registration method and SPIM imaging see also <a href="http://imagej.net/SPIM_Registration_Method" title="SPIM Registration Method">SPIM Registration Method</a>.
+</p>
+<h2><span class="mw-headline" id="Introduction_.26_Overview">Introduction &amp; Overview</span></h2>
+<p>The <b>Multiview Reconstruction</b> software package enables users to <i>register, fuse, deconvolve and view</i> multiview microscopy images (first box). The software is designed for lightsheet fluorescence microscopy (LSFM, second box), but is applicable to any form of three or higher dimensional imaging modalities like confocal timeseries or multicolor stacks.
+</p><p>Interactive viewing and annotation of the data is provided by integration with Tobias Pietzsch's <a href="http://imagej.net/BigDataViewer" title="BigDataViewer">BigDataViewer</a>. Both projects share a common XML data model to describe multiview datasets.
+</p>
+<h3><span class="mw-headline" id="History">History</span></h3>
+<p>This software package is the successor to the <a href="http://imagej.net/SPIM_Registration" title="SPIM Registration">SPIM Registration</a> package. While the SPIM Registration will continue to live within Fiji for the time being, we will mostly offer support only for this new software package. It has all the functionality the SPIM Registration offered, but is much more flexible and supports many more types of registration, fusion and data handling.
+</p>
+<h3><span class="mw-headline" id="Examples">Examples</span></h3>
+<table class="infobox" cellspacing="5" style="width: 25em; font-size: 90%; text-align: left; float: right; border: 1px dashed #a0a0a0;">
+<tr>
+<th colspan="2" style="font-size: 130%;"> What does 'multiview' mean exactly?
+</th></tr>
+<tr>
+<td>When we speak of <b>multiview</b> datasets we generally mean that per timepoint there <i>n</i> image stacks, which could be different:
+<ul><li> Channels</li>
+<li> Illumination Directions</li>
+<li> Rotation Angles</li></ul>
+<p>Note that even if <i>n</i>=1, i.e. there is only one stack per timepoint, this software can be used to stabilize the timeseries (drift-correction).
+</p>
+</td></tr></table>
+<p>Two examples of multiview datasets reconstructed with this software package are shown as YouTube videos below. Both datasets were registered using the bead-based registration (<a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v7/n6/full/nmeth0610-418.html"><i>Nature Methods</i>, <b>7</b>(6):418-419</a>) and the Multiview Deconvolution (<a rel="nofollow" class="external text" href="http://www.nature.com/nmeth/journal/v11/n6/full/nmeth.2929.html"><i>Nature Methods</i>, <b>11</b>(6):645-648</a>), which are part of this software package. Please check out the Citation section for information on how to cite this software package.
+</p><p>The first video shows a developing <i>Drosophila</i> embryo expressing His-YFP in all cells. The entire embryogenesis was acquired using the Zeiss Demonstrator B. The top row shows the multiview deconvolution of this seven-view dataset, the lower row the content-based fusion.
+</p>
+<table class="infobox" cellspacing="5" style="width: 25em; font-size: 90%; text-align: left; float: right; border: 1px dashed #a0a0a0;">
+<tr>
+<th colspan="2" style="font-size: 130%;"> Lightsheet fluorescence microscopy
+</th></tr>
+<tr>
+<td>Lightsheet fluorescence microscopy entered the world of modern biology in 2004 when <b>Selective Plane Illumination Microscopy</b> (<a rel="nofollow" class="external text" href="http://www.sciencemag.org/content/305/5686/1007"><b>SPIM</b></a>) was published. It allows <i>in toto</i> imaging of large specimens by acquiring image stacks from multiple angles with high spatial and temporal resolution. Many impressive variations and extensions have been published, some of them using new variations or entirely new naming schemes:
+<ul><li> OpenSPIM</li>
+<li> Digital scanned laser light-sheet fluorescence microscopy (DSLM)</li>
+<li> DSLM and structured illumination (DSLM-SI)</li>
+<li> Two-photon versions of SPIM and DSLM</li>
+<li> MuVi-SPIM</li>
+<li> Two-photon light sheet microscopy (2P-LSM)</li>
+<li> Bessel-Beam illumination and DSLM</li>
+<li> Ultramicroscopy</li>
+<li> Orthogonal-plane fluorescence optical sectioning microscopy (OPFOS)</li>
+<li> Multidirectional selective plane illumination microscopy (mSPIM)</li>
+<li> Thin-sheet laser imaging microscopy (TSLIM)</li>
+<li> ...</li></ul>
+<p>During the 2012 Lightsheet fluorescence microscopy meeting in Dublin, organized by Emmanuel Reynaud, it was voted to summarize most of these developments under the name of <b>Lightsheet fluorescence microscopy (LSFM)</b>.
+</p>
+</td></tr></table>
+<p><iframe width="420" height="355" src="https://www.youtube.com/embed/NJHoP8RBIaw" frameborder="0" allowfullscreen></iframe>
+</p><p>The second video shows a fixed <i>C. elegans</i> larvae in L1 stage expressing Lamin-GFP and stained with Hoechst. The four-view dataset was acquired using the Zeiss Lightsheet Z.1 microscope. It illustrates the increase in resolution that can be achieved through multiview imaging combined with multiview deconvolution. The top row shows one of the four input views, the bottom row the result of the multiview deconvolution.
+</p><p><iframe width="420" height="355" src="https://www.youtube.com/embed/16gq2WUm-50" frameborder="0" allowfullscreen></iframe>
+</p>
+<h2><span class="mw-headline" id="Detailed_Tutorials">Detailed Tutorials</span></h2>
+<p>Using this software package consists of several steps. Please note that this software is more flexible and that this order is just a suggestion of how to use it in a more-or-less standard case.
+</p>
+<ul><li> <b><a href="http://imagej.net/MVR-DefineDataset" title="MVR-DefineDataset">Dataset Definition</a></b>
+<ul><li> The first step in every reconstruction is to define the dataset and thereby create the XML file. This has to be done only once, all consecutive steps are based on this definition, i.e. the XML file.</li></ul></li></ul>
+<ul><li> <b><a href="http://imagej.net/MVR-ResaveDataset" title="MVR-ResaveDataset">Resave the dataset as HDF5/TIFF</a></b>
+<ul><li> Once the dataset is defined, you might want to resave all the image data as HDF5 (to be able to view it using the <a href="http://imagej.net/BigDataViewer" title="BigDataViewer">BigDataViewer</a>) or simply as TIFF to enable fast loading of the image data. Also note that those two formats are the only ones that allow to extend the dataset/XML with newly fused data.</li></ul></li></ul>
+<ul><li> <b><a href="http://imagej.net/index.php?title=MVR-InterestPointDetection&amp;action=edit&amp;redlink=1" class="new" title="MVR-InterestPointDetection (page does not exist)">Detect Interest Points</a></b>
+<ul><li> Based on an existing dataset definition (XML file), the first step is typically to find interest points in the images that will be used for registration. In this step it is possible to look for multiple types of detections, e.g. fluorescent beads, nuclei or membrane markers. All of them can be stored in parallel.</li></ul></li></ul>
+<ul><li> <b><a href="http://imagej.net/index.php?title=MVR-InterestPointRegistration&amp;action=edit&amp;redlink=1" class="new" title="MVR-InterestPointRegistration (page does not exist)">Interest Point Registration</a></b>
+<ul><li> Once interest points are detected, they can be used to register/align multiple views over time. To find corresponding detection the registration module supports the following modules:
+<ul><li> <i>Rotation-invariant matching</i> using fluorescent beads (no prior transformation knowledge necessary)</li>
+<li> <i>Translation-invariant matching</i> using any kind of detections (an approximate knowledge of the rotation is required, e.g. 45 degrees around the x-axis. Check the <a href="http://imagej.net/Multiview-Reconstruction#Tools" title="Multiview-Reconstruction">Tools-Section</a> for how to provide approximate transformations.)</li>
+<li> <i>Precise matching</i> using the Iterative-Closest Point (ICP) algorithm (the dataset needs to be aligned using for example any of the above methods).</li></ul></li>
+<li> The different views (or timepoints) can be aligned using <i>Translation</i>, <i>Rigid</i> or <i>Affine</i> transformation models. We also support <i>regularized transformation models</i> developed by Stephan Saafeld.</li>
+<li> Alignment over time can be performed in different ways
+<ul><li> If there is no drift, every timepoint can be simply registered individually. Please note that it is possible to register each timepoint and later on treat it as a <i>rigid unit</i>. In this way it is possible to first register each timpoint using an <i>affine</i> transformation model and consecutively stabilize over time just using a <i>translation</i> model.</li>
+<li> A reference timepoint that is individually registered first can serve as basis for all other timepoints. This kind of alignment usually only works with external landmarks like fluorescent beads.</li>
+<li> Alternatively, it is possible to align timepoints using a sliding window of +-n timepoints, in which all views are matched against each other. This will work on any kind of detections.</li></ul></li>
+<li> In general, it is possible to stack up as many rounds of transformations as you want. They will be summarized in a list transformations that are concatenated to one single <i>affine</i> transformation before fusion/deconvolution/viewing. A typical list of transformations looks like:
+<ul><li> Apply calibration (difference in xy and z resolution per pixel)</li>
+<li> Affine bead-based registration</li>
+<li> ICP registration based on nuclei</li></ul></li></ul></li></ul>
+<ul><li> <b><a href="http://imagej.net/MVR-FusionDeconvolution" title="MVR-FusionDeconvolution">Fusion/Deconvolution</a></b>
+<ul><li> Once the dataset is entirely aligned it can be fused or deconvolved into a single image per timepoint and channel. Deconvolution requires the knowledge of point spread functions (PSF's), which can be extracted from matched beads directly or can be provided by the user.</li>
+<li> Alternatively, there is no need to fuse the data and you can interactively look at the data using the <a href="http://imagej.net/BigDataViewer" title="BigDataViewer">BigDataViewer</a> if you resaved it as HDF5. You can still do that now after the registration is complete.</li></ul></li></ul>
+<h3><span class="mw-headline" id="Tools">Tools</span></h3>
+<p>Apart from this potential processing outline there are many <b>tools</b> available to help process multiview timelapse datasets.
+</p>
+<ul><li> <b><a href="http://imagej.net/index.php?title=MVR-ApplyTransformations&amp;action=edit&amp;redlink=1" class="new" title="MVR-ApplyTransformations (page does not exist)">Apply Transformations</a></b>
+<ul><li> This tool can be used to apply any kind of transformations to individual views, or all views at once. This allows the user to specify a know rotation of different acquisition angles around an axis or to simply re-orient the entire dataset after the registration is complete.</li></ul></li></ul>
+<ul><li> <b><a href="http://imagej.net/index.php?title=MVR-DuplicateTransformations&amp;action=edit&amp;redlink=1" class="new" title="MVR-DuplicateTransformations (page does not exist)">Duplicate Transformations</a></b>
+<ul><li> It can be used to apply transformations that have been computed (or defined) for a certain subset of views/timepoints to other views/timepoints. Typical scenarios where this is required are:
+<ul><li> Fluorescent beads are only visible in one channel, but the user wants to do apply the same transformation for all other channels</li>
+<li> The user registered one timepoint and wants to apply the same transformation for all other timepoints</li></ul></li></ul></li></ul>
+<ul><li> <b><a href="http://imagej.net/index.php?title=MVR-DisplayView&amp;action=edit&amp;redlink=1" class="new" title="MVR-DisplayView (page does not exist)">Display View</a></b>
+<ul><li> It allows to simply load and display one of the views as defined in the dataset</li></ul></li></ul>
+<ul><li> <b><a href="http://imagej.net/index.php?title=MVR-SpecifyCalibration&amp;action=edit&amp;redlink=1" class="new" title="MVR-SpecifyCalibration (page does not exist)">Specify Calibration</a></b>
+<ul><li> This enables the user to change the calibration of individual or all views after having defined them. Note that all registrations need to be recomputed if it should reflect the new calibration.</li></ul></li></ul>
+<ul><li> <b><a href="http://imagej.net/index.php?title=MVR-VisualizeDetections&amp;action=edit&amp;redlink=1" class="new" title="MVR-VisualizeDetections (page does not exist)">Visualize Detections</a></b>
+<ul><li> Detections as identified by <a href="http://imagej.net/index.php?title=MVR-InterestPointDetection&amp;action=edit&amp;redlink=1" class="new" title="MVR-InterestPointDetection (page does not exist)">Detect Interest Points</a> can be visualized. It is possible to visualize all detections or only those that are found to be corresponding with other detections and were therefore used for registration. This helps to identify potential misalignments if corresponding detections are not equally distributed around the sample as they should be. One can also load the input view at the same time to overlay the detections with the image data</li></ul></li></ul>
+<h2><span class="mw-headline" id="Video_Tutorials_.26_Scientific_Talks">Video Tutorials &amp; Scientific Talks</span></h2>
+<p>During the <a rel="nofollow" class="external text" href="http://openspim.org/EMBO_practical_course_Light_sheet_microscopy">EMBO Practical Course on Lightsheet Microscopy</a> two of my talks were recorded:
+</p>
+<h3><span class="mw-headline" id="Talk:_Registration_of_Multiview_Lightsheet_Fluorescence_Microscopy_.28LSFM.29_Images">Talk: Registration of Multiview Lightsheet Fluorescence Microscopy (LSFM) Images</span></h3>
+<p><iframe width="773" height="355" src="https://www.youtube.com/embed/IupXS_On2rg" frameborder="0" allowfullscreen></iframe>
+</p><p>This 30-minute talk by <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a> covers the theory behind registration of multiview lightsheet microscopy data and it also quickly addresses the problem of multiview fusion &amp; deconvolution.
+</p>
+<h3><span class="mw-headline" id="Tutorial:_Fiji_Multiview_Lightsheet_Reconstruction_Software">Tutorial: Fiji Multiview Lightsheet Reconstruction Software</span></h3>
+<p><iframe width="773" height="355" src="https://www.youtube.com/embed/0IkaSwfPYw0" frameborder="0" allowfullscreen></iframe>
+</p><p>This one hour tutorial by <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a> covers the basic usage of this multiview reconstruction software for Fiji. Documentation, source code, bug reports and feature requests can be found <a rel="nofollow" class="external text" href="https://sourceforge.net/projects/multiviewreconstruction/">on SourceForge</a>.
+</p>
+<h2><span class="mw-headline" id="Comments.2C_Bugs_.26_Feature_Requests">Comments, Bugs &amp; Feature Requests</span></h2>
+<p>There is a webpage on <a rel="nofollow" class="external text" href="https://github.com/bigdataviewer/SPIM_Registration">GitHub</a> and <a rel="nofollow" class="external text" href="https://sourceforge.net/projects/multiviewreconstruction/">SourceForge</a> dedicated to this project. It contains links to this documentation, the source code and other related things. All comments, bugs &amp; feature requests should be posted in the <a rel="nofollow" class="external text" href="https://github.com/bigdataviewer/SPIM_Registration/issues">GitHub issues</a> or the <a rel="nofollow" class="external text" href="https://sourceforge.net/p/multiviewreconstruction/discussion/?source=navbar">SourceForge discussion board</a>.
+</p>
+<h2><span class="mw-headline" id="Downloading_example_dataset">Downloading example dataset</span></h2>
+<p>There is a 7-angle SPIM dataset of <i>Drosophila</i> available for download <a rel="nofollow" class="external text" href="http://fly.mpi-cbg.de/preibisch/nm/HisYFP-SPIM.zip">here</a>. Other datasets can be provided upon request.
+</p>
+<h2><span class="mw-headline" id="System_requirements">System requirements</span></h2>
+<p>Multi-view SPIM datasets are typically rather large, therefore it is recommended to use the registration plugin on a computer with a lot of RAM. The minimal requirement for the example dataset is <b>at least 4Gb</b> of memory however we recommend an <b>16Gb+</b> system, ideally at least <b>64Gb</b> and a CUDA capable graphics card. You may need to increase the Fiji memory limit by going to Edit-&gt;Options-&gt;Memory &amp; Threads.
+</p>
+<h2><span class="mw-headline" id="Cluster_processing">Cluster processing</span></h2>
+<p>See the dedicated <a href="http://imagej.net/Automated_workflow_for_parallel_Multiview_Reconstruction" title="Automated workflow for parallel Multiview Reconstruction">page</a> describing an automated workflow for processing SPIM data from Lighsheet.Z1 and OpenSPIM on the MPI-CBG cluster.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073031
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.168 seconds
+Real time usage: 0.171 seconds
+Preprocessor visited node count: 4634/1000000
+Preprocessor generated node count: 5526/1000000
+Post‐expand include size: 7740/2097152 bytes
+Template argument size: 2371/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  139.824      1 - -total
+ 89.91%  125.721      1 - Template:ComponentStats:sc.fiji:SPIM_Registration
+ 88.31%  123.478      1 - Template:Component
+ 80.75%  112.909     20 - Template:Person
+  2.56%    3.579      1 - Template:Bc
+  1.84%    2.567      2 - Template:GitHub
+  1.08%    1.504      1 - Template:Project
+  0.96%    1.336      1 - Template:Maven
+  0.91%    1.274      2 - Template:Arrow
+  0.86%    1.209      1 - Template:DevStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Multiview-Reconstruction&amp;oldid=32548">http://imagej.net/index.php?title=Multiview-Reconstruction&amp;oldid=32548</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 2 June 2017, at 22:44.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Multiview-Reconstruction&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li><li><a href="http://imagej.net/Category:Transform" title="Category:Transform">Transform</a></li><li><a href="http://imagej.net/Category:Registration" title="Category:Registration">Registration</a></li><li><a href="http://imagej.net/Category:Deconvolution" title="Category:Deconvolution">Deconvolution</a></li><li><a href="http://imagej.net/Category:ImgLib" title="Category:ImgLib">ImgLib</a></li><li><a href="http://imagej.net/Category:Integral_Image" title="Category:Integral Image">Integral Image</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Multiview-Reconstruction" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Multiview-Reconstruction" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Multiview-Reconstruction" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Multiview-Reconstruction" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Multiview-Reconstruction&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Multiview-Reconstruction&amp;oldid=32548" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Multiview-Reconstruction&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":380});});</script>
+		</body>
+		</html>
+		

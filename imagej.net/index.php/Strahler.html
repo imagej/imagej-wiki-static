@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Strahler Analysis - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Strahler_Analysis","wgTitle":"Strahler Analysis","wgCurRevisionId":37318,"wgRevisionId":37318,"wgArticleId":1697,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Skeleton","Analysis","Plugins","Neuroanatomy"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Strahler_Analysis","wgRelevantArticleId":1697,"wgRequestId":"5c3590cb80a2043105ffbc62","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="keywords" content="strahler,plugin,arbor,neuron,morphometry,dendrite"/>
+<meta name="description" content="strahler,plugin,arbor,neuron,morphometry,dendrite"/>
+<meta name="description" content="A plugin from the Neuroanatomy update site that performs Strahler analysis on topographic skeletons (2D/3D). Strahler numbering is a numerical procedure that summarizes the branching complexity of mathematical trees."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Strahler Analysis"/>
+
+	<meta property="og:description" content="A plugin from the Neuroanatomy update site that performs Strahler analysis on topographic skeletons (2D/3D). Strahler numbering is a numerical procedure that summarizes the branching complexity of mathematical trees."/>
+
+	<meta property="og:url" content="http://imagej.net/Strahler_Analysis"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Strahler_Analysis rootpage-Strahler_Analysis skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Strahler.html#bodyContent">Skip to content</a>, 			<a href="Strahler.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Strahler.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Strahler.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Strahler_Analysis&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Strahler_Analysis&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Strahler_Analysis&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Strahler Analysis</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><!-- ADDMETAK c3RyYWhsZXIscGx1Z2luLGFyYm9yLG5ldXJvbixtb3JwaG9tZXRyeSxkZW5kcml0ZQ== --><!-- ADDMETAD c3RyYWhsZXIscGx1Z2luLGFyYm9yLG5ldXJvbixtb3JwaG9tZXRyeSxkZW5kcml0ZQ== -->
+</p>
+<div style="float:right;">
+<table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Strahler Analysis (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Tiago" title="User:Tiago">Tiago Ferreira</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Tiago" title="User:Tiago">Tiago Ferreira</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> hIPNAT_.jar (<a href="http://imagej.net/User:Neuroanatomy" title="User:Neuroanatomy">Neuroanatomy update site</a>)
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/tferr/hIPNAT/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> April 2016
+</td></tr>
+
+
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a>, <a href="http://imagej.net/Category:Neuroanatomy" title="Category:Neuroanatomy">Neuroanatomy</a>, <a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a>, <a href="http://imagej.net/Category:Skeleton" title="Category:Skeleton">Skeleton</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+</div>
+<p><br />
+A plugin from the <a href="http://imagej.net/User:Neuroanatomy" title="User:Neuroanatomy">Neuroanatomy update site</a> that performs Strahler analysis on topographic skeletons (2D/3D). <a href="http://en.wikipedia.org/wiki/Strahler_number" class="extiw" title="wikipedia:Strahler number">Strahler numbering</a> is a numerical procedure that summarizes the branching complexity of mathematical trees.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This page describes how to perform Strahler Analysis on skeletonized images. For analysis of traced structures have a look at <a href="http://imagej.net/SNT" title="SNT">SNT</a>. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Strahler.html#Description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Strahler.html#Parameters"><span class="tocnumber">2</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Strahler.html#Root_Detection"><span class="tocnumber">3</span> <span class="toctext">Root Detection</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Strahler.html#Notes_on_Root_Detection"><span class="tocnumber">3.1</span> <span class="toctext">Notes on Root Detection</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Strahler.html#Results"><span class="tocnumber">4</span> <span class="toctext">Results</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Strahler.html#Installation"><span class="tocnumber">5</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Strahler.html#Related_Links"><span class="tocnumber">6</span> <span class="toctext">Related Links</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Strahler.html#References"><span class="tocnumber">7</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="Strahler.html#Citing"><span class="tocnumber">8</span> <span class="toctext">Citing</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Strahler.html#Acknowledgments"><span class="tocnumber">9</span> <span class="toctext">Acknowledgments</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="Strahler.html#License"><span class="tocnumber">10</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Description">Description</span></h2>
+<span id="StrahlerAnimation"></span><div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://imagej.net/File:StrahlerAnimation.gif" class="image"><img alt="" src="../_images/b/b3/StrahlerAnimation.gif" width="300" height="225" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:StrahlerAnimation.gif" class="internal" title="Enlarge"></a></div>Strahler Analysis by iterative elimination of end-point branches</div></div></div>
+<p>The analysis occurs through progressive pruning of terminal branches, <i>iterative tree simplification</i>, a method that requires detecting all terminal branches (i.e., branches that contain an end-point) and all the degree-one paths leading to them.
+</p><p><i>Strahler Analysis</i> takes a <u>binary</u> or <u>8-bit grayscale</u> image (2D or 3D) containing a <u>single arbor</u>, and calls <a href="http://imagej.net/AnalyzeSkeleton" title="AnalyzeSkeleton">AnalyzeSkeleton</a> iteratively to retrieve <a href="Strahler.html#References">Horton-Strahler numbers</a> from the <a href="http://imagej.net/Skeletonize3D" title="Skeletonize3D">skeletonized centerlines</a> of the input image. Each iteration includes three operations: 1) a (re)-skeletonization step to ensure that arbor remains represented by its centerlines, 2) an elimination step in which terminal-branches are pruned from the image and 3) an analysis step in which pruned branches are counted and measured. The iteration ceases as soon as all branches have been eliminated or a unresolved <a href="Strahler.html#Elimination_of_Skeleton_Loops">closed loop</a> has been detected in the pruned arbor.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Parameters">Parameters</span></h2>
+<dl><dt>Tree Classification</dt>
+<dd>
+<dl><dt>Infer root end-points from rectangular ROI</dt>
+<dd>This option is only available when a rectangular ROI is present. It is described in <a href="Strahler.html#Non-radial_arbors">Non-radial arbors</a>.</dd>
+<dt>Ignore single-point arbors (Isolated pixels)</dt>
+<dd>Elimination of end-point branches may give rise to single point arbors. Such 'debris' have 1 end-point but no slab branches or junctions. When this option is selected, single-point arbors will be discarded on each iteration. If deselected, the total number of end-points may be overestimated.</dd></dl></dd></dl>
+<dl><dt>Elimination of Skeleton Loops</dt>
+<dd>
+<dl><dt>Method</dt>
+<dd><i>Strahler Analysis</i> cannot process skeletons containing closed loops and will output a warning message when such structures have been detected. The available methods in this drop-down menu define how closed loops should be resolved by and are described in  the <a href="http://imagej.net/AnalyzeSkeleton#Loop_detection_and_pruning" title="AnalyzeSkeleton">AnalyzeSkeleton documentation page</a>.</dd>
+<dt>Unsegmented image</dt>
+<dd>The initial non-thinned image to be used by <a href="http://imagej.net/AnalyzeSkeleton" title="AnalyzeSkeleton">AnalyzeSkeleton</a> for <a href="http://imagej.net/AnalyzeSkeleton#Loop_detection_and_pruning" title="AnalyzeSkeleton">intensity-based</a> elimination of closed loops. This option is only used if either <i>Lowest intensity voxel</i> or <i>Lowest intensity branch</i> is chosen as <i>Method</i>. Note that if an intensity-based method is selected but the chosen image is a binary one, closed loops will not be resolved.</dd></dl></dd></dl>
+<dl><dt> Output Options</dt>
+<dd>
+<dl><dt>Display Iteration stack</dt>
+<dd>If checked, an image stack that documents individual pruning cycles will be displayed. End-points and Junction-points positions are appended to the stack.</dd>
+<dt>Show detailed information</dt>
+<dd>If checked, analysis will run in <i>verbose</i> mode by outputting detailed measurements and by logging debug messages.</dd></dl></dd></dl>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Root_Detection">Root Detection</span></h2>
+<p>The problem with undiscriminated elimination of terminal branches is that a root-branch containing an end-point is always eliminated on the first iteration step. In order to protect root branches from elimination, <i>Strahler Analysis</i> needs to know where root branches are located. As of version 1.4.0, root-detection is implemented by means of a rectangular ROI containing the root branch and by activating the <i>Infer root end-points from rectangular ROI</i> option. Here is an example:
+</p><p><br />
+</p>
+<center>
+<table>
+<tr>
+<td align="center" width="185"> Arbor with rectangular ROI containing root
+</td>
+<td align="center" width="185"> Analysis ignoring ROI: Inaccurate result
+</td>
+<td align="center" width="185"> Analysis taking ROI into account: Accurate result
+</td></tr>
+<tr>
+<td align="center" colspan="3" width="555"> <a href="http://imagej.net/File:Strahler_RootProtection.png" class="image"><img alt="Strahler RootProtection.png" src="../_images/9/97/Strahler_RootProtection.png" width="550" height="285" /></a>
+</td></tr>
+<tr>
+<td align="left" colspan="3" width="555">
+<p>Root branches are spared from the iterative elimination procedure if marked by a rectangular ROI. Middle image: ROI is ignored. As a consequence, root-branch is interpreted as any other terminal-branch. Right image: Analysis infers that end-point contained by ROI belongs to a root-branch and marked branch is excluded from the iteration.
+</p>
+</td></tr></table>
+</center>
+<h3><span class="mw-headline" id="Notes_on_Root_Detection">Notes on Root Detection</span></h3>
+<ul><li> Only a rectangular ROI can be used to mark the root branch. This is intentional: The way the root-detection algorithm works is by <i>protecting</i> all end-points that are contained by the ROI from end-point elimination. Using complex ROIs (e.g., discontinuous or containing internal holes) would make this task much more cumbersome.</li>
+<li> The ROI only needs to contain root end-point(s) and it should not matter if its boundaries intercept other branches. However, measurements on root-branches may be inaccurate if the ROI contains junction(s) points. The best way to ensure the algorithm ran as expected is to visually inspect all the slices in the <i>Iteration stack</i>. </li>
+<li> Root detection may not be required in the case of radial arbors (i.e., tree-like structures that branch out evenly in multiple directions), if root(s) remain connected in the center of the arbor (as in <a href="Strahler.html#StrahlerAnimation">animation above</a>). In neurobiology, radial-ramification is an anatomical hallmark of certain cell types such as Retinal Ganglion Cells, Chandelier neurons or Drosophila Class IV sensory neurons.</li>
+<li> If you are batch processing multiple images you should work with .tif files: When saving as TIFF, ImageJ will store the active ROI in the image header, making it immediately available when the image is open.</li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Results">Results</span></h2>
+<p>The plugin produces three types of outputs:
+</p>
+<dl><dt>Strahler Image</dt>
+<dd>A heat-map image, in which branches are color-coded by their Horton-Strahler numbers. By default, a calibration ramp (<span><em><span style="border-bottom:1px dotted #ccc;">Analyze</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Tools</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Calibration Bar...</span></em></span>) is added as an overlay. WYSIWYG versions (RGB images) of this <i>Strahler Color Map</i> image  can be obtained by pressing <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;"><span class="Unicode">⇧</span> Shift</kbd>+<kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(&#91;&#91;:Template:Linear-gradient/legacy]], #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">F</kbd> (shortcut for <span><em><span style="border-bottom:1px dotted #ccc;">Image</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Overlay</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Flatten</span></em></span>).</dd></dl>
+<dl><dt>Strahler table</dt>
+<dd>Table listing Horton-Strahler counts. The extension and format of this <i>Strahler Table</i> can be specified in <span><em><span style="border-bottom:1px dotted #ccc;">Edit</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Options</span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">Input/Output...</span></em></span>. It contains the following data:
+<dl><dt> # End-point Branches</dt>
+<dd>The number of branches for each Horton-Strahler order.</dd></dl></dd></dl>
+<dl><dd><dl><dt> Ramification ratios</dt>
+<dd> Ramification or <a href="http://en.wikipedia.org/wiki/Strahler_number#Bifurcation_ratio" class="extiw" title="wikipedia:Strahler number">bifurcation ratios</a> are the quotients between branches of consecutive orders. An overall ratio may be obtained by averaging ratios across orders.</dd></dl></dd></dl>
+<dl><dt>Iteration log</dt>
+<dd>If <i>Show detailed information</i> is checked, <i>Average branch length</i>, <i>N. of trees</i>, <i>N. of branches</i>, <i>N. of junctions</i>, <i>N. of triple points</i>, <i>N. of quadruple points</i> are also retrieved for each iteration. These are described in the AnalyzeSkeleton's <a href="http://imagej.net/AnalyzeSkeleton#Table_of_results" title="AnalyzeSkeleton">documentation page</a>.</dd></dl>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>To install <i>Strahler Analysis</i> you must use Java 8 and subscribe to the <a href="http://imagej.net/User:Neuroanatomy" title="User:Neuroanatomy">Neuroanatomy update site</a>.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Related_Links">Related Links</span></h2>
+<ul><li> <a href="http://imagej.net/AnalyzeSkeleton" title="AnalyzeSkeleton">AnalyzeSkeleton</a> and <a href="http://imagej.net/Skeletonize3D" title="Skeletonize3D">Skeletonize3D</a>, analysis of topographic skeletons </li>
+<li> <a href="http://imagej.net/Sholl_Analysis" title="Sholl Analysis">Sholl Analysis</a>, bitmap morphometry based on the Sholl technique</li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<p>Original publications by <a href="http://en.wikipedia.org/wiki/Robert_E._Horton" class="extiw" title="wikipedia:Robert E. Horton">Robert E. Horton</a> and <a href="http://en.wikipedia.org/wiki/Arthur_Newell_Strahler" class="extiw" title="wikipedia:Arthur Newell Strahler">Arthur N. Strahler</a>:
+</p>
+<ul><li><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Erosional+development+of+streams+and+their+drainage+basins%3A+hydro-physical+approach+to+quantitative+morphology&amp;rft.aulast=Horton&amp;rft.aufirst=R.+E.&amp;rft.date=1945&amp;rft.volume=56&amp;rft.issue=3&amp;rft.pages=275%E2%80%93370&amp;rft_id=info:doi/10.1130%2F0016-7606%281945%2956%5B275%3AEDOSAT%5D2.0.CO%3B2"><cite id="CITEREFHorton1945">Horton, R. E.&#32;(1945),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1130%2F0016-7606%281945%2956%5B275%3AEDOSAT%5D2.0.CO%3B2">Erosional development of streams and their drainage basins: hydro-physical approach to quantitative morphology</a>",&#32;<i>Geological Society of America Bulletin</i>&#32;<b>56</b>&#xa0;(3):  275–370<span class="printonly">, DOI 10.1130/0016-7606(1945)56[275:EDOSAT]2.0.CO;2</span></cite></span>.</li></ul>
+<ul><li><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Hypsometric+%28area-altitude%29+analysis+of+erosional+topology&amp;rft.aulast=Strahler&amp;rft.aufirst=A.+N.&amp;rft.date=1952&amp;rft.volume=63&amp;rft.issue=11&amp;rft.pages=1117%E2%80%931142&amp;rft_id=info:doi/10.1130%2F0016-7606%281952%2963%5B1117%3AHAAOET%5D2.0.CO%3B2"><cite id="CITEREFStrahler1952">Strahler, A. N.&#32;(1952),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1130%2F0016-7606%281952%2963%5B1117%3AHAAOET%5D2.0.CO%3B2">Hypsometric (area-altitude) analysis of erosional topology</a>",&#32;<i>Geological Society of America Bulletin</i>&#32;<b>63</b>&#xa0;(11):  1117–1142<span class="printonly">, DOI 10.1130/0016-7606(1952)63[1117:HAAOET]2.0.CO;2</span></cite></span>.</li></ul>
+<ul><li><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Quantitative+analysis+of+watershed+geomorphology&amp;rft.aulast=Strahler&amp;rft.aufirst=A.+N.&amp;rft.date=1957&amp;rft.volume=38&amp;rft.issue=6&amp;rft.pages=913%E2%80%93920"><cite id="CITEREFStrahler1957">Strahler, A. N.&#32;(1957),&#32;"Quantitative analysis of watershed geomorphology",&#32;<i>Transactions of the American Geophysical Union</i>&#32;<b>38</b>&#xa0;(6):  913–920</cite></span>  (<a rel="nofollow" class="external text" href="http://www.uvm.edu/~pdodds/files/papers/others/1957/strahler1957a.pdf">PDF</a>).</li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Citing">Citing</span></h2>
+<p>Plugins from the <a href="http://imagej.net/User:Neuroanatomy" title="User:Neuroanatomy">Neuroanatomy update site</a>:
+</p>
+<dl><dd><ul><li> Tiago Ferreira (2016)  <a rel="nofollow" class="external text" href="http://dx.doi.org/10.5281/zenodo.49399"><img src="https&#58;//zenodo.org/badge/doi/10.5281/zenodo.49399.svg" alt="10.5281/zenodo.49399" /></a></li></ul></dd></dl>
+<p><a href="http://imagej.net/Skeletonize3D" title="Skeletonize3D">Skeletonization</a> and <a href="http://imagej.net/AnalyzeSkeleton" title="AnalyzeSkeleton">Skeleton Analysis</a>:
+</p>
+<dl><dd><ul><li>Ignacio Arganda-Carreras, Rodrigo Fernandez-Gonzalez, Arrate Munoz-Barrutia, Carlos Ortiz-De-Solorzano, <a rel="nofollow" class="external text" href="http://www3.interscience.wiley.com/journal/123322233/abstract">"3D reconstruction of histological sections: Application to mammary gland tissue"</a>, Microscopy Research and Technique, Volume 73, Issue 11, pages 1019–1029, October 2010.</li>
+<li> Michael Doube, Michal M. Klosowski, Ignacio Arganda-Carreras, Fabrice P. Cordelieres, Robert P. Dougherty, Jonathan S. Jackson, Benjamin Schmid, John R. Hutchinson, Sandra J. Shefelbine, <a rel="nofollow" class="external text" href="http://dx.doi.org/10.1016/j.bone.2010.08.023">BoneJ: Free and extensible bone image analysis in ImageJ</a>, Bone, Volume 47, Issue 6, December 2010, Pages 1076-1079.</li></ul></dd></dl>
+<h2><span class="mw-headline" id="Acknowledgments">Acknowledgments</span></h2>
+<p>To all the developers of <a rel="nofollow" class="external text" href="https://github.com/fiji/AnalyzeSkeleton/graphs/contributors">AnalyzeSkeleton</a>.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the <a rel="nofollow" class="external text" href="http://www.gnu.org/licenses/gpl.txt">Free Software Foundation</a>. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073525
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.120 seconds
+Real time usage: 0.121 seconds
+Preprocessor visited node count: 2326/1000000
+Preprocessor generated node count: 16397/1000000
+Post‐expand include size: 19099/2097152 bytes
+Template argument size: 4523/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   83.251      1 - -total
+ 37.53%   31.240      3 - Template:Citation
+ 32.93%   27.418      3 - Template:Citation/core
+ 30.81%   25.650      1 - Template:Key_press
+ 28.18%   23.457      2 - Template:Key_press/core
+ 20.21%   16.826      1 - Template:Infobox
+ 14.40%   11.990      2 - Template:Person
+  8.30%    6.909      3 - Template:Bc
+  2.80%    2.329      6 - Template:Arrow
+  2.67%    2.223      3 - Template:Link
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Strahler_Analysis&amp;oldid=37318">http://imagej.net/index.php?title=Strahler_Analysis&amp;oldid=37318</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 6 March 2018, at 23:42.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Strahler_Analysis&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Skeleton" title="Category:Skeleton">Skeleton</a></li><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Neuroanatomy" title="Category:Neuroanatomy">Neuroanatomy</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Strahler+Analysis" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Strahler+Analysis" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Strahler_Analysis" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Strahler_Analysis" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Strahler_Analysis&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Strahler_Analysis&amp;oldid=37318" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Strahler_Analysis&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":273});});</script>
+		</body>
+		</html>
+		

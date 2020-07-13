@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Cell Counter - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Cell_Counter","wgTitle":"Cell Counter","wgCurRevisionId":41217,"wgRevisionId":41217,"wgArticleId":67,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Particle analysis"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Cell_Counter","wgRelevantArticleId":67,"wgRequestId":"dc9797a994400cd2015da549","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This plugin will open a new cell counter GUI. On the left are the counter types and counters, on the right the action buttons."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Cell Counter"/>
+
+	<meta property="og:description" content="This plugin will open a new cell counter GUI. On the left are the counter types and counters, on the right the action buttons."/>
+
+	<meta property="og:url" content="http://imagej.net/Cell_Counter"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Cell_Counter rootpage-Cell_Counter skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Cell_Counter.html#bodyContent">Skip to content</a>, 			<a href="Cell_Counter.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Cell_Counter.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Cell_Counter" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Cell_Counter&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Cell_Counter&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Cell_Counter&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Cell Counter</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Cell Counter<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/Cell_Counter">https://imagej.net/Cell_Counter</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/Cell_Counter/releases/tag/Cell_Counter-2.2.2">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~Cell_Counter~2.2.2~~~kw,versionexpand">2.2.2</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 22:34:05 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Stable
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Partial
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> Kurt De Vos
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> -
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> Kurt De Vos, <a rel="nofollow" class="external text" href="https://github.com/romainGuiet">Romain Guiet</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<p>This plugin will open a new cell counter GUI. On the left are the counter types and counters, on the right the action buttons.
+</p>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> Please consider using the built-in <a rel="nofollow" class="external text" href="https://imagej.net/docs/guide/146-19.html#sec:Multi-point-Tool">Multi-Point Tool</a> in ImageJ, as this tool now replicates most of the functionality of Cell Counter. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Cell_Counter.html#Bugs"><span class="tocnumber">1</span> <span class="toctext">Bugs</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Cell_Counter.html#Functions"><span class="tocnumber">2</span> <span class="toctext">Functions</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Cell_Counter.html#Usage"><span class="tocnumber">3</span> <span class="toctext">Usage</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Cell_Counter.html#History"><span class="tocnumber">4</span> <span class="toctext">History</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Bugs">Bugs</span></h2>
+<p>May not work correctly after using <b>Load Markers</b> to load more than 8 counter types from an XML file. Opens off-screen on 1024 pixel wide and smaller monitors.
+</p>
+<h2><span class="mw-headline" id="Functions">Functions</span></h2>
+<ul><li> <b>Initialize:</b> Initializes the current image or stack for counting, this will create a duplicate image/stack titled "counter window" - when keep original is checked, the source image remains open</li>
+<li> <b>Add:</b> adds a counter type.</li>
+<li> <b>Remove:</b> removes the last counter type.</li>
+<li> <b>Delete mode:</b> toggles between insert and delete mode. When checked, the marker of the currently selected type closest to the mouse cursor will be deleted when you click.</li>
+<li> <b>Delete:</b> delete the last placed marker.</li>
+<li> <b>Reset:</b> reset all counters to 0.</li>
+<li> <b>Results:</b> Shows the counter results in the ImageJ results table. In case of a stack the counts per slice and the totals are displayed.</li>
+<li> <b>Save Markers:</b> Exports the marker data to an XML file - Only available when running java 1.4 or higher</li>
+<li> <b>Load Markers:</b> Loads stored marker data from an XML file - - Only available when running java 1.4 or higher</li>
+<li> <b>Export Image:</b> Makes a copy of the counter image with the markers written on it (only the current slice is copied in case of a stack)</li>
+<li> <b>Measure...:</b> Measures the pixel value at each marker and displays a result window showing: Type - Slice - X coordinate - Y coordinate - Pixel Value</li></ul>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<p>Open the Cell Counter plugin and the image/stack you want to count (if the Cell Counter plugin is already open you don't need to open a new instance). Click initialize, now you are ready to count features. 
+Note that at any time you can add types or remove them. Select the type you want to count, and count by clicking on the feature in the image. A colored number corresponding to the type you are counting will be displayed on the image every time you click, and the corresponding counter is updated.
+</p><p>Add the following macros to <i>ImageJ/macros/StartupMacros.txt</i>, restart ImageJ, and you will be able to change the counter type by pressing "1", "2", "3", etc.
+</p>
+<pre> macro "Type 1 [1]" {call("CellCounter.setType", "1");}
+ macro "Type 2 [2]" {call("CellCounter.setType", "2");}
+ macro "Type 3 [3]" {call("CellCounter.setType", "3");}
+ macro "Type 4 [4]" {call("CellCounter.setType", "4");}
+ macro "Type 5 [5]" {call("CellCounter.setType", "5");}
+ macro "Type 6 [6]" {call("CellCounter.setType", "6");}
+ macro "Type 7 [7]" {call("CellCounter.setType", "7");}
+ macro "Type 8 [8]" {call("CellCounter.setType", "8");}
+</pre>
+<h2><span class="mw-headline" id="History">History</span></h2>
+<ul><li> <u>2001/10/17</u>: first version</li>
+<li> <u>2002/02/01</u>: bug fixes</li>
+<li> <u>2004/06/26</u>: upgraded to work with ImageJ 1.32</li>
+<li> <u>2005/12/27</u>: version 2</li>
+<li> <u>2006/02/02</u>: No longer requires Java 5.0</li>
+<li> <u>2006/02/14</u>: Added "Save Markers" and "Load Markers" buttons</li>
+<li> <u>2006/03/06</u>: Added "Export Image" and "Measure" buttons</li>
+<li> <u>2006/03/12</u>: Add "Show Numbers" checkbox</li>
+<li> <u>2008/02/29</u>: Updated to work with <a rel="nofollow" class="external text" href="https://imagej.net/plugins/grid.html">Grid</a> plugin</li>
+<li> <u>2008/08/27</u>: Added "Show All" checkbox; works with hyperstacks and composite color images</li>
+<li> <u>2008/09/02</u>: Added setType() method to support macros</li>
+<li> <u>2008/09/22</u>: Out of focus markers displayed as outlines</li>
+<li> <u>2009/07/01</u>: Fixed "Load Markers" bug</li>
+<li> <u>2010/12/07</u>: Uses less memory</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064809
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.100 seconds
+Real time usage: 0.102 seconds
+Preprocessor visited node count: 1679/1000000
+Preprocessor generated node count: 4833/1000000
+Post‐expand include size: 5385/2097152 bytes
+Template argument size: 1545/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   70.215      1 - -total
+ 95.30%   66.917      1 - Template:ComponentStats:sc.fiji:Cell_Counter
+ 92.31%   64.814      1 - Template:Component
+ 67.10%   47.117      6 - Template:Person
+  4.54%    3.188      1 - Template:Notice
+  3.80%    2.667      1 - Template:GitHub
+  3.18%    2.235      1 - Template:Ambox
+  2.70%    1.894      1 - Template:Maven
+  2.41%    1.693      1 - Template:Project
+  2.17%    1.522      1 - Template:SupportStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Cell_Counter&amp;oldid=41217">http://imagej.net/index.php?title=Cell_Counter&amp;oldid=41217</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Cell_Counter&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Particle_analysis" title="Category:Particle analysis">Particle analysis</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Cell+Counter" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Cell+Counter" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Cell_Counter" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Cell_Counter" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Cell_Counter&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Cell_Counter&amp;oldid=41217" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Cell_Counter&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":317});});</script>
+		</body>
+		</html>
+		

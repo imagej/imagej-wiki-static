@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Bio-Formats - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Bio-Formats","wgTitle":"Bio-Formats","wgCurRevisionId":39150,"wgRevisionId":39150,"wgArticleId":845,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Related Software","Citable","SciJava","OME"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Bio-Formats","wgRelevantArticleId":845,"wgRequestId":"2d00ebc239de2b943fe4f914","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Import data from many life sciences file formats, and export to several open formats."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Bio-Formats"/>
+
+	<meta property="og:description" content="Import data from many life sciences file formats, and export to several open formats."/>
+
+	<meta property="og:url" content="http://imagej.net/Bio-Formats"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Bio-Formats rootpage-Bio-Formats skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Bio-Formats_(Remote).html#bodyContent">Skip to content</a>, 			<a href="Bio-Formats_(Remote).html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Bio-Formats_(Remote).html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Bio-Formats_(Remote).html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Bio-Formats&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Bio-Formats&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Bio-Formats&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Bio-Formats</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  <a href="http://imagej.net/Formats" title="Formats">Formats</a>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Bio-Formats</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Video" title="Video">Video formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/QuickTime" title="QuickTime">QuickTime</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/TIFF" title="TIFF">TIFF</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Extract_Images_From_PDF..." title="Extract Images From PDF...">PDF</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/DICOM" title="DICOM">DICOM</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/LSM_Toolbox" title="LSM Toolbox">Zeiss LSM</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/OlympusImageJPlugin" title="OlympusImageJPlugin">Olympus VSI</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/LuraWave" title="LuraWave">Opera Flex</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Category:Import-Export" title="Category:Import-Export">All I/O plugins</a>
+</td></tr></table>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"><a href="http://imagej.net/File:Bio-formats-icon.png" class="image"><img alt="Bio-formats-icon.png" src="../_images/5/58/Bio-formats-icon.png" width="96" height="96" /></a></div>OME Bio-Formats plugins (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a rel="nofollow" class="external text" href="https://www.openmicroscopy.org/">Open Microscopy Environment</a>:<br />- <a href="http://imagej.net/LOCI" title="LOCI">UW-Madison LOCI</a><br />- <a rel="nofollow" class="external text" href="https://www.glencoesoftware.com/">Glencoe Software</a><br />- <a rel="nofollow" class="external text" href="https://www.dundee.ac.uk/">University of Dundee</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> OME development team
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> <a rel="nofollow" class="external text" href="https://downloads.openmicroscopy.org/bio-formats/">See Bio-Formats Downloads page</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/openmicroscopy/bioformats/">on GitHub</a>
+</td></tr>
+
+<tr>
+<th> Latest version
+</th>
+<td> <a rel="nofollow" class="external text" href="https://downloads.openmicroscopy.org/bio-formats/">See Bio-Formats Downloads page</a>
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Import-Export" title="Category:Import-Export">Category:Import-Export</a>
+</td></tr>
+
+</table>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Bio-Formats_(Remote).html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Bio-Formats_(Remote).html#History"><span class="tocnumber">2</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Bio-Formats_(Remote).html#Documentation"><span class="tocnumber">3</span> <span class="toctext">Documentation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Bio-Formats_(Remote).html#Bio-Formats_Importer"><span class="tocnumber">3.1</span> <span class="toctext">Bio-Formats Importer</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Bio-Formats_(Remote).html#Bio-Formats_Exporter"><span class="tocnumber">3.2</span> <span class="toctext">Bio-Formats Exporter</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Bio-Formats_(Remote).html#Bio-Formats_Remote_Importer"><span class="tocnumber">3.3</span> <span class="toctext">Bio-Formats Remote Importer</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Bio-Formats_(Remote).html#Bio-Formats_Windowless_Importer"><span class="tocnumber">3.4</span> <span class="toctext">Bio-Formats Windowless Importer</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Bio-Formats_(Remote).html#Bio-Formats_Macro_Extensions"><span class="tocnumber">3.5</span> <span class="toctext">Bio-Formats Macro Extensions</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Bio-Formats_(Remote).html#Stack_Slicer"><span class="tocnumber">3.6</span> <span class="toctext">Stack Slicer</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Bio-Formats_(Remote).html#Bio-Formats_Plugins_Configuration"><span class="tocnumber">3.7</span> <span class="toctext">Bio-Formats Plugins Configuration</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Bio-Formats_(Remote).html#Bio-Formats_Plugins_Shortcut_Window"><span class="tocnumber">3.8</span> <span class="toctext">Bio-Formats Plugins Shortcut Window</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Bio-Formats_(Remote).html#Update_Bio-Formats_Plugins"><span class="tocnumber">3.9</span> <span class="toctext">Update Bio-Formats Plugins</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="Bio-Formats_(Remote).html#Calling_Bio-Formats_from_the_command_line"><span class="tocnumber">4</span> <span class="toctext">Calling Bio-Formats from the command line</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="Bio-Formats_(Remote).html#Scripting"><span class="tocnumber">5</span> <span class="toctext">Scripting</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="Bio-Formats_(Remote).html#Daily_builds"><span class="tocnumber">6</span> <span class="toctext">Daily builds</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="Bio-Formats_(Remote).html#Source_code"><span class="tocnumber">7</span> <span class="toctext">Source code</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="Bio-Formats_(Remote).html#Reporting_bugs"><span class="tocnumber">8</span> <span class="toctext">Reporting bugs</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="Bio-Formats_(Remote).html#Publication"><span class="tocnumber">9</span> <span class="toctext">Publication</span></a></li>
+</ul>
+</div>
+</div>
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>Import data from many life sciences file formats, and export to several open formats.
+</p>
+<h2><span class="mw-headline" id="History">History</span></h2>
+<p>See <a rel="nofollow" class="external text" href="https://loci.wisc.edu/software/bio-formats">LOCI's Bio-Formats site</a> for a historical narrative of the project.
+</p>
+<h2><span class="mw-headline" id="Documentation">Documentation</span></h2>
+<p>What follows is a brief overview of the available plugins. You will find them all under the "Bio-Formats" submenu of Plugins. See the <a rel="nofollow" class="external text" href="https://www.openmicroscopy.org/bio-formats/">Bio-Formats web site</a> for additional information about Bio-Formats in general.
+</p><p>See especially the <a rel="nofollow" class="external text" href="https://docs.openmicroscopy.org/latest/bio-formats/users/imagej/load-images.html#using-bio-formats-to-load-images-into-imagej">Using Bio-Formats</a> page for detailed instructions.
+</p>
+<h3><span class="mw-headline" id="Bio-Formats_Importer">Bio-Formats Importer</span></h3>
+<p>The <b>Bio-Formats Importer</b> is a plugin for reading data into Fiji. It can open many dozens of proprietary life sciences formats, and standardize their acquisition metadata into a common <a rel="nofollow" class="external text" href="https://docs.openmicroscopy.org/latest/ome-model/developers/model-overview.html">OME data model</a>. It will also extract and set basic metadata values such as <a href="http://imagej.net/SpatialCalibration" class="mw-redirect" title="SpatialCalibration">spatial calibration</a> if they are available in the file.
+</p><p>Often, you will not need to worry about this plugin to import your data, because Bio-Formats is largely integrated with the File/Open command of Fiji. However, for certain file formats, you may wish to explicitly activate the Bio-Formats Importer to override the default behavior of Fiji. For example, by default Fiji uses some built-in logic to open TIFF files, but this logic may fail with certain TIFFs. The Bio-Formats Importer plugin may be able to import such TIFFs successfully.
+</p>
+<h3><span class="mw-headline" id="Bio-Formats_Exporter">Bio-Formats Exporter</span></h3>
+<p>The <b>Bio-Formats Exporter</b> is a plugin for exporting data to disk.
+</p><p>It can save to the open <a rel="nofollow" class="external text" href="https://docs.openmicroscopy.org/latest/ome-model/#ome-tiff">OME-TIFF</a> file format, as well as several movie formats (e.g., QuickTime, AVI) and graphics formats (e.g., PNG, JPEG).
+</p>
+<ul><li> Animated PNG (*.png)</li>
+<li> <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Audio_Video_Interleave">Audio Video Interleave</a> (*.avi)</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/CellH5/cellh5">CellH5</a> File Format (*.ch5)</li>
+<li> Encausupated PostScript (*.eps, *.epsi)</li>
+<li> <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Image_Cytometry_Standard">Image Cytometry Standard</a> (*.ids, *.ics)</li>
+<li> Java source code (*.java)</li>
+<li> JPEG (*.jpg, *.jpeg, *.jpe)</li>
+<li> JPEG-2000 (*.jp2)</li>
+<li> <a rel="nofollow" class="external text" href="https://docs.openmicroscopy.org/latest/ome-model/ome-tiff/">OME-TIFF</a> (*.ome.tif, *.ome.tiff, *.ome.tf2, *.ome.tf8, *.ome.btf)</li>
+<li> <a rel="nofollow" class="external text" href="https://docs.openmicroscopy.org/latest/ome-model/ome-xml/">OME-XML</a> (*.ome, *.ome.xml)</li>
+<li> QuickTime (*.mov)</li>
+<li> Tagged Image File Format (TIFF) (*.tif, *.tiff, *.tf2, *.tf8, *.btf)</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/Vaa3D/Vaa3D_Wiki/wiki/Vaa3D-Wiki">Vaa3d</a> (*.v3draw)</li>
+<li> <a rel="nofollow" class="external text" href="https://www.emouseatlas.org/emap/analysis_tools_resources/software/woolz.html">Woolz</a> (*.wlz)</li></ul>
+<p><b>Note:</b> For OME-TIFF and TIFF formats, the file extensions <b>*.tif</b> and <b>*.tiff</b> are associated with the standard 32-bit TIFF, which has a 4GB size limit. On the other hand, the file extensions <b>*.tf2</b>, <b>*.tf8</b>, and <b>*.btf</b> are automatically associated with <a rel="nofollow" class="external text" href="https://www.awaresystems.be/imaging/tiff/bigtiff.html">the 64-bit BigTIFF format</a>, which can store much bigger data.
+</p>
+<h3><span class="mw-headline" id="Bio-Formats_Remote_Importer">Bio-Formats Remote Importer</span></h3>
+<p>The <b>Bio-Formats Remote Importer</b> is a plugin for importing data from a remote URL.
+</p><p>It is likely to be less robust than working with files on disk, so when possible we recommend downloading your data to disk and using the regular Bio-Formats Importer instead.
+</p>
+<h3><span class="mw-headline" id="Bio-Formats_Windowless_Importer">Bio-Formats Windowless Importer</span></h3>
+<p>The <b>Bio-Formats Windowless Importer</b> is a version of the <b>Bio-Formats Importer</b> plugin that runs with the last used settings to avoid popping up any additional dialogs beyond the file chooser. If you find that you always use the same import settings, you may wish to use the windowless importer to save time.
+</p>
+<h3><span class="mw-headline" id="Bio-Formats_Macro_Extensions">Bio-Formats Macro Extensions</span></h3>
+<p>The Bio-Formats plugins come with a set of macro extensions to enable additional functionality from macros. The <b>Bio-Formats Macro Extensions</b> plugin prints out the available commands to the ImageJ log window, along with instructions for using them.
+</p>
+<h3><span class="mw-headline" id="Stack_Slicer">Stack Slicer</span></h3>
+<p>The <b>Stack Slicer</b> plugin is a helper plugin used by the <b>Bio-Formats Importer</b>. It can also be used standalone to split a stack across channels, focal planes or time points.
+</p>
+<h3><span class="mw-headline" id="Bio-Formats_Plugins_Configuration">Bio-Formats Plugins Configuration</span></h3>
+<p>The <b>Bio-Formats Plugins Configuration</b> dialog is a useful way to configure the behavior of each file format. You can see a list of supported file formats on the Formats tab, toggle each format on or off (which is useful, for example, if your file is being detected as the wrong format), and toggle whether each format bypasses the importer options dialog using the "Windowless" checkbox. You can also configure any specific options for each format—for example, for QuickTime, you can toggle between Apple's QTJava library or Bio-Formats's built-in support.
+</p><p>In addition, you can see a list of available helper libraries used by Bio-Formats on the Libraries tab.
+</p>
+<h3><span class="mw-headline" id="Bio-Formats_Plugins_Shortcut_Window">Bio-Formats Plugins Shortcut Window</span></h3>
+<p>The <b>Bio-Formats Plugins Shortcut Window</b> is a small window with a quick-launch button for each plugin. You can also drag and drop files onto the shortcut window to open them quickly using the <b>Bio-Formats Importer</b> plugin.
+</p>
+<h3><span class="mw-headline" id="Update_Bio-Formats_Plugins">Update Bio-Formats Plugins</span></h3>
+<p>The <b>Update Bio-Formats Plugins</b> command will check online for updates to the Bio-Formats Plugins. In the case of Fiji, we recommend that you do not use this method of update, but instead use the <a href="http://imagej.net/Update_Fiji" class="mw-redirect" title="Update Fiji">Fiji Updater</a>.
+</p>
+<h2><span class="mw-headline" id="Calling_Bio-Formats_from_the_command_line">Calling Bio-Formats from the command line</span></h2>
+<p>You can invoke Bio-Formats from the command line using the <a href="http://imagej.net/Launcher" title="Launcher">ImageJ Launcher</a>:
+</p>
+<ol><li> Use the <a href="http://imagej.net/Introduction_into_Macro_Programming#The_recorder" title="Introduction into Macro Programming">Macro Recorder</a> to record the line of macro code that runs Bio-Formats that way you want.</li>
+<li> Click "Create" to pop up the <a href="http://imagej.net/Script_Editor" class="mw-redirect" title="Script Editor">Script Editor</a>, edit as desired, then save the macro as a <code>.ijm</code> macro file.</li>
+<li> Run the macro from the command line; e.g.:</li></ol>
+<pre class="brush:plain">
+ImageJ-win32.exe -macro myMacro.ijm -batch
+</pre>
+<p>Leave off the <code>-batch</code> flag if you want ImageJ to remain open afterward.
+</p><p>Note that you cannot use the <a href="http://imagej.net/Headless#Running_macros_in_headless_mode" title="Headless">--headless option</a> because Bio-Formats does not work in headless mode, even when running as a macro. (You will see <code>VerifyError</code> on the console if you try.)
+</p><p>Here is an example macro created in such a fashion:
+</p>
+<pre class="brush:java">
+run("Bio-Formats", "open=/Users/jdoe/data.ome.tif " +
+  "autoscale color_mode=Default view=Hyperstack stack_order=XYCZT");
+saveAs("Tiff", "/Users/jdoe/Desktop/result.tif");
+</pre>
+<h2><span class="mw-headline" id="Scripting">Scripting</span></h2>
+<p>Bio-Formats has a high-level scripting interface, accessible by Java and all scripting languages supported by Fiji (but not the ImageJ macro language). Java example:
+</p>
+<pre class="brush:java">
+String id = "/path/to/myFile.ext";
+ImagePlus[] imps = BF.openImagePlus(id);
+</pre>
+<p>If needed, import options can be set:
+</p>
+<pre class="brush:java">
+String id = "/path/to/myFile.ext";
+ImporterOptions options = new ImporterOptions();
+options.setId(id);
+options.setAutoscale(true);
+options.setCrop(true);
+options.setCropRegion(0, new Region(x, y, w, h));
+options.setColorMode(ImporterOptions.COLOR_MODE_COMPOSITE);
+//...etc.
+ImagePlus[] imps = BF.openImagePlus(options);
+</pre>
+<h2><span class="mw-headline" id="Daily_builds">Daily builds</span></h2>
+<div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> The daily builds are <b>not yet released</b> and should be considered <b>beta</b> in quality. There may be new bugs. In particular, you should <b>avoid exporting data using the Bio-Formats Exporter</b> because the files it writes might not be readable later by release versions of Bio-Formats or other OME-compliant tools. </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p><br />
+Fiji ships release versions of Bio-Formats. However, given the long time frame between releases, you can update to the latest code by toggling the <b>Bio-Formats</b> update site, which includes the latest bug-fixes.
+</p><p>When reporting a bug, the developers may ask you to test with the <b>Bio-Formats</b> update site enabled.
+</p><p>To enable the Bio-Formats update site:
+</p>
+<ol><li> Launch the updater: <b>Update</b> from the <b>Help</b> menu.</li>
+<li> Click the <b>Manage update sites</b> button.</li>
+<li> Tick the <b>Bio-Formats</b> box: <div class="center"><div class="floatnone"><a href="http://imagej.net/File:Bf-manage-update-sites.png" class="image"><img alt="Bf-manage-update-sites.png" src="../_images/d/d0/Bf-manage-update-sites.png" width="700" height="527" /></a></div></div></li>
+<li> Click the <b>Close</b> button. The updater should want to update some files now: <div class="center"><div class="floatnone"><a href="http://imagej.net/File:Bf-jars-to-update.png" class="image"><img alt="Bf-jars-to-update.png" src="../_images/e/e6/Bf-jars-to-update.png" width="700" height="527" /></a></div></div></li>
+<li> Click the <b>Apply changes</b> button.</li>
+<li> Restart Fiji when prompted.</li>
+<li> To verify the upgrade, choose <b>Bio-Formats Plugins...</b> from <b>About Plugins</b> beneath the <b>Help</b> menu: <div class="center"><div class="floatnone"><a href="http://imagej.net/File:Bf-about-plugins.png" class="image"><img alt="Bf-about-plugins.png" src="../_images/0/01/Bf-about-plugins.png" width="700" height="285" /></a></div></div></li></ol>
+<h2><span class="mw-headline" id="Source_code">Source code</span></h2>
+<p>The Bio-Formats source code is <a rel="nofollow" class="external text" href="https://github.com/openmicroscopy/bioformats/">on GitHub</a>.
+</p>
+<h2><span class="mw-headline" id="Reporting_bugs">Reporting bugs</span></h2>
+<p>To report a bug in Bio-Formats, please see <a rel="nofollow" class="external text" href="https://docs.openmicroscopy.org/latest/bio-formats/about/bug-reporting.html">reporting a bug in Bio-Formats</a>.
+</p>
+<h2><span class="mw-headline" id="Publication">Publication</span></h2>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Metadata+matters%3A+access+to+image+data+in+the+real+world&amp;rft.aulast=Linkert&amp;rft.aufirst=M.&amp;rft.date=2010&amp;rft.volume=189%285%29&amp;rft.pages=777-782&amp;rft_id=info:pmid/20513764&amp;rft_id=http%3A%2F%2Fjcb.rupress.org%2Fcontent%2F189%2F5%2F777.short"><cite id="CITEREFLinkertRuedenAllanBurel2010">Linkert, M.; Rueden, C. T.&#32;&amp; Allan, C.&#32;et al.&#32;(2010),&#32;"<a rel="nofollow" class="external text" href="http://jcb.rupress.org/content/189/5/777.short">Metadata matters: access to image data in the real world</a>",&#32;<i>The Journal of cell biology</i>&#32;<b>189(5)</b>:  777-782, PMID 20513764<span class="printonly">, &lt;<a rel="nofollow" class="external free" href="http://jcb.rupress.org/content/189/5/777.short">http://jcb.rupress.org/content/189/5/777.short</a>&gt;</span></cite></span> (<a rel="nofollow" class="external text" href="http://scholar.google.com/scholar?cluster=17774693189715989612">on Google Scholar</a>).</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064632
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.072 seconds
+Real time usage: 0.073 seconds
+Preprocessor visited node count: 807/1000000
+Preprocessor generated node count: 13972/1000000
+Post‐expand include size: 10476/2097152 bytes
+Template argument size: 3550/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   39.052      1 - -total
+ 62.04%   24.229      1 - Template:Publication
+ 44.14%   17.237      1 - Template:Citation
+ 35.76%   13.966      1 - Template:Citation/core
+ 13.65%    5.331      1 - Template:Infobox
+ 11.64%    4.545      1 - Template:FormatsMenu
+  9.18%    3.586      1 - Template:Menu
+  6.36%    2.482      1 - Template:Warning
+  5.88%    2.298      2 - Template:GitHub
+  5.22%    2.037     10 - Template:MenuItem
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Bio-Formats&amp;oldid=39150">http://imagej.net/index.php?title=Bio-Formats&amp;oldid=39150</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 19 March 2019, at 09:58.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Bio-Formats&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Related_Software" title="Category:Related Software">Related Software</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li><li><a href="http://imagej.net/Category:SciJava" title="Category:SciJava">SciJava</a></li><li><a href="http://imagej.net/Category:OME" title="Category:OME">OME</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Bio-Formats" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Bio-Formats" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Bio-Formats" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Bio-Formats" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Bio-Formats&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Bio-Formats&amp;oldid=39150" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Bio-Formats&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":217});});</script>
+		</body>
+		</html>
+		

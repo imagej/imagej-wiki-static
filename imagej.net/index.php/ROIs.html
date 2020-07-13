@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>ROIs - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"ROIs","wgTitle":"ROIs","wgCurRevisionId":39033,"wgRevisionId":39033,"wgArticleId":2564,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"ROIs","wgRelevantArticleId":2564,"wgRequestId":"3a54883d76394898ce3fe151","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="In image processing, two of the most often needed yet complex operations are segmentation and registration. Regions of interest (ROIs) are an effective way of expressing and visualizing the results of a segmentation. For the current implementation of ROIs in ImageJ, see the imglib2-roi repository."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="ROIs"/>
+
+	<meta property="og:description" content="In image processing, two of the most often needed yet complex operations are segmentation and registration. Regions of interest (ROIs) are an effective way of expressing and visualizing the results of a segmentation. For the current implementation of ROIs in ImageJ, see the imglib2-roi repository."/>
+
+	<meta property="og:url" content="http://imagej.net/ROIs"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-ROIs rootpage-ROIs skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="ROIs.html#bodyContent">Skip to content</a>, 			<a href="ROIs.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="ROIs.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/ROIs" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:ROIs&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=ROIs&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=ROIs&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>ROIs</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
+<tr>
+<td class="ambox-image">
+<p><a href="http://imagej.net/File:Important-sign.png" class="image"><img alt="Important-sign.png" src="../_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+</p>
+</td>
+<td> This page or section is a WORK IN PROGRESS, and still unfinished! </td>
+<p><br />
+</p>
+</tr>
+</table></div>
+<p>In <a href="http://en.wikipedia.org/wiki/Image_processing" class="extiw" title="wikipedia:Image processing">image processing</a>, two of the most often needed yet complex operations are <a href="http://en.wikipedia.org/wiki/Segmentation_(image_processing)" class="extiw" title="wikipedia:Segmentation (image processing)">segmentation</a> and <a href="http://en.wikipedia.org/wiki/Image_registration" class="extiw" title="wikipedia:Image registration">registration</a>. Regions of interest (ROIs) are an effective way of expressing and visualizing the results of a segmentation. For the current implementation of ROIs in ImageJ, see the <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2-roi">imglib2-roi</a> repository.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="ROIs.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="ROIs.html#Naming"><span class="tocnumber">1.1</span> <span class="toctext">Naming</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="ROIs.html#BoundaryType"><span class="tocnumber">1.2</span> <span class="toctext">BoundaryType</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="ROIs.html#KnownConstant"><span class="tocnumber">1.3</span> <span class="toctext">KnownConstant</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="ROIs.html#Combining_ROIs"><span class="tocnumber">2</span> <span class="toctext">Combining ROIs</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="ROIs.html#BoundaryType_of_Composites"><span class="tocnumber">2.1</span> <span class="toctext">BoundaryType of Composites</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="ROIs.html#Unary_Operators"><span class="tocnumber">2.1.1</span> <span class="toctext">Unary Operators</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="ROIs.html#Binary_Operators"><span class="tocnumber">2.1.2</span> <span class="toctext">Binary Operators</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-9"><a href="ROIs.html#Bounds_of_Composites"><span class="tocnumber">2.2</span> <span class="toctext">Bounds of Composites</span></a>
+<ul>
+<li class="toclevel-3 tocsection-10"><a href="ROIs.html#Unary_Operators_2"><span class="tocnumber">2.2.1</span> <span class="toctext">Unary Operators</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="ROIs.html#Binary_Operators_2"><span class="tocnumber">2.2.2</span> <span class="toctext">Binary Operators</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="ROIs.html#Converting_to_RandomAccessible"><span class="tocnumber">3</span> <span class="toctext">Converting to RandomAccessible</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="ROIs.html#Discussion"><span class="tocnumber">4</span> <span class="toctext">Discussion</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>The base interface for all ROIs is <b>MaskPredicate</b>. <b>MaskPredicate</b> extends Java's <b>Predicate</b> whose <code>test(...)</code> method is used to determine if a given point is inside or outside a ROI. 
+</p><p>ROIs are further separated into discrete and continuous space ROIs, which can be bounded or unbounded. <b>Mask</b> is the base interface for all discrete space ROIs, and <b>MaskInterval</b> is the base interface for all bounded discrete space ROIs. Similarly, <b>RealMask</b> is the base interface for all continuous space ROIs, and <b>RealMaskRealInterval</b> is the base interface for all bounded continuous space ROIs.
+</p><p>Concrete implementations of geometric ROIs (i.e. ellipsoids, polylines, etc.) can be retrieve from <b>GeomMasks</b>. The below example creates a 3D sphere centered at (12.5, 6, 93.25) with a radius of 0.5.
+</p>
+<pre class="brush:java">
+final double[] center = new double[] { 12.5, 6, 93.25 };
+final double radius = 0.5;
+final Sphere sphere = GeomMasks.closedWritableSphere( center, radius );
+</pre>
+<h2><span class="mw-headline" id="Naming">Naming</span></h2>
+<p>All n-dimensional geometric ROIs should be named with the name of their 3D counterpart. For example, an n-dimensional hyper-ellipsoid would just be named 'ellipsoid'. If a ROI implementation is not n-dimensional, its dimensionality should be stated in the name. For example, <b>Polygon2D</b> which is a 2D polygon.
+</p><p>Additionally, ROIs prefixed with "Writable" are mutable. ROIs without this prefix are assumed to be immutable.
+</p>
+<h2><span class="mw-headline" id="BoundaryType">BoundaryType</span></h2>
+<p>The boundary behavior of a ROI is given by its <b>BoundaryType</b> enum which has three values.
+</p>
+<ul><li> <b>CLOSED</b> - all points on the boundary are considered inside</li>
+<li> <b>OPEN</b> - all points on the boundary are considered outside</li>
+<li> <b>UNSPECIFIED</b> - some points on the boundary may be inside while others are outside</li></ul>
+<h2><span class="mw-headline" id="KnownConstant">KnownConstant</span></h2>
+<p>The <b>KnownConstant</b> enum is used for determining if a ROI returns <code>false</code> for all locations, or <code>true</code> for all locations. This is useful for determining if the result of an operation between ROIs results in "empty" space or "all" space.
+</p>
+<ul><li> <b>ALL_FALSE</b> - ROI is known to return <code>false</code> for all locations</li>
+<li> <b>ALL_TRUE</b> - ROI is known to return <code>true</code> for all locations</li>
+<li> <b>UNKNOWN</b> - it is undetermined what the ROI returns for all locations, most ROIs have this</li></ul>
+<h1><span class="mw-headline" id="Combining_ROIs">Combining ROIs</span></h1>
+<p>ROIs can be combined via a number of operations, namely: <code>and</code>, <code>or</code>, <code>negate</code>, <code>minus</code>, and <code>xor</code>. <b>RealMask</b>s also have a <code>transform</code> operation. Combined ROIs are <b>CompositeMaskPredicate</b>s, which preserves the provenance of the composite ROI. For each <b>CompositeMaskPredicate</b> it is possible to retrieve the operator and operands. This results in a "tree" of ROIs.
+</p><p>The below example creates a composite ROI:
+</p>
+<pre class="brush:java">
+final Sphere s1 = new ClosedWritableSphere( new double[] { 0, 0, 0 }, 3.5 );
+final Sphere s2 = new ClosedWritableSphere( new double[] { 1, 2, 0 }, 1.5 );
+final Sphere s3 = new ClosedWritableSphere( new double[] { 2, 2, 0 }, 1.5 );
+final RealMaskRealInterval composite = s1.and( s2.minus( s3 ) ).and( s3 ).or( s1.minus( s3.negate() ) );
+</pre>
+<p>The resulting composite ROI has the resulting "tree":
+</p>
+<pre>
+leaf  (net.imglib2.roi.geom.real.ClosedWritableSphere@a4)
+OR  (net.imglib2.roi.composite.DefaultBinaryCompositeRealMaskRealInterval@5a050f05)
+ +--AND  (net.imglib2.roi.composite.DefaultBinaryCompositeRealMaskRealInterval@d5189b46)
+ |   +--AND  (net.imglib2.roi.composite.DefaultBinaryCompositeRealMaskRealInterval@f1bb9aa6)
+ |   |   +--leaf  (net.imglib2.roi.geom.real.ClosedWritableSphere@a4)
+ |   |   +--MINUS  (net.imglib2.roi.composite.DefaultBinaryCompositeRealMaskRealInterval@516e3be)
+ |   |       +--leaf  (net.imglib2.roi.geom.real.ClosedWritableSphere@7d)
+ |   |       +--leaf  (net.imglib2.roi.geom.real.ClosedWritableSphere@8a)
+ |   +--leaf  (net.imglib2.roi.geom.real.ClosedWritableSphere@8a)
+ +--MINUS  (net.imglib2.roi.composite.DefaultBinaryCompositeRealMaskRealInterval@fcc5e4e3)
+     +--leaf  (net.imglib2.roi.geom.real.ClosedWritableSphere@a4)
+     +--NEGATE  (net.imglib2.roi.composite.DefaultUnaryCompositeRealMask@c2ea3a1e)
+         +--leaf  (net.imglib2.roi.geom.real.ClosedWritableSphere@8a)
+</pre>
+<p>Note that the same ROI can be used in multiple operations within the same composite.
+</p>
+<h2><span class="mw-headline" id="BoundaryType_of_Composites">BoundaryType of Composites</span></h2>
+<p>The boundary behavior of a ROI may change as a result of the operation. The below outlines the composite BoundaryType logic, used when composite ROIs are formed.
+</p>
+<h3><span class="mw-headline" id="Unary_Operators">Unary Operators</span></h3>
+<table class="wikitable">
+<caption style="caption-side:bottom; text-align: left; font-size: 0.9em; font-weight: normal;"><sup>1</sup> Transform is <a href="http://en.wikipedia.org/wiki/Continuous_function" class="extiw" title="wikipedia:Continuous function">continuous</a> (preserves boundary behavior) and will preserve the interval bounds<br />
+<sup>2</sup> Transform is discontinuous or doesn't preserve bounds
+</caption>
+<tr>
+<th> Operation
+</th>
+<th colspan="3">BoundaryType
+</th></tr>
+<tr>
+<th>
+</th>
+<th> open
+</th>
+<th> closed
+</th>
+<th> unspecified
+</th></tr>
+<tr>
+<th> negate
+</th>
+<td>closed
+</td>
+<td>open
+</td>
+<td>unspecified
+</td></tr>
+<tr>
+<th> transform<sup>1<sup>
+</th>
+<td>open
+</td>
+<td>closed
+</td>
+<td>unspecified
+</td></tr>
+<tr>
+<th> transform<sup>2<sup>
+</th>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td></tr></table>
+<h3><span class="mw-headline" id="Binary_Operators">Binary Operators</span></h3>
+<table class="wikitable">
+<tr>
+<th colspan="4">And
+</th>
+<th colspan="4">Minus
+</th></tr>
+<tr>
+<th colspan="4">Operand BoundaryType
+</th>
+<th colspan="4">Operand BoundaryType
+</th></tr>
+<tr>
+<th> Left
+</th>
+<th colspan="3">Right
+</th>
+<th> Left
+</th>
+<th colspan="3">Right
+</th></tr>
+<tr>
+<th>
+</th>
+<th> open
+</th>
+<th> closed
+</th>
+<th> unspecified
+</th>
+<th>
+</th>
+<th> open
+</th>
+<th> closed
+</th>
+<th> unspecified
+</th>
+<th>
+</th></tr>
+<tr>
+<th> open
+</th>
+<td>open
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<th> open
+</th>
+<td>unspecified
+</td>
+<td>open
+</td>
+<td>unspecified
+</td></tr>
+<tr>
+<th> closed
+</th>
+<td>unspecified
+</td>
+<td>closed
+</td>
+<td>unspecified
+</td>
+<th> closed
+</th>
+<td>closed
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td></tr>
+<tr>
+<th> unspecified
+</th>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<th> unspecified
+</th>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td></tr></table>
+<table class="wikitable">
+<tr>
+<th colspan="4">Or
+</th>
+<th colspan="4">Xor
+</th></tr>
+<tr>
+<th colspan="4">Operand BoundaryType
+</th>
+<th colspan="4">Operand BoundaryType
+</th></tr>
+<tr>
+<th> Left
+</th>
+<th colspan="3">Right
+</th>
+<th> Left
+</th>
+<th colspan="3">Right
+</th></tr>
+<tr>
+<th>
+</th>
+<th> open
+</th>
+<th> closed
+</th>
+<th> unspecified
+</th>
+<th>
+</th>
+<th> open
+</th>
+<th> closed
+</th>
+<th> unspecified
+</th>
+<th>
+</th></tr>
+<tr>
+<th> open
+</th>
+<td>open
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<th> open
+</th>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td></tr>
+<tr>
+<th> closed
+</th>
+<td>unspecified
+</td>
+<td>closed
+</td>
+<td>unspecified
+</td>
+<th> closed
+</th>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td></tr>
+<tr>
+<th> unspecified
+</th>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<th> unspecified
+</th>
+<td>unspecified
+</td>
+<td>unspecified
+</td>
+<td>unspecified
+</td></tr></table>
+<h2><span class="mw-headline" id="Bounds_of_Composites">Bounds of Composites</span></h2>
+<p>The composite logic tries very hard to preserve the bounds of ROIs whenever possible. Additionally, the bounds will update when the composite's leaves are updated.
+</p><p>In the below example, a <b>CompositeMaskPredicate</b> is generated by and-ing a <b>Sphere</b> and a <b>Box</b>. The below example shows that the bounds are sensitive to changes in the operands' bounds. It also demonstrates ROIs ability to detect if a composite is empty.
+</p>
+<pre class="brush:java">
+final WritableSphere s = GeomMasks.closedWritableSphere( new double[] { 7.5, 8 }, 5 );
+final WritableBox b = GeomMasks.closedWritableBox( new double[] { 3, 2 }, new double[] { 20, 9 } );
+final RealMaskRealInterval and = s.and( b );
+
+System.out.println( "Min Bounds: " + and.realMin( 0 ) + ", " + and.realMin( 1 ) );
+System.out.println( "Max Bounds: " + and.realMax( 0 ) + ", " + and.realMax( 1 ) );
+// Min Bounds: 3.0, 3.0
+// Max Bounds: 12.5, 9.0
+
+// Move the sphere's center to (11.5, 5.5)
+s.center().setPosition( new double[] { 11.5, 5.5 } );
+System.out.println( "Min Bounds: " + and.realMin( 0 ) + ", " + and.realMin( 1 ) );
+System.out.println( "Max Bounds: " + and.realMax( 0 ) + ", " + and.realMax( 1 ) );
+		// Composite ROIs new bounds
+// Min Bounds: 6.5, 2.0
+// Max Bounds: 16.5, 9.0
+
+// Move the box's center to (100, 100), such that it no longer
+// intersects with the sphere
+b.center().setPosition( new double[] { 100, 100 } );
+System.out.println( "Is empty? " + and.isEmpty() );
+// Is empty? true
+// The two ROIs no longer intersect, so the composite is empty now
+</pre>
+<h3><span class="mw-headline" id="Unary_Operators_2">Unary Operators</span></h3>
+<table class="wikitable">
+<caption style="caption-side:bottom; text-align: left; font-size: 0.9em; font-weight: normal;"><sup>1</sup> Transformation is affine<br />
+<sup>2</sup> Transformation is not affine
+</caption>
+<tr>
+<th>Operation
+</th>
+<th colspan="2">Operand has bounds?
+</th></tr>
+<tr>
+<th>
+</th>
+<th>yes
+</th>
+<th>no
+</th></tr>
+<tr>
+<th>negate
+</th>
+<td>unbounded
+</td>
+<td>unbounded
+</td></tr>
+<tr>
+<th>transform<sup>1</sup>
+</th>
+<td>bounded
+</td>
+<td>unbounded
+</td></tr>
+<tr>
+<th>transform<sup>2</sup>
+</th>
+<td>unbounded
+</td>
+<td>unbounded
+</td></tr></table>
+<h3><span class="mw-headline" id="Binary_Operators_2">Binary Operators</span></h3>
+<table class="wikitable">
+<tr>
+<th colspan="3">And
+</th>
+<th colspan="3">Minus
+</th>
+<th colspan="3">Or
+</th>
+<th colspan="3">Xor
+</th></tr>
+<tr>
+<th colspan="3">Operand has bounds?
+</th>
+<th colspan="3">Operand has bounds?
+</th>
+<th colspan="3">Operand has bounds?
+</th>
+<th colspan="3">Operand has bounds?
+</th></tr>
+<tr>
+<th>Left
+</th>
+<th colspan="2">Right
+</th>
+<th>Left
+</th>
+<th colspan="2">Right
+</th>
+<th>Left
+</th>
+<th colspan="2">Right
+</th>
+<th>Left
+</th>
+<th colspan="2">Right
+</th></tr>
+<tr>
+<th>
+</th>
+<th>yes
+</th>
+<th>no
+</th>
+<th>
+</th>
+<th>yes
+</th>
+<th>no
+</th>
+<th>
+</th>
+<th>yes
+</th>
+<th>no
+</th>
+<th>
+</th>
+<th>yes
+</th>
+<th>no
+</th></tr>
+<tr>
+<th>yes
+</th>
+<td>bounded
+</td>
+<td>bounded
+</td>
+<th>yes
+</th>
+<td>bounded
+</td>
+<td>bounded
+</td>
+<th>yes
+</th>
+<td>bounded
+</td>
+<td>unbounded
+</td>
+<th>yes
+</th>
+<td>bounded
+</td>
+<td>unbounded
+</td></tr>
+<tr>
+<th>no
+</th>
+<td>bounded
+</td>
+<td>unbounded
+</td>
+<th>no
+</th>
+<td>unbounded
+</td>
+<td>unbounded
+</td>
+<th>no
+</th>
+<td>unbounded
+</td>
+<td>unbounded
+</td>
+<th>no
+</th>
+<td>unbounded
+</td>
+<td>unbounded
+</td></tr></table>
+<h1><span class="mw-headline" id="Converting_to_RandomAccessible">Converting to RandomAccessible</span></h1>
+<p>It is also possible to convert <b>MaskPredicate</b>s to <b>(Real)RandomAccessible</b>s. The easiest way to do this is via the <b>Masks</b> class.
+</p>
+<pre class="brush:java">
+final double[] center = new double[] { 10, 13, 22.25 };
+final double[] semiAxisLengths = new double[] { 4, 5, 1 };
+final double exponent = 6;
+final SuperEllipsoid se = GeomMasks.closedWritableSuperEllipsoid( center, semiAxisLengths, exponent );
+
+final RealRandomAccessibleRealInterval&lt; BoolType &gt; rrari = Masks.toRealRandomAccessibleRealInterval( se );
+</pre>
+<h1><span class="mw-headline" id="Discussion">Discussion</span></h1>
+<ul><li> <a rel="nofollow" class="external text" href="https://groups.google.com/d/msg/fiji-devel/AdeqZKffIUU/K8NRgKgk-WUJ">G. Landini: Imglib or ImageJ2 and ROIs</a> – ROIs should be drawn from the center of each pixel</li>
+<li> <a rel="nofollow" class="external text" href="https://groups.google.com/d/msg/fiji-devel/AdeqZKffIUU/9SoisoaivWwJ">S. Preibisch: Imglib or ImageJ2 and ROIs - Where is a pixel?</a> – Two kinds of ROIs: discrete and continuous</li>
+<li> <a rel="nofollow" class="external text" href="https://groups.google.com/d/msg/fiji-devel/AdeqZKffIUU/FU2Js4zNPG0J">D. White: Imglib or ImageJ2 and ROIs - A pixel is not a little square</a> – Alvy Ray's classic article</li>
+<li> <a rel="nofollow" class="external text" href="https://groups.google.com/d/msg/fiji-devel/E9SSt9z2zRQ/Slc1BLzuvtcJ">J. Tinevez: ImageJ class hierarchy suggestions</a> – a proposed interface-driven design for ROIs</li>
+<li> <a rel="nofollow" class="external text" href="http://forum.imagej.net/t/implementation-plan-for-imglib2-rois-2d/2531">Implementation plan for Imglib2-rois 2D</a> - forum discussion regarding ROI API</sup></li></ul>
+<p></sup>
+</sup>
+</sup>
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713073158
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.040 seconds
+Preprocessor visited node count: 134/1000000
+Preprocessor generated node count: 390/1000000
+Post‐expand include size: 844/2097152 bytes
+Template argument size: 145/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    4.832      1 - Template:WIP
+100.00%    4.832      1 - -total
+ 80.49%    3.889      1 - Template:Warning
+ 60.08%    2.903      1 - Template:Ambox
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=ROIs&amp;oldid=39033">http://imagej.net/index.php?title=ROIs&amp;oldid=39033</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 29 January 2019, at 21:22.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=ROIs&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=ROIs" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=ROIs" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/ROIs" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/ROIs" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=ROIs&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=ROIs&amp;oldid=39033" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=ROIs&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":247});});</script>
+		</body>
+		</html>
+		

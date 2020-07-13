@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Tips for C++ developers - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Tips_for_C++_developers","wgTitle":"Tips for C++ developers","wgCurRevisionId":29293,"wgRevisionId":29293,"wgArticleId":790,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Tips_for_C++_developers","wgRelevantArticleId":790,"wgRequestId":"cacc98e7451578f9174f1405","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Many developers are more familiar with C++ than Java when starting to develop code for Fiji. There are a few common pitfalls when coding in Java, being used to C++, and this page tries to help you avoid them."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Tips for C++ developers"/>
+
+	<meta property="og:description" content="Many developers are more familiar with C++ than Java when starting to develop code for Fiji. There are a few common pitfalls when coding in Java, being used to C++, and this page tries to help you avoid them."/>
+
+	<meta property="og:url" content="http://imagej.net/Tips_for_C%2B%2B_developers"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Tips_for_C_developers rootpage-Tips_for_C_developers skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Tips_for_C++_developers.html#bodyContent">Skip to content</a>, 			<a href="Tips_for_C++_developers.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Tips_for_C++_developers.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Tips_for_C%2B%2B_developers" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Tips_for_C%2B%2B_developers&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Tips_for_C%2B%2B_developers&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Tips_for_C%2B%2B_developers&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Tips for C++ developers</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  Development
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Development" title="Development">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Philosophy" title="Philosophy">Philosophy</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Architecture" title="Architecture">Architecture</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Source_code" title="Source code">Source code</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Project_management" title="Project management">Project management</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Coding_style" title="Coding style">Coding style</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging" title="Debugging">Debugging</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible mw-collapsed" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tools
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/GitHub" title="GitHub">GitHub</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Git" title="Git">Git</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Maven" title="Maven">Maven</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/IDEs" title="IDEs">IDEs</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Travis" title="Travis">Travis</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/AppVeyor" title="AppVeyor">AppVeyor</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Dotfiles" title="Dotfiles">Dotfiles</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Guides
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Writing_plugins" title="Writing plugins">Writing plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImageJ_Ops" title="ImageJ Ops">ImageJ Ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/How_to_contribute_to_an_existing_plugin_or_library" title="How to contribute to an existing plugin or library">Contributing to a plugin</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Distribution" title="Distribution">Distributing your plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Development_Lifecycle" title="Development Lifecycle">Development lifecycle</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Building_a_POM" title="Building a POM">Building a POM</a>
+<hr />
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImageJ_in_Eclipse" title="Developing ImageJ in Eclipse">Developing with Eclipse</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Debugging_Exercises" title="Debugging Exercises">Hands-on debugging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_ops" title="Adding new ops">Adding new ops</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Adding_new_formats" title="Adding new formats">Adding new formats</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Developing_using_native_libraries" title="Developing using native libraries">Using native libraries</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Tips_for_developers" title="Tips for developers">Tips for developers</a>
+</td></tr>
+<tr>
+<td>  <strong class="selflink">Tips for C++ developers</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Introduction_into_Developing_Plugins" class="mw-redirect" title="Introduction into Developing Plugins">ImageJ 1.x plugins</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Versioning" title="Versioning">Versioning</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Logging" title="Logging">Logging</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Uber-JAR" title="Uber-JAR">Uber-JARs</a>
+</td></tr></table>
+</td></tr></table>
+<p><br />
+</p>
+<div style=""><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Tips_for_C++_developers.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Tips_for_C++_developers.html#General_differences"><span class="tocnumber">2</span> <span class="toctext">General differences</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Tips_for_C++_developers.html#Compile_time"><span class="tocnumber">2.1</span> <span class="toctext">Compile time</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Tips_for_C++_developers.html#Templates_vs_Generics"><span class="tocnumber">2.2</span> <span class="toctext">Templates vs Generics</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Tips_for_C++_developers.html#Java_has_no_pointers"><span class="tocnumber">2.3</span> <span class="toctext">Java has no pointers</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Tips_for_C++_developers.html#There_is_no_need_for_this-.3E"><span class="tocnumber">2.4</span> <span class="toctext">There is no need for <i>this-&gt;</i></span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Tips_for_C++_developers.html#Pitfalls"><span class="tocnumber">3</span> <span class="toctext">Pitfalls</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="Tips_for_C++_developers.html#Java_only_knows_by-reference"><span class="tocnumber">3.1</span> <span class="toctext">Java only knows <i>by-reference</i></span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Tips_for_C++_developers.html#You_cannot_compare_Strings_using_.3D.3D"><span class="tocnumber">3.2</span> <span class="toctext">You cannot compare Strings using ==</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Tips_for_C++_developers.html#Objects_are_not_instantiated_by_default"><span class="tocnumber">3.3</span> <span class="toctext">Objects are not instantiated by default</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Tips_for_C++_developers.html#Java_knows_of_no_destructors"><span class="tocnumber">3.4</span> <span class="toctext">Java knows of no destructors</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="Tips_for_C++_developers.html#Java_is_inherently_multithreaded"><span class="tocnumber">3.5</span> <span class="toctext">Java is inherently multithreaded</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Tips_for_C++_developers.html#Not_taking_advantage_of_Java.27s_syntax"><span class="tocnumber">3.6</span> <span class="toctext">Not taking advantage of Java's syntax</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="Tips_for_C++_developers.html#Not_taking_advantage_of_Java.27s_standard_libraries"><span class="tocnumber">3.7</span> <span class="toctext">Not taking advantage of Java's standard libraries</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="Tips_for_C++_developers.html#.27final.27_does_not_mean_.27const.27"><span class="tocnumber">3.8</span> <span class="toctext">'final' does not mean 'const'</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-16"><a href="Tips_for_C++_developers.html#Conventions"><span class="tocnumber">4</span> <span class="toctext">Conventions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-17"><a href="Tips_for_C++_developers.html#Class_and_function_names"><span class="tocnumber">4.1</span> <span class="toctext">Class and function names</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>Many developers are more familiar with C++ than Java when starting to develop code for Fiji. There are a few common pitfalls when coding in Java, being used to C++, and this page tries to help you avoid them.
+</p>
+<h1><span class="mw-headline" id="General_differences">General differences</span></h1>
+<h2><span class="mw-headline" id="Compile_time">Compile time</span></h2>
+<p>In C++, all the optimization takes place at compile time. Especially with C++ templates, that can take a long time and it is even possible to have inifinite loops. As C++ targets assembler code, it makes no sense to try to post-optimize the code after that.
+</p><p>In Java, the compiler only produces bytecode that will be interpreted and/or Just-In-Time compiled by the Java Runtime. When some piece of bytecode is run multiple times, the Just-In-Time compiler will actually try to optimize harder, so compile time with Java is not really only limited to compiling the .java files into .class files.
+</p>
+<h2><span class="mw-headline" id="Templates_vs_Generics">Templates vs Generics</span></h2>
+<p>Java's generics are implemented using erasure, which means that generics help catching bugs due to compile-time checks, but the compiled classes will actually have forgotten about the generic parameters. In particular, you cannot use the generic parameter to instantiate classes, i.e. this does not work:
+</p>
+<pre>public&lt;T&gt; T create() { return new T(); } // does _not_ work
+</pre>
+<p>The upside of this limitation is that you will never get as cryptic multi-page long error messages as with C++.
+</p><p>A downside is that the Java compiler just cannot optimize generics as much as C++ can do with templates, also due to the fact that Java does not recompile the base classes of the generics -- in contrast to what C++ does with templates. However, due to the <a href="Tips_for_C++_developers.html#Compile_time">compile time</a> being fuzzy, Java can optimize a lot in the Just-In-Time compiler, especially when you use the <i>final</i> keyword wisely; a method marked as final cannot be overridden in subclasses, and is therefore a prime candidate for Just-In-Time optimization.
+</p>
+<h2><span class="mw-headline" id="Java_has_no_pointers">Java has no pointers</span></h2>
+<p>In C++, you often find constructs like this:
+</p>
+<pre>const char *string = "Hello, World!";
+some_func(string + 7);
+</pre>
+<p>This is not possible in Java. Instead, you have to use String's substring() method.
+</p><p>In the same spirit, it is not possible to realloc() memory. If you need a larger buffer, you have to allocate it, possibly copying existing data into it using the method <i>System.arraycopy()</i>.
+</p>
+<h2><span class="mw-headline" id="There_is_no_need_for_this-.3E">There is no need for <i>this-&gt;</i></span></h2>
+<p>In Java, member variables and methods can be accessed without the prefix <i>this.</i>, so it is considered better to skip that unnecessary prefix. But it also means that your code has to make clear what variables are local in another manner.
+</p>
+<h1><span class="mw-headline" id="Pitfalls">Pitfalls</span></h1>
+<h2><span class="mw-headline" id="Java_only_knows_by-reference">Java only knows <i>by-reference</i></span></h2>
+<p>Whenever you pass an object to a method, Java does so by reference. That makes it harder to write inefficient code copying large amounts of memory back and forth, but it is something to watch out for when you are used to C++: when passing an object to a method which modifies the members, the caller will see the changes.
+</p>
+<h2><span class="mw-headline" id="You_cannot_compare_Strings_using_.3D.3D">You <u>cannot</u> compare Strings using ==</span></h2>
+<p>There is no operator overloading in Java, so the operator <i>==</i> refers to equality of the reference, rather than equality of the referenced object. You must use the <i>equals()</i> method for that.
+</p>
+<h2><span class="mw-headline" id="Objects_are_not_instantiated_by_default">Objects are not instantiated by default</span></h2>
+<p>When declaring a variable like this:
+</p>
+<pre>ImagePlus image;
+</pre>
+<p>Java does not initialize the variable automatically. Remember, objects are passed by reference, so <i>image</i> is just an uninitialized reference to an <i>ImagePlus</i> at this stage.
+</p>
+<h2><span class="mw-headline" id="Java_knows_of_no_destructors">Java knows of no destructors</span></h2>
+<p>While it is convenient that Java does automatic garbage collection, it is easy to forget that every reference to an object will prevent it from being released. Even worse, sometimes the garbage collection does not kick in in time, so you have to call <i>System.gc();</i> explicitely, possibly multiple times.
+</p>
+<h2><span class="mw-headline" id="Java_is_inherently_multithreaded">Java is inherently multithreaded</span></h2>
+<p>When coming from C++, one often tries to avoid multi-threading, as it is painful to use threads in C++ in a portable manner.
+</p><p>In Java, threads are really easy. And portable. But that does not mean that coding multi-threaded programs is easy. Humans are just too used to a linear time-course to think of all the possible side-effects of multi-threaded code, or of the need to make code blocks <i>synchronized</i> (i.e. ensure that certain code blocks are not executed simultaneously in multiple threads).
+</p><p>However, the most notorious bugs are the ones in multi-threaded code, as they are really, really difficult to debug. It is not uncommon that a multi-threading bug goes away when debug messages are introduced into the code.
+</p><p>Of course, the advantage of multi-threaded programs is that multi-core systems will benefit immediately from that code.
+</p>
+<h2><span class="mw-headline" id="Not_taking_advantage_of_Java.27s_syntax">Not taking advantage of Java's syntax</span></h2>
+<p>Many C++ programmers think of Java as a C++ dialect, forgetting that there are convenient syntax constructs. For example, you will often find code such as
+</p>
+<pre>for (int i = 0; i &lt; array.length; i++) {
+        String string = array[i];
+        // do something
+}
+</pre>
+<p>or even worse:
+</p>
+<pre>Iterator&lt;String&gt; iter = list.iterator();
+while (iter.hasNext()) {
+       String string = iter.next();
+       // do something
+}
+</pre>
+<p>rather than using the Java syntax (available since Java 1.5):
+</p>
+<pre>for (String string&#160;: array)
+        // do something
+</pre>
+<h2><span class="mw-headline" id="Not_taking_advantage_of_Java.27s_standard_libraries">Not taking advantage of Java's standard libraries</span></h2>
+<p>Coming from C++, developers often tend to implement everything themselves, even if the algorithm was already implemented. For example, <i>java.util.Collections</i> and <i>java.util.Arrays</i> contain methods to sort, shuffle, filter or binary search collections and arrays respectively.
+</p><p>Likewise, Java comes with useful classes implementing neat things such as priority queues (since Java 1.5).
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id=".27final.27_does_not_mean_.27const.27">'final' does not mean 'const'</span></h2>
+<p>In C++, when an array is declared <i>const</i>, none of its entries can be edited in any way. But in java, when a variable that points to an array is declared <i>final</i> only that variable cannot be assigned. Any entries of the array (or collection, or whatever container) are editable, and the entry slots themselves may be reassigned.
+</p>
+<h1><span class="mw-headline" id="Conventions">Conventions</span></h1>
+<h2><span class="mw-headline" id="Class_and_function_names">Class and function names</span></h2>
+<p>In C++, the common style is to use underscores for both class and function names, e.g. <i>gaussian_blur</i> (except if you are developing on Windows, where the class names are frequently prefixed by a capital <i>C</i> and CamelCased).
+</p><p>In Java, the convention is to use CamelCase instead of underscores, and to start class names with a capital letter, but fields and method names lowercase, e.g. <i>ImagePlus</i> and <i>newImage()</i>.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713074004
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.032 seconds
+Real time usage: 0.031 seconds
+Preprocessor visited node count: 343/1000000
+Preprocessor generated node count: 754/1000000
+Post‐expand include size: 6844/2097152 bytes
+Template argument size: 3742/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   16.241      1 - -total
+ 86.03%   13.973      1 - Template:DevelopMenu
+ 76.29%   12.390      1 - Template:Menu
+ 66.55%   10.808      3 - Template:Submenu
+ 32.99%    5.358     31 - Template:MenuItem
+ 13.01%    2.113      1 - Template:TOC
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Tips_for_C%2B%2B_developers&amp;oldid=29293">http://imagej.net/index.php?title=Tips_for_C%2B%2B_developers&amp;oldid=29293</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:03.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Tips_for_C%2B%2B_developers&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Tips+for+C%2B%2B+developers" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Tips+for+C%2B%2B+developers" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Tips_for_C%2B%2B_developers" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Tips_for_C%2B%2B_developers" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Tips_for_C%2B%2B_developers&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Tips_for_C%2B%2B_developers&amp;oldid=29293" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Tips_for_C%2B%2B_developers&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":225});});</script>
+		</body>
+		</html>
+		

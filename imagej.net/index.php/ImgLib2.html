@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>ImgLib2 - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"ImgLib2","wgTitle":"ImgLib2","wgCurRevisionId":40222,"wgRevisionId":40222,"wgArticleId":1448,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["ImgLib","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"ImgLib2","wgRelevantArticleId":1448,"wgRequestId":"0d649f4d46bc8d5669f01325","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="ImgLib2 is a general-purpose, multidimensional image processing library."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="ImgLib2"/>
+
+	<meta property="og:description" content="ImgLib2 is a general-purpose, multidimensional image processing library."/>
+
+	<meta property="og:url" content="http://imagej.net/ImgLib2"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-ImgLib2 rootpage-ImgLib2 skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="ImgLib2.html#bodyContent">Skip to content</a>, 			<a href="ImgLib2.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="ImgLib2.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/ImgLib2" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:ImgLib2&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=ImgLib2&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=ImgLib2&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>ImgLib2</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"><div class="MediaTransformError" style="width: 150px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div></div>ImgLib2 (Generic Image Processing for Java)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a>, <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>, <a href="http://imagej.net/User:StephanP" title="User:StephanP">Stephan Preibisch</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>, <a href="http://imagej.net/User:Leek" title="User:Leek">Lee Kamentsky</a>, <a href="http://imagej.net/User:Bdezonia" title="User:Bdezonia">Barry DeZonia</a>, <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Dietzc" title="User:Dietzc">Christian Dietz</a>, <a rel="nofollow" class="external text" href="https://github.com/hornm">Martin Horn</a>, <a href="http://imagej.net/User:Albertcardona" title="User:Albertcardona">Albert Cardona</a>, <a href="http://imagej.net/User:Harris" title="User:Harris">Grant Harris</a>, <a href="http://imagej.net/User:Lindsey" title="User:Lindsey">Larry Lindsey</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Pietzsch" title="User:Pietzsch">Tobias Pietzsch</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2/">on GitHub</a>
+</td></tr>
+
+
+<tr>
+<th> Development status
+</th>
+<td> stable, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:ImgLib" title="Category:ImgLib">Category:ImgLib</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  ImgLib2
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <strong class="selflink">Overview</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_Benchmarks" title="ImgLib2 Benchmarks">Benchmarks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_FAQ" title="ImgLib2 FAQ">FAQ</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tutorials
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Getting_Started" title="ImgLib2 - Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Accessors" title="ImgLib2 - Accessors">Accessors</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Accessibles" title="ImgLib2 - Accessibles">Accessibles</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_Examples" title="ImgLib2 Examples">ImgLib2 Examples</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Introductory_Workshop" title="ImgLib2 - Introductory Workshop">Introductory Workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Advanced_Programming_Workshop" title="ImgLib2 - Advanced Programming Workshop">Advanced Programming Workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Into_ImgLib_-_Generic_Image_Processing_in_Java" title="Into ImgLib - Generic Image Processing in Java">Into ImgLib - Generic Image Processing in Java</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Creating_Imglib2_images_in_MATLAB" title="Creating Imglib2 images in MATLAB">Creating Imglib2 images in MATLAB</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Development
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/Developing_ImgLib2" title="Developing ImgLib2">Developing ImgLib2</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_Discussion" title="ImgLib2 Discussion">ImgLib2 Discussion</a>
+</td></tr></table>
+</td></tr></table>
+<div class="project-info">
+<span class="project-logo"><strong class="selflink"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the ImgLib2 multidimensional image processing library. Click the logo for details." src="../_images/0/0a/Imglib2-icon.png"></img></strong></span></div>
+<p>ImgLib2 is a general-purpose, multidimensional image processing library.
+</p><p>It provides an interface-driven design that supports numeric and non-numeric data types (8-bit unsigned integer, 32-bit floating point, etc.) in an extensible way. It implements several data sources and sample organizations, including one single primitive array, one array per plane, N-dimensional array "cells" cached to and from disk on demand, and planes read on demand from disk.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="ImgLib2.html#Resources"><span class="tocnumber">1</span> <span class="toctext">Resources</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="ImgLib2.html#Source_code"><span class="tocnumber">2</span> <span class="toctext">Source code</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="ImgLib2.html#ImgLib2_vs._ImgLib1"><span class="tocnumber">3</span> <span class="toctext">ImgLib2 vs. ImgLib1</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="ImgLib2.html#API_Version_History"><span class="tocnumber">4</span> <span class="toctext">API Version History</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="ImgLib2.html#Other_links"><span class="tocnumber">5</span> <span class="toctext">Other links</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="ImgLib2.html#Publication"><span class="tocnumber">6</span> <span class="toctext">Publication</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Resources">Resources</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="http://bioinformatics.oxfordjournals.org/content/28/22/3009.full">ImgLib2 paper</a></li>
+<li> <a href="http://imagej.net/ImgLib2_Documentation" title="ImgLib2 Documentation">ImgLib2 Documentation</a></li>
+<li> <a href="http://imagej.net/ImgLib2_Examples" title="ImgLib2 Examples">ImgLib2 Examples</a></li>
+<li> <a rel="nofollow" class="external text" href="https://javadoc.scijava.org/ImgLib2/">ImgLib2</a> javadoc</li>
+<li> <a href="http://imagej.net/How_To_Migrate_Code_From_ImgLib_To_ImgLib2" title="How To Migrate Code From ImgLib To ImgLib2">How To Migrate Code From ImgLib To ImgLib2</a></li>
+<li> <a href="http://imagej.net/ImgLib2_-_Introductory_Workshop" title="ImgLib2 - Introductory Workshop">"Introduction to ImgLib2"</a> workshop</li>
+<li> <a href="http://imagej.net/ImgLib2_-_Advanced_Programming_Workshop" title="ImgLib2 - Advanced Programming Workshop">"Advanced Programming with ImgLib2"</a> workshop</li></ul>
+<h2><span class="mw-headline" id="Source_code">Source code</span></h2>
+<p>You can find the source <a rel="nofollow" class="external text" href="https://github.com/imglib/imglib2/">on GitHub</a>.
+</p><p>There is also a continuous integration system that builds ImgLib2 <a rel="nofollow" class="external text" href="https://travis-ci.org/imglib/imglib2">every time the code changes</a>.
+</p>
+<h2><span class="mw-headline" id="ImgLib2_vs._ImgLib1">ImgLib2 vs. ImgLib1</span></h2>
+<p><a href="http://imagej.net/ImgLib1_(deprecated)" title="ImgLib1 (deprecated)">ImgLib1</a> is the previous incarnation of the library. We encourage
+developers to use ImgLib2 instead, and <a href="http://imagej.net/How_To_Migrate_Code_From_ImgLib_To_ImgLib2" title="How To Migrate Code From ImgLib To ImgLib2">migrate existing ImgLib1 programs to ImgLib2</a> whenever possible.
+</p><p>For an explanation of how ImgLib2 has changed from ImgLib1, see the <a href="http://imagej.net/Changes_from_ImgLib1_to_ImgLib2" title="Changes from ImgLib1 to ImgLib2">Changes from ImgLib1 to ImgLib2</a> page.
+</p><p>See the <a href="http://imagej.net/How_To_Migrate_Code_From_ImgLib_To_ImgLib2" title="How To Migrate Code From ImgLib To ImgLib2">How To Migrate Code From ImgLib To ImgLib2</a> page for details on how to update your ImgLib1-based code to use ImgLib2.
+</p>
+<h2><span class="mw-headline" id="API_Version_History">API Version History</span></h2>
+<p>A history of API changes is available at:
+<a rel="nofollow" class="external free" href="https://abi-laboratory.pro/java/tracker/timeline/imglib2/">https://abi-laboratory.pro/java/tracker/timeline/imglib2/</a>
+</p>
+<h2><span class="mw-headline" id="Other_links">Other links</span></h2>
+<ul><li> <a href="http://imagej.net/ImgLib2_Discussion" title="ImgLib2 Discussion">ImgLib2 development discussion</a></li>
+<li> <a href="http://imagej.net/ImgLib2_Benchmarks" title="ImgLib2 Benchmarks">ImgLib2 performance benchmarks</a></li>
+<li> <a href="http://imagej.net/ImageJ2" title="ImageJ2">ImageJ2</a> uses ImgLib2 as its core data model</li></ul>
+<h2><span class="mw-headline" id="Publication">Publication</span></h2>
+<p>Pietzsch, T., Preibisch, S., Tomančák, P., &amp; Saalfeld, S. (2012). <a rel="nofollow" class="external text" href="http://bioinformatics.oxfordjournals.org/content/28/22/3009.full">ImgLib2—generic image processing in Java</a>. Bioinformatics, 28(22), 3009-3011.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072608
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.064 seconds
+Real time usage: 0.069 seconds
+Preprocessor visited node count: 1724/1000000
+Preprocessor generated node count: 4825/1000000
+Post‐expand include size: 7931/2097152 bytes
+Template argument size: 3870/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   46.779      1 - -total
+ 79.32%   37.104      1 - Template:Infobox
+ 66.61%   31.161     14 - Template:Person
+ 16.62%    7.777      1 - Template:ImgLibMenu
+ 10.55%    4.937      1 - Template:Menu
+  8.33%    3.897      3 - Template:Submenu
+  4.34%    2.030     13 - Template:MenuItem
+  4.17%    1.949      2 - Template:GitHub
+  2.57%    1.203      1 - Template:Javadoc
+  2.41%    1.129      1 - Template:Project
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=ImgLib2&amp;oldid=40222">http://imagej.net/index.php?title=ImgLib2&amp;oldid=40222</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 9 July 2019, at 10:09.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=ImgLib2&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:ImgLib" title="Category:ImgLib">ImgLib</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=ImgLib2" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=ImgLib2" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/ImgLib2" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/ImgLib2" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=ImgLib2&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=ImgLib2&amp;oldid=40222" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=ImgLib2&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":211});});</script>
+		</body>
+		</html>
+		

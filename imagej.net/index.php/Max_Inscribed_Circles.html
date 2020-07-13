@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Max Inscribed Circles - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Max_Inscribed_Circles","wgTitle":"Max Inscribed Circles","wgCurRevisionId":45112,"wgRevisionId":45112,"wgArticleId":3002,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Max_Inscribed_Circles","wgRelevantArticleId":3002,"wgRequestId":"991d4efac9980a967009f705","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This is an implementation of the Largest Inscribed Circle algorithm using an euclidean distance map. The algorithm is looped until a circle diameter smaller than the defined minimum diameter is found. &#10;The code for this plugin was inspired by this Matlab Central function"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Max Inscribed Circles"/>
+
+	<meta property="og:description" content="This is an implementation of the Largest Inscribed Circle algorithm using an euclidean distance map. The algorithm is looped until a circle diameter smaller than the defined minimum diameter is found. &#10;The code for this plugin was inspired by this Matlab Central function"/>
+
+	<meta property="og:url" content="http://imagej.net/Max_Inscribed_Circles"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Max_Inscribed_Circles rootpage-Max_Inscribed_Circles skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Max_Inscribed_Circles.html#bodyContent">Skip to content</a>, 			<a href="Max_Inscribed_Circles.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Max_Inscribed_Circles.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Max_Inscribed_Circles" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Max_Inscribed_Circles&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Max_Inscribed_Circles&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Max_Inscribed_Circles&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Max Inscribed Circles</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Max Inscribed Circles (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Olivier Burri, Romain Guiet
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Olivier Burri
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> Max_Inscribed_Circle.jar
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/ptbiop/ijp-max-inscribed-circles/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> August 2015
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> July 2016
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable
+</td></tr>
+
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external text" href="https://www.epfl.ch/research/facilities/ptbiop/staff/">BIOP Staff Page</a>
+</td></tr>
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Max_Inscribed_Circles.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Max_Inscribed_Circles.html#Details"><span class="tocnumber">2</span> <span class="toctext">Details</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Max_Inscribed_Circles.html#Installation"><span class="tocnumber">3</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Max_Inscribed_Circles.html#Use"><span class="tocnumber">4</span> <span class="toctext">Use</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Max_Inscribed_Circles.html#Macro_Recordable"><span class="tocnumber">5</span> <span class="toctext">Macro Recordable</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Max_Inscribed_Circles.html#Running_from_a_Plugin"><span class="tocnumber">6</span> <span class="toctext">Running from a Plugin</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Max_Inscribed_Circles.html#Notes"><span class="tocnumber">7</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>This is an implementation of the Largest Inscribed Circle algorithm using an euclidean distance map. The algorithm is looped until a circle diameter smaller than the defined minimum diameter is found. 
+The code for this plugin was inspired by this <a rel="nofollow" class="external text" href="http://www.mathworks.ch/matlabcentral/fileexchange/30805-maximum-inscribed-circle-using-distance-transform">Matlab Central function</a>
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:318px;"><div class="MediaTransformError" style="width: 316px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Max_largest_circ_dialog2.png" class="internal" title="Enlarge"></a></div>Plugin Dialog choices</div></div></div>
+<h2><span class="mw-headline" id="Details">Details</span></h2>
+<p>As of July 26th 2016, the plugin has been rewritten with a new algorithm to make it run much faster.. See the faster implementation details figure.  
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:Max-Circles-Algorithm-Overview.png" class="image"><img alt="" src="../_images/a/a3/Max-Circles-Algorithm-Overview.png" width="400" height="554" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Max-Circles-Algorithm-Overview.png" class="internal" title="Enlarge"></a></div>Faster implementation details</div></div></div>
+<p>The previous implementation would calculate a distance map, then find the max value, place a circle and repeat. This was making it very slow for small circle diameters or large images as it needed to make one distance map calculation per circle on the whole image. 
+</p><p>By using a Local Maxima Finder, we can draw multiple circles on a single pass, provided that these are 
+</p>
+<ol><li> The largest distances on the distance map image</li>
+<li> Not overlapping with one another</li></ol>
+<p>That way when there are plenty of circles that are the same size, we can draw them all at the same time. 
+</p>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>This plugin is available from the <a rel="nofollow" class="external text" href="https://imagej.github.io/list-of-update-sites/">BIOP Update Site</a>
+This places it in a "BIOP" Folder in the plugins directory of Fiji/ImageJ
+</p>
+<h2><span class="mw-headline" id="Use">Use</span></h2>
+<p>Call up the plugin using <i>Plugins-&gt;BIOP-&gt;Max Inscribed Circles...</i>.
+</p><p>You can select the smallest circle diameter after which it will stop looking, and whether you want the plugin to run on the current selection or the current image mask. 
+</p><p>It will add all the found circles to the ROI Manager.
+</p><p>Setting the Minimum Disk Diameter to 0 will return a single ROI with the largest inscribed circle.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:Max_largest_circ_beforeafter.png" class="image"><img alt="" src="../_images/1/11/Max_largest_circ_beforeafter.png" width="400" height="206" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Max_largest_circ_beforeafter.png" class="internal" title="Enlarge"></a></div>Result of Plugin on whole image</div></div></div>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Macro_Recordable">Macro Recordable</span></h2>
+<p>Making use of the GenericDialog class, the plugin is macro-recordable.
+</p>
+<pre class="brush:java">
+run("Max Inscribed Circles...", "minimum=20");
+</pre>
+<h2><span class="mw-headline" id="Running_from_a_Plugin">Running from a Plugin</span></h2>
+<p>What you need to run this in a plugin is 
+</p>
+<pre class="brush:java">
+import ch.epfl.biop.MaxInscribedCircles;
+</pre>
+<p>And then call the static method
+</p>
+<pre class="brush:java">
+//imp must be an 8-bit binary image
+ArrayList&lt;Roi&gt; circles = MaxInscribedCircles.findCircles(ImagePlus imp, double minD, boolean isSelectionOnly);
+</pre>
+Set the last argument <pre>isSelectionOnly</pre> to true if you want to fit circles in the current selection. If you'd like to use the pixel mask, set it to false.
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Notes">Notes</span></h2>
+<p>The accuracy is not perfect as we are using the distance map which has finite values. But for most practical purposes (Circles larger than 2 pixels in diameter), it should be sufficient.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713072943
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.036 seconds
+Real time usage: 0.039 seconds
+Preprocessor visited node count: 178/1000000
+Preprocessor generated node count: 990/1000000
+Post‐expand include size: 1264/2097152 bytes
+Template argument size: 577/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    6.803      1 - -total
+ 87.17%    5.930      1 - Template:Infobox
+ 25.99%    1.768      1 - Template:GitHub
+ 10.98%    0.747      1 - Template:ListOfUpdateSites
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Max_Inscribed_Circles&amp;oldid=45112">http://imagej.net/index.php?title=Max_Inscribed_Circles&amp;oldid=45112</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 21 April 2020, at 04:18.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Max_Inscribed_Circles&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Max+Inscribed+Circles" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Max+Inscribed+Circles" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Max_Inscribed_Circles" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Max_Inscribed_Circles" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Max_Inscribed_Circles&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Max_Inscribed_Circles&amp;oldid=45112" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Max_Inscribed_Circles&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":226});});</script>
+		</body>
+		</html>
+		

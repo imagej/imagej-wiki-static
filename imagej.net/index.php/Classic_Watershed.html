@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Classic Watershed - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Classic_Watershed","wgTitle":"Classic Watershed","wgCurRevisionId":40507,"wgRevisionId":40507,"wgArticleId":2435,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Segmentation","Mathematical morphology"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Classic_Watershed","wgRelevantArticleId":2435,"wgRequestId":"c905fdee89766737caa368af","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","ext.math.styles":"ready","mediawiki.page.gallery.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.page.gallery.styles%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The basic idea consists of considering the input image as topographic surface and placing a water source in each regional minimum of its relief. Next the entire relief is flooded from the sources and dams are placed where the different water sources meet."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Classic Watershed"/>
+
+	<meta property="og:description" content="The basic idea consists of considering the input image as topographic surface and placing a water source in each regional minimum of its relief. Next the entire relief is flooded from the sources and dams are placed where the different water sources meet."/>
+
+	<meta property="og:url" content="http://imagej.net/Classic_Watershed"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Classic_Watershed rootpage-Classic_Watershed skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Classic_Watershed.html#bodyContent">Skip to content</a>, 			<a href="Classic_Watershed.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Classic_Watershed.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Classic_Watershed" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Classic_Watershed&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Classic_Watershed&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Classic_Watershed&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Classic Watershed</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Classic Watershed (IJPB-plugins)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>, David Legland
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/ijpb/ijpb-plugins/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> July 3<sup>rd</sup>, 2014
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> July 23<sup>rd</sup>, 2019 (<a href="http://imagej.net/MorphoLibJ" title="MorphoLibJ">MorphoLibJ</a> v1.4.1)
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a>, <a href="http://imagej.net/Category:Mathematical_morphology" title="Category:Mathematical morphology">Mathematical morphology</a>
+</td></tr>
+
+</table>
+<table>
+<tr>
+<td style="vertical-align:top"><div class="thumb tright"><div class="thumbinner" style="width:258px;"><div class="MediaTransformError" style="width: 256px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Classic-Watershed-lines-blur-blobs.png" class="internal" title="Enlarge"></a></div>Overlay of watershed lines on blurred blobs.</div></div></div>
+</td></tr></table>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Classic_Watershed.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Classic_Watershed.html#Usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Classic_Watershed.html#Over-segmentation"><span class="tocnumber">3</span> <span class="toctext">Over-segmentation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Classic_Watershed.html#Example"><span class="tocnumber">3.1</span> <span class="toctext">Example</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="Classic_Watershed.html#Installation"><span class="tocnumber">4</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Classic_Watershed.html#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="Classic_Watershed.html#See_also"><span class="tocnumber">6</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="Classic_Watershed.html#License"><span class="tocnumber">7</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="http://imagej.net/File:Watershed-flooding-graph.png" class="image"><img alt="" src="../_images/c/c5/Watershed-flooding-graph.png" width="250" height="321" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Watershed-flooding-graph.png" class="internal" title="Enlarge"></a></div>Schematic overview of watershed flooding in 1D</div></div></div>Classic Watershed is an ImageJ/Fiji plugin to perform watershed segmentation of grayscale 2D/3D images using flooding simulations as described by Pierre Soille and Luc M. Vincent (1990)<sup id="cite_ref-Soille1990_1-0" class="reference"><a href="Classic_Watershed.html#cite_note-Soille1990-1">&#91;1&#93;</a></sup>.
+<p><br />
+The basic idea consists of considering the input image as topographic surface and placing a water source in each regional minimum of its relief. Next the entire relief is flooded from the sources and dams are placed where the different water sources meet.
+</p><p>All points in the surface at a given minimum constitute the <b>catchment basin</b> associated with that minimum. The <b>watersheds</b> are the zones dividing adjacent catchment basins.
+</p><p>The first image points that are reached by water are the points at the lowest grayscale value <img class="mwe-math-fallback-image-inline tex" alt="h_{min}" src="../_images/math/2/1/6/2163cdc6b8d7260e94cf3cf75fefb119.png" />, then all image pixels are progressively reached up to the highest level <img class="mwe-math-fallback-image-inline tex" alt="h_{max}" src="../_images/math/2/d/3/2d36f23c77cfaf8e36033ce1b820f98a.png" />.
+</p>
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<p>The Classic Watershed plugin runs on any <b>grayscale image (8, 16 and 32-bit) in 2D and 3D</b>. 
+</p><p>At least one image needs to be open in order to run the plugin. 
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:238px;"><div class="MediaTransformError" style="width: 236px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Classic-Watershed-dialog.png" class="internal" title="Enlarge"></a></div>Main dialog of the Classic Watershed plugin</div></div></div>
+<p>Image parameters:
+</p>
+<ul><li> <b>Input</b> image: grayscale image to flood, usually the gradient of an image.</li>
+<li> <b>Mask</b> image (optional): binary image of the same dimensions as the input image which can be used to restrict the areas of application of the algorithm. Set to "None" to run the method on the whole input image.</li></ul>
+<p>Morphological parameters:
+</p>
+<ul><li> <b>Use diagonal connectivity</b>: select to allow the flooding in diagonal directions (8-connectivity in 2D and 26-connectivity in 3D).</li>
+<li> <b>Min h</b>: minimum grayscale value to start flooding from (by default, set to the minimum value of the image type).</li>
+<li> <b>Max h</b>: maximum grayscale value to reach with flooding (by default, set to the maximum value of the image type).</li></ul>
+<p>Output:
+</p>
+<ul><li> <b>Labeled image</b> containing the resulting catchment basins (with integer values 1, 2, 3...) and watershed lines (with 0 value).</li></ul>
+<h2><span class="mw-headline" id="Over-segmentation">Over-segmentation</span></h2>
+<p>Normally, Classic Watershed will lead to an over-segmentation of the input image, especially for noisy images with many regional minima. In that case, it is recommended to <b>either pre-process the image before running the plugin, or merge regions based on a similarity criterion afterwards</b>. Several denoising methods are available in Fiji/ImageJ, namely: median filtering, Gaussian blur, bilateral filtering, etc.
+</p>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<p>This short macro runs the plugin twice in the blobs sample, first without pre-processing and then after applying a Gaussian blur of radius 3:
+</p>
+<pre class="brush:java">
+// load the Blobs sample image
+run("Blobs (25K)");
+// invert LUT and pixel values to have dark blobs
+run("Invert LUT");
+run("Invert");
+// run plugin on image
+run("Classic Watershed", "input=blobs mask=None use min=0 max=150");
+// apply LUT to facilitate result visualization
+run("3-3-2 RGB");
+// pre-process image with Gaussian blur
+selectWindow("blobs.gif");
+run("Gaussian Blur...", "sigma=3");
+rename("blobs-blur.gif");
+// apply plugin on pre-processed image
+run("Classic Watershed", "input=blobs-blur mask=None use min=0 max=150");
+// apply LUT to facilitate result visualization
+run("3-3-2 RGB");
+</pre>
+<ul class="gallery mw-gallery-nolines">
+		<li class="gallerybox" style="width: 205px"><div style="width: 205px">
+			<div class="thumb" style="width: 200px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Blobs-blur.png" class="image"><img alt="" src="../_images/b/b0/Blobs-blur.png" width="200" height="198" /></a></div></div>
+			<div class="gallerytext">
+<p>Gaussian-blurred blobs image used as input (radius = 3).
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 205px"><div style="width: 205px">
+			<div class="thumb" style="width: 200px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Blobs-watershed-no-preprocessing.png" class="image"><img alt="" src="../_images/9/93/Blobs-watershed-no-preprocessing.png" width="200" height="198" /></a></div></div>
+			<div class="gallerytext">
+<p>Watershed segmentation on original image (Min h = 0, Max h = 150)
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 205px"><div style="width: 205px">
+			<div class="thumb" style="width: 200px;"><div style="margin:0px auto;"><a href="http://imagej.net/File:Blobs-blur-watershed.png" class="image"><img alt="" src="../_images/2/25/Blobs-blur-watershed.png" width="200" height="198" /></a></div></div>
+			<div class="gallerytext">
+<p>Watershed segmentation on Gaussian-blurred original image (radius = 3, Min h = 0, Max h = 150)
+</p>
+			</div>
+		</div></li>
+</ul>
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>The Classic Watershed plugin is part of the <a href="http://imagej.net/MorphoLibJ" title="MorphoLibJ">MorphoLibJ</a> library. To install it, you just need to <a href="http://imagej.net/How_to_follow_a_3rd_party_update_site#Add_update_sites" class="mw-redirect" title="How to follow a 3rd party update site"> add</a> the IJPB-plugins update site:
+</p><p>1) Select <span><em><span style="border-bottom:1px dotted #ccc;"> Help </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Update...</span></em></span> from the Fiji menu to start the updater.
+</p><p>2) Click on <i>Manage update sites</i>. This brings up a dialog where you can activate additional update sites.
+</p><p>3) Activate the IJPB-plugins update site and close the dialog. Now you should see an additional jar file for download.
+</p><p>4) Click <i>Apply changes</i> and restart Fiji.
+</p><p>You should now find the plugin under the sub-menu <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;">MorphoLibJ </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Segmentation</span></em></span>.
+</p><p><b>Note</b>: Classic Watershed is only one of the plugins included in the <a href="http://imagej.net/MorphoLibJ" title="MorphoLibJ">MorphoLibJ</a> suite. By following these installation steps, you will be installing as well the rest of plugins in the suite.
+</p>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ol class="references">
+<li id="cite_note-Soille1990-1"><span class="mw-cite-backlink"><a href="Classic_Watershed.html#cite_ref-Soille1990_1-0">↑</a></span> <span class="reference-text"><cite style="font-style:normal">Soille, Pierre and Vincent, Luc M&#32;(1990). "<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1117/12.24211">Determining watersheds in digital pictures via flooding simulations</a>".&#32;<i>Proc. SPIE</i>&#32;<b>1360</b>: 240-250. doi:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1117/12.24211">10.1117/12.24211</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.btitle=Proc.+SPIE&amp;rft.atitle=Determining+watersheds+in+digital+pictures+via+flooding+simulations&amp;rft.au=Soille%2C+Pierre+and+Vincent%2C+Luc+M&amp;rft.date=1990&amp;rft.pages=240-250&amp;rft.series=1360&amp;rft_id=info:doi/10.1117%2F12.24211&amp;rft_id=http%3A%2F%2Fdx.doi.org%2F10.1117%2F12.24211"><span style="display: none;">&#160;</span></span></span>
+</li>
+</ol>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> <a href="http://imagej.net/Marker-controlled_Watershed" title="Marker-controlled Watershed">Marker-controlled Watershed</a>, a plugin to perform watershed by flooding from specific seed points or markers.</li>
+<li> <a href="http://imagej.net/Morphological_Segmentation" title="Morphological Segmentation">Morphological Segmentation</a>, a plugin with a graphical user interface to segment images based on morphological operations and the watershed algorithm.</li>
+<li> <a rel="nofollow" class="external text" href="http://cmm.ensmp.fr/~beucher/wtshed.html">Serge Beucher's site</a>, with graphic descriptions and animations of the watershed algorithms.</li>
+<li> <a rel="nofollow" class="external text" href="http://www.esiee.fr/~info/tw/index.html">G. Bertrand's Topological Watershed site</a>, with papers, lecture slides and source code.</li></ul>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is <b>free software</b>; you can redistribute it and/or modify it under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064818
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.064 seconds
+Real time usage: 0.066 seconds
+Preprocessor visited node count: 589/1000000
+Preprocessor generated node count: 5907/1000000
+Post‐expand include size: 3872/2097152 bytes
+Template argument size: 1523/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   50.696      1 - -total
+ 28.43%   14.414      1 - Template:Infobox
+ 18.46%    9.361      2 - Template:Person
+ 11.17%    5.661      1 - Template:Cite_conference
+  9.98%    5.057      2 - Template:Bc
+  3.38%    1.713      1 - Template:GitHub
+  3.09%    1.569      3 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Classic_Watershed&amp;oldid=40507">http://imagej.net/index.php?title=Classic_Watershed&amp;oldid=40507</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 4 September 2019, at 02:47.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Classic_Watershed&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Segmentation" title="Category:Segmentation">Segmentation</a></li><li><a href="http://imagej.net/Category:Mathematical_morphology" title="Category:Mathematical morphology">Mathematical morphology</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Classic+Watershed" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Classic+Watershed" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Classic_Watershed" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Classic_Watershed" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Classic_Watershed&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Classic_Watershed&amp;oldid=40507" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Classic_Watershed&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":264});});</script>
+		</body>
+		</html>
+		

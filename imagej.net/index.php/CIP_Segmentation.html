@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>CIP Segmentation - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"CIP_Segmentation","wgTitle":"CIP Segmentation","wgCurRevisionId":37951,"wgRevisionId":37951,"wgArticleId":10243,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"CIP_Segmentation","wgRelevantArticleId":10243,"wgRequestId":"8c2e3c54b8c1fd44de8e6e01","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This page describes the segmentation function of the CIP scripting package"/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="CIP Segmentation"/>
+
+	<meta property="og:description" content="This page describes the segmentation function of the CIP scripting package"/>
+
+	<meta property="og:url" content="http://imagej.net/CIP_Segmentation"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-CIP_Segmentation rootpage-CIP_Segmentation skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="CIP_Segmentation.html#bodyContent">Skip to content</a>, 			<a href="CIP_Segmentation.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="CIP_Segmentation.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/CIP_Segmentation" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:CIP_Segmentation&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=CIP_Segmentation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=CIP_Segmentation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>CIP Segmentation</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="CIP_Segmentation.html#threshold"><span class="tocnumber">1</span> <span class="toctext"><b>threshold</b></span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="CIP_Segmentation.html#label"><span class="tocnumber">2</span> <span class="toctext"><b>label</b></span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="CIP_Segmentation.html#maxima"><span class="tocnumber">3</span> <span class="toctext"><b>maxima</b></span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="CIP_Segmentation.html#watershed"><span class="tocnumber">4</span> <span class="toctext"><b>watershed</b></span></a></li>
+</ul>
+</div>
+
+<p><br />
+This page describes the segmentation function of the <a href="http://imagej.net/CIP" title="CIP">CIP scripting</a> package
+</p><p>One can found additionnal information on the function parameters (type, optionnal/required, positionnal/named) on the <a href="http://imagej.net/CIP_Parameters" title="CIP Parameters">parameters documentation</a> page.
+</p><p>to acess another category of CIP functions:
+<a href="http://imagej.net/CIP_Format" title="CIP Format">Format</a>, 
+<a href="http://imagej.net/CIP_Filter" title="CIP Filter">Filter</a>, 
+<a href="http://imagej.net/CIP_Math" title="CIP Math">Math</a>, 
+<strong class="selflink">Segment</strong>, 
+<a href="http://imagej.net/CIP_Utilities" title="CIP Utilities">Assess</a>,
+<a href="http://imagej.net/CIP_Experimental" title="CIP Experimental">Experimental</a>.
+</p>
+<h1><span class="mw-headline" id="threshold"><b>threshold</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+this function creates a binary image from an input graylevel image
+</p><p><span style="font-size:110%"><b>Signatures</b></span><br />
+&#160;&#160;&#160;&#160;<code>outputImage = cip.threshold( inputImage* , threshold*)</code>
+</p><p>&#160;&#160;&#160;&#160;<code>outputImage, threshold = cip.threshold( inputImage* , method*, output)</code>
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>inputImage*</b>&#160;: the image to process<br />
+&#160;&#160;&#160;&#160;<b>threshold*</b>&#160;: a scalar value use to threshold the image<br />
+&#160;&#160;&#160;&#160;<b>method*</b>&#160;: a string in {'huang', 'ij1', 'intermodes', 'isoData', 'li', 'maxEntropy', 'maxLikelihood', 'mean', 'minError', 'minimum', 'moments', 'otsu', 'percentile', 'renyiEntropy', 'rosin', 'shanbhag', 'triangle', 'yen'}.<br />
+&#160;&#160;&#160;&#160;<b>output</b>&#160;: a string in {'image', 'value', 'both'}defining the type of output.
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>outputImage</b>: the processed image.
+&#160;&#160;&#160;&#160;<b>threshold</b>: the threshold value calculated for the image and method provided as input.
+</p><p><span style="font-size:110%"><b>Example</b></span><br />
+&#160;&#160;&#160;&#160;<code>img2 = cip.threshold( img1 , 500 )</code>
+</p>
+<div class="floatnone"><a href="http://imagej.net/File:CIP_threshold.PNG" class="image"><img alt="CIP threshold.PNG" src="../_images/5/5b/CIP_threshold.PNG" width="400" height="172" /></a></div><br />
+<p><span style="font-size:110%"><b>Implementation</b></span><br />
+the threshold method wraps ops threshold methods
+</p>
+<h1><span class="mw-headline" id="label"><b>label</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+This function threshold an image and label its connected component (i.e. it sets the pixels of each region to a distinct integer value). 
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+&#160;&#160;&#160;&#160;<code>outputImage = cip.label( inputImage* , threshold)</code>
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>inputImage*</b>&#160;: the image to process<br />
+&#160;&#160;&#160;&#160;<b>threshold</b>&#160;: a scalar value to threshold the image. If the input image is binary no threshold is needed<br />
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>outputImage</b>: a label map (an image with background 0 and where each identified region has a distinct integer value).
+</p><p><span style="font-size:110%"><b>Example</b></span><br />
+&#160;&#160;&#160;&#160;<code>img2 = cip.label( img1 )</code>
+</p>
+<div class="floatnone"><a href="http://imagej.net/File:CIP_label.PNG" class="image"><img alt="CIP label.PNG" src="../_images/e/ec/CIP_label.PNG" width="400" height="172" /></a></div><br />
+<p><span style="font-size:110%"><b>Implementation</b></span><br />
+The labeling is performed our custom implementation. It uses a union find approach relying pixel runs to speed up to labeling process. The source code is available on <a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/RleCCL.java">github</a>. The principle of the algorithm was described in [1].
+</p><p>[1] Cabaret, Laurent, Lionel Lacassagne, and Louiza Oudni. "A review of world's fastest connected component labeling algorithms: Speed and energy estimation." Design and Architectures for Signal and Image Processing (DASIP), 2014 Conference on. IEEE, 2014.
+</p>
+<h1><span class="mw-headline" id="maxima"><b>maxima</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+This function detects the intensity maxima of an imaget and return a labeled image of these maximage. 
+</p><p><span style="font-size:110%"><b>Signature</b></span><br />
+&#160;&#160;&#160;&#160;<code>outputImage = cip.maxima( inputImage* , threshold, heightMin, areaMin, distanceMin, scaleMin, scaleMax, method, pixelSize)</code>
+</p><p><span style="font-size:110%"><b>Input</b></span><br />
+&#160;&#160;&#160;&#160;<b>inputImage*</b>&#160;: the image to process<br />
+&#160;&#160;&#160;&#160;<b>threshold</b>&#160;: the minimum intensity of the maxima<br />
+&#160;&#160;&#160;&#160;<b>heightMin</b>&#160;: the minimum dynamics of the maxima peak. defining this value triggers an extended maxima detection unless scale parameters are defined<br />
+&#160;&#160;&#160;&#160;<b>areaMin</b>&#160;: the minimum area in pixel of the maxima peak. if heightMin is defined this value is ignored. <br />
+&#160;&#160;&#160;&#160;<b>areaMin</b>&#160;: the minimum distance in pixel between the maxima. if heightMin or areaMin are defined this value is ignored.  <br />
+&#160;&#160;&#160;&#160;<b>scaleMin</b>&#160;: if that value is defined a multiscale maxima detection is ran and this value represent the minimum scale  of the maxima<br />
+&#160;&#160;&#160;&#160;<b>scaleMax</b>&#160;: if that value is defined a multiscale maxima detection is ran and this value represent the maximum scale  of the maxima<br />
+&#160;&#160;&#160;&#160;<b>method</b>&#160;: a string in {'classic', 'height', 'area', 'distance', 'multiscale'} defining the method to be used for maxima detection<br />
+&#160;&#160;&#160;&#160;<b>pixelSize</b>&#160;: a scalar or a list of scalar defining pixel size to use for multiscale detection. by default this value is 1<br />
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>outputImage</b>&#160;: a label image of the detected maxima<br />
+</p><p><span style="font-size:110%"><b>Experimental feature</b></span><br />
+</p><p>For the multiscale maxima method it is possible to use a parameter defining the type of output returned by the function<br />
+&#160;&#160;&#160;&#160;<b>output</b>&#160;: a string in {'image', 'measure', 'both'}, the default value is 'image'. If the parameter value is 'image' the function return a labelMap image. If the value is 'measure' the function a <a href="http://imagej.net/CIP_Utilities#measure" title="CIP Utilities">measure table</a> indicating object position and scale. The idea is to give more flexibility in the visualisation of the detections. Eventually returning sphere regions with appropriate radii could be more convenient as they could be visualized right away with cip.show <br />
+</p><p><br />
+<span style="font-size:110%"><b>Example</b></span><br />
+&#160;&#160;&#160;&#160;<code>img2 = cip.maxima( img1 , 'hmin', 200 )</code>
+</p>
+<div class="floatnone"><a href="http://imagej.net/File:CIP_maxima.PNG" class="image"><img alt="CIP maxima.PNG" src="../_images/a/a8/CIP_maxima.PNG" width="400" height="147" /></a></div>
+<p>the illustration above show the contour of the detected region on top of the original data
+</p><p><span style="font-size:110%"><b>Implementation</b></span><br />
+Each maxima detection method rely on a custom implementation
+</p><p><b><a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/Maxima.java">Classic</a></b> method is a union find implementation of maxima detection<br />
+<b><a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/HMaxima.java">Height</a></b> and <b><a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/AreaMaxima.java">Area</a></b> methods are derived from attribute filtering approaches [1] simply using a different attribute peak height or area as criteria to merge peaks and stop their extension.<br />
+<b><a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/WindowMaxima.java">Distance</a></b> is simpler but efficient approach that pass a filter window over the image and check is all pixel values in the window are lower or equal to the center pixel. This method can make errors if image contains plato.<br />
+<b><a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/MultiScaleMaxima.java">MultiScale</a></b> method builds a difference of gaussian pyramid and detection in that scale space. The implementation principle is well described in [2].
+</p><p>[1] Meijster, A., &amp; Wilkinson, M. H. (2002). A comparison of algorithms for connected set openings and closings. IEEE Transactions on Pattern Analysis and Machine Intelligence, 24(4), 484-494.
+</p><p>[2] Lowe, D. G. (2004). Distinctive image features from scale-invariant keypoints. International journal of computer vision, 60(2), 91-110.
+</p>
+<h1><span class="mw-headline" id="watershed"><b>watershed</b></span></h1>
+<p><span style="font-size:110%"><b>Description</b></span><br />
+Watershed algorithm partitions an image in regions and outputs a label image of these regions. Initialized with image maxima or or user defined regions the algorithm grow these seed regions following the shape of, i.e. flooding, intensity peaks. 
+</p><p><span style="font-size:110%"><b>Signature, Input 1</b></span><br />
+&#160;&#160;&#160;&#160;<code>outputImage = cip.watershed( inputImage* , threshold, heightMin, peakFlooding, method)</code>
+</p><p>&#160;&#160;&#160;&#160;<b>inputImage*</b>&#160;: the image to process<br />
+&#160;&#160;&#160;&#160;<b>threshold</b>&#160;: an intensity value at which the region growing will stop<br />
+&#160;&#160;&#160;&#160;<b>heightMin</b>&#160;: the minimum dynamics of the maxima used to initialize the watershed. default is 5 percent of the image dynamics<br />
+&#160;&#160;&#160;&#160;<b>peakFlooding</b>&#160;: a percentage of peak flooding. 0 mean the region will be reduced to its maxima while 100 give the full region.<br />
+&#160;&#160;&#160;&#160;<b>method</b>&#160;: a string in {'<u>gray</u>','binary'} defining if the watershed is calculated on the gray level image or a distance map<br />
+</p><p><span style="font-size:110%"><b>Signature, Input 2</b></span><br />
+&#160;&#160;&#160;&#160;<code>outputImage = cip.watershed( inputImage* , seed, threshold)</code>
+</p><p>&#160;&#160;&#160;&#160;<b>inputImage*</b>&#160;: the image to process<br />
+&#160;&#160;&#160;&#160;<b>seed</b>&#160;: a label image of the region that will initialize the watershed process<br />
+&#160;&#160;&#160;&#160;<b>threshold</b>&#160;: an intensity value at which the region growing will stop<br />
+</p><p><span style="font-size:110%"><b>Output</b></span><br />
+&#160;&#160;&#160;&#160;<b>outputImage</b>&#160;: a label image of the detected maxima<br />
+</p><p><span style="font-size:110%"><b>Example</b></span><br />
+<code>img2 = cip.watershed( img1 , 'threshold', 500, 'hmin', 300 )</code><br />
+In that example the starting point of the watershed are the extended maxima of the input image.
+</p>
+<div class="floatnone"><a href="http://imagej.net/File:CIP_watershed.PNG" class="image"><img alt="CIP watershed.PNG" src="../_images/0/0f/CIP_watershed.PNG" width="400" height="175" /></a></div><br />
+<p><span style="font-size:110%"><b>Implementation</b></span><br />
+Both seeded watershed and H-watershed are implemented based on the image foresting transform approach [1]. The H-watershed adds the construction of a hierarchical tree of segment that can be used in further applications. Both  implementations can be found <a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/SeededWatershed.java">here</a> and <a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/HWatershed.java">there</a>
+</p><p>[1] Lotufo, R. D. A., Falcão, A. X., &amp; Zampirolli, F. A. (2002). IFT-watershed from gray-scale marker. In Computer Graphics and Image Processing, 2002. Proceedings. XV Brazilian Symposium on (pp. 146-152). IEEE.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713064708
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.052 seconds
+Real time usage: 0.057 seconds
+Preprocessor visited node count: 44/1000000
+Preprocessor generated node count: 80/1000000
+Post‐expand include size: 372/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    1.125      1 - Template:CIP_Navigation
+100.00%    1.125      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=CIP_Segmentation&amp;oldid=37951">http://imagej.net/index.php?title=CIP_Segmentation&amp;oldid=37951</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 28 May 2018, at 10:24.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=CIP_Segmentation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=CIP+Segmentation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=CIP+Segmentation" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/CIP_Segmentation" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/CIP_Segmentation" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=CIP_Segmentation&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=CIP_Segmentation&amp;oldid=37951" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=CIP_Segmentation&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":321});});</script>
+		</body>
+		</html>
+		

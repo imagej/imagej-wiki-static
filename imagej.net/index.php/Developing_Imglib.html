@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Developing ImgLib2 - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Developing_ImgLib2","wgTitle":"Developing ImgLib2","wgCurRevisionId":29423,"wgRevisionId":29423,"wgArticleId":1143,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["ImgLib","Tutorials","Development"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Developing_ImgLib2","wgRelevantArticleId":1143,"wgRequestId":"7ebb1d683501d9c1e450e998","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The ImgLib2 library uses Maven to manage project dependencies. One advantage of this approach is nice integration with various development environments (IDEs)."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Developing ImgLib2"/>
+
+	<meta property="og:description" content="The ImgLib2 library uses Maven to manage project dependencies. One advantage of this approach is nice integration with various development environments (IDEs)."/>
+
+	<meta property="og:url" content="http://imagej.net/Developing_ImgLib2"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Developing_ImgLib2 rootpage-Developing_ImgLib2 skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Developing_Imglib.html#bodyContent">Skip to content</a>, 			<a href="Developing_Imglib.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Developing_Imglib.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="Developing_Imglib.html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Developing_ImgLib2&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Developing_ImgLib2&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Developing_ImgLib2&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Developing ImgLib2</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="text-align: left; float: right; border: 1px solid #a0a0a0; font-size: 80%;">
+<tr>
+<th colspan="2" style="font-size: 130%;">  ImgLib2
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Topics
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2" title="ImgLib2">Overview</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_Benchmarks" title="ImgLib2 Benchmarks">Benchmarks</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_FAQ" title="ImgLib2 FAQ">FAQ</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Tutorials
+</th></tr>
+
+
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Getting_Started" title="ImgLib2 - Getting Started">Getting Started</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Accessors" title="ImgLib2 - Accessors">Accessors</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Accessibles" title="ImgLib2 - Accessibles">Accessibles</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_Examples" title="ImgLib2 Examples">ImgLib2 Examples</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Introductory_Workshop" title="ImgLib2 - Introductory Workshop">Introductory Workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_-_Advanced_Programming_Workshop" title="ImgLib2 - Advanced Programming Workshop">Advanced Programming Workshop</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Into_ImgLib_-_Generic_Image_Processing_in_Java" title="Into ImgLib - Generic Image Processing in Java">Into ImgLib - Generic Image Processing in Java</a>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/Creating_Imglib2_images_in_MATLAB" title="Creating Imglib2 images in MATLAB">Creating Imglib2 images in MATLAB</a>
+</td></tr></table>
+</td></tr>
+<tr>
+<td>
+<table class="infobox mw-collapsible" cellspacing="5" data-collapsetext="-" data-expandtext="+" style="width: 100%; text-align: left; border-top: 1px solid #336699; border-right: none; border-left: none; border-bottom: none;">
+<tr>
+<th>  Development
+</th></tr>
+
+
+<tr>
+<td>  <strong class="selflink">Developing ImgLib2</strong>
+</td></tr>
+<tr>
+<td>  <a href="http://imagej.net/ImgLib2_Discussion" title="ImgLib2 Discussion">ImgLib2 Discussion</a>
+</td></tr></table>
+</td></tr></table>
+<div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/ImgLib2" title="ImgLib2"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the ImgLib2 multidimensional image processing library. Click the logo for details." src="../_images/0/0a/Imglib2-icon.png"></img></a></span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Developing_Imglib.html#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Developing_Imglib.html#Getting_the_code"><span class="tocnumber">2</span> <span class="toctext">Getting the code</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Developing_Imglib.html#Developing_ImgLib2_with_Eclipse"><span class="tocnumber">3</span> <span class="toctext">Developing ImgLib2 with Eclipse</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Developing_Imglib.html#Developing_ImgLib2_with_IDEA"><span class="tocnumber">4</span> <span class="toctext">Developing ImgLib2 with IDEA</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="Developing_Imglib.html#Developing_ImgLib2_with_NetBeans"><span class="tocnumber">5</span> <span class="toctext">Developing ImgLib2 with NetBeans</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="Developing_Imglib.html#Developing_ImgLib2_with_command_line_tools"><span class="tocnumber">6</span> <span class="toctext">Developing ImgLib2 with command line tools</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>The <a href="http://imagej.net/ImgLib2" title="ImgLib2">ImgLib2</a> library uses <a href="http://imagej.net/Maven" title="Maven">Maven</a> to manage project dependencies. One advantage of this approach is nice integration with various development environments (<a href="http://imagej.net/IDEs" title="IDEs">IDEs</a>).
+</p><p>Because people tend to have differing IDE configurations, we do not put project metadata files (e.g., <code>.classpath</code>, <code>.project</code> and <code>.settings</code> for Eclipse) into the git repository. Instead, the IDE can use Maven's <code>pom.xml</code> file directly to manage your dependencies in a better way.
+</p>
+<h2><span class="mw-headline" id="Getting_the_code">Getting the code</span></h2>
+<p>You can clone the ImgLib2 code using Git with the URL: <b><a rel="nofollow" class="external free" href="git://github.com/imglib/imglib2">git://github.com/imglib/imglib2</a></b>
+</p>
+<h2><span class="mw-headline" id="Developing_ImgLib2_with_Eclipse">Developing ImgLib2 with Eclipse</span></h2>
+<p>To develop ImgLib2 in Eclipse, follow these steps:
+</p>
+<ol><li> <a href="http://imagej.net/Using_Maven_with_Eclipse" title="Using Maven with Eclipse">Install the Maven plugin</a></li>
+<li> Choose <span><em><span style="border-bottom:1px dotted #ccc;"> File </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Import</span></em></span> from the Eclipse menu</li>
+<li> Select "Existing Maven Projects" and click Next</li>
+<li> For the Root Directory, specify the path where you cloned ImgLib2</li>
+<li> From the projects list, leave all items checked</li>
+<li> Click Finish</li></ol>
+<p>For fresh installs, it will initially take some time (a few minutes) for Maven to download all the dependencies for both its own plugins, and for ImgLib2. This is a one-time cost. After that, Maven will check for module updates once a day, which is generally fast.
+</p><p>Once you have the ImgLib2 projects within Eclipse, you can reap the benefits of the improved dependency management. For example, if you have the <code>imglib2</code> and <code>imglib2-algorithms</code> projects open, the <code>imglib2-algorithms</code> project will have an Eclipse project build dependency on <code>imglib2</code>. If you then close the <code>imglib2</code> project, the dependency within <code>imglib2-algorithms</code> with automatically become a library dependency to <code>imglib2-2.0-SNAPSHOT.jar</code>, rather than the project.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Developing_ImgLib2_with_IDEA">Developing ImgLib2 with IDEA</span></h2>
+<p>IntelliJ IDEA comes with built-in support for Maven.
+</p><p>See <a href="http://imagej.net/Developing_ImageJ_in_IntelliJ_IDEA" title="Developing ImageJ in IntelliJ IDEA">Developing ImageJ in IntelliJ IDEA</a>.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Developing_ImgLib2_with_NetBeans">Developing ImgLib2 with NetBeans</span></h2>
+<p>NetBeans comes with built-in support for Maven.
+</p><p>See <a href="http://imagej.net/Developing_ImageJ_in_NetBeans" title="Developing ImageJ in NetBeans">Developing ImageJ in NetBeans</a>.
+</p>
+<h2><span class="mw-headline" id="Developing_ImgLib2_with_command_line_tools">Developing ImgLib2 with command line tools</span></h2>
+<p>You can use the mvn command line tool to build ImgLib2. Just type "mvn" with no arguments. By default, Maven will compile the code, run unit tests, create a JAR file and install it in your local Maven repository (typically found in <code>~/.m2/repository</code>). Maven does its work in a subfolder called <code>target</code> which is where you'll find compiled classes and JAR artifacts.
+</p><p>For more on using the Maven command line tool, see <a rel="nofollow" class="external text" href="http://maven.apache.org/run-maven/index.html">Building a Project with Maven</a> on the Maven web site.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200713065002
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.020 seconds
+Real time usage: 0.022 seconds
+Preprocessor visited node count: 210/1000000
+Preprocessor generated node count: 1060/1000000
+Post‐expand include size: 5476/2097152 bytes
+Template argument size: 2467/2097152 bytes
+Highest expansion depth: 7/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   12.652      1 - -total
+ 73.73%    9.328      1 - Template:ImgLibMenu
+ 52.93%    6.697      1 - Template:Menu
+ 42.94%    5.433      3 - Template:Submenu
+ 25.29%    3.200      1 - Template:Bc
+ 18.87%    2.387     13 - Template:MenuItem
+ 11.15%    1.411      1 - Template:Project
+  7.84%    0.992      1 - Template:Arrow
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Developing_ImgLib2&amp;oldid=29423">http://imagej.net/index.php?title=Developing_ImgLib2&amp;oldid=29423</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 March 2017, at 11:50.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Developing_ImgLib2&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:ImgLib" title="Category:ImgLib">ImgLib</a></li><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Development" title="Category:Development">Development</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Developing+ImgLib2" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Developing+ImgLib2" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Developing_ImgLib2" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Developing_ImgLib2" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Developing_ImgLib2&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Developing_ImgLib2&amp;oldid=29423" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Developing_ImgLib2&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":167});});</script>
+		</body>
+		</html>
+		

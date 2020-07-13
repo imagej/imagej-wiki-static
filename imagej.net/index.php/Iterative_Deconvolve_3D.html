@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Iterative Deconvolve 3D - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Iterative_Deconvolve_3D","wgTitle":"Iterative Deconvolve 3D","wgCurRevisionId":26861,"wgRevisionId":26861,"wgArticleId":73,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Deconvolution"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Iterative_Deconvolve_3D","wgRelevantArticleId":73,"wgRequestId":"43b161004c951e84d90ed211","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Plugin for 2D and 3D non-negative, iterative, deconvolution.  Based in part on the DAMAS algorithm by Thomas F. Brooks and William M. Humphreys, Jr., NASA-Langley Research Center.  Also includes a regularized Wiener filter as a preconditioning step. Called DAMAS3 in aeroacoustics."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Iterative Deconvolve 3D"/>
+
+	<meta property="og:description" content="Plugin for 2D and 3D non-negative, iterative, deconvolution.  Based in part on the DAMAS algorithm by Thomas F. Brooks and William M. Humphreys, Jr., NASA-Langley Research Center.  Also includes a regularized Wiener filter as a preconditioning step. Called DAMAS3 in aeroacoustics."/>
+
+	<meta property="og:url" content="http://imagej.net/Iterative_Deconvolve_3D"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Iterative_Deconvolve_3D rootpage-Iterative_Deconvolve_3D skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Iterative_Deconvolve_3D.html#bodyContent">Skip to content</a>, 			<a href="Iterative_Deconvolve_3D.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Iterative_Deconvolve_3D.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Iterative_Deconvolve_3D" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Iterative_Deconvolve_3D&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Iterative_Deconvolve_3D&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Iterative_Deconvolve_3D&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Iterative Deconvolve 3D</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Iterative Deconvolve 3D (ImageJ)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Bob Dougherty
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> <a rel="nofollow" class="external text" href="http://www.optinav.info/download/Iterative_Deconvolve_3D.class">Iterative_Deconvolve_3D.class</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="http://www.optinav.info/download/Iterative_Deconvolve_3D.java">Iterative_Deconvolve_3D.java</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> 1 May 2005
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> 4 June 2005
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Deconvolution" title="Category:Deconvolution">Deconvolution</a>
+</td></tr>
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external autonumber" href="http://www.optinav.info/Iterative-Deconvolve-3D.htm">[1]</a>
+</td></tr>
+</table>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Iterative_Deconvolve_3D.html#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Iterative_Deconvolve_3D.html#Documentation"><span class="tocnumber">2</span> <span class="toctext">Documentation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Iterative_Deconvolve_3D.html#See_also"><span class="tocnumber">3</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Iterative_Deconvolve_3D.html#Version_history"><span class="tocnumber">4</span> <span class="toctext">Version history</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>Plugin for 2D and 3D non-negative, iterative, deconvolution.  Based in part on the DAMAS algorithm by Thomas F. Brooks and William M. Humphreys, Jr., NASA-Langley Research Center.  Also includes a regularized Wiener filter as a preconditioning step. Called DAMAS3 in aeroacoustics.
+</p>
+<h2><span class="mw-headline" id="Documentation">Documentation</span></h2>
+<p>The <a rel="nofollow" class="external text" href="http://www.optinav.com/Iterative-Deconvolve-3D.htm">website</a> document this plugin; please refer to it. 
+</p><p>The plugin was also the subject of a conference paper:
+<span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Extensions+of+DAMAS+and+Benefits+and+Limitations+of+Deconvolution+in+Beamforming&amp;rft.aulast=Dougherty&amp;rft.aufirst=R.&amp;rft.date=2005"><cite id="CITEREFDougherty2005">Dougherty, R.&#32;(2005),&#32;"Extensions of DAMAS and Benefits and Limitations of Deconvolution in Beamforming",&#32;<i>11th AIAA/CEAS Aeroacoustics Conference (26th AIAA Aeroacoustics Conference)</i></cite></span>
+.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<p><a href="http://imagej.net/Diffraction_PSF_3D" title="Diffraction PSF 3D">Diffraction PSF 3D</a> for the creation of theoretical PSF.
+</p>
+<h2><span class="mw-headline" id="Version_history">Version history</span></h2>
+<ul><li> Version 0: 5/1/2005. Beta release.</li>
+<li> Version 1: 5/2/2005. Improved performance for 2D images. Option to not show iterations.</li>
+<li> Version 2: 5/29/2005. Added low pass filter, like Iterative Deconvolution/DAMAS2.</li>
+<li> Version 3: 5/30/2005. Improved user interface and recommended settings. Corrected filters.</li>
+<li> Version 3.1 5/30/2005. Convolution-based anti-ringing feature.</li>
+<li> Version 4: 6/3/2005. Corrected a scaling error in the iteration.   Provided an option to turn off the Wiener filter.  Added divergence detection. Changed the defintion of the low pass filter parameters (multiplied by 2) to better match Iterative Deconvolution.</li>
+<li> Version 5: 6/3/2005. Corrected a bug in the low pass filter in the z direction.</li>
+<li> Version 5.1 6/3/2005. Improved test for 0 gamma (no Wiener filter). Renamed low pass fiter parameter for z in dialog.</li>
+<li> Version 5.2 6/4/2005. Changed the recommended low pass filter settings from 4 to 1 pixels.</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200713072743
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.028 seconds
+Real time usage: 0.031 seconds
+Preprocessor visited node count: 426/1000000
+Preprocessor generated node count: 6459/1000000
+Post‐expand include size: 3633/2097152 bytes
+Template argument size: 1576/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   21.761      1 - -total
+ 78.46%   17.073      1 - Template:Citation
+ 62.49%   13.598      1 - Template:Citation/core
+ 20.88%    4.543      1 - Template:Infobox
+  5.54%    1.206      1 - Template:Link
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Iterative_Deconvolve_3D&amp;oldid=26861">http://imagej.net/index.php?title=Iterative_Deconvolve_3D&amp;oldid=26861</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 18 January 2017, at 15:24.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Iterative_Deconvolve_3D&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Deconvolution" title="Category:Deconvolution">Deconvolution</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Iterative+Deconvolve+3D" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Iterative+Deconvolve+3D" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Iterative_Deconvolve_3D" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Iterative_Deconvolve_3D" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Iterative_Deconvolve_3D&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Iterative_Deconvolve_3D&amp;oldid=26861" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Iterative_Deconvolve_3D&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":212});});</script>
+		</body>
+		</html>
+		

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Atlas Toolkit - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Atlas_Toolkit","wgTitle":"Atlas Toolkit","wgCurRevisionId":20519,"wgRevisionId":20519,"wgArticleId":3247,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Registration","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Atlas_Toolkit","wgRelevantArticleId":3247,"wgRequestId":"cc044828b8e6fe3edc1a119c","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="The Atlas Toolkit plugin is a collection of tools developed to achieve group-wise elastic registration of 3D objects by decomposing the alignment problem into a sequence of orthogonal 2D elastic registrations, for which each object is registered to every other. These 2D elastic registrations are powered by the BUnwarpJ plugin, and registration is guided by the gross morphology of the corresponding 3D objects, which can be defined using the Segmentation Editor plugin."/>
+<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Atlas Toolkit"/>
+
+	<meta property="og:description" content="The Atlas Toolkit plugin is a collection of tools developed to achieve group-wise elastic registration of 3D objects by decomposing the alignment problem into a sequence of orthogonal 2D elastic registrations, for which each object is registered to every other. These 2D elastic registrations are powered by the BUnwarpJ plugin, and registration is guided by the gross morphology of the corresponding 3D objects, which can be defined using the Segmentation Editor plugin."/>
+
+	<meta property="og:url" content="http://imagej.net/Atlas_Toolkit"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Atlas_Toolkit rootpage-Atlas_Toolkit skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Atlas_Toolkit.html#bodyContent">Skip to content</a>, 			<a href="Atlas_Toolkit.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Atlas_Toolkit.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Atlas_Toolkit" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Atlas_Toolkit&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Atlas_Toolkit&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Atlas_Toolkit&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Atlas Toolkit</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Atlas Toolkit (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> <a rel="nofollow" class="external text" href="http://www.grocottlab.com">Grocott Lab</a>
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> <a href="http://imagej.net/User:GrocottLab" title="User:GrocottLab">Timothy Grocott</a>
+</td></tr>
+
+<tr>
+<th> File
+</th>
+<td> Atlas_Toolkit_1.0-SNAPSHOT.jar
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/GrocottLab/Atlas-Toolkit/">on GitHub</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> November 16<sup>th</sup>, 2015
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> 1.0, May 6<sup>th</sup>, 2015
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> stable, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Registration" title="Category:Registration">Registration</a>
+</td></tr>
+<tr>
+<th> Website
+</th>
+<td> <a rel="nofollow" class="external text" href="http://www.grocottlab.com/software">www.grocottlab.com</a>
+</td></tr>
+</table>
+<p>The Atlas Toolkit plugin is a collection of tools developed to achieve group-wise elastic registration of 3D objects by decomposing the alignment problem into a sequence of orthogonal 2D elastic registrations, for which each object is registered to every other. These 2D elastic registrations are powered by the <a href="http://imagej.net/BUnwarpJ" title="BUnwarpJ">BUnwarpJ</a> plugin, and registration is guided by the gross morphology of the corresponding 3D objects, which can be defined using the <a href="http://imagej.net/Segmentation_Editor" title="Segmentation Editor">Segmentation Editor</a> plugin.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Atlas_Toolkit.html#Installation_of_the_plugin"><span class="tocnumber">1</span> <span class="toctext">Installation of the plugin</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Atlas_Toolkit.html#What.27s_in_the_toolkit.3F"><span class="tocnumber">2</span> <span class="toctext">What's in the toolkit?</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Atlas_Toolkit.html#Label_Registration_3D"><span class="tocnumber">3</span> <span class="toctext">Label Registration 3D</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="Atlas_Toolkit.html#Video_demonstration"><span class="tocnumber">3.1</span> <span class="toctext">Video demonstration</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Atlas_Toolkit.html#Before_starting..."><span class="tocnumber">3.2</span> <span class="toctext">Before starting...</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Atlas_Toolkit.html#Using_.22Label_Registration_3D.22"><span class="tocnumber">3.3</span> <span class="toctext">Using "Label Registration 3D"</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Atlas_Toolkit.html#Apply_Label_Registration"><span class="tocnumber">4</span> <span class="toctext">Apply Label Registration</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="Atlas_Toolkit.html#Video_demonstration_2"><span class="tocnumber">4.1</span> <span class="toctext">Video demonstration</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Atlas_Toolkit.html#Reference"><span class="tocnumber">5</span> <span class="toctext">Reference</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="Atlas_Toolkit.html#License"><span class="tocnumber">6</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Installation_of_the_plugin">Installation of the plugin</span></h2>
+<p>The plugin can be quickly installed via the project's update site. Please refer to the <a href="http://imagej.net/Update_Sites" title="Update Sites"> <b>tutorial</b></a> on how to add our update site to your Fiji installation.
+Our update site has the following URL:
+</p>
+<pre> <b><code>http://sites.imagej.net/GrocottLab/</code></b>
+</pre>
+<h2><span class="mw-headline" id="What.27s_in_the_toolkit.3F">What's in the toolkit?</span></h2>
+<p>Atlas Toolkit includes a number of different tools to help building atlases. Many of these will be of limited use/interest.
+</p><p>For those interested in 3D image registration, the most important tools will be <a href="Atlas_Toolkit.html#Label_Registration_3D">Label Registration 3D</a> and <a href="Atlas_Toolkit.html#Apply_Label_Registration">Apply Label Registration</a>.
+</p><p>The complete list of tools is as follows:
+</p>
+<ul><li> Extract Nuclear Signal</li></ul>
+<ul><li> Project to Segment Label</li></ul>
+<ul><li> <a href="Atlas_Toolkit.html#Label_Registration_3D">Label Registration 3D</a></li></ul>
+<ul><li> <a href="Atlas_Toolkit.html#Apply_Label_Registration">Apply Label Registration</a></li></ul>
+<ul><li> Merge Registered Volumes</li></ul>
+<ul><li> Sample Volumes for Clustering</li></ul>
+<ul><li> Cluster Viewer</li></ul>
+<h2><span class="mw-headline" id="Label_Registration_3D">Label Registration 3D</span></h2>
+<h3><span class="mw-headline" id="Video_demonstration">Video demonstration</span></h3>
+<p>The following screencast demonstrates Label Registration 3D in use.
+</p><p><iframe width="425" height="355" src="https://www.youtube.com/embed/paUFYucNHa4" frameborder="0" allowfullscreen></iframe>
+</p>
+<h3><span class="mw-headline" id="Before_starting...">Before starting...</span></h3>
+<p>You will begin with a number of image stacks that you want to register together.
+</p><p>Prior to registration, the particular tissue(s) or object(s) of interest must be distinguished from the rest of their image stack through the process of manual segmentation. This involves generating a new 8-bit image stack (a '.label' file) in which each tissue or region of interest is represented by a unique numerical value, usually visualised by a unique colour.
+</p><p>The <a href="http://imagej.net/Segmentation_Editor" title="Segmentation Editor">Segmentation Editor</a> plugin is a convenient tool for efficiently segmenting multiple tissues of interest from a single image stack.
+</p><p>The resulting ‘.label’ files can then be used to perform non-rigid registration of equivalent tissues or objects from different image stacks <a href="Atlas_Toolkit.html#Using_.22Label_Registration_3D.22">using Label Registration 3D</a>.
+</p>
+<h3><span class="mw-headline" id="Using_.22Label_Registration_3D.22">Using "Label Registration 3D"</span></h3>
+<p>Once you have your '.label' files, you can use Label Registration 3D to register them together.
+</p><p>When you run this tool, it will keep prompting you for '.label' files. When you have told it where to find the last '.label' file, just click 'Cancel' to proceed to the registration.
+</p><p>You will then be prompted to select some basic parameters:
+</p>
+<div class="MediaTransformError" style="width: 296px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<ul><li> "Select Channel (0 - 255):" allows you to select which of the labels (tissues/objects) within the '.label' files should be registered. Empty space/background will have a value of '0', while the first (possibly only) label will have a value of '1' and this is the default setting.</li></ul>
+<ul><li> "Number of iterations:" determines how many times the tool will attempt to register the '.label' files. More complex or dissimilar tissues/objects may require more iterations. Similarly, the more '.label' files you are registering, the more iterations may be required.</li></ul>
+<ul><li> "First Orthogonal Plane:" allows you to tell the tool which direction it should start from. Some tissues/objects may be more asymmetric in one particular plane and it may be advantageous to perform the first 2D registration in that plane.</li></ul>
+<p>On clicking "OK" the tool will register the specified '.label' files, displaying its progress as it does so.
+</p><p>Once the registration is complete, you will be prompted for a folder in which to store the results.
+</p><p>The results consist of the following files:
+</p>
+<ul><li> Multiple '.tif' files, each containing a transformed version of one tissue/object.</li></ul>
+<ul><li> A single 'consensus.tif' file, which contains the consensus morphology for all registered tissue/objects.</li></ul>
+<ul><li> Multiple '.ots' files, each containing instructions for reproducing the transformation of a particular tissue/object. These '.ots' files can be used with the <a href="Atlas_Toolkit.html#Apply_Label_Registration">Apply Label Registration</a> tool in order to reproduce a particular transformation, for example on the corresponding original image stack.</li></ul>
+<h2><span class="mw-headline" id="Apply_Label_Registration">Apply Label Registration</span></h2>
+<p>Once a set of ‘.label’ files has been registered using <a href="Atlas_Toolkit.html#Label_Registration_3D">Label Registration 3D</a>, the resulting ‘.ots’ files can be used to transform the original image stacks towards their shared consensus tissue/object morphology.
+</p>
+<h3><span class="mw-headline" id="Video_demonstration_2">Video demonstration</span></h3>
+<p>The following screencast demonstrates Apply Label Registration in use.
+</p><p><iframe width="425" height="355" src="https://www.youtube.com/embed/2JwRZm5dst8" frameborder="0" allowfullscreen></iframe>
+</p>
+<h2><span class="mw-headline" id="Reference">Reference</span></h2>
+<p>Please cite the following original research article in which the Atlas Toolkit is described:
+</p>
+<ul><li> <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.title=Atlas+Toolkit%3A+Fast+registration+of+3D+morphological+datasets+in+the+absence+of+landmarks.&amp;rft.aulast=Grocott&amp;rft.aufirst=Timothy&amp;rft.date=2016&amp;rft.volume=6&amp;rft.pages=Article+number+20732&amp;rft_id=info:doi/10.1038%2Fsrep20732"><cite id="CITEREFGrocottThomasM.C3.BCnsterberg2016">Grocott, Timothy; Thomas, Paul&#32;&amp; Münsterberg, Andrea E.&#32;(2016),&#32;"<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1038%2Fsrep20732">Atlas Toolkit: Fast registration of 3D morphological datasets in the absence of landmarks.</a>",&#32;<i>Scientific Reports</i>&#32;<b>6</b>:  Article number 20732<span class="printonly">, DOI 10.1038/srep20732</span></cite></span></li></ul>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is <b>free software</b>; you can redistribute it and/or modify it under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.  
+</p>
+<hr />
+
+<!-- 
+NewPP limit report
+Cached time: 20200713064532
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.064 seconds
+Real time usage: 0.064 seconds
+Preprocessor visited node count: 626/1000000
+Preprocessor generated node count: 16419/1000000
+Post‐expand include size: 7490/2097152 bytes
+Template argument size: 1848/2097152 bytes
+Highest expansion depth: 15/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   37.615      1 - -total
+ 60.62%   22.802      1 - Template:Publication
+ 44.55%   16.758      1 - Template:Citation
+ 36.38%   13.685      1 - Template:Citation/core
+ 33.35%   12.544      1 - Template:Infobox
+ 17.77%    6.685      1 - Template:Person
+  4.45%    1.673      1 - Template:GitHub
+  3.23%    1.215      1 - Template:Link
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Atlas_Toolkit&amp;oldid=20519">http://imagej.net/index.php?title=Atlas_Toolkit&amp;oldid=20519</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 26 May 2016, at 15:30.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Atlas_Toolkit&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Registration" title="Category:Registration">Registration</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Atlas+Toolkit" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Atlas+Toolkit" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Atlas_Toolkit" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Atlas_Toolkit" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Atlas_Toolkit&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Atlas_Toolkit&amp;oldid=20519" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Atlas_Toolkit&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":254});});</script>
+		</body>
+		</html>
+		
