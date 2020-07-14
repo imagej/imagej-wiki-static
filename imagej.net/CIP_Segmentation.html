@@ -8,14 +8,14 @@
 mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
 
 });mw.loader.load(["mediawiki.page.startup"]);});</script>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
-<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
-<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
 <meta name="ResourceLoaderDynamicStyles" content=""/>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="This page describes the segmentation function of the CIP scripting package"/>
-<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="shortcut icon" href="skins/ij2.ico"/>
 <link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
 <link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
 <link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
@@ -100,7 +100,7 @@ this function creates a binary image from an input graylevel image
 </p><p><span style="font-size:110%"><b>Example</b></span><br />
 &#160;&#160;&#160;&#160;<code>img2 = cip.threshold( img1 , 500 )</code>
 </p>
-<div class="floatnone"><a href="File:CIP_threshold.PNG" class="image"><img alt="CIP threshold.PNG" src="../_images/5/5b/CIP_threshold.PNG" width="400" height="172" /></a></div><br />
+<div class="floatnone"><a href="File:CIP_threshold.PNG" class="image"><img alt="CIP threshold.PNG" src="_images/5/5b/CIP_threshold.PNG" width="400" height="172" /></a></div><br />
 <p><span style="font-size:110%"><b>Implementation</b></span><br />
 the threshold method wraps ops threshold methods
 </p>
@@ -117,7 +117,7 @@ This function threshold an image and label its connected component (i.e. it sets
 </p><p><span style="font-size:110%"><b>Example</b></span><br />
 &#160;&#160;&#160;&#160;<code>img2 = cip.label( img1 )</code>
 </p>
-<div class="floatnone"><a href="File:CIP_label.PNG" class="image"><img alt="CIP label.PNG" src="../_images/e/ec/CIP_label.PNG" width="400" height="172" /></a></div><br />
+<div class="floatnone"><a href="File:CIP_label.PNG" class="image"><img alt="CIP label.PNG" src="_images/e/ec/CIP_label.PNG" width="400" height="172" /></a></div><br />
 <p><span style="font-size:110%"><b>Implementation</b></span><br />
 The labeling is performed our custom implementation. It uses a union find approach relying pixel runs to speed up to labeling process. The source code is available on <a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/RleCCL.java">github</a>. The principle of the algorithm was described in [1].
 </p><p>[1] Cabaret, Laurent, Lionel Lacassagne, and Louiza Oudni. "A review of world's fastest connected component labeling algorithms: Speed and energy estimation." Design and Architectures for Signal and Image Processing (DASIP), 2014 Conference on. IEEE, 2014.
@@ -146,7 +146,7 @@ This function detects the intensity maxima of an imaget and return a labeled ima
 <span style="font-size:110%"><b>Example</b></span><br />
 &#160;&#160;&#160;&#160;<code>img2 = cip.maxima( img1 , 'hmin', 200 )</code>
 </p>
-<div class="floatnone"><a href="File:CIP_maxima.PNG" class="image"><img alt="CIP maxima.PNG" src="../_images/a/a8/CIP_maxima.PNG" width="400" height="147" /></a></div>
+<div class="floatnone"><a href="File:CIP_maxima.PNG" class="image"><img alt="CIP maxima.PNG" src="_images/a/a8/CIP_maxima.PNG" width="400" height="147" /></a></div>
 <p>the illustration above show the contour of the detected region on top of the original data
 </p><p><span style="font-size:110%"><b>Implementation</b></span><br />
 Each maxima detection method rely on a custom implementation
@@ -178,7 +178,7 @@ Watershed algorithm partitions an image in regions and outputs a label image of 
 <code>img2 = cip.watershed( img1 , 'threshold', 500, 'hmin', 300 )</code><br />
 In that example the starting point of the watershed are the extended maxima of the input image.
 </p>
-<div class="floatnone"><a href="File:CIP_watershed.PNG" class="image"><img alt="CIP watershed.PNG" src="../_images/0/0f/CIP_watershed.PNG" width="400" height="175" /></a></div><br />
+<div class="floatnone"><a href="File:CIP_watershed.PNG" class="image"><img alt="CIP watershed.PNG" src="_images/0/0f/CIP_watershed.PNG" width="400" height="175" /></a></div><br />
 <p><span style="font-size:110%"><b>Implementation</b></span><br />
 Both seeded watershed and H-watershed are implemented based on the image foresting transform approach [1]. The H-watershed adds the construction of a hierarchical tree of segment that can be used in further applications. Both  implementations can be found <a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/SeededWatershed.java">here</a> and <a rel="nofollow" class="external text" href="https://github.com/benoalo/ImgAlgo/blob/master/src/main/java/invizio/imgalgo/label/HWatershed.java">there</a>
 </p><p>[1] Lotufo, R. D. A., Falcão, A. X., &amp; Zampirolli, F. A. (2002). IFT-watershed from gray-scale marker. In Computer Graphics and Image Processing, 2002. Proceedings. XV Brazilian Symposium on (pp. 146-152). IEEE.
@@ -262,7 +262,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=CIP_Segmentation&amp;oldid=37
 			<ul>
 
 			<li class="widget">
-				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+				<img id="logo" src="skins/imagej-128.png" alt=""/>			</li>
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>

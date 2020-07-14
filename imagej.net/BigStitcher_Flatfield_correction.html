@@ -8,14 +8,14 @@
 mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
 
 });mw.loader.load(["mediawiki.page.startup"]);});</script>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
-<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
-<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
 <meta name="ResourceLoaderDynamicStyles" content=""/>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="Uneven illumination and fixed pattern noise can lead to artifacts in stitched images. If the aberration is the same for multiple images, it can be corrected via a process called flatfield correction. We offer on-the-fly correction for a user-provided dark image and/or bright image."/>
-<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="shortcut icon" href="skins/ij2.ico"/>
 <link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
 <link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
 <link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
@@ -66,25 +66,25 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h3><span class="mw-headline" id="Overview">Overview</span></h3>
 <p>Uneven illumination and fixed pattern noise can lead to artifacts in stitched images. If the aberration is the same for multiple images, it can be corrected via a process called <b>flatfield correction</b>. We offer on-the-fly correction for a user-provided <b>dark image</b> and/or <b>bright image</b>.
 </p>
-<div class="center"><div class="floatnone"><a href="File:BigStitcher_Flatfield_1.png" class="image"><img alt="BigStitcher Flatfield 1.png" src="../_images/e/ed/BigStitcher_Flatfield_1.png" width="800" height="190" /></a></div></div>
-<p>We perform the correction by calculating a corrected image pixel <img class="mwe-math-fallback-image-inline tex" alt="C_{x,y,z}" src="../_images/math/e/c/e/ecea8c67eda9181ba07d770f7531aaf8.png" /> according to <a rel="nofollow" class="external autonumber" href="https://en.wikipedia.org/wiki/Flat-field_correction">[1]</a>:
-</p><p><img class="mwe-math-fallback-image-inline tex" alt="C_{x,y,z} = \frac{(R_{x,y,z} - D_{x,y}) * \overline{(B-D)} }{(B_{x,y}- D_{x,y})}" src="../_images/math/3/3/5/335a8196b435e19d2c6d4a13fd748ca6.png" />
+<div class="center"><div class="floatnone"><a href="File:BigStitcher_Flatfield_1.png" class="image"><img alt="BigStitcher Flatfield 1.png" src="_images/e/ed/BigStitcher_Flatfield_1.png" width="800" height="190" /></a></div></div>
+<p>We perform the correction by calculating a corrected image pixel <img class="mwe-math-fallback-image-inline tex" alt="C_{x,y,z}" src="_images/math/e/c/e/ecea8c67eda9181ba07d770f7531aaf8.png" /> according to <a rel="nofollow" class="external autonumber" href="https://en.wikipedia.org/wiki/Flat-field_correction">[1]</a>:
+</p><p><img class="mwe-math-fallback-image-inline tex" alt="C_{x,y,z} = \frac{(R_{x,y,z} - D_{x,y}) * \overline{(B-D)} }{(B_{x,y}- D_{x,y})}" src="_images/math/3/3/5/335a8196b435e19d2c6d4a13fd748ca6.png" />
 </p><p>with
 </p>
-<ul><li> <img class="mwe-math-fallback-image-inline tex" alt="R" src="../_images/math/e/1/e/e1e1d3d40573127e9ee0480caf1283d6.png" /> = raw image</li>
-<li> <img class="mwe-math-fallback-image-inline tex" alt="B" src="../_images/math/9/d/5/9d5ed678fe57bcca610140957afab571.png" /> = bright image (image of a uniformly bright sample), 1 if not provided by user</li>
-<li> <img class="mwe-math-fallback-image-inline tex" alt="D" src="../_images/math/f/6/2/f623e75af30e62bbd73d6df5b50bb7b5.png" /> = dark image (image with no sample and illumination, camera offset), 0 if not provided by user</li></ul>
+<ul><li> <img class="mwe-math-fallback-image-inline tex" alt="R" src="_images/math/e/1/e/e1e1d3d40573127e9ee0480caf1283d6.png" /> = raw image</li>
+<li> <img class="mwe-math-fallback-image-inline tex" alt="B" src="_images/math/9/d/5/9d5ed678fe57bcca610140957afab571.png" /> = bright image (image of a uniformly bright sample), 1 if not provided by user</li>
+<li> <img class="mwe-math-fallback-image-inline tex" alt="D" src="_images/math/f/6/2/f623e75af30e62bbd73d6df5b50bb7b5.png" /> = dark image (image with no sample and illumination, camera offset), 0 if not provided by user</li></ul>
 <h3><span class="mw-headline" id="Usage">Usage</span></h3>
 <p>You can find the flatfield correction as <b>Flatfield Correction (experimental) ...</b> in the right-click menu under <b>Preprocessing</b> (stitching mode) or <b>Modification</b> (MultiView mode).
 </p><p>Click on the menu item and you will be presented with a dialog allowing you to set bright and dark images for every (channel, illumination direction)-combination of your images.
 </p>
-<div class="center"><div class="floatnone"><a href="File:BigStitcher_Flatfield_2.png" class="image"><img alt="BigStitcher Flatfield 2.png" src="../_images/6/67/BigStitcher_Flatfield_2.png" width="600" height="670" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="File:BigStitcher_Flatfield_2.png" class="image"><img alt="BigStitcher Flatfield 2.png" src="_images/6/67/BigStitcher_Flatfield_2.png" width="600" height="670" /></a></div></div>
 <p>You can specify the dark and bright image files by dragging and dropping the file, entering the path manually or selecting the file by clicking <b>Browse...</b>.
 </p>
 <div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
 <tr>
 <td class="ambox-image">
-<p><a href="File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+<p><a href="File:Information-sign.png" class="image"><img alt="Information-sign.png" src="_images/2/24/Information-sign.png" width="40" height="40" /></a>
 </p>
 </td>
 <td> The dark and bright images should be provided as TIFF files. The images should have the same width and height as your raw images. If you use 2D flatfield images to correct 3D stacks, the same correction will be applied to every slice. </td>
@@ -100,7 +100,7 @@ Furthermore, you can <b>set the correction active</b>. Use this to activate or d
 <div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
 <tr>
 <td class="ambox-image">
-<p><a href="File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+<p><a href="File:Information-sign.png" class="image"><img alt="Information-sign.png" src="_images/2/24/Information-sign.png" width="40" height="40" /></a>
 </p>
 </td>
 <td> Since we calculate the correction on-the-fly, it will slow subsequent processing steps. If you plan on doing flatfield correction, we advise to first load the data virtually, apply the correction and then, if you are content with the results, re-save as HDF5 to "burn-in" the correction. </td>
@@ -191,7 +191,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=BigStitcher_Flatfield_correct
 			<ul>
 
 			<li class="widget">
-				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+				<img id="logo" src="skins/imagej-128.png" alt=""/>			</li>
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>

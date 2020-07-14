@@ -8,14 +8,14 @@
 mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
 
 });mw.loader.load(["mediawiki.page.startup"]);});</script>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
-<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
-<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
 <meta name="ResourceLoaderDynamicStyles" content=""/>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="In BigStitcher we offer deconvolution using a multi-view variant of the iterative Richardson-Lucy algorithm with various optimizations. Details about the previous version of the MultiView deconvolution as well as the corresponding publication with mathematical details can be found at Multi-View_Deconvolution."/>
-<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="shortcut icon" href="skins/ij2.ico"/>
 <link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
 <link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
 <link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
@@ -87,7 +87,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <h2><span class="mw-headline" id="Usage">Usage</span></h2>
 <p>After clicking <b>(MultiView) Deconvolution</b>, you will be presented with a dialog asking for the main parameters for deconvolution:
 </p>
-<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_Main.png" class="image"><img alt="BigStitcher Deconvolution Main.png" src="../_images/f/f1/BigStitcher_Deconvolution_Main.png" width="600" height="677" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_Main.png" class="image"><img alt="BigStitcher Deconvolution Main.png" src="_images/f/f1/BigStitcher_Deconvolution_Main.png" width="600" height="677" /></a></div></div>
 <p>Since you are also producing a fused image for the deconvolution, some parameters are the same as in <a href="BigStitcher_Fuse" title="BigStitcher Fuse">BigStitcher_Fuse</a>:
 </p>
 <ul><li> the <b>BoundingBox</b> to use for the deconvolved output</li>
@@ -103,7 +103,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <li> <b>Fast sequential iterations (OSEM)</b> and <b>OSEM acceleration</b>: TODO explain...</li>
 <li> <b>Number of iterations</b>: For how many iterations to run the iterative deconvolution.</li>
 <li> <b>Debug mode</b>: In debug mode, we will show intermediate results (deconvolved image every nth iteration) while the deconvolution is still running. You can specify how often to display in a separate dialog (see below).</li>
-<li> <b>Use Tikhonov regularization</b> and <b>Tikhonov parameter</b>: By activating Tikhonov regularization, and setting the Tikhonov parameter to <img class="mwe-math-fallback-image-inline tex" alt="&gt;0" src="../_images/math/f/9/4/f9441c8d317f524f9bd3ccb75b9369c8.png" /> you can penalize large changes in the iterations. This way, the deconvolution is less prone to amplify noise but the results will generally be less sharp.</li>
+<li> <b>Use Tikhonov regularization</b> and <b>Tikhonov parameter</b>: By activating Tikhonov regularization, and setting the Tikhonov parameter to <img class="mwe-math-fallback-image-inline tex" alt="&gt;0" src="_images/math/f/9/4/f9441c8d317f524f9bd3ccb75b9369c8.png" /> you can penalize large changes in the iterations. This way, the deconvolution is less prone to amplify noise but the results will generally be less sharp.</li>
 <li> <b>Compute</b>: use this to specify <b>block size</b>. We can split the image into blocks and compute the deconvolution block-by-block. This allows you to do deconvolution on systems with less RAM, but will be slower, as we have to use overlapping blocks (smaller blocks will lead to more overlap). You can choose from a few presets or choose to <b>specify block size manually</b> in an extra dialog (see below).</li>
 <li> <b>Compute on</b>: Whether to compute on <b>CPU (Java)</b> or <b>GPU (Nvidia CUDA via JNA)</b>. GPU acceleration can greatly speed up the deconvolution, but you have to manually compile the required libraries and have a CUDA-capable Nvidia GPU in you system (see below for details).</li>
 <li> <b>Adjust blending &amp; grouping parameters</b>: check this to show advanced options for view grouping and blending in a separate dialog (see below).</li></ul>
@@ -114,16 +114,16 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <p>If you chose to <b>Initialize from TIFF file</b> in the main dialog, you will be asked to provide the path to the file here, by dragging and dropping the file, selecting it by clicking <b>Browse...</b> or entering the path manually.
 </p><p>You can choose whether to do <b>Exact avg and max computation from input</b> or not. TODO: explain...
 </p>
-<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_fromFile.png" class="image"><img alt="BigStitcher Deconvolution fromFile.png" src="../_images/1/15/BigStitcher_Deconvolution_fromFile.png" width="600" height="178" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_fromFile.png" class="image"><img alt="BigStitcher Deconvolution fromFile.png" src="_images/1/15/BigStitcher_Deconvolution_fromFile.png" width="600" height="178" /></a></div></div>
 <p>Using this option, you can <b>continue a previous deconvolution</b> if you think that additional iterations will improve the results.
 </p><p><br />
 </p>
 <h3><span class="mw-headline" id="Manual_block_size_setup">Manual block size setup</span></h3>
-<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_blocksize.png" class="image"><img alt="BigStitcher Deconvolution blocksize.png" src="../_images/0/07/BigStitcher_Deconvolution_blocksize.png" width="600" height="564" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_blocksize.png" class="image"><img alt="BigStitcher Deconvolution blocksize.png" src="_images/0/07/BigStitcher_Deconvolution_blocksize.png" width="600" height="564" /></a></div></div>
 <h3><span class="mw-headline" id="Blending_.26_grouping_parameters">Blending &amp; grouping parameters</span></h3>
-<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_blending.png" class="image"><img alt="BigStitcher Deconvolution blending.png" src="../_images/0/08/BigStitcher_Deconvolution_blending.png" width="600" height="406" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_blending.png" class="image"><img alt="BigStitcher Deconvolution blending.png" src="_images/0/08/BigStitcher_Deconvolution_blending.png" width="600" height="406" /></a></div></div>
 <h3><span class="mw-headline" id="Debug_mode">Debug mode</span></h3>
-<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_debug.png" class="image"><img alt="BigStitcher Deconvolution debug.png" src="../_images/e/ea/BigStitcher_Deconvolution_debug.png" width="600" height="299" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="File:BigStitcher_Deconvolution_debug.png" class="image"><img alt="BigStitcher Deconvolution debug.png" src="_images/e/ea/BigStitcher_Deconvolution_debug.png" width="600" height="299" /></a></div></div>
 <h3><span class="mw-headline" id="Deconvolution_on_GPU">Deconvolution on GPU</span></h3>
 <h2><span class="mw-headline" id="Usage_of_Previous_version">Usage of Previous version</span></h2>
 <p>As this usage guide is still work in progress, please refer to <a href="Multi-View_Deconvolution" title="Multi-View Deconvolution">Multi-View_Deconvolution</a> for now.
@@ -209,7 +209,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=BigStitcher_Deconvolution&amp
 			<ul>
 
 			<li class="widget">
-				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+				<img id="logo" src="skins/imagej-128.png" alt=""/>			</li>
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>

@@ -8,14 +8,14 @@
 mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
 
 });mw.loader.load(["mediawiki.page.startup"]);});</script>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
-<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
-<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.cite.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
 <meta name="ResourceLoaderDynamicStyles" content=""/>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="This is a very incomplete DRAFT"/>
-<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="shortcut icon" href="skins/ij2.ico"/>
 <link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
 <link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
 <link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
@@ -195,7 +195,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </td></tr></table>
 <p>For the DoG detector, unsurprisingly, we find that the execution time is proportional to the number of pixels, following approximately <i>t (ms) = 3.4e-4 x Npixels</i>. This is expected as all calculations are done in direct space.
 </p><p>The LoG detector operates in Fourier space, and because of the Fourier transform implementation we use, the images are padded with 0s to reach a size equal to a power of 2. This does not show here as all but one tests are made with such a size. Still, the execution time slightly deviates from the linear case, and shows a slight quadratic shape. The best linear fit yields a low in <i>t (ms) = 2.8e-4 x Npixels</i>, showing that the LoG detector is slightly quicker than the DoG detector.
-</p><p><a href="File:TrackMate_DoGandLoGTimeVsPixels.png" class="image"><img alt="TrackMate DoGandLoGTimeVsPixels.png" src="../_images/f/f3/TrackMate_DoGandLoGTimeVsPixels.png" width="400" height="289" /></a>
+</p><p><a href="File:TrackMate_DoGandLoGTimeVsPixels.png" class="image"><img alt="TrackMate DoGandLoGTimeVsPixels.png" src="_images/f/f3/TrackMate_DoGandLoGTimeVsPixels.png" width="400" height="289" /></a>
 </p><p><br />
 </p>
 <h4><span class="mw-headline" id="Processing_time_for_a_3D_image_as_a_function_of_its_size.">Processing time for a 3D image as a function of its size.</span></h4>
@@ -267,20 +267,20 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </td></tr></table>
 <p>And again, the processing time is found to be linear with the number of pixels. The linear fit is slightly steeper, however: <i>t (ms) = 4.6e-4 x Npixels</i>, which we attribute to the 3D kernel overhead.
 </p><p>Interestingly, the LoG detector seems to become the slowest at intermediate size, which I cannot interpret well. 
-</p><p><a href="File:TrackMate_DoGandLoGTimeVsPixels3D.png" class="image"><img alt="TrackMate DoGandLoGTimeVsPixels3D.png" src="../_images/d/db/TrackMate_DoGandLoGTimeVsPixels3D.png" width="400" height="296" /></a>
+</p><p><a href="File:TrackMate_DoGandLoGTimeVsPixels3D.png" class="image"><img alt="TrackMate DoGandLoGTimeVsPixels3D.png" src="_images/d/db/TrackMate_DoGandLoGTimeVsPixels3D.png" width="400" height="296" /></a>
 </p><p><br />
 </p><p><br />
 </p>
 <h4><span class="mw-headline" id="Processing_time_for_a_2D_image_as_a_function_of_the_spot_radius.">Processing time for a 2D image as a function of the spot radius.</span></h4>
 <p>We used a 1024x1024 <i>uint16</i> image, with 200 gaussian spots, the size of which we varied. The detector was tuned to this radius. 
-</p><p><a href="File:TrackMate_DoGandLoGTimeVsRadius2D.png" class="image"><img alt="TrackMate DoGandLoGTimeVsRadius2D.png" src="../_images/2/2f/TrackMate_DoGandLoGTimeVsRadius2D.png" width="400" height="285" /></a>
+</p><p><a href="File:TrackMate_DoGandLoGTimeVsRadius2D.png" class="image"><img alt="TrackMate DoGandLoGTimeVsRadius2D.png" src="_images/2/2f/TrackMate_DoGandLoGTimeVsRadius2D.png" width="400" height="285" /></a>
 </p><p>We find that for the DoG detector, the processing time to increase linearly with the specified radius, following approximately <i>t (ms) = 20.5 x radius + 260</i>. As the difference-of-gaussians is calculated in the direct space, a marked increase is expected as there is more pixels to iterate over. Without optimization, we should however have found the time to be increasing with the square of the radius, and find the same dependence that for the image size. Thanks to the clever implementation of gaussian filtering<sup id="cite_ref-1" class="reference"><a href="TrackMate_Performance.html#cite_note-1">&#91;1&#93;</a></sup>, this is avoided.
 </p><p>The LoG detector shows a near-constant processing time, which makes it desirable for spots larger than 2 pixels in radius. This is due to the way we compute the convolution which is explained below. 
 </p><p><br />
 </p>
 <h4><span class="mw-headline" id="Processing_time_for_a_3D_image_as_a_function_of_the_spot_radius.">Processing time for a 3D image as a function of the spot radius.</span></h4>
 <p>This time we used a 256x256x256 3D image, but with otherwise the same parameters. 
-</p><p><a href="File:TrackMate_DoGandLoGTimeVsRadius3D.png" class="image"><img alt="TrackMate DoGandLoGTimeVsRadius3D.png" src="../_images/a/ad/TrackMate_DoGandLoGTimeVsRadius3D.png" width="400" height="321" /></a>
+</p><p><a href="File:TrackMate_DoGandLoGTimeVsRadius3D.png" class="image"><img alt="TrackMate DoGandLoGTimeVsRadius3D.png" src="_images/a/ad/TrackMate_DoGandLoGTimeVsRadius3D.png" width="400" height="321" /></a>
 </p><p>The processing time increases, but this time deviates slightly from linearity in the DoG case. We retrieve the 3D kernel overhead we had for the 3D images.
 </p><p>The LoG performance clearly highlights the 0-padding used because of the Fourier transform: Indeed, the processing time increase in a step-wise manner. We use the Fourier transform to compute the convolution by the LoG kernel. But for the implementation we use, the kernel image (and the source image as well) are padded by 0 until their size reaches a power of 2 (128, 256, 512, etc...). Whenever the required kernel size is smaller than this power of 2, its size is increased to this value. Because ultimately the processing time depends on the number of pixels, we see a constant processing time until the kernel size imposes a larger power of 2.
 </p>
@@ -374,7 +374,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=TrackMate_Performance&amp;old
 			<ul>
 
 			<li class="widget">
-				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+				<img id="logo" src="skins/imagej-128.png" alt=""/>			</li>
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>

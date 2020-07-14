@@ -8,14 +8,14 @@
 mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
 
 });mw.loader.load(["mediawiki.page.startup"]);});</script>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
-<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
-<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
 <meta name="ResourceLoaderDynamicStyles" content=""/>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="SPIM Workflow Manager for HPC is a Fiji plugin developed at IT4Innovations, Ostrava, Czech Republic. The plugin enables biology users to upload data to the remote cluster, monitor computation progress, and examine and download results via the local Fiji installation."/>
-<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="shortcut icon" href="skins/ij2.ico"/>
 <link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
 <link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
 <link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
@@ -146,7 +146,7 @@ In addition, the proposed solution is highly scalable, meaning that any addition
 After the registration, the individual views within one time point need to be combined into a single output image either by content-based fusion or multi-view deconvolution <a rel="nofollow" class="external text" href="Multiview-Reconstruction">[Multiview-reconstruction</a>]. The living specimen can move during acquisition, necessitating an intermediate step of time-lapse registration. Whereas parallel processing of individual time points has proven to be beneficial, the time-lapse registration takes only a few seconds and can therefore be performed on a single computing node without the need for parallelization.
 </p><p>The sheer amount of the SPIM data requires conversion from raw microscopy data to Hierarchical Data Format (HDF5) for efficient input/output access and visualization in Fiji's <a rel="nofollow" class="external text" href="BigDataViewer#Publication">BigDataViewer</a> (BDV). BDV uses an XML file to store experiment metadata (i.e. number of angles, time points, channels etc.). Although the conversion to HDF5 is a parallelizable procedure, further updating the XML file downstream in the pipeline is not; and per-time point XML files have to be created and then merged after completion of the registration and fusion steps. Consequently, the parallel processing of individual time points on an HPC resource (conversion to HDF5, registration, fusion and deconvolution) is interrupted by non-parallelizable steps (time-lapse registration and XML merging).
 </p><p>Pipeline input parameters are entered by a user into a <i>config.yaml</i> configuration file. In the first step, the .czi raw data are concurrently resaved into the HDF5 container in parallel on the cluster. Similarly, the individual time points are registered in parallel using fluorescent beads as fiduciary markers on the cluster. Subsequently, a non-parallel job executed by <i>Snakemake</i> consolidate the registration XML files into a single one, followed by time-lapse registration using the beads segmented during the spatial registration step. After this, the pipeline diverge into either parallel content-based fusion or parallel multi-view deconvolution. To achieve this divergence in practice, the <i>Snakemake</i> pipeline is launched from the Fiji plugin as two separate jobs using two different <i>config.yaml</i> files set to execute content-based fusion and deconvolution respectively. In the final stage of the pipeline, the fusion/deconvolution output is saved into a new HDF5 container. Figure below shows results of registration, fusion and deconvolution in different time points.
-<a href="File:Drosophila.PNG" class="image"><img alt="Drosophila.PNG" src="../_images/5/55/Drosophila.PNG" width="800" height="238" /></a>
+<a href="File:Drosophila.PNG" class="image"><img alt="Drosophila.PNG" src="_images/5/55/Drosophila.PNG" width="800" height="238" /></a>
 </p>
 <h2><span class="mw-headline" id="HEAppE_middleware">HEAppE middleware</span></h2>
 <p>Accessing a remote HPC cluster is often burdened by administrative overhead due to more or less complex security policies enforced by HPC centers. This barrier can be substantially lowered by employing a middleware tool based on the HPC-as-a-Service concept. To provide this simple and intuitive access to the supercomputing infrastructure an in-house application framework called High-End Application Execution <a rel="nofollow" class="external text" href="http://heappe.eu">(HEAppE)</a> Middleware has been developed. This middleware provides HPC capabilities to the users and third-party applications without the need to manage the running jobs from the command-line interface of the HPC scheduler on the cluster.
@@ -158,11 +158,11 @@ After the registration, the individual views within one time point need to be co
 </p>
 <h1><span class="mw-headline" id="Usage">Usage</span></h1>
 <p>Now you should see the plugin under <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Multiview Reconstruction </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> SPIM Workflow Manager for HPC</span></em></span>. Upon plugin invocation from the application menu, you are prompted for HEAppE credentials, e-mail address and specifying your working directory. Following a successful login, the main window containing all jobs arranged in a table is displayed. In this context, the term <i>job</i> is used for a single pipeline run with specified parameters. The plugin actively inquires information on the created jobs from HEAppE and updates the table as appropriate.
-<a href="File:Flowchart.PNG" class="image"><img alt="Flowchart.PNG" src="../_images/3/3c/Flowchart.PNG" width="400" height="477" /></a>
+<a href="File:Flowchart.PNG" class="image"><img alt="Flowchart.PNG" src="_images/3/3c/Flowchart.PNG" width="400" height="477" /></a>
 </p><p>For creating a new job, right click in the main window and choose <i>Create a new job</i>. A window with input and output data location will pop up. You have the option to use demonstration data on the Salamon cluster or specify your own input data location. Eventually you may choose your working directory (specified during login) as both your input and output data location. Once a new job is configured, you are able to upload your own data (if you chose this option in the previous step) by right clicking on the job line and choosing <i>Upload data</i>. When <i>Done</i> appears in the <i>Upload</i> column, you can start the job by <span><em><span style="border-bottom:1px dotted #ccc;"> right click </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Start job</span></em></span>. Status of your job changes to <i>Queued</i>, then to <i>Running</i> and finally to <i>Finished</i> when your pipeline finishes successfully.
 </p><p>The plugin provides a wizard allowing you to set up a configuration file <i>config.yaml</i>, which effectively characterizes the dataset and defines settings for individual workflow tasks. The plugin supports uploading local input image data to the remote HPC resource, providing information on the progress and estimated remaining time.
 </p><p>Once a job execution is selected by you, the configuration file is sent to the cluster via HEAppE, which is responsible for the job life cycle from this point on. You can display a detailed progress dashboard showing current states of all individual computational tasks for the selected job as well as output logs useful for debugging.
-<a href="File:Ui_screens.PNG" class="image"><img alt="Ui screens.PNG" src="../_images/4/4d/Ui_screens.PNG" width="1200" height="268" /></a>
+<a href="File:Ui_screens.PNG" class="image"><img alt="Ui screens.PNG" src="_images/4/4d/Ui_screens.PNG" width="1200" height="268" /></a>
 </p><p>Following a successfully finished pipeline, you can interactively examine the processed SPIM image data using the <a rel="nofollow" class="external text" href="BigDataServer">BigDataServer</a> as well as download resultant data and a summary file containing key information about the performed job. Importantly, you can edit the corresponding local configuration file in a common text editor, and restart an interrupted, finished, or failed job.
 </p>
 <h1><span class="mw-headline" id="HPC_Cluster">HPC Cluster</span></h1>
@@ -256,7 +256,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=SPIM_Workflow_Manager_For_HPC
 			<ul>
 
 			<li class="widget">
-				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+				<img id="logo" src="skins/imagej-128.png" alt=""/>			</li>
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>

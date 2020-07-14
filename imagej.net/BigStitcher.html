@@ -8,14 +8,14 @@
 mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
 
 });mw.loader.load(["mediawiki.page.startup"]);});</script>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
-<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
-<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=ext.math.styles%257Cmediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
 <meta name="ResourceLoaderDynamicStyles" content=""/>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="The BigStitcher is a software package that allows simple and efficient alignment of multi-tile and multi-angle image datasets, for example acquired by lightsheet, widefield or confocal microscopes. The software supports images of almost arbitrary size ranging from very small images up to volumes in the range of many terabytes, which are for example produced when acquiring cleared tissue samples with lightsheet microscopy."/>
-<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="shortcut icon" href="skins/ij2.ico"/>
 <link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
 <link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
 <link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
@@ -233,7 +233,7 @@ The following sections give an overview of the UI in both modes:
 <p>We prepared a 2D and 3D version of a tiled dataset for testing the BigStitcher on a small example. We suggest to run BigStitcher on these first before applying it to your dataset. This allows you to quickly test features in an environment where you can easily ask for advice on GitHub or the ImageJ Forum. We will add a larger, multi-view, dataset as a showcase item in the future.
 </p>
 <h3><span class="mw-headline" id="2D_multi-tile_dataset_.282.8_MB.29">2D multi-tile dataset (2.8 MB)</span></h3>
-<p>This dataset is a maximum intensity projection of the nervous system of a Drosophila larva containing 6 tiles and 3 channels each. You can download the raw input at <a rel="nofollow" class="external free" href="http://preibischlab.mdc-berlin.de/BigStitcher/Grid_2d.zip">http://preibischlab.mdc-berlin.de/BigStitcher/Grid_2d.zip</a> and a reconstructed BigStitcher project at <a rel="nofollow" class="external free" href="http://preibischlab.mdc-berlin.de/BigStitcher/Grid_2d_h5_aligned.zip">http://preibischlab.mdc-berlin.de/BigStitcher/Grid_2d_h5_aligned.zip</a>. In the reconstructed project, the images were imported into the BigStitcher using the AutoLoader (with immediate resaving as HDF5 and Movement to a regular 2-by-3 grid with 10% overlap between the tiles). We calculated pairwise shifts using phase correlation with default parameters, using the precomputed 2x2 downsampling and averaging the channels. We ignored links with correlation <img class="mwe-math-fallback-image-inline tex" alt="&lt;0.7" src="../_images/math/1/d/6/1d665fff692ea6c5633c24067a2bfb6e.png" /> and calculated the final registration using the two-round global optimization with strict constraints. 
+<p>This dataset is a maximum intensity projection of the nervous system of a Drosophila larva containing 6 tiles and 3 channels each. You can download the raw input at <a rel="nofollow" class="external free" href="http://preibischlab.mdc-berlin.de/BigStitcher/Grid_2d.zip">http://preibischlab.mdc-berlin.de/BigStitcher/Grid_2d.zip</a> and a reconstructed BigStitcher project at <a rel="nofollow" class="external free" href="http://preibischlab.mdc-berlin.de/BigStitcher/Grid_2d_h5_aligned.zip">http://preibischlab.mdc-berlin.de/BigStitcher/Grid_2d_h5_aligned.zip</a>. In the reconstructed project, the images were imported into the BigStitcher using the AutoLoader (with immediate resaving as HDF5 and Movement to a regular 2-by-3 grid with 10% overlap between the tiles). We calculated pairwise shifts using phase correlation with default parameters, using the precomputed 2x2 downsampling and averaging the channels. We ignored links with correlation <img class="mwe-math-fallback-image-inline tex" alt="&lt;0.7" src="_images/math/1/d/6/1d665fff692ea6c5633c24067a2bfb6e.png" /> and calculated the final registration using the two-round global optimization with strict constraints. 
 </p>
 <h3><span class="mw-headline" id="3D_multi-tile_dataset_.28123_MB.29">3D multi-tile dataset (123 MB)</span></h3>
 <p>This dataset is a 3d confocal scan of the nervous system of a Drosophila larva containing 6 tiles and 3 channels each, channels are distributed over different files. You can download the raw input at <a rel="nofollow" class="external free" href="http://preibischlab.mdc-berlin.de/BigStitcher/Grid_3d.zip">http://preibischlab.mdc-berlin.de/BigStitcher/Grid_3d.zip</a> and the reconstructed project at <a rel="nofollow" class="external free" href="http://preibischlab.mdc-berlin.de/BigStitcher/Grid_3d_h5_aligned.zip">http://preibischlab.mdc-berlin.de/BigStitcher/Grid_3d_h5_aligned.zip</a>. In the reconstructed project, we ran the same import and reconstruction steps as for the 2d dataset and in addition performed affine refinement of the registration using IPC with default parameters and simple tile refinement to create the final reconstructed project.
@@ -321,7 +321,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=BigStitcher&amp;oldid=43745">
 			<ul>
 
 			<li class="widget">
-				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+				<img id="logo" src="skins/imagej-128.png" alt=""/>			</li>
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>

@@ -8,14 +8,14 @@
 mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
 
 });mw.loader.load(["mediawiki.page.startup"]);});</script>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
-<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
-<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
 <meta name="ResourceLoaderDynamicStyles" content=""/>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="Because of the cubic cost of the 3D segmentation (in memory and processing) with Ilastik, it is not possible to work on full stacks of EM images in once.&#10;To be fully segmented, the stack need to be cut in parts. But this operation will cut some objects in 2 or more parts, and the objects will lost the coordinate system of the original stack.&#10;The purpose of this plugin is to replace the objects in their original position, and provide a tool that will allow a user to merge 3D objects that have been cut."/>
-<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="shortcut icon" href="skins/ij2.ico"/>
 <link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
 <link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
 <link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
@@ -88,7 +88,7 @@ This plugin also need the
 <a rel="nofollow" class="external text" href="https://mvnrepository.com/artifact/org.apache.commons/commons-math3">apache common maths</a> librairy. If you use Fiji, this librairy is already included. If you use ImageJ, download the lattest version and put the .jar file into ImageJ/plugins/jars/
 </p>
 <h2><span class="mw-headline" id="Presentation_of_the_interface">Presentation of the interface</span></h2>
-<div class="center"><div class="floatnone"><a href="File:SOC_Window.png" class="image"><img alt="SOC Window.png" src="../_images/8/8c/SOC_Window.png" width="1000" height="587" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="File:SOC_Window.png" class="image"><img alt="SOC Window.png" src="_images/8/8c/SOC_Window.png" width="1000" height="587" /></a></div></div>
 <p>Here is the Interface of Stack Object Combiner. The window contain several boxes, that allow you to set the different parameters and that give you an overview of the meshes.<br /><br />
 </p>
 <div class="MediaTransformError" style="width: 511px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> Folder selection box<br />This is the Folder Box. Choose the folder containing your meshes. To work only with certain meshes inside this folder, use the "Name pattern" function. Write the characters that the file contains, and click on "Actualise". The pattern can be a <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>. <br />Finally "Actualise" allow you to refresh the folder, for example if you have deleted or added files.
@@ -96,8 +96,8 @@ This plugin also need the
 <p>In the shift box, set the positions and dimensions of the cubes. To shift the meshes at their coordinates in the reconstructed volume, give the values of the shift in X, Y and Z. (See the illustration bellow to see to what each value correspond). X, Y and Z correspond respectively to the width, height and depth of the stack A (don't confuse the width, height and depth of the whole volume that you also have to give here, with the width, height and depth of the volume A that match the values of Shift X, Y and Z).<br />
 Once these values are set, click on "Shift" to shift all the meshes listed. To shift back the mesh to their original positions, click on "Unshift".<br />
 The values you give here will be used later to merge the meshes. For automatic merging, you have to give the width, height and depth of the whole volume.<br />
-<a href="File:SOC_cubeDimensions.png" class="image"><img alt="SOC cubeDimensions.png" src="../_images/e/ef/SOC_cubeDimensions.png" width="400" height="251" /></a> <a href="File:SOC_cubeSplitting.png" class="image"><img alt="SOC cubeSplitting.png" src="../_images/d/df/SOC_cubeSplitting.png" width="500" height="279" /></a>
-</p><p><a href="File:SOC_meshes.png" class="image"><img alt="SOC meshes.png" src="../_images/1/13/SOC_meshes.png" width="250" height="330" /></a> Meshes listing box<br />
+<a href="File:SOC_cubeDimensions.png" class="image"><img alt="SOC cubeDimensions.png" src="_images/e/ef/SOC_cubeDimensions.png" width="400" height="251" /></a> <a href="File:SOC_cubeSplitting.png" class="image"><img alt="SOC cubeSplitting.png" src="_images/d/df/SOC_cubeSplitting.png" width="500" height="279" /></a>
+</p><p><a href="File:SOC_meshes.png" class="image"><img alt="SOC meshes.png" src="_images/1/13/SOC_meshes.png" width="250" height="330" /></a> Meshes listing box<br />
 In this box, the meshes are placed in the list corresponding to the different volumes. To be listed, the prefix of the mesh name must match the volume name. For example, a dendrite that need to be placed in the A volume can be called A_dendrite.obj (a_dendrite also work). Note that the "_" after the letter is necessary for the object to be recognized by the plugin.<br />
 </p>
 <div class="MediaTransformError" style="width: 265px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div> Automatic merging box<br />
@@ -227,7 +227,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=StackObjectCombiner&amp;oldid
 			<ul>
 
 			<li class="widget">
-				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+				<img id="logo" src="skins/imagej-128.png" alt=""/>			</li>
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>

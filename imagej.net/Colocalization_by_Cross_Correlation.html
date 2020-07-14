@@ -8,14 +8,14 @@
 mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
 
 });mw.loader.load(["mediawiki.page.startup"]);});</script>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
-<script async="" src="../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
-<link rel="stylesheet" href="../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
 <meta name="ResourceLoaderDynamicStyles" content=""/>
-<link rel="stylesheet" href="../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="This plugin attempts to determine the average distance between non-randomly spatially associated particles, the standard deviation of that distance (which should also reflect the width of the PSF in the image for diffraction limited images), and a statistical measure of confidence of the association. It currently works on 2D/3D single-channel images, and requires a mask of all possible localizations for the signal in one of the images."/>
-<link rel="shortcut icon" href="../skins/ij2.ico"/>
+<link rel="shortcut icon" href="skins/ij2.ico"/>
 <link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
 <link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
 <link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
@@ -112,13 +112,13 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </p><p>Available on the list of <a href="Update_Sites" title="Update Sites">ImageJ updates sites</a>. Requires Fiji.
 </p><p><b>How it works:</b>
 </p>
-<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="File:ColocByCorrelation-CorrelationImage.jpg" class="image"><img alt="" src="../_images/d/d0/ColocByCorrelation-CorrelationImage.jpg" width="300" height="225" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:ColocByCorrelation-CorrelationImage.jpg" class="internal" title="Enlarge"></a></div>Correlation Image</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="File:ColocByCorrelation-CorrelationImage.jpg" class="image"><img alt="" src="_images/d/d0/ColocByCorrelation-CorrelationImage.jpg" width="300" height="225" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:ColocByCorrelation-CorrelationImage.jpg" class="internal" title="Enlarge"></a></div>Correlation Image</div></div></div>
 <p>The plugin performs a cross-correlation in frequency space to create a correlation image. To remove non-specific correlations (from background, or high signal density), a correlation image generated from randomized images is then subtracted from the original correlation image. This occurs through cycles of:
 </p><p>1. Randomizing Image1 using the <a href="_images/e/e2/Costes_etalColoc.pdf" class="internal" title="Costes etalColoc.pdf">Costes randomization method</a> and a mask of all theoretically possible localizations for the signal in Image1 (i.e. a mask of the cells, or the nuclei).
 </p><p>2. Calculating the cross-correlation of the randomized image with Image2, then averaging this over successive cycles.
 </p><p>After the subtraction of non-specific correlations, we generate a radial profile of this data and fit a gaussian curve to it, showing the correlation between the images at different offsets. We also generate a radial profile for the original correlation data before subtraction, as this is needed to establish a measure of confidence. The confidence is calculated as the area under the curve (AUC) of the subtracted correlation radial profile (in the range of mean ± 3×sigma) divided by the AUC of the original correlation radial profile (in same range) as a percentage. The confidence value, along with the mean and sigma of the gaussian fit are displayed in a log window. Higher values of confidence, closer to 100, indicate that two images likely have a true spatial correlation at the indicated distance.
 </p>
-<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="File:ColocByCorrelate-Graph.jpeg" class="image"><img alt="" src="../_images/1/1e/ColocByCorrelate-Graph.jpeg" width="300" height="174" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:ColocByCorrelate-Graph.jpeg" class="internal" title="Enlarge"></a></div>Radial profile of correlation image shown above</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="File:ColocByCorrelate-Graph.jpeg" class="image"><img alt="" src="_images/1/1e/ColocByCorrelate-Graph.jpeg" width="300" height="174" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:ColocByCorrelate-Graph.jpeg" class="internal" title="Enlarge"></a></div>Radial profile of correlation image shown above</div></div></div>
 <p><b>Preparing images:</b> 
 </p><p>This plugin requires two single channel, single frame images (2D or 3D) to be analyzed, and an additional binary mask to define the randomization area (details for mask below). The two images should undergo appropriate background subtraction to lower the background pixel values to zero or near zero. Even low level background (pixel values of 10 to 20 on a 16 bit image) can lower the confidence level and result in false negatives. Additionally, the images (particularly 3D) need to be correctly scaled (Image&gt;Properties), otherwise all axes will be assumed to have the same scale. The mask for the binary image should cover all of the theoretically possible localizations for the signals in the image that is to be randomized. Typically this will simply be a binary mask of the cell volume, however if you are analyzing nuclear proteins, this would be a mask of only the nuclei. Using an inappropriate mask will likely result in the detection of a strong correlation caused by these higher order repeating structures (e.g. you will find a correlation at distances averaging 10-15 microns, caused by the repeating structure of the cells).
 </p><p><b>Running the plugin:</b> 
@@ -126,7 +126,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </p><p><b>Interpreting the results:</b> 
 </p><p>After the plugin has finished, two new windows will be open:
 </p>
-<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="File:ColocByCorrelate-GaussFit.jpg" class="image"><img alt="ColocByCorrelate-GaussFit.jpg" src="../_images/f/f1/ColocByCorrelate-GaussFit.jpg" width="300" height="304" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:ColocByCorrelate-GaussFit.jpg" class="internal" title="Enlarge"></a></div></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="File:ColocByCorrelate-GaussFit.jpg" class="image"><img alt="ColocByCorrelate-GaussFit.jpg" src="_images/f/f1/ColocByCorrelate-GaussFit.jpg" width="300" height="304" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:ColocByCorrelate-GaussFit.jpg" class="internal" title="Enlarge"></a></div></div></div></div>
 <p>Correlation plot: A radial profile plot will be displayed, it contains the radial profile of the original correlation image (black line), the radial profile of the correlation after subtraction of random associations (red line), and a Gaussian curve fit to the subtracted profile (blue dots). The Y-axis is the result of the average correlation function at a given distance. While not arbitrary, it is most easily viewed as a measure of relative correlation. The range of the graph is set automatically to fit the Gaussian curve. If you wish to view all the data select More&gt;Set Range to Fit all…
 </p><p>Gaussian fit analysis: This text window will contain (in scaled units), the mean distance for the discovered correlation, and the standard deviation of that correlation (sigma), as well as an estimation of confidence for this correlation (range 0-100). The confidence is determined by taking the area under the curve (AUC) of the subtracted correlation radial profile (in range of mean ± 3×sigma) divided by the AUC of the original correlation radial profile (in same range). Values closer to 100 indicate a strong likelihood of true correlation. Values near zero indicate low to no correlation between the two images. I currently estimate that values of ~20 or greater indicate some degree of correlation (within the range specified by the Gaussian curve), though this is with very limited data. Confidence values can be affected by many things, including image noise and background, an inappropriate randomization mask, and optical abberations. Performing a simple background subtraction can improve confidence scores signficantly.
 </p>
@@ -210,7 +210,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=Colocalization_by_Cross_Corre
 			<ul>
 
 			<li class="widget">
-				<img id="logo" src="../skins/imagej-128.png" alt=""/>			</li>
+				<img id="logo" src="skins/imagej-128.png" alt=""/>			</li>
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
