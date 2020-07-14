@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>DHM Utilities/Phase Unwrapping - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"DHM_Utilities/Phase_Unwrapping","wgTitle":"DHM Utilities/Phase Unwrapping","wgCurRevisionId":39764,"wgRevisionId":39764,"wgArticleId":10781,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"DHM_Utilities/Phase_Unwrapping","wgRelevantArticleId":10781,"wgRequestId":"23c06cf8db6b3df03122a631","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Phase Unwrapping is a plugin to perform phase unwrapping on a phase image, with a focus on unwrapping images produced by DHM (possibly created using DHM Utilities/Reconstruction).  It currently has support for two different algorithms.  The first is a quality-guided unwrapping method, and the second is a double-wavelength unwrapping method."/>
+<link rel="shortcut icon" href="../../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="DHM Utilities/Phase Unwrapping"/>
+
+	<meta property="og:description" content="Phase Unwrapping is a plugin to perform phase unwrapping on a phase image, with a focus on unwrapping images produced by DHM (possibly created using DHM Utilities/Reconstruction).  It currently has support for two different algorithms.  The first is a quality-guided unwrapping method, and the second is a double-wavelength unwrapping method."/>
+
+	<meta property="og:url" content="http://imagej.net/DHM_Utilities/Phase_Unwrapping"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-DHM_Utilities_Phase_Unwrapping rootpage-DHM_Utilities_Phase_Unwrapping skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Phase_Unwrapping.html#bodyContent">Skip to content</a>, 			<a href="Phase_Unwrapping.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Phase_Unwrapping.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/DHM_Utilities/Phase_Unwrapping" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:DHM_Utilities/Phase_Unwrapping&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=DHM_Utilities/Phase_Unwrapping&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=DHM_Utilities/Phase_Unwrapping&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>DHM Utilities/Phase Unwrapping</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Phase Unwrapping<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> ImageJ
+</td></tr>
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/sudgy/phase-unwrapping/">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/LGPLv3" class="mw-redirect" title="LGPLv3">LGPLv3</a>
+</td></tr>
+
+
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> David Cohoe (<a rel="nofollow" class="external autonumber" href="mailto:dcohoe@pdx.edu">[1]</a>)
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> David Cohoe
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> David Cohoe
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> David Cohoe
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> David Cohoe
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> David Cohoe
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> David Cohoe
+</td></tr>
+
+
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/ImageJ" title="ImageJ"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the core ImageJ distribution. Click the logo for details." src="../../_images/d/d1/Imagej2-icon.png"></img></a></span></div>
+<p><br />
+Phase Unwrapping is a plugin to perform phase unwrapping on a phase image, with a focus on unwrapping images produced by DHM (possibly created using <a href="http://imagej.net/DHM_Utilities/Reconstruction" title="DHM Utilities/Reconstruction">DHM Utilities/Reconstruction</a>).  It currently has support for two different algorithms.  The first is a quality-guided unwrapping method, and the second is a double-wavelength unwrapping method.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Phase_Unwrapping.html#Quality-Based_Unwrapping"><span class="tocnumber">1</span> <span class="toctext">Quality-Based Unwrapping</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Phase_Unwrapping.html#Pre-defined_Quality_Types"><span class="tocnumber">1.1</span> <span class="toctext">Pre-defined Quality Types</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="Phase_Unwrapping.html#None"><span class="tocnumber">1.1.1</span> <span class="toctext">None</span></a></li>
+<li class="toclevel-3 tocsection-4"><a href="Phase_Unwrapping.html#Fringe_Visibility"><span class="tocnumber">1.1.2</span> <span class="toctext">Fringe Visibility</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="Phase_Unwrapping.html#Gradient"><span class="tocnumber">1.1.3</span> <span class="toctext">Gradient</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="Phase_Unwrapping.html#Phase_Gradient"><span class="tocnumber">1.1.4</span> <span class="toctext">Phase Gradient</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-7"><a href="Phase_Unwrapping.html#Creating_a_Custom_Quality_Type"><span class="tocnumber">1.2</span> <span class="toctext">Creating a Custom Quality Type</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Phase_Unwrapping.html#Double_Wavelength_Unwrapping"><span class="tocnumber">2</span> <span class="toctext">Double Wavelength Unwrapping</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Quality-Based_Unwrapping">Quality-Based Unwrapping</span></h2>
+<p>The quality-based unwrapping algorithm works on the principle that some pixels should be considered "better" than others when it comes to how well they represent the true phase value of the image.  To determine these values, the algorithm uses a "quality" mapping which assigns a quality value to every pixel in the image.  Several quality types come built in to the plugin, and it is possible to create your own in your own plugins.
+</p><p>To unwrap the image, the algorithm starts with the center pixel.  It then looks at the four adjacent pixels and picks the one with the highest quality, unwrapping it relative to itself.  It then looks at the six adjacent pixels and picks the one with the highest quality, unwrapping it relative to an adjacent pixel that has already been unwrapped with the highest quality.  This process repeats until the entire image has been unwrapped.
+</p><p>To perform quality-based unwrapping, run the command "Plugins &gt; DHM &gt; Phase Unwrapping &gt; Quality Guided".  Here is a description of all of the parameters:
+</p>
+<ul><li> Phase Image: The phase image that you want to unwrap.</li>
+<li> Quality: What algorithm you wish to use to compute the quality mapping.  Depending on the quality type, it may add additional parameters that will appear directly after this one.</li>
+<li> Single Frame: If the phase image is a stack, select this if you do not want to unwrap the whole stack.</li>
+<li> Pixel Phase Value: The pixel value difference that represents one period in the phase.</li>
+<li> Output Type: Image type for the output.  If 32-bit is selected, the scale will be the same as the original image.  If 32-bit radians is selected, the original scale will be scaled down to [0, 2π].</li>
+<li> Show Progress: Show the progress during unwrapping.  This algorithm can take some time, especially with larger images, so this can be used to alleviate boredom while waiting.</li></ul>
+<p>It is also possible to unwrap a single image or a stack of images programmatically using the <code>QualityUnwrappingOp</code> and <code>QualityUnwrappingStackOp</code> Ops.  See the documentation for more details on how to do this.
+</p>
+<h3><span class="mw-headline" id="Pre-defined_Quality_Types">Pre-defined Quality Types</span></h3>
+<h4><span class="mw-headline" id="None">None</span></h4>
+<p>This assigns every pixel a quality value of zero.  The exact result this produces is unspecified, and should only be used if you have no residues (a closed curve whose line integral is not zero) whatsoever in your original image.
+</p>
+<h4><span class="mw-headline" id="Fringe_Visibility">Fringe Visibility</span></h4>
+<p>Calculates the quality based on the <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Interferometric_visibility">Interferometric Visibility</a>.  Higher visibility values correspond to higher quality values.  This quality type requires the hologram as an extra parameter.
+</p>
+<h4><span class="mw-headline" id="Gradient">Gradient</span></h4>
+<p>This calculates the quality based on the magnitude of the gradient of an arbitrary image.  A lower gradient value corresponds to a higher quality value.
+</p>
+<h4><span class="mw-headline" id="Phase_Gradient">Phase Gradient</span></h4>
+<p>This is similar to the gradient quality, but it uses the phase image and considers the wrapping of phase values in its calculations.  It is what the author has found to produce the best results out of all of the current quality types.
+</p>
+<h3><span class="mw-headline" id="Creating_a_Custom_Quality_Type">Creating a Custom Quality Type</span></h3>
+<p>To create a custom quality type, you must first include this plugin as a dependency and then create a Scijava Plugin whose type is <code>Quality.class</code> and implements the <code>Quality</code> interface (or, preferably, extends <code>AbstractQuality</code>).  Once you have created the plugin class, it will automatically show up in the quality-guided unwrapping command.  The name of the plugin will be the string that shows up in the dialog.  The priority of the plugin will dictate where on the list it goes.
+</p><p>The <code>Quality</code> interface includes several default methods that you may want to override.  For more information on what you need to do, please check the javadocs, which you can build from the github repository.
+</p><p><code>Quality</code> uses our custom <a rel="nofollow" class="external text" href="https://github.com/sudgy/dynamic-parameters">Dynamic Parameters</a> to process inputs, because some of the parameters may change.  If you do not require any extra inputs in your quality type, you do not need to worry about using this.  However, if you do require extra inputs, you must override <code>param()</code> with your dynamic parameter.  If you require multiple parameters, you should use a <code>HoldingParameter</code> that has all of your parameters.
+</p>
+<h2><span class="mw-headline" id="Double_Wavelength_Unwrapping">Double Wavelength Unwrapping</span></h2>
+<p>The double wavelength unwrapping algorithm is based off of the double wavelength algorithm described in many places in the literature.  Given two images of the same thing in different wavelengths, the two images are subtracted, than anything less than zero is increased by one wavelength.  This result is called the coarse map.  This, in effect, changes the phase image into a phase image of a longer "beat frequency".  The idea is that sometimes the shortness of the wavelengths is an issue when it comes to unwrapping, and by producing a phase image of a longer wavelength, those issues can be avoided.  The algorithm is also much faster than other unwrapping algorithms.
+</p><p>However, there are a few issues with the algorithm.  The first is that it amplifies the noise present in the original images.  To compensate for this, the algorithm can be extended.  The coarse map can be rounded to one of the individual wavelengths, and then the original image of that wavelength can be added.  This result is called the fine map.  In theory, this works well, but in practice, the coarse map never really lines up with one of the original images, and doing this process causes the whole image to be rounded and have sudden small jumps.
+</p><p>Another issue is that the algorithm doesn't work that well in complicated situations.  We have not determined any exact reasons for why this is the case, but it might be due to how different wavelengths propagate differently near objects.  It has never worked in a place that a single-wavelength algorithm would have worked, so the only real advantage that this algorithm has after these issues is that it is faster.  It still has the problems of extra noise or extra rounding.
+</p><p>There is still another issue: the final image can still be wrapped.  You can always use a single-wavelength unwrapping algorithm afterwards, but at that point, you might as well just use the single-wavelength algorithm in the first place.
+</p><p>If you can find ways to improve our implementation of the algorithm, please let us know.
+</p><p>To use this algorithm in ImageJ, run the command "Plugins &gt; DHM &gt; Phase Unwrapping &gt; Double Wavelength".  Here is a description of all of the parameters:
+</p>
+<ul><li> Phase Image 1: The first phase image to use.</li>
+<li> Wavelength 1: The wavelength of light used to create the first image.  There are no units on it because the actual value of the wavelength is not important, only the difference between it and the other wavelength is important.</li>
+<li> Phase Image 2: The second phase image to use.</li>
+<li> Wavelength 2: The wavelength of light used to create the second image.</li>
+<li> Pixel Phase Value: The pixel value difference that represents one period in the phase.</li>
+<li> Show Intermediate Steps: Whether or not to show all of the steps taken during the process.  It is mainly used for debug purposes, but it might help when trying to determine what is going on.  If it is off, only the coarse map and the fine map are shown.</li></ul>
+<p>It is also possible to unwrap a single image or a stack of images programmatically using the DoubleWavelengthOp and DoubleWavelengthStackOp Ops. See the documentation for more details on how to do this.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20200714212538
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.092 seconds
+Real time usage: 0.092 seconds
+Preprocessor visited node count: 2613/1000000
+Preprocessor generated node count: 4556/1000000
+Post‐expand include size: 1785/2097152 bytes
+Template argument size: 557/2097152 bytes
+Highest expansion depth: 10/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   77.953      1 - -total
+100.00%   77.953      1 - Template:Component
+ 83.75%   65.289      7 - Template:Person
+  2.31%    1.800      1 - Template:GitHub
+  1.82%    1.417      1 - Template:Project
+  1.43%    1.112      1 - Template:DevStatus
+  1.39%    1.081      1 - Template:SupportStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=DHM_Utilities/Phase_Unwrapping&amp;oldid=39764">http://imagej.net/index.php?title=DHM_Utilities/Phase_Unwrapping&amp;oldid=39764</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 8 May 2019, at 12:44.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=DHM_Utilities/Phase_Unwrapping&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=DHM+Utilities%2FPhase+Unwrapping" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=DHM+Utilities%2FPhase+Unwrapping" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/DHM_Utilities/Phase_Unwrapping" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/DHM_Utilities/Phase_Unwrapping" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=DHM_Utilities/Phase_Unwrapping&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=DHM_Utilities/Phase_Unwrapping&amp;oldid=39764" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=DHM_Utilities/Phase_Unwrapping&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":339});});</script>
+		</body>
+		</html>
+		

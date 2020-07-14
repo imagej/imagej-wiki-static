@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Fiji/Z-Spacing Correction - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Fiji/Z-Spacing_Correction","wgTitle":"Fiji/Z-Spacing Correction","wgCurRevisionId":21189,"wgRevisionId":21189,"wgArticleId":2804,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","TrakEM2","Transform","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Fiji/Z-Spacing_Correction","wgRelevantArticleId":2804,"wgRequestId":"449abcda9a577beda5c7f407","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Please note that the z-spacing correction plugin available through Fiji, is based on a publication. If you use it successfully for your research please cite our work:"/>
+<link rel="shortcut icon" href="../../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="Fiji/Z-Spacing Correction"/>
+
+	<meta property="og:description" content="Please note that the z-spacing correction plugin available through Fiji, is based on a publication. If you use it successfully for your research please cite our work:"/>
+
+	<meta property="og:url" content="http://imagej.net/Fiji/Z-Spacing_Correction"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Fiji_Z-Spacing_Correction rootpage-Fiji_Z-Spacing_Correction skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Z-Spacing_Correction.html#bodyContent">Skip to content</a>, 			<a href="Z-Spacing_Correction.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Z-Spacing_Correction.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Fiji/Z-Spacing_Correction" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Fiji/Z-Spacing_Correction&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Fiji/Z-Spacing_Correction&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Fiji/Z-Spacing_Correction&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Fiji/Z-Spacing Correction</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 31em; font-size: 90%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Z-Spacing Correction (Fiji)<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Author
+</th>
+<td> Philipp Hanslovsky, <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> (<a rel="nofollow" class="external autonumber" href="mailto:saalfelds@janelia.hhmi.org">[1]</a>)
+</td></tr>
+
+
+
+
+<tr>
+<th> Maintainer
+</th>
+<td> Philipp Hanslovsky, <a href="http://imagej.net/User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a>
+</td></tr>
+
+
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external autonumber" href="https://github.com/saalfeldlab/em-thickness-estimation">[2]</a>
+</td></tr>
+<tr>
+<th> Initial release
+</th>
+<td> April 16<sup>th</sup>, 2015
+</td></tr>
+<tr>
+<th> Latest version
+</th>
+<td> April 16<sup>th</sup>, 2015
+</td></tr>
+<tr>
+<th> Development status
+</th>
+<td> experimental, active
+</td></tr>
+<tr>
+<th> Category
+</th>
+<td> <a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a>, <a href="http://imagej.net/Category:TrakEM2" title="Category:TrakEM2">TrakEM2</a>, <a href="http://imagej.net/Category:Transform" title="Category:Transform">Transform</a>
+</td></tr>
+
+</table>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Citation">Citation</span></h2>
+<p>Please note that the z-spacing correction plugin available through Fiji, is based on a publication. If you use it successfully for your research please cite our work:
+</p><p>P. Hanslovsky, J. Bogovic, S. Saalfeld (2015) Post-acquisition image based compensation for thickness variation in microscopy section series, In <i>International Symposium on Biomedical Imaging (ISBI'15)</i>, New York <a rel="nofollow" class="external autonumber" href="http://arxiv.org/abs/1411.6970">[3]</a>
+</p>
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>Serial section Microscopy, using either optical or physical sectioning, is an established method for volumetric anatomy reconstruction.  Section series imaged with Electron Microscopy are currently vital for the reconstruction of the synaptic connectivity of entire animal brains such as that of <i>Drosophila melanogaster</i>.  The process of removing ultrathin layers from a solid block containing the specimen, however, is a fragile procedure and has limited precision with respect to section thickness.  Optical sectioning techniques often suffer from increasing distortion as sections deeper inside the tissue are imaged.  On summary, section thickness that is supposed to be constant, in practice is not and has to be corrected where precise measurement is desired.  We have developed a method to estimate the relative <i>z</i>-position of each individual section as a function of signal change across the section series.  The Fiji plugin <b>Transform</b> &gt; <b>Z-Spacing Correction</b> and the <a href="http://imagej.net/TrakEM2" title="TrakEM2">TrakEM2</a> plugin <b>Plugins</b> &gt; <b>LayerZPosition</b> implement this method.
+</p>
+<h2><span class="mw-headline" id="Parameters">Parameters</span></h2>
+<dl><dt>Neighborhood range</dt>
+<dd>Specifies the neighborhood around each section for which pairwise similarities are calculated. </dd>
+<dt>Outer iterations</dt>
+<dd>Specifies the number of iterations in the outer loop of the optimizer.</dd>
+<dt>Outer regularization</dt>
+<dd>Specifies the amount of regularization in the outer loop of the optimizer. 0 means no regularization, 1 means full regularization (no change).  The regularizer in the outer loop damps the updates during each iteration by the specified fraction.</dd>
+<dt>Inner Iterations</dt>
+<dd>Specifies the number of iterations in inner loops of the optimizer.</dd>
+<dt>Inner Regularization</dt>
+<dd>Specifies the amount of regularization in the outer loop of the optimizer. 0 means no regularization, 1 means full regularization (no change).  The per-section quality weight requires regularization to avoid trivial solutions.  We use a Tikhonov regularizer towards 1.0 weight.</dd>
+<dt>Allow reordering</dt>
+<dd>Specifies whether layers/ sections can change their relative order in the series.</dd></dl>
+
+<!-- 
+NewPP limit report
+Cached time: 20200714212549
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.024 seconds
+Real time usage: 0.026 seconds
+Preprocessor visited node count: 331/1000000
+Preprocessor generated node count: 3590/1000000
+Post‐expand include size: 1395/2097152 bytes
+Template argument size: 744/2097152 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   16.520      1 - -total
+100.00%   16.520      1 - Template:Infobox
+ 76.97%   12.716      2 - Template:Person
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Fiji/Z-Spacing_Correction&amp;oldid=21189">http://imagej.net/index.php?title=Fiji/Z-Spacing_Correction&amp;oldid=21189</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 22 July 2016, at 11:06.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Fiji/Z-Spacing_Correction&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:TrakEM2" title="Category:TrakEM2">TrakEM2</a></li><li><a href="http://imagej.net/Category:Transform" title="Category:Transform">Transform</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Fiji%2FZ-Spacing+Correction" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Fiji%2FZ-Spacing+Correction" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Fiji/Z-Spacing_Correction" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Fiji/Z-Spacing_Correction" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Fiji/Z-Spacing_Correction&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Fiji/Z-Spacing_Correction&amp;oldid=21189" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Fiji/Z-Spacing_Correction&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":211});});</script>
+		</body>
+		</html>
+		

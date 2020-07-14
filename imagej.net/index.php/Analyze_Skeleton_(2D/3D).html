@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>AnalyzeSkeleton - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"AnalyzeSkeleton","wgTitle":"AnalyzeSkeleton","wgCurRevisionId":41200,"wgRevisionId":41200,"wgArticleId":200,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Plugins","Skeleton","Analysis","Neuroanatomy","Citable"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"AnalyzeSkeleton","wgRelevantArticleId":200,"wgRequestId":"2a366dcb67bf7e07e9b9d1de","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="Analysis of 2D and 3D skeleton images. For the ImageJ 1.x plugin, see this page."/>
+<link rel="shortcut icon" href="../../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+
+<script type="text/javascript" src="../../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="../../extensions/SyntaxHighlighter/syntaxhighlighter/styles/shCoreMinit.css" />
+
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="AnalyzeSkeleton"/>
+
+	<meta property="og:description" content="Analysis of 2D and 3D skeleton images. For the ImageJ 1.x plugin, see this page."/>
+
+	<meta property="og:url" content="http://imagej.net/AnalyzeSkeleton"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-AnalyzeSkeleton rootpage-AnalyzeSkeleton skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="3D).html#bodyContent">Skip to content</a>, 			<a href="3D).html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="3D).html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="3D).html" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:AnalyzeSkeleton&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=AnalyzeSkeleton&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=AnalyzeSkeleton&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>AnalyzeSkeleton</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" cellspacing="5" style="max-width: 30em; font-size: 80%; text-align: left; float: right; border: 1px solid #a0a0a0;">
+<tr>
+<th colspan="2" style="text-align: center; font-size: 130%;"> <div style="float: left"></div>Analyze Skeleton<div style="clear: left;"></div>
+</th></tr>
+<tr>
+<th> Project
+</th>
+<td> Fiji
+</td></tr>
+<tr>
+<th> URL
+</th>
+<td> <a rel="nofollow" class="external free" href="https://imagej.net/AnalyzeSkeleton">https://imagej.net/AnalyzeSkeleton</a>
+</td></tr>
+<tr>
+<th> Source
+</th>
+<td> <a rel="nofollow" class="external text" href="https://github.com/fiji/AnalyzeSkeleton/releases/tag/AnalyzeSkeleton_-3.1.3">on GitHub</a>
+</td></tr>
+<tr>
+<th> License
+</th>
+<td> <a href="http://imagej.net/GPLv3" class="mw-redirect" title="GPLv3">GPLv3</a>
+</td></tr>
+<tr>
+<th> Release
+</th>
+<td> <a rel="nofollow" class="external text" href="http://maven.imagej.net/index.html#nexus-search;gav~sc.fiji~AnalyzeSkeleton_~3.1.3~~~kw,versionexpand">3.1.3</a>
+</td></tr>
+<tr>
+<th> Date
+</th>
+<td> Sat Apr 29 22:27:56 CDT 2017
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Development_status" class="mw-redirect" title="Development status">Development status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Support_status" class="mw-redirect" title="Support status">Support status</a>
+</th>
+<td> Active
+</td></tr>
+<tr>
+<th colspan="2" style="background: lightgray; font-variant: small-caps; text-align: center"> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Team</a>
+</th></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Founders</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Leads</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Developers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Debuggers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Reviewers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Support</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>
+</td></tr>
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Maintainers</a>
+</th>
+<td> <a href="http://imagej.net/User:Iarganda" title="User:Iarganda">Ignacio Arganda-Carreras</a>, <a href="http://imagej.net/User:Rueden" title="User:Rueden">Curtis Rueden</a>
+</td></tr>
+
+<tr>
+<th> <a href="http://imagej.net/Team" class="mw-redirect" title="Team">Contributors</a>
+</th>
+<td> <a href="http://imagej.net/User:Schindelin" title="User:Schindelin">Johannes Schindelin</a>, <a href="http://imagej.net/User:Rdom" title="User:Rdom">Richard Domander</a>, <a href="http://imagej.net/User:Eglinger" title="User:Eglinger">Jan Eglinger</a>, <a href="http://imagej.net/User:Tiago" title="User:Tiago">Tiago Ferreira</a>, <a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>, <a href="http://imagej.net/User:Hornung" title="User:Hornung">Daniel Hornung</a>, Huub Hovens
+</td></tr>
+</table><div class="project-info">
+<span class="project-logo"><a href="http://imagej.net/Fiji" title="Fiji"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the Fiji distribution of ImageJ. Click the logo for details." src="../../_images/a/ae/Fiji-icon.png"></img></a></span></div>
+<p>Analysis of 2D and 3D skeleton images. For the ImageJ 1.x plugin, see <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=plugin:analysis:analyzeskeleton:start">this page</a>.
+</p>
+<table>
+<tr>
+<td style="vertical-align:top"><div class="thumb tright"><div class="thumbinner" style="width:352px;"><a href="http://imagej.net/File:Analyze_skeleton_09_13_2009.png" class="image"><img alt="" src="../../_images/b/be/Analyze_skeleton_09_13_2009.png" width="350" height="180" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Analyze_skeleton_09_13_2009.png" class="internal" title="Enlarge"></a></div>Example of AnalyzeSkeleton performance</div></div></div>
+</td></tr></table>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="3D).html#General_Description"><span class="tocnumber">1</span> <span class="toctext">General Description</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="3D).html#Main_options"><span class="tocnumber">2</span> <span class="toctext">Main options</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="3D).html#Loop_detection_and_pruning"><span class="tocnumber">3</span> <span class="toctext">Loop detection and pruning</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="3D).html#Table_of_results"><span class="tocnumber">4</span> <span class="toctext">Table of results</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="3D).html#Detailed_information"><span class="tocnumber">4.1</span> <span class="toctext">Detailed information</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="3D).html#Video_tutorial"><span class="tocnumber">5</span> <span class="toctext">Video tutorial</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="3D).html#Visualization"><span class="tocnumber">6</span> <span class="toctext">Visualization</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="3D).html#Scripting_AnalyzeSkeleton"><span class="tocnumber">7</span> <span class="toctext">Scripting AnalyzeSkeleton</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="3D).html#Using_silent_mode_from_scripts"><span class="tocnumber">7.1</span> <span class="toctext">Using silent mode from scripts</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="3D).html#Pruning_branches_by_length"><span class="tocnumber">7.2</span> <span class="toctext">Pruning branches by length</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="3D).html#Visualizing_the_skeleton_in_the_3D_viewer"><span class="tocnumber">7.3</span> <span class="toctext">Visualizing the skeleton in the 3D viewer</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="3D).html#API_documentation"><span class="tocnumber">8</span> <span class="toctext">API documentation</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="3D).html#Changelog"><span class="tocnumber">9</span> <span class="toctext">Changelog</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="3D).html#References_and_citation"><span class="tocnumber">10</span> <span class="toctext">References and citation</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="3D).html#License"><span class="tocnumber">11</span> <span class="toctext">License</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="General_Description">General Description</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:294px;"><div class="MediaTransformError" style="width: 292px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Tagging_example.png" class="internal" title="Enlarge"></a></div>Example of voxel classification</div></div></div>
+<p>This plugin tags all pixel/voxels in a skeleton image and then counts all its junctions, triple and quadruple points and branches, and measures their average and maximum length. The tags are shown in a new window displaying every tag in a different color. You can find it under <span><em><span style="border-bottom:1px dotted #ccc;"> Analyze </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Skeleton </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Analyze Skeleton (2D/3D)</span></em></span>. See <a href="http://imagej.net/Skeletonize3D" title="Skeletonize3D">Skeletonize3D</a> for an example of how to produce skeleton images.
+</p><p>The voxels are classified into three different categories depending on their 26 neighbors:
+</p>
+<ul><li> <b>End-point</b> voxels: if they have less than 2 neighbors.</li>
+<li> <b>Junction</b> voxels: if they have more than 2 neighbors.</li>
+<li> <b>Slab</b> voxels: if they have exactly 2 neighbors.</li></ul>
+<p>End-point voxels are displayed in <b>blue</b>, slab voxels in <b>orange</b> and junction voxels in <b>purple</b>.
+</p><p>Notice here that, following this notation, the number of junction voxels can be different from the number of actual junctions since some junction voxels can be neighbors of each other.
+</p>
+<h2><span class="mw-headline" id="Main_options">Main options</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:272px;"><a href="http://imagej.net/File:Screenshot-AnalyzeSkeleton-dialog.png" class="image"><img alt="" src="../../_images/4/45/Screenshot-AnalyzeSkeleton-dialog.png" width="270" height="273" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Screenshot-AnalyzeSkeleton-dialog.png" class="internal" title="Enlarge"></a></div>Main dialog of the AnalyzeSkeleton plugin</div></div></div>
+<p>In the main dialog of the plugin the user can select some options to
+</p>
+<ul><li> <b>Prune the possible loops</b> in the skeleton (by choosing one of the pruning cycle methods).</li>
+<li> <b>Prune any branch that ends in an end-point</b> (by checking "Prune ends"), as implemented by <a rel="nofollow" class="external text" href="http://doube.org/">Michael Doube</a> in <a rel="nofollow" class="external text" href="http://bonej.org/">BoneJ</a>.
+<ul><li>In this case, if a ROI was selected in the input image, another option is enabled: <i>Exclude ROI from pruning</i>. If selected, pruning will not be applied to end-points contained by the ROI. An application of this feature is described in <a href="http://imagej.net/Strahler#Root_Detection" class="mw-redirect" title="Strahler">Strahler Analysis</a>.</li></ul></li>
+<li> <b>Calculate the largest shortest path</b> of each skeleton using the <a href="http://en.wikipedia.org/wiki/Floyd-Warshall_algorithm" class="extiw" title="wikipedia:Floyd-Warshall algorithm">APSP (all pairs shortest path)</a>. In this case, the shortest path will be displayed in a new window containing the skeleton in white and the shortest path in <b>magenta</b>. Implemented by Huub Hovens.</li>
+<li> <b>Show detailed info</b> about the branches of each skeleton in the image.</li>
+<li> <b>Display labeled skeletons</b>. An extra output image will be displayed containing each skeleton labeled with its corresponding skeleton ID.</li></ul>
+<h2><span class="mw-headline" id="Loop_detection_and_pruning">Loop detection and pruning</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:296px;"><div class="MediaTransformError" style="width: 294px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Cycle_detection.png" class="internal" title="Enlarge"></a></div>Example of cycle detection and pruning</div></div></div>
+<p>Since the 2009/09/02 version of the code, the possible cycles or loops in the skeleton can be detected and pruned previous to the analysis. In this sense, the initial plugin dialog offers 4 options:
+</p>
+<ul><li> <b>none</b>: no cycle detection nor pruning is performed.</li>
+<li> <b>shortest branch</b>: the shortest branch among the loop branches will be cut in its middle point.</li>
+<li> <b>lowest intensity voxel</b>: the darkest voxel among the loop voxels will be cut (set to 0) in the input image.</li>
+<li> <b>lowest intensity branch</b>: the darkest (in average) branch among the loop branches will be cut in its darkest voxel.</li></ul>
+<p>For the two last methods, another dialog will pop up asking the user to select the original (gray-scale) image among the open images in order to perform the intensity calculations.
+The cycle detection is based on a classical <a href="http://en.wikipedia.org/wiki/Depth-first_search" class="extiw" title="wikipedia:Depth-first search"><b>Depth-First Search</b></a> (DFS) in the skeleton. The skeleton is treated as an <a href="http://en.wikipedia.org/wiki/Undirected_graph#Undirected_graph" class="extiw" title="wikipedia:Undirected graph">undirected graph</a>, where the end-points and junctions are the nodes and the slab-branches are the edges. While traversing the graph in the DFS fashion, the edges/branches pointing to unvisited nodes are marked as <b>TREE</b> edges, while the edges to visited nodes are marked as <b>BACK</b> edges, which involves the presence of a loop. After the edge classification, the BACK edges are backtracked following their predecessors in order to calculate all the edges belonging to each cycle and proceed with the pruning. 
+</p><p>The only known limitation of this approach is shown in the presence of nested loops. In those cases, a second call to the plugin is usually enough to eliminate all the remaining loops.
+</p>
+<h2><span class="mw-headline" id="Table_of_results">Table of results</span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="http://imagej.net/File:AnalyzeSkeleton-Results-table.png" class="image"><img alt="" src="../../_images/4/42/AnalyzeSkeleton-Results-table.png" width="400" height="93" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:AnalyzeSkeleton-Results-table.png" class="internal" title="Enlarge"></a></div>Example of AnalyzeSkeleton Results table</div></div></div>
+<p>After classification, a “Results” window is displayed showing for each skeleton in the image:
+</p>
+<ul><li> The number of branches (slab segments, usually connecting end-points, end-points and junctions or junctions and junctions). The special case of a circular skeleton is also contemplated here.</li>
+<li> The number of voxels of every type: end-point, slab and junction voxels.</li>
+<li> The number of actual junctions (merging neighbor junction voxels) with an arbitrary number of projecting branches.</li>
+<li> The number of triple points (junctions with exactly 3 branches) and quadruple points (4 branches).</li>
+<li> The average and maximum length of branches, in the corresponding units. </li></ul>
+<p>AnalyzeSkeleton is able to process up to <b>2<sup>31</sup>-1 skeletons in one single image</b> (only limited by <a rel="nofollow" class="external text" href="http://java.sun.com/javase/6/docs/api/">java Integer.MAX_VALUE</a>). 
+</p>
+<h4><span class="mw-headline" id="Detailed_information">Detailed information</span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:352px;"><a href="http://imagej.net/File:AnalyzeSkeleton_Branch_information.png" class="image"><img alt="" src="../../_images/0/08/AnalyzeSkeleton_Branch_information.png" width="350" height="157" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:AnalyzeSkeleton_Branch_information.png" class="internal" title="Enlarge"></a></div>Example of AnalyzeSkeleton Branch information window</div></div></div>
+<p>When calling the plugin, if the "Show detailed information" checkbox is marked, a complementary results table called "Branch information" is shown. 
+</p><p>In this table we display all branches information: 
+</p>
+<ul><li> skeleton ID, </li>
+<li> calibrated branch length, </li>
+<li> 3D coordinates of the extremes of the branch (the so-called V1 and V2 vertices), </li>
+<li> and the Euclidean distance between those extreme points. This value has proven to be a good indicator of the <a href="http://en.wikipedia.org/wiki/Tortuosity" class="extiw" title="wikipedia:Tortuosity">tortuosity</a> of the 3D object. </li></ul>
+<p>The branches are sorted by decreasing length.
+</p>
+<h2><span class="mw-headline" id="Video_tutorial">Video tutorial</span></h2>
+<p>For a fast introduction to <a href="http://imagej.net/Skeletonize3D" title="Skeletonize3D">Skeletonize3D</a> and <strong class="selflink">AnalyzeSkeleton</strong> and an example of a real application, you can have a look at this <a href="http://imagej.net/Skeleton_analysis_video_tutorial" title="Skeleton analysis video tutorial"> video tutorial</a>.
+</p><p>The tutorial describes step by step how to:
+</p>
+<ul><li> Pre-process a 3D image to extract the relevant morphological information by
+<ul><li> removing the noise </li>
+<li> and binarizing</li></ul></li>
+<li> Extract the skeleton of a binary image with <a href="http://imagej.net/Skeletonize3D" title="Skeletonize3D">Skeletonize3D</a></li>
+<li> Analyze the resulting skeletons in the 3D image with <strong class="selflink">AnalyzeSkeleton</strong></li></ul>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="Visualization">Visualization</span></h2>
+<p>Using the <a href="http://imagej.net/3D_Viewer" title="3D Viewer">3D_Viewer</a> libraries we can easily display the results of both, the skeletonization and the analysis:
+</p>
+<table>
+<tr>
+<td style="vertical-align:top"><div class="thumb tright"><div class="thumbinner" style="width:227px;"><a href="http://imagej.net/File:Bat_cochlea_3D.gif" class="image"><img alt="" src="../../_images/2/2e/Bat_cochlea_3D.gif" width="225" height="214" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Bat_cochlea_3D.gif" class="internal" title="Enlarge"></a></div>Smooth (by 3D Gaussian filter) bat cochlea volume rendered in the viewer</div></div></div>
+</td>
+<td style="vertical-align:top"><div class="thumb tright"><div class="thumbinner" style="width:227px;"><a href="http://imagej.net/File:Movie_skeleton_rendering.gif" class="image"><img alt="" src="../../_images/a/aa/Movie_skeleton_rendering.gif" width="225" height="214" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Movie_skeleton_rendering.gif" class="internal" title="Enlarge"></a></div>3D skeleton of bat cochlea volume rendered in the viewer after voxel classification</div></div></div>
+</td>
+<td style="vertical-align:top"><div class="thumb tright"><div class="thumbinner" style="width:227px;"><a href="http://imagej.net/File:Movie_bat_skel.gif" class="image"><img alt="" src="../../_images/9/9e/Movie_bat_skel.gif" width="225" height="214" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://imagej.net/File:Movie_bat_skel.gif" class="internal" title="Enlarge"></a></div>Bat cochlea volume rendered in the viewer with its corresponding classified skeleton</div></div></div>
+</td></tr></table>
+<h2><span class="mw-headline" id="Scripting_AnalyzeSkeleton">Scripting AnalyzeSkeleton</span></h2>
+<p>AnalyzeSkeleton functionalities can also be called from scripts, making use of its library methods or performing the whole analysis in silent mode.  
+</p>
+<h3><span class="mw-headline" id="Using_silent_mode_from_scripts">Using silent mode from scripts</span></h3>
+<p>You can use AnalyzeSkeleton from scripts without displaying any of the results. That's useful if you want to use the results within the script without the user being annoyed by a lot of results tables popping up.
+</p><p>Here's an example in Javascript:
+</p>
+<pre class="brush:javascript">
+importPackage(Packages.ij);
+importPackage(Packages.sc.fiji.analyzeSkeleton);
+
+// Takes a binary image as input
+var imp = IJ.getImage(); // get current open image
+
+// Skeletonize the image
+IJ.run(imp, "Skeletonize (2D/3D)", "");
+
+// Initialize AnalyzeSkeleton_
+var skel = new AnalyzeSkeleton_();
+skel.calculateShortestPath = true;
+skel.setup("", imp);
+
+// Perform analysis in silent mode
+// (work on a copy of the ImagePlus if you don't want it displayed)
+// run(int pruneIndex, boolean pruneEnds, boolean shortPath, ImagePlus origIP, boolean silent, boolean verbose)
+var skelResult = skel.run(AnalyzeSkeleton_.NONE, false, true, null, true, false);
+
+// Read the results
+var shortestPaths = skelResult.getShortestPathList().toArray();
+var branchLengths = skelResult.getAverageBranchLength();
+var branchNumbers = skelResult.getBranches();
+
+var totalLength = 0;
+for (var i = 0; i &lt; branchNumbers.length; i++) {
+	totalLength += branchNumbers[i] * branchLengths[i];
+}
+
+var cumulativeLengthOfShortestPaths = 0;
+for (var i = 0; i &lt; shortestPaths.length; i++) {
+	cumulativeLengthOfShortestPaths += Number(shortestPaths[i]);
+}
+
+// Use the readout within the script
+IJ.log(totalLength);
+IJ.log(cumulativeLengthOfShortestPaths);
+</pre>
+<h3><span class="mw-headline" id="Pruning_branches_by_length">Pruning branches by length</span></h3>
+<p>The following <a href="http://imagej.net/Beanshell" class="mw-redirect" title="Beanshell">Beanshell</a> script prunes the branches of an input skeleton if they are under a certain length:
+</p>
+<pre class="brush:java">
+// @ImagePlus(label="Skeleton image", description="Binary image skeletonized with Skeletonize3D") image
+// @double(label="Length threshold", description="Minimum branch length to keep") threshold
+// @OUTPUT ImagePlus prunedImage
+
+import sc.fiji.analyzeSkeleton.AnalyzeSkeleton_;
+import sc.fiji.analyzeSkeleton.Edge;
+import sc.fiji.analyzeSkeleton.Point;
+import ij.IJ;
+
+// analyze skeleton
+skel = new AnalyzeSkeleton_();
+skel.setup("", image);
+skelResult = skel.run(AnalyzeSkeleton_.NONE, false, false, null, true, false);
+
+// create copy of input image
+prunedImage = image.duplicate();
+outStack = prunedImage.getStack();
+
+// get graphs (one per skeleton in the image)
+graph = skelResult.getGraph();
+
+// list of end-points
+endPoints = skelResult.getListOfEndPoints();
+
+for( i = 0&#160;; i &lt; graph.length; i++ )
+{
+	listEdges = graph[i].getEdges();
+
+	// go through all branches and remove branches under threshold
+	// in duplicate image
+	for( Edge e&#160;: listEdges )
+	{
+		p = e.getV1().getPoints();
+		v1End = endPoints.contains( p.get(0) );
+		p2 = e.getV2().getPoints();
+		v2End = endPoints.contains( p2.get(0) );
+		// if any of the vertices is end-point 
+		if( v1End || v2End )
+		{
+			if( e.getLength() &lt; threshold )
+			{
+				if( v1End )
+					outStack.setVoxel( p.get(0).x, p.get(0).y, p.get(0).z, 0 );
+				if( v2End )
+					outStack.setVoxel( p2.get(0).x, p2.get(0).y, p2.get(0).z, 0 );
+				for( Point p&#160;: e.getSlabs() )
+					outStack.setVoxel( p.x, p.y, p.z, 0 );
+			}
+		}
+	}
+}
+
+prunedImage.setTitle( image.getShortTitle() + "-pruned" );
+</pre>
+<p>Be aware that small branches might be created due to the elimination of end-points and slabs but not junctions (to prevent breaking branches above the threshold). So you might need to run the script a couple of times to remove all unwanted branches.
+</p>
+<h3><span class="mw-headline" id="Visualizing_the_skeleton_in_the_3D_viewer">Visualizing the skeleton in the 3D viewer</span></h3>
+<p>The following <a href="http://imagej.net/Beanshell" class="mw-redirect" title="Beanshell">Beanshell</a> script shows the voxel classification of the skeleton in the 3D viewer:
+</p>
+<pre class="brush:java">
+// @ImagePlus(label="Skeleton image", description="Binary image skeletonized with Skeletonize3D") image
+ 
+import sc.fiji.analyzeSkeleton.AnalyzeSkeleton_;
+import sc.fiji.analyzeSkeleton.Edge;
+import sc.fiji.analyzeSkeleton.Point;
+import ij.IJ;
+import ij3d.Image3DUniverse;
+import org.scijava.vecmath.Point3f;
+import org.scijava.vecmath.Color3f;
+ 
+// analyze skeleton
+skel = new AnalyzeSkeleton_();
+skel.setup("", image);
+skelResult = skel.run(AnalyzeSkeleton_.NONE, false, false, null, true, false);
+ 
+// get calibration
+pixelWidth = image.getCalibration().pixelWidth;
+pixelHeight = image.getCalibration().pixelHeight;
+pixelDepth = image.getCalibration().pixelDepth;
+ 
+// get graphs (one per skeleton in the image)
+graph = skelResult.getGraph();
+
+// create 3d universe
+univ = new Image3DUniverse();
+univ.show();
+
+// list of end-points
+endPoints = skelResult.getListOfEndPoints();
+// store their positions in a list
+endPointList = new ArrayList();
+for( Point p&#160;: endPoints )
+	endPointList.add( new Point3f(
+		(float)( p.x * pixelDepth ),
+		(float)( p.y * pixelHeight ),
+		(float)( p.z * pixelDepth ) ) );
+// add end-points to the universe as blue spheres
+univ.addIcospheres( endPointList, new Color3f( Color.BLUE ), 2, 1f, "End-points");
+
+// list of junction voxels
+junctions = skelResult.getListOfJunctionVoxels();
+// store their positions in a list
+junctionList = new ArrayList();
+for( Point p&#160;: junctions )
+	junctionList.add( new Point3f(
+		(float)( p.x * pixelDepth ),
+		(float)( p.y * pixelHeight ),
+		(float)( p.z * pixelDepth ) ) );
+// add junction voxels to the universe as magenta spheres
+univ.addIcospheres( junctionList, new Color3f( Color.MAGENTA ), 2, 1f, "Junctions");
+
+for( i = 0&#160;; i &lt; graph.length; i++ )
+{
+    listEdges = graph[i].getEdges();
+ 
+    // go through all branches and add slab voxels 
+    // as orange lines in the 3D universe
+    j=0;
+    for( Edge e&#160;: listEdges )
+    {
+    	branchPointList = new ArrayList();
+        for( Point p&#160;: e.getSlabs() )
+  			branchPointList.add( new Point3f(
+  				(float)( p.x * pixelDepth ),
+  				(float)( p.y * pixelHeight ),
+  				(float)( p.z * pixelDepth ) ) );
+        // add slab voxels to the universe as orange lines
+        univ.addLineMesh( branchPointList, new Color3f( Color.ORANGE ), "Branch-"+i+"-"+j, true );
+     	j++;    
+    }
+}
+</pre>
+<h2><span class="mw-headline" id="API_documentation">API documentation</span></h2>
+<p>The latest documentation of the code can be found here:
+</p><p><a rel="nofollow" class="external free" href="http://javadoc.imagej.net/Fiji/sc/fiji/analyzeSkeleton/package-summary.html">http://javadoc.imagej.net/Fiji/sc/fiji/analyzeSkeleton/package-summary.html</a>
+</p>
+<h2><span class="mw-headline" id="Changelog">Changelog</span></h2>
+<p>All changes can be seen in the <a rel="nofollow" class="external text" href="https://github.com/fiji/AnalyzeSkeleton/commits/master">GitHub source repository</a>.
+</p><p><b>2010/12/28</b>: Jan Eglinger added code to call the plugin from script in silent mode.
+</p><p><b>2010/09/27</b>: Added Huub Hovens's code to detect the shortest largest path in each skeleton and Michael Doube's code to prune the branches ending on end-points.
+</p><p><b>2010/08/26</b>: Fixed bug that was assigning wrong final vertices (V2) to the edges when visiting the trees from end-points if the branches were ending on already visited junctions. Reported by Peter C. Marks.
+</p><p><b>2010/01/12</b>: Thanks to Peter Marks, fixed bug to visit properly the trees when starting in junctions (they were not being added to the revisit list, what some times made some trees to be split).
+</p><p><b>2009/12/04</b>: Added quadruple point calculation.
+</p><p><b>2009/09/13</b>: Removed Log window and created Detailed information option and Branch information table.
+</p><p><b>2009/09/02</b>: Added capability to detect and prune skeleton cycles.
+</p><p><b>2009/08/10</b>: Fixed small bug to treat the special case of one single circular skeleton.
+</p><p><b>2009/08/06</b>: Fixed 2 bugs: calculation of branches between junctions and number of slab voxels in a circular tree.
+</p><p><b>2009/08/05</b>: Fixed bugs that slowed down the calculation of the number of actual junctions.
+</p><p><b>2009/06/19</b>: Fixed bugs in some calculations, increased the number of skeletons from 255 to 2¹⁵-1, and added new (previously untreated) cases.
+</p><p><b>2009/04/07</b>: Added different calculations for every skeleton in the image and some extra information in the log window.
+</p><p><b>2009/03/05</b>: Added maximum branch length calculation.
+</p><p><b>2008/11/19</b>: Added triple points calculation and fixed bug to avoid modifying the original image and preserve its calibration in the output image.
+</p><p><b>2008/11/16</b>: First release.
+</p>
+<h2><span class="mw-headline" id="References_and_citation">References and citation</span></h2>
+<p>If you need to <b>cite the plugin</b>, please do so by citing the following paper:
+</p>
+<ul><li> Ignacio Arganda-Carreras, Rodrigo Fernandez-Gonzalez, Arrate Munoz-Barrutia, Carlos Ortiz-De-Solorzano, <a rel="nofollow" class="external text" href="http://www3.interscience.wiley.com/journal/123322233/abstract">"3D reconstruction of histological sections: Application to mammary gland tissue"</a>, Microscopy Research and Technique, Volume 73, Issue 11, pages 1019–1029, October 2010.</li></ul>
+<p>The shortest path calculation and its applications have been published as:
+</p>
+<ul><li> G. Polder, H.L.E Hovens and A.J Zweers, Measuring shoot length of submerged aquatic plants using graph analysis (2010), In: Proceedings of the ImageJ User and Developer Conference, Centre de Recherche Public Henri Tudor, Luxembourg, 27-29 October, pp 172-177.</li></ul>
+<p><strong class="selflink">AnalyzeSkeleton</strong> makes also part of <a rel="nofollow" class="external text" href="http://bonej.org/">BoneJ</a>, a plugin for bone image analysis in <a rel="nofollow" class="external text" href="https://imagej.net/">ImageJ</a>:
+</p>
+<ul><li> Michael Doube, Michal M. Klosowski, Ignacio Arganda-Carreras, Fabrice P. Cordelieres, Robert P. Dougherty, Jonathan S. Jackson, Benjamin Schmid, John R. Hutchinson, Sandra J. Shefelbine, <a rel="nofollow" class="external text" href="http://dx.doi.org/10.1016/j.bone.2010.08.023">BoneJ: Free and extensible bone image analysis in ImageJ</a>, Bone, Volume 47, Issue 6, December 2010, Pages 1076-1079.</li></ul>
+<h2><span class="mw-headline" id="License">License</span></h2>
+<p>This program is <b>free software</b>; you can redistribute it and/or modify it under the terms of the <b>GNU General Public License</b> as published by the Free Software Foundation (<a rel="nofollow" class="external free" href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>).
+</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.  
+</p>
+<hr />
+
+<!-- 
+NewPP limit report
+Cached time: 20200714212536
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.240 seconds
+Real time usage: 0.366 seconds
+Preprocessor visited node count: 3699/1000000
+Preprocessor generated node count: 5349/1000000
+Post‐expand include size: 6468/2097152 bytes
+Template argument size: 1768/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  196.139      1 - -total
+ 98.05%  192.313      1 - Template:ComponentStats:sc.fiji:AnalyzeSkeleton
+ 96.91%  190.072      1 - Template:Component
+ 62.50%  122.582     13 - Template:Person
+  9.23%   18.106      1 - Template:Project
+  1.91%    3.746      1 - Template:GitHub
+  1.89%    3.712      1 - Template:Bc
+  1.28%    2.512      1 - Template:Maven
+  1.17%    2.293      1 - Template:DevStatus
+  1.07%    2.102      1 - Template:SupportStatus
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=AnalyzeSkeleton&amp;oldid=41200">http://imagej.net/index.php?title=AnalyzeSkeleton&amp;oldid=41200</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=AnalyzeSkeleton&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="http://imagej.net/Category:Skeleton" title="Category:Skeleton">Skeleton</a></li><li><a href="http://imagej.net/Category:Analysis" title="Category:Analysis">Analysis</a></li><li><a href="http://imagej.net/Category:Neuroanatomy" title="Category:Neuroanatomy">Neuroanatomy</a></li><li><a href="http://imagej.net/Category:Citable" title="Category:Citable">Citable</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=AnalyzeSkeleton" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=AnalyzeSkeleton" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/AnalyzeSkeleton" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/AnalyzeSkeleton" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=AnalyzeSkeleton&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=AnalyzeSkeleton&amp;oldid=41200" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=AnalyzeSkeleton&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":646});});</script>
+		</body>
+		</html>
+		

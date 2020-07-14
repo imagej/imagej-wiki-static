@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Working with ImageJ - ImageJ</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"User_Guide/Working_with_ImageJ","wgTitle":"User Guide/Working with ImageJ","wgCurRevisionId":41412,"wgRevisionId":41412,"wgArticleId":3371,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Pages with broken file links"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"User_Guide/Working_with_ImageJ","wgRelevantArticleId":3371,"wgRequestId":"7a51121b1fbb5f2b8d492b76","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgPreferredVariant":"en","fancytree_path":"/extensions/TreeAndMenu/fancytree"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user.cssprefs":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","skins.erudite":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1ku9xth",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup"]);});</script>
+<link rel="stylesheet" href="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cskins.erudite&amp;only=styles&amp;skin=erudite.css"/>
+<script async="" src="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=erudite"></script>
+<link rel="stylesheet" href="../../extensions/TreeAndMenu/fancytree/fancytree.css"/><link rel="stylesheet" href="../../extensions/TreeAndMenu/suckerfish/suckerfish.css"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="../../load.php%3Fdebug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=erudite.css"/>
+<meta name="generator" content="MediaWiki 1.28.0"/>
+<meta name="description" content="This part introduces some basic aspects of ImageJ so that you can use the software more efficiently. It also introduces some important terms and concepts used throughout this guide. You may skip it if you already use the program efficiently and are familiar with terms such as Virtual Stacks↓, Hyperstacks↓, Pseudocolor Images↓, Color Composite Images↓ or Composite Selections↓."/>
+<link rel="shortcut icon" href="../../skins/ij2.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+	<meta property="og:type" content="article"/>
+
+	<meta property="og:site_name" content="ImageJ"/>
+
+	<meta property="og:title" content="User Guide/Working with ImageJ"/>
+
+	<meta property="og:description" content="This part introduces some basic aspects of ImageJ so that you can use the software more efficiently. It also introduces some important terms and concepts used throughout this guide. You may skip it if you already use the program efficiently and are familiar with terms such as Virtual Stacks↓, Hyperstacks↓, Pseudocolor Images↓, Color Composite Images↓ or Composite Selections↓."/>
+
+	<meta property="og:url" content="http://imagej.net/User_Guide/Working_with_ImageJ"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-User_Guide_Working_with_ImageJ rootpage-User_Guide_Working_with_ImageJ skin-erudite action-view">
+		<div class="mw-jump">
+			<a href="Working_with_ImageJ.html#bodyContent">Skip to content</a>, 			<a href="Working_with_ImageJ.html#search">Skip to search</a>
+		</div>
+
+		<div id="top-wrap" role="banner">
+			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<div id="tagline">From ImageJ</div>
+
+			<a id="menubutton" href="Working_with_ImageJ.html#menu">Menu</a>
+			<div id="nav" role="navigation">
+			<ul id='menu'>
+<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
+<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+</ul>
+			</div>
+		</div>
+
+		<div id="mw-js-message"></div>
+		
+		<div id="main" role="main">
+			<div id="nav-meta">
+			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/User_Guide/Working_with_ImageJ" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:User_Guide/Working_with_ImageJ&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=User_Guide/Working_with_ImageJ&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=User_Guide/Working_with_ImageJ&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+
+			<div id="bodyContent">
+				<h1>Working with ImageJ</h1>
+				
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><br />
+This part introduces some basic aspects of ImageJ so that you can use the software more efficiently. It also introduces some important terms and concepts used throughout this guide. You may skip it if you already use the program efficiently and are familiar with terms such as <a href="Working_with_ImageJ.html#sub:Virtual-Stacks">Virtual Stacks↓</a>, <a href="Working_with_ImageJ.html#sub:Hyperstacks-Intro">Hyperstacks↓</a>, <a href="Working_with_ImageJ.html#sub:Pseudocolor-Images">Pseudocolor Images↓</a>, <a href="Working_with_ImageJ.html#sub:Color-Composites">Color Composite Images↓</a> or <a href="Working_with_ImageJ.html#sub:Composite-selections">Composite Selections↓</a>.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Working_with_ImageJ.html#Using_Keyboard_Shortcuts"><span class="tocnumber">1</span> <span class="toctext">Using Keyboard Shortcuts</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Working_with_ImageJ.html#Finding_Commands"><span class="tocnumber">2</span> <span class="toctext">Finding Commands</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Working_with_ImageJ.html#Undo_and_Redo"><span class="tocnumber">3</span> <span class="toctext">Undo and Redo</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Working_with_ImageJ.html#Image_Types_and_Formats"><span class="tocnumber">4</span> <span class="toctext">Image Types and Formats</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="Working_with_ImageJ.html#Native_Formats"><span class="tocnumber">4.1</span> <span class="toctext">Native Formats</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Working_with_ImageJ.html#Non--native_Formats"><span class="tocnumber">4.2</span> <span class="toctext">Non--native Formats</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Working_with_ImageJ.html#Stacks.2C_Virtual_Stacks_and_Hyperstacks"><span class="tocnumber">5</span> <span class="toctext">Stacks, Virtual Stacks and Hyperstacks</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="Working_with_ImageJ.html#Stacks"><span class="tocnumber">5.1</span> <span class="toctext">Stacks</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Working_with_ImageJ.html#Virtual_Stacks"><span class="tocnumber">5.2</span> <span class="toctext">Virtual Stacks</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Working_with_ImageJ.html#Hyperstacks"><span class="tocnumber">5.3</span> <span class="toctext">Hyperstacks</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="Working_with_ImageJ.html#Color_Images.E2.80.8A.5BD.5D.E2.80.8A.E2.80.8A.5BD.5D.E2.80.8AThis_section_is_partially_extracted_from_the_MBF.E2.80.89ImageJ_online_manual_at_http:.2F.2Fwww.macbiophotonics.ca.2Fimagej.2Fcolour_image_processi.htm."><span class="tocnumber">6</span> <span class="toctext">Color Images<span><span> [D] </span><span><span> [D] </span>This section is partially extracted from the MBF ImageJ online manual at http://www.macbiophotonics.ca/imagej/colour_image_processi.htm.</span></span></span></a>
+<ul>
+<li class="toclevel-2 tocsection-12"><a href="Working_with_ImageJ.html#Pseudocolor_Images"><span class="tocnumber">6.1</span> <span class="toctext">Pseudocolor Images</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Working_with_ImageJ.html#True_Color_Images"><span class="tocnumber">6.2</span> <span class="toctext">True Color Images</span></a>
+<ul>
+<li class="toclevel-3 tocsection-14"><a href="Working_with_ImageJ.html#Color_Spaces_and_Color_Separation"><span class="tocnumber">6.2.1</span> <span class="toctext">Color Spaces and Color Separation</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="Working_with_ImageJ.html#Conveying_Color_Information.E2.80.8A.5BF.5D.E2.80.8A.E2.80.8A.5BF.5D.E2.80.8AThis_section_is_partially_extracted_from_Masataka_Okabe_and_Kei_Ito.2C_Color_Universal_Design_.28CUD.29_.E2.80.94_How_to_make_figures_and_presentations_that_are_friendly_to_Colorblind_people.2C_http:.2F.2Fjfly.iam.u-tokyo.ac.jp.2Fcolor.2F.2C_accessed_2009.01.15"><span class="tocnumber">6.2.2</span> <span class="toctext">Conveying Color Information<span><span> [F] </span><span><span> [F] </span>This section is partially extracted from Masataka Okabe and Kei Ito, <i>Color Universal Design (CUD) — How to make figures and presentations that are friendly to Colorblind people</i>, http://jfly.iam.u-tokyo.ac.jp/color/, accessed 2009.01.15</span></span></span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-16"><a href="Working_with_ImageJ.html#Color_Composite_Images"><span class="tocnumber">6.3</span> <span class="toctext">Color Composite Images</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-17"><a href="Working_with_ImageJ.html#Selections"><span class="tocnumber">7</span> <span class="toctext">Selections</span></a>
+<ul>
+<li class="toclevel-2 tocsection-18"><a href="Working_with_ImageJ.html#Manipulating_ROIs"><span class="tocnumber">7.1</span> <span class="toctext">Manipulating ROIs</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="Working_with_ImageJ.html#Composite_Selections"><span class="tocnumber">7.2</span> <span class="toctext">Composite Selections</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="Working_with_ImageJ.html#Selections_With_Sub-pixel_Coordinates.E2.86.93.5CfeatureSelections_with_sub-pixel_resolution"><span class="tocnumber">7.3</span> <span class="toctext">Selections With Sub-pixel Coordinates↓<span>\feature</span>Selections with sub-pixel resolution</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-21"><a href="Working_with_ImageJ.html#Overlays.5B.5B.7C.5D.5D.5CimprovementImproved_handling_of_Overlays"><span class="tocnumber">8</span> <span class="toctext">Overlays[[|]]<span>\improvement</span>Improved handling of Overlays</span></a></li>
+<li class="toclevel-1 tocsection-22"><a href="Working_with_ImageJ.html#3D_Volumes"><span class="tocnumber">9</span> <span class="toctext">3D Volumes</span></a></li>
+<li class="toclevel-1 tocsection-23"><a href="Working_with_ImageJ.html#Settings_and_Preferences.5B.5B.7C.5D.5D.5Cimprovement"><span class="tocnumber">10</span> <span class="toctext">Settings and Preferences[[|]]<span>\improvement</span></span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Using_Keyboard_Shortcuts">Using Keyboard Shortcuts</span></h2>
+<p>You’ll learn more and more <a href="Working_with_ImageJ.html#index-Keyboard">↓</a><a href="Working_with_ImageJ.html#index-Shortcuts">↓shortcut</a> keys as you use ImageJ, because (almost) all shortcuts are listed throughout ImageJ menus. Similarly, in this guide each command has its shortcut key listed on its name (flanked by square brackets). Please note that the notation for these key-bindings is case sensitive, i.e., Shift-modifiers are not explicitly mentioned (a capital <span class="sans">A</span> means <span class="sans">Shift--A</span>) and assumes that <i>Require control key for shortcuts</i> in <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ Options ▷ <a href="Working_with_ImageJ.html#sub:Misc...">Misc…↓</a></span></span></span> is unchecked (i.e., except when using the IJ <a href="Working_with_ImageJ.html#sub:ImageJ-Macro-Editor">Editor↓</a> or the <a href="Working_with_ImageJ.html#sec:Text-Tool">Text Tool↓</a>, you won’t have to hold down the Control key to use menu shortcuts). For example, the command <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ <a href="Working_with_ImageJ.html#sub:Invert-.5BI.5D">Invert [I]↓</a></span></span></span> can be evoked by <span class="Keystroke">Shift</span> <span class="Keystroke">I</span> or <span class="Keystroke">Ctrl</span> <span class="Keystroke">Shift</span> <span class="Keystroke">I</span> if <i>Require control key for shortcuts</i> is checked. The full list of ImageJ shortcuts (<i>see</i> <a href="Working_with_ImageJ.html#sec:Keyboard-Shortcuts">Keyboard Shortcuts↓</a>) can be retrieved at any time using the <span class="sans"><span class="menuitem"><span class="sans">Plugins ▷ Utilities ▷ <a href="Working_with_ImageJ.html#sub:List-Shortcuts...">List Shortcuts…↓</a></span></span></span> command.
+</p><p>There are three <a href="Working_with_ImageJ.html#index-Modifier-keys">↓modifier</a> keys in ImageJ:
+</p>
+<div class="Labeling">
+<p><b>Control</b> (<b>Command Key</b><a href="Working_with_ImageJ.html#index-Command-key">↓</a> on Apple keyboards) Denoted by ‘Ctrl’<a href="Working_with_ImageJ.html#nom-ctrl">↓</a> or <span class="Keystroke">Ctrl</span> in this document. Although a control key is typically present on Apple keyboards, on a Macintosh computer running ImageJ the Command key <span class="Keystroke"><span class="unknown">\cmd</span>  Cmd</span> replaces the functionality of the Control key of other operating systems. For sake of simplification, ‘Ctrl’ will always refer to both throughout this guide.
+</p>
+</div>
+<div class="Labeling">
+<p><b>Shift</b> Denoted by ‘Shift’<a href="Working_with_ImageJ.html#nom-shift">↓</a> or <span class="Keystroke">Shift</span> in this document.
+</p>
+</div>
+<div class="Labeling">
+<p><b>Alt</b> Denoted by ‘Alt’<a href="Working_with_ImageJ.html#nom-alt">↓</a> or <span class="Keystroke">Alt</span> in this document. This is also the ‘Option’ or ‘Meta’ key on many keyboards. In ImageJ, it is also used to type special unit symbols such as <span class="formula"><span class="unknown">\micro</span></span> (<span class="Keystroke">Alt</span><span class="Keystroke">M</span>) or <span class="formula"><span class="unknown">\angstrom</span></span> (<span class="Keystroke">Alt</span><span class="Keystroke">Shift</span><span class="Keystroke">A</span>).
+</p>
+</div>
+<div class="See">
+<p><a href="Working_with_ImageJ.html#sec:Keyboard-Shortcuts">Keyboard Shortcuts↓</a>, <span class="menuitem">Plugins ▷ <a href="Working_with_ImageJ.html#sub:Shortcuts">Shortcuts ▷ ↓</a></span>
+</p>
+</div>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="infobox">
+<div class="caption">
+<p>float-infobox2 Frontmost Window and Window Activation
+</p>
+</div>
+<p>In ImageJ, all operations are performed on the active (frontmost) image (which has its title bar highlighted). If a window is already open it will activate when its opening command is re-run, e.g., if the B&amp;C window is already opened (<span class="menuitem">Image ▷ Adjust ▷ <a href="Working_with_ImageJ.html#sub:Brightness.2FContrast....5BC.5D">Brightness/Contrast… [C]↓</a></span>), pressing its keyboard shortcut ( <span class="Keystroke">Shift</span> <span class="Keystroke">C</span> ) will activate it.
+</p>
+<div class="medskip">
+<p><br />
+</p>
+</div>
+<div class="PlainVisible">
+<p>Pressing <span class="Keystroke">Enter</span> on any image will bring the [[#fig:The-ImageJ-window|]]
+</p>
+<div class="PlainVisible">
+<p>Main ImageJ window
+</p>
+</div>
+<p>↓ to the foreground. In addition, it is also possible to permanently place the main window above all other windows (<i>see</i> <a href="Working_with_ImageJ.html#sub:FloatingMainWin">Floating Behavior of Main Window↓</a>).
+</p>
+</div>
+</div>
+</div>
+<h2><span class="mw-headline" id="Finding_Commands">Finding Commands</span></h2>
+<p>Navigating through the extensive list of ImageJ commands, macros and plugins may be quite cumbersome. Through its built-in Command Finder / Launcher<span class="bibcites">[[[#biblio-48|48]]]</span>, ImageJ offers an expedite alternative that allows you to retrieve commands extremely fast: <span class="sans"><span class="menuitem"><span class="sans">Plugins ▷ Utilities ▷ <a href="Working_with_ImageJ.html#sub:Command-Finder">Find Commands… [l]↓</a></span></span></span>.
+</p><p>In addition, ImageJ features a find function that locates macros, scripts and plugins source (<span class="Filename">.java</span>) files on your computer: the <span class="sans"><span class="menuitem"><span class="sans">Plugins ▷ Utilities ▷ <a href="Working_with_ImageJ.html#sub:Search..."><span class="menuitem">Search…</span>↓</a></span></span></span> command. Because most of IJ source files contain circumstanced comments, you can use this utility to retrieve files related not only to a image processing routine (e.g., <i>background</i> or <i>co-localization</i>) but also to a practical context such as <i>radiogram</i>, <i>cell</i> or <i>histology</i>. Indeed, ImageJ source files contain detailed annotations useful to both developers and regular users that want to know more about ImageJ routines and algorithms.
+</p><p><span class="sans"><span class="menuitem"><span class="sans"><a href="Working_with_ImageJ.html#sub:Search..."><span class="menuitem">Search…</span>↓</a></span></span></span> and <span class="sans"><span class="menuitem"><span class="sans"><a href="Working_with_ImageJ.html#sub:Command-Finder">Find Commands… [l]↓</a></span></span></span> are described in detail in <span class="sans"><span class="menuitem"><span class="sans">Plugins ▷ <a href="Working_with_ImageJ.html#sub:Utilities">Utilities ▷ ↓</a></span></span></span>.
+</p>
+<div class="float">
+<div class="figure">
+<div class="center">
+<p><span class="hspace" style="width: 11.1em;"></span><span class="sans"><span class="small">Plugins ▷ Utilities ▷ <a href="Working_with_ImageJ.html#sub:Command-Finder">Find Commands… [l]↓</a></span></span>
+</p>
+<div class="vspace" style="height: 3pt;">
+<p><br />
+</p>
+</div>
+</div>
+<div class="PlainVisible">
+<div class="center">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/CommandFinderAndSearch.png" class="new" title="File:Images/CommandFinderAndSearch.png">figure images/CommandFinderAndSearch.png</a>
+</p>
+</div>
+</div>
+<div class="PlainVisible">
+<div class="center">
+<p><span class="sans"><span class="small">Plugins ▷ Utilities ▷ <a href="Working_with_ImageJ.html#sub:Search..."><span class="menuitem">Search…</span>↓</a></span></span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="See">
+<p><a href="Working_with_ImageJ.html#sub:Control-Panel...">Control Panel… [U]↓</a>, <a href="Working_with_ImageJ.html#sec:Keyboard-Shortcuts">Keyboard Shortcuts↓</a> and <span class="Filename"><a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/macros/SourceCodeRetriever.txt">SourceCodeRetriever</a></span>, a macro that searches for a menu entry and retrieves the source file of the respective command
+</p>
+</div>
+<h2><span class="mw-headline" id="Undo_and_Redo">Undo and Redo</span></h2>
+<p>Probably the first thing you will notice is that ImageJ does not have a large <a href="Working_with_ImageJ.html#index-Undo">↓undo</a>/redo buffer. Undo (<span class="sans"><span class="menuitem"><span class="sans">Edit ▷ <a href="Working_with_ImageJ.html#sub:Undo-.5Bz.5D">Undo [z]↓</a></span></span></span>) is currently limited to the most recent image editing / filtering operation. With time you will appreciate that this is necessary to minimize memory overhead. Nevertheless, with IJ 1.45 and later, <span class="sans"><span class="menuitem"><span class="sans"><a href="Working_with_ImageJ.html#sub:Undo-.5Bz.5D">Undo [z]↓</a></span></span></span> is, in most cases, undoable and can be applied to multiple images if <i>Keep multiple undo buffers</i> is checked in <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ Options ▷ <a href="Working_with_ImageJ.html#sub:Memory-.26-Threads...">Memory &amp; Threads…↓</a></span></span></span>
+</p><p>If you cannot recover from a mistake, you can always use <span class="sans"><span class="menuitem"><span class="sans">File ▷ <a href="Working_with_ImageJ.html#sub:Revert.5Br.5D">Revert [r]↓</a></span></span></span> to reset the image lo its last saved state. For selections, <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ Selection ▷ <a href="Working_with_ImageJ.html#sub:Restore-Selection-.5BE.5D">Restore Selection [E]↓</a></span></span></span> can be used to recover any misdealt selection.
+</p><p>In ImageJ the equivalent to <a href="Working_with_ImageJ.html#index-Redo">↓</a>‘Redo’ is the <span class="sans"><span class="menuitem"><span class="sans">Process ▷ <a href="Working_with_ImageJ.html#sub:Repeat-Command-.5BR.5D">Repeat Command [R]↓</a></span></span></span>, that re-runs the previous used command (skipping <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ <a href="Working_with_ImageJ.html#sub:Undo-.5Bz.5D">Undo [z]↓</a></span></span></span> and <span class="sans"><span class="menuitem"><span class="sans">File ▷ <a href="Working_with_ImageJ.html#sub:Open...">Open… [o]↓</a></span></span></span> commands).
+</p>
+<div class="See">
+<p><span class="sans"><span class="menuitem"><span class="sans">Plugins ▷ Utilities ▷ <a href="Working_with_ImageJ.html#sub:Reset...">Reset…↓</a></span></span></span>, <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=plugin:utilities:multi_undo:start">Multi Undo</a> plugin
+</p>
+</div>
+<h2><span class="mw-headline" id="Image_Types_and_Formats">Image Types and Formats</span></h2>
+<p><a href="Working_with_ImageJ.html#index-Image-types">↓</a>Digital Images are two-dimensional grids of pixel<a href="Working_with_ImageJ.html#nom-pixel">↓</a> intensities values with the width and height of the image being defined by the number of pixels in <span class="formula"><i>x</i></span> (rows) and <span class="formula"><i>y</i></span> (columns) direction. Thus, pixels (picture elements) are the smallest single components of images, holding numeric values — pixel intensities — that range between black and white. The characteristics of this range, i.e., the number of unique intensity (brightness) values that can exist in the image is defined as the bit<a href="Working_with_ImageJ.html#nom-bit">↓</a>--depth of the image and specifies the level of precision in which intensities are coded, e.g.: A 2--bit image has <span class="formula">2<sup>2</sup> = 4</span> tones: 00 (black), 01 (gray), 10 (gray), and 11 (white). A 4--bit image has <span class="formula">2<sup>4</sup> = 16</span> tones ranging from 0000 (0) to 1111 (16), etc. In terms of bits per pixel (bpp<a href="Working_with_ImageJ.html#nom-bpp">↓</a>), the most frequent types of images (<span class="menuitem">Image ▷ <a href="Working_with_ImageJ.html#sub:Type">Type ▷ ↓</a></span>) that ImageJ deals with are (<a href="Working_with_ImageJ.html#index-ImageJ2">↓</a><a href="Working_with_ImageJ.html#sub:ImageJ2intro">ImageJ2↑</a> supports <a rel="nofollow" class="external text" href="http://imagejdev.org/imagej2-pixel-types">many more types of image data</a>):
+</p>
+<div class="Labeling">
+<p><b>8--bit</b> Images that can display 256 (<span class="formula">2<sup>8</sup></span>) gray levels (integers only).
+</p>
+</div>
+<div class="Labeling">
+<p><b>16--bit</b> Images that can display 65, 536 (<span class="formula">2<sup>16</sup></span>) gray levels (integers only).
+</p>
+</div>
+<div class="Labeling">
+<p><b>32--bit</b> Images that can display 4, 294, 967, 296 (<span class="formula">2<sup>32</sup></span>) gray levels (real numbers). In 32--bit images, pixels are described by <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Floating_point">floating point</a> values and can have<span class="versalitas"> any</span> intensity value including <i>NaN</i><a href="Working_with_ImageJ.html#nom-nan">↓</a> (Not a Number).
+</p>
+</div>
+<div class="Labeling">
+<p><b>RGB Color</b> <a href="Working_with_ImageJ.html#sec:Color-Images">Color Images↓</a> that can display 256 values in the Red, Green and Blue channel. These are 24--bit (<span class="formula">2<sup>3 × 8</sup></span>) images. RGB<a href="Working_with_ImageJ.html#nom-rgb">↓</a> color images can also be 32--bit color images (24--bit color images with additional eight bits coding alpha blending values, i.e., transparency).
+</p>
+</div>
+<h3><span class="mw-headline" id="Native_Formats">Native Formats</span></h3>
+<p>Natively (i.e. without the need of third-party plugins) ImageJ opens the following formats: <b>TIFF</b><a href="Working_with_ImageJ.html#nom-tiff">↓</a>, <b>GIF</b><a href="Working_with_ImageJ.html#nom-gif">↓</a>, <b>JPEG</b><a href="Working_with_ImageJ.html#nom-jpeg">↓</a>, <b>PNG</b><a href="Working_with_ImageJ.html#nom-png">↓</a>, <b>DICOM</b><a href="Working_with_ImageJ.html#nom-dicom">↓</a>, <b>BMP</b><a href="Working_with_ImageJ.html#nom-bmp">↓</a>, <b>PGM</b><a href="Working_with_ImageJ.html#nom-pgm">↓</a> and <b>FITS</b><a href="Working_with_ImageJ.html#nom-fits">↓</a>. <a href="Working_with_ImageJ.html#index-Image-formats-Native">↓</a>Many more formats are supported with the aid of plugins. These are discussed in <a href="Working_with_ImageJ.html#sub:Non-native-Supported-Formats">Non--native Formats ↓</a>.
+</p>
+<div class="Labeling">
+<p><b>TIFF</b> (Tagged Image File Format) is the ‘default’ format of ImageJ (cf. <span class="sans"><span class="menuitem"><span class="sans">File ▷ <a href="Working_with_ImageJ.html#sub:Save.5Bs.5D">Save [s]↓</a></span></span></span>). Images can be 1--bit, 8--bit, 16--bit (unsigned<span class="FootOuter"><span class="SupFootMarker"> [C] </span><span class="HoverFoot"><span class="SupFootMarker"> [C] </span>A numeric variable is signed if it can represent both positive and negative numbers, and unsigned if it can only represent positive numbers.</span></span>), 32--bit (real) or RGB color. <a href="Working_with_ImageJ.html#index-TIFF">↓</a>TIFF files with multiple images of the same type and size open as <a href="Working_with_ImageJ.html#sub:Stacks-Intro">Stacks↓</a> or <a href="Working_with_ImageJ.html#sub:Hyperstacks-Intro">Hyperstacks↓</a>. ImageJ opens <a href="Working_with_ImageJ.html#index-Lossless-compression">↓lossless</a> compressed TIFF files (<i>see</i> <a href="Working_with_ImageJ.html#infobox:Formats">3↓</a> <a href="Working_with_ImageJ.html#infobox:Formats">Image Types: Lossy Compression and Metadata↓</a>) by the LZW<a href="Working_with_ImageJ.html#nom-lzw">↓</a><a href="Working_with_ImageJ.html#index-LZW-compression">↓</a>, <a href="Working_with_ImageJ.html#index-PackBits-compression">↓</a>PackBits and <a href="Working_with_ImageJ.html#index-ZIP-Lossless-compression">↓</a>ZIP (<a href="Working_with_ImageJ.html#index-Deflate">↓</a>Deflate/Inflate) <span class="bibcites">[[[#biblio-2|2]]]</span> compression schemes. In addition, TIFF files can be opened and saved as <a href="Working_with_ImageJ.html#index-ZIP-Archived-TIFF-files">↓</a>ZIP archives.<br />
+Tiff tags and information needed to import the file (number of images, offset to first images, gap between images) are printed to the <a href="Working_with_ImageJ.html#sec:Log-Window">Log Window↓</a> when ImageJ is running in <i>Debug Mode</i> (<span class="menuitem">Edit ▷ Options ▷ <a href="Working_with_ImageJ.html#sub:Misc...">Misc…↓</a></span>, <i>see</i> <a href="Working_with_ImageJ.html#sec:Settings-and-Preferences">Settings and Preferences↓</a>).
+</p>
+</div>
+<div class="Labeling">
+<p><b>DICOM</b> (Digital Imaging and Communications in Medicine) is a standard popular in the medical imaging community. Support in ImageJ is limited to uncompressed <a href="Working_with_ImageJ.html#index-DICOM">↓</a>DICOM files. DICOM files containing multiple images open as <a href="Working_with_ImageJ.html#sub:Stacks-Intro">Stacks↓</a>.<br />
+Use <span class="sans"><span class="menuitem"><span class="sans">Image ▷ [[#sub:Show-Info...|]]</span></span></span>
+</p>
+<div class="PlainVisible">
+<p><span class="menuitem"></span>
+</p>
+<div class="PlainVisible">
+<p>Show Info… [i]
+</p>
+</div>
+</div>
+<p>↓ to display the DICOM header information. A DICOM sequence can be opened using <span class="sans"><span class="menuitem"><span class="sans">File ▷ Import ▷ <a href="Working_with_ImageJ.html#sub:Image-Sequence..."><span class="menuitem">Image Sequence…</span>↓</a></span></span></span> or by dragging and dropping the folder on the ‘ImageJ’ window. Imported sequences are sorted by image number instead of filename and the tags are preserved when DICOM images are saved in TIFF format. ImageJ supports custom DICOM dictionaries, such as the one at <a rel="nofollow" class="external free" href="http://imagej.nih.gov/ij/download/docs/DICOM_Dictionary.txt">http://imagej.nih.gov/ij/download/docs/DICOM_Dictionary.txt</a>. More information can be found at the <a rel="nofollow" class="external text" href="http://www.cabiatl.com/mricro/dicom/index.html">Center for Advanced Brain Imaging</a>.
+</p>
+</div>
+<div class="Labeling">
+<p><b>FITS</b> (Flexible Image Transport System) image is the format adopted by the astronomical community for data interchange and archival storage. Use <span class="sans"><span class="menuitem"><span class="sans">Image ▷ [[#sub:Show-Info...|]]</span></span></span>
+</p>
+<div class="PlainVisible">
+<p><span class="menuitem"></span>
+</p>
+<div class="PlainVisible">
+<p>Show Info… [i]
+</p>
+</div>
+</div>
+<p>↓ to display the <a href="Working_with_ImageJ.html#index-FITS">↓</a>FITS header. More information <a rel="nofollow" class="external text" href="http://fits.gsfc.nasa.gov">here</a>.
+</p>
+</div>
+<div class="Labeling">
+<p><b>PGM</b> (<a href="Working_with_ImageJ.html#index-PGM">↓</a>Portable GrayMap), <b>PBM<a href="Working_with_ImageJ.html#nom-pbm">↓</a></b> (Portable BitMap) and <b>PPM<a href="Working_with_ImageJ.html#nom-ppm">↓</a></b> (Portable PixMap) are simple image formats that use an ASCII<a href="Working_with_ImageJ.html#nom-ascii">↓</a> header. More information <a rel="nofollow" class="external text" href="http://local.wasp.uwa.edu.au/~pbourke/dataformats/ppm/">here</a>.
+</p>
+</div>
+<div class="Labeling">
+<p><b>AVI</b> (Audio Video Interleave) is a container format which can contain data encoded in many different ways. ImageJ only supports uncompressed <a href="Working_with_ImageJ.html#index-AVI">↓</a>AVIs, various <a href="Working_with_ImageJ.html#index-YUV">↓</a>YUV 4:2:2 compressed formats, and <a href="Working_with_ImageJ.html#index-PNG">↓</a>PNG or <a href="Working_with_ImageJ.html#index-JPEG">↓</a>JPEG-encoded individual frames. Note that most <a href="Working_with_ImageJ.html#index-MJPG">↓</a>MJPG<a href="Working_with_ImageJ.html#nom-mjpg">↓</a> (motion-JPEG) formats are not read correctly. Attempts to open AVIs in other formats will fail.
+</p>
+</div>
+<div class="See">
+<p><a href="Working_with_ImageJ.html#sub:Non-native-Supported-Formats">Non--native Formats ↓</a>, <a href="Working_with_ImageJ.html#infobox:Formats">3↓</a> <a href="Working_with_ImageJ.html#infobox:Formats">Image Types: Lossy Compression and Metadata↓</a>, <a href="Working_with_ImageJ.html#infobox:JpegAlert">11↓</a> <a href="Working_with_ImageJ.html#infobox:JpegAlert">Warning on JPEG Compression↓</a>
+</p>
+</div>
+<h3><span class="mw-headline" id="Non--native_Formats">Non--native Formats</span></h3>
+<p>When opening a file, ImageJ first checks whether it can natively handle the format. <a href="Working_with_ImageJ.html#index-Image-formats-Non-native">↓</a>If ImageJ does not recognize the type of file it calls for the appropriate reader plugin using <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/plugins/file-handler.html">HandleExtraFileTypes</a>, a plugin bundled with ImageJ. If that fails, it tries to open the file using the <a href="Working_with_ImageJ.html#index-OME-Bio-Formats">↓</a><a href="Working_with_ImageJ.html#index-LOCI-Bio-Formats">↓</a><a href="Working_with_ImageJ.html#index-Bio-formats">↓</a><a rel="nofollow" class="external text" href="http://loci.wisc.edu/software/bio-formats">OME Bio-Formats library</a> (if present), a remarkable plugin that supports more than <a rel="nofollow" class="external text" href="http://loci.wisc.edu/bio-formats/formats">one hundred of the most common</a> file formats used in microscopy. If nevertheless the file cannot be opened, an error message is displayed.
+</p><p>Because both these plugins are under active development, it is important that you keep them updated. The OME Bio-Formats library can be updated using its self-updating plugin (<span class="menuitem">Plugins ▷ LOCI ▷ Update LOCI Plugin…</span>) or Fiji↑’s built-in updater (<span class="menuitem">Help ▷ Update Fiji…</span>). The following websites provide more information on the OME Bio-Formats:
+</p>
+<ul><li> <a rel="nofollow" class="external free" href="http://loci.wisc.edu/bio-formats/imagej">http://loci.wisc.edu/bio-formats/imagej</a></li>
+<li> <a rel="nofollow" class="external free" href="https://fiji.sc/Bio-Formats">https://fiji.sc/Bio-Formats</a></li>
+<li> <a rel="nofollow" class="external free" href="http://loci.wisc.edu/bio-formats/using-bio-formats">http://loci.wisc.edu/bio-formats/using-bio-formats</a></li></ul>
+<p>In addition, the ImageJ web site lists <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/plugins/#io">more than sixty plugins</a> that recognize more ‘exotic’ file formats. The ImageJ Documentation Portal also maintains a (somewhat outdated) <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=faq:general:which_file_formats_are_supported_by_imagej">list of file formats</a> that are supported by ImageJ.
+</p>
+<div class="See">
+<p><a href="Working_with_ImageJ.html#sub:Native-Formats">Native Formats↑</a>, <span class="sans"><span class="menuitem"><span class="sans">File ▷ <a href="Working_with_ImageJ.html#sub:Import">Import ▷ ↓</a></span></span></span>, <a href="Working_with_ImageJ.html#infobox:Formats">3↓</a> <a href="Working_with_ImageJ.html#infobox:Formats">Image Types: Lossy Compression and Metadata↓</a>, <a href="Working_with_ImageJ.html#infobox:JpegAlert">11↓</a> <a href="Working_with_ImageJ.html#infobox:JpegAlert">Warning on JPEG Compression↓</a>, <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/plugins/#acq">Acquisition plugins</a>, <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/plugins/#io">Input/Output plugins</a>
+</p>
+</div>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="infobox">
+<div class="caption">
+<p>float-infobox3 Image Types: Lossy Compression and Metadata
+</p>
+</div>
+<p>Two critical aspects to keep in mind when converting images:
+</p>
+<div class="Description">
+<p><span class="Description-entry">[[|]]</span> [[|]]Lossy compression Transcoding an image into a format that uses <a href="Working_with_ImageJ.html#index-Lossy-compression">↓lossy</a> compression will alter the original data, introducing artifacts (<i>see</i> <a href="Working_with_ImageJ.html#infobox:JpegAlert">11↓</a> <a href="Working_with_ImageJ.html#infobox:JpegAlert">Warning on JPEG Compression↓</a>). This is the case, e.g., for JPEG formats (with the exception of some <a href="Working_with_ImageJ.html#index-JPEG2000">↓</a>JPEG2000 images that use lossless compression). As such, these types of data are intended for human interpretation only and are not suitable for quantitative analyses
+</p>
+</div>
+<div class="Description">
+<p><span class="Description-entry">[[|]]</span> [[|]]Metadata In ImageJ, <a href="Working_with_ImageJ.html#index-Metadata">↓metadata</a> associated with the image, such as scale, gray value calibration and user comments is only supported in tiff and zip (compressed tiff) images. In addition, selections and <a href="Working_with_ImageJ.html#sub:Overlay-Intro">Overlays↓</a> are also saved in the TIFF header (cf. <span class="sans"><span class="menuitem">File ▷ <a href="Working_with_ImageJ.html#sub:Save.5Bs.5D">Save [s]↓</a></span></span>). None of the above is saved in other formats (cf. <a href="Working_with_ImageJ.html#sub:Native-Formats">Native Formats↑</a>).
+</p>
+</div>
+</div>
+</div>
+<h2><span class="mw-headline" id="Stacks.2C_Virtual_Stacks_and_Hyperstacks">Stacks, Virtual Stacks and Hyperstacks</span></h2>
+<h3><span class="mw-headline" id="Stacks">Stacks</span></h3>
+<p>ImageJ can display multiple spatially or temporally related images in a single window. These image sets are called stacks. The images that make up a stack are called slices. In <a href="Working_with_ImageJ.html#index-Stacks">↓stacks</a>, a pixel (which represents 2D image data in a bitmap image) becomes a voxel<a href="Working_with_ImageJ.html#nom-voxel">↓</a> (volumetric pixel), i.e., an intensity value on a regular grid in a three dimensional space.
+</p><p>All the slices in a stack must be the same size and bit depth. A scrollbar provides the ability to move through the slices and the slider is preceded by a play/pause icon that can be used to start/stop stack animation. Right-clicking on this icon runs the <span class="menuitem"><a href="Working_with_ImageJ.html#sub:Animation-Options...">Animation Options… [Alt /]↓</a></span> dialog box.
+</p><p>Most ImageJ filters will, as an option, process all the slices in a stack. ImageJ opens multi-image TIFF files as a stack, and saves stacks as multi-image TIFFs. The <span class="menuitem"><span class="sans">File ▷ Import ▷ </span><a href="Working_with_ImageJ.html#sub:Import.3ERaw">Raw…↓</a></span> command opens other multi-image, uncompressed files. A folder of images can be opened as a stack either by dragging and dropping the folder onto the ‘ImageJ’ window or or by choosing <span class="menuitem"><span class="sans">File ▷ Import ▷ </span><a href="Working_with_ImageJ.html#sub:Image-Sequence..."><span class="menuitem">Image Sequence…</span>↓</a></span> To create a new stack, simply choose <span class="menuitem">File ▷ New ▷ <a href="Working_with_ImageJ.html#sub:Image....5Bn.5D">Image… [n]↓</a></span> and set the <i>Slices</i> field to a value greater than one. The <span class="menuitem">Image ▷ <a href="Working_with_ImageJ.html#sub:Stacks">Stacks ▷ ↓</a></span> submenu contains commands for common stack operations.
+</p>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="figure">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/StacksHyperstacks.png" class="new" title="File:Images/StacksHyperstacks.png">figure images/StacksHyperstacks.png</a>
+</p>
+<div class="caption">
+<p>Figure 2 <b>Stacks and Hyperstacks in ImageJ:<span class="sans"></span></b> <span class="menuitem">File ▷ Open Samples ▷ Mitosis (26MB, 5D stack)</span>. Hyperstacks dimensionality can be reduced using <span class="menuitem">Image ▷ Hyperstacks ▷ <a href="Working_with_ImageJ.html#sub:Reduce-Dimensionality...">Reduce Dimensionality…↓</a></span>, <span class="menuitem">Image ▷ Stacks ▷ <a href="Working_with_ImageJ.html#sub:Z-Project..."><span class="menuitem">Z Project…</span>↓</a></span> or <span class="menuitem">Image ▷ Hyperstacks ▷ <a href="Working_with_ImageJ.html#sub:Channels....5BZ.5D">Channels Tool… [Z]↓</a></span> The ‘(V)’ on the window title denotes a virtual image (<i>see</i> <a href="Working_with_ImageJ.html#sub:Virtual-Stacks">Virtual Stacks↓</a>).
+</p>
+</div>
+</div>
+</div>
+<div class="See">
+<p><span class="small"><a href="Working_with_ImageJ.html#sub:StacksMenu">Stacks Menu↓</a>, <a rel="nofollow" class="external text" href="https://fiji.sc/wiki/index.php/Stack_Manipulation">Stack Manipulations</a> on Fiji website, <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/plugins/image5d.html">Image5D</a></span>
+</p>
+</div>
+<h3><span class="mw-headline" id="Virtual_Stacks">Virtual Stacks</span></h3>
+<p><a href="Working_with_ImageJ.html#index-Stacks-Virtual">↓</a><a href="Working_with_ImageJ.html#index-Virtual-stacks">↓</a>Virtual stacks are disk resident (as opposed to RAM<a href="Working_with_ImageJ.html#nom-ram">↓</a> resident) and are the only way to load image sequences that do not fit in RAM. There are several things to keep in mind when working with virtual stacks:
+</p>
+<ul>
+<li>Virtual stacks are read-only, so changes made to the pixel data are not saved when you switch to a different slice. You can work around this by using macros (e.g., <span class="small"><a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/macros/Process_Virtual_Stack.txt">Process Virtual Stack</a></span><span class="default">) or the <span class="sans"><span class="menuitem"><span class="sans">Process ▷ Batch ▷ <a href="Working_with_ImageJ.html#sub:Virtual-Stack..."><span class="menuitem">Virtual Stack…</span>↓</a></span></span></span> command</span></li>
+<li>You can easily run out of memory using commands like <span class="sans"><span class="menuitem"><span class="sans">Image ▷ </span>[[#sub:Crop-[X]|]]</span></span>
+<div class="PlainVisible">
+<p><span class="menuitem"></span>
+</p>
+<div class="PlainVisible">
+<p>Crop [X]
+</p>
+</div>
+</div>
+↓ because any stack generated from commands that do not generate virtual stacks will be RAM resident.</li>
+<li>TIFF virtual stacks can usually be accessed faster than <a href="Working_with_ImageJ.html#index-JPEG">↓</a>JPEG virtual stacks. A JPEG sequence can be converted to TIFF by opening the JPEG images as a virtual stack and using <span class="sans"><span class="menuitem"><span class="sans">File ▷ Save As ▷ </span><a href="Working_with_ImageJ.html#sub:SaveAs.3EImage-Seq..."><span class="menuitem">Image Sequence…</span>↓</a></span></span> to save in TIFF format</li></ul>
+<p>ImageJ appends a ‘(V)’ to the window title of virtual stacks and hyperstacks (<i>see</i> <a href="Working_with_ImageJ.html#sub:Hyperstacks-Intro">Hyperstacks↓</a>). Several built-in ImageJ commands in the <span class="sans"><span class="menuitem"><span class="sans">File ▷ </span><a href="Working_with_ImageJ.html#sub:Import">Import ▷ ↓</a></span></span> submenu have the ability to open virtual stacks, namely: <span class="menuitem"><a href="Working_with_ImageJ.html#sub:Import.3ETIFF-Virtual-Stack">TIFF Virtual Stack…↓</a></span>, <span class="menuitem"><a href="Working_with_ImageJ.html#sub:Image-Sequence..."><span class="menuitem">Image Sequence…</span>↓</a></span>, <span class="menuitem"><a href="Working_with_ImageJ.html#sub:Import.3ERaw">Raw…↓</a></span>,<span class="sans"> </span><span class="menuitem"><a href="Working_with_ImageJ.html#sub:Stack-From-List..."><span class="menuitem">Stack From List…</span>↓</a></span>,<span class="sans"> </span><span class="menuitem"><a href="Working_with_ImageJ.html#sub:Import.3EAVI..."><span class="menuitem">AVI…</span>↓</a></span> (cf. <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/plugins/virtual-opener.html">Virtual Stack Opener</a>). In addition, TIFF stacks can be open as virtual stacks by drag and drop (cf. <a href="Working_with_ImageJ.html#infobox:VirtualTiff">4↓</a> <a href="Working_with_ImageJ.html#infobox:VirtualTiff">Opening Virtual Stacks by Drag &amp; Drop↓</a>).
+</p>
+<div class="See">
+<p><span class="small"><a rel="nofollow" class="external text" href="http://www.loci.wisc.edu/ome/formats.html">LOCI Bio-Formats</a> and <a rel="nofollow" class="external text" href="https://fiji.sc/wiki/index.php/Register_Virtual_Stack_Slices">RegisterVirtualStackSlices</a> plugins, <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/macros/Process_Virtual_Stack.txt">Process Virtual Stack</a> and <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/macros/VirtualStackFromList.txt">VirtualStackFromList</a> macros </span>
+</p>
+</div>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="infobox">
+<div class="caption">
+<p>float-infobox4 Opening Virtual Stacks by Drag &amp; Drop
+</p>
+</div>
+<p>TIFF stacks with a <span class="Filename">.tif</span> extension open as virtual stacks when dragged and dropped on the<span class="sans"> <a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/tools/Switcher-small.png" class="new" title="File:Images/tools/Switcher-small.png">figure images/tools/Switcher-small.png</a>  </span>toolbar icon.
+</p>
+<div class="medskip">
+<p><br />
+</p>
+</div>
+<div class="PlainVisible">
+<div class="center">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/DragAndDropVirtualTiff.png" class="new" title="File:Images/DragAndDropVirtualTiff.png">figure images/DragAndDropVirtualTiff.png</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<h3><span class="mw-headline" id="Hyperstacks">Hyperstacks</span></h3>
+<p><a href="Working_with_ImageJ.html#index-Stacks-Hyperstacks">↓</a>Hyperstacks are multidimensional images, extending image stacks to four (4D) or five (5D) dimensions: <span class="formula"><i>x</i></span> (width), <span class="formula"><i>y</i></span> (height), <span class="formula"><i>z</i></span> (slices), <span class="formula"><i>c</i></span> (channels or wavelengths) and <span class="formula"><i>t</i></span> (time frames). Hyperstacks are displayed in a window with three labelled scrollbars (<i>see</i> <a href="Working_with_ImageJ.html#fig:Stacks-and-Hyperstacks">Stacks and Hyperstacks↑</a>). Similarly to the scrollbar in <a href="Working_with_ImageJ.html#sub:Stacks-Intro">Stacks↑</a>, the frame slider (<i>t</i>) has a play/pause icon.
+</p>
+<div class="See">
+<p><span class="menuitem"><span class="sans">Image</span> ▷ <a href="Working_with_ImageJ.html#sub:Hyperstacks">Hyperstacks ▷ ↓</a></span> submenu
+</p>
+</div>
+<h2><span class="mw-headline" id="Color_Images.E2.80.8A.5BD.5D.E2.80.8A.E2.80.8A.5BD.5D.E2.80.8AThis_section_is_partially_extracted_from_the_MBF.E2.80.89ImageJ_online_manual_at_http:.2F.2Fwww.macbiophotonics.ca.2Fimagej.2Fcolour_image_processi.htm.">Color Images<span class="FootOuter"><span class="SupFootMarker"> [D] </span><span class="HoverFoot"><span class="SupFootMarker"> [D] </span>This section is partially extracted from the MBF ImageJ online manual at <a rel="nofollow" class="external free" href="http://www.macbiophotonics.ca/imagej/colour_image_processi.htm">http://www.macbiophotonics.ca/imagej/colour_image_processi.htm</a>.</span></span></span></h2>
+<p><a href="Working_with_ImageJ.html#index-MBF-ImageJ">↓</a>ImageJ deals with color mainly in three ways: pseudocolor images, RGB images, RGB/ HS<span class="small">B<a href="Working_with_ImageJ.html#nom-hsb">↓</a></span><span class="default"> stacks, and composite images.<a href="Working_with_ImageJ.html#index-Image-types">↓</a></span>
+</p>
+<h3><span class="mw-headline" id="Pseudocolor_Images">Pseudocolor Images</span></h3>
+<p>A pseudocolor (or indexed color) image is a single channel gray image (8, 16 or 32--bit) that has color assigned to it via a lookup table or LUT<a href="Working_with_ImageJ.html#nom-lut">↓</a><a href="Working_with_ImageJ.html#index-LUT">↓</a>. A LUT is literally a predefined table of gray values with matching red, green and blue values so that shadows of gray are displayed as colorized pixels. Thus, differences in color in the pseudo-colored image reflect differences in intensity of the object rather than differences in color of the specimen that has been imaged.
+</p><p>8-bit indexed color images (such as GIFs) are a special case of pseudocolor images as their lookup table is stored in the file with the image. These images are limited to 256 colors (24--bit RGB images allow 16.7 million of colors, <i>see</i> <a href="Working_with_ImageJ.html#sec:Image-Types">Image Types and Formats↑</a>) and concomitantly smaller file sizes. Reduction of true color values to a 256 <a href="Working_with_ImageJ.html#index-Color-palette">↓color</a> palette is performed by color quantization algorithms. ImageJ uses the <a href="Working_with_ImageJ.html#index-Color-Quantization">↓</a><a href="Working_with_ImageJ.html#index-Heckbert-quantization">↓</a><a href="Working_with_ImageJ.html#index-Algorithm-Heckbert-quantization">↓</a>Heckbert’s median-cut color quantization algorithm (<i>see</i> <span class="menuitem">Image ▷ <a href="Working_with_ImageJ.html#sub:Type">Type ▷ ↓</a></span> menu), which, in most cases, allows indexed color images to look nearly identical to their 24-bit originals.
+</p>
+<div class="See">
+<p><span class="menuitem"><span class="sans">Image</span> ▷ <a href="Working_with_ImageJ.html#sub:Lookup-Tables">Lookup Tables ▷ ↓</a></span> and <a href="Working_with_ImageJ.html#sub:LUTMenu">LUT Menu↓</a>
+</p>
+</div>
+<h3><span class="mw-headline" id="True_Color_Images">True Color Images</span></h3>
+<p>As described in <a href="Working_with_ImageJ.html#sec:Image-Types">Image Types and Formats↑</a>, true color images such as RGB images reflect genuine colors, i.e., the green in an RGB image reflects green color in the specimen. Color images are typically produced by color CCD<a href="Working_with_ImageJ.html#nom-ccd">↓</a> cameras, in which <a href="Working_with_ImageJ.html#index-Color-filter-array">↓color</a> filter arrays (<a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Bayer_filter">Bayer masks</a>) are placed over the image sensor.<a href="Working_with_ImageJ.html#index-CCD">↓</a>
+</p>
+<h4><span class="mw-headline" id="Color_Spaces_and_Color_Separation">Color Spaces and Color Separation</span></h4>
+<p><a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Color_space">Color spaces</a> <a href="Working_with_ImageJ.html#index-Color-Models">↓describe</a> the gamut of colors that image-handling devices deal with. Because human vision is trichromatic, most color models represent colors by three values. Mathematically, these values (color components) form a three-dimensional space such as the RGB<a href="Working_with_ImageJ.html#index-RGB">↓</a>, <a href="Working_with_ImageJ.html#index-HSB">↓</a>HSB, <a href="Working_with_ImageJ.html#index-CIE-Lab">↓</a>CIE Lab or <a href="Working_with_ImageJ.html#index-YUV">↓</a>YUV color space.
+</p>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="figure" style="max-width: 100%;">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/RGB-HSBcolorModels.png" class="new" title="File:Images/RGB-HSBcolorModels.png">figure images/RGB-HSBcolorModels.png</a>
+</p>
+<div class="caption">
+<p>Figure 3 <b>Representation of an eight pixel color image in the RGB and HSB color spaces.</b> The RGB color space maps the RGB color model to a cube with <i>Red</i> (R) values increasing along the x-axis, <i>Green</i> (G) along the y-axis and <i>Blue</i> (B) along the z-axis. In the HSB cylindrical coordinate system, the angle around the central vertical axis corresponds to <i>Hue</i> (H), the distance from the axis corresponds to <i>Saturation</i> (S), and the distance along the axis corresponds to <i>Brightness</i> (B). In both cases the origin holds the black color. The right panel shows the same image after brightness reduction, easily noted by the vertical displacement along the HSB cylinder. Images produced using Kai Uwe Barthel’s <a rel="nofollow" class="external text" href="http://www.f4.fhtw-berlin.de/~barthel/ImageJ/ColorInspector//help.htm">3D Color Inspector</a> plugin.
+</p>
+</div>
+</div>
+</div>
+<p>RGB (Red, Green, Blue) is the most commonly-used color space. However, other alternatives such as HSB (Hue, Saturation, Brightness) provide significant advantages when processing color information. In the HSB color space, <i>Hue</i> describes the attribute of pure color, and therefore distinguishes between colors. <i>Saturation</i> (sometimes called “purity” or “vibrancy”) characterizes the shade of color, i.e., how much white is added to the pure color. <i>Brightness</i> (also know as <i>Value</i> — HSV system) describes the overall brightness of the color (<i>see</i> e.g., the color palette of <a href="Working_with_ImageJ.html#fig:CPtool">Color Picker window↓</a>). In terms of digital imaging processing, using the HSB system over the traditional RGB is often advantageous: e.g., since the Brightness component of an HSB image corresponds to the grayscale version of that image, processing only the brightness channel in routines that require grayscale images is a significant computational gain<span class="FootOuter"><span class="SupFootMarker"> [E] </span><span class="HoverFoot"><span class="SupFootMarker"> [E] </span><i>See</i> Wootton R, Springall DR, Polak JM. Image Analysis in Histology: Conventional and Confocal Microscopy. <i>Cambridge University Press</i>, 1995<i>,</i> ISBN 0521434823</span></span>. You can read more about the HSB color model <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/HSB_color_space">here</a>.
+</p><p>In ImageJ, conversions between image types are performed using the <span class="menuitem"><span class="sans"><span class="small">Image</span></span><span class="default"> ▷ <a href="Working_with_ImageJ.html#sub:Type">Type ▷ ↓</a></span></span> submenu. Segmentation on the HSB, RGB, CIE Lab and YUV color spaces can be performed by the <span class="menuitem"><span class="sans"><span class="small">Image</span></span><span class="default"> ▷ Adjust ▷ <a href="Working_with_ImageJ.html#sub:Color-Threshold...">Color Threshold…↓</a></span></span> command <span class="bibcites">[[[#biblio-20|20]]]</span>. Segregation of color components (specially useful for quantification of <a href="Working_with_ImageJ.html#index-Color-Deconvolution">↓</a><a href="Working_with_ImageJ.html#index-Color-Separation">↓</a><a href="Working_with_ImageJ.html#index-Immunohistochemistry">↓histochemical</a> staining) is also possible using Gabriel Landini’s <a rel="nofollow" class="external text" href="http://www.dentistry.bham.ac.uk/landinig/software/cdeconv/cdeconv.html">Colour Deconvolution</a> plugin. In addition, several other plugins related to color processing can be obtained from the <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/plugins/index.html#color">ImageJ website</a>.
+</p>
+<h4><span class="mw-headline" id="Conveying_Color_Information.E2.80.8A.5BF.5D.E2.80.8A.E2.80.8A.5BF.5D.E2.80.8AThis_section_is_partially_extracted_from_Masataka_Okabe_and_Kei_Ito.2C_Color_Universal_Design_.28CUD.29_.E2.80.94_How_to_make_figures_and_presentations_that_are_friendly_to_Colorblind_people.2C_http:.2F.2Fjfly.iam.u-tokyo.ac.jp.2Fcolor.2F.2C_accessed_2009.01.15">Conveying Color Information<span class="FootOuter"><span class="SupFootMarker"> [F] </span><span class="HoverFoot"><span class="SupFootMarker"> [F] </span>This section is partially extracted from Masataka Okabe and Kei Ito, <i>Color Universal Design (CUD) — How to make figures and presentations that are friendly to Colorblind people</i>, <a rel="nofollow" class="external free" href="http://jfly.iam.u-tokyo.ac.jp/color/">http://jfly.iam.u-tokyo.ac.jp/color/</a>, accessed 2009.01.15</span></span></span></h4>
+<p>People see color with significant variations. Indeed, the popular phrase “One picture is worth ten thousand words” may not apply to certain color images, specially those that do not follow the basic principles of <a rel="nofollow" class="external text" href="http://jfly.iam.u-tokyo.ac.jp/color/">Color Universal Design</a>. Citing Masataka Okabe and Kei Ito:
+</p>
+<blockquote><a href="Working_with_ImageJ.html#index-Color-Blindness">↓</a>Colorblind people can recognize a wide ranges of colors. But certain ranges of colors are hard to distinguish. The frequency of colorblindness is fairly high. One in 12 Caucasian (8%), one in 20 Asian (5%), and one in 25 African (4%) males are so-called ‘red--green’ colorblind.</blockquote>
+<blockquote>There are always colorblind people among the audience and readers. There should be more than <span class="versalitas">ten</span> colorblind in a room with 250 people (assuming 50% male and 50% <span class="small">female</span><span class="default">).</span></blockquote>
+<blockquote>[ …] There is a good chance that the paper you submit may go to colorblind reviewers. Supposing that your paper will be reviewed by three white males (which is not unlikely considering the current population in science), the probability that at least one of them is colorblind is whopping 22%!</blockquote>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="figure" style="max-width: 100%;">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/Dichromacy.png" class="new" title="File:Images/Dichromacy.png">figure images/Dichromacy.png</a>
+</p>
+<div class="caption">
+<p>Figure 4 <b>Red--green images and partial color blindness.</b> Deuteranopia (second panel), protanopia (third panel) are the most common types of partial color blindness (red / green confusion). Tritanopia (blue / orange confusion, fourth panel) is quite rare. <a href="Working_with_ImageJ.html#infobox:Replacing-Red-w-Magenta">Replacing Red with Magenta in RGB Images↓</a> (bottom row) is a simple way to compensate for color vision deficiencies.
+</p>
+</div>
+</div>
+</div>
+<p>One practical point defined by the <a rel="nofollow" class="external text" href="http://jfly.iam.u-tokyo.ac.jp/color/">Color Universal Design</a> is the use of magenta in red--green overlays (<i>see also</i> <span class="bibcites">[[[#biblio-97|<span class="bib-index">47</span>]]]</span>). Magenta is the equal mixture of red and blue. Colorblind people that have difficulties recognizing the red component can easily recognize the blue hue. The region of double positive becomes white, which is easily distinguishable for colorblind. In ImageJ this is easily accomplished using the <span class="menuitem">Image ▷ Color ▷ <a href="Working_with_ImageJ.html#sub:Merge-Channels..."><span class="menuitem">Merge Channels…</span>↓</a></span>, or using the ImageJ macro language (<i>see</i> <a href="Working_with_ImageJ.html#infobox:Replacing-Red-w-Magenta">5↓</a> <a href="Working_with_ImageJ.html#infobox:Replacing-Red-w-Magenta">Replacing Red with Magenta in RGB Images↓</a>).
+</p>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="infobox">
+<div class="caption">
+<p>float-infobox5 Replacing Red with Magenta in RGB Images
+</p>
+</div>
+<p>When building RGB images, magenta can be obtained using the <span class="menuitem">Image ▷ Color ▷ <a href="Working_with_ImageJ.html#sub:Merge-Channels..."><span class="menuitem">Merge Channels…</span>↓</a></span> Previously created RGB images can be converted to <a href="Working_with_ImageJ.html#index-Magenta-Green-Blue-.28MGB.29">↓</a>‘MGB’ using <span class="menuitem">Image ▷ Color ▷ <a href="Working_with_ImageJ.html#sub:Channels....5BZ.5D">Channels Tool… [Z]↓</a></span>. Alternatively, the <span class="sans"><span class="menuitem"><span class="sans">Process ▷ <a href="Working_with_ImageJ.html#sub:Image-Calculator...">Image Calculator…↓</a></span></span></span> command can be used to add the red channel to the blue channel. Both these approaches can be automated using the ImageJ macro language as exemplified by Macros <a href="Working_with_ImageJ.html#lis:RGBtoMGB1">(11↓)</a> and <a href="Working_with_ImageJ.html#lis:RGBtoMGB2">(7↓)</a>. Once saved in the <span class="Directory">ImageJ/plugins/</span> folder these <a href="Working_with_ImageJ.html#sub:Macros-ExtendingIJ">Macros↓</a> are treated as regular ImageJ commands.
+</p>
+<div class="medskip">
+<p><br />
+</p>
+</div>
+<div class="PlainVisible">
+<p>In <a href="Working_with_ImageJ.html#sub:Fiji-intro">Fiji↑</a>, as expected, the procedure of modifying RGB images is simpler: one just needs to run <span class="sans"><span class="menuitem"><span class="sans">Image ▷ Color ▷ Replace Red with Magenta</span></span></span>. For even more convenience, Fiji provides an analogous command that replaces the system clipboard’s image with a magenta-green one.
+</p>
+</div>
+</div>
+</div>
+<p>It is also possible to simulate color blindness using the <a rel="nofollow" class="external text" href="http://www.vischeck.com/downloads/">Vischeck</a> or <a rel="nofollow" class="external text" href="http://www.dentistry.bham.ac.uk/landinig/software/dichromacy/dichromacy.html">Dichromacy</a> plugins<span class="FootOuter"><span class="SupFootMarker"> [G] </span><span class="HoverFoot"><span class="SupFootMarker"> [G] </span>One advantage of Dichromacy over the Vischeck plugin is that it can be recorded and called from scripts and macros, without user interaction.</span></span>, or in <a href="Working_with_ImageJ.html#index-Fiji">↓</a><a href="Working_with_ImageJ.html#sub:Fiji-intro">Fiji↑</a>, using the <span class="menuitem">Image ▷ Color ▷ Simulate Color Blindness</span> command.
+</p>
+<div class="listing">
+<div class="caption">
+<p>[[|]]Replace Red with Magenta.ijm (Using <span class="menuitem">Process ▷ Image Calculator…</span>)
+</p>
+</div>
+<pre class="listing"> /* This macro replaces Red with Magenta in RGB images using Process&gt;Image Calculator...  command. */
+   if (bitDepth!=24)
+       exit(&quot;This macro requires an RGB image&quot;);
+ setBatchMode(true);
+   title= getTitle();
+   r= title+&quot; (red)&quot;; g= title+&quot; (green)&quot;; b= title+&quot; (blue)&quot;;
+   run(&quot;Split Channels&quot;);
+   imageCalculator(&quot;Add&quot;, b, r);
+   run(&quot;Merge Channels...&quot;, &quot;red=&amp;r green=&amp;g blue=&amp;b&quot;);
+   rename(title + &quot; (MGB)&quot;);
+ setBatchMode(false);</pre>
+</div>
+<h3><span class="mw-headline" id="Color_Composite_Images">Color Composite Images</span></h3>
+<p>In a <a href="Working_with_ImageJ.html#index-Color-Composites">↓composite</a> image colors are handled through channels. The advantages with this type of image over plain RGB images are:
+</p>
+<ol><li> Each channel is kept separate from the others and can be turned on and off using the ‘Channels’ tool (<span class="sans"><span class="menuitem"><span class="sans">Image ▷ Color ▷ <a href="Working_with_ImageJ.html#sub:Channels....5BZ.5D">Channels Tool… [Z]↓</a></span></span></span>). This feature allows, e.g., to perform measurements on a specific channel while visualizing multiple.</li>
+<li> Channels can be 8, 16 or 32--bit and can be displayed with any lookup table</li>
+<li> More than 3 channels can be merged or kept separate</li></ol>
+<div class="listing">
+<div class="caption">
+<p>[[|]]Replace Red with Magenta.ijm (Using <span class="menuitem">Image ▷ Color ▷ Channels…</span>)
+</p>
+</div>
+<pre class="listing"> /* This macro replaces Red with Magenta in RGB images using the Image&gt;Color&gt;Channels... tool. */
+   if (bitDepth!=24)         // Ignore non-RGB images
+       exit(&quot;This macro requires an RGB image&quot;);
+ setBatchMode(true);         // Enter ‘Batch’ mode
+   title = getTitle();       // Retrieve the image title
+   run(&quot;Make Composite&quot;);    // Run Image&gt;Color&gt;Make Composite
+   run(&quot;Magenta&quot;);           // Run Image&gt;Lookup Tables&gt;Magenta on channel 1
+   run(&quot;RGB Color&quot;);         // Run Image&gt;Type&gt;RGB Color
+   rename(title + &quot; (MGB)&quot;); // Rename the image
+ setBatchMode(false);        // Restore ‘GUI’ mode</pre>
+</div>
+<h2><span class="mw-headline" id="Selections">Selections</span></h2>
+<p>Selections (regions of interest, ROIs<a href="Working_with_ImageJ.html#nom-roi">↓</a>), are typically created using the <a href="Working_with_ImageJ.html#sub:Toolbar">Toolbar↓</a> <a href="Working_with_ImageJ.html#sec:IJ-Tools">Tools↓</a>. Although ImageJ can display simultaneously several <a href="Working_with_ImageJ.html#index-Selection">↓</a><a href="Working_with_ImageJ.html#index-ROI">↓</a>ROIs (see <a href="Working_with_ImageJ.html#sub:Overlay-Intro">Overlays↓</a> and <a href="Working_with_ImageJ.html#fig:The-ROI-Manager">ROI Manager↓</a>) only one selection can be active at a time. Selections can be measured (<span class="sans"><span class="menuitem"><span class="sans">Analyze ▷ </span>[[#sub:Measure...[m]|]]</span></span>
+</p>
+<div class="PlainVisible">
+<p><span class="menuitem"></span>
+</p>
+<div class="PlainVisible">
+<p>Measure… [m]
+</p>
+</div>
+</div>
+<p>↓), drawn (<span class="menuitem"><span class="sans">Edit ▷ </span><a href="Working_with_ImageJ.html#sub:Draw-.5Bd.5D">Draw [d]↓</a></span>), filled (<span class="sans"><span class="menuitem"><span class="sans">Edit ▷ </span><a href="Working_with_ImageJ.html#sub:Fill-.5Bf.5D">Fill [f]↓</a></span></span>) or filtered (<span class="menuitem"><span class="sans">Process ▷ </span><a href="Working_with_ImageJ.html#sub:Filters"><span class="menuitem">Filters ▷ </span>↓</a></span> submenu), in the case of area selections. In addition it is also possible to hold multiple ROIs as non-destructive <a href="Working_with_ImageJ.html#sub:Overlay-Intro">Overlays↓</a>.
+</p><p>Selections can be initially outlined in one of the nine ImageJ default colors (<i>Red</i>, <i>Green</i>, <i>Blue</i>, <i>Magenta</i>, <i>Cyan</i>, <i>Yellow</i>, <i>Orange</i>, <i>Black</i> and White). Once created, selections can be contoured or painted with any other color using<span class="sans"> <span class="menuitem"><span class="sans">Edit ▷ Selection ▷ </span>[[#sub:Properties...|]]</span></span>
+</p>
+<div class="PlainVisible">
+<p><span class="menuitem"></span>
+</p>
+<div class="PlainVisible">
+<p>Properties… [y]
+</p>
+</div>
+</div>
+<p>↓. Selection Color can be changed in <span class="menuitem"><span class="sans">Edit ▷ Options ▷ </span><a href="Working_with_ImageJ.html#sub:Colors...">Colors…↓</a></span>, by double clicking on the <a href="Working_with_ImageJ.html#sec:Point-Tool">Point Tool↓</a>, or using hot keys (<i>see</i> <a href="Working_with_ImageJ.html#lis:ChangeSelectionColor">(27.13.9↓)</a> <a href="Working_with_ImageJ.html#lis:ChangeSelectionColor">Colors…↓</a>). It is highlighted in the center of the <a href="Working_with_ImageJ.html#sec:Point-Tool">Point Tool↓</a> and <a href="Working_with_ImageJ.html#sec:Multi-point-Tool">Multi-point Tool↓</a>.
+</p>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="figure" style="max-width: 88%;">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/Selections.png" class="new" title="File:Images/Selections.png">figure images/Selections.png</a>
+</p>
+<div class="caption">
+<p>Figure 5 <b>Three types of area selections In ImageJ.</b> Notice the cursor changes: to an <i>arrow</i> when it is within the selection, to a <i>cross-hair</i> when outside the selection, to a <i>hand</i> when over a selection vertex or ‘handler’. Notice also the filled handler in the polygon selection and the absence of point handlers in <a href="Working_with_ImageJ.html#sub:Composite-selections">Composite Selections↓</a>. <a href="Working_with_ImageJ.html#sub:Overlay-Intro">Overlays↓</a>, i.e., non-active selections displayed in the non-destructive image overlay, are also displayed without handlers.
+</p>
+</div>
+</div>
+</div>
+<h3><span class="mw-headline" id="Manipulating_ROIs">Manipulating ROIs</span></h3>
+<p>Most of commands that can be useful in defining or drawing selections are available in the <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ </span><a href="Working_with_ImageJ.html#sub:SelectionSubMenu"><span class="menuitem">Selection ▷ </span>↓</a></span></span> submenu and summarized in <a href="Working_with_ImageJ.html#fig:ROI-manipulations">ROI manipulations↓</a>. Listed below are the most frequent manipulations involving <a href="Working_with_ImageJ.html#index-ROI">↓selections</a>:
+</p>
+<div class="Labeling">
+<p><b>Adjusting</b> Area selections can be adjusted with the <a href="Working_with_ImageJ.html#sub:Brush-Selection-Tool">Brush Selection Tool↓</a>. In addition, vertexes of selections created with the <a href="Working_with_ImageJ.html#sub:Polygon-Selection-Tool">Polygon Selection Too<span class="sans">l</span>↓</a> and <a href="Working_with_ImageJ.html#sub:Segmented-Line-Selection">Segmented Line Selection Tool↓</a> can be adjusted by Alt/Shift-clicking.
+</p>
+</div>
+<div class="Labeling">
+<p><b>Deleting</b> Choose any of the selection tools and click outside the selection, or use <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ Selection ▷ </span><a href="Working_with_ImageJ.html#sub:Select-None-.5BA.5D">Select None [A]↓</a></span></span>. Use<span class="sans"> <span class="menuitem"><span class="sans">Edit ▷ Selection ▷ </span><a href="Working_with_ImageJ.html#sub:Restore-Selection-.5BE.5D">Restore Selection [E]↓</a></span></span> to restore a selection back after having deleted it. With <a href="Working_with_ImageJ.html#sub:Overlay-Intro">Overlays↓</a>, an activated ROI can be deleted by pressing the <span class="Keystroke">Backspace</span> (<span class="Keystroke">Delete</span> on Mac) key.
+</p>
+</div>
+<div class="Labeling">
+<p><b>Managing</b> A selection can be transferred from one image window to another by activating the destination window and runnig <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ Selection ▷ </span><a href="Working_with_ImageJ.html#sub:Restore-Selection-.5BE.5D">Restore Selection [E]↓</a></span></span>. Alternatively, <span class="sans"><span class="menuitem"><span class="sans">Analyze ▷ Tools ▷ </span><a href="Working_with_ImageJ.html#sub:SynchronizeWindows"><span class="menuitem">Synchronize Windows</span>↓</a></span></span> to create ROIs across multiple images. Multiple selections can be stored as <a href="Working_with_ImageJ.html#sub:Overlay-Intro">Overlays↓</a> or in the <a href="Working_with_ImageJ.html#fig:The-ROI-Manager">ROI Manager↓</a> list (<span class="sans"><span class="menuitem"><span class="sans">Analyze ▷ Tools ▷ </span><a href="Working_with_ImageJ.html#sub:ROI-Manager..."><span class="menuitem">ROI Manager…</span>↓</a></span></span>).
+</p>
+</div>
+<div class="Labeling">
+<p><b>Moving</b> Selections can be moved by clicking and dragging as long as the cursor is within the selection and has changed to an <a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/pointers/Pointer-Arrow.png" class="new" title="File:Images/pointers/Pointer-Arrow.png">figure images/pointers/Pointer-Arrow.png</a> . The status bar displays the coordinates of the upper left corner of the selection (or the bounding rectangle for non-rectangular selections) as it is being moved. To move the contents of a selection, rather than the selection itself, <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ <a href="Working_with_ImageJ.html#sub:Copy.5Bc.5D">Copy [c]↓</a></span></span></span>, <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ <a href="Working_with_ImageJ.html#sub:Paste.5Bv.5D">Paste [v]↓</a></span></span></span>, and then click within the selection and drag.
+</p>
+</div>
+<div class="Labeling">
+<p><b>Nudging</b> Selections can be ‘nudged’ one pixel at a time in any direction using the arrow keys. Note that the up and down keys zoom the image in and out in the absence of selections (<i>see</i> <a href="Working_with_ImageJ.html#Arrow-Keys">Arrow Keys↓</a> shortcuts).
+</p>
+</div>
+<div class="Labeling">
+<p><b>Resizing</b> The <a href="Working_with_ImageJ.html#sub:Brush-Selection-Tool">Brush Selection Tool↓</a> can be used to perform fine adjustments of ROI contours. Most ROIs can be resized one pixel at a time by holding <span class="Keystroke">Alt</span> while using the arrow keys. In general (<i>see</i> <a href="Working_with_ImageJ.html#sec:Area-selection-tools">Area Selection Tools↓</a> and <a href="Working_with_ImageJ.html#sec:Line-Selection-Tools">Line Selection Tools↓</a> for details), selections are resized by dragging one of the selection handlers. While dragging, holding <span class="Keystroke">Ctrl</span> resizes the selection around its center, holding <span class="Keystroke">Alt</span> imposes a fixed aspect ratio and holding <span class="Keystroke">Shift</span> forces a 1:1 aspect ratio.
+</p>
+<div class="See">
+<p><a href="Working_with_ImageJ.html#sec:Key-Modifiers">Key Modifiers↓</a>
+</p>
+</div>
+<h3><span class="mw-headline" id="Composite_Selections">Composite Selections</span></h3>
+<div class="wrap-l">
+<div class="figure">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/compositeROI.png" class="new" title="File:Images/compositeROI.png">figure images/compositeROI.png</a>
+</p>
+</div>
+</div>
+<p>Composite selections are non-contiguous ROIs containing more than one cluster of pixels and/or ROIs containing internal holes. Composite ROIs are typically originated with the <a href="Working_with_ImageJ.html#sub:Brush-Selection-Tool">Brush Selection Tool↓</a> but they can be defined with any other selection tool using key modifiers.
+</p><p>The following modifier keys can be use to create composite selections:<a href="Working_with_ImageJ.html#index-Selection-Composite">↓</a>
+</p>
+<div class="Labeling">
+<p><span class="Keystroke">Shift</span> Drawing outside current selection while pressing Shift creates new content. To add a non-square rectangle or ellipse, the Shift key must be released after adding the selection
+</p>
+</div>
+<div class="Labeling">
+<p><span class="Keystroke">Alt</span> Drawing inside current selection while pressing Alt creates a hole removing content from the ROI
+</p>
+</div>
+<p>Note that some operations may not be performed properly on complex ROIs. In these cases, it may be useful to convert a composite ROI into a polygon using the <span class="menuitem">Edit ▷ Selection ▷ <a href="Working_with_ImageJ.html#sub:Enlarge...">Enlarge…↓</a></span> command as explained in <a href="Working_with_ImageJ.html#infobox:Composites">14↓</a> <a href="Working_with_ImageJ.html#infobox:Composites">Converting Composite Selections↓</a>.
+</p>
+<div class="See">
+<p><a href="Working_with_ImageJ.html#sub:Wand-Tool">Wand Tool↓</a>, <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=wishlist:completed:freehand_and_selection_brush_roi_conversion">ROI2PolylineROI</a> macro
+</p>
+</div>
+<h3><span class="mw-headline" id="Selections_With_Sub-pixel_Coordinates.E2.86.93.5CfeatureSelections_with_sub-pixel_resolution">Selections With Sub-pixel Coordinates<a href="Working_with_ImageJ.html#index-Sub-pixel-selections">↓</a><span class="unknown">\feature</span>Selections with sub-pixel resolution</span></h3>
+<p>Since ImageJ 1.46, selections can be defined with <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Sub-pixel_resolution">subpixel accuracy</a>, beyond the nominal pixel resolution of the image: <a href="Working_with_ImageJ.html#fig:Subpixel-selections">Floating point selections↓</a>. Line Selections (<i>see</i> <a href="Working_with_ImageJ.html#sec:Line-Selection-Tools">Line Selection Tools↓</a>) are created with floating-point coordinates if the <i>Sub-pixel resolution</i> checkbox is active in <span class="menuitem">Edit ▷ Options ▷ <a href="Working_with_ImageJ.html#sub:Profile-Plot-Options..."><span class="menuitem">Profile Plot Options…</span>↓</a></span> Sub-pixel coordinates of pre-existing selections can be interpolated using the <span class="menuitem">Edit ▷ Selection ▷ <a href="Working_with_ImageJ.html#sub:Interpolate"><span class="menuitem">Interpolate</span>↓</a></span> command. Interpolated points are easily noticeable on small selections created on images zoomed 1200% or greater.
+</p>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="figure">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/SubPixel.png" class="new" title="File:Images/SubPixel.png">figure images/SubPixel.png</a>
+</p>
+<div class="caption">
+<p>Figure 7 '<i>Interpolated selections.<b> ROIs drawn with (left) or without (middle) sub-pixel accuracy. For line selections (</b></i><b>see<i> <a href="Working_with_ImageJ.html#sec:Line-Selection-Tools">Line Selection Tools↓</a>), this option can be enabled in '</i></b> <span class="menuitem">Edit ▷ Options ▷ <a href="Working_with_ImageJ.html#sub:Profile-Plot-Options..."><span class="menuitem">Profile Plot Options…</span>↓</a></span> by activating the <i>Sub-pixel resolution</i> checkbox. Pixel coordinates of area selections (<i>see</i> <a href="Working_with_ImageJ.html#sec:Area-selection-tools">Area Selection Tools↓</a>), can be interpolated using <span class="menuitem">Edit ▷ Selection ▷ <a href="Working_with_ImageJ.html#sub:Interpolate"><span class="menuitem">Interpolate</span>↓</a></span>. The image on the right is the output of <span class="Filename"><a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/macros/js/SubPixelSelections.js">SubPixelSelections.js</a></span>, a script that demonstrates how to create selections at sub-pixel resolution without the need of setting any option in ImageJ.
+</p>
+</div>
+</div>
+</div>
+<div class="See">
+<p><a href="Working_with_ImageJ.html#sub:Zoom">Zoom ▷ ↓</a>, <a href="Working_with_ImageJ.html#sec:Magnifying-Glass">Magnifying Glass↓</a>
+</p>
+</div>
+<h2><span class="mw-headline" id="Overlays.5B.5B.7C.5D.5D.5CimprovementImproved_handling_of_Overlays">Overlays[[|]]<span class="unknown">\improvement</span>Improved handling of Overlays</span></h2>
+<p><a href="Working_with_ImageJ.html#index-Overlay">↓</a><a href="Working_with_ImageJ.html#index-Non-destructive-annotations">↓</a><a href="Working_with_ImageJ.html#index-Annotations-Non-destructive-image-overlay">↓</a>Overlays are non-active selections displayed ‘over’ the pixel data, on the image overlay, and are the core of non-destructive image processing in ImageJ. In a way you can think of the image overlay as an invisible <a href="Working_with_ImageJ.html#fig:The-ROI-Manager">ROI Manager↓</a> in which selections are being added, allowing ROIs to be on ‘hold’. This concept of multiple distinct selections has been dramatically improved in <a href="Working_with_ImageJ.html#sub:ImageJ2intro">ImageJ2↑</a> so we urge you to download IJ2 if multiple ROIs are important in your workflows.
+</p>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="figure" style="max-width: 75%;">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/OverlayShowcase.png" class="new" title="File:Images/OverlayShowcase.png">figure images/OverlayShowcase.png</a>
+</p>
+<div class="caption">
+<p>Figure 8 <b>Non-destructive operations using the image overlay.</b> Overlays can be used to annotate images, store ROIs and blend images (ImageROIs) at multiple opacity levels. Refer to the <span class="menuitem">Image ▷ <a href="Working_with_ImageJ.html#sub:Overlay">Overlay ▷ ↓</a></span>documentation for further <a href="Working_with_ImageJ.html#fig:image-overlays">examples↓</a>. You can <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/docs/guide/images/ImageWithOverlay.tif">download the frontmost</a> image to practice overlay editing.
+</p>
+</div>
+</div>
+</div>
+<p>Importantly, overlay selections are <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Vector_graphics">vector graphics</a> composed of mathematically-defined paths (as opposed to <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Raster_graphics">raster graphics</a> in which objects are defined by pixels) and are not affected by scaling, i.e., do not become pixelated. Most of overlay-related commands are listed in the <span class="menuitem">Image ▷ <a href="Working_with_ImageJ.html#sub:Overlay">Overlay ▷ ↓</a></span>, and in the ROI Manager window (<span class="menuitem">Analyze ▷ Tools ▷ <a href="Working_with_ImageJ.html#sub:ROI-Manager..."><span class="menuitem">ROI Manager…</span>↓</a></span>). Appearance of overlay selections can be adjusted using <span class="menuitem">Image ▷ Overlay ▷ <a href="Working_with_ImageJ.html#sub:Overlay-Options..."><span class="menuitem">Overlay Options…</span>↓</a></span>/<span class="menuitem"><a href="Working_with_ImageJ.html#sub:Labels..."><span class="menuitem">Labels…</span>↓</a></span>
+</p><p>As mentioned in <a href="Working_with_ImageJ.html#infobox:Formats">3↑</a> <a href="Working_with_ImageJ.html#infobox:Formats">Image Types: Lossy Compression and Metadata↑</a>, overlays are saved in the header of tif images, and do not need to be saved externally when using TIFF, the default file format of ImageJ. The major advantages of overlays are summarized below:
+</p>
+<div class="Description">
+<p><span class="Description-entry">Storage of ROIs</span> In ImageJ it is only possible to have a single ROI at a time. However, it is possible to add selections to the image overlay using <span class="Keystroke">B</span> (<span class="menuitem">Image ▷ Overlay ▷ [[#sub:Add-Selection...[b]|]]</span>
+</p>
+<div class="PlainVisible">
+<p><span class="menuitem"></span>
+</p>
+<div class="PlainVisible">
+<p>Add Selection… [b]
+</p>
+</div>
+</div>
+<p>↓).<span class="unknown">\feature</span> Once added to the image overlay, ROIs can be re-activated by Alt-clicking, Control-clicking or long-pressing (<span class="formula"><span class="fraction"><sup>1</sup>⁄<sub>4</sub></span></span> second or longer). Activated ROIs can be deleted by pressing the <span class="Keystroke">Backspace</span> key. Selections can also be added and recovered in bulk, using the <span class="menuitem">Image ▷ Overlay ▷ <a href="Working_with_ImageJ.html#sub:From-ROI-Manager">From ROI Manager↓</a></span>/<span class="menuitem"><a href="Working_with_ImageJ.html#sub:To-ROI-Manager">To ROI Manager↓</a></span> commands.
+</p>
+</div>
+<div class="Description">
+<p><span class="Description-entry">Non-destructive annotations</span> Overlays are the best way of annotating images in ImageJ (<a href="Working_with_ImageJ.html#fig:image-overlays">examples↓</a>). As vector graphics, overlays do not change pixel values, can be scaled without loss of quality even at high zoom levels (<i>see</i> <a href="Working_with_ImageJ.html#infobox:ZoomedCanvas">19↓</a> <a href="Working_with_ImageJ.html#infobox:ZoomedCanvas">Working with Zoomed Canvases↓</a>) and can be displayed at different opacity values (<i>see</i> <a href="Working_with_ImageJ.html#infobox:HEX">20↓</a> <a href="Working_with_ImageJ.html#infobox:HEX">Hexadecimal Color Values↓</a>). RGB snapshots of the image with embedded overlays can be created by holding <span class="Keystroke">Shif</span> <span class="Keystroke">F</span>, the shortcut for <span class="menuitem">Image ▷ Overlay ▷ <a href="Working_with_ImageJ.html#sub:Flatten-.5BF.5D">Flatten [F]↓</a></span>. ‘Flattened’ images with the overlay rendered as pixel data are also created when saving the image as PNG or JPEG (<span class="menuitem">File ▷ <a href="Working_with_ImageJ.html#sub:SaveAs">Save As ▷ ↓</a></span>), or when printing the image canvas (<span class="menuitem">File ▷ <a href="Working_with_ImageJ.html#sub:Print....5Bp.5D">Print… [p]↓</a></span>). The <span class="menuitem">Flatten</span> command is also listed in the <a href="Working_with_ImageJ.html#fig:The-ROI-Manager">ROI Manager↓</a>.
+</p>
+</div>
+<div class="Description">
+<p><span class="Description-entry">Image ROIs</span> An <a href="Working_with_ImageJ.html#index-Image-selection">↓</a><a href="Working_with_ImageJ.html#index-ImageROI">↓image</a>ROI (image selection) is a ROI that displays an image as an overlay. As described in <span class="menuitem">Edit ▷ Selection ▷ <a href="Working_with_ImageJ.html#sub:Image-to-Selection..."><span class="menuitem">Image to Selection…</span>↓</a></span> and <span class="menuitem">Image ▷ Overlay ▷ <a href="Working_with_ImageJ.html#sub:Add-Image..."><span class="menuitem">Add Image…</span>↓</a></span>, this allows multiple images to be <a href="Working_with_ImageJ.html#index-Blend">↓blended</a> on a single image canvas.
+</p>
+</div>
+<h2><span class="mw-headline" id="3D_Volumes">3D Volumes</span></h2>
+<p>Currently, the support for <a href="Working_with_ImageJ.html#index-ThreeD-ROIs_3D-ROIs">↓</a><a href="Working_with_ImageJ.html#index-3D-ROIs">↓</a>3D ROIs (selections containing contiguous cluster of voxels) is somewhat limited in ImageJ. This limitation has been addressed by <a href="Working_with_ImageJ.html#sub:ImageJ2intro">ImageJ2↑</a> and several IJ1 plugins. The list below summarizes some of the ImageJ plugins that deal effectively with multi-dimensional objects. Note that a manual installation of these tools as standalone ImageJ plugins is a challenging task given their special dependencies, reason why they are all bundled as part of <a href="Working_with_ImageJ.html#index-Fiji">↓</a><a href="Working_with_ImageJ.html#sub:Fiji-intro">Fiji↑</a>.
+</p>
+<div class="float">
+<p>[[|]]
+</p>
+<div class="figure" style="max-width: 70%;">
+<p><a href="http://imagej.net/index.php?title=Special:Upload&amp;wpDestFile=Images/3Dviewer.png" class="new" title="File:Images/3Dviewer.png">figure images/3Dviewer.png</a>
+</p>
+<div class="caption">
+<p>Figure 9 <b>3D Viewer (Fiji 1.46o), bringing hardware-accelerated 3D visualization to ImageJ.</b> As explained in <a href="Working_with_ImageJ.html#sub:3D-Intro">3D Volumes↑</a>, most of plugins that truly extend ImageJ functionally to multi-dimentional data are bundled as part of Fiji.
+</p>
+</div>
+</div>
+</div>
+<div class="Description">
+<p><span class="Description-entry">3D Filters</span> Specialized <a href="Working_with_ImageJ.html#index-ThreeD-Filters_3D-Filters">↓</a><a href="Working_with_ImageJ.html#index-3D-Filters">↓</a>3D filters such as <span class="menuitem">Process ▷ Filters ▷ <a href="Working_with_ImageJ.html#sub:Gaussian-Blur-3D..."><span class="menuitem">Gaussian Blur 3D…</span>↓</a></span> can be installed to perform 3D operations. Examples are the <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=plugin:morphology:3d_binary_morphological_filters:start">3D processing package</a> by Thomas Boudier <span class="bibcites">[[[#biblio-84|<span class="bib-index">34</span>]]]</span> and the <a rel="nofollow" class="external text" href="https://fiji.sc/wiki/index.php/3D_Binary_Filters">3D binary filters</a> by Benjamin Schmid.
+</p>
+</div>
+<div class="Description">
+<p><span class="Description-entry">3D Object Counter</span> <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=plugin:analysis:3d_object_counter:start">3D Object Counter</a> (3D-OC) <a href="Working_with_ImageJ.html#index-ThreeD-Object-Counter_3D-Object-Counter">↓</a><a href="Working_with_ImageJ.html#index-3D-Object-Counter">↓counts</a> and qualifies 3D objects in a stack <span class="bibcites">[[[#biblio-147|<span class="bib-index">97</span>]]]</span>, similarly to the 2D analysis performed by <span class="menuitem">Analyze ▷ <a href="Working_with_ImageJ.html#sub:Analyze-Particles...">Analyze Particles…↓</a></span> It is complemented by <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=plugin:stacks:3d_roi_manager:start">3D Roi Manager</a> <span class="bibcites">[[[#biblio-84|<span class="bib-index">34</span>]]]</span>, a companion plugin that adds a 3D <a href="Working_with_ImageJ.html#fig:The-ROI-Manager">ROI Manager↓</a> to ImageJ
+</p>
+</div>
+<div class="Description">
+<p><span class="Description-entry">3D Viewer</span> <a rel="nofollow" class="external text" href="http://3dviewer.neurofly.de/">3D Viewer</a> <a href="Working_with_ImageJ.html#index-ThreeD-Viewer_3D-Viewer">↓</a><a href="Working_with_ImageJ.html#index-3D-Viewer">↓brings</a> powerful hardware-accelerated 3D visualization to ImageJ <span class="bibcites">[[[#biblio-65|<span class="bib-index">15</span>]]]</span>, extending the limited functionality of <span class="menuitem">Image ▷ Stacks ▷ <a href="Working_with_ImageJ.html#sub:3D-Project..."><span class="menuitem">3D Project…</span>↓</a></span> In the ImageJ <a href="Working_with_ImageJ.html#fig:-3D-Viewer">3D Viewer↑</a> stacks can be displayed as texture-based volume renderings, surfaces or orthoslices. It is macro-recordable and can be used by other plugins as a high-level programming library for 3D visualization
+</p>
+</div>
+<div class="Description">
+<p><span class="Description-entry">Simple Neurite Tracer</span> <a rel="nofollow" class="external text" href="https://fiji.sc/wiki/index.php/Simple_Neurite_Tracer">Simple Neurite Tracer</a> <a href="Working_with_ImageJ.html#index-Simple-Neurite-Tracer">↓allows</a> semi-automated segmentation of tubular structures in 3D <span class="bibcites">[[[#biblio-128|<span class="bib-index">78</span>]]]</span>
+</p>
+</div>
+<div class="Description">
+<p><span class="Description-entry">TrakEM2</span> As mentioned earlier, <a href="Working_with_ImageJ.html#misc:TrakEM2">Software Packages Built on Top of ImageJ↑</a> features powerful tools for multi-dimensional regions of interest <span class="bibcites">[[[#biblio-57|<span class="bib-index">7</span>]]]</span>
+</p>
+</div>
+<div class="See">
+<p><span class="menuitem">Image ▷ Stacks ▷ <a href="Working_with_ImageJ.html#sub:3D-Project..."><span class="menuitem">3D Project…</span>↓</a></span>/<span class="menuitem"><a href="Working_with_ImageJ.html#sub:Orthogonal-Views">Orthogonal Views [H]↓</a></span>, <span class="menuitem">Analyze ▷ <a href="Working_with_ImageJ.html#sub:Surface-Plot...">Surface Plot…↓</a></span>, <a href="Working_with_ImageJ.html#infobox:Skeletonize-vs-Skeletonize3D">22↓</a> <a href="Working_with_ImageJ.html#infobox:Skeletonize-vs-Skeletonize3D">Skeletonize vs Skeletonize 3D↓</a>, <a rel="nofollow" class="external text" href="https://fiji.sc/wiki/index.php/Special:Search?search=3d&amp;fulltext=Search">3D tools in Fiji</a>, <a rel="nofollow" class="external text" href="http://www.longair.net/edinburgh/imagej/three-pane-crop/">Three Pane Crop</a>, <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=tutorial:working:3d_image_processing_and_analysis_with_imagej">3D image processing tutorials</a> on the ImageJ wikipage
+</p>
+</div>
+<h2><span class="mw-headline" id="Settings_and_Preferences.5B.5B.7C.5D.5D.5Cimprovement">Settings and Preferences[[|]]<span class="unknown">\improvement</span></span></h2>
+<p><a href="Working_with_ImageJ.html#index-Settings">↓</a><a href="Working_with_ImageJ.html#index-Preferences">↓</a><a href="Working_with_ImageJ.html#index-Options">↓</a>ImageJ preferences are automatically saved in a preferences file, the<code> </code><span class="Filename">IJ_prefs.txt</span> text file. This file is stored in <span class="Directory"><span class="formula"> ~ </span>/Library/Preferences/</span> on Mac OS X, in <span class="Directory"><span class="formula"> ~ </span>/.imagej/</span> on Linux and Windows (with <span class="formula"> ~ </span> referring to the user’s home directory). Several macros and plugins also write parameters to this file. If the <span class="Filename">IJ_prefs.txt</span> is erased using <span class="menuitem">Edit ▷ Options ▷ <a href="Working_with_ImageJ.html#sub:ResetOptions"><span class="menuitem">Reset…</span>↓</a></span>, ImageJ will create a new one the next time it is opened resetting all parameters to their default values.
+</p><p>Sometimes, it may be useful to override (or restore) certain settings that may have been changed during a working session. For example, the <i>Limit to threshold</i> option (<span class="menuitem"><span class="sans">Analyze ▷ </span><a href="Working_with_ImageJ.html#sub:Set-Measurements..."><span class="menuitem">Set Measurements…</span>↓</a></span>) will affect most measurements performed on thresholded images. Thus, it may be wise to check the status of this parameter before each analysis, specially when working on multiple computers.
+</p>
+<div class="listing">
+<div class="caption">
+<p>[[|]]Ensuring Specific Settings at Launch
+</p>
+</div>
+<pre class="listing"> macro &quot;AutoRun&quot; {
+   setOption(&quot;DebugMode&quot;, true);
+   setOption(&quot;Bicubic&quot;, true);
+   setOption(&quot;Display Label&quot;, true);
+   setOption(&quot;Limit to Threshold&quot;, false);
+   setOption(&quot;BlackBackground&quot;, true);
+   run(&quot;Colors...&quot;, &quot;foreground=white background=black&quot;); //this line could be substituted by: setBackgroundColor(0,0,0); setForegroundColor(255,255,255);
+   run(&quot;Profile Plot Options...&quot;, &quot;width=350 height=200 draw&quot;);
+   run(&quot;Brightness/Contrast...&quot;);
+ }</pre>
+</div>
+<p>The <code>setOption()</code> <a rel="nofollow" class="external text" href="http://imagej.nih.gov/ij/developer/macro/functions.html#setOption">macro function</a> can be used to set this and several other ImageJ options. Calling this function from the <a href="Working_with_ImageJ.html#index-StartupMacros">↓</a><a href="Working_with_ImageJ.html#index-AutoRun">↓</a>“AutoRun” macro in the <span class="Filename">StartupMacros.txt</span> file ensures preferences are set each time ImageJ starts. The macro <a href="Working_with_ImageJ.html#lis:setOption">(13↑)</a> <a href="Working_with_ImageJ.html#lis:setOption">Settings and Preferences↑</a> exemplifies this approach ensuring that the following settings are enforced at startup:
+</p>
+<ol><li> TIFF tag values are displayed by ImageJ (<i>Debug Mode</i> in <span class="sans"><span class="menuitem"><span class="sans">Edit ▷ Options ▷ </span><a href="Working_with_ImageJ.html#sub:Misc...">Misc…↓</a></span></span>)</li>
+<li> Bicubic interpolation is preferred over bilinear (e.g.,<span class="sans"> </span><span class="menuitem"><span class="sans">Edit ▷ Selection ▷ </span><a href="Working_with_ImageJ.html#sub:Straighten...">Straighten…↓</a></span>)</li>
+<li> The name of the measured image name is recorded in the first column of the <a href="Working_with_ImageJ.html#sec:Results-Table">Results Table↓</a> (<i>Display Label</i> in <span class="menuitem"><span class="sans">Analyze ▷ </span><a href="Working_with_ImageJ.html#sub:Set-Measurements..."><span class="menuitem">Set Measurements…</span>↓</a></span>)</li>
+<li> Measurements are not restricted to thresholded pixels (<i>Limit to Threshold</i> in <span class="menuitem"><span class="sans">Analyze ▷ </span><a href="Working_with_ImageJ.html#sub:Set-Measurements..."><span class="menuitem">Set Measurements…</span>↓</a></span>)</li>
+<li> Binary images are processed assuming white objects on a black background (<i>Black background</i> in <span class="menuitem"><span class="sans">Process ▷ Binary ▷ </span><a href="Working_with_ImageJ.html#sub:BinaryOptions..."><span class="menuitem">Options…</span>↓</a></span>, <i>see</i> <a href="Working_with_ImageJ.html#infobox:blackBackground">23↓</a> <a href="Working_with_ImageJ.html#infobox:blackBackground">Interpreting Binary Images↓</a>)</li>
+<li> <i>Background color</i> is black and <i>foreground color</i> is white (<span class="sans"><span class="menuitem"><span class="sans">Edit ▷ Options ▷ </span><a href="Working_with_ImageJ.html#sub:Colors...">Colors…↓</a></span></span>)</li>
+<li> ImageJ plots contain grid lines and are always <span class="formula">350 × 200</span> pixels in size (<span class="sans"><span class="menuitem"><span class="sans">Edit ▷ Options ▷ </span><a href="Working_with_ImageJ.html#sub:Profile-Plot-Options..."><span class="menuitem">Profile Plot Options…</span>↓</a></span></span>)</li>
+<li> Open the B&amp;C widget at its last saved screen position (<span class="sans"><span class="menuitem"><span class="sans">Image ▷ Adjust ▷ </span><a href="Working_with_ImageJ.html#sub:Brightness.2FContrast....5BC.5D">Brightness/Contrast… [C]↓</a></span></span>)</li></ol>
+<div class="See">
+<p><a href="Working_with_ImageJ.html#sec:GUIcustomization">Customizing the ImageJ Interface↓</a>, FAQs<a href="Working_with_ImageJ.html#nom-faq">↓</a> on <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=faq:technical:how_do_i_set_up_imagej_to_deal_with_white_particles_on_a_black_background_by_default">ImageJ wikipage</a>, <a href="Working_with_ImageJ.html#infobox:Organizing-Commands">8↓</a> <a href="Working_with_ImageJ.html#infobox:Organizing-Commands">Organizing Commands in the Menu Bar↓</a>
+</p>
+</div></div>
+
+<!-- 
+NewPP limit report
+Cached time: 20200714212613
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.096 seconds
+Real time usage: 0.103 seconds
+Preprocessor visited node count: 624/1000000
+Preprocessor generated node count: 1184/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/3
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=User_Guide/Working_with_ImageJ&amp;oldid=41412">http://imagej.net/index.php?title=User_Guide/Working_with_ImageJ&amp;oldid=41412</a>"</div>
+							</div>
+
+			<div id="footer">
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=User_Guide/Working_with_ImageJ&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Pages_with_broken_file_links" title="Category:Pages with broken file links">Pages with broken file links</a></li></ul></div></div>		</div>
+
+		<div id="bottom-wrap">
+		<div id="footer-wrap-inner">
+
+		<div id="primary" class="footer">
+			<ul>
+
+			<li id="search" class="widget">
+				<h3>Search</h3>
+				<form action="http://imagej.net/index.php" id="searchform">
+					<input type='hidden' name="title" value="Special:Search" />
+					<div>
+						<input name="search" placeholder="Search ImageJ" title="Search ImageJ [f]" accesskey="f" id="s"/>						<input type="submit" name="go" value="Search" title="Go to a page with this exact name if it exists" class="searchButton" id="searchsubmit"/>					</div>
+				</form>
+			</li>
+
+			
+						<li class="widget">
+				<h3>Personal tools</h3>
+				<div>
+					<ul>
+					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=User+Guide%2FWorking+with+ImageJ" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=User+Guide%2FWorking+with+ImageJ" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+				</div>
+			</li>
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="secondary" class="footer">
+			<ul>
+
+			<li id="toolbox" class="widget">
+				<h3>Tools</h3>
+				<ul>
+				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/User_Guide/Working_with_ImageJ" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/User_Guide/Working_with_ImageJ" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=User_Guide/Working_with_ImageJ&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=User_Guide/Working_with_ImageJ&amp;oldid=41412" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=User_Guide/Working_with_ImageJ&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+			</li>
+
+			
+			<li class="widget">
+							</li>
+
+			</ul>
+		</div>
+
+		<div id="ternary" class="footer">
+			<ul>
+
+			<li class="widget">
+				<img id="logo" src="../../skins/imagej-128.png" alt=""/>			</li>
+
+			<li class="widget">
+				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
+<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+			</li>
+
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+
+		</div>
+		</div>
+
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load(["ext.fancytree","ext.suckerfish","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.SimpleTooltip"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":292});});</script>
+		</body>
+		</html>
+		
