@@ -54,7 +54,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		
 		<div id="main" role="main">
 			<div id="nav-meta">
-			<span id="ca-nstab-main" class="selected"><a href="Nuclei_Watershed_Separation" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk"><a href="Talk:Nuclei_Watershed_Separation" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="index.php?title=Nuclei_Watershed_Separation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="index.php?title=Nuclei_Watershed_Separation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+			<span id="ca-nstab-main" class="selected"><a href="Nuclei_Watershed_Separation" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk"><a href="./Talk:Nuclei_Watershed_Separation" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="index.php?title=Nuclei_Watershed_Separation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="index.php?title=Nuclei_Watershed_Separation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
 
 			<div id="bodyContent">
 				<h1>Nuclei Watershed Separation</h1>
@@ -81,20 +81,20 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <ul><li> Okay, so how can we denoise, segment, watershed (separate touching objects) and then count / measure the objects in Fiji? Read on...</li></ul>
 <h3><span class="mw-headline" id="Open_the_sample_image">Open the sample image</span></h3>
 <ul><li> open the <a href="_images/8/83/NucleiDAPIconfocal.png" class="internal" title="NucleiDAPIconfocal.png">sample image of touching DAPI stained cell nuclei from a confocal laser scanning microscope.</a></li></ul>
-<p><a href="File:NucleiDAPIconfocal.png" class="image"><img alt="NucleiDAPIconfocal.png" src="_images/8/83/NucleiDAPIconfocal.png" width="250" height="259" /></a>
+<p><a href="./File:NucleiDAPIconfocal.png" class="image"><img alt="NucleiDAPIconfocal.png" src="_images/8/83/NucleiDAPIconfocal.png" width="250" height="259" /></a>
 </p>
 <ul><li> Run a <a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=gui:process:filters">Gaussian Blur filter</a> on the image to blur out the "speckle", actually Poisson distributed, statistical "photon <a href="http://en.wikipedia.org/wiki/Shot_noise" class="extiw" title="wikipedia:Shot noise">shot noise</a>", and also to smooth out the inhomogeneity of the nuclear staining. We will use a large sigma value of 3 for this task.  A value of sigma too small will mean that the segmentation will be disturbed by the noise and staining pattern. Too high a sigma value, and the objects will be too blurred, making it harder to find their edges precisely and separate them later.  Run menu command: Process - Filters - Gaussian Blur, with a sigma value of 3 pixels. You can preview other values to see how they look also. You should get an image that looks like this:</li></ul>
-<p><a href="File:NucleiDAPIconfocalGauss3pxSigma.png" class="image"><img alt="NucleiDAPIconfocalGauss3pxSigma.png" src="_images/0/0d/NucleiDAPIconfocalGauss3pxSigma.png" width="250" height="259" /></a>
+<p><a href="./File:NucleiDAPIconfocalGauss3pxSigma.png" class="image"><img alt="NucleiDAPIconfocalGauss3pxSigma.png" src="_images/0/0d/NucleiDAPIconfocalGauss3pxSigma.png" width="250" height="259" /></a>
 </p>
 <h3><span class="mw-headline" id="Pixel_Intensity_Threshold_-_find_the_foreground_areas">Pixel Intensity Threshold  - find the foreground areas</span></h3>
 <ul><li> Next we need to separate the objects from the background using pixel intensity thresholding. Fiji has a number of built in <a href="Auto_Threshold" title="Auto Threshold">Automatic Thresholding</a> methods that try to distinguish the background from the foreground. In this case the default method works pretty well,  but you can see there is a long list of methods, which give slightly different threshold results for this image.  You can play with different methods if you like. You might get a different answer in the end!</li></ul>
 <ul><li> Do menu command Image - Adjust - Threshold. Turn on the check box for "Dark background" . Indeed, in this case the background is dark! The default method will be previewed automatically when you launch the menu command, and a threshold will be set, something close to 100 intensity. If you are happy with the automatically calculate threshold, then click "Apply", which will give you a binary image.  Black is background, and white is foreground. It should look like this:</li></ul>
-<p><a href="File:NucleiDAPIconfocalAutoDefaultThresh.png" class="image"><img alt="NucleiDAPIconfocalAutoDefaultThresh.png" src="_images/1/14/NucleiDAPIconfocalAutoDefaultThresh.png" width="250" height="259" /></a>
+<p><a href="./File:NucleiDAPIconfocalAutoDefaultThresh.png" class="image"><img alt="NucleiDAPIconfocalAutoDefaultThresh.png" src="_images/1/14/NucleiDAPIconfocalAutoDefaultThresh.png" width="250" height="259" /></a>
 </p>
 <ul><li> So far so good... But we still don't have objects... only background and foreground pixels.  Also it is clear that some nuclei are connected to adjacent ones... and we want them to be separated.  We will use the watershed method built into Fiji for that:</li></ul>
 <h3><span class="mw-headline" id="Watershed_algorithm_-_separate_touching_objects">Watershed algorithm - separate touching objects</span></h3>
 <ul><li> To run the built in <a rel="nofollow" class="external text" href="docs/menus/process.html#watershed">ImageJ watershed method</a> choose menu item: Process - Binary - Watershed. This method finds the centre of each object (using a morphological erode operation), then calculates a distance map from the object centre points to the edges of the objects, then fills that "topological map" with imaginary water. Where 2 "Watersheds" meet, it builds a dam to separate them! One could do all these steps manually, but the watershed function automates that for you, which is nice.  Your watershed image should look like this:</li></ul>
-<p><a href="File:NucleiDAPIconfocalWatershed.png" class="image"><img alt="NucleiDAPIconfocalWatershed.png" src="_images/d/d4/NucleiDAPIconfocalWatershed.png" width="250" height="259" /></a>
+<p><a href="./File:NucleiDAPIconfocalWatershed.png" class="image"><img alt="NucleiDAPIconfocalWatershed.png" src="_images/d/d4/NucleiDAPIconfocalWatershed.png" width="250" height="259" /></a>
 </p>
 <ul><li> Notice how the nuclei have been split away from each other.  This method only works robustly for roughly circular objects. Why?</li></ul>
 <p><br />
@@ -104,14 +104,14 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <ul><li> Next we must run the Analyze Particles tool in Fiji to locate patches of white pixels and count them. But... that tool needs black objects on a white background or a threshold to be set on the image which contains the desired objects. To invert the image do Edit - Invert, or to threshold the binary image, again do Image - Adjust - Threshold (Since the image now contains only two intensities (0 and 255), the threshold default is of course correct,  and the objects appear in thresholded red, for black background again of course). </li></ul>
 <ul><li> Now choose menu item Analyze - Analyze Particles,  using the settings in the screen shot below.</li></ul>
 <p><a rel="nofollow" class="external text" href="http://imagejdocu.tudor.lu/doku.php?id=gui:analyze:analyze_particles">documentation for analyze particles.</a>
-</p><p><a href="File:NulceiDAPIconfocalAnalyzeParticles.png" class="image"><img alt="NulceiDAPIconfocalAnalyzeParticles.png" src="_images/5/50/NulceiDAPIconfocalAnalyzeParticles.png" width="500" height="387" /></a>
+</p><p><a href="./File:NulceiDAPIconfocalAnalyzeParticles.png" class="image"><img alt="NulceiDAPIconfocalAnalyzeParticles.png" src="_images/5/50/NulceiDAPIconfocalAnalyzeParticles.png" width="500" height="387" /></a>
 </p>
 <ul><li> You can filter out different sizes of particles. For example, you might only be interested in large objects,  like nuclei. So you can exclude small objects that you know are junk.  Change the area number range in the Size field and see what happens. </li></ul>
 <ul><li> You can choose to count only those objects which are very circular by changing the Circularity range numbers to say 0.8-1. You could make it look for non circular objects too! How? Play with it, see what it does. </li></ul>
 <ul><li> Use show outlines, or test the other options there if you like. Exclude on edges is very smart. It means you don't get nonsense results from objects that are chopped off at the edges of the image, and as such are of course smaller than they really are.</li></ul>
 <ul><li> You can add all the objects to the ROI manager, by turning on Add to Manager.  Then you could use those ROIs to measure the intensities of the signal in the objects of the original image.  Can you figure out how to do that?</li></ul>
 <ul><li> It also spits out lots of useful statistics: </li></ul>
-<p><a href="File:NulceiDAPIconfocalSegmentationResults.png" class="image"><img alt="NulceiDAPIconfocalSegmentationResults.png" src="_images/9/9f/NulceiDAPIconfocalSegmentationResults.png" width="700" height="456" /></a>
+<p><a href="./File:NulceiDAPIconfocalSegmentationResults.png" class="image"><img alt="NulceiDAPIconfocalSegmentationResults.png" src="_images/9/9f/NulceiDAPIconfocalSegmentationResults.png" width="700" height="456" /></a>
 </p>
 <!-- 
 NewPP limit report
@@ -137,9 +137,9 @@ Retrieved from "<a dir="ltr" href="index.php?title=Nuclei_Watershed_Separation&a
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=Nuclei_Watershed_Separation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 24 January 2020, at 11:55.</p><ul><li><a href="./ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="./ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=Nuclei_Watershed_Separation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
-			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="./Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="./Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="./Category:Segmentation" title="Category:Segmentation">Segmentation</a></li></ul></div></div>		</div>
 
 		<div id="bottom-wrap">
 		</div>

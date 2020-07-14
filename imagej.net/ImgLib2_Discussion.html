@@ -71,8 +71,8 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="ImgLib2_Discussion.html#2011-03-16"><span class="tocnumber">1</span> <span class="toctext">2011-03-16</span></a>
 <ul>
-<li class="toclevel-2 tocsection-2"><a href="ImgLib2_Discussion.html#We_discussed_the_View_concept:"><span class="tocnumber">1.1</span> <span class="toctext">We discussed the View concept:</span></a></li>
-<li class="toclevel-2 tocsection-3"><a href="ImgLib2_Discussion.html#We_discussed_the_View_concept_.28again.29_and_Transforms:"><span class="tocnumber">1.2</span> <span class="toctext">We discussed the View concept (again) and Transforms:</span></a></li>
+<li class="toclevel-2 tocsection-2"><a href="./ImgLib2_Discussion.html#We_discussed_the_View_concept:"><span class="tocnumber">1.1</span> <span class="toctext">We discussed the View concept:</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="./ImgLib2_Discussion.html#We_discussed_the_View_concept_.28again.29_and_Transforms:"><span class="tocnumber">1.2</span> <span class="toctext">We discussed the View concept (again) and Transforms:</span></a></li>
 <li class="toclevel-2 tocsection-4"><a href="ImgLib2_Discussion.html#How_to_proceed_with_the_imglib2_namespace.3F"><span class="tocnumber">1.3</span> <span class="toctext">How to proceed with the imglib2 namespace?</span></a></li>
 </ul>
 </li>
@@ -102,7 +102,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </li>
 <li class="toclevel-1 tocsection-14"><a href="ImgLib2_Discussion.html#2011-05-02"><span class="tocnumber">5</span> <span class="toctext">2011-05-02</span></a>
 <ul>
-<li class="toclevel-2 tocsection-15"><a href="ImgLib2_Discussion.html#We_discussed_the_ExtendedRandomAccessibleInterval:"><span class="tocnumber">5.1</span> <span class="toctext">We discussed the ExtendedRandomAccessibleInterval:</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="./ImgLib2_Discussion.html#We_discussed_the_ExtendedRandomAccessibleInterval:"><span class="tocnumber">5.1</span> <span class="toctext">We discussed the ExtendedRandomAccessibleInterval:</span></a></li>
 <li class="toclevel-2 tocsection-16"><a href="ImgLib2_Discussion.html#Should_Iterator_.28and_so_Cursor.29_have_a_bck.28.29_call.3F"><span class="tocnumber">5.2</span> <span class="toctext">Should Iterator (and so Cursor) have a bck() call?</span></a></li>
 </ul>
 </li>
@@ -209,7 +209,7 @@ public interface IvertibleRealTransform extends RealTransform {
 </p><p><br />
 Why not just call it "org.imglib" then? Wouldn't clash with "mpicbg.imglib" of imglib1.
 </p>
-<dl><dd>Because imglib.org is registered by somebody else already. <a href="User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> 14:38, 24 March 2011 (CET)</dd></dl>
+<dl><dd>Because imglib.org is registered by somebody else already. <a href="./User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> 14:38, 24 March 2011 (CET)</dd></dl>
 <h2><span class="mw-headline" id="2011-03-21">2011-03-21</span></h2>
 <h3><span class="mw-headline" id="Efficient_access_for_RandomAccessibleViews">Efficient access for RandomAccessibleViews</span></h3>
 <p>I've been thinking all day about a reasonable concept for concatenation and simplification of <code>Transforms</code> for <code>RandomAccessibleViews</code>.
@@ -316,7 +316,7 @@ transforms before and after the extending view can be concatenated and simplifie
 </p>
 <h2><span class="mw-headline" id="2011-03-24">2011-03-24</span></h2>
 <h3><span class="mw-headline" id="Transformation_Hierarchies">Transformation Hierarchies</span></h3>
-<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="File:Imglib2-transform.png" class="image"><img alt="" src="_images/b/bd/Imglib2-transform.png" width="400" height="99" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:Imglib2-transform.png" class="internal" title="Enlarge"></a></div>Simplified visualization of the hierarchy of ImgLib2 transforms that can be reduced by concatenation.  Note that the interfaces responsible for concatenation are not implemented by the transform hierarchy.  Necessary access to trivial parameters in specialized transforms is implemented just once in abstract classes.</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="./File:Imglib2-transform.png" class="image"><img alt="" src="_images/b/bd/Imglib2-transform.png" width="400" height="99" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:Imglib2-transform.png" class="internal" title="Enlarge"></a></div>Simplified visualization of the hierarchy of ImgLib2 transforms that can be reduced by concatenation.  Note that the interfaces responsible for concatenation are not implemented by the transform hierarchy.  Necessary access to trivial parameters in specialized transforms is implemented just once in abstract classes.</div></div></div>
 <p>We thought that it might at some point be useful to have a generic way of contracting chains of transforms.
 The idea is to have a hierarchy of transformations, i.e., a Translation is a Rigid transform is an Affine transform, etc.
 The hierarchy determines which transformations can be concatenated.
@@ -422,14 +422,14 @@ Positionable3d.setPostion( Localizable2d ) - NOT OK
 <ol><li>Yes, because iteration order for ImgLib2 Iterators is claimed to be constant.  Given that, accessing the previous element (bck()) call is always defined.</li>
 <li>No, because it would require a substantial extension of the existing interfaces and classes.  ImgLib2 Iterator could then implement ListIterator which is a lot of effort to implement.</li></ol>
 <p>In principal, I strongly support introducing it.  It makes total sense but it is a change in the core.
-<a href="User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> 17:03, 3 May 2011 (CEST)
+<a href="./User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> 17:03, 3 May 2011 (CEST)
 </p><p>I discussed it again with Tobias yesterday in detail and we came to the conclusion that it does not make too much sense. First of all, any Sampler can be copied at a certain location now, i.e. wait there. 
 And it is also important to consider that going back would have a different logic than going forward as Cursors might crash when moved out. This means one would not be able to access +1, but one has to start at the last pixel of the e.g. Img&lt;T&gt;. That means when iterating back, the test has to be different: First get value, then move.
 </p><p>So maybe we just skip it? However, we could have an Interface that provides this functionality:
 </p><p>bck();
 hasPrevious();
 </p><p>just for the case that somebody wants to implement it for some reason and does not has to do its own interface which would be incompatible with other people who would want to it. Could be named ReverseCursor or so...
-</p><p><a href="User:StephanP" title="User:StephanP">Stephan Preibisch</a> 12:24, 4 May 2011 (CEST)
+</p><p><a href="./User:StephanP" title="User:StephanP">Stephan Preibisch</a> 12:24, 4 May 2011 (CEST)
 </p>
 <h2><span class="mw-headline" id="2011-05-04">2011-05-04</span></h2>
 <h3><span class="mw-headline" id="Localizable_and_RealLocalizable_Interface_get.28.29-methods">Localizable and RealLocalizable Interface get()-methods</span></h3>
@@ -438,7 +438,7 @@ hasPrevious();
 </p><p>- localize instead of getLocation()
 </p><p>etc... 
 </p><p>should we maybe change it as well to intPosition(), longPosition, etc?
-</p><p><a href="User:StephanP" title="User:StephanP">Stephan Preibisch</a> 12:24, 4 May 2011 (CEST)
+</p><p><a href="./User:StephanP" title="User:StephanP">Stephan Preibisch</a> 12:24, 4 May 2011 (CEST)
 </p><p>Tobias pointed out that we should not as it is not clear if it is a getter or setter when passing an array.
 </p>
 <h2><span class="mw-headline" id="2011-05-12">2011-05-12</span></h2>
@@ -464,10 +464,10 @@ public void setPositionDim0( final int pos )
 </pre>
 <p>which saves a multiplication for many operations. It can also not be inlined by the JIT compiler as container.steps[ 0 ] cannot be made final, it could potentially always be changed...
 </p><p>The same applies for fwd(dim), bck(dim), move(dim), there a -- ++ and += can replace a array lookup...
-</p><p><a href="User:StephanP" title="User:StephanP">Stephan Preibisch</a> 12:27, 12 May 2011 (CEST)
+</p><p><a href="./User:StephanP" title="User:StephanP">Stephan Preibisch</a> 12:27, 12 May 2011 (CEST)
 </p>
-<dl><dd>What about having a 1D <code>RandomAccess</code> instead as we have done in <code>PlanarImg</code> for <code>Cursor</code>.  That could implement the <code>setPosition(long p, int d)</code> method ignoring <code>d</code>.  A 1D <code>RandomAccess</code> could, in addition, have the proposed method such that in situations where you know what you're doing (read: where you can cast), you have a shorter call available.  That approach would also relieve us from the need to implement that method in situations where it does not make sense at all, e.g. <code>ShapeImg</code>, that has no 1D. <a href="User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> 15:27, 12 May 2011 (CEST)</dd></dl>
-<dl><dd>I like this way of realizing it, maybe we could also implement it on ImgFactory level. If a Img implements RandomAccessible1D, the factory could also have a special create( long size ) method (in e.g. RandomAccessible1DFactory) which returns for example &lt;I extends ArrayImg&lt;T,?&gt; &amp; RandomAccessible1D&gt;, so no unchecked casts are necessary. <a href="User:StephanP" title="User:StephanP">Stephan Preibisch</a> 16:15, 12 May 2011 (CEST)</dd></dl>
+<dl><dd>What about having a 1D <code>RandomAccess</code> instead as we have done in <code>PlanarImg</code> for <code>Cursor</code>.  That could implement the <code>setPosition(long p, int d)</code> method ignoring <code>d</code>.  A 1D <code>RandomAccess</code> could, in addition, have the proposed method such that in situations where you know what you're doing (read: where you can cast), you have a shorter call available.  That approach would also relieve us from the need to implement that method in situations where it does not make sense at all, e.g. <code>ShapeImg</code>, that has no 1D. <a href="./User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> 15:27, 12 May 2011 (CEST)</dd></dl>
+<dl><dd>I like this way of realizing it, maybe we could also implement it on ImgFactory level. If a Img implements RandomAccessible1D, the factory could also have a special create( long size ) method (in e.g. RandomAccessible1DFactory) which returns for example &lt;I extends ArrayImg&lt;T,?&gt; &amp; RandomAccessible1D&gt;, so no unchecked casts are necessary. <a href="./User:StephanP" title="User:StephanP">Stephan Preibisch</a> 16:15, 12 May 2011 (CEST)</dd></dl>
 <p><br />
 </p>
 <h2><span class="mw-headline" id="2011-11-28">2011-11-28</span></h2>
@@ -540,7 +540,7 @@ public final class InterpolatedRandomAccessible&lt; T &gt; implements RealRandom
 <ol><li>Joining multiple images of the same size and dimensions into one or more dimensions of a single image (composition as opposed to decomposition which is implemented by hyperslice views).</li>
 <li>Adding a new dimension considering an existing dimension as interleaved data.</li></ol>
 <p>When done properly this has the potential to replace or at least simplify PlanarImg like containers since they could be expressed as a composition of multiple ArrayImg-s.
-<a href="User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> 16:11, 18 January 2012 (CET)
+<a href="./User:Saalfeld" class="mw-redirect" title="User:Saalfeld">Stephan Saalfeld</a> 16:11, 18 January 2012 (CET)
 </p>
 <h2><span class="mw-headline" id="2012-11-21">2012-11-21</span></h2>
 <p>Another useful integer view comes to mind:
@@ -580,9 +580,9 @@ Retrieved from "<a dir="ltr" href="index.php?title=ImgLib2_Discussion&amp;oldid=
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=ImgLib2_Discussion&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 24 January 2020, at 11:54.</p><ul><li><a href="./ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="./ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=ImgLib2_Discussion&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
-			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="Category:ImgLib" title="Category:ImgLib">ImgLib</a></li></ul></div></div>		</div>
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="./Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="./Category:ImgLib" title="Category:ImgLib">ImgLib</a></li></ul></div></div>		</div>
 
 		<div id="bottom-wrap">
 		</div>

@@ -102,7 +102,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <tr>
 <th> Category
 </th>
-<td> <a href="Category:Deconvolution" title="Category:Deconvolution">Deconvolution</a>
+<td> <a href="./Category:Deconvolution" title="Category:Deconvolution">Deconvolution</a>
 </td></tr>
 <tr>
 <th> Website
@@ -160,7 +160,7 @@ images, its usage is limited to grayscale images. To deconvolve a color image, y
 and deblur each channel separately.
 </p>
 <h2><span class="mw-headline" id="How_to_use">How to use</span></h2>
-<div class="center"><div class="floatnone"><a href="File:ParallelSpectralDeconvolutionDialog.jpg" class="image"><img alt="ParallelSpectralDeconvolutionDialog.jpg" src="_images/1/16/ParallelSpectralDeconvolutionDialog.jpg" width="500" height="458" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="./File:ParallelSpectralDeconvolutionDialog.jpg" class="image"><img alt="ParallelSpectralDeconvolutionDialog.jpg" src="_images/1/16/ParallelSpectralDeconvolutionDialog.jpg" width="500" height="458" /></a></div></div>
 <p>There are seven drop-down lists (combo-boxes) available in the GUI. From the Image list, you can choose a blurred image. PSF list is for selection of a point spread function image. The content of these two lists depends on what is currently open in ImageJ - if no image windows are displayed then both lists are empty. The next two lists (Method and Stencil) allow you to choose an algorithm used for deconvolution (Generalized Tikhonov, Tikhonov or TSVD) and a stencil (for Generalized Tikhonov only). The stencil is used for creating a regularization matrix (an approximation of a derivative operator). A detailed explanation of all algorithms can be found in Deblurring Images: Matrices, Spectra, and Filtering. In the Resizing combo-box you can choose whether the blurred image will be padded to the next power-of-two size before processing. This feature is available mainly for performance reasons (FFT works faster when the size of the data is a power-of-two number). Note that if the size of each dimension of a blurred image is already a power-of-two number, then the image will not be padded even if the Next power of two option is selected. To display a padded image, the Show padded image check-box needs to be selected. The Output list is used to specify the type of an output (reconstructed image). Finally, in the Precision combo-box you can choose a floating-point precision used in computations. Practice shows that a single precision is sufficient for most problems.
 </p><p>There are few other important options in the GUI that require some explanation. The Threshold check-box and text field are used to remove a negative values from the solution (reconstructed image). Since it is not possible to impose nonnegativity constraints in the spectral algorithms, the threshold option is the only way to get a nonnegative solution. When the threshold option is enabled, then all values in the reconstructed image are that are less than the value specified in the threshold text field are replaced by zero. In the Max number of threads (power of 2) text field you can specify how many computational threads will be used. By default this value is equal to the number of CPUs available on your machine.
 </p><p>When deblurring an image, certain regularity conditions have to be enforced on the solution. The degree of regularization is determined by a regularization parameter that should be chosen carefully. Parallel Spectral Deconvolution has an option to automatically compute the value of a regularization parameter (Auto regularization parameter check-box). If this box is selected then the Generalized Cross-Validation algorithm is used (for details refer to Deblurring Images: Matrices, Spectra, and Filtering). Unfortunately, no parameter choice method is perfect, therefore it is possible to manually adjust the automatically computed value (Regularization parameter text field and slider). Once the initial deconvolution is finished, the Regularization parameter text field and slider, as well as the Update button are enabled. At this point, you can change the value of a regularization parameter either by using the slider or by entering a new value in the text field. The Update button is used to recompute the solution with the new value of a regularization parameter.
@@ -177,17 +177,17 @@ medium, wavelength, etc.
 <h2><span class="mw-headline" id="2D_Example">2D Example</span></h2>
 <p>After opening the image to deconvolve and the image of the PSF, start <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Deconvolution </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> 2D Spectral Deconvolution...</span></em></span>
 </p>
-<div class="center"><div class="floatnone"><a href="File:ParallelSpectralDeconvolution2DExample.jpg" class="image"><img alt="ParallelSpectralDeconvolution2DExample.jpg" src="_images/8/8d/ParallelSpectralDeconvolution2DExample.jpg" width="800" height="378" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="./File:ParallelSpectralDeconvolution2DExample.jpg" class="image"><img alt="ParallelSpectralDeconvolution2DExample.jpg" src="_images/8/8d/ParallelSpectralDeconvolution2DExample.jpg" width="800" height="378" /></a></div></div>
 <p>Clicking on the Deconvolve button results in this:
 </p>
-<div class="center"><div class="floatnone"><a href="File:ParallelSpectralDeconvolution2DExampleResult.jpg" class="image"><img alt="ParallelSpectralDeconvolution2DExampleResult.jpg" src="_images/1/1a/ParallelSpectralDeconvolution2DExampleResult.jpg" width="800" height="468" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="./File:ParallelSpectralDeconvolution2DExampleResult.jpg" class="image"><img alt="ParallelSpectralDeconvolution2DExampleResult.jpg" src="_images/1/1a/ParallelSpectralDeconvolution2DExampleResult.jpg" width="800" height="468" /></a></div></div>
 <h2><span class="mw-headline" id="3D_Example">3D Example</span></h2>
 <p>After opening the image to deconvolve and the image of the PSF, start <span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Deconvolution </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> 3D Spectral Deconvolution...</span></em></span>
 </p>
-<div class="center"><div class="floatnone"><a href="File:ParallelSpectralDeconvolution3DExample.jpg" class="image"><img alt="ParallelSpectralDeconvolution3DExample.jpg" src="_images/9/9f/ParallelSpectralDeconvolution3DExample.jpg" width="800" height="435" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="./File:ParallelSpectralDeconvolution3DExample.jpg" class="image"><img alt="ParallelSpectralDeconvolution3DExample.jpg" src="_images/9/9f/ParallelSpectralDeconvolution3DExample.jpg" width="800" height="435" /></a></div></div>
 <p>Clicking on the Deconvolve button results in this:
 </p>
-<div class="center"><div class="floatnone"><a href="File:ParallelSpectralDeconvolution3DExampleResult.jpg" class="image"><img alt="ParallelSpectralDeconvolution3DExampleResult.jpg" src="_images/9/9c/ParallelSpectralDeconvolution3DExampleResult.jpg" width="800" height="507" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="./File:ParallelSpectralDeconvolution3DExampleResult.jpg" class="image"><img alt="ParallelSpectralDeconvolution3DExampleResult.jpg" src="_images/9/9c/ParallelSpectralDeconvolution3DExampleResult.jpg" width="800" height="507" /></a></div></div>
 <h2><span class="mw-headline" id="See_also">See also</span></h2>
 <ul><li> <a href="Parallel_Iterative_Deconvolution" title="Parallel Iterative Deconvolution">Parallel Iterative Deconvolution</a> by the same author, for another set of methods. </li></ul>
 <h2><span class="mw-headline" id="Version_history">Version history</span></h2>
@@ -259,9 +259,9 @@ Retrieved from "<a dir="ltr" href="index.php?title=Parallel_Spectral_Deconvoluti
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 18 April 2018, at 15:07.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=Parallel_Spectral_Deconvolution&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 18 April 2018, at 15:07.</p><ul><li><a href="./ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="./ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=Parallel_Spectral_Deconvolution&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
-			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="Category:Deconvolution" title="Category:Deconvolution">Deconvolution</a></li></ul></div></div>		</div>
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="./Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="./Category:Plugins" title="Category:Plugins">Plugins</a></li><li><a href="./Category:Deconvolution" title="Category:Deconvolution">Deconvolution</a></li></ul></div></div>		</div>
 
 		<div id="bottom-wrap">
 		</div>

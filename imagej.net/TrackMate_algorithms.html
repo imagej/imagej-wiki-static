@@ -442,7 +442,7 @@ the renowned  method contributed by Jaqaman and colleagues<sup id="cite_ref-Jaqa
 </p><p><br />
 </p>
 <h4><span class="mw-headline" id="Main_differences_with_the_Jaqaman_paper.5B2.5D">Main differences with the Jaqaman paper<sup id="cite_ref-Jaqaman_2-4" class="reference"><a href="TrackMate_algorithms.html#cite_note-Jaqaman-2">&#91;2&#93;</a></sup></span></h4>
-<p>The nominal implementation of the paper remains the one developed under <a href="Category:Matlab" title="Category:Matlab">Matlab</a> by Khuloud Jaqaman <i>et al.</i> and published in Nature Methods. The software is called u-track and can be found on <a rel="nofollow" class="external text" href="http://www.utsouthwestern.edu/labs/jaqaman/software/">Khuloud Jaqaman homepage</a>. 
+<p>The nominal implementation of the paper remains the one developed under <a href="./Category:Matlab" title="Category:Matlab">Matlab</a> by Khuloud Jaqaman <i>et al.</i> and published in Nature Methods. The software is called u-track and can be found on <a rel="nofollow" class="external text" href="http://www.utsouthwestern.edu/labs/jaqaman/software/">Khuloud Jaqaman homepage</a>. 
 </p><p>TrackMate was initially developed to simplify <i>C.elegans</i> lineaging. It therefore just bundles a stripped down version of this framework. 
 </p><p>The notable differences are:
 </p>
@@ -459,7 +459,7 @@ the renowned  method contributed by Jaqaman and colleagues<sup id="cite_ref-Jaqa
 </p><p>Tracks are initiated from the first two frames, using the classical LAP framework with the Jaqaman cost matrix (see above), using the square distance as cost. The user can set what is the maximal distance allowed for the initial search with the <b>Initial search radius</b> setting. 
 </p><p>Each track initiated from a pair of spots is used to create an instance of a Kalman filter. There are as many Kalman filters as tracks. In the next frames, each Kalman filter is used to generate a prediction of the most probable position of the particle. All these predictions are stored. 
 </p><p>Then, all the predicted positions are linked against the actual spot positions in the frame, using again the Jaqaman LAP framework, with the square distance as costs. The user can set how far can be an actual position from a predicted position for linking with the <b>Search radius</b> setting.
-</p><p><a href="File:TrackMate_KalmanTrackerPrinciple.png" class="image"><img alt="TrackMate KalmanTrackerPrinciple.png" src="_images/e/e8/TrackMate_KalmanTrackerPrinciple.png" width="600" height="438" /></a>
+</p><p><a href="./File:TrackMate_KalmanTrackerPrinciple.png" class="image"><img alt="TrackMate KalmanTrackerPrinciple.png" src="_images/e/e8/TrackMate_KalmanTrackerPrinciple.png" width="600" height="438" /></a>
 </p><p>Now of course, after linking, some Kalman filters might not get linked to a found spot. This event is called an occlusion: the predicted position did not correspond to an actual measurement (spot). The good thing with Kalman filters is that they are fine with this, and are still able to make a prediction for the next frame even with a missing detection. If the number of successive occlusions is too large, the track is considered terminated. The user can set the maximal number of successive occlusions allowed before a track is terminated with the <b>Max frame gap</b> setting.
 </p><p>Conversely, some spots might not get linked to a track. They will be used to initiate a new track in the next frame, as for the tracker initiation described above. 
 </p><p>It is important to note here that the cost functions we use is the square distance, like for the Brownian motion, but from the predicted positions to the actual detections. Because the prediction positions are made assuming constant velocity, we are indeed dealing with an adequate cost function for linear motion. But since we are linking predicted positions to measured positions with the square distance cost function, we do as if the predicted positions deviate from actual particle position with an error that follows the gaussian distribution. This is a reasonable assumption and this is why this tracker will be robust.
@@ -529,7 +529,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=TrackMate_Algorithms&amp;oldi
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 25 September 2019, at 03:11.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=TrackMate_Algorithms&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 25 September 2019, at 03:11.</p><ul><li><a href="./ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="./ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=TrackMate_Algorithms&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
 			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
 

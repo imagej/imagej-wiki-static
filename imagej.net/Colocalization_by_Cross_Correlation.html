@@ -66,7 +66,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <tr>
 <th> Author
 </th>
-<td> <a rel="nofollow" class="external text" href="User:Amccall">Andrew McCall</a>
+<td> <a rel="nofollow" class="external text" href="./User:Amccall">Andrew McCall</a>
 </td></tr>
 
 
@@ -75,7 +75,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <tr>
 <th> Maintainer
 </th>
-<td> <a rel="nofollow" class="external text" href="User:Amccall">Andrew McCall</a>
+<td> <a rel="nofollow" class="external text" href="./User:Amccall">Andrew McCall</a>
 </td></tr>
 
 
@@ -98,7 +98,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <tr>
 <th> Category
 </th>
-<td> <a href="Category:Plugins" title="Category:Plugins">Category:Plugins</a>, <a href="Category:Colocalization" title="Category:Colocalization">Category:Colocalization</a>
+<td> <a href="./Category:Plugins" title="Category:Plugins">Category:Plugins</a>, <a href="./Category:Colocalization" title="Category:Colocalization">Category:Colocalization</a>
 </td></tr>
 
 </table>
@@ -108,13 +108,13 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </p><p>Available on the list of <a href="Update_Sites" title="Update Sites">ImageJ updates sites</a>. Requires Fiji.
 </p><p><b>How it works:</b>
 </p>
-<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="File:ColocByCorrelation-CorrelationImage.jpg" class="image"><img alt="" src="_images/d/d0/ColocByCorrelation-CorrelationImage.jpg" width="300" height="225" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:ColocByCorrelation-CorrelationImage.jpg" class="internal" title="Enlarge"></a></div>Correlation Image</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="./File:ColocByCorrelation-CorrelationImage.jpg" class="image"><img alt="" src="_images/d/d0/ColocByCorrelation-CorrelationImage.jpg" width="300" height="225" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:ColocByCorrelation-CorrelationImage.jpg" class="internal" title="Enlarge"></a></div>Correlation Image</div></div></div>
 <p>The plugin performs a cross-correlation in frequency space to create a correlation image. To remove non-specific correlations (from background, or high signal density), a correlation image generated from randomized images is then subtracted from the original correlation image. This occurs through cycles of:
 </p><p>1. Randomizing Image1 using the <a href="_images/e/e2/Costes_etalColoc.pdf" class="internal" title="Costes etalColoc.pdf">Costes randomization method</a> and a mask of all theoretically possible localizations for the signal in Image1 (i.e. a mask of the cells, or the nuclei).
 </p><p>2. Calculating the cross-correlation of the randomized image with Image2, then averaging this over successive cycles.
 </p><p>After the subtraction of non-specific correlations, we generate a radial profile of this data and fit a gaussian curve to it, showing the correlation between the images at different offsets. We also generate a radial profile for the original correlation data before subtraction, as this is needed to establish a measure of confidence. The confidence is calculated as the area under the curve (AUC) of the subtracted correlation radial profile (in the range of mean ± 3×sigma) divided by the AUC of the original correlation radial profile (in same range) as a percentage. The confidence value, along with the mean and sigma of the gaussian fit are displayed in a log window. Higher values of confidence, closer to 100, indicate that two images likely have a true spatial correlation at the indicated distance.
 </p>
-<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="File:ColocByCorrelate-Graph.jpeg" class="image"><img alt="" src="_images/1/1e/ColocByCorrelate-Graph.jpeg" width="300" height="174" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:ColocByCorrelate-Graph.jpeg" class="internal" title="Enlarge"></a></div>Radial profile of correlation image shown above</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="./File:ColocByCorrelate-Graph.jpeg" class="image"><img alt="" src="_images/1/1e/ColocByCorrelate-Graph.jpeg" width="300" height="174" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:ColocByCorrelate-Graph.jpeg" class="internal" title="Enlarge"></a></div>Radial profile of correlation image shown above</div></div></div>
 <p><b>Preparing images:</b> 
 </p><p>This plugin requires two single channel, single frame images (2D or 3D) to be analyzed, and an additional binary mask to define the randomization area (details for mask below). The two images should undergo appropriate background subtraction to lower the background pixel values to zero or near zero. Even low level background (pixel values of 10 to 20 on a 16 bit image) can lower the confidence level and result in false negatives. Additionally, the images (particularly 3D) need to be correctly scaled (Image&gt;Properties), otherwise all axes will be assumed to have the same scale. The mask for the binary image should cover all of the theoretically possible localizations for the signals in the image that is to be randomized. Typically this will simply be a binary mask of the cell volume, however if you are analyzing nuclear proteins, this would be a mask of only the nuclei. Using an inappropriate mask will likely result in the detection of a strong correlation caused by these higher order repeating structures (e.g. you will find a correlation at distances averaging 10-15 microns, caused by the repeating structure of the cells).
 </p><p><b>Running the plugin:</b> 
@@ -122,7 +122,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </p><p><b>Interpreting the results:</b> 
 </p><p>After the plugin has finished, two new windows will be open:
 </p>
-<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="File:ColocByCorrelate-GaussFit.jpg" class="image"><img alt="ColocByCorrelate-GaussFit.jpg" src="_images/f/f1/ColocByCorrelate-GaussFit.jpg" width="300" height="304" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="File:ColocByCorrelate-GaussFit.jpg" class="internal" title="Enlarge"></a></div></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="./File:ColocByCorrelate-GaussFit.jpg" class="image"><img alt="ColocByCorrelate-GaussFit.jpg" src="_images/f/f1/ColocByCorrelate-GaussFit.jpg" width="300" height="304" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:ColocByCorrelate-GaussFit.jpg" class="internal" title="Enlarge"></a></div></div></div></div>
 <p>Correlation plot: A radial profile plot will be displayed, it contains the radial profile of the original correlation image (black line), the radial profile of the correlation after subtraction of random associations (red line), and a Gaussian curve fit to the subtracted profile (blue dots). The Y-axis is the result of the average correlation function at a given distance. While not arbitrary, it is most easily viewed as a measure of relative correlation. The range of the graph is set automatically to fit the Gaussian curve. If you wish to view all the data select More&gt;Set Range to Fit all…
 </p><p>Gaussian fit analysis: This text window will contain (in scaled units), the mean distance for the discovered correlation, and the standard deviation of that correlation (sigma), as well as an estimation of confidence for this correlation (range 0-100). The confidence is determined by taking the area under the curve (AUC) of the subtracted correlation radial profile (in range of mean ± 3×sigma) divided by the AUC of the original correlation radial profile (in same range). Values closer to 100 indicate a strong likelihood of true correlation. Values near zero indicate low to no correlation between the two images. I currently estimate that values of ~20 or greater indicate some degree of correlation (within the range specified by the Gaussian curve), though this is with very limited data. Confidence values can be affected by many things, including image noise and background, an inappropriate randomization mask, and optical abberations. Performing a simple background subtraction can improve confidence scores signficantly.
 </p>
@@ -152,9 +152,9 @@ Retrieved from "<a dir="ltr" href="index.php?title=Colocalization_by_Cross_Corre
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 11 May 2020, at 15:38.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=Colocalization_by_Cross_Correlation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 11 May 2020, at 15:38.</p><ul><li><a href="./ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="./ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=Colocalization_by_Cross_Correlation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
-			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="Category:Colocalization" title="Category:Colocalization">Colocalization</a></li><li><a href="Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="./Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="./Category:Colocalization" title="Category:Colocalization">Colocalization</a></li><li><a href="./Category:Plugins" title="Category:Plugins">Plugins</a></li></ul></div></div>		</div>
 
 		<div id="bottom-wrap">
 		</div>
