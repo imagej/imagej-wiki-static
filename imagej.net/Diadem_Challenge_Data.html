@@ -54,6 +54,12 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		<div id="main" role="main">
 
 			<div id="bodyContent">
+				<div style="font-size: large; border: 1px solid black; padding: 1em; margin-bottom: 1em; text-align: center; background-color: #fda;">
+					This is a read-only version of imagej.net, available during the transition to a new site.
+					<br>Please direct any questions or issues to <a href="https://forum.image.sc/t/imagej-wiki-is-down/39672">this Image.sc Forum thread</a>.
+					<br>Thank you for your patience as we improve the website!
+				</div>
+
 				<h1>Diadem Challenge Data</h1>
 				
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This page describes how to visualize the various data sets provided as part of the <a rel="nofollow" class="external text" href="http://www.diademchallenge.org/">Diadem Challenge</a> in Fiji, and in particular viewing the traced neurons with <a href="Simple_Neurite_Tracer" class="mw-redirect" title="Simple Neurite Tracer">Simple Neurite Tracer</a>.  The most important point about this is that the SWC files distributed as part of the challenge all use co-ordinates that are image-coordinates rather than world co-ordinates.  (This isn't how I interpret <a rel="nofollow" class="external text" href="http://dx.doi.org/10.1016/S0165-0270(98)00091-0">the paper that describes the SWC format</a>, but in practice different software uses different conventions, so one has to deal with both.)  This means that you should always select the "ignore image calibration" option when importing the SWC file into Simple Neurite Tracer.  The other key point is that the image data are distributed with each slice in a separate TIFF file and don't specify the slice separation in those files.  So, after importing the sequence you will need to correct the calibration according to information on the Diadem challenge website or they will look odd when rendered in 3D.  I describe these steps in more detail below.
