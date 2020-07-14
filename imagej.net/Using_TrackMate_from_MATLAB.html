@@ -16,9 +16,9 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="This page shows how to use and control TrackMate directly from within MATLAB. This is great and made possible thanks to the great Miji tool, that make the Fiji classes visible from MATLAB. Check this page first if you have not already. Note however that as 2016, Mark Hinerm and friends built a stronger replacement from Miji, ImageJ-MATLAB. This page still clings to using Miji, but moving to ImageJ-MATLAB should be painless."/>
 <link rel="shortcut icon" href="../skins/ij2.ico"/>
-<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
-<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
-<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
 
 <script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
 <script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushMatlab.js"></script>
@@ -45,19 +45,19 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		</div>
 
 		<div id="top-wrap" role="banner">
-			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<h1><a href="Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
 			<div id="tagline">From ImageJ</div>
 
 			<a id="menubutton" href="Using_TrackMate_from_MATLAB.html#menu">Menu</a>
 			<div id="nav" role="navigation">
 			<ul id='menu'>
-<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
-<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
-<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
-<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
-<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
-<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
-<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+<li id="menu-item-n-About"><a href="ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="News">News</a></li>
+<li id="menu-item-n-Events"><a href="Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="Help">Help</a></li>
 </ul>
 			</div>
 		</div>
@@ -66,13 +66,13 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		
 		<div id="main" role="main">
 			<div id="nav-meta">
-			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Using_TrackMate_from_MATLAB" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Using_TrackMate_from_MATLAB&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Using_TrackMate_from_MATLAB&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Using_TrackMate_from_MATLAB&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+			<span id="ca-nstab-main" class="selected"><a href="Using_TrackMate_from_MATLAB" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="index.php?title=Talk:Using_TrackMate_from_MATLAB&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="index.php?title=Using_TrackMate_from_MATLAB&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="index.php?title=Using_TrackMate_from_MATLAB&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
 
 			<div id="bodyContent">
 				<h1>Using TrackMate from MATLAB</h1>
 				
-				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This page shows how to use and control TrackMate directly from <i>within <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a></i>. This is great and made possible thanks to the great <a href="http://imagej.net/Miji" title="Miji">Miji</a> tool, that make the Fiji classes visible from <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>. Check this page first if you have not already. Note however that as 2016, Mark Hinerm and friends built a stronger replacement from Miji, <a href="http://imagej.net/MATLAB_Scripting" title="MATLAB Scripting">ImageJ-MATLAB</a>. This page still clings to using Miji, but moving to ImageJ-MATLAB should be painless.
-</p><p>All the following examples assume you have launched <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>, and properly initiated Miji, using for instance
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This page shows how to use and control TrackMate directly from <i>within <a href="MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a></i>. This is great and made possible thanks to the great <a href="Miji" title="Miji">Miji</a> tool, that make the Fiji classes visible from <a href="MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>. Check this page first if you have not already. Note however that as 2016, Mark Hinerm and friends built a stronger replacement from Miji, <a href="MATLAB_Scripting" title="MATLAB Scripting">ImageJ-MATLAB</a>. This page still clings to using Miji, but moving to ImageJ-MATLAB should be painless.
+</p><p>All the following examples assume you have launched <a href="MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>, and properly initiated Miji, using for instance
 </p>
 <pre class="brush:matlab">
 Miji(false)
@@ -83,12 +83,12 @@ Miji(false)
 Miji(true)
 </pre>
 <p>if you want the Fiji window to be visible.
-</p><p>Apart from that, the collections of examples that follow just look like several scripts. Which is actually the case: We use the <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> interpreter as a scripting interface for TrackMate, as we did in the <a href="http://imagej.net/Scripting_TrackMate" title="Scripting TrackMate">Scripting TrackMate</a> page. We separated this page to highlight <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> specificities and to exploit its capabilities better.
+</p><p>Apart from that, the collections of examples that follow just look like several scripts. Which is actually the case: We use the <a href="MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> interpreter as a scripting interface for TrackMate, as we did in the <a href="Scripting_TrackMate" title="Scripting TrackMate">Scripting TrackMate</a> page. We separated this page to highlight <a href="MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> specificities and to exploit its capabilities better.
 </p><p><br />
 </p>
 <h2><span class="mw-headline" id="A_simple_tracking_example">A simple tracking example</span></h2>
-<p>Here we open an image though Fiji (not though <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>) and track its content. The results are displayed in a Fiji window as well. <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> is used here only to control TrackMate and does not really plays a role in the process. This example is actually the same that in the first <a href="http://imagej.net/Scripting_TrackMate" title="Scripting TrackMate">Scripting TrackMate</a> example.
-</p><p>Note that we used the fully qualified name for TrackMate classes, <i>e.g.</i> <code>fiji.plugin.trackmate.TrackMate</code> instead of <code>TrackMate</code>. This is the first way to import classes in a <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> script. We will see another way later.
+<p>Here we open an image though Fiji (not though <a href="MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a>) and track its content. The results are displayed in a Fiji window as well. <a href="MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> is used here only to control TrackMate and does not really plays a role in the process. This example is actually the same that in the first <a href="Scripting_TrackMate" title="Scripting TrackMate">Scripting TrackMate</a> example.
+</p><p>Note that we used the fully qualified name for TrackMate classes, <i>e.g.</i> <code>fiji.plugin.trackmate.TrackMate</code> instead of <code>TrackMate</code>. This is the first way to import classes in a <a href="MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> script. We will see another way later.
 </p>
 <pre class="brush:matlab">
 % Get currently selected image
@@ -299,7 +299,7 @@ displayer.refresh()
 display(model.toString())
 </pre>
 <h2><span class="mw-headline" id="Why_is_this_greater_than_it_seems.3F">Why is this greater than it seems?</span></h2>
-<p>Because your just ran a <a href="http://imagej.net/MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> script that uses and benefits from multithreading without relying on any toolbox! Here is how to tune the number of threads used by TrackMate:
+<p>Because your just ran a <a href="MATLAB" class="mw-redirect" title="MATLAB">MATLAB</a> script that uses and benefits from multithreading without relying on any toolbox! Here is how to tune the number of threads used by TrackMate:
 </p><p><br />
 </p>
 <pre class="brush:matlab">
@@ -310,7 +310,7 @@ trackmate = TrackMate(model, settings);
 trackmate.setNumThreads(3);&#160;% As many threads as you want.
 </pre>
 <p><br />
-</p><p><a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">JeanYvesTinevez</a> (<a href="http://imagej.net/index.php?title=User_talk:JeanYvesTinevez&amp;action=edit&amp;redlink=1" class="new" title="User talk:JeanYvesTinevez (page does not exist)">talk</a>) 13:44, 17 January 2017 (CST)
+</p><p><a href="User:JeanYvesTinevez" title="User:JeanYvesTinevez">JeanYvesTinevez</a> (<a href="index.php?title=User_talk:JeanYvesTinevez&amp;action=edit&amp;redlink=1" class="new" title="User talk:JeanYvesTinevez (page does not exist)">talk</a>) 13:44, 17 January 2017 (CST)
 </p>
 <!-- 
 NewPP limit report
@@ -332,13 +332,13 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 </div><div class="printfooter">
-Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Using_TrackMate_from_MATLAB&amp;oldid=41416">http://imagej.net/index.php?title=Using_TrackMate_from_MATLAB&amp;oldid=41416</a>"</div>
+Retrieved from "<a dir="ltr" href="index.php?title=Using_TrackMate_from_MATLAB&amp;oldid=41416">http://imagej.net/index.php?title=Using_TrackMate_from_MATLAB&amp;oldid=41416</a>"</div>
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Using_TrackMate_from_MATLAB&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 24 January 2020, at 11:56.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=Using_TrackMate_from_MATLAB&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
-			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Matlab" title="Category:Matlab">Matlab</a></li><li><a href="http://imagej.net/Category:Scripting" title="Category:Scripting">Scripting</a></li><li><a href="http://imagej.net/Category:Tracking" title="Category:Tracking">Tracking</a></li></ul></div></div>		</div>
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="Category:Matlab" title="Category:Matlab">Matlab</a></li><li><a href="Category:Scripting" title="Category:Scripting">Scripting</a></li><li><a href="Category:Tracking" title="Category:Tracking">Tracking</a></li></ul></div></div>		</div>
 
 		<div id="bottom-wrap">
 		<div id="footer-wrap-inner">
@@ -360,7 +360,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Using_Track
 				<h3>Personal tools</h3>
 				<div>
 					<ul>
-					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Using+TrackMate+from+MATLAB" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Using+TrackMate+from+MATLAB" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+					<li id="pt-createaccount"><a href="index.php?title=Special:CreateAccount&amp;returnto=Using+TrackMate+from+MATLAB" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="index.php?title=Special:UserLogin&amp;returnto=Using+TrackMate+from+MATLAB" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
 				</div>
 			</li>
 			
@@ -376,7 +376,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Using_Track
 			<li id="toolbox" class="widget">
 				<h3>Tools</h3>
 				<ul>
-				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Using_TrackMate_from_MATLAB" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Using_TrackMate_from_MATLAB" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Using_TrackMate_from_MATLAB&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Using_TrackMate_from_MATLAB&amp;oldid=41416" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Using_TrackMate_from_MATLAB&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+				<li id="t-whatlinkshere"><a href="Special:WhatLinksHere/Using_TrackMate_from_MATLAB" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="Special:RecentChangesLinked/Using_TrackMate_from_MATLAB" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="index.php?title=Using_TrackMate_from_MATLAB&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="index.php?title=Using_TrackMate_from_MATLAB&amp;oldid=41416" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="index.php?title=Using_TrackMate_from_MATLAB&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
 			</li>
 
 			
@@ -394,9 +394,9 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Using_Track
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
-<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
-<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
-<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+<ul><li> <a href="Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
 			</li>
 
 			</ul>

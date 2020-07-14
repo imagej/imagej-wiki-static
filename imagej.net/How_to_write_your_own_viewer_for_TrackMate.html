@@ -16,9 +16,9 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="Developing a custom view for TrackMate is hard and painful. Of course it must be a graphical representation of the model: the tracking results with all intermediate steps. If you want to build something really useful, it has to be interactive and should allow modifying the model. And be aware that modifications might happen somewhere else. Performance is also critical: since it stands at the user interface, it must be responsive, and possibly deal with large models (millions of detections)."/>
 <link rel="shortcut icon" href="../skins/ij2.ico"/>
-<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
-<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
-<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
 
 <script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shCore.js"></script>
 <script type="text/javascript" src="../extensions/SyntaxHighlighter/syntaxhighlighter/scripts/shBrushJava.js"></script>
@@ -45,19 +45,19 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		</div>
 
 		<div id="top-wrap" role="banner">
-			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<h1><a href="Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
 			<div id="tagline">From ImageJ</div>
 
 			<a id="menubutton" href="How_to_write_your_own_viewer_for_TrackMate.html#menu">Menu</a>
 			<div id="nav" role="navigation">
 			<ul id='menu'>
-<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
-<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
-<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
-<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
-<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
-<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
-<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+<li id="menu-item-n-About"><a href="ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="News">News</a></li>
+<li id="menu-item-n-Events"><a href="Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="Help">Help</a></li>
 </ul>
 			</div>
 		</div>
@@ -66,7 +66,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		
 		<div id="main" role="main">
 			<div id="nav-meta">
-			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/How_to_write_your_own_viewer_for_TrackMate" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:How_to_write_your_own_viewer_for_TrackMate&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+			<span id="ca-nstab-main" class="selected"><a href="How_to_write_your_own_viewer_for_TrackMate" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="index.php?title=Talk:How_to_write_your_own_viewer_for_TrackMate&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
 
 			<div id="bodyContent">
 				<h1>How to write your own viewer for TrackMate</h1>
@@ -77,14 +77,14 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </th></tr>
 <tr>
 <td>
-<ul><li> <a href="http://imagej.net/How_to_write_your_own_edge_feature_analyzer_algorithm_for_TrackMate" title="How to write your own edge feature analyzer algorithm for TrackMate">How to write your own edge feature analyzer algorithm for TrackMate</a></li>
-<li> <a href="http://imagej.net/How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" title="How to write your own track feature analyzer algorithm for TrackMate">How to write your own track feature analyzer algorithm for TrackMate</a></li>
-<li> <a href="http://imagej.net/How_to_write_your_own_spot_feature_analyzer_algorithm_for_TrackMate" title="How to write your own spot feature analyzer algorithm for TrackMate">How to write your own spot feature analyzer algorithm for TrackMate</a></li>
+<ul><li> <a href="How_to_write_your_own_edge_feature_analyzer_algorithm_for_TrackMate" title="How to write your own edge feature analyzer algorithm for TrackMate">How to write your own edge feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" title="How to write your own track feature analyzer algorithm for TrackMate">How to write your own track feature analyzer algorithm for TrackMate</a></li>
+<li> <a href="How_to_write_your_own_spot_feature_analyzer_algorithm_for_TrackMate" title="How to write your own spot feature analyzer algorithm for TrackMate">How to write your own spot feature analyzer algorithm for TrackMate</a></li>
 <li> <strong class="selflink">How to write your own viewer for TrackMate</strong></li>
-<li> <a href="http://imagej.net/How_to_write_custom_actions_for_TrackMate" title="How to write custom actions for TrackMate">How to write custom actions for TrackMate</a></li>
-<li> <a href="http://imagej.net/How_to_write_your_own_detection_algorithm_for_TrackMate" title="How to write your own detection algorithm for TrackMate">How to write your own detection algorithm for TrackMate</a></li>
-<li> <a href="http://imagej.net/How_to_write_your_own_particle-linking_algorithm_for_TrackMate" title="How to write your own particle-linking algorithm for TrackMate">How to write your own particle-linking algorithm for TrackMate</a></li></ul>
-</td></tr></table><a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a> can be extended with new modules covering about everything it does, thanks to several nice features of <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a>. These tutorials explain how to do so. They are best read in order.
+<li> <a href="How_to_write_custom_actions_for_TrackMate" title="How to write custom actions for TrackMate">How to write custom actions for TrackMate</a></li>
+<li> <a href="How_to_write_your_own_detection_algorithm_for_TrackMate" title="How to write your own detection algorithm for TrackMate">How to write your own detection algorithm for TrackMate</a></li>
+<li> <a href="How_to_write_your_own_particle-linking_algorithm_for_TrackMate" title="How to write your own particle-linking algorithm for TrackMate">How to write your own particle-linking algorithm for TrackMate</a></li></ul>
+</td></tr></table><a href="TrackMate" title="TrackMate">TrackMate</a> can be extended with new modules covering about everything it does, thanks to several nice features of <a href="SciJava" title="SciJava">SciJava</a>. These tutorials explain how to do so. They are best read in order.
 <p><br />
 </p>
 <div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -106,19 +106,19 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </div>
 
 <h2><span class="mw-headline" id="Introduction.">Introduction.</span></h2>
-<p>Developing a custom view for <a href="http://imagej.net/TrackMate" title="TrackMate">TrackMate</a> is <i>hard</i> and painful. Of course it must be a graphical representation of the model: the tracking results with all intermediate steps. If you want to build something really useful, it has to be interactive and should allow modifying the model. And be aware that modifications might happen somewhere else. Performance is also critical: since it stands at the user interface, it must be responsive, and possibly deal with large models (millions of detections). 
+<p>Developing a custom view for <a href="TrackMate" title="TrackMate">TrackMate</a> is <i>hard</i> and painful. Of course it must be a graphical representation of the model: the tracking results with all intermediate steps. If you want to build something really useful, it has to be interactive and should allow modifying the model. And be aware that modifications might happen somewhere else. Performance is also critical: since it stands at the user interface, it must be responsive, and possibly deal with large models (millions of detections). 
 </p><p>Honestly, I think that one of the main good reason to extend TrackMate is that there is ready some views available.
 </p><p>Still, it is perfectly possible to build something useful without fulfilling all these requirements. And I still hope that someday someone will contribute a view that displays the model in the orthogonal slicer of Fiji.
-</p><p>This tutorial introduces the <u>view interfaces</u> of TrackMate, and since they deal with user interactions, we will also review the <u>TrackMate event system</u>. As for the <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> discovery system, we will see how to make a TrackMate module available in TrackMate, but not visible to the user, using the <code>visible</code> parameter.
+</p><p>This tutorial introduces the <u>view interfaces</u> of TrackMate, and since they deal with user interactions, we will also review the <u>TrackMate event system</u>. As for the <a href="SciJava" title="SciJava">SciJava</a> discovery system, we will see how to make a TrackMate module available in TrackMate, but not visible to the user, using the <code>visible</code> parameter.
 </p><p><br />
 </p>
 <h2><span class="mw-headline" id="A_custom_TrackMate_view.">A custom TrackMate view.</span></h2>
-<p>Like for the <a href="http://imagej.net/How_to_write_your_own_spot_feature_analyzer_algorithm_for_TrackMate" title="How to write your own spot feature analyzer algorithm for TrackMate">spot feature analyzers</a>, a TrackMate view is separated in two parts, that each extends a different interface:
+<p>Like for the <a href="How_to_write_your_own_spot_feature_analyzer_algorithm_for_TrackMate" title="How to write your own spot feature analyzer algorithm for TrackMate">spot feature analyzers</a>, a TrackMate view is separated in two parts, that each extends a different interface:
 </p>
 <ul><li> The  <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/visualization/TrackMateModelView.java">TrackMateModelView</a>, that is the actual view of the model. All the hard work is done here.</li>
-<li> The <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/visualization/ViewFactory.java">ViewFactory</a> that is a factory in charge of instantiating the view and of the integration in TrackMate. This interface extends the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/TrackMateModule.java">TrackMateModule</a> interface, so we expect to find there some of the methods we discussed earlier, and the <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> annotation. </li></ul>
+<li> The <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/visualization/ViewFactory.java">ViewFactory</a> that is a factory in charge of instantiating the view and of the integration in TrackMate. This interface extends the <a rel="nofollow" class="external text" href="https://github.com/fiji/TrackMate/blob/master/src/main/java/fiji/plugin/trackmate/TrackMateModule.java">TrackMateModule</a> interface, so we expect to find there some of the methods we discussed earlier, and the <a href="SciJava" title="SciJava">SciJava</a> annotation. </li></ul>
 <p>In this tutorial, we will build something simple. We will limit ourselves to develop a view that simple messages the user every time something happens in TrackMate. For instance, when the spots are detected, how many there are; if he selects spots and edges, how many of them; etc. And we will just reuse the Fiji log window for this, which will save us from the full development of a graphical view of the model. 
-</p><p>But because this is a bit limited, we will not let the user pick this view as the main one, just after the detection step. A <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> parameter will be used to make it invisible in the view selection menu. To make good use of it, we still need some way to launch this view, but this will be the subject of the next tutorial. 
+</p><p>But because this is a bit limited, we will not let the user pick this view as the main one, just after the detection step. A <a href="SciJava" title="SciJava">SciJava</a> parameter will be used to make it invisible in the view selection menu. To make good use of it, we still need some way to launch this view, but this will be the subject of the next tutorial. 
 </p><p>Right now, we just focus on building the view. 
 </p><p><br />
 </p>
@@ -258,11 +258,11 @@ public class EventLoggerViewFactory implements ViewFactory
 
 }
 </pre>
-<div class="floatright"><a href="http://imagej.net/File:TrackMate_CustomView_2.png" class="image"><img alt="TrackMate CustomView 2.png" src="../_images/5/51/TrackMate_CustomView_2.png" width="200" height="326" /></a></div>
-<p>Just note that the <a href="http://imagej.net/SciJava" title="SciJava">SciJava</a> annotation mention the <code>ViewFactory</code> class. This is enough to have the view selectable in the GUI menu:
+<div class="floatright"><a href="File:TrackMate_CustomView_2.png" class="image"><img alt="TrackMate CustomView 2.png" src="../_images/5/51/TrackMate_CustomView_2.png" width="200" height="326" /></a></div>
+<p>Just note that the <a href="SciJava" title="SciJava">SciJava</a> annotation mention the <code>ViewFactory</code> class. This is enough to have the view selectable in the GUI menu:
 </p><p>Note that this time, TrackMate good use of the <code>getName()</code> and <code>getInfoText()</code> methods. 
 </p><p>And here is what you get after a few manipulations:
-</p><p><a href="http://imagej.net/File:TrackMate_CustomView_1.png" class="image"><img alt="TrackMate CustomView 1.png" src="../_images/c/c9/TrackMate_CustomView_1.png" width="500" height="498" /></a>
+</p><p><a href="File:TrackMate_CustomView_1.png" class="image"><img alt="TrackMate CustomView 1.png" src="../_images/c/c9/TrackMate_CustomView_1.png" width="500" height="498" /></a>
 </p><p><br />
 </p>
 <h2><span class="mw-headline" id="Controlling_the_visibility_of_your_view_with_the_SciJava_visible_parameter.">Controlling the visibility of your view with the SciJava <code>visible</code> parameter.</span></h2>
@@ -272,7 +272,7 @@ public class EventLoggerViewFactory implements ViewFactory
 <div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-notice">
 <tr>
 <td class="ambox-image">
-<p><a href="http://imagej.net/File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
+<p><a href="File:Information-sign.png" class="image"><img alt="Information-sign.png" src="../_images/2/24/Information-sign.png" width="40" height="40" /></a>
 </p>
 </td>
 <td> To make a TrackMate module available in TrackMate, but not visible in the GUI menus, use the annotation parameter <code>visible = false</code> </td>
@@ -287,10 +287,10 @@ So editing the header of our ViewFactory to make it look like:
 @Plugin( type = ViewFactory.class, visible = false )
 public class EventLoggerViewFactory implements ViewFactory
 </pre>
-<p>is enough to hide it in the menu. This is different from the <code>enabled</code> parameter we saw in <a href="http://imagej.net/How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" title="How to write your own track feature analyzer algorithm for TrackMate">one the previous tutorial</a>. The factory is instantiated and available in TrackMate; it just does not show up in the menu. 
+<p>is enough to hide it in the menu. This is different from the <code>enabled</code> parameter we saw in <a href="How_to_write_your_own_track_feature_analyzer_algorithm_for_TrackMate" title="How to write your own track feature analyzer algorithm for TrackMate">one the previous tutorial</a>. The factory is instantiated and available in TrackMate; it just does not show up in the menu. 
 </p><p>But how could I make use of it then? you want to ask. Fortunately, this is just the subject of the next tutorial, on TrackMate actions. See you there.
 </p><p><br />
-<a href="http://imagej.net/User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a> (<a href="http://imagej.net/index.php?title=User_talk:JeanYvesTinevez&amp;action=edit&amp;redlink=1" class="new" title="User talk:JeanYvesTinevez (page does not exist)">talk</a>) 10:51, 17 March 2014 (CDT)
+<a href="User:JeanYvesTinevez" title="User:JeanYvesTinevez">Jean-Yves Tinevez</a> (<a href="index.php?title=User_talk:JeanYvesTinevez&amp;action=edit&amp;redlink=1" class="new" title="User talk:JeanYvesTinevez (page does not exist)">talk</a>) 10:51, 17 March 2014 (CDT)
 </p>
 <!-- 
 NewPP limit report
@@ -316,13 +316,13 @@ Transclusion expansion time report (%,ms,calls,template)
   4.95%    0.826      1 - Template:ExtendingTrackMateTutorials
 -->
 </div><div class="printfooter">
-Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;oldid=37572">http://imagej.net/index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;oldid=37572</a>"</div>
+Retrieved from "<a dir="ltr" href="index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;oldid=37572">http://imagej.net/index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;oldid=37572</a>"</div>
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 12 April 2018, at 13:20.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 12 April 2018, at 13:20.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
-			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>		</div>
 
 		<div id="bottom-wrap">
 		<div id="footer-wrap-inner">
@@ -344,7 +344,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=How_to_writ
 				<h3>Personal tools</h3>
 				<div>
 					<ul>
-					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=How+to+write+your+own+viewer+for+TrackMate" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=How+to+write+your+own+viewer+for+TrackMate" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+					<li id="pt-createaccount"><a href="index.php?title=Special:CreateAccount&amp;returnto=How+to+write+your+own+viewer+for+TrackMate" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="index.php?title=Special:UserLogin&amp;returnto=How+to+write+your+own+viewer+for+TrackMate" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
 				</div>
 			</li>
 			
@@ -360,7 +360,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=How_to_writ
 			<li id="toolbox" class="widget">
 				<h3>Tools</h3>
 				<ul>
-				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/How_to_write_your_own_viewer_for_TrackMate" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/How_to_write_your_own_viewer_for_TrackMate" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;oldid=37572" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+				<li id="t-whatlinkshere"><a href="Special:WhatLinksHere/How_to_write_your_own_viewer_for_TrackMate" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="Special:RecentChangesLinked/How_to_write_your_own_viewer_for_TrackMate" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;oldid=37572" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="index.php?title=How_to_write_your_own_viewer_for_TrackMate&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
 			</li>
 
 			
@@ -378,9 +378,9 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=How_to_writ
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
-<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
-<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
-<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+<ul><li> <a href="Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
 			</li>
 
 			</ul>

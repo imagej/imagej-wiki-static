@@ -16,9 +16,9 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="Subversion is a decent version control program that does not require much thought to operate. Unfortunately, if you want to avoid clunky, unreviewable monster commits (a known worst practice), you will need third-party programs to prepare any non-trivial set of patches."/>
 <link rel="shortcut icon" href="../skins/ij2.ico"/>
-<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
-<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
-<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
 	<meta property="og:type" content="article"/>
 
 	<meta property="og:site_name" content="ImageJ"/>
@@ -37,19 +37,19 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		</div>
 
 		<div id="top-wrap" role="banner">
-			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<h1><a href="Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
 			<div id="tagline">From ImageJ</div>
 
 			<a id="menubutton" href="2012-02-17_-_Using_git-svn_to_develop_ImageJ2.html#menu">Menu</a>
 			<div id="nav" role="navigation">
 			<ul id='menu'>
-<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
-<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
-<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
-<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
-<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
-<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
-<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+<li id="menu-item-n-About"><a href="ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="News">News</a></li>
+<li id="menu-item-n-Events"><a href="Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="Help">Help</a></li>
 </ul>
 			</div>
 		</div>
@@ -58,17 +58,17 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		
 		<div id="main" role="main">
 			<div id="nav-meta">
-			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/2012-02-17_-_Using_git-svn_to_develop_ImageJ2" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+			<span id="ca-nstab-main" class="selected"><a href="2012-02-17_-_Using_git-svn_to_develop_ImageJ2" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="index.php?title=Talk:2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
 
 			<div id="bodyContent">
 				<h1>2012-02-17 - Using git-svn to develop ImageJ2</h1>
 				
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
 <p>Subversion is a decent version control program that does not require much thought to operate. Unfortunately, if you want to avoid clunky, unreviewable monster commits (<a rel="nofollow" class="external text" href="http://www.crealytics.de/blog/2010/07/09/5-reasons-keeping-git-commits-small-mluedtke/">a known worst practice</a>), you will need third-party programs to prepare any non-trivial set of patches.
-</p><p>One such third-party program is called <a href="http://imagej.net/Git" title="Git">Git</a>... While Git is usually meant to be used as a standalone version control system (and we have hints <a href="http://imagej.net/Git_Notes" title="Git Notes">here</a> and links <a href="http://imagej.net/Git" title="Git">here</a> how to use it), its <a href="http://imagej.net/Git_topic_branches" title="Git topic branches"><code>git rebase -i</code></a> functionality lends itself to a patch series based workflow.
+</p><p>One such third-party program is called <a href="Git" title="Git">Git</a>... While Git is usually meant to be used as a standalone version control system (and we have hints <a href="Git_Notes" title="Git Notes">here</a> and links <a href="Git" title="Git">here</a> how to use it), its <a href="Git_topic_branches" title="Git topic branches"><code>git rebase -i</code></a> functionality lends itself to a patch series based workflow.
 </p>
 <h2><span class="mw-headline" id="The_git_svn_workflow">The <code>git svn</code> workflow</span></h2>
-<p>Our recommended <code>git svn</code> workflow was described in our chatroom by <a href="http://imagej.net/User:Bdezonia" title="User:Bdezonia">Barry</a>:
+<p>Our recommended <code>git svn</code> workflow was described in our chatroom by <a href="User:Bdezonia" title="User:Bdezonia">Barry</a>:
 </p>
 <ol>
 <li><code>git svn fetch</code></li>
@@ -132,13 +132,13 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 </div><div class="printfooter">
-Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;oldid=19945">http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;oldid=19945</a>"</div>
+Retrieved from "<a dir="ltr" href="index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;oldid=19945">http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;oldid=19945</a>"</div>
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 18 April 2016, at 16:49.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 18 April 2016, at 16:49.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
-			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:News" title="Category:News">News</a></li><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li></ul></div></div>		</div>
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="Category:News" title="Category:News">News</a></li><li><a href="Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li></ul></div></div>		</div>
 
 		<div id="bottom-wrap">
 		<div id="footer-wrap-inner">
@@ -160,7 +160,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-02-17_
 				<h3>Personal tools</h3>
 				<div>
 					<ul>
-					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=2012-02-17+-+Using+git-svn+to+develop+ImageJ2" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=2012-02-17+-+Using+git-svn+to+develop+ImageJ2" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+					<li id="pt-createaccount"><a href="index.php?title=Special:CreateAccount&amp;returnto=2012-02-17+-+Using+git-svn+to+develop+ImageJ2" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="index.php?title=Special:UserLogin&amp;returnto=2012-02-17+-+Using+git-svn+to+develop+ImageJ2" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
 				</div>
 			</li>
 			
@@ -176,7 +176,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-02-17_
 			<li id="toolbox" class="widget">
 				<h3>Tools</h3>
 				<ul>
-				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/2012-02-17_-_Using_git-svn_to_develop_ImageJ2" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/2012-02-17_-_Using_git-svn_to_develop_ImageJ2" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;oldid=19945" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+				<li id="t-whatlinkshere"><a href="Special:WhatLinksHere/2012-02-17_-_Using_git-svn_to_develop_ImageJ2" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="Special:RecentChangesLinked/2012-02-17_-_Using_git-svn_to_develop_ImageJ2" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;oldid=19945" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="index.php?title=2012-02-17_-_Using_git-svn_to_develop_ImageJ2&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
 			</li>
 
 			
@@ -194,9 +194,9 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-02-17_
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
-<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
-<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
-<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+<ul><li> <a href="Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
 			</li>
 
 			</ul>

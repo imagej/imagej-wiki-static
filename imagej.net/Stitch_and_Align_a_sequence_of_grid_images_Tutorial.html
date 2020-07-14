@@ -16,9 +16,9 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="This tutorial describes how to produce an image stack (or 3D image) from an input sequence of tiles using the Fiji plugins for stitching and registration."/>
 <link rel="shortcut icon" href="../skins/ij2.ico"/>
-<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
-<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
-<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
 	<meta property="og:type" content="article"/>
 
 	<meta property="og:site_name" content="ImageJ"/>
@@ -37,19 +37,19 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		</div>
 
 		<div id="top-wrap" role="banner">
-			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<h1><a href="Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
 			<div id="tagline">From ImageJ</div>
 
 			<a id="menubutton" href="Stitch_and_Align_a_sequence_of_grid_images_Tutorial.html#menu">Menu</a>
 			<div id="nav" role="navigation">
 			<ul id='menu'>
-<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
-<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
-<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
-<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
-<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
-<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
-<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+<li id="menu-item-n-About"><a href="ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="News">News</a></li>
+<li id="menu-item-n-Events"><a href="Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="Help">Help</a></li>
 </ul>
 			</div>
 		</div>
@@ -58,13 +58,13 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		
 		<div id="main" role="main">
 			<div id="nav-meta">
-			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/Stitch_and_Align_a_sequence_of_grid_images_Tutorial" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+			<span id="ca-nstab-main" class="selected"><a href="Stitch_and_Align_a_sequence_of_grid_images_Tutorial" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="index.php?title=Talk:Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
 
 			<div id="bodyContent">
 				<h1>Stitch and Align a sequence of grid images Tutorial</h1>
 				
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
-<p>This tutorial describes<b> how to produce an image stack (or 3D image) from an input sequence of tiles</b> using the Fiji plugins for <a href="http://imagej.net/Stitching" class="mw-redirect" title="Stitching">stitching</a> and <a href="http://imagej.net/Register_Virtual_Stack_Slices" title="Register Virtual Stack Slices">registration</a>.
+<p>This tutorial describes<b> how to produce an image stack (or 3D image) from an input sequence of tiles</b> using the Fiji plugins for <a href="Stitching" class="mw-redirect" title="Stitching">stitching</a> and <a href="Register_Virtual_Stack_Slices" title="Register Virtual Stack Slices">registration</a>.
 </p><p>Given the origin of the images used in this tutorial, the transformation between tiles can be modeled as a pure translation to generate the mosaic (of a slice). The transformation between slices can also be modeled as pure translation.
 </p><p>In the initial setup we need to ensure:
 </p>
@@ -72,7 +72,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <li> All slices of the stack are formed by a rectangular grid (NxM tiles) of a equally sized tiles. </li></ul>
 <p>In our test case, we have 19,600 images, i.e. 140 sections of 10x14 tiles:
 </p>
-<div class="center"><div class="floatnone"><a href="http://imagej.net/File:Screenshot-File-Browser-Sequence.png" class="image"><img alt="Screenshot-File-Browser-Sequence.png" src="../_images/8/86/Screenshot-File-Browser-Sequence.png" width="725" height="600" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="File:Screenshot-File-Browser-Sequence.png" class="image"><img alt="Screenshot-File-Browser-Sequence.png" src="../_images/8/86/Screenshot-File-Browser-Sequence.png" width="725" height="600" /></a></div></div>
 <h2><span class="mw-headline" id="Stitching">Stitching</span></h2>
 <p>As a first step, we start Fiji and go to '<span><em><span style="border-bottom:1px dotted #ccc;"> Plugins </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stitching </span>&#160;&#8250; <span style="border-bottom:1px dotted #ccc;"> Stitch Sequence of Grids of Images</span></em></span>':
 </p>
@@ -97,7 +97,7 @@ Here we have to set some important parameters (the ones we don't mention can be 
 <p><br />
 As result, the stitched images are stored in the output folder:
 </p>
-<div class="center"><div class="floatnone"><a href="http://imagej.net/File:Screenshot-File-Browser-Stitched-Sequence.png" class="image"><img alt="Screenshot-File-Browser-Stitched-Sequence.png" src="../_images/6/6c/Screenshot-File-Browser-Stitched-Sequence.png" width="750" height="599" /></a></div></div>
+<div class="center"><div class="floatnone"><a href="File:Screenshot-File-Browser-Stitched-Sequence.png" class="image"><img alt="Screenshot-File-Browser-Stitched-Sequence.png" src="../_images/6/6c/Screenshot-File-Browser-Stitched-Sequence.png" width="750" height="599" /></a></div></div>
 <p><br />
 <b>Performance</b>: The stitching of the 19,600 images (732x732 pixels each) took around 117 minutes in a Intel Core Duo at 3GHz, 4GB of RAM, running on Linux 64-bit.
 </p>
@@ -121,7 +121,7 @@ As result, the stitched images are stored in the output folder:
 </p>
 <div class="MediaTransformError" style="width: 591px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
 <p>Here, we only increase the <b>steps per octave scale</b> to 5 to find more point candidates to correspondences, and the <b>maximum image size</b> to 1400 pixels, to use more image information. 
-</p><p><b>NOTE</b>: these values are usually a good choice, but they can be tuned when working with other types of images. For more details about the parameters, visit the <a href="http://imagej.net/Register_Virtual_Stack_Slices" title="Register Virtual Stack Slices">registration plugin page</a>.
+</p><p><b>NOTE</b>: these values are usually a good choice, but they can be tuned when working with other types of images. For more details about the parameters, visit the <a href="Register_Virtual_Stack_Slices" title="Register Virtual Stack Slices">registration plugin page</a>.
 </p><p>We then click on OK and the alignment starts.
 </p><p>After few minutes (depending on the computer and number of CPUs), when the alignment is done, aligned images are saved to the specified output folder and results will be displayed as a virtual stack. 
 </p>
@@ -151,13 +151,13 @@ Transclusion expansion time report (%,ms,calls,template)
  26.42%    2.173      3 - Template:Arrow
 -->
 </div><div class="printfooter">
-Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;oldid=17050">http://imagej.net/index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;oldid=17050</a>"</div>
+Retrieved from "<a dir="ltr" href="index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;oldid=17050">http://imagej.net/index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;oldid=17050</a>"</div>
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 22 September 2015, at 16:25.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 22 September 2015, at 16:25.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
-			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="http://imagej.net/Category:Stitching" title="Category:Stitching">Stitching</a></li><li><a href="http://imagej.net/Category:Registration" title="Category:Registration">Registration</a></li></ul></div></div>		</div>
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="Category:Tutorials" title="Category:Tutorials">Tutorials</a></li><li><a href="Category:Stitching" title="Category:Stitching">Stitching</a></li><li><a href="Category:Registration" title="Category:Registration">Registration</a></li></ul></div></div>		</div>
 
 		<div id="bottom-wrap">
 		<div id="footer-wrap-inner">
@@ -179,7 +179,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Stitch_and_
 				<h3>Personal tools</h3>
 				<div>
 					<ul>
-					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=Stitch+and+Align+a+sequence+of+grid+images+Tutorial" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=Stitch+and+Align+a+sequence+of+grid+images+Tutorial" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+					<li id="pt-createaccount"><a href="index.php?title=Special:CreateAccount&amp;returnto=Stitch+and+Align+a+sequence+of+grid+images+Tutorial" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="index.php?title=Special:UserLogin&amp;returnto=Stitch+and+Align+a+sequence+of+grid+images+Tutorial" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
 				</div>
 			</li>
 			
@@ -195,7 +195,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Stitch_and_
 			<li id="toolbox" class="widget">
 				<h3>Tools</h3>
 				<ul>
-				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/Stitch_and_Align_a_sequence_of_grid_images_Tutorial" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/Stitch_and_Align_a_sequence_of_grid_images_Tutorial" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;oldid=17050" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+				<li id="t-whatlinkshere"><a href="Special:WhatLinksHere/Stitch_and_Align_a_sequence_of_grid_images_Tutorial" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="Special:RecentChangesLinked/Stitch_and_Align_a_sequence_of_grid_images_Tutorial" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;oldid=17050" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="index.php?title=Stitch_and_Align_a_sequence_of_grid_images_Tutorial&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
 			</li>
 
 			
@@ -213,9 +213,9 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=Stitch_and_
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
-<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
-<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
-<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+<ul><li> <a href="Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
 			</li>
 
 			</ul>

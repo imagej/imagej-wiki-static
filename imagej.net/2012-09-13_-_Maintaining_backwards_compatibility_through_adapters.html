@@ -16,9 +16,9 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <meta name="generator" content="MediaWiki 1.28.0"/>
 <meta name="description" content="In developing SCIFIO one of our major priorities is backwards compatibility. SCIFIO completely overhauls the Bio-Formats class structure, breaking each reader down to an atomic set of components. While nearly all the Bio-Formats API can be expressed in SCIFIO API, even if there isn't a direct analog method call, there are several new considerations (such as removing state from readers, or adding N-dimensional support) that will change how the software works."/>
 <link rel="shortcut icon" href="../skins/ij2.ico"/>
-<link rel="search" type="application/opensearchdescription+xml" href="http://imagej.net/opensearch_desc.php" title="ImageJ (en)"/>
-<link rel="EditURI" type="application/rsd+xml" href="http://imagej.net/api.php?action=rsd"/>
-<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="http://imagej.net/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="ImageJ (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="ImageJ Atom feed" href="index.php?title=Special:RecentChanges&amp;feed=atom"/>
 	<meta property="og:type" content="article"/>
 
 	<meta property="og:site_name" content="ImageJ"/>
@@ -37,19 +37,19 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		</div>
 
 		<div id="top-wrap" role="banner">
-			<h1><a href="http://imagej.net/Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
+			<h1><a href="Welcome" title="ImageJ" rel="home">ImageJ</a></h1>
 			<div id="tagline">From ImageJ</div>
 
 			<a id="menubutton" href="2012-09-13_-_Maintaining_backwards_compatibility_through_adapters.html#menu">Menu</a>
 			<div id="nav" role="navigation">
 			<ul id='menu'>
-<li id="menu-item-n-About"><a href="http://imagej.net/ImageJ">About</a></li>
-<li id="menu-item-n-Downloads"><a href="http://imagej.net/Downloads">Downloads</a></li>
-<li id="menu-item-n-Learn"><a href="http://imagej.net/Learn">Learn</a></li>
-<li id="menu-item-n-Develop"><a href="http://imagej.net/Development">Develop</a></li>
-<li id="menu-item-n-News"><a href="http://imagej.net/News">News</a></li>
-<li id="menu-item-n-Events"><a href="http://imagej.net/Events">Events</a></li>
-<li id="menu-item-n-Help"><a href="http://imagej.net/Help">Help</a></li>
+<li id="menu-item-n-About"><a href="ImageJ">About</a></li>
+<li id="menu-item-n-Downloads"><a href="Downloads">Downloads</a></li>
+<li id="menu-item-n-Learn"><a href="Learn">Learn</a></li>
+<li id="menu-item-n-Develop"><a href="Development">Develop</a></li>
+<li id="menu-item-n-News"><a href="News">News</a></li>
+<li id="menu-item-n-Events"><a href="Events">Events</a></li>
+<li id="menu-item-n-Help"><a href="Help">Help</a></li>
 </ul>
 			</div>
 		</div>
@@ -58,12 +58,12 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 		
 		<div id="main" role="main">
 			<div id="nav-meta">
-			<span id="ca-nstab-main" class="selected"><a href="http://imagej.net/2012-09-13_-_Maintaining_backwards_compatibility_through_adapters" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="http://imagej.net/index.php?title=Talk:2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="http://imagej.net/index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="http://imagej.net/index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
+			<span id="ca-nstab-main" class="selected"><a href="2012-09-13_-_Maintaining_backwards_compatibility_through_adapters" title="View the content page [c]" accesskey="c">Page</a></span><span class="meta-sep">|</span><span id="ca-talk" class="new"><a href="index.php?title=Talk:2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span><span class="meta-sep">|</span><span id="ca-viewsource"><a href="index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span><span class="meta-sep">|</span><span id="ca-history"><a href="index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></span><span class="meta-sep">|</span>			</div>
 
 			<div id="bodyContent">
 				<h1>2012-09-13 - Maintaining backwards compatibility through adapters</h1>
 				
-				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>In developing <a href="http://imagej.net/SCIFIO" title="SCIFIO">SCIFIO</a> one of our major priorities is backwards compatibility. SCIFIO completely overhauls the <a href="http://imagej.net/Bio-Formats" title="Bio-Formats">Bio-Formats</a> class structure, breaking each reader down to an atomic set of components. While nearly all the Bio-Formats API can be expressed in SCIFIO API, even if there isn't a direct analog method call, there are several new considerations (such as removing state from readers, or adding N-dimensional support) that will change how the software works.
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>In developing <a href="SCIFIO" title="SCIFIO">SCIFIO</a> one of our major priorities is backwards compatibility. SCIFIO completely overhauls the <a href="Bio-Formats" title="Bio-Formats">Bio-Formats</a> class structure, breaking each reader down to an atomic set of components. While nearly all the Bio-Formats API can be expressed in SCIFIO API, even if there isn't a direct analog method call, there are several new considerations (such as removing state from readers, or adding N-dimensional support) that will change how the software works.
 </p><p>Our first conversion test run for SCIFIO was the <code>loci.common</code> component. Many converted classes preserved their functionality exactly, but were migrated to a new (<a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/tree/5f77edcecab423e50722ef70688b58abe1e3d2ca/components/scifio-devel/src/ome/scifio">ome.scifio</a>) package. This underscores a fundamental compatibility issue: packages are part of your software's contract. The natural solution was to create delegator classes that would maintain the legacy API by passing functional control to modern (SCIFIO) classes.
 </p><p>Unfortunately, there were still some kinks to work out. Interfaces in particular were a problem: if you want your legacy object to be useable in modern method signatures, you might try extending the modern equivalent interface (I did). However, you would be locking yourself into API at that moment. If you ever decide to add functionality in the the modern interface, you immediately break backwards compatibility in the legacy layer because of inheritance. Concrete implementations can mask these changes in low-level API via work-arounds within each method definition, but you still run into typing issues when you have a method that, say, takes the legacy type but then delegates its own functionality to a modern method that wants a modern version of that type (which inheritance would have actually solved for you.. instead it just sits slightly out of reach, tauntingly).
 </p><p>To resolve these issues, we created a <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/5f77edcecab423e50722ef70688b58abe1e3d2ca/components/loci-legacy/src/loci/legacy/adapter/LegacyAdapter.java">LegacyAdapter</a> interface and <code>Abstract</code> implementation premised on using bi-directional <a rel="nofollow" class="external text" href="https://github.com/hinerm/bioformats/blob/5f77edcecab423e50722ef70688b58abe1e3d2ca/components/loci-legacy/src/loci/legacy/adapter/Wrapper.java">wrappers</a> (i.e. a class that is a Legacy and wraps a Modern, and vice versa) and having each adapter maintain maps of each Legacy or Modern instance to its wrapper.
@@ -72,7 +72,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </p><p>The only thing I didn't like about this implementation is that Bio-Formats doesn't use <a rel="nofollow" class="external text" href="http://sezpoz.java.net/">SezPoz</a> yet (it will when SCIFIO fully comes online) so the map has to be populated via hard-coded calls instantiating each known Adapter class. The adapter pattern would be well-suited to an automatic discovery mechanism, so it's high on my wishlist once SCIFIO is ready for the public.
 </p><p>As it stands, there is still one significant limitation to the adapters (that I know of): if you extend a legacy Bio-Formats class (e.g. with a <code>Kraken extends IRandomAccess</code> class) and then have some method that expects an instance of the extending class (<code>destroyTheMonster(Kraken kraken)</code>) you will have to create your own <code>Adapter</code> and then try to get the hard-coded instantiation into the <code>AdapterTools</code> in the main code base. This could be a significant hurdle, so right now I'd recommend choosing to continue to operate on legacy classes, or convert your code to use the SCIFIO package names. (the latter being preferred, so you can continue to get any improvements from SCIFIO)
 </p><p>In the future, with SezPoz support, you would still have to create an <code>Adapter</code>, but just by annotating as an <code>Adapter</code> it would automatically be included in the static <code>AdapterTools</code> class, and your library would automatically work as a plug-in to Bio-Formats/SCIFIO.
-</p><p>~<a href="http://imagej.net/User:Hinerm" title="User:Hinerm">Mark Hiner</a>
+</p><p>~<a href="User:Hinerm" title="User:Hinerm">Mark Hiner</a>
 </p>
 <!-- 
 NewPP limit report
@@ -96,13 +96,13 @@ Transclusion expansion time report (%,ms,calls,template)
  30.75%    3.106      3 - Template:GitHub
 -->
 </div><div class="printfooter">
-Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;oldid=17768">http://imagej.net/index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;oldid=17768</a>"</div>
+Retrieved from "<a dir="ltr" href="index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;oldid=17768">http://imagej.net/index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;oldid=17768</a>"</div>
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 8 October 2015, at 13:22.</p><ul><li><a href="http://imagej.net/ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="http://imagej.net/ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="http://imagej.net/Imprint" title="Imprint">Imprint</a></li><li><a href="http://imagej.net/index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
+				<p> This page was last modified on 8 October 2015, at 13:22.</p><ul><li><a href="ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li><li><a href="index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li></ul>			</div>
 
-			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://imagej.net/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://imagej.net/Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li><li><a href="http://imagej.net/Category:News" title="Category:News">News</a></li></ul></div></div>		</div>
+			<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="Category:ImageJ2" title="Category:ImageJ2">ImageJ2</a></li><li><a href="Category:News" title="Category:News">News</a></li></ul></div></div>		</div>
 
 		<div id="bottom-wrap">
 		<div id="footer-wrap-inner">
@@ -124,7 +124,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-09-13_
 				<h3>Personal tools</h3>
 				<div>
 					<ul>
-					<li id="pt-createaccount"><a href="http://imagej.net/index.php?title=Special:CreateAccount&amp;returnto=2012-09-13+-+Maintaining+backwards+compatibility+through+adapters" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="http://imagej.net/index.php?title=Special:UserLogin&amp;returnto=2012-09-13+-+Maintaining+backwards+compatibility+through+adapters" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
+					<li id="pt-createaccount"><a href="index.php?title=Special:CreateAccount&amp;returnto=2012-09-13+-+Maintaining+backwards+compatibility+through+adapters" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="index.php?title=Special:UserLogin&amp;returnto=2012-09-13+-+Maintaining+backwards+compatibility+through+adapters" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>					</ul>
 				</div>
 			</li>
 			
@@ -140,7 +140,7 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-09-13_
 			<li id="toolbox" class="widget">
 				<h3>Tools</h3>
 				<ul>
-				<li id="t-whatlinkshere"><a href="http://imagej.net/Special:WhatLinksHere/2012-09-13_-_Maintaining_backwards_compatibility_through_adapters" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="http://imagej.net/Special:RecentChangesLinked/2012-09-13_-_Maintaining_backwards_compatibility_through_adapters" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="http://imagej.net/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="http://imagej.net/index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="http://imagej.net/index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;oldid=17768" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="http://imagej.net/index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+				<li id="t-whatlinkshere"><a href="Special:WhatLinksHere/2012-09-13_-_Maintaining_backwards_compatibility_through_adapters" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="Special:RecentChangesLinked/2012-09-13_-_Maintaining_backwards_compatibility_through_adapters" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;oldid=17768" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="index.php?title=2012-09-13_-_Maintaining_backwards_compatibility_through_adapters&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
 			</li>
 
 			
@@ -158,9 +158,9 @@ Retrieved from "<a dir="ltr" href="http://imagej.net/index.php?title=2012-09-13_
 
 			<li class="widget">
 				<h3><span class="mw-headline" id="MORE_TOOLS">MORE TOOLS</span></h3>
-<ul><li> <a href="http://imagej.net/Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
-<li> <a href="http://imagej.net/Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
-<li> <a href="http://imagej.net/Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
+<ul><li> <a href="Special:ChangeUploadPassword" title="Special:ChangeUploadPassword">Set/change upload password</a></li>
+<li> <a href="Special:RecentChanges" title="Special:RecentChanges">Recent changes</a></li>
+<li> <a href="Special:LonelyPages" title="Special:LonelyPages">Orphaned pages</a></li></ul>
 			</li>
 
 			</ul>
