@@ -89,24 +89,24 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <h2><span class="mw-headline" id="How_to_install_TensorFlow_GPU_native_libraries">How to install TensorFlow GPU native libraries</span></h2>
 <p>GPU support is available for Linux and Windows machines with NVIDIA graphics cards. Please be warned that the TensorFlow Java native bindings are considered experimental and while some hardware / OS setups easily gained GPU support with the tools described on this page, on other machines we were not successful.
 </p>
-<h3><span class="mw-headline" id="Install_TensorFlow_with_GPU_support_for_Java">Install TensorFlow with GPU support for Java</span></h3>
+<h3><span class="mw-headline" id="Install_TensorFlow_with_GPU_support_for_Java">1. Install TensorFlow with GPU support for Java</span></h3>
 <ol><li> Open <code>Edit &gt; Options &gt; TensorFlow...</code></li>
 <li> Choose the TensorFlow version matching your system</li>
 <li> Wait until the library is downloaded and installed (a popup will tell you when it’s done)</li>
 <li> Restart Fiji</li></ol>
-<div class="MediaTransformError" style="width: 500px; height: 0px; display:inline-block;">Error creating thumbnail: Unable to save thumbnail to destination</div>
+<img src="_images/tensorflow-gpu/Tensorflow-installer.png" alt="Edit > Options > TensorFlow..." width="500" height="600">
 <p>You can for example switch from CPU to GPU by finding the option which is already selected (in the screenshot, <code>TF 1.15.0 CPU</code>) and choose the same TensorFlow version but with GPU support (e.g. <code>TF 1.15.0 GPU</code>).
 </p>
-<h3><span class="mw-headline" id="Install_the_CUDA.C2.AE_Toolkit_and_cuDNN">Install the CUDA® Toolkit and cuDNN</span></h3>
+<h3><span class="mw-headline" id="Install_the_CUDA.C2.AE_Toolkit_and_cuDNN">2. Install the CUDA® Toolkit and cuDNN</span></h3>
 <p>Install these NVIDIA requirements to run TensorFlow with GPU support as described in the <a rel="nofollow" class="external text" href="https://www.tensorflow.org/install/gpu">TensorFlow Documentation</a>.
 </p>
-<h3><span class="mw-headline" id="Which_specific_CUDA_and_cuDNN_versions_to_install.3F">Which specific CUDA and cuDNN versions to install?</span></h3>
+<h3><span class="mw-headline" id="Which_specific_CUDA_and_cuDNN_versions_to_install.3F">2.1 Which specific CUDA and cuDNN versions to install?</span></h3>
 <p>The CUDA and CuDNN versions displayed in the ImageJ TensorFlow installer (pictured above) are there to help you setup the right environment.
 </p><p>Example: The <code>CSBDeep</code> update site comes with <code>TensorFlow 1.15.0</code>, which requires <code>CUDA 10.0</code> and <code>cuDNN &gt;= 7.5.1</code>.
 </p><p>You can also use the filters on the top of the display to filter for a specific TensorFlow or CUDA version or to only list libraries with GPU support.
-</p><p>If you trained your model on a different TensorFlow version, running the model with with the default installation might fail. In this case, choose a specific TensorFlow version via <code>Edit &gt; Options &gt; TensorFlow...</code> and install CUDA and cuDNN compatible to the TensorFlow version.
+</p><p><b>Note: If you trained your model on a different TensorFlow version, running the model with with the default installation might fail. In this case, choose a specific TensorFlow version via <code>Edit &gt; Options &gt; TensorFlow...</code> and install CUDA and cuDNN compatible to the TensorFlow version.</b>
 </p>
-<h2><span class="mw-headline" id="How_to_check_if_GPU_support_works">How to check if GPU support works</span></h2>
+<h3><span class="mw-headline" id="How_to_check_if_GPU_support_works">3. How to check if GPU support works</span></h3>
 <ul><li> Go to <code>Edit &gt; Options &gt; TensorFlow...</code> and make sure a GPU version is selected an no error is displayed</li>
 <li> When running a command using <code>imagej-tensorflow</code>, you can open the console via <code>Window &gt; Console</code>. There might be a line similar to this (in this example, no GPU version manually installed and therefore the default CPU TensorFlow version is used): </li></ul>
 <code><pre>
@@ -114,20 +114,30 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 [INFO] Using default TensorFlow version from JAR: TF 1.15.0 CPU
 </pre></code>
 <ul><li> Sometimes that's still not sufficient and even though the right library is chosen and the console confirms that, the GPU is not used. Please read the notes for the specific operating systems below.</li></ul>
-<h2><span class="mw-headline" id="Hints_for_Windows">Hints for Windows</span></h2>
-<h3><span class="mw-headline" id="Set_the_environment_variables">Set the environment variables</span></h3>
-<p>To set the CUDA environment variables in Windows, please follow the steps described on <a rel="nofollow" class="external text" href="https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#install-windows">this page</a> (section 4.3.4).
+<h3><span class="mw-headline" id="Hints_for_Windows">3.1 Hints for Windows</span></h3>
+<h4><span class="mw-headline" id="Step-by-step_example-windows">Step-by-step example</span></h4>
+<p>Here is a step-by-step example of a successful GPU support installation:
 </p>
-<h3><span class="mw-headline" id="Step-by-step_example">Step-by-step example</span></h3>
-<p>Here is a step-by-step example of a successful GPU support installation (keep in mind that the person who tested this has little Windows experience and would benefit a lot from hints if this guide should be improved somehow):
-</p>
-<ul><li> in Fiji, opened <code>Edit &gt; Options &gt; TensorFlow...</code> and switched to TF 1.15.0 GPU</li>
+<ul><li>Install the most recent Nvidia driver for your system as described <a rel="nofollow" class="external text" href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#installdriver">here</a></li>
+<li> in Fiji, opened <code>Edit &gt; Options &gt; TensorFlow...</code> and switched to TF 1.15.0 GPU</li>
 <li> Installed <code>CUDA 10.0</code> from <a rel="nofollow" class="external text" href="https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork">here</a></li>
 <li> Downloaded <code>cuDNN 7.6.5 for CUDA 10.0</code> from <a rel="nofollow" class="external text" href="https://developer.nvidia.com/rdp/form/cudnn-download-survey">here</a> (you need to register / login)</li>
 <li> copied cuDNN files from the ZIP into CUDA as described <a rel="nofollow" class="external text" href="https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#installwindows">here</a></li>
 <li> add <code>/PATH/TO/Fiji.app/lib/win64/tensorflow_jni.dll</code> to your <code>PATH</code> (here’s a guide <a rel="nofollow" class="external text" href="https://www.techjunkie.com/environment-variables-windows-10/">how to set system variables</a>)</li></ul>
-<h2><span class="mw-headline" id="Hints_for_Linux">Hints for Linux</span></h2>
-<h3><span class="mw-headline" id="Set_the_library_path">Set the library path</span></h3>
+<p>The variables you should have set are these two. Normally, CUDA does that for you when you install it.</p>
+<img src="_images/tensorflow-gpu/tensorflow_gpu_win_envvars.png" alt="Edit > Options > TensorFlow...">
+<p>As well as the following additions to your PATH system-variable.</p>
+<img src="_images/tensorflow-gpu/tensorflow_gpu_win_path.png" alt="Edit > Options > TensorFlow...">
+<h3><span class="mw-headline" id="Hints_for_Linux">3.2 Hints for Linux</span></h3>
+<h4><span class="mw-headline" id="Step-by-step_example-linux">Step-by-step example</span></h4>
+<p>Here is a step-by-step example of a successful GPU support installation:
+</p>
+<ul><li>Install the most recent Nvidia driver for your system as described <a rel="nofollow" class="external text" href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#installdriver">here</a></li>
+<li> in Fiji, opened <code>Edit &gt; Options &gt; TensorFlow...</code> and switched to TF 1.15.0 GPU</li>
+<li> Installed <code>CUDA 10.0</code> from <a rel="nofollow" class="external text" href="https://developer.nvidia.com/cuda-10.0-download-archive-base?target_os=Linux">here</a></li>
+<li> Downloaded <code>cuDNN 7.6.5 for CUDA 10.0</code> from <a rel="nofollow" class="external text" href="https://developer.nvidia.com/rdp/form/cudnn-download-survey">here</a> (you need to register / login)</li>
+<li> copied cuDNN files from the ZIP into CUDA as described <a rel="nofollow" class="external text" href="https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#installlinux">here</a></li></ul>
+<h4><span class="mw-headline" id="Set_the_library_path">Set the library path</span></h4>
 <p><code>CUDA</code> and <code>cuDNN</code> need to be added to your system variables in order for Fiji to be able to use them. You can do that by adding lines similar to this to your <code>.bashrc</code> or <code>.zshrc</code> file:
 </p>
 <pre>export PATH=/usr/local/cuda/bin${PATH}
@@ -137,7 +147,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}</pre>
 <pre>export PATH=/usr/local/cuda/bin${PATH};export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH};/PATH_TO_APPS/Fiji.app/ImageJ-linux64</pre>
 <p><br />
 </p>
-<h3><span class="mw-headline" id="Multiple_GPUs">Multiple GPUs</span></h3>
+<h4><span class="mw-headline" id="Multiple_GPUs">Multiple GPUs</span></h4>
 <p>If you have multiple CUDA enabled GPUs you may want to set the environment variable <code>CUDA_VISIBLE_DEVICES</code> to specify the GPU which should be used.
 </p><p>As CUDA will try to enumerate the GPUs by speed
 </p>
@@ -194,7 +204,7 @@ Retrieved from "<a dir="ltr" href="index.php?title=TensorFlow-GPU&amp;oldid=4582
 							</div>
 
 			<div id="footer">
-				<p> This page was last modified on 25 June 2020, at 06:31.</p><ul><li><a href="./ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="./ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li></ul>			</div>
+				<p> This page was last modified on 03 November 2020, at 20:31.</p><ul><li><a href="./ImageJ:Privacy_policy" title="ImageJ:Privacy policy">Privacy policy</a></li><li><a href="./ImageJ:About" class="mw-redirect" title="ImageJ:About">About ImageJ</a></li><li><a href="Imprint" title="Imprint">Imprint</a></li></ul>			</div>
 
 			<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>		</div>
 
