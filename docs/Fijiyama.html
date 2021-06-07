@@ -143,7 +143,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 <p><b>Context:</b> 3D images acquired with various imaging devices or during monitoring experiments often come with different orientations and positions, making it difficult to analyze. Fixing this misalignment in 2D is difficult and become intractable in 3D. In addition, as each modality highlights different structures, images from multiple devices can be very dissimilar. In this situation, structures and phenomenon analysis can be compromised.
 </p><p><b>Goal:</b> Fijiyama aims to address these issues by helping users <b>to register, align and combine multi-modal 3D images or time-series in a unique reference geometry</b>. After registration, stacks are combined in a coherent multi-modal and/or multi-time volume that can be explored using the ImageJ viewer.
 </p><p><b>Versatility:</b> Fijiyama is a generic tool, efficient at any scale, tissue or imaging modality. It has been tested on the most common imaging approaches in biology and medicine: MRI, X-rays, photography...
-</p><p><a href="./File:Reg_present_1.png" class="image"><img alt="Reg present 1.png" src="_images/c/c4/Reg_present_1.png" width="700" height="432" /></a>
+</p><p><a href="./File:Reg_present_1.png" class="image"><img alt="Reg present 1.png" src="images/c/c4/Reg_present_1.png" width="700" height="432" /></a>
 </p>
 <h2><span class="mw-headline" id="Dataset_with_DOI_for_testing_purpose">Dataset with DOI for testing purpose</span></h2>
 <p>A comprehensive dataset can be found at <a rel="nofollow" class="external text" href="https://zenodo.org/record/3695736#.Xl6JaEpCdhE">this link</a> on dryad.
@@ -173,8 +173,8 @@ The following video shows a tutorial for Fijiyama installation:
 <h2><span class="mw-headline" id="Preparing_your_data">Preparing your data</span></h2>
 <p>In order to register your data, Fijiyama needs properly formatted dataset:
 </p>
-<ul><li> For two images pairwise registration&#160;: <b>Two 3D stacks/images</b> of the same object. Use your own data or the provided example datasets here: <a rel="nofollow" class="external text" href="_images/f/fd/Test_dataset_01_vine_crops.zip">case study 1, two-images registration</a></li>
-<li> For series registration&#160;: <b>N 3D stacks/images</b> of the same object. Use your own data or the provided example datasets here: <a rel="nofollow" class="external text" href="_images/c/c8/Test_dataset_04_time_series.zip">case study 4, times series registration</a>.</li>
+<ul><li> For two images pairwise registration&#160;: <b>Two 3D stacks/images</b> of the same object. Use your own data or the provided example datasets here: <a rel="nofollow" class="external text" href="images/f/fd/Test_dataset_01_vine_crops.zip">case study 1, two-images registration</a></li>
+<li> For series registration&#160;: <b>N 3D stacks/images</b> of the same object. Use your own data or the provided example datasets here: <a rel="nofollow" class="external text" href="images/c/c8/Test_dataset_04_time_series.zip">case study 4, times series registration</a>.</li>
 <li> <b>An empty "Output" directory</b>, that will be used to store the Fijiyama configuration file, the intermediate results (transformations) and the final results (transformations and resulting 3D images). The configuration file (*.fjm) keep a full track of your work. When saving the current registration experiment, Fijiyama stores the successive registration steps and the associated computed files. When restarting later from this point, you can review the whole process, and "undo" one or more steps.</li></ul>
 <p><br />
 Before starting registration, check your images calibration:
@@ -184,7 +184,7 @@ Before starting registration, check your images calibration:
 <p>Once signal intensity and voxel sizes have been checked, save your modified images. Then run Fijiyama, and select the <b>two images registration</b> mode or the <b>series registration</b> mode.
 </p>
 <h2><span class="mw-headline" id="The_registration_manager_window">The registration manager window</span></h2>
-<div class="thumb tright"><div class="thumbinner" style="width:352px;"><a href="./File:Fijiyama_reg_manager.png" class="image"><img alt="Fijiyama reg manager.png" src="_images/5/53/Fijiyama_reg_manager.png" width="350" height="389" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:Fijiyama_reg_manager.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:352px;"><a href="./File:Fijiyama_reg_manager.png" class="image"><img alt="Fijiyama reg manager.png" src="images/5/53/Fijiyama_reg_manager.png" width="350" height="389" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:Fijiyama_reg_manager.png" class="internal" title="Enlarge"></a></div></div></div></div>
 <p>Once a registration scenario starts, you can interact with the registration manager window through (see image)&#160;:
 </p>
 <ul><li> The log window&#160;: a guide to remember last operations, and to understand what the plugin expects from you</li></ul>
@@ -194,7 +194,7 @@ Before starting registration, check your images calibration:
 <h2><span class="mw-headline" id="Tutorial_1_:_Two_images_registration">Tutorial 1&#160;: Two images registration</span></h2>
 <p>In order to achieve an efficient registration of two 3D images, we recommend the following procedure:
 </p>
-<ul><li> <b>Step 1&#160;: </b> Prepare your data or download the example set: <a rel="nofollow" class="external text" href="_images/f/fd/Test_dataset_01_vine_crops.zip">case study 1, two-images registration</a></li>
+<ul><li> <b>Step 1&#160;: </b> Prepare your data or download the example set: <a rel="nofollow" class="external text" href="images/f/fd/Test_dataset_01_vine_crops.zip">case study 1, two-images registration</a></li>
 <li> <b>Step 2&#160;: </b> Select '<b>Manual registration'</b> in the first menu and run it. Superimpose roughly the two volumes manually (centers should be roughly aligned, with angle &lt; 15 degrees). Press on '<b>Position ok'</b> (green button) when ready. This first step will help Fijiyama finding the correct orientation. </li>
 <li> <b>Step 3&#160;: </b> Select '<b>Automatic registration'</b> with default parameters (Block matching). If you want to monitor the registration during the run, select the '<b>Display automatic registration'</b> in the “Manual registration viewer” menu. Before starting this action, notice the <i>estimated time</i> required to complete the action (calculated from your computer settings).</li>
 <li> <b>Step 3-bis </b>(optional, depending on the data)&#160;:  Select '<b>Automatic registration'</b> with default parameters (Block matching), and select "Vector field" in the "Transformation to estimate" menu.</li>
@@ -205,7 +205,7 @@ Before starting registration, check your images calibration:
 <p>Once comfortable with the "two images registration" module, try a “series registration” following these steps. If you feel lost, you can rely on the tutorial here&#160;:
 </p><p><iframe width="480" height="355" src="https://www.youtube.com/embed/DVr3LBH5ayY" frameborder="0" allowfullscreen></iframe>
 </p>
-<ul><li> <b>Step 1&#160;: </b> Prepare your data or download the example data set&#160;: <a rel="nofollow" class="external text" href="_images/c/c8/Test_dataset_04_time_series.zip">case study 4, times series registration</a></li></ul>
+<ul><li> <b>Step 1&#160;: </b> Prepare your data or download the example data set&#160;: <a rel="nofollow" class="external text" href="images/c/c8/Test_dataset_04_time_series.zip">case study 4, times series registration</a></li></ul>
 <p>Data names should respect a generic form, for example&#160;: img_t{Time}_mod{ModalityName}.tif , where {Time} represents the successive values for each time point, and {ModalityName} represents the name of each modality.
 In the example dataset, this is already done, since the image names are&#160;: MRI_D0.tif , MRI_D1.tif , MRI_D2.tif , MRI_D3.tif, which corresponds to a monomodal series with the generic expression MRI_D{Time}.tif .
 </p>
@@ -243,7 +243,7 @@ Guessing you already computed&#160;:
 </p><p>Major updates are symbolized with a change in the plugin version name.
 For minor updates, only the release time is modified.
 </p>
-<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="./File:Versioning_Fijiyama.jpeg" class="image"><img alt="Versioning Fijiyama.jpeg" src="_images/b/b3/Versioning_Fijiyama.jpeg" width="700" height="301" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:Versioning_Fijiyama.jpeg" class="internal" title="Enlarge"></a></div></div></div></div></div>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="./File:Versioning_Fijiyama.jpeg" class="image"><img alt="Versioning Fijiyama.jpeg" src="images/b/b3/Versioning_Fijiyama.jpeg" width="700" height="301" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:Versioning_Fijiyama.jpeg" class="internal" title="Enlarge"></a></div></div></div></div></div>
 <p><br />
 </p>
 <table class="wikitable">

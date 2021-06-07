@@ -68,7 +68,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="overflow:hidden"><table class="metadata plainlinks ambox ambox-content">
 <tr>
 <td class="ambox-image">
-<p><a href="./File:Important-sign.png" class="image"><img alt="Important-sign.png" src="_images/f/f0/Important-sign.png" width="40" height="40" /></a>
+<p><a href="./File:Important-sign.png" class="image"><img alt="Important-sign.png" src="images/f/f0/Important-sign.png" width="40" height="40" /></a>
 </p>
 </td>
 <td> <i><b>Please Note: This version of the software is outdated. We highly recommend using the new <a href="Automated_workflow_for_parallel_Multiview_Reconstruction" title="Automated workflow for parallel Multiview Reconstruction">automated workflow</a>. It is much more user friendly, efficient and versatile using full automation of the processing</b></i> </td>
@@ -520,7 +520,7 @@ err.445491
 out.445491
 ....
 </pre>
-<p>The err.* are hopefully empty. The out.* contain Fiji log output if any. In this case it should look something like <a href="_images/1/1b/Resaving_output.pdf" class="internal" title="Resaving output.pdf">this</a>. Most importantly in the directory /projects/tomancak_lightsheet/Tassos we now have for each .czi file a corresponding .tif file which was the goal of the whole exercise
+<p>The err.* are hopefully empty. The out.* contain Fiji log output if any. In this case it should look something like <a href="images/1/1b/Resaving_output.pdf" class="internal" title="Resaving output.pdf">this</a>. Most importantly in the directory /projects/tomancak_lightsheet/Tassos we now have for each .czi file a corresponding .tif file which was the goal of the whole exercise
 </p>
 <pre class="brush:bash">
  ls *Angle280*
@@ -800,7 +800,7 @@ done
 </p><p>The GPU mediated deconvolution is faster, but currently only by a factor of 2-3 and so the CPU version makes sense, especially when you have a big cluster of CPUs and no or few GPUs.
 </p>
 <h4><span class="mw-headline" id="Multiview_deconvolution_on_CPU">Multiview deconvolution on CPU</span></h4>
-<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="./File:Apply_External_Transformation_screenshot.jpeg" class="image"><img alt="Apply External Transformation screenshot.jpeg" src="_images/0/02/Apply_External_Transformation_screenshot.jpeg" width="200" height="272" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:Apply_External_Transformation_screenshot.jpeg" class="internal" title="Enlarge"></a></div></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="./File:Apply_External_Transformation_screenshot.jpeg" class="image"><img alt="Apply External Transformation screenshot.jpeg" src="images/0/02/Apply_External_Transformation_screenshot.jpeg" width="200" height="272" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="./File:Apply_External_Transformation_screenshot.jpeg" class="internal" title="Enlarge"></a></div></div></div></div>
 <p>In contrast to the multiview fusion plugin described above, <a rel="nofollow" class="external text" href="http://fly.mpi-cbg.de/~preibisch/">Stephan Preibisch</a>, in his infinite wisdom&#160;;-), did not implement the option to scale down the data before deconvolution starts. Since deconvolution is a very expensive operation, it will take a very long time (hours) on full resolution data. If the sole purpose of fusing the data by deconvolution is to render them in 3D, the full resolution images are not necessary, ergo we need to downsample. Fortunately Stephan implemented a workaround in the form of a script that prepends a transformation (such as scaling) to the raw SPIM data.
 </p><p>The script can be found under Plugins-&gt;SPIM registration-&gt;Utilities-&gt;Apply external transformation (or press letter <b>l</b> and type Apply external transformation). The initial dialog is reminiscent of SPIM registration, the screen that comes after that is not.
 </p><p>What we are looking at is the so called Affine Transformation Matrix that will be pre-concatenated to the transformation matrix in the registration files from bead based registration. The m00, m11 and m22 entries of the matrix represent the scaling of the image and so by setting all three of them to 0.5 we will downscale the image by a factor of 2.

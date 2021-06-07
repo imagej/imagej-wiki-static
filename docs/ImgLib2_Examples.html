@@ -183,7 +183,7 @@ mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","cs
 </td></tr></table>
 </td></tr></table>
 <div class="project-info">
-<span class="project-logo"><a href="ImgLib2" title="ImgLib2"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the ImgLib2 multidimensional image processing library. Click the logo for details." src="_images/0/0a/Imglib2-icon.png"></img></a></span></div>
+<span class="project-logo"><a href="ImgLib2" title="ImgLib2"><img class="simple-tooltip simple-tooltip-img" data-simple-tooltip="This page describes content which is part of the ImgLib2 multidimensional image processing library. Click the logo for details." src="images/0/0a/Imglib2-icon.png"></img></a></span></div>
 <div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="ImgLib2_Examples.html#Jupyter_notebook"><span class="tocnumber">1</span> <span class="toctext">Jupyter notebook</span></a></li>
@@ -444,7 +444,7 @@ public class Example1c
 <h3><span class="mw-headline" id="Example_1d_-_Displaying_images_partly_using_Views">Example 1d - Displaying images partly using Views</span></h3>
 <p>By using the concept of <b>Views</b> it is possible to display only parts of the image, display a rotated view, and many more cool things. Note that you can also concatenate them. <b>Views</b> are much more powerful than shown in this example, they will be increasingly used throughout the examples.
 </p><p>A <b>View</b> almost behaves similar to an <b>Img</b>, and in fact they share important concepts. Both are <b>RandomAccessible</b>, and <b>Views</b> that are not infinite are also an <b>Interval</b> (i.e. those <b>Views</b> have a defined size) and can therefore be made <b>Iterable</b> (see example 2c). In ImgLib2, all algorithms are implemented for abstract concepts like <b>RandomAccessible</b>, <b>Iterable</b> or <b>Interval</b>. This enables us, as can be seen below, to display a <b>View</b> the exact same way we would also display an <b>Img</b>.
-</p><p><a href="./File:ImgLib2example1d.jpg" class="image"><img alt="ImgLib2example1d.jpg" src="_images/8/8d/ImgLib2example1d.jpg" width="780" height="396" /></a>
+</p><p><a href="./File:ImgLib2example1d.jpg" class="image"><img alt="ImgLib2example1d.jpg" src="images/8/8d/ImgLib2example1d.jpg" width="780" height="396" /></a>
 <i>Shows the original image, the View of an interval, as well as the by 90 degree rotated version of the view. Note that only the original image in kept in memory, both Views are completely virtual.</i>
 </p><p><b><a rel="nofollow" class="external text" href="https://github.com/imglib/imglib-tutorials/blob/master/src/main/java/Example1d.java">Example1d.java</a></b>
 </p>
@@ -597,7 +597,7 @@ public class Example2a
 </pre>
 <h3><span class="mw-headline" id="Example_2b_-_Duplicating_an_Img_using_a_different_ImgFactory">Example 2b - Duplicating an Img using a different ImgFactory</span></h3>
 <p><span style="color:#FF0000"><b>WARNING:</b> The <b>copyImageWrong</b> method in this example makes a mistake on purpose!</span> It intends to show that the iteration order of <b>Cursors</b> is important to consider. The goal is to copy the content of an <b>ArrayImg</b> (i.e. an <b>Img</b> that was created using an <b>ArrayImgFactory</b>) into a <b>CellImg</b>. Using only <b>Cursors</b> for both images will have a wrong result as an <b>ArrayImg</b> and a <b>CellImg</b> have different iteration orders. An <b>ArrayImg</b> is iterated linearly, while a <b>CellImg</b> is iterate cell-by-cell, but linearly within each cell.
-</p><p><a href="./File:ImgLib2example2b.png" class="image"><img alt="ImgLib2example2b.png" src="_images/a/ac/ImgLib2example2b.png" width="780" height="179" /></a>
+</p><p><a href="./File:ImgLib2example2b.png" class="image"><img alt="ImgLib2example2b.png" src="images/a/ac/ImgLib2example2b.png" width="780" height="179" /></a>
 <i>Shows the result if two Cursors are used that have a different iteration order. Here we are wrongly copying an ArrayImg (left) into a CellImg (right).</i>
 </p><p><span style="color:#FF0000">The correct code for the copy-method (in <b>copyImageCorrect</b>) requires the use of a <b>RandomAccess</b>.</span> We use a <b>Cursor</b> to iterate over all pixels of the input and a <b>RandomAccess</b> which we set to the same location the output. Note that the <i>setPosition()</i> call of the <b>RandomAccess</b> directly takes the <b>Cursor</b> as input, which is possible because <b>Cursor</b> implements <b>Localizable</b>. Please also note that we use a <b>LocalizingCursor</b> instead of a normal <b>Cursor</b> because we need the location of the <b>Cursor</b> at every pixel.
 </p><p><b><a rel="nofollow" class="external text" href="https://github.com/imglib/imglib-tutorials/blob/master/src/main/java/Example2b.java">Example2b.java</a></b>
@@ -1915,7 +1915,7 @@ public class Example6b
 </p><p>For the display of complex image data we provide <b>Converters</b> to display the <a rel="nofollow" class="external text" href="http://bioinformatics.oxfordjournals.org/content/19/8/966">gLog</a> of the power-spectrum (default), phase-spectrum, real values, and imaginary values. It is, however, straight forward to implement you own <b>Converters</b>.
 </p><p>Note that for inverting the kernel we use methods defined for <b>ComplexType</b>, also the basic math operations add, mul, sub and div are implemented in complex math. The inverse FFT finally takes the instance of the FFT as a parameter from which it takes all required parameters for a correct inversion.
 </p><p>The final convolution of the inverse template with the image is performed using the FourierConvolution (see example 6b). Note that all possible locations of the template in the image have been tested. The peak in the result image clearly marks the location of the template, while the computation time for the whole operation takes less than a second.
-</p><p><a href="./File:Fourier.jpg" class="image"><img alt="Fourier.jpg" src="_images/c/c7/Fourier.jpg" width="780" height="971" /></a>
+</p><p><a href="./File:Fourier.jpg" class="image"><img alt="Fourier.jpg" src="images/c/c7/Fourier.jpg" width="780" height="971" /></a>
 <i>Shows the result and intermediate steps of the template matching using the Fourier space. In the upper panel you see the input image as well as the template that we use from matching. Below we show four different views of the Fast Fourier Transform of the template: the power spectrum, the phase spectrum, the real values, and the imaginary values. In the lower panel you see the result of the convolution of the inverse template with the image. The position where the template was located in the image is significantly visible. In the bottom right corner you see the inverse FFT of the inverse kernel.</i>
 </p><p><span style="color:#FF0000"><i>Important: This source code is only GPLv2!</i></span>
 </p><p><b><a rel="nofollow" class="external text" href="https://github.com/imglib/imglib-tutorials/blob/master/src/main/java/Example6c.java">Example6c.java</a></b>
